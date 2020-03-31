@@ -11,6 +11,14 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
  
 <title>개인정보보호정책</title>
+
+	<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-ShopModal.jsp" %>
+
 <style>
 	#all{
 		/* border:1px solid red; */
@@ -20,8 +28,6 @@
 		overflow: auto;
   		}
 </style>
-  <%@ include file="/common/header.jsp" %>
-  <%@ include file="/common/sidebar.jsp" %>
 </head>
 <body>
 <div id="all">
@@ -212,8 +218,6 @@
 </pre>
 </div>
 
-<%@ include file="/common/footer.jsp" %>
-	<%@ include file="/common/BacktoTop.jsp" %>
 				
 <!--===============================================================================================-->   
    <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>

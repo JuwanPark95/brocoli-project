@@ -3,9 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="../common/header.jsp" %>
-<%@ include file="../common/sidebar.jsp" %>
-<%@ include file="../common/cart.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-ShopModal.jsp" %>
 <style>
 #header-color2{
 	color:#6c7ae0
@@ -1016,10 +1019,6 @@
 	</div>
 		
 
-<%@ include file="../common/footer.jsp" %>
-
-
-<%@ include file="../common/BacktoTop.jsp" %>
 
 	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
@@ -1073,7 +1072,6 @@
 						</div>
 					</div>
 					
-					<%@ include file="../common/shopModal.jsp" %>
 				</div>
 			</div>
 		</div>

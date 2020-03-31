@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
-<%@ include file="../common/header.jsp" %>
-<%@ include file="../common/cart.jsp" %>
-<%@ include file="../common/sidebar.jsp" %>
-
+	<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-ShopModal.jsp" %>
 <link rel="stylesheet" type="text/css" href="/brocoli/main/css/mypage.css">
 
 <body>
@@ -140,9 +141,6 @@
        <!--contentWrap-->
     </div>
 	<!--#contentWrapper-->
-	
-<%@ include file="../common/footer.jsp" %>
-<%@ include file="../common/BacktoTop.jsp" %>
 
 	<!--===============================================================================================-->   
    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

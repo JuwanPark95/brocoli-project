@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../common/header.jsp" %>
-<%@ include file="../common/sidebar.jsp" %>
-<%@ include file="../common/cart.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-ShopModal.jsp" %>
 <style>
 	#ordersearch{
 	    padding-top: 1%;
@@ -205,10 +208,6 @@
 		
 	</div>
 	
-	<%@ include file="../common/footer.jsp" %>
-
-
-	<%@ include file="../common/BacktoTop.jsp" %>
 	
 <!--===============================================================================================-->   
    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

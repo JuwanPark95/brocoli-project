@@ -13,6 +13,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <title>회원가입 창</title>
+
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+
 <style>
 	#all{
 		  /* border:1px solid red; */
@@ -41,8 +47,7 @@
 	}
 	
 </style>
-<%@ include file="/common/header.jsp" %>
-<%@ include file="/common/sidebar.jsp" %>
+
 </head>
 <body>
 
@@ -638,9 +643,6 @@
 	<br><br>
 	
 </form>
-		<%@ include file="/common/footer.jsp" %>
-		<%@ include file="/common/BacktoTop.jsp" %>
-		
 		
 		
 <!--===============================================================================================-->   

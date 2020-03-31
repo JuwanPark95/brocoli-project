@@ -2,10 +2,14 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<%@ include file="../common/header.jsp" %>
-<%@ include file="../common/cart.jsp" %>
-<%@ include file="../common/sidebar.jsp" %>
 <link rel="stylesheet" type="text/css" href="/brocoli/main/css/trackList.css">
+
+	<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Header.jsp" %>
+	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-ShopModal.jsp" %>
 
 <body>
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/main/images/bg-01.jpg');">
@@ -88,11 +92,6 @@
 
 	
 	
-	
-	<%@ include file="../common/footer.jsp" %>
-
-
-	<%@ include file="../common/BacktoTop.jsp" %>
 	
 
 	
