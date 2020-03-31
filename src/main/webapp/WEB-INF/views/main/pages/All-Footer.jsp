@@ -29,19 +29,19 @@ font-size: 15px;
 
 					<ul>
 						<li class="p-b-10">
-							<a href="/brocoli/main/introduce.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/brocoli/resources/adminResources/introduce.jsp" class="stext-107 cl7 hov-cl1 trans-04">
 								회사 소개
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/board/privacyPolicy.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/brocoli/main/pages/board/Privacy-Policy.jsp" class="stext-107 cl7 hov-cl1 trans-04">
 								개인정보보호정책
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/main/contact.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/brocoli/resources/adminResources/contact.jsp" class="stext-107 cl7 hov-cl1 trans-04">
 								Contact
 							</a>
 						</li>
@@ -129,7 +129,7 @@ font-size: 15px;
 					</form>
 						<div class="p-t-18">
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
-							 onclick="location.href='/brocoli/login/enterStore.jsp' ">
+							 onclick="location.href='/brocoli/main/pages/Main-EnterStore.jsp' ">
 								입점 문의
 							</button>
 						</div>
@@ -139,23 +139,23 @@ font-size: 15px;
 			<div class="p-t-40">
 				<div class="flex-c-m flex-w p-b-18">
 					<a href="#" class="m-all-1">
-						<img src="/brocoli/main/images/icons/icon-pay-01.png" alt="ICON-PAY">
+						<img src="/brocoli/resources/adminResources/images/icons/icon-pay-01.png" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="/brocoli/main/images/icons/icon-pay-02.png" alt="ICON-PAY">
+						<img src="/brocoli/resources/adminResources/images/icons/icon-pay-02.png" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="/brocoli/main/images/icons/icon-pay-03.png" alt="ICON-PAY">
+						<img src="/brocoli/resources/adminResources/images/icons/icon-pay-03.png" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="/brocoli/main/images/icons/icon-pay-04.png" alt="ICON-PAY">
+						<img src="/brocoli/resources/adminResources/images/icons/icon-pay-04.png" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="/brocoli/main/images/icons/icon-pay-05.png" alt="ICON-PAY">
+						<img src="/brocoli/resources/adminResources/images/icons/icon-pay-05.png" alt="ICON-PAY">
 					</a>
 				</div>
 
