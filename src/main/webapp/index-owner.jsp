@@ -8,7 +8,7 @@
 <title>오너 : 인덱스 </title>
 </head>
 <body>
-<!-- 	커밋테스트용-->
+<!-- 	커밋테스트용 22-->
 	<jsp:forward page="WEB-INF/views/owner/owner.jsp"/>
 </body>
 </html>
