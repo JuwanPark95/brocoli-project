@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
 	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-  
+	<%@ include file="All-Sidebar.jsp"%>
   <style>
   	#all{
 		/* border:1px solid red; */
@@ -159,7 +157,8 @@
 				</form>			
 			</div>
   </div>
-  
+<%@ include file="All-Footer.jsp" %>
+<%@ include file="All-BacktoTop.jsp"%>
 
 				
 <!--===============================================================================================-->   
@@ -263,5 +262,6 @@
    </script>
 <!--===============================================================================================-->
    <script src="../main/js/main.js"></script>
+
 </body>
 </html>

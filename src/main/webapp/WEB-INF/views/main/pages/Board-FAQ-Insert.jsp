@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 디테일</title>
+<title>FAQ 작성</title>
 <meta charset="UTF-8">
 
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,12 +15,13 @@
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
 
+  
 <style>
 	#all{
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 120%;  	
   		}
   		
   	.tableArea {
@@ -35,7 +36,7 @@
 <body>
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 세부보기</h2><Br>
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">FAQ 작성</h2><Br>
 	
 	<table align="center" id="tableArea" class="table">
 			<tr>
@@ -60,23 +61,18 @@
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
-				<td>첨부하기</td>
+				<td>첨부파일 하기</td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea class="form-control" rows="5" id="comment" 
-				style="height: 250px; resize: none"></textarea></td>
+				<td><textarea class="form-control" rows="5" id="comment"
+					 style="height: 250px; resize: none"></textarea></td>
 			</tr>				
 		</table>
-		
-		
 		<div align="center">
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">확인</button>
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">수정</button>
+		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">작성 완료</button>
 		</div>
-		<br><br>
-</div>
-
+	</div>
 	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>	
 <!--===============================================================================================-->   

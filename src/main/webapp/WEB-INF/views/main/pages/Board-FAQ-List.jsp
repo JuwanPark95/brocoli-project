@@ -14,8 +14,7 @@
   
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
+
   
   <style>
     #all{
@@ -145,7 +144,8 @@
 			</div>
   </div>
   
-				
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 <!--===============================================================================================-->   
    <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

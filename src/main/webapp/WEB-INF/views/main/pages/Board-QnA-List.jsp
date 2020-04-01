@@ -14,8 +14,7 @@
   
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
+
   
   <style>
   	#all{
@@ -167,7 +166,8 @@
 				</form>			
 			</div>
   </div>
-
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
   
 				
 <!--===============================================================================================-->   
