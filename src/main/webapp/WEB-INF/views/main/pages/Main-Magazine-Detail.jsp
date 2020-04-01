@@ -6,9 +6,8 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
+	
+	
 </head>
 <body class="animsition">
 	
@@ -18,12 +17,12 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="/brocoli/WEB-INF/views/main/Main.jsp" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="magazine.jsp" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine.jsp" class="stext-109 cl8 hov-cl1 trans-04">
 				Magazine
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
@@ -43,7 +42,7 @@
 					<div class="p-r-45 p-r-0-lg">
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
-							<img src="images/blog-04.jpg" alt="IMG-BLOG">
+							<img src="/brocoli/resources/mainResources/images/blog-04.jpg" alt="IMG-BLOG">
 
 							<div class="flex-col-c-m size-123 bg9 how-pos5">
 								<span class="ltext-107 cl2 txt-center">
@@ -189,7 +188,7 @@
 							<ul>
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-01.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-01.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -205,7 +204,7 @@
 
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-02.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-02.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -221,7 +220,7 @@
 
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-03.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-03.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -374,17 +373,18 @@
 		</div>
 	</section>	
 	
-	
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -394,9 +394,9 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -413,7 +413,7 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/brocoli/resources/mainResources/js/main.js"></script>
 
 </body>
 </html>
