@@ -6,12 +6,9 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
 
 
-<link rel="stylesheet" type="text/css" href="/brocoli/main/css/trackList.css">
+<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/trackList.css">
 <style>
 input{
 display: inline-block;}
@@ -214,7 +211,8 @@ display: inline-block;}
 						
 	
 		
-
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 
 

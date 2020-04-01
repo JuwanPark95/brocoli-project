@@ -65,6 +65,18 @@
 <div id= one style="display: flex;">
 					<div class="right-top-bar flex-w h-full" >
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
+							오너페이지
+						</a>
+					</div>
+					
+					<div class="right-top-bar flex-w h-full" >
+						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
+							관리자페이지
+						</a>
+					</div>
+					
+					<div class="right-top-bar flex-w h-full" >
+						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
 							공지사항
 						</a>
 					</div>

@@ -1,11 +1,8 @@
-package com.kh.admin.member.model.vo;
+package com.kh.admin.admin_member.admin_model.admin_vo;
 
 import java.sql.Date;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class Member {
+public class Admin_Member {
 	private int mno;
 	private String mid;
 	private String pwd;

@@ -17,10 +17,9 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
 	
+
+
 	
 <style>
 	#all{
@@ -123,16 +122,19 @@
 	</div>
 	<br>
 </form>
+		
+		<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 				
 <!--===============================================================================================-->   
-   <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/animsition/js/animsition.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/bootstrap/js/popper.js"></script>
-   <script src="../main/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-   <script src="vendor/select2/select2.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
       $(".js-select2").each(function(){
          $(this).select2({
@@ -142,18 +144,18 @@
       })
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/daterangepicker/moment.min.js"></script>
-   <script src="../main/vendor/daterangepicker/daterangepicker.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/moment.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/slick/slick.min.js"></script>
-   <script src="../main/js/slick-custom.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/slick/slick.min.js"></script>
+   <script src="/brocoli/resources/mainResources/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/parallax100/parallax100.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/parallax100/parallax100.js"></script>
    <script>
         $('.parallax100').parallax100();
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
    <script>
       $('.gallery-lb').each(function() { // the containers for all your galleries
          $(this).magnificPopup({
@@ -167,9 +169,9 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/isotope/isotope.pkgd.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/sweetalert/sweetalert.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
    <script>
       $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
          e.preventDefault();
@@ -207,7 +209,7 @@
    
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
    <script>
       $('.js-pscroll').each(function(){
          $(this).css('position','relative');
@@ -224,6 +226,6 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/js/main.js"></script>
+   <script src="/brocoli/resources/mainResources/js/main.js"></script>
 	</body>
 </html>

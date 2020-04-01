@@ -4,161 +4,78 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>FAQ 작성</title>
 <meta charset="UTF-8">
-<title>내가쓴글 </title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  
-	<%@ include file="All-Cart.jsp" %>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ 
+<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-  <style>
-  	#all{
+
+  
+<style>
+	#all{
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 900px;
-		display: grid;   	
+		height: 120%;  	
   		}
-  	#all th{
-  		text-align:center;
-  	}
   		
-  </style>
-  
+  	.tableArea {
+	    border:1px solid white;
+	    width:650px;
+	    height:350px;
+	    margin-left:auto;
+	    margin-right:auto;
+   		}
+</style>
 </head>
 <body>
 <div id="all">
 <br>
-<h1 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">내가 쓴 글</h1>
-<br>
-<table class="table table-hover" align="center">
-    <thead>
-      <tr>
-        <th style="width:10%">글번호</th>
-        <th style="width:50%">제목</th>
-        <th style="width:10%">작성자</th>
-        <th style="width:20%">작성일</th>
-        <th style="width:10%">조회수</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="center">1</td>
-        <td align="center">내가 글 쓴 이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">2</td>
-        <td align="center">내가 글 쓴이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">3</td>
-        <td align="center">내가 글 쓴이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">4</td>
-        <td align="center">내가 글 쓴 이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">5</td>
-        <td align="center">내가 글 쓴 이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">6</td>
-        <td align="center">내가 쓴글이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">7</td>
-        <td align="center">내가 쓴글이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">8</td>
-        <td align="center">내가 쓴글이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">9</td>
-        <td align="center">내가 쓴글이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">10</td>
-        <td align="center">내가 쓴글이유</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      
-     
-    </tbody>
-  </table>
-  
-  <div style="margin-left: 40%; display: flex;">
-  <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222"><</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">2</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">></a></li>
-  </ul>
-  <div>
-  <button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;">작 성</button>
-  </div>
-  </div>
-
-  <div id="searchArea" align="center" >
-				<form action="${ contextPath }/search.bo" style="display: inline-flex;" >
-					<select id="searchCondition" name="condition">
-						<option>--------선택--------</option>
-						<option value="writer">작성자</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>					
-					</select>
-					<br>
-					<input type="search" name="search" class="form-control form-control" style="width:300px;">
-					<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;">검색하기</button>				
-				</form>			
-			</div>
-  </div>
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">FAQ 작성</h2><Br>
+	
+	<table align="center" id="tableArea" class="table">
+			<tr>
+				<td width="100">글 번 호</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>제  목</td>
+				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+			</tr>
+			<tr>
+				<td>작 성 자</td>
+				<td>ㅎ</b></td>
+			</tr>
+			<tr>
+				<td>조 회 수</td>
+				<td>ㅎ</td>
+			</tr>
+			<tr>
+				<td>작 성 일</td>
+				<td>ㅎ</td>
+			</tr>
+			<tr>
+				<td>첨부 파일</td>
+				<td>첨부파일 하기</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea class="form-control" rows="5" id="comment"
+					 style="height: 250px; resize: none"></textarea></td>
+			</tr>				
+		</table>
+		<div align="center">
+		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">작성 완료</button>
+		</div>
+	</div>
 <%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -260,6 +177,5 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
-
 </body>
 </html>
