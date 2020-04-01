@@ -5,9 +5,7 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
 
 <body class="animsition">
 	
@@ -228,7 +226,7 @@
 	
 		
 
-
+<%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
