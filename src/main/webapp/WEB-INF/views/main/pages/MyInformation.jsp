@@ -302,16 +302,17 @@ button:hover:before,button:hover:after{
         <!-- #contentWrap -->
     </div>
     
+
 <%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -321,18 +322,18 @@ button:hover:before,button:hover:after{
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/slick/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/slick/slick.min.js"></script>
+	<script src="/brocoli/resources/mainResources/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/parallax100/parallax100.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/parallax100/parallax100.js"></script>
 	<script>
         $('.parallax100').parallax100();
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -346,18 +347,18 @@ button:hover:before,button:hover:after{
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script>
-		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
+	<script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
+<!-- 	<script>
+		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
 		});
 
 		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').jsp();
 			$(this).on('click', function(){
-				swal("찜 완료!"/* nameProduct */, "관심 상품에 추가되었습니다!", "success");
+				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
 				$(this).off('click');
@@ -365,7 +366,7 @@ button:hover:before,button:hover:after{
 		});
 
 		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').jsp();
 
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to wishlist !", "success");
@@ -378,15 +379,14 @@ button:hover:before,button:hover:after{
 		/*---------------------------------------------*/
 
 		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').jsp();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-	
-	</script>
+	</script> -->
 <!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -403,9 +403,6 @@ button:hover:before,button:hover:after{
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
-  
-    
-    
+	<script src="/brocoli/resources/mainResources/js/main.js"></script>
 </body>
 </html>
