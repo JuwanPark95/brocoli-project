@@ -1,5 +1,5 @@
-package com.kh.admin;
+package com.kh.main;
 
-public class testclass {
+public class testclass2 {
 
 }
