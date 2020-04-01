@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,6 @@
 
 <!-- 각자 자신의 index 파일인지 반드시 확인후 forward할 경로를 수정하세요.  -->
 
-	<jsp:forward page="WEB-INF/views/main/pages/MyCart.jsp"/>
+	<jsp:forward page="WEB-INF/views/main/pages/MyOrderList.jsp"/>
 </body>
 </html>
