@@ -9,6 +9,6 @@
 </head>
 <body>
 <!-- 	커밋테스트용 22		-->
-	<jsp:forward page="WEB-INF/views/owner/owner.jsp"/>
+	<jsp:forward page="WEB-INF/views/owner/pages/color-picker.jsp"/>
 </body>
 </html>
