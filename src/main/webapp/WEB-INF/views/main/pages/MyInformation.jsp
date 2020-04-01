@@ -6,15 +6,13 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
 
 <meta charset="UTF-8">
 <title>My information</title>
 
 
-<link rel="stylesheet" type="text/css" href="/brocoli/main/css/myInformation.css">
+<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/myInformation.css">
 
 <style>
 button{
@@ -304,7 +302,7 @@ button:hover:before,button:hover:after{
         <!-- #contentWrap -->
     </div>
     
-
+<%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

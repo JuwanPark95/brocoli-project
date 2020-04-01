@@ -5,15 +5,13 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
-<link rel="stylesheet" type="text/css" href="/brocoli/main/css/mypage.css">
+<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/mypage.css">
 
 <body>
 	
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/main/images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			MY PAGE
 		</h2>
@@ -39,7 +37,7 @@
                         <div class="mypage-member-info" style="margin: auto;">
                             <div class="member-id-container">
                                 <div class="group-image">
-                                    <img src="/brocoli/main/images/about-01.jpg" alt="이미지" style="width: 60px; height: 60px; border-radius: 30%; top: -10px;">
+                                    <img src="/brocoli/resources/mainResources/images/about-01.jpg" alt="이미지" style="width: 60px; height: 60px; border-radius: 30%; top: -10px;">
                                 </div class="test2">
                                 <div style="padding-left: 70px;">
                                 <p>안녕하세요.
@@ -82,8 +80,8 @@
                     	
                     <div class="mypage-menu-container">
                         <ul class="mypage-menu-list" style=" width: 1200px; margin: auto;" >
-                            <li class="my-info" img="/brocoli/main/images/mypage_me1.png">
-                                <a href="/brocoli/main/myInformation.jsp">
+                            <li class="my-info" img="/brocoli/resources/mainResources/images/mypage_me1.png">
+                                <a href="WEB-INF/views/main/pages/MyInformation.jsp">
                                     <h4>개인정보관리</h4>
                                     <p>
                                         "개인정보를 수정 및 관리"
@@ -92,7 +90,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="order-list" img="/brocoli/main/images/mypage_list1.png">
+                            <li class="order-list" img="/brocoli/resources/mainResources/images/mypage_list1.png">
                                 <a href="/brocoli/main/orderlist.jsp">
                                     <h4>주문현황</h4>
                                     <p>"주문한 상품을 하는데"
@@ -101,7 +99,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="wish-list" img="/brocoli/main/images/mypage_like1.png">
+                            <li class="wish-list" img="/brocoli/resources/mainResources/images/mypage_like1.png">
                                 <a href="/brocoli/main/wishlist.jsp">
                                     <h4>관심상품관리</h4>
                                     <p>"내가 찜 해둔 상품을"
@@ -110,7 +108,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="reserve-deposit" img="/brocoli/main/images/mypage_cart1.png">
+                            <li class="reserve-deposit" img="/brocoli/resources/mainResources/images/mypage_cart1.png">
                                 <a href="/brocoli/main/shoping-cart.jsp">
                                     <h4>장바구니</h4>
                                     <p>"장바구니를"
@@ -119,7 +117,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="my-article" img="/brocoli/main/images/mypage_my1.png">
+                            <li class="my-article" img="/brocoli/resources/mainResources/images/mypage_my1.png">
                                 <a href="">
                                     <h4>내가 쓴 글 보기</h4>
                                     <p>"주문관련문의, 상품후기 등"
@@ -142,7 +140,8 @@
     </div>
 	<!--#contentWrapper-->
 
-	<!--===============================================================================================-->   
+<%@ include file="All-Footer.jsp" %>
+<!--===============================================================================================-->   
    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
    <script src="vendor/animsition/js/animsition.min.js"></script>
