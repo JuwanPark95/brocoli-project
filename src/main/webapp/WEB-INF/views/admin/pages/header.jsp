@@ -223,7 +223,8 @@
 								</div>
 							</li>
 							
-							<li class="nav-item"><a class="nav-link" href="#"
+							<c:url var="bManagement" value="bManagement.do"/>
+							<li class="nav-item"><a class="nav-link" href="${bManagement}"
 								data-toggle="collapse" aria-expanded="false"
 								data-target="#submenu-3" aria-controls="submenu-3"><i
 									class="fa fa-fw fa-bold"></i>가맹브랜드 관리</a>
