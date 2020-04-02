@@ -119,8 +119,7 @@
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-06.jpg" data-lightbox="gallery" 
 							style="background-image: url('/brocoli/resources/mainResources/images/gallery-06.jpg');"></a>
-							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-06.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-06.jpg');"></a>
+						
 						</div>
 
 						<!-- item gallery sidebar -->
