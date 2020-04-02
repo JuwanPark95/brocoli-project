@@ -11,7 +11,7 @@
 		<result property="phone" column="PHONE"/>
 		<result property="address" column="ADDRESS"/>
 		<result property="gender" column="GENDER"/>
-		<result property="birthday" column="BIRTHDAY"/>
+		<result property="birthDay" column="BIRTHDAY"/>
 		<result property="mGrant" column="MGRANT"/>
 		<result property="mPoint" column="MPOINT"/>
 		<result property="order_Count" column="ORDER_COUNT"/>
@@ -21,7 +21,7 @@
 		<result property="block_Content" column="BLOCK_CONTENT"/>
 		<result property="del_Flag_YN" column="DEL_FLAG_YN"/>
 		<result property="del_Date" column="DEL_DATE"/>
-		<result property="enrolldate" column="ENROLLDATE"/>
+		<result property="enrollDate" column="ENROLLDATE"/>
 		<result property="brand" column="BRAND"/>
 		<result property="brand_NO" column="BRAND_NO"/>
 		
