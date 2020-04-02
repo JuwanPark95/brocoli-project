@@ -1,28 +1,32 @@
 package com.kh.brocoli.owner.model.service;
 
-import org.mybatis.spring.SqlSessionTemplate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kh.brocoli.member.model.dao.MemberDao;
-import com.kh.brocoli.member.model.vo.Member;
+
+import com.kh.brocoli.owner.model.dao.ownerDao;
+import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.Product_File;
 
 
-@Service("mService")
+@Service("oService")
 public class ownerServiceimpl implements ownerService {
+
+	@Autowired ownerDao oDao;
 	
-	@Autowired
-	private MemberDao mDao;
-	
-	@Autowired
-	SqlSessionTemplate sqlSession;
-	
+	/**
+	 *작성자 : 박주완
+	 *작성일 : 2020-04-03
+	 *내용 : 파일 등록시 프로덕트,프로덕트파일 2가지 테이블에 insert 하기위한 메소드
+	 */
 	@Override
-	public Member loginMember(Member m) {
-		
-		Member loginUser = mDao.loginMember(m);
-		
-		return loginUser;
+	public int productInsert(Product p, Product_File pf) {
+		//2개의 DAO 반환값중 1가지만 '0'이 반환되어도 실패!
+		int reuslt = oDao.insertProductImg(pf) * oDao.insertProduct(p);
+		return reuslt;
 	}
+
+
 
 }

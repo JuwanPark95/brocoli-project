@@ -1,15 +1,10 @@
 package com.kh.brocoli.owner.model.service;
 
-import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.Product_File;
 
 public interface ownerService {
 
-	/**
-	 * 작성자 : 윤석훈
-	 * 회원 로그인
-	 * @param m
-	 * @return
-	 */
-	Member loginMember(Member m);
-	
+
+	int productInsert(Product p,Product_File pf);
 }
