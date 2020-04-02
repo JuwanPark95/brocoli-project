@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,44 +37,69 @@
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
 					<li class="p-b-13">
-						<a href="/brocoli/resources/mainResources/index.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+					
+						<a href="${Main }" class="stext-102 cl2 hov-cl1 trans-04">
 							메인
 						</a>
 					</li>
 					
+					<c:url var="Mypage" value="myPageView.mn"/>
+					<c:url var="Mycart" value="myCartView.mn"/>
+					<c:url var="MyOrderlist" value="myOrderView.mn"/>
 					<li class="p-b-13">
-						<a href="/brocoli/resources/mainResources/myPage.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<a href="${Mypage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
 							마이 페이지
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="/brocoli/resources/mainResources/wishlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<a href="${Wishlist }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
 							위시 리스트
 						</a>
 					</li>
-
+					
+					
 					<li class="p-b-13">
-						<a href="/brocoli/resources/mainResources/shoping-cart.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<a href="${Mycart }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
 							장바구니
 						</a>
 					</li>
 					
 					<li class="p-b-13">
-						<a href="/brocoli/resources/mainResources/orderlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<a href="${MyOrderlist }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
 							주문조회
 						</a>
 					</li>
 
 
 					<li class="p-b-13">
-						<a href="/brocoli/board/QnAList.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="${QnA }" class="stext-102 cl2 hov-cl1 trans-04">
 							문의사항
 						</a>
 					</li>
 					
 					<li class="p-b-13">
-						<a href="/brocoli/board/customerViewList.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="${FAQ }" class="stext-102 cl2 hov-cl1 trans-04">
 							자주묻는질문
 						</a>
 					</li>					

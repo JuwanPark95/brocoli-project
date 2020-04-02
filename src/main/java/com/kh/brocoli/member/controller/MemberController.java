@@ -218,7 +218,24 @@ public class MemberController {
 		return "redirect:index-admin.jsp";
 	}
 	
+/************************************사이드 바*******************************/
+	/**
+	 * 마이페이지로 이동
+	 * @return
+	 */
+	@RequestMapping("myPageView.mn")
+	public String MyPageView() {
+		return "MyPage";
+	}
+
+	/**
+	 * 장바구니로 이동
+	 * @return
+	 */
+	@RequestMapping("myCartView")
+	public String MyCartView() {
+		return "MyCart";
+	}
+
 	
-
-
 }
