@@ -50,12 +50,12 @@ public class MemberController {
 	
 	@RequestMapping("adminPage")
 	public String loginAdmin() {
-		return "index-admin.jsp";
+		return "index-admin";
 	}
 	
-	@RequestMapping("ownerPage")
-	public String ownerPage(SessionStatus status) {
-		return "";
+	@RequestMapping(value="ownerPage")
+	public String ownerPage() {
+		return "redirect:index-owner.jsp";
 	}
 
 }
