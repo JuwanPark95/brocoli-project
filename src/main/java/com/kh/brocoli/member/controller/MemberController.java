@@ -234,5 +234,8 @@ public class MemberController {
 		return "MyCart";
 	}
 
-	
+	@RequestMapping("myOrderView.mn")
+	public String MyOrderView() {
+		return "MyOrderList";
+	}
 }

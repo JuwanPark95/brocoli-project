@@ -82,7 +82,7 @@
 					
 					<li class="p-b-13">
 						<c:if test="${!empty sessionScope.loginUser }">
-						<a href="${MyOrderlist }" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="<c:url value='myOrderView.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
 						</c:if>
 						<c:if test="${empty sessionScope.loginUser }">
 						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
@@ -93,7 +93,7 @@
 
 
 					<li class="p-b-13">
-						<a href="${QnA }" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="<c:url value='QnAView.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
 							문의사항
 						</a>
 					</li>
