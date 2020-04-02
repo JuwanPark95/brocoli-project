@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <%@ include file="All-Header.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
     <%@ include file="All-Cart.jsp" %>
-	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
 
 <style>
