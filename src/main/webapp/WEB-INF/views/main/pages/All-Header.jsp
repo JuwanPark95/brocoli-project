@@ -85,7 +85,7 @@
 							<a href='${ownerPage}' class="flex-c-m trans-04 p-lr-25">오너페이지</a>
 						</c:if>
 					</div>
-<<<<<<< HEAD
+
 
 					<div class="right-top-bar flex-w h-full">
 						<c:if
@@ -93,21 +93,21 @@
 							<c:url var="adminPage" value="adminPage.ad" />
 							<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
 						</c:if>
-=======
+
 				<div id= one style="display: flex;">
                     <div class="right-top-bar flex-w h-full" >
 		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 2}">
 								<c:url var="ownerPage" value="ownerPage"/>
 									<a href='${ownerPage}' class="flex-c-m trans-04 p-lr-25">오너페이지</a>
 							</c:if>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
+
 					</div>
-<<<<<<< HEAD
+
 
 					<div class="right-top-bar flex-w h-full">
 						<c:url var="Notice" value="NoticeView.mn" />
 						<a href="${Notice }" class="flex-c-m trans-04 p-lr-25"> 공지사항 </a>
-=======
+
 					
                     <div class="right-top-bar flex-w h-full" >
 		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
@@ -120,7 +120,7 @@
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
 							공지사항
 						</a>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
+
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -305,24 +305,22 @@
 		</div>
 	</div>
 </header>
-			<c:url var="SearchPage" value="searchPage.mn"/>
+				<c:url var="SearchPage" value="searchPage.mn"/>
 				<script>
 					$('#searchbar').keyup(function(e) {
 						if (e.keyCode == 13) {
-							
-							location.href = "${SearchPage}";
+								location.href = "${SearchPage}";
 						}
 					});
 				</script>
 				<body>
 					<script>
 						$(document).ready(function() {
-											$("#alpreah_input").keydown(function(key) {
+								$("#alpreah_input").keydown(function(key) {
 												if (key.keyCode == 13) {
 													location.href = "${SearchPage}";
-
-												}
-											});
+								}
+							});
 						});
 					</script>
 </body>
