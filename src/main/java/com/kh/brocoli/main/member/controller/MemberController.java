@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.kh.brocoli.main.member.model.service.MemberService;
 import com.kh.brocoli.main.member.model.vo.Member;
@@ -17,13 +18,21 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
-	@RequestMapping(value="loginPage.do")
+	@RequestMapping(value="loginPage.mn")
 	public String loginPage() {
-		return "main/pages/Login";
+		return "Login";
 	}
 	
 	
-	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	@RequestMapping(value="logoutPage")
+	public String logoutPage(SessionStatus status) {
+		
+		status.setComplete();
+		
+		return "redirect:index.jsp";
+	}
+	
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String memberLogin( Member m, Model model) {
 
 		Member loginUser = mService.loginMember(m);
@@ -38,4 +47,6 @@ public class MemberController {
 		}
 
 	}
+	
+
 }

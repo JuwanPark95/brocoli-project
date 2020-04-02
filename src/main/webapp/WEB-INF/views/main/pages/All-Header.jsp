@@ -56,29 +56,27 @@
     	내용 : 헤더경로 입력(로그인)
      -->
 		<!-- Header desktop -->
-		<div class="container-menu-desktop" style="padding:0px;">
+		<div class="container-menu-desktop">
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
 						Free shipping
 					</div>
-<<<<<<< HEAD
 				<div id= one style="display: flex;">
-=======
-                    <div id= one style="display: flex;">
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
-					<div class="right-top-bar flex-w h-full" >
-						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
-							오너페이지
-						</a>
+                    <div class="right-top-bar flex-w h-full" >
+		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 2}">
+								<c:url var="ownerPage" value="ownerPage.ow"/>
+									<a href='${ownerPage}' class="flex-c-m trans-04 p-lr-25">오너페이지</a>
+							</c:if>
 					</div>
 					
-					<div class="right-top-bar flex-w h-full" >
-						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
-							관리자페이지
-						</a>
-					</div>
+                    <div class="right-top-bar flex-w h-full" >
+		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
+								<c:url var="adminPage" value="adminPage.ad"/>
+									<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
+							</c:if>
+					</div>					
 					
 					<div class="right-top-bar flex-w h-full" >
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
@@ -94,12 +92,12 @@
 					<div class="right-top-bar flex-w h-full">
 					
 					<c:if test="${empty sessionScope.loginUser }">
-						<c:url var="loginPage" value="loginPage.do"/>
+						<c:url var="loginPage" value="loginPage.mn"/>
 							<a href='${loginPage}' class="flex-c-m trans-04 p-lr-25">login</a>
 					</c:if>
 					
 					<c:if test="${!empty sessionScope.loginUser }">
-						<c:url var="logoutPage" value="logoutPage.do"/>
+						<c:url var="logoutPage" value="logoutPage"/>
 							<a href='${logoutPage}' class="flex-c-m trans-04 p-lr-25">logout</a>
 					</c:if>
 					

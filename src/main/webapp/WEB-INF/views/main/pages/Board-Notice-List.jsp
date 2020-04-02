@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
-<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
@@ -38,108 +38,74 @@
 <div id="all">
 <br>
 <h1 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항</h1>
-<table class="table table-hover" align="center" id="listArea">
+<table class="table table-hover" align="center" id="listArea" width="700">
     <thead>
       <tr>
-        <th style="width:10%">글번호</th>
+        <th>글번호</th>
         <th style="width:50%">제목</th>
-        <th style="width:10%">작성자</th>
-        <th style="width:20%">작성일</th>
-        <th style="width:20%">조회수</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
+        <th>첨부파일</th>
       </tr>
     </thead>
     <tbody>
+    
+    <c:forEach var="b" items="${ list }">
       <tr>
-        <td align="center">1</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
+        <td align="center">${ b.bId }</td>
+        
+        <td align="center">
+        	<c:if test="${ !empty loginUser }">
+        		<c:url var = "bdetail" value="bdetail.do">
+        			<c:param name="bId" value="${ b.bId }"/>
+        			<c:param name="currentPage" value="${ pi.currentPage }"/>
+        		</c:url>
+        		<a href="${ bdetail }">${b.bTitle }</a>
+        	</c:if>
+        	<c:if test="${ empty loginUser }">
+        		${b.bTitle }
+        	</c:if>        
+        </td>
+        
+        <td align="center">${ b.bWriter }</td>
+        <td align="center">${ b.bCreateDate }</td>
+        <td align="center">${ b.bCount }</td>
+        <td align="center">
+        	<c:if test="${ !empty b.nimg }">
+        		o
+        	</c:if>
+        	<c:if test="${ empty b.N_IMG_RENAME }">
+        		&nbsp;
+        	</c:if>
+        </td>
       </tr>
-      
-       <tr>
-        <td align="center">2</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-       <tr>
-        <td align="center">3</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-       <tr>
-        <td align="center">4</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">5</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">6</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">7</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">8</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">9</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-      
-      <tr>
-        <td align="center">10</td>
-        <td align="center">게시판</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">1</td>
-      </tr>
-     
+    </c:forEach>     
     </tbody>
   </table>
+  
   <div style="margin-left: 40%; display: flex;">
   <ul class="pagination justify-content-center">
+  
+  <c:if test="${ pi.currentPage eq 1 }">
+  <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222"><</a></li>
+  </c:if>
+  
+  <c:if test="${ pi.currentPage ne 1}">
+  	<c:url var="before" value="blist.do">
+  		<c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
+  	</c:url>
+  	<a href="${ before }"></a>
+  </c:if>
+  
     <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222"><</a></li>
     <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">1</a></li>
     <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">2</a></li>
     <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">></a></li>
   </ul>
   <div>
-  <button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;">작 성</button>
+  <button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
+  		  onclick="location.herf='bInsertView.do';">작 성</button>
   </div>
   </div>
   <div id="searchArea" align="center">
