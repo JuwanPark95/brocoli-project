@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Cart.jsp" %>
+    
 <body class="animsition">
 	   <!-- 
    	작성자 : 윤석훈
