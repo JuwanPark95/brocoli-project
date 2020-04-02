@@ -11,10 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
 
-/**
- * @author hslim
- *
- */
+
 @SessionAttributes("loginUser")
 @Controller
 public class MemberController {
