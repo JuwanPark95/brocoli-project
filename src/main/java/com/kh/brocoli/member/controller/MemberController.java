@@ -215,7 +215,7 @@ public class MemberController {
 	
 	@RequestMapping("adminPage")
 	public String loginAdmin() {
-		return "index-admin";
+		return "redirect:index-admin.jsp";
 	}
 	
 	
