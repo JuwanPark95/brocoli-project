@@ -50,7 +50,7 @@ public class MemberController {
 	
 	@RequestMapping("adminPage")
 	public String loginAdmin() {
-		return "index-admin.jsp";
+		return "redirect:index-admin.jsp";
 	}
 	
 	@RequestMapping("ownerPage")
