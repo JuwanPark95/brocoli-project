@@ -12,9 +12,34 @@
  	
  	<!-- typeAliases -->
  	<typeAliases>
+ 		<!-- 멤버 -->
         <typeAlias type="com.kh.brocoli.member.model.vo.Member" alias="Member"/>
-<!--  		<typeAlias type="com.kh.spring.board.model.vo.Board" alias="Board"/>
- 		<typeAlias type="com.kh.spring.board.model.vo.Reply" alias="Reply"/>  -->
+        <typeAlias type="com.kh.brocoli.member.model.vo.Cart" alias="Cart"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.Change" alias="Change"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.Orders" alias="Orders"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.Reject" alias="Reject"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.Wish" alias="Wish"/>
+        <!--  상품   -->
+        <typeAlias type="com.kh.brocoli.product.model.vo.Brand" alias="Brand"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.Product_File" alias="Product_File"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.Product_Option" alias="Product_Option"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.Product" alias="Product"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.QNAProduct_Reply" alias="QNAProduct_Reply"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.QNAProduct" alias="QNAProduct"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.Review_Reply" alias="Review_Reply"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.Review" alias="Review"/>
+		<!-- 매거진 -->
+		<typeAlias type="com.kh.brocoli.magazine.model.vo.Magazine_File" alias="Magazine_File"/>
+		<typeAlias type="com.kh.brocoli.magazine.model.vo.Magazine" alias="Magazine"/>
+		<!-- 관리자 / 오너 -->
+		<typeAlias type="com.kh.brocoli.general.model.vo.Auction" alias="Auction"/>
+		<typeAlias type="com.kh.brocoli.general.model.vo.Contact" alias="Contact"/>
+		<typeAlias type="com.kh.brocoli.general.model.vo.Setting" alias="Setting"/>
+		<!-- 게시판 -->
+		<typeAlias type="com.kh.brocoli.board.model.vo.Notice" alias="Notice"/>
+		<typeAlias type="com.kh.brocoli.board.model.vo.QNA_Reply" alias="QNA_Reply"/>
+		<typeAlias type="com.kh.brocoli.board.model.vo.QNA" alias="QNA"/>
+
  	</typeAliases>
  	
  	
