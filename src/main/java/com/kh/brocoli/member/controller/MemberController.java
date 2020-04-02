@@ -48,5 +48,9 @@ public class MemberController {
 
 	}
 	
+	@RequestMapping("ownerPage")
+	public String ownerPage(SessionStatus status) {
+		return "";
+	}
 
 }
