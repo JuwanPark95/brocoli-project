@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@ font-size: 15px;
 </style>
 </head>
 <body>
-
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 </body>
 	<!-- Footer -->
@@ -29,19 +30,22 @@ font-size: 15px;
 
 					<ul>
 						<li class="p-b-10">
-							<a href="/brocoli/resources/adminResources/introduce.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+						<c:url var="mIntroduce" value="mIntroduceView.mn"/>
+							<a href="${mIntroduce}" class="stext-107 cl7 hov-cl1 trans-04">
 								회사 소개
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/main/pages/board/Privacy-Policy.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+						<c:url var="pPolicy" value="pPolicyView.mn"/>
+							<a href="${pPolicy}" class="stext-107 cl7 hov-cl1 trans-04">
 								개인정보보호정책
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/resources/adminResources/contact.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+						<c:url var="mContact" value="mContactView.mn" />
+							<a href="${mContact }" class="stext-107 cl7 hov-cl1 trans-04">
 								Contact
 							</a>
 						</li>
@@ -59,27 +63,46 @@ font-size: 15px;
 						Help
 					</h3>
 
+						<c:url var="loginPage" value="loginPage.mn"/>
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+					<c:if test="${empty sessionScope.loginUser }">
+							<a href="${loginPage }" class="stext-107 cl7 hov-cl1 trans-04">
 								배송 조회
 							</a>
+						</c:if>
+						
+					<c:if test="${!empty sessionScope.loginUser }">
+						<c:url var="mTrackList" value="mTrackListView.mn" />
+							<a href="${mTrackList }" class="stext-107 cl7 hov-cl1 trans-04">
+							배송 조회
+							</a>
+					</c:if>
 						</li>
-
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<c:url var="pChange" value="pChangeView.mn" />
+							<a href="${pChange }" class="stext-107 cl7 hov-cl1 trans-04">
 								교환 환불 
 							</a>
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+							<a href="${loginPage }" class="stext-107 cl7 hov-cl1 trans-04">
+								교환 환불 
+							</a>
+						</c:if>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/board/QnAList.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+							<c:url var="QnA" value="QnAView.mn"/>
+							<a href="${QnA }" class="stext-107 cl7 hov-cl1 trans-04">
 								문의하기
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/brocoli/board/customerViewList.jsp" class="stext-107 cl7 hov-cl1 trans-04">
+							<c:url var="FAQ" value="FAQView.mn"/>
+							<a href="${FAQ }" class="stext-107 cl7 hov-cl1 trans-04">
 								자주묻는질문
 							</a>
 						</li>
@@ -128,10 +151,19 @@ font-size: 15px;
 
 					</form>
 						<div class="p-t-18">
+						<c:if test="${!empty sessionScope.loginUser }">
+						<c:url var="enterStore" value="eStoreView.mn"/>
 							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
-							 onclick="location.href='/brocoli/main/pages/Main-EnterStore.jsp' ">
+							 onclick="location.href='${enterStore}' ">
 								입점 문의
 							</button>
+							</c:if>
+							<c:if test="${empty sessionScope.loginUser }">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+							 onclick="location.href='${loginPage}' ">
+								입점 문의
+							</button>
+							</c:if>
 						</div>
 				</div>
 			</div>
