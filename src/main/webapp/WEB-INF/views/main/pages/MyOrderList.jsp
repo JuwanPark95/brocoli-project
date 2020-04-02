@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="All-Header.jsp" %>
-<%@ include file="All-Sidebar.jsp" %>
-<%@ include file="All-Cart.jsp" %>
+    <%@ include file="All-Header.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 	
 <style>
@@ -209,7 +210,6 @@
 	
 	
 	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
