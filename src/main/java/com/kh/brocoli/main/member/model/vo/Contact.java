@@ -3,21 +3,38 @@ package com.kh.brocoli.main.member.model.vo;
 import java.sql.Date;
 
 public class Contact {
-	private int con_No;	
+	private int con_NO;	
 	private Date con_Date;
 	private String con_Writer;
 	private String con_Content;
 	private String con_Title;
-	private String con_View_check;
+	private String con_View_Check;
 	private String con_Img;
-	private String con_Img_rename;
+	private String con_Img_ReName;
 	private String con_Status;
 	private int con_Mno;
-	public int getCon_No() {
-		return con_No;
+	public Contact() {
+		super();
 	}
-	public void setCon_No(int con_No) {
-		this.con_No = con_No;
+	public Contact(int con_NO, Date con_Date, String con_Writer, String con_Content, String con_Title,
+			String con_View_Check, String con_Img, String con_Img_ReName, String con_Status, int con_Mno) {
+		super();
+		this.con_NO = con_NO;
+		this.con_Date = con_Date;
+		this.con_Writer = con_Writer;
+		this.con_Content = con_Content;
+		this.con_Title = con_Title;
+		this.con_View_Check = con_View_Check;
+		this.con_Img = con_Img;
+		this.con_Img_ReName = con_Img_ReName;
+		this.con_Status = con_Status;
+		this.con_Mno = con_Mno;
+	}
+	public int getCon_NO() {
+		return con_NO;
+	}
+	public void setCon_NO(int con_NO) {
+		this.con_NO = con_NO;
 	}
 	public Date getCon_Date() {
 		return con_Date;
@@ -43,11 +60,11 @@ public class Contact {
 	public void setCon_Title(String con_Title) {
 		this.con_Title = con_Title;
 	}
-	public String getCon_View_check() {
-		return con_View_check;
+	public String getCon_View_Check() {
+		return con_View_Check;
 	}
-	public void setCon_View_check(String con_View_check) {
-		this.con_View_check = con_View_check;
+	public void setCon_View_Check(String con_View_Check) {
+		this.con_View_Check = con_View_Check;
 	}
 	public String getCon_Img() {
 		return con_Img;
@@ -55,11 +72,11 @@ public class Contact {
 	public void setCon_Img(String con_Img) {
 		this.con_Img = con_Img;
 	}
-	public String getCon_Img_rename() {
-		return con_Img_rename;
+	public String getCon_Img_ReName() {
+		return con_Img_ReName;
 	}
-	public void setCon_Img_rename(String con_Img_rename) {
-		this.con_Img_rename = con_Img_rename;
+	public void setCon_Img_ReName(String con_Img_ReName) {
+		this.con_Img_ReName = con_Img_ReName;
 	}
 	public String getCon_Status() {
 		return con_Status;
@@ -73,28 +90,11 @@ public class Contact {
 	public void setCon_Mno(int con_Mno) {
 		this.con_Mno = con_Mno;
 	}
-	public Contact() {
-		super();
-	}
-	public Contact(int con_No, Date con_Date, String con_Writer, String con_Content, String con_Title,
-			String con_View_check, String con_Img, String con_Img_rename, String con_Status, int con_Mno) {
-		super();
-		this.con_No = con_No;
-		this.con_Date = con_Date;
-		this.con_Writer = con_Writer;
-		this.con_Content = con_Content;
-		this.con_Title = con_Title;
-		this.con_View_check = con_View_check;
-		this.con_Img = con_Img;
-		this.con_Img_rename = con_Img_rename;
-		this.con_Status = con_Status;
-		this.con_Mno = con_Mno;
-	}
 	@Override
 	public String toString() {
-		return "Contact [con_No=" + con_No + ", con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
-				+ con_Content + ", con_Title=" + con_Title + ", con_View_check=" + con_View_check + ", con_Img="
-				+ con_Img + ", con_Img_rename=" + con_Img_rename + ", con_Status=" + con_Status + ", con_Mno=" + con_Mno
+		return "Contact [con_NO=" + con_NO + ", con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
+				+ con_Content + ", con_Title=" + con_Title + ", con_View_Check=" + con_View_Check + ", con_Img="
+				+ con_Img + ", con_Img_ReName=" + con_Img_ReName + ", con_Status=" + con_Status + ", con_Mno=" + con_Mno
 				+ "]";
 	}
 	

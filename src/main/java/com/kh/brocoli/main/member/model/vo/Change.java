@@ -3,21 +3,38 @@ package com.kh.brocoli.main.member.model.vo;
 import java.sql.Date;
 
 public class Change {
-	private int ch_No;
+	private int ch_NO;
 	private String ch_Pname;
 	private String ch_Price;
 	private String ch_Reason;
 	private String ch_Comment;
 	private Date ch_Date;
-	private Date ch_Endate;
+	private Date ch_EnDate;
 	private String ch_Status;
-	private int ch_Or_no;
+	private int ch_Or_NO;
 	private int ch_Mno;
-	public int getCh_No() {
-		return ch_No;
+	public Change() {
+		super();
 	}
-	public void setCh_No(int ch_No) {
-		this.ch_No = ch_No;
+	public Change(int ch_NO, String ch_Pname, String ch_Price, String ch_Reason, String ch_Comment, Date ch_Date,
+			Date ch_EnDate, String ch_Status, int ch_Or_NO, int ch_Mno) {
+		super();
+		this.ch_NO = ch_NO;
+		this.ch_Pname = ch_Pname;
+		this.ch_Price = ch_Price;
+		this.ch_Reason = ch_Reason;
+		this.ch_Comment = ch_Comment;
+		this.ch_Date = ch_Date;
+		this.ch_EnDate = ch_EnDate;
+		this.ch_Status = ch_Status;
+		this.ch_Or_NO = ch_Or_NO;
+		this.ch_Mno = ch_Mno;
+	}
+	public int getCh_NO() {
+		return ch_NO;
+	}
+	public void setCh_NO(int ch_NO) {
+		this.ch_NO = ch_NO;
 	}
 	public String getCh_Pname() {
 		return ch_Pname;
@@ -49,11 +66,11 @@ public class Change {
 	public void setCh_Date(Date ch_Date) {
 		this.ch_Date = ch_Date;
 	}
-	public Date getCh_Endate() {
-		return ch_Endate;
+	public Date getCh_EnDate() {
+		return ch_EnDate;
 	}
-	public void setCh_Endate(Date ch_Endate) {
-		this.ch_Endate = ch_Endate;
+	public void setCh_EnDate(Date ch_EnDate) {
+		this.ch_EnDate = ch_EnDate;
 	}
 	public String getCh_Status() {
 		return ch_Status;
@@ -61,11 +78,11 @@ public class Change {
 	public void setCh_Status(String ch_Status) {
 		this.ch_Status = ch_Status;
 	}
-	public int getCh_Or_no() {
-		return ch_Or_no;
+	public int getCh_Or_NO() {
+		return ch_Or_NO;
 	}
-	public void setCh_Or_no(int ch_Or_no) {
-		this.ch_Or_no = ch_Or_no;
+	public void setCh_Or_NO(int ch_Or_NO) {
+		this.ch_Or_NO = ch_Or_NO;
 	}
 	public int getCh_Mno() {
 		return ch_Mno;
@@ -73,28 +90,11 @@ public class Change {
 	public void setCh_Mno(int ch_Mno) {
 		this.ch_Mno = ch_Mno;
 	}
-	public Change() {
-		super();
-	}
-	public Change(int ch_No, String ch_Pname, String ch_Price, String ch_Reason, String ch_Comment, Date ch_Date,
-			Date ch_Endate, String ch_Status, int ch_Or_no, int ch_Mno) {
-		super();
-		this.ch_No = ch_No;
-		this.ch_Pname = ch_Pname;
-		this.ch_Price = ch_Price;
-		this.ch_Reason = ch_Reason;
-		this.ch_Comment = ch_Comment;
-		this.ch_Date = ch_Date;
-		this.ch_Endate = ch_Endate;
-		this.ch_Status = ch_Status;
-		this.ch_Or_no = ch_Or_no;
-		this.ch_Mno = ch_Mno;
-	}
 	@Override
 	public String toString() {
-		return "Change [ch_No=" + ch_No + ", ch_Pname=" + ch_Pname + ", ch_Price=" + ch_Price + ", ch_Reason="
-				+ ch_Reason + ", ch_Comment=" + ch_Comment + ", ch_Date=" + ch_Date + ", ch_Endate=" + ch_Endate
-				+ ", ch_Status=" + ch_Status + ", ch_Or_no=" + ch_Or_no + ", ch_Mno=" + ch_Mno + "]";
+		return "Change [ch_NO=" + ch_NO + ", ch_Pname=" + ch_Pname + ", ch_Price=" + ch_Price + ", ch_Reason="
+				+ ch_Reason + ", ch_Comment=" + ch_Comment + ", ch_Date=" + ch_Date + ", ch_EnDate=" + ch_EnDate
+				+ ", ch_Status=" + ch_Status + ", ch_Or_NO=" + ch_Or_NO + ", ch_Mno=" + ch_Mno + "]";
 	}
 	
 	

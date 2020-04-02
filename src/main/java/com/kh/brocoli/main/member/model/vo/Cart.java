@@ -1,17 +1,29 @@
 package com.kh.brocoli.main.member.model.vo;
 
 public class Cart {
-	private int ct_No;
+	private int ct_NO;
 	private String ct_Option_1;
 	private String ct_Option_2;
 	private String ct_Amount;
 	private int ct_Mno;
-	private int ct_P_no;
-	public int getCt_No() {
-		return ct_No;
+	private int ct_P_NO;
+	public Cart() {
+		super();
 	}
-	public void setCt_No(int ct_No) {
-		this.ct_No = ct_No;
+	public Cart(int ct_NO, String ct_Option_1, String ct_Option_2, String ct_Amount, int ct_Mno, int ct_P_NO) {
+		super();
+		this.ct_NO = ct_NO;
+		this.ct_Option_1 = ct_Option_1;
+		this.ct_Option_2 = ct_Option_2;
+		this.ct_Amount = ct_Amount;
+		this.ct_Mno = ct_Mno;
+		this.ct_P_NO = ct_P_NO;
+	}
+	public int getCt_NO() {
+		return ct_NO;
+	}
+	public void setCt_NO(int ct_NO) {
+		this.ct_NO = ct_NO;
 	}
 	public String getCt_Option_1() {
 		return ct_Option_1;
@@ -37,29 +49,18 @@ public class Cart {
 	public void setCt_Mno(int ct_Mno) {
 		this.ct_Mno = ct_Mno;
 	}
-	public int getCt_P_no() {
-		return ct_P_no;
+	public int getCt_P_NO() {
+		return ct_P_NO;
 	}
-	public void setCt_P_no(int ct_P_no) {
-		this.ct_P_no = ct_P_no;
-	}
-	public Cart() {
-		super();
-	}
-	public Cart(int ct_No, String ct_Option_1, String ct_Option_2, String ct_Amount, int ct_Mno, int ct_P_no) {
-		super();
-		this.ct_No = ct_No;
-		this.ct_Option_1 = ct_Option_1;
-		this.ct_Option_2 = ct_Option_2;
-		this.ct_Amount = ct_Amount;
-		this.ct_Mno = ct_Mno;
-		this.ct_P_no = ct_P_no;
+	public void setCt_P_NO(int ct_P_NO) {
+		this.ct_P_NO = ct_P_NO;
 	}
 	@Override
 	public String toString() {
-		return "Cart [ct_No=" + ct_No + ", ct_Option_1=" + ct_Option_1 + ", ct_Option_2=" + ct_Option_2 + ", ct_Amount="
-				+ ct_Amount + ", ct_Mno=" + ct_Mno + ", ct_P_no=" + ct_P_no + "]";
+		return "Cart [ct_NO=" + ct_NO + ", ct_Option_1=" + ct_Option_1 + ", ct_Option_2=" + ct_Option_2 + ", ct_Amount="
+				+ ct_Amount + ", ct_Mno=" + ct_Mno + ", ct_P_NO=" + ct_P_NO + "]";
 	}
+	
 	
 	
 }
