@@ -213,4 +213,12 @@ public class MemberController {
 		return "Main-Search"; 
 	}
 	
+	@RequestMapping("adminPage")
+	public String loginAdmin() {
+		return "index-admin";
+	}
+	
+	
+
+
 }
