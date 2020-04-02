@@ -88,55 +88,55 @@
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-01.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-01.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-01.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-02.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-02.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-02.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-03.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-03.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-03.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-04.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-04.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-04.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-05.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-05.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-05.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-06.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-06.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-06.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-07.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-07.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-07.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-08.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-08.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-08.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
 							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-09.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-09.jpg');"></a>
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-09.jpg');"></a>
 						</div>
 					</div>
 				</div>
