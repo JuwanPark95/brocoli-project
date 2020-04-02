@@ -23,7 +23,7 @@
 	<!-- 수정자 : 박주완
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
-	 <form action="login.do" method="post">
+	 <form action="login" method="post">
 	<div id="login" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 55px;">
