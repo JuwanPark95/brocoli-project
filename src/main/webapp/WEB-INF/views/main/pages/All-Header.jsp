@@ -98,12 +98,7 @@
 						<a href="${Notice }" class="flex-c-m trans-04 p-lr-25"> 공지사항 </a>
 					</div>
 					
-                    <div class="right-top-bar flex-w h-full" >
-		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
-								<c:url var="adminPage" value="adminPage"/>
-									<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
-							</c:if>
-					</div>					
+                  			
 					
 					<div class="right-top-bar flex-w h-full">
 						<c:url var="FAQ" value="FAQView.mn" />
