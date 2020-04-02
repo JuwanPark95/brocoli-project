@@ -53,9 +53,6 @@ public class MemberController {
 		return "redirect:index-admin.jsp";
 	}
 	
-	@RequestMapping("ownerPage")
-	public String ownerPage(SessionStatus status) {
-		return "";
-	}
+
 
 }

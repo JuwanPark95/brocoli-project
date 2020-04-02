@@ -58,7 +58,7 @@
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name"><c:out value="${ loginUser.name }"/> </span>is now following you
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name"><c:out value="${ loginUser.mName }"/> </span>is now following you
                                                         <div class="notification-date">2 days ago</div>
                                                     </div>
                                                 </div>
@@ -125,7 +125,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name"><c:out value="${ loginUser.name }"/>  </h5>
+                                    <h5 class="mb-0 text-white nav-user-name"><c:out value="${ loginUser.mName }"/>  </h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
