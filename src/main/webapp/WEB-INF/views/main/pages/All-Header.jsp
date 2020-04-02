@@ -55,14 +55,14 @@
     	내용 : 헤더경로 입력(로그인)
      -->
 		<!-- Header desktop -->
-		<div class="container-menu-desktop">
+		<div class="container-menu-desktop" style="padding:0px;">
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
 						Free shipping
 					</div>
-<div id= one style="display: flex;">
+                    <div id= one style="display: flex;">
 					<div class="right-top-bar flex-w h-full" >
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
 							오너페이지
