@@ -2,59 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<%@ include file="All-Cart.jsp" %>
-	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
 
-<meta charset="UTF-8">
-<title>My information</title>
+    <%@ include file="All-Header.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 
 <link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/myInformation.css">
 
-<style>
-button{
-  background:#000000;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 4em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:#000000;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #000000;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
 
-</style>
 
-</head>
+
+
 <body >
 
 
@@ -304,6 +264,7 @@ button:hover:before,button:hover:after{
     
 
 <%@ include file="All-Footer.jsp" %>
+
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -404,5 +365,7 @@ button:hover:before,button:hover:after{
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
+
+
 </body>
 </html>

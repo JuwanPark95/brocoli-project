@@ -7,9 +7,11 @@
 <link type="text/css" rel="stylesheet" href="//img.pay.naver.net/o/mstatic/css/service/mobile/buy.css?1585267116652">
 <!-- <link rel="stylesheet" type="text/css" href="/brocoli/main/css/trdcss.css"> -->
 </head>
-
+   <!-- 2020.04.20 
+                수정자 : 김주희
+                화면 크기 변경 -->
 <body >
-	<div class="wrap">
+	<div class="wrap" style="padding: 40px; margin-left: 60px; margin-right: 60px;">
         <div class="header">
 				<div class="htit simple" style="background-color: #222;">
 					<h1 class="h1">배송 조회</h1>
