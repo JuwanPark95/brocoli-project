@@ -95,7 +95,7 @@
   	<c:url var="before" value="blist.do">
   		<c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
   	</c:url>
-  	<a href="${ before }"></a>
+  	<a href="${ before }"><</a>
   </c:if>
   
     <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222"><</a></li>
