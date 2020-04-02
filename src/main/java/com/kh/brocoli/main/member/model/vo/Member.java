@@ -13,7 +13,7 @@ public class Member {
 	private String phone;
 	private String address;
 	private String gender;
-	private String birthday;
+	private String birthDay;
 	private String mGrant;
 	private String mPoint;
 	private String order_Count;
@@ -23,7 +23,7 @@ public class Member {
 	private String block_Content;
 	private String del_Flag_YN;
 	private String del_Date;
-	private Date enrolldate;
+	private Date enrollDate;
 	private String brand;
 	private String brand_NO;
 	
@@ -34,8 +34,8 @@ public class Member {
 
 
 	public Member(String mId, String pwd, String mName, String email, String phone, String address, String gender,
-			String birthday, String mGrant, String mPoint, String order_Count, String order_Price, String report_YN,
-			String block_YN, String block_Content, String del_Flag_YN, String del_Date, Date enrolldate, String brand,
+			String birthDay, String mGrant, String mPoint, String order_Count, String order_Price, String report_YN,
+			String block_YN, String block_Content, String del_Flag_YN, String del_Date, Date enrollDate, String brand,
 			String brand_NO) {
 		super();
 		this.mId = mId;
@@ -45,7 +45,7 @@ public class Member {
 		this.phone = phone;
 		this.address = address;
 		this.gender = gender;
-		this.birthday = birthday;
+		this.birthDay = birthDay;
 		this.mGrant = mGrant;
 		this.mPoint = mPoint;
 		this.order_Count = order_Count;
@@ -55,7 +55,7 @@ public class Member {
 		this.block_Content = block_Content;
 		this.del_Flag_YN = del_Flag_YN;
 		this.del_Date = del_Date;
-		this.enrolldate = enrolldate;
+		this.enrollDate = enrollDate;
 		this.brand = brand;
 		this.brand_NO = brand_NO;
 	}
@@ -131,13 +131,13 @@ public class Member {
 	}
 
 
-	public String getBirthday() {
-		return birthday;
+	public String getBirthDay() {
+		return birthDay;
 	}
 
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
 	}
 
 
@@ -231,13 +231,13 @@ public class Member {
 	}
 
 
-	public Date getEnrolldate() {
-		return enrolldate;
+	public Date getEnrollDate() {
+		return enrollDate;
 	}
 
 
-	public void setEnrolldate(Date enrolldate) {
-		this.enrolldate = enrolldate;
+	public void setEnrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
 	}
 
 
@@ -264,13 +264,15 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [mId=" + mId + ", pwd=" + pwd + ", mName=" + mName + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + ", gender=" + gender + ", birthday=" + birthday + ", mGrant=" + mGrant
+				+ ", address=" + address + ", gender=" + gender + ", birthDay=" + birthDay + ", mGrant=" + mGrant
 				+ ", mPoint=" + mPoint + ", order_Count=" + order_Count + ", order_Price=" + order_Price
 				+ ", report_YN=" + report_YN + ", block_YN=" + block_YN + ", block_Content=" + block_Content
-				+ ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrolldate=" + enrolldate + ", brand="
+				+ ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrollDate=" + enrollDate + ", brand="
 				+ brand + ", brand_NO=" + brand_NO + "]";
 	}
 
+
+	
 
 
 	
