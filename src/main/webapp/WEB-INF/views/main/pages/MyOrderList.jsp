@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<%@ include file="All-Cart.jsp" %>
-	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Header.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
+
 	
 <style>
 	#ordersearch{
@@ -87,7 +89,7 @@
 </head>
 <body class="animsition">
 
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg'); position:relative;" id="">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			주문현황
 		</h2>
@@ -154,7 +156,7 @@
 								<tr>
 									<td style="text-align:center;">1</td>
 									<td style="text-align:center;">2020-03-30</td>
-									<td style="text-align:center;"><img src="images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
 									<td style="text-align:left;">
 										<ul>
 											<li>상품명 : 패딩</li>
@@ -179,7 +181,7 @@
 								<tr>
 									<td style="text-align:center;">2</td>
 									<td style="text-align:center;">2020-03-30</td>
-									<td style="text-align:center;"><img src="images/item-cart-03.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-03.jpg" alt="IMG" style="padding: 15px;"></td>
 									<td style="text-align:left;">
 										<ul>
 											<li>상품명 : 시계 </li>
@@ -208,7 +210,6 @@
 	
 	
 	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

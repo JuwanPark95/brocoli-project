@@ -4,26 +4,26 @@
 <mapper namespace="memberMapper">
 		<resultMap type="Member" id="memberResultSet">
 		
-		<id property="mid" column="MID"/>
+		<id property="mId" column="MID"/>
 		<result property="pwd" column="PWD"/>
-		<result property="mname" column="MNAME"/>
+		<result property="mName" column="MNAME"/>
 		<result property="email" column="EMAIL"/>
 		<result property="phone" column="PHONE"/>
 		<result property="address" column="ADDRESS"/>
 		<result property="gender" column="GENDER"/>
 		<result property="birthday" column="BIRTHDAY"/>
-		<result property="mgrant" column="MGRANT"/>
-		<result property="mpoint" column="MPOINT"/>
-		<result property="order_count" column="ORDER_COUNT"/>
-		<result property="order_price" column="ORDER_PRICE"/>
-		<result property="report_yn" column="REPORT_YN"/>
-		<result property="block_yn" column="BLOCK_YN"/>
-		<result property="block_content" column="BLOCK_CONTENT"/>
-		<result property="del_flag_yn" column="DEL_FLAG_YN"/>
-		<result property="del_date" column="DEL_DATE"/>
+		<result property="mGrant" column="MGRANT"/>
+		<result property="mPoint" column="MPOINT"/>
+		<result property="order_Count" column="ORDER_COUNT"/>
+		<result property="order_Price" column="ORDER_PRICE"/>
+		<result property="report_YN" column="REPORT_YN"/>
+		<result property="block_YN" column="BLOCK_YN"/>
+		<result property="block_Content" column="BLOCK_CONTENT"/>
+		<result property="del_Flag_YN" column="DEL_FLAG_YN"/>
+		<result property="del_Date" column="DEL_DATE"/>
 		<result property="enrolldate" column="ENROLLDATE"/>
 		<result property="brand" column="BRAND"/>
-		<result property="brand_no" column="BRAND_NO"/>
+		<result property="brand_NO" column="BRAND_NO"/>
 		
 	</resultMap>
 	
@@ -32,7 +32,7 @@
 
 		SELECT * 
 		FROM MEMBER
-		WHERE MID=#{mid}
+		WHERE MID=#{mId}
 		AND PWD=#{pwd}
 		AND DEL_FLAG_YN='N'
 		

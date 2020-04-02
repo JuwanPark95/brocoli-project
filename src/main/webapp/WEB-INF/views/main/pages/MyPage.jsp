@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-	<%@ include file="All-Cart.jsp" %>
+	
 	<%@ include file="All-Header.jsp" %>
-	<%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Sidebar.jsp" %>
+    <%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
+
 <link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/mypage.css">
 
 <body>

@@ -16,7 +16,13 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService mService;
-
+	
+	@RequestMapping(value="loginPage.do")
+	public String loginPage() {
+		return "main/pages/Login";
+	}
+	
+	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String memberLogin( Member m, Model model) {
 

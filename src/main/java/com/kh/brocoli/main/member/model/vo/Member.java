@@ -6,26 +6,26 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Member {
-	private String mid;
+	private String mId;
 	private String pwd;
-	private String mname;
+	private String mName;
 	private String email;
 	private String phone;
 	private String address;
 	private String gender;
 	private String birthday;
-	private String mgrant;
-	private String mpoint;
-	private String order_count;
-	private String order_price;
-	private String report_yn;
-	private String block_yn;
-	private String block_content;
-	private String del_flag_yn;
-	private String del_date;
+	private String mGrant;
+	private String mPoint;
+	private String order_Count;
+	private String order_Price;
+	private String report_YN;
+	private String block_YN;
+	private String block_Content;
+	private String del_Flag_YN;
+	private String del_Date;
 	private Date enrolldate;
 	private String brand;
-	private String brand_no;
+	private String brand_NO;
 	
 	
 	public Member() {
@@ -33,41 +33,41 @@ public class Member {
 	}
 
 
-	public Member(String mid, String pwd, String mname, String email, String phone, String address, String gender,
-			String birthday, String mgrant, String mpoint, String order_count, String order_price, String report_yn,
-			String block_yn, String block_content, String del_flag_yn, String del_date, Date enrolldate, String brand,
-			String brand_no) {
+	public Member(String mId, String pwd, String mName, String email, String phone, String address, String gender,
+			String birthday, String mGrant, String mPoint, String order_Count, String order_Price, String report_YN,
+			String block_YN, String block_Content, String del_Flag_YN, String del_Date, Date enrolldate, String brand,
+			String brand_NO) {
 		super();
-		this.mid = mid;
+		this.mId = mId;
 		this.pwd = pwd;
-		this.mname = mname;
+		this.mName = mName;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
 		this.gender = gender;
 		this.birthday = birthday;
-		this.mgrant = mgrant;
-		this.mpoint = mpoint;
-		this.order_count = order_count;
-		this.order_price = order_price;
-		this.report_yn = report_yn;
-		this.block_yn = block_yn;
-		this.block_content = block_content;
-		this.del_flag_yn = del_flag_yn;
-		this.del_date = del_date;
+		this.mGrant = mGrant;
+		this.mPoint = mPoint;
+		this.order_Count = order_Count;
+		this.order_Price = order_Price;
+		this.report_YN = report_YN;
+		this.block_YN = block_YN;
+		this.block_Content = block_Content;
+		this.del_Flag_YN = del_Flag_YN;
+		this.del_Date = del_Date;
 		this.enrolldate = enrolldate;
 		this.brand = brand;
-		this.brand_no = brand_no;
+		this.brand_NO = brand_NO;
 	}
 
 
-	public String getMid() {
-		return mid;
+	public String getmId() {
+		return mId;
 	}
 
 
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 
 
@@ -81,13 +81,13 @@ public class Member {
 	}
 
 
-	public String getMname() {
-		return mname;
+	public String getmName() {
+		return mName;
 	}
 
 
-	public void setMname(String mname) {
-		this.mname = mname;
+	public void setmName(String mName) {
+		this.mName = mName;
 	}
 
 
@@ -141,93 +141,93 @@ public class Member {
 	}
 
 
-	public String getMgrant() {
-		return mgrant;
+	public String getmGrant() {
+		return mGrant;
 	}
 
 
-	public void setMgrant(String mgrant) {
-		this.mgrant = mgrant;
+	public void setmGrant(String mGrant) {
+		this.mGrant = mGrant;
 	}
 
 
-	public String getMpoint() {
-		return mpoint;
+	public String getmPoint() {
+		return mPoint;
 	}
 
 
-	public void setMpoint(String mpoint) {
-		this.mpoint = mpoint;
+	public void setmPoint(String mPoint) {
+		this.mPoint = mPoint;
 	}
 
 
-	public String getOrder_count() {
-		return order_count;
+	public String getOrder_Count() {
+		return order_Count;
 	}
 
 
-	public void setOrder_count(String order_count) {
-		this.order_count = order_count;
+	public void setOrder_Count(String order_Count) {
+		this.order_Count = order_Count;
 	}
 
 
-	public String getOrder_price() {
-		return order_price;
+	public String getOrder_Price() {
+		return order_Price;
 	}
 
 
-	public void setOrder_price(String order_price) {
-		this.order_price = order_price;
+	public void setOrder_Price(String order_Price) {
+		this.order_Price = order_Price;
 	}
 
 
-	public String getReport_yn() {
-		return report_yn;
+	public String getReport_YN() {
+		return report_YN;
 	}
 
 
-	public void setReport_yn(String report_yn) {
-		this.report_yn = report_yn;
+	public void setReport_YN(String report_YN) {
+		this.report_YN = report_YN;
 	}
 
 
-	public String getBlock_yn() {
-		return block_yn;
+	public String getBlock_YN() {
+		return block_YN;
 	}
 
 
-	public void setBlock_yn(String block_yn) {
-		this.block_yn = block_yn;
+	public void setBlock_YN(String block_YN) {
+		this.block_YN = block_YN;
 	}
 
 
-	public String getBlock_content() {
-		return block_content;
+	public String getBlock_Content() {
+		return block_Content;
 	}
 
 
-	public void setBlock_content(String block_content) {
-		this.block_content = block_content;
+	public void setBlock_Content(String block_Content) {
+		this.block_Content = block_Content;
 	}
 
 
-	public String getDel_flag_yn() {
-		return del_flag_yn;
+	public String getDel_Flag_YN() {
+		return del_Flag_YN;
 	}
 
 
-	public void setDel_flag_yn(String del_flag_yn) {
-		this.del_flag_yn = del_flag_yn;
+	public void setDel_Flag_YN(String del_Flag_YN) {
+		this.del_Flag_YN = del_Flag_YN;
 	}
 
 
-	public String getDel_date() {
-		return del_date;
+	public String getDel_Date() {
+		return del_Date;
 	}
 
 
-	public void setDel_date(String del_date) {
-		this.del_date = del_date;
+	public void setDel_Date(String del_Date) {
+		this.del_Date = del_Date;
 	}
 
 
@@ -251,25 +251,27 @@ public class Member {
 	}
 
 
-	public String getBrand_no() {
-		return brand_no;
+	public String getBrand_NO() {
+		return brand_NO;
 	}
 
 
-	public void setBrand_no(String brand_no) {
-		this.brand_no = brand_no;
+	public void setBrand_NO(String brand_NO) {
+		this.brand_NO = brand_NO;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Member [mid=" + mid + ", pwd=" + pwd + ", mname=" + mname + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + ", gender=" + gender + ", birthday=" + birthday + ", mgrant=" + mgrant
-				+ ", mpoint=" + mpoint + ", order_count=" + order_count + ", order_price=" + order_price
-				+ ", report_yn=" + report_yn + ", block_yn=" + block_yn + ", block_content=" + block_content
-				+ ", del_flag_yn=" + del_flag_yn + ", del_date=" + del_date + ", enrolldate=" + enrolldate + ", brand="
-				+ brand + ", brand_no=" + brand_no + "]";
+		return "Member [mId=" + mId + ", pwd=" + pwd + ", mName=" + mName + ", email=" + email + ", phone=" + phone
+				+ ", address=" + address + ", gender=" + gender + ", birthday=" + birthday + ", mGrant=" + mGrant
+				+ ", mPoint=" + mPoint + ", order_Count=" + order_Count + ", order_Price=" + order_Price
+				+ ", report_YN=" + report_YN + ", block_YN=" + block_YN + ", block_Content=" + block_Content
+				+ ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrolldate=" + enrolldate + ", brand="
+				+ brand + ", brand_NO=" + brand_NO + "]";
 	}
-	
+
+
+
 	
 }
