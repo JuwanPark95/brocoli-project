@@ -35,7 +35,7 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(/brocoli/resources/mainResources/images/slide-06.jpg);" data-thumb="/brocoli/resources/mainResources/images/thumb-02.jpg" data-caption="Mens Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(/brocoli/resources/mainResources/images/slide-06.jpg);" data-thumb="/brocoli/resources/mainResources/images/thumb-02.jpg" data-caption="Menâs Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 
-				<div class="item-slick1 bg-overlay1" style="background-image: url(/brocoli/resources/mainResources/images/slide-07.jpg);" data-thumb="/brocoli/resources/mainResources/images/thumb-03.jpg" data-caption="Mens Wear">
+				<div class="item-slick1 bg-overlay1" style="background-image: url(/brocoli/resources/mainResources/images/slide-07.jpg);" data-thumb="/brocoli/resources/mainResources/images/thumb-03.jpg" data-caption="Menâs Wear">
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
