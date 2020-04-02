@@ -57,7 +57,7 @@
         
         <td align="center">
         	<c:if test="${ !empty loginUser }">
-        		<c:url var = "bdetail" value="bdetail.do">
+        		<c:url var = "bdetail" value="bdetail.mn">
         			<c:param name="bId" value="${ b.bId }"/>
         			<c:param name="currentPage" value="${ pi.currentPage }"/>
         		</c:url>
@@ -92,7 +92,7 @@
   </c:if>
   
   <c:if test="${ pi.currentPage ne 1}">
-  	<c:url var="before" value="blist.do">
+  	<c:url var="before" value="blist.mn">
   		<c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
   	</c:url>
   	<a href="${ before }"><</a>
@@ -105,11 +105,11 @@
   </ul>
   <div>
   <button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
-  		  onclick="location.herf='bInsertView.do';">작 성</button>
+  		  onclick="location.herf='bInsertView.mn';">작 성</button>
   </div>
   </div>
   <div id="searchArea" align="center">
-				<form action="${ contextPath }/search.bo" style="display: inline-flex;" >
+				<form action="${ contextPath }/search.mn" style="display: inline-flex;" >
 				
 					<select id="searchCondition" name="condition">
 						<option>--------선택--------</option>
