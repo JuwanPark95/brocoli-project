@@ -6,9 +6,8 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
+	
+	
 <style>
 #header-color6{
 	color:#6c7ae0
@@ -20,7 +19,7 @@
 
 
 <!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg');">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			Contact
 		</h2>
@@ -136,22 +135,23 @@
 	
 	<!-- Map -->
 	<div class="map">
-		<div class="size-303" id="google_map" data-map-x="37.499296" data-map-y="127.027077" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
+		<div class="size-303" id="google_map" data-map-x="37.499296" data-map-y="127.027077" data-pin="/brocoli/resources/mainResources/images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
 		<br><br>		
 	</div>
 
-
+<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -161,9 +161,9 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -181,9 +181,9 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
-	<script src="js/map-custom.js"></script>
+	<script src="/brocoli/resources/mainResources/js/map-custom.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+   <script src="/brocoli/resources/mainResources/js/main.js"></script>
 
 </body>
 </html>

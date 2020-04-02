@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,14 @@
 
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
+
 
 </head>
 <body>
 	<!-- 수정자 : 박주완
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
+	 <form action="login.do" method="post">
 	<div id="login" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 55px;">
@@ -31,11 +32,11 @@
 		<div style="margin-bottom: 25px;">
 			<input type="text" class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
-				placeholder="아이디 ">
+				placeholder="아이디 " name="mid">
 			<input type="password"
 				class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
-				placeholder="비밀번호 ">
+				placeholder="비밀번호 " name="pwd">
 		</div>		
 		<div>
 			<button class="btn btn-primary btn-lg btn-block"
@@ -47,18 +48,20 @@
 		</div>
 
 	</div>
-
+	</form>
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 				
 <!--===============================================================================================-->   
-   <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/animsition/js/animsition.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/bootstrap/js/popper.js"></script>
-   <script src="../main/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-   <script src="vendor/select2/select2.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
       $(".js-select2").each(function(){
          $(this).select2({
@@ -68,18 +71,18 @@
       })
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/daterangepicker/moment.min.js"></script>
-   <script src="../main/vendor/daterangepicker/daterangepicker.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/moment.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/slick/slick.min.js"></script>
-   <script src="../main/js/slick-custom.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/slick/slick.min.js"></script>
+   <script src="/brocoli/resources/mainResources/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/parallax100/parallax100.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/parallax100/parallax100.js"></script>
    <script>
         $('.parallax100').parallax100();
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
    <script>
       $('.gallery-lb').each(function() { // the containers for all your galleries
          $(this).magnificPopup({
@@ -93,9 +96,9 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/isotope/isotope.pkgd.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/sweetalert/sweetalert.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
    <script>
       $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
          e.preventDefault();
@@ -133,7 +136,7 @@
    
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
    <script>
       $('.js-pscroll').each(function(){
          $(this).css('position','relative');
@@ -150,6 +153,6 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/js/main.js"></script>
+   <script src="/brocoli/resources/mainResources/js/main.js"></script>
 </body>
 </html>

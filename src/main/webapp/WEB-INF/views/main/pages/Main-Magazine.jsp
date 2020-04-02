@@ -6,9 +6,8 @@
 	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-	<%@ include file="All-ShopModal.jsp" %>
+	
+	
 
 <style>
 #header-color5{
@@ -23,7 +22,7 @@
 
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg'); ">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-02.jpg'); ">
 		<h2 class="ltext-105 cl0 txt-center" style="color: snow;">
 			Magazine
 		</h2>
@@ -39,8 +38,8 @@
 					Home > Magazine
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="magazine-detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-04.jpg" alt="IMG-BLOG">
+							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
+								<img src="/brocoli/resources/mainResources/images/blog-04.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
@@ -55,7 +54,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="magazine-detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
 										프레젠테이션 | [Brocoli 매거진] 운동도 전부 템빨인 거 다 알지?
 									</a>
 								</h4>
@@ -82,7 +81,7 @@
 										</span>
 									</span>
 
-									<a href="magazine-detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										더보기
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -93,8 +92,8 @@
 						Home > Magazine
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="magazine-detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-05.jpg" alt="IMG-BLOG">
+							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
+								<img src="/brocoli/resources/mainResources/images/blog-05.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
@@ -109,7 +108,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="magazine-detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
 										프레젠테이션 | 데님 팬츠, 오래오래 새것처럼 입는 법
 									</a>
 								</h4>
@@ -136,7 +135,7 @@
 										</span>
 									</span>
 
-									<a href="magazine-detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										더보기
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -147,8 +146,8 @@
 						Home > Magazine
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="magazine-detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-06.jpg" alt="IMG-BLOG">
+							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
+								<img src="/brocoli/resources/mainResources/images/blog-06.jpg" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
@@ -163,7 +162,7 @@
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="magazine-detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
 										프레젠테이션 | 티셔츠 하나 바꿨는데 스타일이 업그레이드!
 									</a>
 								</h4>
@@ -190,7 +189,7 @@
 										</span>
 									</span>
 
-									<a href="magazine-detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										더보기
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -268,7 +267,7 @@
 							<ul>
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-01.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-01.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -284,7 +283,7 @@
 
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-02.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-02.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -300,7 +299,7 @@
 
 								<li class="flex-w flex-t p-b-30">
 									<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-										<img src="images/product-min-03.jpg" alt="PRODUCT">
+										<img src="/brocoli/resources/mainResources/images/product-min-03.jpg" alt="PRODUCT">
 									</a>
 
 									<div class="size-215 flex-col-t p-t-8">
@@ -453,17 +452,18 @@
 		</div>
 	</section>	
 	
-		
+		<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>
 
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -473,9 +473,9 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -492,7 +492,7 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="/brocoli/resources/mainResources/js/main.js"></script>
 
 </body>
 </html>

@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="/brocoli/main/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/brocoli/main/fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/brocoli/main/fonts/linearicons-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/fonts/linearicons-v1.0.0/icon-font.min.css">
 <style>
 .side_mypage{
 	color:black;
@@ -36,31 +36,31 @@
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
 					<li class="p-b-13">
-						<a href="/brocoli/main/index.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="/brocoli/resources/mainResources/index.jsp" class="stext-102 cl2 hov-cl1 trans-04">
 							메인
 						</a>
 					</li>
 					
 					<li class="p-b-13">
-						<a href="/brocoli/main/myPage.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="/brocoli/resources/mainResources/myPage.jsp" class="stext-102 cl2 hov-cl1 trans-04">
 							마이 페이지
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="/brocoli/main/wishlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="/brocoli/resources/mainResources/wishlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
 							위시 리스트
 						</a>
 					</li>
 
 					<li class="p-b-13">
-						<a href="/brocoli/main/shoping-cart.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="/brocoli/resources/mainResources/shoping-cart.jsp" class="stext-102 cl2 hov-cl1 trans-04">
 							장바구니
 						</a>
 					</li>
 					
 					<li class="p-b-13">
-						<a href="/brocoli/main/orderlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="/brocoli/resources/mainResources/orderlist.jsp" class="stext-102 cl2 hov-cl1 trans-04">
 							주문조회
 						</a>
 					</li>
@@ -87,56 +87,58 @@
 					<div class="flex-w flex-sb p-t-36 gallery-lb">
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-01.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-01.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-01.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-01.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-02.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-02.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-02.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-02.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-03.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-03.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-03.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-03.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-04.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-04.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-04.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-04.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-05.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-05.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-05.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-05.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-06.jpg" data-lightbox="gallery" 
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-06.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-06.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-06.jpg" data-lightbox="gallery" 
 							style="background-image: url('/brocoli/main/images/gallery-06.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-07.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-07.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-07.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-07.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-08.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-08.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-08.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-08.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="/brocoli/main/images/gallery-09.jpg" data-lightbox="gallery" 
-							style="background-image: url('/brocoli/main/images/gallery-09.jpg');"></a>
+							<a class="item-gallery bg-img1" href="/brocoli/resources/mainResources/images/gallery-09.jpg" data-lightbox="gallery" 
+							style="background-image: url('/brocoli/resources/mainResources/images/gallery-09.jpg');"></a>
 						</div>
 					</div>
 				</div>
