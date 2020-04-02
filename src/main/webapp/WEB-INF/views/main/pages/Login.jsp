@@ -32,7 +32,7 @@
 		<div style="margin-bottom: 25px;">
 			<input type="text" class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
-				placeholder="아이디 " name="mid">
+				placeholder="아이디 " name="mId">
 			<input type="password"
 				class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"

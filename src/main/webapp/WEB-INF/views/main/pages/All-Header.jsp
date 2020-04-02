@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +63,7 @@
 					<div class="left-top-bar">
 						Free shipping
 					</div>
-<div id= one style="display: flex;">
+				<div id= one style="display: flex;">
 					<div class="right-top-bar flex-w h-full" >
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
 							오너페이지
@@ -86,12 +87,18 @@
 							자주묻는질문
 						</a>
 					</div>
-					
 					<div class="right-top-bar flex-w h-full">
-						<a href="/brocoli/login/login.jsp" class="flex-c-m trans-04 p-lr-25">
-							Login
-						</a>
-
+					
+					<c:if test="${empty sessionScope.loginUser }">
+						<c:url var="loginPage" value="loginPage.do"/>
+							<a href='${loginPage}' class="flex-c-m trans-04 p-lr-25">login</a>
+					</c:if>
+					
+					<c:if test="${!empty sessionScope.loginUser }">
+						<c:url var="logoutPage" value="logoutPage.do"/>
+							<a href='${logoutPage}' class="flex-c-m trans-04 p-lr-25">logout</a>
+					</c:if>
+					
 					</div>
 				</div>
 			</div>
