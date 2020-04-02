@@ -62,7 +62,7 @@
 					<div class="left-top-bar">
 						Free shipping
 					</div>
-<div id= one style="display: flex;">
+                    <div id= one style="display: flex;">
 					<div class="right-top-bar flex-w h-full" >
 						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
 							오너페이지

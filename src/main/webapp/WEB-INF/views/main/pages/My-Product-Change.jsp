@@ -23,7 +23,7 @@ padding : 5px;
 </style>
 
 
-<body>
+<body style="padding:0px;">
     <div id="orderSt">
     <p class="txt-date">
         <span>
