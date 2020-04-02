@@ -55,7 +55,7 @@
     	내용 : 헤더경로 입력(로그인)
      -->
 		<!-- Header desktop -->
-		<div class="container-menu-desktop">
+		<div class="container-menu-desktop" style="padding:0px;">
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
