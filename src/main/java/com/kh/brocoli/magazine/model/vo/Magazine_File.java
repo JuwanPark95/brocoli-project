@@ -3,7 +3,6 @@ package com.kh.brocoli.magazine.model.vo;
 import java.sql.Date;
 
 public class Magazine_File {
-       private int mf_No;
 	   private String mf_Img1;
 	   private String mf_Img1_ReName;
 	   private String mf_Img2;
@@ -17,14 +16,14 @@ public class Magazine_File {
 	   private String mf_Img6;
 	   private String mf_Img6_ReName;
 	   private int mf_M_NO;
+	   
 	public Magazine_File() {
 		super();
 	}
-	public Magazine_File(int mf_No, String mf_Img1, String mf_Img1_ReName, String mf_Img2, String mf_Img2_ReName,
+	public Magazine_File(String mf_Img1, String mf_Img1_ReName, String mf_Img2, String mf_Img2_ReName,
 			String mf_Img3, String mf_Img3_ReName, String mf_Img4, String mf_Img4_ReName, String mf_Img5,
 			String mf_Img5_ReName, String mf_Img6, String mf_Img6_ReName, int mf_M_NO) {
 		super();
-		this.mf_No = mf_No;
 		this.mf_Img1 = mf_Img1;
 		this.mf_Img1_ReName = mf_Img1_ReName;
 		this.mf_Img2 = mf_Img2;
@@ -39,12 +38,7 @@ public class Magazine_File {
 		this.mf_Img6_ReName = mf_Img6_ReName;
 		this.mf_M_NO = mf_M_NO;
 	}
-	public int getMf_No() {
-		return mf_No;
-	}
-	public void setMf_No(int mf_No) {
-		this.mf_No = mf_No;
-	}
+	
 	public String getMf_Img1() {
 		return mf_Img1;
 	}
@@ -125,7 +119,7 @@ public class Magazine_File {
 	}
 	@Override
 	public String toString() {
-		return "Magazine_File [mf_No=" + mf_No + ", mf_Img1=" + mf_Img1 + ", mf_Img1_ReName=" + mf_Img1_ReName
+		return "Magazine_File [ mf_Img1=" + mf_Img1 + ", mf_Img1_ReName=" + mf_Img1_ReName
 				+ ", mf_Img2=" + mf_Img2 + ", mf_Img2_ReName=" + mf_Img2_ReName + ", mf_Img3=" + mf_Img3
 				+ ", mf_Img3_ReName=" + mf_Img3_ReName + ", mf_Img4=" + mf_Img4 + ", mf_Img4_ReName=" + mf_Img4_ReName
 				+ ", mf_Img5=" + mf_Img5 + ", mf_Img5_ReName=" + mf_Img5_ReName + ", mf_Img6=" + mf_Img6

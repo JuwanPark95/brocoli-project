@@ -1,7 +1,6 @@
 package com.kh.brocoli.product.model.vo;
 
 public class Product_File {
-	private int pf_NO;
 	private String pf_Img1;
 	private String pf_Img1_ReName;
 	private String pf_Img2;
@@ -28,12 +27,11 @@ public class Product_File {
 	}
 
 
-	public Product_File(int pf_NO, String pf_Img1, String pf_Img1_ReName, String pf_Img2, String pf_Img2_ReName,
+	public Product_File(String pf_Img1, String pf_Img1_ReName, String pf_Img2, String pf_Img2_ReName,
 			String pf_Img3, String pf_Img3_ReName, String pf_Img4, String pf_Img4_ReName, String pf_Img5,
 			String pf_Img5_ReName, String pf_Img6, String pf_Img6_ReName, String pf_Dimg1, String pf_Dimg1_ReName,
 			String pf_Dimg2, String pf_Dimg2_ReName, String pf_Dimg3, String pf_Dimg3_ReName, int pf_P_NO) {
 		super();
-		this.pf_NO = pf_NO;
 		this.pf_Img1 = pf_Img1;
 		this.pf_Img1_ReName = pf_Img1_ReName;
 		this.pf_Img2 = pf_Img2;
@@ -55,15 +53,6 @@ public class Product_File {
 		this.pf_P_NO = pf_P_NO;
 	}
 
-
-	public int getPf_NO() {
-		return pf_NO;
-	}
-
-
-	public void setPf_NO(int pf_NO) {
-		this.pf_NO = pf_NO;
-	}
 
 
 	public String getPf_Img1() {
@@ -258,7 +247,7 @@ public class Product_File {
 
 	@Override
 	public String toString() {
-		return "Product_File [pf_NO=" + pf_NO + ", pf_Img1=" + pf_Img1 + ", pf_Img1_ReName=" + pf_Img1_ReName
+		return "Product_File [pf_Img1=" + pf_Img1 + ", pf_Img1_ReName=" + pf_Img1_ReName
 				+ ", pf_Img2=" + pf_Img2 + ", pf_Img2_ReName=" + pf_Img2_ReName + ", pf_Img3=" + pf_Img3
 				+ ", pf_Img3_ReName=" + pf_Img3_ReName + ", pf_Img4=" + pf_Img4 + ", pf_Img4_ReName=" + pf_Img4_ReName
 				+ ", pf_Img5=" + pf_Img5 + ", pf_Img5_ReName=" + pf_Img5_ReName + ", pf_Img6=" + pf_Img6
