@@ -82,21 +82,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="m" items="${MemberList}" varStatus="ml"> <!-- for -->
                                             <tr>
-                                                <td>100</td>
-                                                <td>일반</td>
-                                                <td>홍길동</td>
-                                                <td>hong1</td>
-                                                <td>hong1</td>
-                                                <td>M</td>
-                                                <td>1999/01/01</td>
-                                                <td>010-1111-2222</td>
-                                                <td>강남구 역삼1동</td>
-                                                <td>hong@naver.com</td>
-                                                <td>3000</td>
-                                                <td>N</td>
-                                                <td>N</td>
+                                            	<td>${ml.count}</td>
+                                                <td>${m.mName}</td>
+                                                <td>${m.email}</td>
+                                                <td>${m.gender}</td>
+                                                <td>${m.birthDay}</td>
+                                                <td>${m.phone}</td>
+                                                <td>${m.address}</td>
+                                                <td>${m.mPoint}</td>
+                                                <td>${m.order_Count}</td>
+                                                <td>${m.order_Price}</td>
+                                                <td>${m.enrollDate}</td>
+                                                <td>${m.block_YN}</td>
+                                                <td>${m.report_YN}</td>
+                                                <td>${m.del_Flag_YN}</td>                                                
                                             </tr>
                                         </c:forEach>
                                       </tbody>
