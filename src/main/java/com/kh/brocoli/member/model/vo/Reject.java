@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Reject {
 	
-	private int re_No;
 	private String re_Pname;
 	private String re_Price;
 	private String re_Reason;
@@ -19,10 +18,9 @@ public class Reject {
 		super();
 	}
 
-	public Reject(int re_No, String re_Pname, String re_Price, String re_Reason, String re_Comment, Date re_Date,
+	public Reject(String re_Pname, String re_Price, String re_Reason, String re_Comment, Date re_Date,
 			Date re_Enddate, String re_Status, int re_MN_OR_NO, int re_Mno) {
 		super();
-		this.re_No = re_No;
 		this.re_Pname = re_Pname;
 		this.re_Price = re_Price;
 		this.re_Reason = re_Reason;
@@ -34,13 +32,7 @@ public class Reject {
 		this.re_Mno = re_Mno;
 	}
 
-	public int getRe_No() {
-		return re_No;
-	}
 
-	public void setRe_No(int re_No) {
-		this.re_No = re_No;
-	}
 
 	public String getRe_Pname() {
 		return re_Pname;
@@ -116,7 +108,7 @@ public class Reject {
 
 	@Override
 	public String toString() {
-		return "Reject [re_No=" + re_No + ", re_Pname=" + re_Pname + ", re_Price=" + re_Price + ", re_Reason="
+		return "Reject [re_Pname=" + re_Pname + ", re_Price=" + re_Price + ", re_Reason="
 				+ re_Reason + ", re_Comment=" + re_Comment + ", re_Date=" + re_Date + ", re_Enddate=" + re_Enddate
 				+ ", re_Status=" + re_Status + ", re_MN_OR_NO=" + re_MN_OR_NO + ", re_Mno=" + re_Mno + "]";
 	}

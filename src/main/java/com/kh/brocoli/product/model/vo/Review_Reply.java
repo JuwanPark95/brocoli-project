@@ -3,7 +3,6 @@ package com.kh.brocoli.product.model.vo;
 import java.sql.Date;
 
 public class Review_Reply {
-	private int vr_No;
 	private String vr_Parentno;
 	private String vr_Writer;
 	private String vr_Code;
@@ -18,10 +17,9 @@ public class Review_Reply {
 		super();
 	}
 
-	public Review_Reply(int vr_No, String vr_Parentno, String vr_Writer, String vr_Code, String vr_Content,
+	public Review_Reply(String vr_Parentno, String vr_Writer, String vr_Code, String vr_Content,
 			Date vr_Date, Date vr_Modify_Date, String vr_Count, String vr_Check, int vr_Mno) {
 		super();
-		this.vr_No = vr_No;
 		this.vr_Parentno = vr_Parentno;
 		this.vr_Writer = vr_Writer;
 		this.vr_Code = vr_Code;
@@ -33,13 +31,7 @@ public class Review_Reply {
 		this.vr_Mno = vr_Mno;
 	}
 
-	public int getVr_No() {
-		return vr_No;
-	}
 
-	public void setVr_No(int vr_No) {
-		this.vr_No = vr_No;
-	}
 
 	public String getVr_Parentno() {
 		return vr_Parentno;
@@ -115,7 +107,7 @@ public class Review_Reply {
 
 	@Override
 	public String toString() {
-		return "Review_Reply [vr_No=" + vr_No + ", vr_Parentno=" + vr_Parentno + ", vr_Writer=" + vr_Writer
+		return "Review_Reply [vr_Parentno=" + vr_Parentno + ", vr_Writer=" + vr_Writer
 				+ ", vr_Code=" + vr_Code + ", vr_Content=" + vr_Content + ", vr_Date=" + vr_Date + ", vr_Modify_Date="
 				+ vr_Modify_Date + ", vr_Count=" + vr_Count + ", vr_Check=" + vr_Check + ", vr_Mno=" + vr_Mno + "]";
 	}

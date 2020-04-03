@@ -3,7 +3,6 @@ package com.kh.brocoli.product.model.vo;
 import java.sql.Date;
 
 public class Brand {
-		private int brand_NO;
 		private String b_Name;
 		private String b_Logo;
 		private String b_Logo_ReName;
@@ -27,13 +26,12 @@ public class Brand {
 		public Brand() {
 			super();
 		}
-		public Brand(int brand_NO, String b_Name, String b_Logo, String b_Logo_ReName, String b_Business_NO,
+		public Brand(String b_Name, String b_Logo, String b_Logo_ReName, String b_Business_NO,
 				String b_Status, Date b_Enter_Date, Date b_Close_Date, String b_Close_Content, String b_Modify_ID,
 				Date b_Modify_Date, String b_Owner1_ID, String b_Owner2_ID, String b_Owner3_ID, String b_Phone,
 				String b_Address, String b_Owner_Name, String b_Comment, String b_Email1, String b_Email2,
 				String b_Email3) {
 			super();
-			this.brand_NO = brand_NO;
 			this.b_Name = b_Name;
 			this.b_Logo = b_Logo;
 			this.b_Logo_ReName = b_Logo_ReName;
@@ -55,12 +53,8 @@ public class Brand {
 			this.b_Email2 = b_Email2;
 			this.b_Email3 = b_Email3;
 		}
-		public int getBrand_NO() {
-			return brand_NO;
-		}
-		public void setBrand_NO(int brand_NO) {
-			this.brand_NO = brand_NO;
-		}
+
+		
 		public String getB_Name() {
 			return b_Name;
 		}
@@ -183,7 +177,7 @@ public class Brand {
 		}
 		@Override
 		public String toString() {
-			return "Brand [brand_NO=" + brand_NO + ", b_Name=" + b_Name + ", b_Logo=" + b_Logo + ", b_Logo_ReName="
+			return "Brand [b_Name=" + b_Name + ", b_Logo=" + b_Logo + ", b_Logo_ReName="
 					+ b_Logo_ReName + ", b_Business_NO=" + b_Business_NO + ", b_Status=" + b_Status + ", b_Enter_Date="
 					+ b_Enter_Date + ", b_Close_Date=" + b_Close_Date + ", b_Close_Content=" + b_Close_Content
 					+ ", b_Modify_ID=" + b_Modify_ID + ", b_Modify_Date=" + b_Modify_Date + ", b_Owner1_ID="

@@ -3,7 +3,6 @@ package com.kh.brocoli.general.model.vo;
 import java.sql.Date;
 
 public class Contact {
-	private int con_NO;	
 	private Date con_Date;
 	private String con_Writer;
 	private String con_Content;
@@ -16,10 +15,9 @@ public class Contact {
 	public Contact() {
 		super();
 	}
-	public Contact(int con_NO, Date con_Date, String con_Writer, String con_Content, String con_Title,
+	public Contact( Date con_Date, String con_Writer, String con_Content, String con_Title,
 			String con_View_Check, String con_Img, String con_Img_ReName, String con_Status, int con_Mno) {
 		super();
-		this.con_NO = con_NO;
 		this.con_Date = con_Date;
 		this.con_Writer = con_Writer;
 		this.con_Content = con_Content;
@@ -29,12 +27,6 @@ public class Contact {
 		this.con_Img_ReName = con_Img_ReName;
 		this.con_Status = con_Status;
 		this.con_Mno = con_Mno;
-	}
-	public int getCon_NO() {
-		return con_NO;
-	}
-	public void setCon_NO(int con_NO) {
-		this.con_NO = con_NO;
 	}
 	public Date getCon_Date() {
 		return con_Date;
@@ -92,7 +84,7 @@ public class Contact {
 	}
 	@Override
 	public String toString() {
-		return "Contact [con_NO=" + con_NO + ", con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
+		return "Contact [con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
 				+ con_Content + ", con_Title=" + con_Title + ", con_View_Check=" + con_View_Check + ", con_Img="
 				+ con_Img + ", con_Img_ReName=" + con_Img_ReName + ", con_Status=" + con_Status + ", con_Mno=" + con_Mno
 				+ "]";

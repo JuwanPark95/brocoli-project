@@ -2,8 +2,7 @@ package com.kh.brocoli.board.model.vo;
 
 import java.sql.Date;
 
-public class Notice {
-	private int n_No;	
+public class Notice {	
 	private String n_Writer;
 	private String n_Title;
 	private String n_Content;
@@ -21,10 +20,9 @@ public class Notice {
 	}
 
 
-	public Notice(int n_No, String n_Writer, String n_Title, String n_Content, Date n_Date, String n_Count,
-			Date n_Modify_Date, String n_Status, String n_Img, String n_Img_ReName, int n_Mno) {
+	public Notice(String n_Writer, String n_Title, String n_Content, Date n_Date, String n_Count, Date n_Modify_Date,
+			String n_Status, String n_Img, String n_Img_ReName, int n_Mno) {
 		super();
-		this.n_No = n_No;
 		this.n_Writer = n_Writer;
 		this.n_Title = n_Title;
 		this.n_Content = n_Content;
@@ -35,16 +33,6 @@ public class Notice {
 		this.n_Img = n_Img;
 		this.n_Img_ReName = n_Img_ReName;
 		this.n_Mno = n_Mno;
-	}
-
-
-	public int getN_No() {
-		return n_No;
-	}
-
-
-	public void setN_No(int n_No) {
-		this.n_No = n_No;
 	}
 
 
@@ -150,10 +138,12 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [n_No=" + n_No + ", n_Writer=" + n_Writer + ", n_Title=" + n_Title + ", n_Content=" + n_Content
-				+ ", n_Date=" + n_Date + ", n_Count=" + n_Count + ", n_Modify_Date=" + n_Modify_Date + ", n_Status="
-				+ n_Status + ", n_Img=" + n_Img + ", n_Img_ReName=" + n_Img_ReName + ", n_Mno=" + n_Mno + "]";
+		return "Notice [n_Writer=" + n_Writer + ", n_Title=" + n_Title + ", n_Content=" + n_Content + ", n_Date="
+				+ n_Date + ", n_Count=" + n_Count + ", n_Modify_Date=" + n_Modify_Date + ", n_Status=" + n_Status
+				+ ", n_Img=" + n_Img + ", n_Img_ReName=" + n_Img_ReName + ", n_Mno=" + n_Mno + "]";
 	}
+
+
 	
 	
 	

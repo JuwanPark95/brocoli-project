@@ -3,7 +3,6 @@ package com.kh.brocoli.general.model.vo;
 import java.sql.Date;
 
 public class Auction {
-		private int a_Cno;
 		private String ac_Banner_NO;
 		private String ac_ID;
 		private String ac_Price;
@@ -15,10 +14,9 @@ public class Auction {
 		public Auction() {
 			super();
 		}
-		public Auction(int a_Cno, String ac_Banner_NO, String ac_ID, String ac_Price, Date ac_Date, String ac_Status,
+		public Auction( String ac_Banner_NO, String ac_ID, String ac_Price, Date ac_Date, String ac_Status,
 				String ac_Brand, String ac_Winner, int ac_Brand_NO) {
 			super();
-			this.a_Cno = a_Cno;
 			this.ac_Banner_NO = ac_Banner_NO;
 			this.ac_ID = ac_ID;
 			this.ac_Price = ac_Price;
@@ -27,12 +25,6 @@ public class Auction {
 			this.ac_Brand = ac_Brand;
 			this.ac_Winner = ac_Winner;
 			this.ac_Brand_NO = ac_Brand_NO;
-		}
-		public int getA_Cno() {
-			return a_Cno;
-		}
-		public void setA_Cno(int a_Cno) {
-			this.a_Cno = a_Cno;
 		}
 		public String getAc_Banner_NO() {
 			return ac_Banner_NO;
@@ -84,7 +76,7 @@ public class Auction {
 		}
 		@Override
 		public String toString() {
-			return "Auction [a_Cno=" + a_Cno + ", ac_Banner_NO=" + ac_Banner_NO + ", ac_ID=" + ac_ID + ", ac_Price="
+			return "Auction [ac_Banner_NO=" + ac_Banner_NO + ", ac_ID=" + ac_ID + ", ac_Price="
 					+ ac_Price + ", ac_Date=" + ac_Date + ", ac_Status=" + ac_Status + ", ac_Brand=" + ac_Brand
 					+ ", ac_Winner=" + ac_Winner + ", ac_Brand_NO=" + ac_Brand_NO + "]";
 		}

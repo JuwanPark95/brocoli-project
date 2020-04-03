@@ -3,7 +3,6 @@ package com.kh.brocoli.board.model.vo;
 import java.sql.Date;
 
 public class QNA {
-	private int q_No;
 	private String q_Writer;
 	private String q_Title;
 	private String q_Content;
@@ -23,11 +22,10 @@ public class QNA {
 		super();
 	}
 
-	public QNA(int q_No, String q_Writer, String q_Title, String q_Content, Date q_Date, String q_Count,
+	public QNA(String q_Writer, String q_Title, String q_Content, Date q_Date, String q_Count,
 			String q_Modify_ID, Date q_Modify_Date, String q_Status, String q_View_Check, String q_Img1,
 			String q_Img1_ReName, String q_Img2, String q_Img2_ReName, int q_Mno) {
 		super();
-		this.q_No = q_No;
 		this.q_Writer = q_Writer;
 		this.q_Title = q_Title;
 		this.q_Content = q_Content;
@@ -44,13 +42,6 @@ public class QNA {
 		this.q_Mno = q_Mno;
 	}
 
-	public int getQ_No() {
-		return q_No;
-	}
-
-	public void setQ_No(int q_No) {
-		this.q_No = q_No;
-	}
 
 	public String getQ_Writer() {
 		return q_Writer;
@@ -166,7 +157,7 @@ public class QNA {
 
 	@Override
 	public String toString() {
-		return "QNA [q_No=" + q_No + ", q_Writer=" + q_Writer + ", q_Title=" + q_Title + ", q_Content=" + q_Content
+		return "QNA [q_Writer=" + q_Writer + ", q_Title=" + q_Title + ", q_Content=" + q_Content
 				+ ", q_Date=" + q_Date + ", q_Count=" + q_Count + ", q_Modify_ID=" + q_Modify_ID + ", q_Modify_Date="
 				+ q_Modify_Date + ", q_Status=" + q_Status + ", q_View_Check=" + q_View_Check + ", q_Img1=" + q_Img1
 				+ ", q_Img1_ReName=" + q_Img1_ReName + ", q_Img2=" + q_Img2 + ", q_Img2_ReName=" + q_Img2_ReName

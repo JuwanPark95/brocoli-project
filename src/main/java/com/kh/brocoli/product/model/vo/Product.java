@@ -3,7 +3,6 @@ package com.kh.brocoli.product.model.vo;
 import java.sql.Date;
 
 public class Product {
-	private int p_NO;
 	private String p_Code;
 	private String p_Name;
 	private String p_Price;
@@ -30,12 +29,11 @@ public class Product {
 
 
 
-	public Product(int p_NO, String p_Code, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
+	public Product(String p_Code, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
 			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
 			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
 			int p_Brand_NO) {
 		super();
-		this.p_NO = p_NO;
 		this.p_Code = p_Code;
 		this.p_Name = p_Name;
 		this.p_Price = p_Price;
@@ -56,15 +54,6 @@ public class Product {
 
 
 
-	public int getP_NO() {
-		return p_NO;
-	}
-
-
-
-	public void setP_NO(int p_NO) {
-		this.p_NO = p_NO;
-	}
 
 
 
@@ -262,7 +251,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [p_NO=" + p_NO + ", p_Code=" + p_Code + ", p_Name=" + p_Name + ", p_Price=" + p_Price
+		return "Product [p_Code=" + p_Code + ", p_Name=" + p_Name + ", p_Price=" + p_Price
 				+ ", p_Sail_Price=" + p_Sail_Price + ", p_Last_Price=" + p_Last_Price + ", p_Bcategory=" + p_Bcategory
 				+ ", p_Scategory=" + p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count
 				+ ", p_Status=" + p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date
