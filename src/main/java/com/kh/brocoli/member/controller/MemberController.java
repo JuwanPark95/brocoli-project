@@ -371,13 +371,15 @@ public class MemberController {
 		return "My-Product-Reject";
 	}
 	
-	
 
 	
+<<<<<<< HEAD
 
 	
 	
 	
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 }
