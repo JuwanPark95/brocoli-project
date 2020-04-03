@@ -96,9 +96,15 @@
                                 <div class="card-body">
                                     <form action="product-insert.ow" method="post" enctype="multipart/form-data">
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품번호</label>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">브랜드</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required="" placeholder="자동생성" class="form-control" readonly="readonly">
+                                                <input name="brand" value="${loginUser.brand }" type="text" required="" placeholder="자동생성" class="form-control" readonly="readonly">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">등록자</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input name="mName" value="${loginUser.mName }" type="text" required="" placeholder="자동생성" class="form-control" readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -126,24 +132,35 @@
 	                                            <img name="pf_Dimg3" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
                                             </div>
                                         </div>
+                                       <script>
+                                        function resultPrice() {
+                                        	var price = document.getElementById("p_Price").value;	
+                                        	var sailPrice = document.getElementById("p_Sail_Price").value;	
+                                        	document.getElementById("p_Last_Price").value = parseInt(price) - parseInt(sailPrice);
+                                        }
+                                        </script>
+                                        <form name="rePrice">
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">등록가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input name="p_Price" type="text" required="" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control">
+                                                <input id="p_Price" name="p_Price" type="text" required="" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control" onkeyup="resultPrice()">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">할인가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input name="p_Sail_Price" type="text" required="" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control">
+                                                <input id="p_Sail_Price" name="p_Sail_Price" type="text" required="" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control" onkeyup="resultPrice()">
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">최종판매가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input name="p_Last_Price" required="" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다.  = (등록가격-할인가격)" class="form-control">
+                                                <input readonly="readonly" id=p_Last_Price name="p_Last_Price" value="${lastPrice}" required="" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다. (등록가격-할인가격 = 최종가격)" class="form-control">
                                             </div>
                                         </div>
+                                        </form>
+                                        
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">카테고리 - 대분류</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
