@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kh.brocoli.owner.model.service.ownerService;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Product_File;
+import com.kh.brocoli.product.model.vo.Product_Option;
 
 @SessionAttributes("loginUser")
 @Controller
@@ -42,7 +43,7 @@ public class ownerController {
 	 * @return
 	 */
 	@RequestMapping("product-insert.ow")
-	public String productInsert(Product p,Product_File pf, HttpServletRequest request,
+	public String productInsert(Product p,Product_File pf,Product_Option po, HttpServletRequest request,
 							@RequestParam(name="uploadImage",required=false) MultipartFile file) {
 		
 		if(!file.getOriginalFilename().equals("")) {
@@ -55,7 +56,7 @@ public class ownerController {
 			}
 		}
 		
-		int result = oService.productInsert(p,pf);
+		int result = oService.productInsert(p,pf,po);
 		
 		if(result > 0) {
 			return "redirect:";

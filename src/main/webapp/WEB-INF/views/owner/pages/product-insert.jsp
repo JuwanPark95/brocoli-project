@@ -4,7 +4,6 @@
 <!doctype html>
 <html lang="en">
 
-
 <!-- 
 	작성자 : 박주완
 	작성일 : 2020-03-20 
@@ -142,7 +141,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">최종판매가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input name="p_Last_Price" required="" type="number" min="6" max="100" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다.  = (등록가격-할인가격)" class="form-control">
+                                                <input name="p_Last_Price" required="" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다.  = (등록가격-할인가격)" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -348,7 +347,7 @@
 								                                            <tr>
 								                                                <td style="vertical-align: top;">
 								                                                	<div class="input-group mb-3" >
-										                                                <input type="text" class="form-control option1">
+										                                                <input name="Option_1" type="text" class="form-control option1">
 										                                                <div class="input-group-append" >
 										                                                    <button type="button" class="btn btn-primary" onclick="option1Add();"><i class="fas fa-plus"></i></button>
 										                                                    <div type="button" class="btn btn-primary"  style="background: none; border: none;"><i class="fas fa-plus"></i></div>
@@ -357,7 +356,7 @@
 								                                                </td>
 								                                                <td style="width: 50.5%;">
 									                                                <div class="input-group mb-3" >
-											                                                <input type="text" class="form-control option2">
+											                                                <input name="Option_2" type="text" class="form-control option2">
 											                                                <div class="input-group-append" >
 											                                                    <button type="button" class="btn btn-primary" onclick="option2Add(this)"><i class="fas fa-plus"></i></button>
 											                                                    
@@ -381,7 +380,7 @@
 								                                            <tr>
 								                                                <td>
 								                                                	<div class="input-group mb-3" >
-										                                                <input type="text" class="form-control option3">
+										                                                <input name="Option_1" type="text" class="form-control option3">
 										                                                <div class="input-group-append" >
 										                                                    <button type="button" class="btn btn-primary" onclick="option3Add();"><i class="fas fa-plus"></i></button>
 										                                                </div>
@@ -400,7 +399,7 @@
 								                                            <tr>
 								                                                <td>
 								                                                	<div class="input-group mb-3" >
-										                                                <input type="text" class="form-control option4">
+										                                                <input name="Option_2" type="text" class="form-control option4">
 										                                                <div class="input-group-append" >
 										                                                    <button type="button" class="btn btn-primary" onclick="option4Add();"><i class="fas fa-plus"></i></button>
 										                                                </div>
@@ -468,7 +467,7 @@
 				        	<tr>
 				              <td style="vertical-align: top;">
 				              	<div class="input-group mb-3" >
-				                      <input type="text" class="form-control option1">
+				                      <input name="Option_1" type="text" class="form-control option1">
 				                      <div class="input-group-append" >
 				                          <button type="button" class="btn btn-primary" onclick="option1Add();"><i class="fas fa-plus"></i></button>
 				                          <button type="button" class="btn btn-secondary" onclick="optionDel(this);"><i class="fas fa-minus"></i></button>
@@ -477,7 +476,7 @@
 				              </td>
 				              <td>
 				              <div class="input-group mb-3" >
-				                      <input type="text" class="form-control option2">
+				                      <input name="Option_2" type="text" class="form-control option2">
 				                      <div class="input-group-append" >
 				                          <button type="button" class="btn btn-primary" onclick="option2Add(this);"><i class="fas fa-plus"></i></button>
 				                          <button type="button" class="btn btn-secondary" onclick="option2Del(this);"><i class="fas fa-minus"></i></button>
@@ -501,7 +500,7 @@
 			</tb>
           <td>
           <div class="input-group mb-3" >
-                  <input type="text" class="form-control option2">
+                  <input name="Option_2" type="text" class="form-control option2">
                   <div class="input-group-append" >
                      
                       <button  type="button" class="btn btn-secondary del" onclick="option2Del(this);" ><i class="fas fa-minus"></i></button>
@@ -519,7 +518,7 @@
 	<tr>
           <td>
           	<div class="input-group mb-3" >
-            <input type="text" class="form-control option3">
+            <input name="Option_1" type="text" class="form-control option3">
             <div class="input-group-append" >
                 <button type="button" class="btn btn-primary" onclick="option3Add();"><i class="fas fa-plus"></i></button>
                 <button type="button" class="btn btn-secondary" onclick="option3Del(this);"><i class="fas fa-minus"></i></button>
@@ -539,7 +538,7 @@
   		<tr>
   	          <td>
   	          	<div class="input-group mb-3" >
-  	            <input type="text" class="form-control option4">
+  	            <input name="Option_1" type="text" class="form-control option4">
   	            <div class="input-group-append" >
   	                <button type="button" class="btn btn-primary" onclick="option4Add();"><i class="fas fa-plus"></i></button>
   	                <button type="button" class="btn btn-secondary" onclick="option3Del(this);"><i class="fas fa-minus"></i></button>
