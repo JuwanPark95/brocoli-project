@@ -78,71 +78,46 @@
 			<div class="content-topbar flex-sb-m h-full container">
 				<div class="left-top-bar">Free shipping</div>
 				<div id=one style="display: flex;">
-					<div class="right-top-bar flex-w h-full">
-						<c:if
-							test="${!empty sessionScope.loginUser && loginUser.mGrant eq 2}">
-							<c:url var="ownerPage" value="ownerPage.ow" />
-							<a href='${ownerPage}' class="flex-c-m trans-04 p-lr-25">오너페이지</a>
-						</c:if>
-					</div>
-
-
-					<div class="right-top-bar flex-w h-full">
-						<c:if
-							test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
-							<c:url var="adminPage" value="adminPage.ad" />
-							<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
-						</c:if>
-
-				<div id= one style="display: flex;">
+					<div id= one style="display: flex;">
                     <div class="right-top-bar flex-w h-full" >
 		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 2}">
 								<c:url var="ownerPage" value="ownerPage"/>
 									<a href='${ownerPage}' class="flex-c-m trans-04 p-lr-25">오너페이지</a>
 							</c:if>
-
 					</div>
 
+					<div class="right-top-bar flex-w h-full">
+						<c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
+							<c:url var="adminPage" value="adminPage.ad" />
+							<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
+						</c:if>
+					</div>
 
 					<div class="right-top-bar flex-w h-full">
 						<c:url var="Notice" value="NoticeView.mn" />
 						<a href="${Notice }" class="flex-c-m trans-04 p-lr-25"> 공지사항 </a>
-
-					
-                    <div class="right-top-bar flex-w h-full" >
-		                    <c:if test="${!empty sessionScope.loginUser && loginUser.mGrant eq 1}">
-								<c:url var="adminPage" value="adminPage"/>
-									<a href='${adminPage}' class="flex-c-m trans-04 p-lr-25">관리자페이지</a>
-							</c:if>
-					</div>					
-					
-					<div class="right-top-bar flex-w h-full" >
-						<a href="/brocoli/board/noticeList.jsp"" class="flex-c-m trans-04 p-lr-25">
-							공지사항
-						</a>
-
 					</div>
-
+					
+                  			
+					
 					<div class="right-top-bar flex-w h-full">
 						<c:url var="FAQ" value="FAQView.mn" />
 						<a href="${FAQ }" class="flex-c-m trans-04 p-lr-25"> 자주묻는질문 </a>
 					</div>
 					<div class="right-top-bar flex-w h-full">
-
 						<c:if test="${empty sessionScope.loginUser }">
 							<c:url var="loginPage" value="loginPage.mn" />
 							<a href='${loginPage}' class="flex-c-m trans-04 p-lr-25">login</a>
 						</c:if>
-
 						<c:if test="${!empty sessionScope.loginUser }">
 							<c:url var="logoutPage" value="logoutPage" />
 							<a href='${logoutPage}' class="flex-c-m trans-04 p-lr-25">logout</a>
 						</c:if>
-
 					</div>
 				</div>
 			</div>
 		</div>
+		
 		<div class="wrap-menu-desktop how-shadow1">
 			<nav class="limiter-menu-desktop container">
 

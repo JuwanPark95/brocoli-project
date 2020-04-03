@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,8 +173,8 @@
 									<td style="text-align:center;">68,000원</td>
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
-									<button class="ord-btn"><strong>상세 보기</strong></button>
-									<button class="ord-btn"><strong>교환/반품</strong></button>
+									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>
@@ -197,8 +198,8 @@
 									<td style="text-align:center;">68,000원</td>
 									<td style="text-align:center;"><!-- <span style="color:blue;">●</span> --><strong>배송 중</strong></td>
 									<td style="text-align:center;">
-									<button class="ord-btn"><strong>상세 보기</strong></button>
-									<button class="ord-btn"><strong>교환/반품</strong></button>
+									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>

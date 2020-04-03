@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,7 @@ padding : 5px;
 
 <body style="padding:0px;">
     <div id="orderSt">
+    <form action="my_p_change.mn">
     <p class="txt-date">
         <span>
             <strong>(회원이름)</strong>
@@ -34,8 +36,8 @@ padding : 5px;
     <ul class="tab">
        <li>
          <div class="back">
-           <div class="button_base b01_simple_rollover" style="height: 22px; width: 150px; border-radius: 3px;">
-             <a href="My-Product-Change.jsp" style="width: 100%;">
+           <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
+             <a href="<c:url value='my_p_change.mn'/>" style="width: 100%;">
                <strong>교환</strong>
              </a>
            </div>
@@ -43,8 +45,8 @@ padding : 5px;
        </li>
        <li>
          <div class="back">
-            <div class="button_base b01_simple_rollover" style="height: 22px; width: 150px; border-radius: 3px;">
-              <a href="My-Product-Reject.jsp" style="width: 100%;">
+            <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
+              <a href="<c:url value='my_p_reject.mn'/>" style="width: 100%;">
                <strong>반품</strong>
                </a>
             </div>
@@ -301,14 +303,15 @@ padding : 5px;
     </div>
     <div id="pop_order_btn_group">
         <button style="height: 35px; width: 97px; border-radius: 3px;">
-        <a href="MyOrderList.jsp" style="width:100%; color:#fff;">신청완료</a>
+        <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">신청완료</a>
         </button>
         &nbsp;&nbsp;
          <button style="height: 35px; width: 97px; border-radius: 3px;">
-         <a href="MyOrderList.jsp" style="width:100%; color:#fff;">돌아가기</a>
+         <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">돌아가기</a>
          </button>
     </div>
 </div>
+</form>
 </div>
 
 <%@ include file="All-Footer.jsp" %>
