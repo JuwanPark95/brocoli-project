@@ -216,26 +216,139 @@ public class MemberController {
 	}
 	
 /************************************사이드 바*******************************/
-	/**
-	 * 마이페이지로 이동
+//	/**
+//	 * 마이페이지로 이동
+//	 * @return
+//	 */
+//	@RequestMapping("mypage.mn")
+//	public String MyPageView() {
+//		return "MyPage";
+//	}
+//
+//	/**
+//	 * 장바구니로 이동
+//	 * @return
+//	 */
+//	@RequestMapping("myCart.mn")
+//	public String MyCartView() {
+//		return "MyCart";
+//	}
+//
+//	@RequestMapping("myOrderList.mn")
+//	public String MyOrderView() {
+//		return "MyOrderList";
+//	}
+	
+	
+//**************************************마이페이지 이동경로*****************************************//	
+	
+	 /** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 개인정보수정으로 이동
 	 * @return
 	 */
-	@RequestMapping("myPageView.mn")
-	public String MyPageView() {
+	@RequestMapping("mypage.mn")
+	public String mypage() {
 		return "MyPage";
 	}
-
-	/**
-	 * 장바구니로 이동
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 개인정보수정으로 이동
 	 * @return
 	 */
-	@RequestMapping("myCartView")
-	public String MyCartView() {
-		return "MyCart";
+	@RequestMapping("myInfo.mn")
+	public String myinfo() {
+		return "MyInformation";
 	}
-
-	@RequestMapping("myOrderView.mn")
-	public String MyOrderView() {
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 주문현황으로 이동
+	 * @return
+	 */
+	@RequestMapping("myOrderList.mn")
+	public String myorderlist() {
 		return "MyOrderList";
 	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 관심상품으로 이동
+	 * @return
+	 */
+	@RequestMapping("myWishList.mn")
+	public String mywishlist() {
+		return "MyWishlist";
+	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 관심상품으로 이동
+	 * @return
+	 */
+	@RequestMapping("myCart.mn")
+	public String myCart() {
+		return "MyCart";
+	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 내가쓴글로 이동
+	 * @return
+	 */
+	@RequestMapping("B_Alllist.mn")
+	public String alllist() {
+		return "Board-All-List";
+	}
+	
+
+//************************************************주문상세 이동경로********************************************************//	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-03
+	 *  내용 : 주문현황에서 상세페이지
+	 * @return
+	 */
+	@RequestMapping("trackprocess.mn")
+	public String T_process() {
+		return "My-Track-Process";
+	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-03
+	 *  내용 : 주문현황에서 교환 
+	 * @return
+	 */
+	@RequestMapping("my_p_change.mn")
+	public String P_change() {
+		return "My-Product-Change";
+	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 교환->반품  
+	 * @return
+	 */
+	@RequestMapping("my_p_reject.mn")
+	public String P_reject() {
+		return "My-Product-Reject";
+	}
+	
+	
+
 }

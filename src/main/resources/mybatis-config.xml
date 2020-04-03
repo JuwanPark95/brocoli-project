@@ -52,6 +52,8 @@
  	-->
  	<mappers>
 		<mapper resource="mappers/main-mappers/member-mapper.xml"/>
+		<mapper resource="mappers/admin-mappers/AdminMember-mapper.xml"/>
+		
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
  	<!--  -->
