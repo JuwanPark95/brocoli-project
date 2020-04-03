@@ -40,7 +40,7 @@
     
     #small-category-  { display: none;}
     
-    #small-category-Z { display: none;}  /* Z는 반드시 마지막 번쨰 기타항목  */
+    #small-category-Z { display: none;}  /* Z는 반드시 마지막 번째 기타항목  */
     
     .btn-secondary{
 	    color: #fff;
@@ -95,7 +95,7 @@
                             <div class="card">
                                 <h5 class="card-header">상품등록</h5>
                                 <div class="card-body">
-                                    <form id="validationform" data-parsley-validate="" novalidate="">
+                                    <form action="product-insert.ow" method="post" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품번호</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
@@ -105,43 +105,44 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품명</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required="" data-parsley-minlength="6" placeholder="상품명을 입력해주세요." class="form-control">
+                                                <input name="p_Name" type="text" required="" data-parsley-minlength="6" placeholder="상품명을 입력해주세요." class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품 이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img1" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img2" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img3" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img4" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img5" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Img6" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">제품설명 이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
-	                                            <img src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Dimg1" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Dimg2" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
+	                                            <img name="pf_Dimg3" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">등록가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required="" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control">
+                                                <input name="p_Price" type="text" required="" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">할인가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" required="" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control">
+                                                <input name="p_Sail_Price" type="text" required="" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">최종판매가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input required="" type="number" min="6" max="100" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다.  = (등록가격-할인가격)" class="form-control">
+                                                <input name="p_Last_Price" required="" type="number" min="6" max="100" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다.  = (등록가격-할인가격)" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -307,7 +308,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품요약설명</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <textarea required="" class="form-control"></textarea>
+                                                <textarea nanme="p_Comment" required="" class="form-control"></textarea>
                                             </div>
                                         </div>
                                         
