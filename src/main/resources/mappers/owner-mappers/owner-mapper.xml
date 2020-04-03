@@ -43,12 +43,12 @@
 		<result property="pf_Img5_ReName" column="PF_IMG5_RENAME"/>
 		<result property="pf_Img6" column="PF_IMG6"/>
 		<result property="pf_Img6_ReName" column="PF_IMG6_RENAME"/>
-		<result property="pf_Dimg1" column="pf_Dimg1"/>
-		<result property="pf_Dimg1_ReName" column="pf_Dimg1_ReName"/>
-		<result property="pf_Dimg2" column="pf_Dimg2"/>			
-		<result property="pf_Dimg2_ReName" column="pf_Dimg2_ReName"/>
-		<result property="pf_Dimg3" column="pf_Dimg3"/>	
-		<result property="pf_Dimg3_ReName" column="pf_Dimg3_ReName"/>
+		<result property="pf_Dimg1" column="PF_DIMG1"/>
+		<result property="pf_Dimg1_ReName" column="PF_DIMG1_RENAME"/>
+		<result property="pf_Dimg2" column="PF_DIMG2"/>			
+		<result property="pf_Dimg2_ReName" column="PF_DIMG2_RENAME"/>
+		<result property="pf_Dimg3" column="PF_DIMG3"/>	
+		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
 		<result property="pf_P_NO" column="PF_P_NO"/>	
 	</resultMap>
 	
