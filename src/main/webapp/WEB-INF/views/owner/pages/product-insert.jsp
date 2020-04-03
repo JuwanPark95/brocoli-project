@@ -116,6 +116,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품 이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
+                                            
 	                                            <img name="pf_Img1" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
 	                                            <img name="pf_Img2" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
 	                                            <img name="pf_Img3" src="http://via.placeholder.com/150x150" class="img-thumbnail mr-3" alt="Responsive image">
@@ -156,7 +157,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">최종판매가격</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input readonly="readonly" id=p_Last_Price name="p_Last_Price" value="${lastPrice}" required="" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다. (등록가격-할인가격 = 최종가격)" class="form-control">
+                                                <input readonly="readonly" id=p_Last_Price name="p_Last_Price" required="" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다. (등록가격-할인가격 = 최종가격)" class="form-control">
                                             </div>
                                         </div>
                                         </form>
