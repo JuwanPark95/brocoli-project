@@ -1,9 +1,12 @@
 package com.kh.brocoli.member.model.service;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.dao.MemberDao;
 import com.kh.brocoli.member.model.vo.Member;
 
@@ -23,6 +26,11 @@ public class MemberServiceimpl implements MemberService {
 		Member loginUser = mDao.loginMember(m);
 		
 		return loginUser;
+	}
+
+	@Override
+	public ArrayList<Auction> selectList() {
+		return mDao.selectList();
 	}
 
 }
