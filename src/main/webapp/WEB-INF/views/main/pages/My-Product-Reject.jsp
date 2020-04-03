@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +26,7 @@
        <li>
          <div class="back">
            <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
-             <a href="My-Product-Change.jsp" style="width: 100%;">
+             <a href="<c:url value='my_p_change.mn'/>" style="width: 100%;">
                <strong>교환</strong>
              </a>
            </div>
@@ -33,7 +35,7 @@
        <li>
          <div class="back">
             <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
-              <a href="My-Product-Reject.jsp" style="width: 100%;">
+              <a href="<c:url value='my_p_reject.mn'/>" style="width: 100%;">
                <strong>반품</strong>
                </a>
             </div>
@@ -290,11 +292,11 @@
     </div>
     <div id="pop_order_btn_group">
         <button style="height: 35px; width: 97px; border-radius: 3px;">
-        <a href="MyOrderList.jsp" style="width:100%; color:#fff;">신청완료</a>
+        <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">신청완료</a>
         </button>
         &nbsp;&nbsp;
         <button style="height: 35px; width: 97px; border-radius: 3px;">
-          <a href="MyOrderList.jsp" style="width:100%; color:#fff;">돌아가기</a>
+          <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">돌아가기</a>
         </button>
     </div>
 </div>
