@@ -2,6 +2,7 @@ package com.kh.brocoli.owner.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,7 +44,7 @@ public class ownerController {
 	 * @return
 	 */
 	@RequestMapping("product-insert.ow")
-	public String productInsert(Product p,Product_File pf,Product_Option po, HttpServletRequest request,
+	public String productInsert(Product p,Product_File pf,ArrayList<Product_Option> po, HttpServletRequest request,
 							@RequestParam(name="uploadImage",required=false) MultipartFile file) {
 		
 		if(!file.getOriginalFilename().equals("")) {

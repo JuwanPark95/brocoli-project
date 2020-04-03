@@ -466,26 +466,27 @@
         작성일 : 2020-04-03
         내용: 옵션리스트 등록/삭제 스크립트 -->
     <script>
-    function productOptionAdd(){
-        var option1 = $('#Option1').val();
-        var option2 = $('#Option2').val();
-        var stock = $('#stock').val();
-        var count = 0;
-        
-        count++;
-
-	    $('#product-add-Option').append('<tr>'+
-	            '<th scope="row">'+count+'</th>'+
-	            '<td id="Option_1" name="Option_1">'+option1+'</td>'+
-	            '<td id="Option_2" name="Option_2">'+option2+'</td>'+
-	            '<td id="op_Stock" name="op_Stock">'+stock+'</td>'+
-	            '<td><button onclick="closeBtn(this)" class="btn btn-danger">삭제</button></td>'+
-	            '</tr>')
-    };
-	            
+	    function productOptionAdd(){
+	        var option1 = $('#Option1').val();
+	        var option2 = $('#Option2').val();
+	        var stock = $('#stock').val();
+	        var count = 0;
+	        
+		    $('#product-add-Option').append('<tr>'+
+		            '<th scope="row">'+count+'</th>'+
+		            '<td id="Option_1" name="Option_1">'+option1+'</td>'+
+		            '<td id="Option_2" name="Option_2">'+option2+'</td>'+
+		            '<td id="op_Stock" name="op_Stock">'+stock+'</td>'+
+		            '<td><button onclick="closeBtn(this)" class="btn btn-danger">삭제</button></td>'+
+		            '</tr>');
+		    
+		 	count++;   
+	    }
+		            
+	    
 	    function closeBtn(en){
-           $(en).parents('tr').remove('tr');
-        }
+	          $(en).parents('tr').remove('tr');
+	    }
     </script>
     
 <!--    작성자 : 박주완
@@ -514,9 +515,7 @@
 	      
 	   $('#titleImgArea').click(() => {
 	      $('#thumbnailImg1').click();
-	      
 	   });
-
 	      
 	   $('#contentImgArea1').click(() => {
 	      $('#thumbnailImg2').click();
@@ -549,6 +548,7 @@
 	   $('#contentImgArea8').click(() => {
 		  $('#thumbnailImg9').click();
 	   });
+	   
 	});
 
 	function loadImg(value, num){
