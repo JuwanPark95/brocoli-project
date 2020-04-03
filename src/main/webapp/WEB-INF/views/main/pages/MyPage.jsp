@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.brocoli.member.model.vo.Member"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +30,8 @@
                     <div class="mypage-common-container">
                         <!-- mypage link section -->
                         <div class="mypage-link-container"  style="margin-left: 12px;">
-                            <a href="index.jsp" class="home">home</a>
-							<a href="/shop/mypage.html" class="test">"MY PAGE"</a>
+                            <a href="<c:url value='Main'/>" class="home">home</a>
+							<a href="<c:url value='mypage.mn'/>" class="test">"MY PAGE"</a>
 						</div>
 						<!-- mypage link section-->
 					</div>
@@ -46,7 +46,7 @@
                                 </div class="test2">
                                 <div style="padding-left: 70px;">
                                 <p>안녕하세요.
-                                    <span class="id">${loginUser.mname}</span> 님
+                                    <span class="id">${loginUser.mName}</span> 님
 								</p>
 								<p>
 									 오늘도 좋은하루 되세요.

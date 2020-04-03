@@ -52,19 +52,39 @@
 		<result property="pf_P_NO" column=""/>	
 	</resultMap>
 	
+	<!-- 상품 옵션 등록정보 -->
+	<resultMap type="productOPSet" id="Product_Option">
+		<id property="op_NO" column=""/>
+		
+		<result property="Option_1" column=""/>
+		<result property="Option_2" column=""/>
+		<result property="op_Stock" column=""/>
+		<result property="op_Rec_Date" column=""/>
+		<result property="op_Status_YN" column=""/>
+		<result property="op_P_NO" column=""/>
+	</resultMap>
+	
+<!-- ***************************** resultMap 끝 ***************************** -->
+	
 	<!-- 상품정보등록 -->
 	<insert id="insertProduct" parameterType="Product">
 		INSERT INTO PRODUCT
-		VALUES(SEQ_BID.NEXTVAL, #{p_Code},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
+		VALUES(SEQ_P_NO.NEXTVAL, #{p_Code},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
 				#{p_Comment},DEFAULT,DEFAULT,#{p_Writer},SYSDATE,DEFAULT,SYSDATE,DEFAULT,#{p_Brand_NO})
 	</insert>
 	
 	<!-- 상품 이미지 정보등록 -->
 	<insert id="insertProductImg" parameterType="productImgSet">
 		INSERT INTO PRODUCT_FILE
-		VALUES(SEQ_BID.NEXTVAL, #{pf_Img1},#{pf_Img1_ReName},#{pf_Img2},#{pf_Img2_ReName},#{pf_Img3},#{pf_Img3_ReName},#{pf_Img4},
+		VALUES(SEQ_PF_NO.NEXTVAL, #{pf_Img1},#{pf_Img1_ReName},#{pf_Img2},#{pf_Img2_ReName},#{pf_Img3},#{pf_Img3_ReName},#{pf_Img4},
 				#{pf_Img4_ReName},#{pf_Img5},#{pf_Img5_ReName},#{pf_Img6},#{pf_Img6_ReName},#{pf_Dimg1},#{pf_Dimg1_ReName},#{pf_Dimg2},
 				#{pf_Dimg2_ReName},#{pf_Dimg3},#{pf_Dimg3_ReName},#{pf_P_NO})
+	</insert>
+	
+	<!-- 상품 옵션 정보등록 -->
+	<insert id="insertProductOP" parameterType="productOPSet">
+		INSERT INTO PRODUCT_OPTION
+		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, #{op_Rec_Date}, #{op_Status_YN}, #{op_P_NO})
 	</insert>
 	
 	

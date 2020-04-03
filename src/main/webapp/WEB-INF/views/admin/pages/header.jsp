@@ -37,7 +37,7 @@
 		<!-- ============================================================== -->
 		<div class="dashboard-header" style="z-index:10;">
 			<nav class="navbar navbar-expand-lg bg-white fixed-top">
-				<a class="navbar-brand" href="index.html">Concept</a>
+				<a class="navbar-brand" href="index.html" style="color:#fdf1da;">BROCOLI</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -191,7 +191,7 @@
 		<!-- ============================================================== -->
 		<!-- left sidebar -->
 		<!-- ============================================================== -->
-		<div class="nav-left-sidebar sidebar-dark" style="z-index:10;">
+		<div class="nav-left-sidebar sidebar-dark" style="z-index:10; background-color:#fff8ea;" >
 			<div class="menu-list">
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -206,7 +206,7 @@
 							<!-- ================================================ -->
 							<!-- =====================메뉴 넣기===================== -->
 							<!-- ================================================ -->
-							<li class="nav-item"><a class="nav-link" href="/brocoli/admin/admin.jsp"
+							<li class="nav-item"><a class="nav-link" href="<c:url value='admin.ad'/>"
 								aria-expanded="false" aria-controls="submenu-1"><i
 									class="fa fa-fw fa-home"></i>홈</a>
 							</li>
@@ -217,8 +217,10 @@
 									class="fa fa-fw fa-user-circle"></i>회원관리</a>
 								<div id="submenu-2" class="collapse submenu" style="">
 									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/member-management.jsp">회원관리</a></li>
+										<li class="nav-item">
+											<a class="nav-link"
+											href="<c:url value='memberManagement.ad'/>">회원관리</a>
+										</li>
 									</ul>
 								</div>
 							</li>
@@ -231,11 +233,11 @@
 								<div id="submenu-3" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/brand-management.jsp">가맹브랜드</a></li>
+											href="<c:url value='brand-management.ad'/>">가맹브랜드</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/brand-owner-contact.jsp">오너콘택트</a></li>
+											href="<c:url value='brand-owner-contact.ad'/>">오너콘택트</a></li>
 									</ul>
 								</div>
 							</li>
@@ -247,11 +249,11 @@
 								<div id="submenu-4" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/order-status.jsp">주문/배송 현황</a></li>
+											href="<c:url value='order-status.ad'/>">주문/배송 현황</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/order-exchange.jsp">교환/반품</a></li>
+											href="<c:url value='order-exchange.ad'/>">교환/반품</a></li>
 									</ul>
 								</div>
 							</li>
@@ -263,11 +265,11 @@
 								<div id="submenu-5" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/product-management.jsp">판매상품</a></li>
+											href="<c:url value='product-management.ad'/>">판매상품</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/product-stop.jsp">판매중지상품</a></li>
+											href="<c:url value='product-stop.ad'/>">판매중지상품</a></li>
 									</ul>
 								</div>
 							</li>
@@ -279,11 +281,11 @@
 								<div id="submenu-6" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/sales-date.jsp">년,월,일 매출</a></li>
+											href="<c:url value='sales-date.ad'/>">년,월,일 매출</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/sales-management.jsp">매출조회</a></li>
+											href="<c:url value='sales-management.ad'/>">매출조회</a></li>
 									</ul>
 								</div>
 							</li>
@@ -294,11 +296,11 @@
 								<div id="submenu-7" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/magazine-management.jsp">매거진신청</a></li>
+											href="<c:url value='magazine-management.ad'/>">매거진신청</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/magazine-upload.jsp">매거진현황</a></li>
+											href="<c:url value='magazine-upload.ad'/>">매거진현황</a></li>
 									</ul>
 								</div>
 							</li>
@@ -310,11 +312,11 @@
 								<div id="submenu-8" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/board-notice.jsp">공지사항</a></li>
+											href="<c:url value='board-notice.ad'/>">공지사항</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/board-questions.jsp">Q&A</a></li>
+											href="<c:url value='board-questions.ad'/>">Q&A</a></li>
 									</ul>
 								</div>
 							</li>
@@ -325,11 +327,11 @@
 								<div id="submenu-9" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/advertisement-auction.jsp">경매신청현황</a></li>
+											href="<c:url value='advertisement-auction.ad'/>">경매신청현황</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/advertisement-apply.jsp">광고 적용 ,경매 결과</a></li>
+											href="<c:url value='advertisement-apply.ad'/>">광고 적용 ,경매 결과</a></li>
 									</ul>
 								</div>
 							</li>
@@ -340,11 +342,11 @@
 								<div id="submenu-10" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/setting.jsp">알림</a></li>
+											href="<c:url value='setting.ad'/>">알림</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="/brocoli/admin/pages/.jsp">//</a></li>
+											href="<c:url value=''/>">//</a></li>
 									</ul>
 								</div>
 							</li>

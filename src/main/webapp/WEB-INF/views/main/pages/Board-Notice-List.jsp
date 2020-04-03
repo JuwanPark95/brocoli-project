@@ -73,7 +73,7 @@
 						<td align="center">${ b.n_Date }</td>
 						<td align="center">${ b.n_Count }</td>
 						<td align="center"><c:if test="${ !empty b.n_Img }">
-        		o
+        						o
         	</c:if> <c:if test="${ empty b.n_Img_ReName }">
         		&nbsp;
         	</c:if></td>
@@ -81,7 +81,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-
+	<!-- 페이징---------------------------------------------------------------------------------------------- -->
 		<div style="margin-left: 40%; display: flex;">
 			<ul class="pagination justify-content-center">
 

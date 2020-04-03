@@ -216,31 +216,44 @@ public class MemberController {
 	}
 	
 /************************************사이드 바*******************************/
-	/**
-	 * 마이페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("myPageView.mn")
-	public String MyPageView() {
-		return "MyPage";
-	}
-
-	/**
-	 * 장바구니로 이동
-	 * @return
-	 */
-	@RequestMapping("myCartView")
-	public String MyCartView() {
-		return "MyCart";
-	}
-
-	@RequestMapping("myOrderView.mn")
-	public String MyOrderView() {
-		return "MyOrderList";
-	}
+//	/**
+//	 * 마이페이지로 이동
+//	 * @return
+//	 */
+//	@RequestMapping("mypage.mn")
+//	public String MyPageView() {
+//		return "MyPage";
+//	}
+//
+//	/**
+//	 * 장바구니로 이동
+//	 * @return
+//	 */
+//	@RequestMapping("myCart.mn")
+//	public String MyCartView() {
+//		return "MyCart";
+//	}
+//
+//	@RequestMapping("myOrderList.mn")
+//	public String MyOrderView() {
+//		return "MyOrderList";
+//	}
 	
 	
 //**************************************마이페이지 이동경로*****************************************//	
+	
+	 /** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 개인정보수정으로 이동
+	 * @return
+	 */
+	@RequestMapping("mypage.mn")
+	public String mypage() {
+		return "MyPage";
+	}
+	
+	
+	
 	/** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
 	 *  내용 : 마이페이지에서 개인정보수정으로 이동
