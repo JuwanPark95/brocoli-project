@@ -2,6 +2,9 @@ package com.kh.brocoli.product.model.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Product_Option {
 	
 	private int op_NO;

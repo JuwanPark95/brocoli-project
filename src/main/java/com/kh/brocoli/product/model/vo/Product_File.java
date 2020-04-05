@@ -1,5 +1,8 @@
 package com.kh.brocoli.product.model.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Product_File {
 	
 	private int pf_NO;
