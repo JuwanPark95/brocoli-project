@@ -21,7 +21,7 @@ public class MemberDao {
 	}
 
 	public ArrayList<Auction> selectList() {
-		return (ArrayList)sqlSession.selectOne("mainMapper.auctionlist");
+		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
 	}
 
 }

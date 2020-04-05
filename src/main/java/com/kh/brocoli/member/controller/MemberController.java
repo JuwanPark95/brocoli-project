@@ -36,8 +36,9 @@ public class MemberController {
 		
 		ArrayList<Auction> list = mService.selectList();
 		
-		mv.addObject("list",list);
+		mv.addObject("Auctionlist",list);
 		mv.setViewName("main/Main");
+		System.out.println(list);
 		return mv;
 	}
 	

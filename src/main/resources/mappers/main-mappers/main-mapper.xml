@@ -22,7 +22,7 @@
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
 	FROM AUCTION
-	ORDER BY AC_BANNER_NO DESC;
+	ORDER BY AC_BANNER_NO DESC
 	
 	</select>
 </mapper>
