@@ -30,13 +30,12 @@
 	<select id="selectMemberList" parameterType="Member" resultMap="memberResultSet">
 			SELECT *
 			FROM MEMBER
-			WHERE MGRANT='3'
 	</select>
 
-
-
-
-
-
+	<select id="selectMemberDetail" parameterType="Member" resultMap="memberResultSet">
+			SELECT *
+			FROM MEMBER
+			WHERE MID = #{mId}
+	</select>
 
 </mapper>

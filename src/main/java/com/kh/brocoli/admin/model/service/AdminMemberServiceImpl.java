@@ -15,11 +15,31 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	private AdminMemberDao AMDao;
 
 	/**
-	 *작성자 : 신은지
-	 *1. 회원 리스트 service
+	 * 작성자 : 신은지
+	 * 1. 회원 리스트 service
 	 */
 	@Override
 	public ArrayList<Member> selectMemberList() {
 		return AMDao.selectMemberList();
 	}
+
+	/**
+	 * 작성자:신은지
+	 * 2. 회원 상세보기 service
+	 */
+	@Override
+	public Member selectMemberDetail(String mId) {
+		return AMDao.selectMemberDetail(mId);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 3. 회원 수정 service
+	 */
+	@Override
+	public Member memberUpdate(Member m, String switch1, String switch2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

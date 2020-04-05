@@ -5,7 +5,7 @@
 <html lang="en">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <head>
-    <!-- Required meta tags -->
+ 	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>회원 관리</title>
@@ -67,38 +67,43 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:5%">번호</th>
-                                                <th style="width:6%">일반</th>
-                                                <th style="width:5%">이름</th>
-                                                <th style="width:8%">아이디</th>
-                                                <th style="width:8%">비밀번호</th>
-                                                <th style="width:5%">성별</th>
-                                                <th style="width:8%">생년월일</th>
-                                                <th style="width:8%">전화번호</th>
-                                                <th style="width:10%">주소</th>
+                                                <th style="width:10%">아이디</th>
+                                                <th style="width:8%">이름</th>
+                                                <th style="width:10%">생년월일</th>
                                                 <th style="width:10%">이메일</th>
-                                                <th style="width:6%">적립금</th>
-                                                <th style="width:5%">회원정지(Y/N)</th>
-                                                <th style="width:5%">회원삭제(Y/N)</th>
+                                                <th style="width:15%">핸드폰</th>
+                                                <th style="width:5%">성별</th>
+                                                <th style="width:15%">주소</th>
+                                                <th style="width:10%">적립금</th>
+                                                <th style="width:10%">가입일</th>
+                                                <th style="width:10%">주문수</th>
+                                                <th style="width:6%">주문액</th>
+                                                <th style="width:5%">신고</th>
+                                                <th style="width:5%">정지</th>
+                                                <th style="width:6%">삭제</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="m" items="${MemberList}" varStatus="ml"> <!-- for -->
+                                        <c:forEach var="m" items="${MemberList}" varStatus="ml"> 
+                                        <c:if test="${m.mGrant eq '3'}" >
                                             <tr>
                                             	<td>${ml.count}</td>
-                                                <td>${m.mName}</td>
-                                                <td>${m.email}</td>
-                                                <td>${m.gender}</td>
+                                                <td>${m.mId}</td>
+                                                <td>${m.mName}</td>                                                
                                                 <td>${m.birthDay}</td>
+                                                <td>${m.email}</td>
                                                 <td>${m.phone}</td>
+                                                <td>${m.gender}</td>
                                                 <td>${m.address}</td>
                                                 <td>${m.mPoint}</td>
+                                                <td>${m.enrollDate}</td>
                                                 <td>${m.order_Count}</td>
                                                 <td>${m.order_Price}</td>
-                                                <td>${m.enrollDate}</td>
-                                                <td>${m.block_YN}</td>
                                                 <td>${m.report_YN}</td>
+                                                <td>${m.block_YN}</td>
                                                 <td>${m.del_Flag_YN}</td>                                                
                                             </tr>
+                                        </c:if>
                                         </c:forEach>
                                       </tbody>
                                     </table>
@@ -106,51 +111,50 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                    
-                    
-                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                     
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">owner 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="ownerManagement" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <table id="ownerManagement"  class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
                                                 <th style="width:5%">번호</th>
-                                                <th style="width:6%">일반</th>
-                                                <th style="width:5%">이름</th>
-                                                <th style="width:8%">아이디</th>
-                                                <th style="width:8%">비밀번호</th>
-                                                <th style="width:5%">성별</th>
-                                                <th style="width:8%">생년월일</th>
-                                                <th style="width:8%">전화번호</th>
-                                                <th style="width:10%">주소</th>
+                                                <th style="width:10%">아이디</th>
+                                                <th style="width:10%">브랜드</th>
+                                                <th style="width:8%">이름</th>
+                                                <th style="width:10%">생년월일</th>
                                                 <th style="width:10%">이메일</th>
-                                                <th style="width:6%">적립금</th>
-                                                <th style="width:5%">회원정지(Y/N)</th>
-                                                <th style="width:5%">회원삭제(Y/N)</th>
+                                                <th style="width:15%">핸드폰</th>
+                                                <th style="width:5%">성별</th>
+                                                <th style="width:15%">주소</th>
+                                                <th style="width:10%">가입일</th>
+                                                <th style="width:5%">정지</th>
+                                                <th style="width:6%">삭제</th>
+                                                 <th style="width:6%">삭제</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <% int count=1; %>
+                                        <c:forEach var="m" items="${MemberList}" > 
+                                        <c:if test="${m.mGrant != 3}"  >
                                             <tr>
-                                                <td>100</td>
-                                                <td>일반</td>
-                                                <td>홍길동</td>
-                                                <td>hong1</td>
-                                                <td>hong1</td>
-                                                <td>M</td>
-                                                <td>1999/01/01</td>
-                                                <td>010-1111-2222</td>
-                                                <td>강남구 역삼1동</td>
-                                                <td>hong@naver.com</td>
-                                                <td>3000</td>
-                                                <td>N</td>
-                                                <td>N</td>
+                                            	<td><%=count++ %></td>
+                                                <td>${m.mId}</td>
+                                                <td>${m.brand}</td>
+                                                <td>${m.mName}</td>                                                
+                                                <td>${m.birthDay}</td>
+                                                <td>${m.email}</td>
+                                                <td>${m.phone}</td>
+                                                <td>${m.gender}</td>
+                                                <td>${m.address}</td>
+                                                <td>${m.enrollDate}</td>
+                                                <td>${m.report_YN}</td>
+                                                <td>${m.block_YN}</td>
+                                                <td>${m.del_Flag_YN}</td> 
                                             </tr>
+                                        </c:if>
                                         </c:forEach>
                                       </tbody>
                                     </table>
@@ -175,8 +179,9 @@
 				$("#memberManagement").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="member-detail.jsp";
+					var mId = $(this).parents().children("td").eq(1).text();	
+					location.href="memberDetail.ad?mId="+mId
+					//location.href="member-detail.jsp";
 					//location.href="detail.bo?bId="+bId;
 				});
 			});
