@@ -267,7 +267,7 @@ public class MemberController {
 	
 	 /** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동
+	 *  내용 : 마이페이지로 이동
 	 * @return
 	 */
 	@RequestMapping("mypage.mn")
@@ -286,6 +286,40 @@ public class MemberController {
 	public String myinfo() {
 		return "MyInformation";
 	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 개인정보수정
+	 * @return
+	 */
+//	@RequestMapping(".mn")
+//	public String () {
+//		return "";
+//	}
+	
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 회원탈퇴
+	 * @return
+	 */
+	@RequestMapping("mdelete.mn")
+	public String memberDelete(String mId, Model model) {
+		int result = mService.deleteMember(mId);
+		
+		if(result > 0) {
+			return "redirect:index.jsp";
+		}else {
+			model.addAttribute("msg","회원 탈퇴 실패");
+			return null;
+		}
+	}
+	
+	
 	
 	
 	/** 작성자 : 김주희
@@ -314,7 +348,7 @@ public class MemberController {
 	
 	/** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 관심상품으로 이동
+	 *  내용 : 마이페이지에서 장바구니로 이동
 	 * @return
 	 */
 	@RequestMapping("myCart.mn")

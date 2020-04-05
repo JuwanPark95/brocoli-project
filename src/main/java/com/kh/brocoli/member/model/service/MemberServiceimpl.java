@@ -33,4 +33,12 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.selectList();
 	}
 
+	
+	
+	@Override
+	public int deleteMember(String mId) {
+		return mDao.deleteMember(mId);
+	}
+
+
 }

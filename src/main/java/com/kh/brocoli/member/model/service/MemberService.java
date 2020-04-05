@@ -15,11 +15,22 @@ public interface MemberService {
 	 */
 	Member loginMember(Member m);
 
+	
 	/**
 	 * 작성자 : 윤석훈
 	 * 메인 페이지 로딩
 	 * @return
 	 */
 	ArrayList<Auction> selectList();
+
+	
+
+	/**
+	 * 회원 탈퇴
+	 * @param mId
+	 * @return
+	 */
+	int deleteMember(String mId);
+
 	
 }

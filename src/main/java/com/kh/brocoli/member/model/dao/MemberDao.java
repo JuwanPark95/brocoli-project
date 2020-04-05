@@ -23,5 +23,15 @@ public class MemberDao {
 	public ArrayList<Auction> selectList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
 	}
+	
+    public int deleteMember(String mId) {
+		return sqlSession.delete("memberMapper.deleteMember",mId);
+	}
+
+	public ArrayList<Auction> selectList() {
+		return (ArrayList)sqlSession.selectOne("mainMapper.auctionlist");
+	}
 
 }
+
+
