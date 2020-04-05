@@ -3,7 +3,8 @@ package com.kh.brocoli.product.model.vo;
 import java.sql.Date;
 
 public class Product {
-	private String p_Code;
+	
+	private int p_No;
 	private String p_Name;
 	private String p_Price;
 	private String p_Sail_Price;
@@ -20,21 +21,16 @@ public class Product {
 	private String p_Show_YN;
 	private int p_Brand_NO;
 	
-	
-	
-	
 	public Product() {
 		super();
 	}
 
-
-
-	public Product(String p_Code, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
+	public Product(int p_No, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
 			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
 			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
 			int p_Brand_NO) {
 		super();
-		this.p_Code = p_Code;
+		this.p_No = p_No;
 		this.p_Name = p_Name;
 		this.p_Price = p_Price;
 		this.p_Sail_Price = p_Sail_Price;
@@ -52,213 +48,143 @@ public class Product {
 		this.p_Brand_NO = p_Brand_NO;
 	}
 
-
-
-
-
-
-	public String getP_Code() {
-		return p_Code;
+	public int getP_No() {
+		return p_No;
 	}
 
-
-
-	public void setP_Code(String p_Code) {
-		this.p_Code = p_Code;
+	public void setP_No(int p_No) {
+		this.p_No = p_No;
 	}
-
-
 
 	public String getP_Name() {
 		return p_Name;
 	}
 
-
-
 	public void setP_Name(String p_Name) {
 		this.p_Name = p_Name;
 	}
-
-
 
 	public String getP_Price() {
 		return p_Price;
 	}
 
-
-
 	public void setP_Price(String p_Price) {
 		this.p_Price = p_Price;
 	}
-
-
 
 	public String getP_Sail_Price() {
 		return p_Sail_Price;
 	}
 
-
-
 	public void setP_Sail_Price(String p_Sail_Price) {
 		this.p_Sail_Price = p_Sail_Price;
 	}
-
-
 
 	public String getP_Last_Price() {
 		return p_Last_Price;
 	}
 
-
-
 	public void setP_Last_Price(String p_Last_Price) {
 		this.p_Last_Price = p_Last_Price;
 	}
-
-
 
 	public String getP_Bcategory() {
 		return p_Bcategory;
 	}
 
-
-
 	public void setP_Bcategory(String p_Bcategory) {
 		this.p_Bcategory = p_Bcategory;
 	}
-
-
 
 	public String getP_Scategory() {
 		return p_Scategory;
 	}
 
-
-
 	public void setP_Scategory(String p_Scategory) {
 		this.p_Scategory = p_Scategory;
 	}
-
-
 
 	public String getP_Comment() {
 		return p_Comment;
 	}
 
-
-
 	public void setP_Comment(String p_Comment) {
 		this.p_Comment = p_Comment;
 	}
-
-
 
 	public String getP_Order_Count() {
 		return p_Order_Count;
 	}
 
-
-
 	public void setP_Order_Count(String p_Order_Count) {
 		this.p_Order_Count = p_Order_Count;
 	}
-
-
 
 	public String getP_Status() {
 		return p_Status;
 	}
 
-
-
 	public void setP_Status(String p_Status) {
 		this.p_Status = p_Status;
 	}
-
-
 
 	public String getP_Writer() {
 		return p_Writer;
 	}
 
-
-
 	public void setP_Writer(String p_Writer) {
 		this.p_Writer = p_Writer;
 	}
-
-
 
 	public Date getP_Insert_Date() {
 		return p_Insert_Date;
 	}
 
-
-
 	public void setP_Insert_Date(Date p_Insert_Date) {
 		this.p_Insert_Date = p_Insert_Date;
 	}
-
-
 
 	public String getP_Modify_Id() {
 		return p_Modify_Id;
 	}
 
-
-
 	public void setP_Modify_Id(String p_Modify_Id) {
 		this.p_Modify_Id = p_Modify_Id;
 	}
-
-
 
 	public Date getP_Modify_Date() {
 		return p_Modify_Date;
 	}
 
-
-
 	public void setP_Modify_Date(Date p_Modify_Date) {
 		this.p_Modify_Date = p_Modify_Date;
 	}
-
-
 
 	public String getP_Show_YN() {
 		return p_Show_YN;
 	}
 
-
-
 	public void setP_Show_YN(String p_Show_YN) {
 		this.p_Show_YN = p_Show_YN;
 	}
-
-
 
 	public int getP_Brand_NO() {
 		return p_Brand_NO;
 	}
 
-
-
 	public void setP_Brand_NO(int p_Brand_NO) {
 		this.p_Brand_NO = p_Brand_NO;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Product [p_Code=" + p_Code + ", p_Name=" + p_Name + ", p_Price=" + p_Price
-				+ ", p_Sail_Price=" + p_Sail_Price + ", p_Last_Price=" + p_Last_Price + ", p_Bcategory=" + p_Bcategory
-				+ ", p_Scategory=" + p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count
-				+ ", p_Status=" + p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date
-				+ ", p_Modify_Id=" + p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN
-				+ ", p_Brand_NO=" + p_Brand_NO + "]";
+		return "Product [p_No=" + p_No + ", p_Name=" + p_Name + ", p_Price=" + p_Price + ", p_Sail_Price="
+				+ p_Sail_Price + ", p_Last_Price=" + p_Last_Price + ", p_Bcategory=" + p_Bcategory + ", p_Scategory="
+				+ p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count + ", p_Status="
+				+ p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date + ", p_Modify_Id="
+				+ p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO="
+				+ p_Brand_NO + "]";
 	}
-	
 	
 	
 	

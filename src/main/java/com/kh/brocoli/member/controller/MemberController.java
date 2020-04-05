@@ -1,5 +1,9 @@
 package com.kh.brocoli.member.controller;
 
+
+
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
 
@@ -18,6 +24,22 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService mService;
+	
+	
+	
+	/**
+	 * 메인페이지 로딩
+	 * @return
+	 */
+	@RequestMapping(value="MainPage")
+	public ModelAndView MainPage(Auction ac,ModelAndView mv) {
+		
+		ArrayList<Auction> list = mService.selectList();
+		
+		mv.addObject("list",list);
+		mv.setViewName("main/Main");
+		return mv;
+	}
 	
 	/**
 	 * 로그인 페이지 뷰
@@ -348,7 +370,6 @@ public class MemberController {
 	public String P_reject() {
 		return "My-Product-Reject";
 	}
-	
 	
 
 }

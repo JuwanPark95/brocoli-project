@@ -1,6 +1,8 @@
 package com.kh.brocoli.owner.model.service;
 
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class ownerServiceimpl implements ownerService {
 	 *내용 : 파일 등록시 프로덕트,프로덕트파일 2가지 테이블에 insert 하기위한 메소드
 	 */
 	@Override
-	public int productInsert(Product p, Product_File pf,Product_Option po) {
+	public int productInsert(Product p, Product_File pf,ArrayList<Product_Option> po) {
 		//2개의 DAO 반환값중 1가지만 '0'이 반환되어도 실패!
 		int productSet =  oDao.insertProduct(p);
 		int result = 0;
