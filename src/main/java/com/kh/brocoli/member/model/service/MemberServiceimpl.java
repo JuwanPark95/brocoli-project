@@ -41,9 +41,15 @@ public class MemberServiceimpl implements MemberService {
 	}
 	
 	@Override
+	public ArrayList<Product> selectEList() {
+		return mDao.selectEList();
+	}
+	
+	@Override
 	public int deleteMember(String mId) {
 		return mDao.deleteMember(mId);
 	}
+
 
 
 

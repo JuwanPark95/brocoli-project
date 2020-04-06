@@ -39,10 +39,15 @@ public class MemberController {
 		
 		ArrayList<Product> plist = mService.selectpList();
 		
+		ArrayList<Product> elist = mService.selectEList();
+		
 		mv.addObject("Auctionlist",alist);
 		mv.addObject("RankList",plist);
+		mv.addObject("EventList",elist);
 		mv.setViewName("main/Main");
 		System.out.println(alist);
+		System.out.println(plist);
+		System.out.println(elist);
 		return mv;
 	}
 	

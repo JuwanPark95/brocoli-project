@@ -32,6 +32,13 @@ public interface MemberService {
 	ArrayList<Product> selectpList();
 
 	
+	
+	/**
+	 * 작성자 : 윤석훈
+	 * 메인 페이지 이벤트
+	 * @return
+	 */
+	ArrayList<Product> selectEList();
 
 	/**
 	 * 회원 탈퇴
@@ -39,6 +46,7 @@ public interface MemberService {
 	 * @return
 	 */
 	int deleteMember(String mId);
+
 
 
 
