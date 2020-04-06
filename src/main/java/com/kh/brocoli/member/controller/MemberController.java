@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Product;
 
 
 @SessionAttributes("loginUser")
@@ -32,13 +33,21 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value="MainPage")
-	public ModelAndView MainPage(Auction ac,ModelAndView mv) {
+	public ModelAndView MainPage(Auction ac,Product rank,ModelAndView mv) {
 		
-		ArrayList<Auction> list = mService.selectList();
+		ArrayList<Auction> alist = mService.selectList();
 		
-		mv.addObject("Auctionlist",list);
+		ArrayList<Product> plist = mService.selectpList();
+		
+		ArrayList<Product> elist = mService.selectEList();
+		
+		mv.addObject("Auctionlist",alist);
+		mv.addObject("RankList",plist);
+		mv.addObject("EventList",elist);
 		mv.setViewName("main/Main");
-		System.out.println(list);
+		System.out.println(alist);
+		System.out.println(plist);
+		System.out.println(elist);
 		return mv;
 	}
 	
@@ -267,7 +276,7 @@ public class MemberController {
 	
 	 /** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동
+	 *  내용 : 마이페이지로 이동
 	 * @return
 	 */
 	@RequestMapping("mypage.mn")
@@ -286,6 +295,40 @@ public class MemberController {
 	public String myinfo() {
 		return "MyInformation";
 	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 개인정보수정
+	 * @return
+	 */
+//	@RequestMapping(".mn")
+//	public String () {
+//		return "";
+//	}
+	
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 회원탈퇴
+	 * @return
+	 */
+	@RequestMapping("mdelete.mn")
+	public String memberDelete(String mId, Model model) {
+		int result = mService.deleteMember(mId);
+		
+		if(result > 0) {
+			return "redirect:index.jsp";
+		}else {
+			model.addAttribute("msg","회원 탈퇴 실패");
+			return null;
+		}
+	}
+	
+	
 	
 	
 	/** 작성자 : 김주희
@@ -314,7 +357,7 @@ public class MemberController {
 	
 	/** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 관심상품으로 이동
+	 *  내용 : 마이페이지에서 장바구니로 이동
 	 * @return
 	 */
 	@RequestMapping("myCart.mn")
