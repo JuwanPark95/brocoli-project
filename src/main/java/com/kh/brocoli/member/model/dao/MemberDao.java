@@ -33,8 +33,11 @@ public class MemberDao {
 		return sqlSession.delete("memberMapper.deleteMember",mId);
 	}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 }
 
 
