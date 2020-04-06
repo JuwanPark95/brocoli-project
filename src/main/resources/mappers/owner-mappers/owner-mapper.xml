@@ -90,13 +90,12 @@
 	</insert>
 	
 	<!-- 상품 옵션 정보등록 -->
-<!-- 	
-	<insert id="insertProductOP" parameterType="productOPSet">
+
+	<insert id="insertProductOption" parameterType="Product_Option">
 		INSERT INTO PRODUCT_OPTION
-		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, #{op_Rec_Date}, #{op_Status_YN}, #{op_P_NO})
+		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, SYSDATE, DEFAULT, #{op_P_NO})
 	</insert>
-	
-	 -->
+
 
 	
 </mapper>
