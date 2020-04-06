@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public ArrayList<Notice> selectList(Notice_PageInfo pi) {
-		return null;
+		return bnDao.selectList(pi);
 	}
 
 }
