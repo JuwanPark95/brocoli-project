@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Product;
 
 
 @Repository("mDao")
@@ -24,13 +25,15 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
 	}
 	
-    public int deleteMember(String mId) {
+	public ArrayList<Product> selectpList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.ranklist");
+	}
+
+	public int deleteMember(String mId) {
 		return sqlSession.delete("memberMapper.deleteMember",mId);
 	}
 
-	public ArrayList<Auction> selectList() {
-		return (ArrayList)sqlSession.selectOne("mainMapper.auctionlist");
-	}
+
 
 }
 

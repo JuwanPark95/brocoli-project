@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Product;
 
 
 @SessionAttributes("loginUser")
@@ -32,13 +33,16 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value="MainPage")
-	public ModelAndView MainPage(Auction ac,ModelAndView mv) {
+	public ModelAndView MainPage(Auction ac,Product rank,ModelAndView mv) {
 		
-		ArrayList<Auction> list = mService.selectList();
+		ArrayList<Auction> alist = mService.selectList();
 		
-		mv.addObject("Auctionlist",list);
+		ArrayList<Product> plist = mService.selectpList();
+		
+		mv.addObject("Auctionlist",alist);
+		mv.addObject("RankList",plist);
 		mv.setViewName("main/Main");
-		System.out.println(list);
+		System.out.println(alist);
 		return mv;
 	}
 	

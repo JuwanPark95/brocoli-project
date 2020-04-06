@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.dao.MemberDao;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Product;
 
 
 @Service("mService")
@@ -34,11 +35,16 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	
+	@Override
+	public ArrayList<Product> selectpList() {
+		return mDao.selectpList();
+	}
 	
 	@Override
 	public int deleteMember(String mId) {
 		return mDao.deleteMember(mId);
 	}
+
 
 
 }
