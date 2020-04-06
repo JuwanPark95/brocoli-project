@@ -28,10 +28,6 @@ public class MemberDao {
 		return sqlSession.delete("memberMapper.deleteMember",mId);
 	}
 
-	public ArrayList<Auction> selectList() {
-		return (ArrayList)sqlSession.selectOne("mainMapper.auctionlist");
-	}
-
 }
 
 

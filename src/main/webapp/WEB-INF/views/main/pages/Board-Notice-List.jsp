@@ -86,26 +86,43 @@
 			<ul class="pagination justify-content-center">
 
 				<c:if test="${ pi.currentPage eq 1 }">
-					<li class="page-item"><a class="page-link"
-						href="javascript:void(0);" style="color: #222"></a></li>
+					<li class="page-item"><a class="page-link" style="color: #222"></a></li>
 				</c:if>
 
 				<c:if test="${ pi.currentPage ne 1}">
-					<c:url var="before" value="blist.mn">
+				<li class="page-item">
+					<c:url var="before" value="bnlist.mn">
 						<c:param name="currentPage" value="${ pi.currentPage - 1 }" />
 					</c:url>
-					<a href="${ before }"></a>
+					<a href="${ before }" class="page-link" aria-label="Previous" style="color: #222"><</a></li>
 				</c:if>
 
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);" style="color: #222"><</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);" style="color: #222">1</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);" style="color: #222">2</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);" style="color: #222">></a></li>
+			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<c:if test="${ p eq pi.currentPage }">
+					<li class="page-item"><a class="page-link">${ p }</a></li>
+				</c:if>
+				
+				<c:if test="${ p ne pi.currentPage }">
+					<c:url var="pageNext" value="bnlist.mn">
+						<c:param name = "currentPage" value="${ p }"/>
+					</c:url>
+					<li class="page-item"><a href="${pageNext}" class="page-link"style="color: #222">${ p }</a></li>
+				</c:if>
+			</c:forEach>
+			
+			<c:if test="${ pi.currentPage eq pi.maxPage }">
+				<li class="page-item"><a class="page-link" aria-label="Next">></a></li>
+			</c:if>
+			
+			<c:if test = "${ pi.currentPage ne pi.maxPage }">
+			<c:url var = "next" value="bnlist.mn">
+				<c:param name="currentPage" value="&{ pi.currentPage + 1"/>
+			</c:url>
+				<li class="page-item"><a href="${next}" class="page-link" aria-label="Next"></a></li>
+			</c:if>
+			
 			</ul>
+			
 			<div>
 				<button class="btn btn-primary"
 					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
