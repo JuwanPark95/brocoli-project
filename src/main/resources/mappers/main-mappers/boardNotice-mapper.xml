@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardNotice-Mapper">
+<mapper namespace="boardNotice-mapper">
 
 
 	<!-- resultMap -->
 	<resultMap type="Notice" id="boardnoticeResultSet" >
+	
 		<id property="n_No" column="N_NO"/>
-		
 		<result property="n_Writer" column="N_WRITER"/>
 		<result property="n_Title" column="N_TITLE"/>
 		<result property="n_Content" column="N_CONTENT"/>
@@ -16,6 +16,7 @@
 		<result property="n_Status" column="N_STATUS"/>
 		<result property="n_Img" column="N_IMG"/>
 		<result property="n_Img_ReName" column="N_IMG_RENAME"/>
+		<result property="n_Mno" column="N_MNO"/>
 	</resultMap>
 	
 	<select id="getListCount" resultType="_int">
@@ -28,7 +29,7 @@
 		SELECT *
 		FROM NOTICE
 		WHERE N_STATUS='Y'
-		ORDER BY N_NO DESC;
+		ORDER BY N_NO DESC
 	</select>
 	
 </mapper>
