@@ -28,7 +28,7 @@
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
-		<collection property="pfList" javaType="java.util.ArrayList" resultMap="productFileResultSet"/>
+		<collection property="pfList" resultMap="productFileResultSet"/>
 	</resultMap>
 	
 	<!-- 상품 이미지 등록정보 -->

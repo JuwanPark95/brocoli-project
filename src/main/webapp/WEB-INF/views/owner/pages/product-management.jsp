@@ -102,7 +102,7 @@
                                         <tbody>
 	                       					<c:forEach var="r" items="${ list }">                     
 	                                            <tr>
-	                                                <td>${r.p_No}</td>
+	                                                <td>${r.p_NO}</td>
 	                                                <td>${r.p_Bcategory }-${r.p_Scategory}</td>
 	                                                <td align="center" >
 	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
@@ -112,7 +112,7 @@
 	                                                <td>${r.p_Sail_Price}</td>
 	                                                <td>${r.p_Last_Price}</td>
 	                                                <td>${r.p_Status}</td>
-	                                                <td>${r.p_ }</td>
+	                                                <td>${r.p_Insert_Date }</td>
 	                                                <td>
 		                                                <div class="btn-group ml-auto">
 				                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
