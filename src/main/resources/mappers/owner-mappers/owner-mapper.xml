@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardMapper">
+
+<mapper namespace="owner-mapper">
 	
 	<!-- 	참고용 MAPPER파일입니다. 본인이 사용할 파일은 반드시 새로 생성해서 사용해주세요. -->
 	
 	<!-- resultMap -->
 	<!-- 상품등록정보 -->
- 	<resultMap id="producResultSet" type="Product">
+	
+ 	<resultMap  type="Product" id="productSet">
 		<id property="p_No" column="P_NO"/>
 		
-		<result property="p_Code" column="P_CODE"/>
 		<result property="p_Name" column="P_NAME"/>
 		<result property="p_Price" column="P_PRICE"/>
 		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>
@@ -25,10 +27,11 @@
 		<result property="p_Modify_Date" column="P_MODIFY_DATE"/>
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
+		
 	</resultMap>
 	
 	<!-- 상품 이미지 등록정보 -->
-	<resultMap type="productImgSet" id="Product_File">
+	<resultMap  type="Product_File" id="productImgSet">
 		<id property="pf_NO" column="PF_NO"/>
 		
 		<result property="pf_Img1" column="PF_IMG1"/>
@@ -53,7 +56,8 @@
 	</resultMap>
 	
 	<!-- 상품 옵션 등록정보 -->
-	<resultMap type="productOPSet" id="Product_Option">
+<!-- 	
+	<resultMap id="productOPSet" type="Product_Option">
 		<id property="op_NO" column="OP_NO"/>
 		
 		<result property="Option_1" column="OPTION_1"/>
@@ -63,18 +67,22 @@
 		<result property="op_Status_YN" column="OP_STATUS_YN"/>
 		<result property="op_P_NO" column="OP_P_NO"/>
 	</resultMap>
+	 -->
 	
 <!-- ***************************** resultMap 끝 ***************************** -->
 	
 	<!-- 상품정보등록 -->
 	<insert id="insertProduct" parameterType="Product">
+  		<selectKey keyProperty="p_No" resultType="int" order="BEFORE">
+		    SELECT SEQ_P_NO.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO PRODUCT
-		VALUES(SEQ_P_NO.NEXTVAL, #{p_Code},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
-				#{p_Comment},DEFAULT,DEFAULT,#{p_Writer},SYSDATE,DEFAULT,SYSDATE,DEFAULT,#{p_Brand_NO})
-	</insert>
+		VALUES(#{p_No},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
+				#{p_Comment},0,DEFAULT,#{p_Writer},SYSDATE,#{p_Modify_Id, jdbcType=VARCHAR},#{p_Modify_Date, jdbcType=VARCHAR},DEFAULT,#{p_Brand_NO})
+	</insert>	
 	
 	<!-- 상품 이미지 정보등록 -->
-	<insert id="insertProductImg" parameterType="productImgSet">
+	<insert id="insertProductImg" parameterType="Product_File">
 		INSERT INTO PRODUCT_FILE
 		VALUES(SEQ_PF_NO.NEXTVAL, #{pf_Img1},#{pf_Img1_ReName},#{pf_Img2},#{pf_Img2_ReName},#{pf_Img3},#{pf_Img3_ReName},#{pf_Img4},
 				#{pf_Img4_ReName},#{pf_Img5},#{pf_Img5_ReName},#{pf_Img6},#{pf_Img6_ReName},#{pf_Dimg1},#{pf_Dimg1_ReName},#{pf_Dimg2},
@@ -82,98 +90,12 @@
 	</insert>
 	
 	<!-- 상품 옵션 정보등록 -->
-	<insert id="insertProductOP" parameterType="productOPSet">
+
+	<insert id="insertProductOption" parameterType="Product_Option">
 		INSERT INTO PRODUCT_OPTION
-		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, #{op_Rec_Date}, #{op_Status_YN}, #{op_P_NO})
+		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, SYSDATE, DEFAULT, #{op_P_NO})
 	</insert>
-	
-	
-<!--<resultMap id="replyResultSet" type="Reply">
-		<id property="rId" column="RID"/>
-		
-		<result property="rContent" column="RCONTENT"/>
-		<result property="refBid" column="REF_BID"/>
-		<result property="rWriter" column="RWRITER"/>
-		<result property="rCreatDate" column="R_CREATE_DATE"/>
-		<result property="rModifyDate" column="R_MODIFY_DATE"/>
-		<result property="rStatus" column="R_STATUS"/>
-	</resultMap>
-	
-	
-	
-	<select id="getListCount" resultType="_int">
-		SELECT COUNT(*)
-		FROM BOARD
-		WHERE B_STATUS='Y'
-	</select>
-	
-	<select id="selectList" resultMap="boardResultSet">
-		SELECT *
-		FROM BOARD
-		WHERE B_STATUS='Y'
-		ORDER BY BID DESC
-	</select>
-	
-	
-	
-	<insert id="insertBoard" parameterType="Board">
-		INSERT INTO BOARD
-		VALUES(SEQ_BID.NEXTVAL, #{bTitle},#{bWriter},#{bContent},#{originalFileName},#{renameFileName},
-				DEFAULT,SYSDATE,SYSDATE,DEFAULT)
-	</insert>
-	
-	<select id="selectBoard" resultMap="boardResultSet">
-		SELECT * 
-		FROM BOARD
-		WHERE B_STATUS='Y' 
-		AND BID=#{bId}
-	</select>
-	
-	<update id="updateCount" parameterType="_int">
-		UPDATE BOARD
-		SET BCOUNT = BCOUNT+1
-		WHERE BID= #{bId}
-	</update>
-	
-	<update id="updateBoard" parameterType="board">
-		   UPDATE BOARD
-		   SET BTITLE=#{bTitle},BCONTENT=#{bContent},
-		   ORIGINAL_FILENAME=#{originalFileName},RENAME_FILENAME=#{renameFileName},
-		   B_MODIFY_DATE=SYSDATE
-		   WHERE BID= #{bId}
-	</update>
-	
-	<update id="deleteBoard" parameterType="_int">
-		UPDATE BOARD
-		SET B_STATUS = 'N'
-		WHERE BID= #{bid}
-	</update>
-	
-	
-	<select id="selectTopList" resultMap="boardResultSet"> 쿼라애 부등호가 있다면 CDATA로 감싸준다.
-		<![CDATA[
-		SELECT *
-		FROM (SELECT * 
-				FROM BOARD
-				ORDER BY BCOUNT DESC)
-		WHERE ROWNUM <= 5
-		]]>
-	</select>
-	
-	<select id="selectReplyList" resultMap="replyResultSet">
-		SELECT * 
-		FROM REPLY
-		WHERE R_STATUS ='Y'
-		AND REF_BID = #{bId}
-		ORDER BY RID DESC
-	</select>
-	
-	<insert id="insertReply" parameterType="Reply">
-		INSERT INTO REPLY
-		VALUES(SEQ_RID.NEXTVAL, #{rContent},#{refBid},#{rWriter},
-				SYSDATE,SYSDATE,DEFAULT)
-	</insert>
-	
-	 -->
+
+
 	
 </mapper>
