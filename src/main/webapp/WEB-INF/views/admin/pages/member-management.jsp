@@ -80,7 +80,6 @@
                                                 <th style="width:6%">주문액</th>
                                                 <th style="width:5%">신고</th>
                                                 <th style="width:5%">정지</th>
-                                                <th style="width:6%">삭제</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,8 +99,7 @@
                                                 <td>${m.order_Count}</td>
                                                 <td>${m.order_Price}</td>
                                                 <td>${m.report_YN}</td>
-                                                <td>${m.block_YN}</td>
-                                                <td>${m.del_Flag_YN}</td>                                                
+                                                <td>${m.block_YN}</td>                                              
                                             </tr>
                                         </c:if>
                                         </c:forEach>
@@ -130,9 +128,9 @@
                                                 <th style="width:5%">성별</th>
                                                 <th style="width:15%">주소</th>
                                                 <th style="width:10%">가입일</th>
+                                                <th style="width:6%">신고</th>
                                                 <th style="width:5%">정지</th>
                                                 <th style="width:6%">삭제</th>
-                                                 <th style="width:6%">삭제</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -163,11 +161,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- data table  -->
-                    <!-- ============================================================== -->            
-        </div>
+                
     </div>
     <!-- ============================================================== -->
     <!-- end main wrapper -->
@@ -181,8 +175,6 @@
 				}).click(function(){
 					var mId = $(this).parents().children("td").eq(1).text();	
 					location.href="memberDetail.ad?mId="+mId
-					//location.href="member-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
 				});
 			});
 		</script>
@@ -193,9 +185,8 @@
 				$("#ownerManagement").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="member-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
+					var mId = $(this).parents().children("td").eq(1).text();	
+					location.href="memberDetail.ad?mId="+mId
 				});
 			});
 		</script>

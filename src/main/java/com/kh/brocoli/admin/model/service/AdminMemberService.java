@@ -23,11 +23,28 @@ public interface AdminMemberService {
 
 	/**
 	 * 작성자 : 신은지
-	 * 3. 회원 수정
-	 * @param mUpdate
+	 * 3. 회원 정보 수정
+	 * @param m
 	 * @return
 	 */
-	Member memberUpdate(Member m, String switch1, String switch2);
+	int memberUpdate(Member m);
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 회원 정보 삭제
+	 * @param mId
+	 * @return
+	 */
+	int memberDelete(String mId);
+
+	/** 작성자  : 신은지
+	 * 5. owner 상세보기
+	 * @param mId
+	 * @return
+	 */
+	Member selectOwnerDetail(String mId);
+
+
 
 
 }

@@ -29,4 +29,16 @@ public class BoardDao {
 		return (ArrayList)sqlSession.selectList("boardNotice-mapper.selectList",null, rowBounds);
 		
 	}
+
+	public int insertBoardNotice(Notice n) {
+		return sqlSession.insert("boardNotice-mapper.insertBoardNotice", n);
+	}
+
+	public Notice selectBoardNotice(int n_No) {
+		return sqlSession.selectOne("boardNotice-mapper.selectBoardNotice", n_No);
+	}
+
+	public int updateCount(int n_No) {
+		return sqlSession.update("boardNotice-mapper.updateCount", n_No);
+	}
 }
