@@ -38,7 +38,7 @@ public class AdminBrandController {
 	
 	@RequestMapping("brandDetail.ad")
 	public ModelAndView brandDetail(ModelAndView mv, @RequestParam("b_Name") String b_Name) {
-		
+		System.out.println("???"+b_Name);
 		
 		
 		return mv;

@@ -124,7 +124,7 @@
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
 					var bId = $(this).parents().children("td").eq(2).text();	
-					location.href="memberDetail.ad?b_Name="+b_Name
+					location.href="brandDetail.ad?b_Name="+b_Name
 				});
 			});
 		</script>
