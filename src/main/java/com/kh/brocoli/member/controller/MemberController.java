@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -200,12 +201,34 @@ public class MemberController {
 	}
 	
 	/**
-	 * 브랜드 페이지로 이동
+	 * 브랜드 이름 페이지로 이동
 	 * @return
 	 */
 	@RequestMapping("brandView.mn")
-	public String BrandView() {
-		return "Main-Brand";
+	public ModelAndView BrandView(Brand br,ModelAndView mv) {
+		
+		ArrayList<Brand> blist = mService.selectbList();
+		mv.addObject("BrandList",blist);
+		mv.setViewName("Main-Brand");
+		return mv;
+	}
+	
+	/**
+	 * 브랜드 상품 페이지로 이동
+	 * 작성자 : 윤석훈
+	 * @param br
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("bproduct.mn")
+	public ModelAndView BrandProductView(Brand br,ModelAndView mv,String b_Name) {
+		
+		ArrayList<Brand> bplist = mService.selectbpList(b_Name);
+		mv.addObject("bProductList",bplist);
+		mv.setViewName("Main-BrandProduct");
+		System.out.println(b_Name + "123213");
+		System.out.println(bplist + "00000000000");
+		return mv;
 	}
 	
 	/**

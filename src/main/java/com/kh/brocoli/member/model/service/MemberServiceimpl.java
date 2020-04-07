@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.dao.MemberDao;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -60,6 +61,16 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.pwdCheck(password);
 	}
 
+
+	@Override
+	public ArrayList<Brand> selectbList() {
+		return mDao.selectbList();
+	}
+
+	@Override
+	public ArrayList<Brand> selectbpList(String b_Name) {
+		return mDao.selectbpList(b_Name);
+	}
 
 
 

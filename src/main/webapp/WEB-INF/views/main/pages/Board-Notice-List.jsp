@@ -61,11 +61,11 @@
 						<td align="center">${ b.n_No }</td>
 
 						<td align="center"><%-- <c:if test="${ !empty loginUser }"> --%>
-								<c:url var="bdetail" value="bdetail.mn">
+								<c:url var="bndetail" value="bnDetail.mn">
 									<c:param name="n_No" value="${ b.n_No }" />
 									<c:param name="currentPage" value="${ pi.currentPage }" />
 								</c:url>
-								<a href="${ bdetail }" style="color: #222" >${ b.n_Title }</a>
+								<a href="${ bndetail }" style="color: #222" >${ b.n_Title }</a>
 							<%-- </c:if> <c:if test="${ empty loginUser }"> ${b.n_Title } 로그인 안해도 보여지는것
         	</c:if> --%></td>
 
@@ -127,9 +127,11 @@
 			</ul>
 			
 			<div>
+			<c:if test="${ !empty sessionScope.loginUser }">
 				<button class="btn btn-primary"
 					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
-					onclick="location.herf='bInsertView.mn';">작 성</button>
+					onclick="location.href='bnInsertView.mn';">작 성</button>
+			</c:if>
 			</div>
 		</div>
 		<div id="searchArea" align="center">

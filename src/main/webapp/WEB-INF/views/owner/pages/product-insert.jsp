@@ -439,7 +439,7 @@
 					                                    </table>
 					                                    	<hr>
 					                                        <a style="color: #FFFFFF; float: right;" onclick="allCloseBtn()" class="btn btn-danger">옵션전체삭제</a>
-					                                        <a style="color: #FFFFFF; float: right; margin-right: 10px;" onclick="closeBtn()" class="btn btn-danger">삭제</a>
+					                                        <a style="color: #FFFFFF; float: right; margin-right: 10px;" onclick="selectcloseBtn()" class="btn btn-danger">삭제</a>
 					                                </div>
 					                            </div>
 					                        </div>
@@ -504,14 +504,18 @@
 	    }
 		            
 	    
-	    function closeBtn(){
-	          $('#Option_1_'+count+'').parents('tr').remove('tr');
-	          if(count != 0){
-	          count--;
+	    
+	    function selectcloseBtn(){
+	          if(count < 0){	
+	        	  count = 0;
+	          }else{
+					count--;
+		     $('#Option_1_'+count+'').parents('tr').remove('tr');
 	          }
+	          
 	    }
 	    
-	    function allCloseBtn(){
+	    function allcloseBtn(){
 	          $('#Option_2').parents('tbody').empty('tbody');
 	          count = 0;
 	    }

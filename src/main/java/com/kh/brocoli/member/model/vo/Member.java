@@ -16,7 +16,7 @@ public class Member {
 	private String birthDay;
 	private String mGrant;
 	private String mPoint;
-	private String order_Count;
+	private int order_Count;
 	private String order_Price;
 	private String report_YN;
 	private String block_YN;
@@ -34,7 +34,7 @@ public class Member {
 
 
 	public Member(String mId, String pwd, String mName, String email, String phone, String address, String gender,
-			String birthDay, String mGrant, String mPoint, String order_Count, String order_Price, String report_YN,
+			String birthDay, String mGrant, String mPoint, int order_Count, String order_Price, String report_YN,
 			String block_YN, String block_Content, String del_Flag_YN, String del_Date, Date enrollDate, String brand,
 			String brand_NO) {
 		super();
@@ -161,12 +161,12 @@ public class Member {
 	}
 
 
-	public String getOrder_Count() {
+	public int getOrder_Count() {
 		return order_Count;
 	}
 
 
-	public void setOrder_Count(String order_Count) {
+	public void setOrder_Count(int order_Count) {
 		this.order_Count = order_Count;
 	}
 
@@ -270,6 +270,9 @@ public class Member {
 				+ ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrollDate=" + enrollDate + ", brand="
 				+ brand + ", brand_NO=" + brand_NO + "]";
 	}
+
+
+	
 
 
 	
