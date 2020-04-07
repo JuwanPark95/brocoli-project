@@ -20,7 +20,7 @@
 
 <body>
 
-<form action="myInfo.mn" >
+<form action="mupdate.mn" method="post" id="myInfo">
 	<div id="contentWrapper">
 		<div id="contentWrap">
 
@@ -46,7 +46,7 @@
 													</th>
 													<td>
 														<div>
-															<input type="text" name="mName" id="" value="${loginUser.mName }" class="MS_input_txt w180" size="15" maxlength="30" disabled>
+															<input type="text" name="mName" id="" value="${loginUser.mName }" class="MS_input_txt w180" size="15" maxlength="30" readonly>
 														</div>
 													</td>
 												</tr>
@@ -58,7 +58,7 @@
 													</th>
 													<td>
 														<div>
-															<input type="text" name="mId" id="id" value="${loginUser.mId }">
+															<input type="text" name="mId" id="id" value="${loginUser.mId }" readonly>
 														</div>
 													</td>
 												</tr>
@@ -70,7 +70,7 @@
 													</th>
 													<td>
 														<div style="    display: inline-flex;">
-															<input type="password" name="pwd1" id="pwd1" class="MS_input_txt w180" value="${loginUser.pwd }" size="15" maxlength="20" style="margin-left: -376px;" >
+															<input type="password" name="pwd" id="pwd1" class="MS_input_txt w180" value="${loginUser.pwd }" size="15" maxlength="20" style="margin-left: -376px;" readonly >
 															 &nbsp;&nbsp;&nbsp;
 															<div class="button_base b01_simple_rollover" style="padding-top:0px; height: 25px; border-radius: 3px;">
                                                               <a href="<c:url value='p_change.mn'/>" style="color: #fff;"> 변경하기
@@ -209,11 +209,11 @@
 							<!-- #personInfo -->
 							<div style="padding-top: 9px; padding-right: 50px;">
 								<button style="height: 35px; width: 140px; border-radius: 3px; padding: 0px; padding-bottom: 2px;">
-									<a href="<c:url value='index.jsp'/>" style="width: 100%; color: #fff; font-size: 11px;"> <strong>수정</strong></a>
+									 <strong>수정</strong>
 								</button>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<button style="height: 35px; width: 140px; border-radius: 3px; padding: 0px; padding-bottom: 2px;">
-									<a href="<c:url value='index.jsp'/>" style="width: 100%; color: #fff; font-size: 11px;"> <strong>삭제</strong></a>
+									 <strong>삭제</strong>
 								</button>
 							</div>
 						<!-- </form> -->

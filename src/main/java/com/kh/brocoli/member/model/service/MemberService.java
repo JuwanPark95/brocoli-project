@@ -74,6 +74,15 @@ public interface MemberService {
 	int updateMember(Member m);
 
 
+	/**
+	 * 작성자 : 김주희
+	 * 비밀번호 확인
+	 * @param pwd
+	 * @return
+	 */
+	int pwdCheck(String password);
+
+
 
 
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,6 +78,8 @@ public class BoardController {
 			}
 		}
 		
+		System.out.println("Controller insert : "+n);
+		
 		int result = bnService.insertBoardNotice(n);
 		
 		if(result > 0) {
@@ -124,6 +127,13 @@ public class BoardController {
 		
 	}
 
+	/**
+	 * 게시판 디테일
+	 * @param mv
+	 * @param n_No
+	 * @param currentPage
+	 * @return
+	 */
 	@RequestMapping("bnDetail.mn")
 	public ModelAndView boardDetail(ModelAndView mv, int n_No,
 			@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage) {
@@ -142,4 +152,11 @@ public class BoardController {
 		return mv;
 		
 	}
+	
+	/*
+	 * @RequestMapping("bnupdateView.mn") public ModelAndView
+	 * boardUpdateView(ModelAndView mv, int n_No) {
+	 * mv.addObject("n",bnService.selectUpdateBoard(n_No)) .setViewName(""); }
+	 */
+
 }

@@ -57,6 +57,12 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	@Override
+	public int pwdCheck(String password) {
+		return mDao.pwdCheck(password);
+	}
+
+
+	@Override
 	public ArrayList<Brand> selectbList() {
 		return mDao.selectbList();
 	}

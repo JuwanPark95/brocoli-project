@@ -28,6 +28,7 @@ public class MemberController {
 	@Autowired
 	private MemberService mService;
 	
+
 	
 	
 	/**
@@ -309,6 +310,36 @@ public class MemberController {
 	}
 	
 	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 마이페이지에서 개인정보수정으로 이동중 비밀번호 체크
+	 * @return
+	 * @param pwd
+	 */
+
+	@RequestMapping("p_check.mn")
+	public String pwdCheckPage() {
+		return "My-P-Check";
+	}
+	
+	@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
+	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv, Member m) {
+		System.out.println("pwd1 : " + password);
+		int result = mService.pwdCheck(password);
+		System.out.println("result : " + result);
+		
+	
+		if(result > 0 ) {
+			mv.setViewName("MyInformation");
+		}else {
+		
+		mv.addObject("msg","로그인 실패!!");
+		mv.setViewName("My-P-Check");
+		}
+		return mv;
+		
+	}
+	
 	
 	/** 작성자 : 김주희
 	 *  작성일 : 2020-04-02
@@ -317,8 +348,10 @@ public class MemberController {
 	 */
 	@RequestMapping("myInfo.mn")
 	public String myinfo() {
+		
 		return "MyInformation";
 	}
+	
 	
 	
 	
@@ -332,21 +365,25 @@ public class MemberController {
 			   @RequestParam("post") String post,
 			   @RequestParam("address1") String addr1,
 			   @RequestParam("address2") String addr2) {
+		
+		
     // 주소데이터들 ','를 구분자로 저장
     if(!post.equals("")) {
     m.setAddress(post+","+addr1+","+addr2);
     }
 
     int result = mService.updateMember(m);
+    System.out.println("result : " +  result);
 
     if(result > 0) {
     model.addAttribute("loginUser",m);
-    return "redirect:index.jsp";
+    return "redirect:logout";
     }else {
     model.addAttribute("msg","회원 정보 수정 실패!");
     return "common/errorPage";
    }
 }
+	
 	
 	
 	/** 작성자 : 김주희
@@ -355,8 +392,21 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("p_change.mn")
-	public String p_change() {
-		return "My-P-Change";
+	public String p_change(Member m,Model model,
+			   @RequestParam("password1") String pwd1,
+			   @RequestParam("password2") String pwd2) {
+    
+    
+
+    int result = mService.updateMember(m);
+
+    if(result > 0) {
+    model.addAttribute("loginUser",m);
+    return "redirect:index.jsp";
+    }else {
+    model.addAttribute("msg","비밀번호 변경 실패");
+    return "common/errorPage";
+    }
 
 	}
 	

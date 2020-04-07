@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항  작성</title>
+<title>공지사항  수정</title>
 <meta charset="UTF-8">
 
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,10 +36,16 @@
 </style>
 </head>
 <body>
+
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 작성</h2><Br>
-    <form action="bnInsert.mn" method="post" enctype="multipart/form-data">
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 ${ n.n_No }번 글 수정</h2><Br>
+    <form action="bnUPdate.mn" method="post" enctype="multipart/form-data">
+    
+		<input type="hidden" name="bId" value="${ n.n_No }">
+		<input type="hidden" name="originalFileName" value="${ n.n_Img }">
+		<input type="hidden" name="renameFileName" value="${ n.n_Img }">
+		
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
@@ -76,7 +82,6 @@
 		</div>
 	</form>
 		</div>
-
 <%@ include file="All-Footer.jsp" %>
 
 <!--===============================================================================================-->	
@@ -179,5 +184,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
+</body>
+</html>
+
 </body>
 </html>

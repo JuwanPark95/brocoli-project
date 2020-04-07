@@ -22,6 +22,16 @@ public class AdminBrandDao {
 	public ArrayList<Brand> selectBrandList() {
 		return (ArrayList)sqlSession.selectList("AdminBrand.selectBrandList");
 	}
+
+	/**
+	 * 작성자: 신은지
+	 * 2. 브랜드 상세보기 dao
+	 * @param brand_NO
+	 * @return
+	 */
+	public Brand selectBrandDetail(int brand_NO) {
+		return sqlSession.selectOne("AdminBrand.selectBrandDetail",brand_NO);
+	}
 	
 	
 }

@@ -13,4 +13,12 @@ public interface AdminBrandService {
 	 */
 	ArrayList<Brand> selectBrandList();
 
+	/**
+	 * 작성자 : 신은지
+	 * 2. 브랜드 detail
+	 * @param brand_NO
+	 * @return
+	 */
+	Brand selectBrandDetail(int brand_NO);
+
 }

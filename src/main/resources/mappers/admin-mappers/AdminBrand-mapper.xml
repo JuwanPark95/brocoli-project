@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AdminBrand">
 	<resultMap id="brandResultSet" type="Brand">
-		<id property="b_Name" column="B_NAME"/>
+		<id property="brand_NO" column="BRAND_NO"/>
+		<result property="b_Name" column="B_NAME"/>
 		<result property="b_Logo" column="B_LOGO"/>
 		<result property="b_Logo_ReName" column="B_LOGO_RENAME"/>
 		<result property="b_Business_NO" column="B_BUSINESS_NO"/>
@@ -27,5 +28,11 @@
 	<select id="selectBrandList" parameterType="Brand" resultMap="brandResultSet">
 		SELECT * 
 		FROM BRAND
+	</select>
+	
+	<select id="selectBrandDetail" parameterType="Brand" resultMap="brandResultSet">
+		SELECT *
+		FROM BRAND
+		WHERE BRAND_NO = #{brand_NO}
 	</select>
 </mapper>
