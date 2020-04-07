@@ -127,11 +127,11 @@
 			</ul>
 			
 			<div>
-			<%-- <c:if test="${ !empty sessionScope.loginUser }"> --%>
+			<c:if test="${ !empty sessionScope.loginUser }">
 				<button class="btn btn-primary"
 					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
 					onclick="location.href='bnInsertView.mn';">작 성</button>
-			<%-- </c:if> --%>
+			</c:if>
 			</div>
 		</div>
 		<div id="searchArea" align="center">
