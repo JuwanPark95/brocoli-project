@@ -2,6 +2,7 @@ package com.kh.brocoli.product.model.vo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ public class Product {
 	private int p_Brand_NO;
 	
 	private ArrayList<Product_File> pfList;
+	private ArrayList<Product> pList;
 	
 	public Product() {
 		super();
@@ -34,7 +36,7 @@ public class Product {
 	public Product(int p_No, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
 			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
 			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
-			int p_Brand_NO, ArrayList<Product_File> pfList) {
+			int p_Brand_NO, ArrayList<Product_File> pfList, ArrayList<Product> pList) {
 		super();
 		this.p_No = p_No;
 		this.p_Name = p_Name;
@@ -53,7 +55,56 @@ public class Product {
 		this.p_Show_YN = p_Show_YN;
 		this.p_Brand_NO = p_Brand_NO;
 		this.pfList = pfList;
+		this.pList = pList;
 	}
+
+	public Product(int p_No, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
+			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
+			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
+			int p_Brand_NO) {
+		super();
+		this.p_No = p_No;
+		this.p_Name = p_Name;
+		this.p_Price = p_Price;
+		this.p_Sail_Price = p_Sail_Price;
+		this.p_Last_Price = p_Last_Price;
+		this.p_Bcategory = p_Bcategory;
+		this.p_Scategory = p_Scategory;
+		this.p_Comment = p_Comment;
+		this.p_Order_Count = p_Order_Count;
+		this.p_Status = p_Status;
+		this.p_Writer = p_Writer;
+		this.p_Insert_Date = p_Insert_Date;
+		this.p_Modify_Id = p_Modify_Id;
+		this.p_Modify_Date = p_Modify_Date;
+		this.p_Show_YN = p_Show_YN;
+		this.p_Brand_NO = p_Brand_NO;
+	}
+
+	public Product(int p_No, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
+			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
+			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
+			int p_Brand_NO, ArrayList<Product> pList) {
+		super();
+		this.p_No = p_No;
+		this.p_Name = p_Name;
+		this.p_Price = p_Price;
+		this.p_Sail_Price = p_Sail_Price;
+		this.p_Last_Price = p_Last_Price;
+		this.p_Bcategory = p_Bcategory;
+		this.p_Scategory = p_Scategory;
+		this.p_Comment = p_Comment;
+		this.p_Order_Count = p_Order_Count;
+		this.p_Status = p_Status;
+		this.p_Writer = p_Writer;
+		this.p_Insert_Date = p_Insert_Date;
+		this.p_Modify_Id = p_Modify_Id;
+		this.p_Modify_Date = p_Modify_Date;
+		this.p_Show_YN = p_Show_YN;
+		this.p_Brand_NO = p_Brand_NO;
+		this.pList = pList;
+	}
+
 
 	public int getP_No() {
 		return p_No;
@@ -191,6 +242,14 @@ public class Product {
 		this.pfList = pfList;
 	}
 
+	public ArrayList<Product> getpList() {
+		return pList;
+	}
+
+	public void setpList(ArrayList<Product> pList) {
+		this.pList = pList;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [p_No=" + p_No + ", p_Name=" + p_Name + ", p_Price=" + p_Price + ", p_Sail_Price="
@@ -198,10 +257,8 @@ public class Product {
 				+ p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count + ", p_Status="
 				+ p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date + ", p_Modify_Id="
 				+ p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO="
-				+ p_Brand_NO + ", pfList=" + pfList + "]";
+				+ p_Brand_NO + "]";
 	}
-	
-	
 	
 	
 	

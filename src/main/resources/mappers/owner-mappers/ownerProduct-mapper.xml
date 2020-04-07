@@ -2,14 +2,14 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="owner-mapper">
+<mapper namespace="ownerProduct-mapper">
 	
 	<!-- 	참고용 MAPPER파일입니다. 본인이 사용할 파일은 반드시 새로 생성해서 사용해주세요. -->
 	
 	<!-- resultMap -->
 	<!-- 상품등록정보 -->
 	
- 	<resultMap  type="Product" id="productSet">
+ 	<resultMap  type="Product" id="productResultSet">
 		<id property="p_No" column="P_NO"/>
 		
 		<result property="p_Name" column="P_NAME"/>
@@ -17,8 +17,8 @@
 		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>
 		<result property="p_Last_Price" column="P_LAST_PRICE"/>
 		<result property="p_Bcategory" column="P_BCATEGORY"/>
-		<result property="p_Scategory" column="P_SCATEGOTY"/>
-		<result property="p_Comment" column="P_COMENT"/>
+		<result property="p_Scategory" column="P_SCATEGORY"/>
+		<result property="p_Comment" column="P_COMMENT"/>
 		<result property="p_Order_Count" column="P_ORDER_COUNT"/>
 		<result property="p_Status" column="P_STATUS"/>
 		<result property="p_Writer" column="P_WRITER"/>
@@ -28,6 +28,7 @@
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
+		<collection property="pfList" javaType="java.util.ArrayList" resultMap="productFileResultSet"/>
 	</resultMap>
 	
 	<!-- 상품 이미지 등록정보 -->
@@ -53,6 +54,30 @@
 		<result property="pf_Dimg3" column="PF_DIMG3"/>	
 		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
 		<result property="pf_P_NO" column="PF_P_NO"/>	
+	</resultMap>
+	
+	<resultMap type="Product_File" id="productFileResultSet">
+		<id property="pf_NO" column="PF_NO"/>
+		
+		<result property="pf_Img1" column="PF_IMG1"/>
+		<result property="pf_Img1_ReName" column="PF_IMG1_RENAME"/>
+		<result property="pf_Img2" column="PF_IMG2"/>
+		<result property="pf_Img2_ReName" column="PF_IMG2_RENAME"/>
+		<result property="pf_Img3" column="PF_IMG3"/>
+		<result property="pf_Img3_ReName" column="PF_IMG3_RENAME"/>
+		<result property="pf_Img4" column="PF_IMG4"/>
+		<result property="pf_Img4_ReName" column="PF_IMG4_RENAME"/>
+		<result property="pf_Img5" column="PF_IMG5"/>
+		<result property="pf_Img5_ReName" column="PF_IMG5_RENAME"/>
+		<result property="pf_Img6" column="PF_IMG6"/>
+		<result property="pf_Img6_ReName" column="PF_IMG6_RENAME"/>
+		<result property="pf_Dimg1" column="PF_DIMG1"/>
+		<result property="pf_Dimg1_ReName" column="PF_DIMG1_RENAME"/>
+		<result property="pf_Dimg2" column="PF_DIMG2"/>
+		<result property="pf_Dimg2_ReName" column="PF_DIMG2_RENAME"/>
+		<result property="pf_Dimg3" column="PF_DIMG3"/>
+		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
+		<result property="pf_P_NO" column="PF_P_NO"/>
 	</resultMap>
 	
 	<!-- 상품 옵션 등록정보 -->
@@ -95,7 +120,16 @@
 		INSERT INTO PRODUCT_OPTION
 		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, SYSDATE, DEFAULT, #{op_P_NO})
 	</insert>
-
+	
+	<select id="selectProductList" resultMap="productResultSet">
+		SELECT *
+		FROM PRODUCT P
+		JOIN PRODUCT_FILE PF
+		ON  P.P_NO = PF.PF_NO
+		WHERE p_Brand_NO = #{Brand_NO}
+		ORDER BY P.P_NO DESC
+	</select>
+	
 
 	
 </mapper>

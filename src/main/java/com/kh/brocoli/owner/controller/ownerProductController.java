@@ -2,30 +2,31 @@ package com.kh.brocoli.owner.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.brocoli.owner.model.service.ownerService;
+import com.kh.brocoli.owner.model.service.ownerProductService;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Product_File;
 import com.kh.brocoli.product.model.vo.Product_Option;
 
 @SessionAttributes("loginUser")
 @Controller
-public class ownerController {
+public class ownerProductController {
 
 	
-		@Autowired ownerService oService;
+		@Autowired ownerProductService oService;
 		
 		
 	/** 작성자 : 박주완
@@ -222,6 +223,18 @@ public class ownerController {
 	}
 	
 	
+	@RequestMapping("productList.ow")
+	public ModelAndView productList(ModelAndView mv, String Brand_NO) {
+		
+		System.out.println(Brand_NO);
+		ArrayList<Product> list = oService.productList(Brand_NO);
+		
+		mv.addObject("list",list);
+		mv.setViewName("product-management");
+		
+		return mv;
+		
+	};
 	
 	
 	

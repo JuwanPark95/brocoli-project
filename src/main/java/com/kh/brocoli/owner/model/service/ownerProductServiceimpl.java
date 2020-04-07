@@ -2,20 +2,23 @@ package com.kh.brocoli.owner.model.service;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import com.kh.brocoli.owner.model.dao.ownerDao;
+import com.kh.brocoli.owner.model.dao.ownerProductDao;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Product_File;
 import com.kh.brocoli.product.model.vo.Product_Option;
 
 
-@Service("oService")
-public class ownerServiceimpl implements ownerService {
+@Service("oProductService")
+public class ownerProductServiceimpl implements ownerProductService {
 
-	@Autowired ownerDao oDao;
+	@Autowired ownerProductDao oDao;
 	
 	/**
 	 *작성자 : 박주완
@@ -38,6 +41,11 @@ public class ownerServiceimpl implements ownerService {
 		}
 
 		return result;
+	}
+
+	@Override
+	public ArrayList<Product> productList(String Brand_NO) {
+		return oDao.listProduct(Brand_NO);
 	}
 
 

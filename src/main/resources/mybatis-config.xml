@@ -55,7 +55,7 @@
  		<mapper resource="mappers/main-mappers/boardNotice-mapper.xml"/>
 		<mapper resource="mappers/admin-mappers/AdminMember-mapper.xml"/>
 		<mapper resource="mappers/main-mappers/main-mapper.xml"/>
- 		<mapper resource="mappers/owner-mappers/owner-mapper.xml"/>
+ 		<mapper resource="mappers/owner-mappers/ownerProduct-mapper.xml"/>
 		
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
