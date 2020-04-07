@@ -21,5 +21,14 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 	public ArrayList<Brand> selectBrandList() {
 		return ABDao.selectBrandList();
 	}
+	
+	/**
+	 *  작성자 : 신은지
+	 *	2. 브랜드 상세보기 service
+	 */
+	@Override
+	public Brand selectBrandDetail(int brand_NO) {
+		return ABDao.selectBrandDetail(brand_NO);
+	}
 
 }

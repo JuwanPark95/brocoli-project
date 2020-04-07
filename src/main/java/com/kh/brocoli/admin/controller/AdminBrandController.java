@@ -37,10 +37,14 @@ public class AdminBrandController {
    }
    
    @RequestMapping("brandDetail.ad")
-   public ModelAndView brandDetail(ModelAndView mv, @RequestParam("b_Name") String b_Name) {
+   public ModelAndView brandDetail(ModelAndView mv, @RequestParam("brand_NO") int brand_NO) {
       
+	   Brand b = ABService.selectBrandDetail(brand_NO);
       
-      
+	   if(b != null) {
+		   mv.addObject("b",b);
+		   mv.setViewName("brand-detail");
+	   }
       return mv;
    }
 }

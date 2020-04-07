@@ -67,6 +67,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:5%">번호</th>
+                                                <th style="width:5%">회원번호</th>
                                                 <th style="width:10%">아이디</th>
                                                 <th style="width:8%">이름</th>
                                                 <th style="width:10%">생년월일</th>
@@ -87,6 +88,7 @@
                                         <c:if test="${m.mGrant eq '3'}" >
                                             <tr>
                                             	<td>${ml.count}</td>
+                                            	<td>${m.mNo}</td>
                                                 <td>${m.mId}</td>
                                                 <td>${m.mName}</td>                                                
                                                 <td>${m.birthDay}</td>
@@ -119,6 +121,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:5%">번호</th>
+                                                <th style="width:5%">회원번호</th>
                                                 <th style="width:10%">아이디</th>
                                                 <th style="width:10%">브랜드</th>
                                                 <th style="width:8%">이름</th>
@@ -139,6 +142,7 @@
                                         <c:if test="${m.mGrant != 3}"  >
                                             <tr>
                                             	<td><%=count++ %></td>
+                                            	<td>${m.mNo}</td>
                                                 <td>${m.mId}</td>
                                                 <td>${m.brand}</td>
                                                 <td>${m.mName}</td>                                                
