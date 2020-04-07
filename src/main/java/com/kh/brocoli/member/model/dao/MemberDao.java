@@ -40,6 +40,14 @@ public class MemberDao {
 	public int updateMember(Member m) {
 		return sqlSession.update("memberMapper.updateMember",m);
 	}
+
+	public ArrayList<Brand> selectbList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.brandlist");
+	}
+
+	public ArrayList<Brand> selectbpList(String b_Name) {
+		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
+	}
 	
 
 }
