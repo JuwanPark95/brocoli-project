@@ -13,7 +13,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
-<%@ include file="All-Cart.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
@@ -37,45 +37,63 @@
 <body>
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 세부보기</h2><Br>
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 ${ n.n_No }번 글 세부보기</h2><Br>
 	
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
-				<td>1</td>
+				<td>${ n.n_No }</td>
 			</tr>
 			<tr>
 				<td>제  목</td>
-				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+				<td>${ n.n_Title }</td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
-				<td>ㅎ</b></td>
+				<td>${ n.n_Writer }</td>
 			</tr>
 			<tr>
 				<td>조 회 수</td>
-				<td>ㅎ</td>
+				<td>${ n.n_Count }</td>
 			</tr>
 			<tr>
 				<td>작 성 일</td>
-				<td>ㅎ</td>
+				<td>${ n.n_Date }</td>
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
-				<td>첨부하기</td>
+				<td>
+					<c:if test="${ !empty n.n_Img }">
+						<a href="${ contextPath }/resources/buploadFiles/${ n.n_Img_ReName }"
+						download="${ n.n_Img }"> ${ n.n_Img }</a>
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea class="form-control" rows="5" id="comment" 
-				style="height: 250px; resize: none"></textarea></td>
+				<td><div style="height: 250px;">${ n.n_Content }</div></td>
 			</tr>				
 		</table>
 		
 		
 		<div align="center">
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">확인</button>
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">수정</button>
-		</div>
+		
+			<c:url var="bnlist" value="bnlist.mn">
+				<c:param name="currentPage" value="${ currentPage }"/>
+			</c:url>
+			<c:url var="bnupdate" value="bnupdate.mn">
+				<c:param name="currentPage" value="${ currentPage }"/>
+			</c:url>
+			
+		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+			onclick="location.href='bnlist.mn';">확인</button>
+		
+		<c:if test="${ loginUser.mId eq n.n_MID }">
+			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+				onclick="location.href='bnupdate.mn';">수정</button>
+		</c:if>		
+		
+	</div>
 		<br><br>
 </div>
 <%@ include file="All-Footer.jsp" %>
