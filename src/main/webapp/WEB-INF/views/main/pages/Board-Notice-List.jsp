@@ -58,16 +58,16 @@
 
 				<c:forEach var="b" items="${ list }">
 					<tr>
-						<td align="center">${ b.n_NO }</td>
+						<td align="center">${ b.n_No }</td>
 
-						<td align="center"><c:if test="${ !empty loginUser }">
+						<td align="center"><%-- <c:if test="${ !empty loginUser }"> --%>
 								<c:url var="bdetail" value="bdetail.mn">
-									<c:param name="bId" value="${ b.n_Writer }" />
+									<c:param name="n_No" value="${ b.n_No }" />
 									<c:param name="currentPage" value="${ pi.currentPage }" />
 								</c:url>
-								<a href="${ bdetail }">${ b.n_Title }</a>
-							</c:if> <c:if test="${ empty loginUser }"> ${b.n_Title }
-        	</c:if></td>
+								<a href="${ bdetail }" style="color: #222" >${ b.n_Title }</a>
+							<%-- </c:if> <c:if test="${ empty loginUser }"> ${b.n_Title } 로그인 안해도 보여지는것
+        	</c:if> --%></td>
 
 						<td align="center">${ b.n_Writer }</td>
 						<td align="center">${ b.n_Date }</td>
@@ -86,7 +86,7 @@
 			<ul class="pagination justify-content-center">
 
 				<c:if test="${ pi.currentPage eq 1 }">
-					<li class="page-item"><a class="page-link" style="color: #222"></a></li>
+					<li class="page-item"><a class="page-link" style="color: #222"> < </a></li>
 				</c:if>
 
 				<c:if test="${ pi.currentPage ne 1}">
@@ -94,31 +94,34 @@
 					<c:url var="before" value="bnlist.mn">
 						<c:param name="currentPage" value="${ pi.currentPage - 1 }" />
 					</c:url>
-					<a href="${ before }" class="page-link" aria-label="Previous" style="color: #222"><</a></li>
+					<a href="${ before }" class="page-link" aria-label="Previous" style="color: #222"> < </a></li>
 				</c:if>
-
+	
+			<!-- 페이지 -->
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 				<c:if test="${ p eq pi.currentPage }">
-					<li class="page-item"><a class="page-link">${ p }</a></li>
+					<li class="page-item active">
+					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
 				</c:if>
 				
 				<c:if test="${ p ne pi.currentPage }">
 					<c:url var="pageNext" value="bnlist.mn">
 						<c:param name = "currentPage" value="${ p }"/>
 					</c:url>
-					<li class="page-item"><a href="${pageNext}" class="page-link"style="color: #222">${ p }</a></li>
+					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
 				</c:if>
 			</c:forEach>
 			
+			<!-- 다음 -->
 			<c:if test="${ pi.currentPage eq pi.maxPage }">
-				<li class="page-item"><a class="page-link" aria-label="Next">></a></li>
+				<li class="page-item"><a class="page-link" aria-label="Next"> > </a></li>
 			</c:if>
 			
 			<c:if test = "${ pi.currentPage ne pi.maxPage }">
 			<c:url var = "next" value="bnlist.mn">
-				<c:param name="currentPage" value="&{ pi.currentPage + 1"/>
+				<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
 			</c:url>
-				<li class="page-item"><a href="${next}" class="page-link" aria-label="Next"></a></li>
+				<li class="page-item"><a href="${ next }" class="page-link" aria-label="Next" style="color: #222"> > </a></li>
 			</c:if>
 			
 			</ul>

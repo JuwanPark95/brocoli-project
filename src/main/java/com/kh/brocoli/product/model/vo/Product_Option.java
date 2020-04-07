@@ -1,6 +1,7 @@
 package com.kh.brocoli.product.model.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,18 @@ public class Product_Option {
 	private String op_Status_YN;
 	private int op_P_NO;
 	
+	private List<Product_Option> Product_OptionVOList;
+	
+
 	public Product_Option() {
 		super();
 	}
+
+	public Product_Option(List<Product_Option> product_OptionVOList) {
+		super();
+		Product_OptionVOList = product_OptionVOList;
+	}
+
 
 	public Product_Option(int op_NO, String option_1, String option_2, String op_Stock, Date op_Rec_Date,
 			String op_Status_YN, int op_P_NO) {
@@ -29,6 +39,21 @@ public class Product_Option {
 		this.op_Rec_Date = op_Rec_Date;
 		this.op_Status_YN = op_Status_YN;
 		this.op_P_NO = op_P_NO;
+	}
+	
+	
+
+	public Product_Option(int op_NO, String option_1, String option_2, String op_Stock, Date op_Rec_Date,
+			String op_Status_YN, int op_P_NO, List<Product_Option> product_OptionVOList) {
+		super();
+		this.op_NO = op_NO;
+		Option_1 = option_1;
+		Option_2 = option_2;
+		this.op_Stock = op_Stock;
+		this.op_Rec_Date = op_Rec_Date;
+		this.op_Status_YN = op_Status_YN;
+		this.op_P_NO = op_P_NO;
+		Product_OptionVOList = product_OptionVOList;
 	}
 
 	public int getOp_NO() {
@@ -85,6 +110,16 @@ public class Product_Option {
 
 	public void setOp_P_NO(int op_P_NO) {
 		this.op_P_NO = op_P_NO;
+	}
+	
+	
+
+	public List<Product_Option> getProduct_OptionVOList() {
+		return Product_OptionVOList;
+	}
+
+	public void setProduct_OptionVOList(List<Product_Option> product_OptionVOList) {
+		this.Product_OptionVOList = product_OptionVOList;
 	}
 
 	@Override

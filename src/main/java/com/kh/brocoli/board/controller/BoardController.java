@@ -19,30 +19,31 @@ public class BoardController {
 	@Autowired
 	private BoardService bnService;
 	
-/**
- * 페이징 처리
- * @param mv
- * @param currentPage
- * @return
- */
-@RequestMapping("bnlist.mn")
-public ModelAndView boardlist(ModelAndView mv,
-							@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage){
-	System.out.println("커런트 페이지유 : " + currentPage);
-	
-	int listCount = bnService.getListCount();
-	
-	Notice_PageInfo pi = Notice_Pagination.getPageInfo(currentPage, listCount);
-	
-	ArrayList<Notice> list = bnService.selectList(pi);
-	
-	mv.addObject("list",list);
-	mv.addObject("pi",pi);
-	mv.setViewName("page/Board-Notice-List");
-	
-	return mv;
-}
-
-	
-
+	/**
+	 * 페이징 처리
+	 * @param mv
+	 * @param currentPage
+	 * @return
+	 */
+	@RequestMapping("bnlist.mn")
+	public ModelAndView boardlist(ModelAndView mv,
+								@RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage){
+		System.out.println("커런트 페이지유 : " + currentPage);
+		
+		int listCount = bnService.getListCount();
+		
+		Notice_PageInfo pi = Notice_Pagination.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Notice> list = bnService.selectList(pi);
+		
+		System.out.println("listCount : " + listCount);
+		System.out.println("pi : " + pi);
+		System.out.println("list : " + list);
+		
+		mv.addObject("list",list);
+		mv.addObject("pi",pi);
+		mv.setViewName("Board-Notice-List");
+		
+		return mv;
+	}
 }

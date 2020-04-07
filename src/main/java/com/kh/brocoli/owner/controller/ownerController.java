@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,7 +26,8 @@ public class ownerController {
 
 	
 		@Autowired ownerService oService;
-	
+		
+		
 	/** 작성자 : 박주완
 	 *  작성일 : 2020-04-02
 	 *  내용  : 상품업로드
@@ -55,23 +57,22 @@ public class ownerController {
 							@RequestParam(name="file7",required=false) MultipartFile file7,
 							@RequestParam(name="file8",required=false) MultipartFile file8,
 							@RequestParam(name="file9",required=false) MultipartFile file9
-							) {
-		
-		String[] op1 = request.getParameterValues("Option_1");
-		String[] op2 = request.getParameterValues("Option_2");
-		String[] stock = request.getParameterValues("op_Stock");
+	) {
+
+		//VO변수에 추가된 가격 컬럼들을 불러와서 콤마제거.	
+		String price = p.getP_Price();
+		String sail = p.getP_Sail_Price();
+		String lprice = p.getP_Last_Price();
+		price.replaceAll(",","");
+		sail.replaceAll(",","");
+		lprice.replaceAll(",","");
+		p.setP_Price(price);
+		p.setP_Sail_Price(sail);
+		p.setP_Last_Price(lprice);
 
 		
-		System.out.println("프로덕트 : " + p);
-		
-		
+		//파일이름 저장시 앞쪽에 상품명 접두사로 추가.
 		String name = p.getP_Name();
-		
-		String sCategory = p.getP_Scategory();	//소분류 카테고리 선택시 ,(콤마) 가 추가된것을 제거.
-		
-		sCategory.replaceAll(",","");
-		
-		p.setP_Scategory(sCategory);
 		
 		int count = 0;
 		int count2 = 0;
@@ -139,12 +140,15 @@ public class ownerController {
 			}
 		}
 		
+		
+		int result = oService.productInsert(p,pf,po);
+		System.out.println("상품 옵션 : " + po);
+		System.out.println("프로덕트 : " + p);
 		System.out.println("이미지 리네임작업 후 : " + pf);
 		
-		int result = oService.productInsert(p,pf);
 		
 		if(result > 0) {
-			return "redirect:index-owner.jsp";
+				return "redirect:index-owner.jsp";
 		}else {
 			return "404-Page";
 		}

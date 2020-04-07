@@ -17,7 +17,7 @@ public class BoardDao {
 	private SqlSessionTemplate sqlSession;
 
 	public int getListCount() {
-		return sqlSession.selectOne("boardNotice-Mapper.getList");
+		return sqlSession.selectOne("boardNotice-mapper.getListCount");
 
 	}
 	
@@ -26,7 +26,7 @@ public class BoardDao {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		
-		return (ArrayList)sqlSession.selectList("boardNotice-Mapper.selectList",null, rowBounds);
+		return (ArrayList)sqlSession.selectList("boardNotice-mapper.selectList",null, rowBounds);
 		
 	}
 }

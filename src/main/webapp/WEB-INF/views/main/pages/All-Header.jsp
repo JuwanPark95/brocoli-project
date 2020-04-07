@@ -94,7 +94,7 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<c:url var="Notice" value="NoticeView.mn" />
+						<c:url var="Notice" value="bnlist.mn" />
 						<a href="${Notice }" class="flex-c-m trans-04 p-lr-25"> 공지사항 </a>
 					</div>
 					
