@@ -35,8 +35,7 @@
 	
 	<insert id="insertBoardNotice" parameterType="Notice">
 		INSERT INTO NOTICE
-		VALUES(SEQ_N_No.NEXTVAL, #{n_Writer},#{n_Title},#{n_Content},SYSDATE,DEFAULT,SYSDATE,
-				DEFAULT,#{n_Img},#{n_Img_ReName})
+		VALUES(SEQ_N_NO.NEXTVAL,#{n_Writer},#{n_Title},#{n_Content},SYSDATE,DEFAULT,SYSDATE,DEFAULT,#{n_Img},#{n_Img_ReName},#{n_Mno})
 	</insert>
 	
 	<update id="updateCount" parameterType="_int">
