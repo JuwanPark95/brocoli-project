@@ -55,6 +55,12 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.updateMember(m);
 	}
 
+	@Override
+	public int pwdCheck(String password) {
+		return mDao.pwdCheck(password);
+	}
+
+
 
 
 

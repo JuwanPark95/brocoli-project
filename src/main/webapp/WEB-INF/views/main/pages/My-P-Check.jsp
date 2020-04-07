@@ -23,56 +23,49 @@
 	<!-- 수정자 : 박주완
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
-	 <form action="p_change.mn" method="post">
+	 <form action="password_check.mn" method="post">
 	  <div id="pwdchange" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 55px;">
-			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>비밀번호 변경</strong></p>
+			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>비밀번호 확인</strong></p>
 		</div>
-			<input type="password" name="password1"
+			<input type="password" name="password"
 				class="form-control form-control "
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
-				placeholder="변경할 비밀번호 " >
-			<input type="password" name="password2"
-				class="form-control form-control"
-				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
-				placeholder="비밀번호  확인" >	
+				placeholder="비밀번호 " >
 		</div>
-		<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
-		<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+		
+<!--     	 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>  -->
 
 	
 		<div>
 			<button class="btn btn-primary btn-lg btn-block" 
 				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto;">
-				<a href="<c:url value='index.jsp'/>" style="color: #fff;">변경하기</button>
+				확인
 			<br>
 		</div>
-
+<br>
+<br>
 	
-	<script type="text/javascript"> 
+<!--  	<script type="text/javascript"> 
 	
 	$(function(){ 
-		$("#alert-success").hide(); 
 		$("#alert-danger").hide();
 		$("input").keyup(function(){ 
 			var pwd1=$("#pwd1").val(); 
-			var pwd2=$("#pwd2").val(); 
 			
-			if(pwd1 != "" || pwd2 != ""){ 
-				if(pwd1 == pwd2){ $("#alert-success").show(); 
+			if(pwd1 != ""){ ; 
 				$("#alert-danger").hide(); 
 				$("#submit").removeAttr("disabled"); 
 				
 				}else{ 
-					$("#alert-success").hide(); 
 					$("#alert-danger").show(); 
 					$("#submit").attr("disabled", "disabled"); 
 					} 
 				} 
 			}); 
 		}); 
-	</script>
+	</script>  -->
 
 	</form>
 	<%@ include file="All-Footer.jsp" %>

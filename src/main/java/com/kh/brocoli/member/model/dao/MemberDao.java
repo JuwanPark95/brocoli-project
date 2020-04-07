@@ -38,7 +38,12 @@ public class MemberDao {
 	}
 
 	public int updateMember(Member m) {
+		System.out.println(m.getmId());
 		return sqlSession.update("memberMapper.updateMember",m);
+	}
+
+	public int pwdCheck(String password) {
+		return sqlSession.selectOne("memberMapper.pwdCheck",password);
 	}
 	
 
