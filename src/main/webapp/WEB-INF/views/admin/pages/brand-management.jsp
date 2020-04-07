@@ -123,9 +123,8 @@
 				$("#brand-management").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="brand-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
+					var bId = $(this).parents().children("td").eq(2).text();	
+					location.href="brandDetail.ad?b_Name="+b_Name
 				});
 			});
 		</script>

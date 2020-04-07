@@ -86,7 +86,7 @@
                     <div class="mypage-menu-container">
                         <ul class="mypage-menu-list" style=" width: 1200px; margin: auto;" >
                             <li class="my-info" img="/brocoli/resources/mainResources/images/mypage_me1.png">
-                                <a href="<c:url value='/myInfo.mn'/>">
+                                <a href="<c:url value='/p_check.mn'/>">
                                     <h4>개인정보관리</h4>
                                     <p>
                                         "개인정보를 수정 및 관리"
