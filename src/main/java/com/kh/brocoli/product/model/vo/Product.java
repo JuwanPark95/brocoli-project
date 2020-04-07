@@ -25,7 +25,7 @@ public class Product {
 	private String p_Show_YN;
 	private int p_Brand_NO;
 	
-	private ArrayList<Product_File> pfList;
+	private Product_File pfList;
 	
 	public Product() {
 		super();
@@ -34,7 +34,7 @@ public class Product {
 	public Product(int p_No, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price,
 			String p_Bcategory, String p_Scategory, String p_Comment, String p_Order_Count, String p_Status,
 			String p_Writer, Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN,
-			int p_Brand_NO, ArrayList<Product_File> pfList) {
+			int p_Brand_NO, Product_File pfList) {
 		super();
 		this.p_No = p_No;
 		this.p_Name = p_Name;
@@ -183,11 +183,11 @@ public class Product {
 		this.p_Brand_NO = p_Brand_NO;
 	}
 
-	public ArrayList<Product_File> getPfList() {
+	public Product_File getPfList() {
 		return pfList;
 	}
 
-	public void setPfList(ArrayList<Product_File> pfList) {
+	public void setPfList(Product_File pfList) {
 		this.pfList = pfList;
 	}
 
@@ -200,10 +200,6 @@ public class Product {
 				+ p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO="
 				+ p_Brand_NO + ", pfList=" + pfList + "]";
 	}
-	
-	
-	
-	
-	
+
 	
 }

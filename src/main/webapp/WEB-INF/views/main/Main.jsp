@@ -95,7 +95,7 @@
 					<div class="block2">
 				
 						<div class="block2-pic hov-img0 label-new" data-label="New">
-							<img src="/brocoli/resources/mainResources/images/${r.pfList[0].pf_Img1 }" alt="IMG-PRODUCT">
+							<img src="/brocoli/resources/mainResources/images/${r.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
@@ -109,7 +109,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									${r.p_Last_Price }
+									${r.p_Last_Price }<b>원</b>
 								</span>
 							</div>
 
@@ -140,7 +140,7 @@
 					<div class="block2">
 				
 						<div class="block2-pic hov-img0 label-new" data-label="New">
-							<img src="/brocoli/resources/mainResources/images/${e.pfList[0].pf_Img1 }" alt="IMG-PRODUCT">
+							<img src="/brocoli/resources/mainResources/images/${e.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기

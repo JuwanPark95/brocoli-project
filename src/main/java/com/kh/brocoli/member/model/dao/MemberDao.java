@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -39,6 +40,14 @@ public class MemberDao {
 
 	public int updateMember(Member m) {
 		return sqlSession.update("memberMapper.updateMember",m);
+	}
+
+	public ArrayList<Brand> selectbList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.brandlist");
+	}
+
+	public ArrayList<Brand> selectbpList(String b_Name) {
+		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
 	
 
