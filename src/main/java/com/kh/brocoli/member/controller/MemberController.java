@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -298,11 +299,37 @@ public class MemberController {
 	 *  내용 : 개인정보수정
 	 * @return
 	 */
-//	@RequestMapping(".mn")
-//	public String () {
-//		return "";
-//	}
+	@RequestMapping("mupdate.mn")
+	public String memberUpdate(Member m,Model model,
+			   @RequestParam("post") String post,
+			   @RequestParam("address1") String addr1,
+			   @RequestParam("address2") String addr2) {
+    // 주소데이터들 ','를 구분자로 저장
+    if(!post.equals("")) {
+    m.setAddress(post+","+addr1+","+addr2);
+    }
+
+    int result = mService.updateMember(m);
+
+    if(result > 0) {
+    model.addAttribute("loginUser",m);
+    return "redirect:index.jsp";
+    }else {
+    model.addAttribute("msg","회원 정보 수정 실패!");
+    return "common/errorPage";
+   }
+}
 	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 정보수정 -> 비밀번호변경
+	 * @return
+	 */
+	@RequestMapping("p_change.mn")
+	public String p_change() {
+		return "My-P-Change";
+	}
 	
 	
 	

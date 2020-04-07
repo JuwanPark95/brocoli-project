@@ -45,6 +45,11 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.deleteMember(mId);
 	}
 
+	@Override
+	public int updateMember(Member m) {
+		return mDao.updateMember(m);
+	}
+
 
 
 }

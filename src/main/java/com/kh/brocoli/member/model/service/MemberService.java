@@ -34,11 +34,21 @@ public interface MemberService {
 	
 
 	/**
+	 * 작성자 : 김주희
 	 * 회원 탈퇴
 	 * @param mId
 	 * @return
 	 */
 	int deleteMember(String mId);
+
+
+	/**
+	 * 작성자 : 김주희
+	 * 회원 수정
+	 * @param m
+	 * @return
+	 */
+	int updateMember(Member m);
 
 
 

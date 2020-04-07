@@ -33,6 +33,10 @@ public class MemberDao {
 		return sqlSession.delete("memberMapper.deleteMember",mId);
 	}
 
+	public int updateMember(Member m) {
+		return sqlSession.update("memberMapper.updateMember",m);
+	}
+
 }
 
 

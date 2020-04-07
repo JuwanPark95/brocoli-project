@@ -37,4 +37,17 @@
 		AND DEL_FLAG_YN='N'
 		
 		</select>
+		
+		<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER
+		SET ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
+		,UPDATE_DATE=SYSDATE
+		WHERE ID=#{mId}
+	    </update>
+	
+	    <update id="deleteMember" parameterType="string">
+		UPDATE MEMBER
+		SET DEL_FLAG_YN='Y'
+		WHERE ID=#{mId}
+	    </update>
 </mapper>
