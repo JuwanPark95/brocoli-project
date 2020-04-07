@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 public class Brand {
-		private String brand_NO;
+		private int brand_NO;
 		private String b_Name;
 		private String b_Logo;
 		private String b_Logo_ReName;
@@ -32,7 +32,7 @@ public class Brand {
 			super();
 		}
 
-		public Brand(String brand_NO, String b_Name, String b_Logo, String b_Logo_ReName, String b_Business_NO,
+		public Brand(int brand_NO, String b_Name, String b_Logo, String b_Logo_ReName, String b_Business_NO,
 				String b_Status, Date b_Enter_Date, Date b_Close_Date, String b_Close_Content, String b_Modify_ID,
 				Date b_Modify_Date, String b_Owner1_ID, String b_Owner2_ID, String b_Owner3_ID, String b_Phone,
 				String b_Address, String b_Owner_Name, String b_Comment, String b_Email1, String b_Email2,
@@ -62,11 +62,11 @@ public class Brand {
 			this.pfList = pfList;
 		}
 
-		public String getBrand_NO() {
+		public int getBrand_NO() {
 			return brand_NO;
 		}
 
-		public void setBrand_NO(String brand_NO) {
+		public void setBrand_NO(int brand_NO) {
 			this.brand_NO = brand_NO;
 		}
 
