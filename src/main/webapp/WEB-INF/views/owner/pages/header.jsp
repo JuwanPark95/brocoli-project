@@ -185,7 +185,7 @@
                                  <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<c:url value='product-insert.ow'/>">상품업로드</a>
+                                            <a class="nav-link" href="${productInsertMenu.ow}">상품업로드</a>
                                         </li>
                                         <li class="nav-item">
 			                                <c:url var="BRAND_NO" value="productList.ow">

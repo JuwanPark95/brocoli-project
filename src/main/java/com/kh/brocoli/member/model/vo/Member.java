@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Member {
+
 	private String mId;
 	private String pwd;
 	private String mName;

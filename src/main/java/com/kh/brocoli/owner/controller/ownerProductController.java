@@ -39,6 +39,11 @@ public class ownerProductController {
 		return "redirect:index-owner.jsp";
 	}
 	
+	@RequestMapping("productInsertMenu.ow")
+	public String PinsertMenu() {
+		return "product-insert";
+	}
+	
 	/** 작성자 : 박주완
 	 *  작성일 : 2020-04-02
 	 *  내용  : 상품등록
@@ -207,7 +212,7 @@ public class ownerProductController {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		
-		String renameDimageName = name + "_" + count2 + "_" +  sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
+		String renameDimageName = name + "_Detail_" + count2 + "_" +  sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
 									originDimageName.substring(originDimageName.lastIndexOf(".")+1); 
 		
 		String renamePath = folder + "\\" + renameDimageName;
@@ -233,7 +238,6 @@ public class ownerProductController {
 		mv.setViewName("product-management");
 		
 		return mv;
-		
 	};
 	
 	

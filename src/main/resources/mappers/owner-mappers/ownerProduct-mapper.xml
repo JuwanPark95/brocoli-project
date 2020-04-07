@@ -10,7 +10,7 @@
 	<!-- 상품등록정보 -->
 	
  	<resultMap  type="Product" id="productResultSet">
-		<id property="p_No" column="P_NO"/>
+		<id property="p_NO" column="P_NO"/>
 		
 		<result property="p_Name" column="P_NAME"/>
 		<result property="p_Price" column="P_PRICE"/>
@@ -98,11 +98,11 @@
 	
 	<!-- 상품정보등록 -->
 	<insert id="insertProduct" parameterType="Product">
-  		<selectKey keyProperty="p_No" resultType="int" order="BEFORE">
+  		<selectKey keyProperty="p_NO" resultType="int" order="BEFORE">
 		    SELECT SEQ_P_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO PRODUCT
-		VALUES(#{p_No},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
+		VALUES(#{p_NO},#{p_Name},#{p_Price},#{p_Sail_Price},#{p_Last_Price},#{p_Bcategory},#{p_Scategory},
 				#{p_Comment},0,DEFAULT,#{p_Writer},SYSDATE,#{p_Modify_Id, jdbcType=VARCHAR},#{p_Modify_Date, jdbcType=VARCHAR},DEFAULT,#{p_Brand_NO})
 	</insert>	
 	
