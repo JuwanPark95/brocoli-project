@@ -28,10 +28,19 @@ public class MemberDao {
 	public ArrayList<Product> selectpList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.ranklist");
 	}
+	
+	public ArrayList<Product> selectEList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.eventlist");
+	}
 
 	public int deleteMember(String mId) {
 		return sqlSession.delete("memberMapper.deleteMember",mId);
 	}
+
+	public int updateMember(Member m) {
+		return sqlSession.update("memberMapper.updateMember",m);
+	}
+	
 
 }
 

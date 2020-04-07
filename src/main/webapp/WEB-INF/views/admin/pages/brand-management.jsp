@@ -78,17 +78,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="b" items="${BrandList}" varStatus="bl">
                                             <tr>
-                                                <td>1</td>
-                                                <td><img src="/brocoli/resources/adminResources/images/nike.PNG" width="50" height="50"></td>
-                                                <td>NIKE</td>
-                                                <td>123456789</td>
-                                                <td>나대표</td>
-                                                <td>서울시 강남구 역삼1동</td>
-                                                <td>010-1212-2323</td>
-                                                <td>1989/01/01</td>
-                                                <td>Y</td>
+                                                <td>${bl.count }</td>
+                                                <td><img src="/brocoli/resources/adminResources/images/${b.b_Logo}" width="50" height="50"></td>
+                                                <td>${b.b_Name}</td>
+                                                <td>${b.b_Business_NO}</td>
+                                                <td>${b.b_Owner_Name }</td>
+                                                <td>${b.b_Address }</td>
+                                                <td>${b.b_Phone }</td>
+                                                <td>${b.b_Enter_Date }</td>
+                                                <td>${b.b_Status }</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>

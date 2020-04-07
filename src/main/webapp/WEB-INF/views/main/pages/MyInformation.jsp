@@ -69,23 +69,13 @@
 														</div>
 													</th>
 													<td>
-														<div>
-															<input type="password" name="pwd1" id="pwd1" class="MS_input_txt w180" value="" size="15" maxlength="20" > 
-															   <span class="fs_11 fc_gray8 fs_11 fc_gray8 margin_l10">
-																- 영문 대소문자/숫자/특수문자를 혼용하여 2종류 10~16자 또는 3종류 8~16자
-															   </span>
-														</div>
-													</td>
-												</tr>
-												<tr>
-													<th>
-														<div>
-															<span class="fc_brown">*</span> 비밀번호 확인
-														</div>
-													</th>
-													<td>
-														<div>
-															<input type="password" name="pwd2" id="pwd2" class="MS_input_txt w180" value="" size="15" maxlength="20">
+														<div style="    display: inline-flex;">
+															<input type="password" name="pwd1" id="pwd1" class="MS_input_txt w180" value="${loginUser.pwd }" size="15" maxlength="20" style="margin-left: -376px;" >
+															 &nbsp;&nbsp;&nbsp;
+															<div class="button_base b01_simple_rollover" style="padding-top:0px; height: 25px; border-radius: 3px;">
+                                                              <a href="<c:url value='p_change.mn'/>" style="color: #fff;"> 변경하기
+                                                              </a>
+                                                            </div>
 														</div>
 													</td>
 												</tr>

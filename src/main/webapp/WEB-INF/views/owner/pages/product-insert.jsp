@@ -46,6 +46,15 @@
 	    background-color: #ff407b;
 	    border-color: #ff407b;
     }
+   
+    .img-Dtail-Area::webkit-scrollbar{
+    	display: none;
+    }
+    .img-Dtail-Area{
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    
     </style>
 </head>
 
@@ -116,37 +125,43 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품 이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                            	<div id="titleImgArea" style="float: left;">
-	                                            	<img id="titleImg" src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 161px; height: 200px;">
+                                            	<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            </div>
-	                                            <div id="contentImgArea1" style="float: left;">
-	                                            	<img id="contentImg1" src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 160px; height: 200px;">
+	                                            <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<img id="contentImg1" src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px; ">
 	                                            </div>
-	                                            <div id="contentImgArea2" style="float: left;">
-	                                            	<img id="contentImg2"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 160px; height: 200px;">
+	                                            <div id="contentImgArea2"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<img id="contentImg2"  src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            </div>
-	                                            <div id="contentImgArea3" style="float: left;">
-	                                           		<img id="contentImg3"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 160px; height: 200px;">
+	                                            <div id="contentImgArea3"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                           		<img id="contentImg3"  src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            </div>
-	                                            <div id="contentImgArea4" style="float: left;">
-	                                            	<img id="contentImg4"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 160px; height: 200px;">
+	                                            <div id="contentImgArea4" style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<img id="contentImg4"  src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            </div>
-	                                            <div id="contentImgArea5" style="float: left;">
-	                                            	<img id="contentImg5"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 160px; height: 200px;">
+	                                            <div id="contentImgArea5"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<img id="contentImg5"  src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            </div>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품설명 이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                            	<div id="contentImgArea6" style="float: left;">
-	                                            	<img id="contentImg6"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 155px; height: 205px;">
+                                            	<div id="contentImgArea6" style="float: left; width: 190px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<div class="img-Dtail-Area" style="width: 180px; height: 200px;">
+	                                            		<img id="contentImg6"  src="http://via.placeholder.com/1300x2000"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px;">
+	                                            	</div>
 	                                            </div>
-	                                            <div id="contentImgArea7" style="float: left;">
-	                                            	<img id="contentImg7"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 155px; height: 205px;">
+	                                            <div id="contentImgArea7" style="float: left; width: 190px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<div class="img-Dtail-Area" style="width: 180px; height: 200px;">
+	                                            		<img id="contentImg7"  src="http://via.placeholder.com/1300x2000"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px;">
+	                                            	</div>
 	                                            </div>
-	                                            <div id="contentImgArea8" style="float: left;">
-	                                            	<img id="contentImg8"  src="http://via.placeholder.com/160x200" class="img-thumbnail mr-3" alt="Responsive image" style="width: 155px; height: 205px;">
+	                                            <div id="contentImgArea8" style="float: left; width: 190px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                                            	<div class="img-Dtail-Area" style="width: 180px; height: 200px;">
+	                                            		<img id="contentImg8"  src="http://via.placeholder.com/1300x2000"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px;">
+	                                            	</div>
 	                                            </div>
                                             </div>
                                         </div>
@@ -168,20 +183,20 @@
 	                                        <div class="form-group row">
 	                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">등록가격</label>
 	                                            <div class="col-12 col-sm-8 col-lg-6">
-	                                                <input id="p_Price" name="p_Price" type="number" min="0" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control" onkeyup="resultPrice()">
+	                                                <input id="p_Price" name="p_Price" type="text" min="0" data-parsley-min="6" placeholder="판매금액으로 표시됩니다." class="form-control" onkeyup="resultPrice()">
 	                                            </div>
 	                                        </div>
 	                                        <div class="form-group row">
 	                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">할인가격</label>
 	                                            <div class="col-12 col-sm-8 col-lg-6">
-	                                                <input id="p_Sail_Price" name="p_Sail_Price" type="number" min="0" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control" onkeyup="resultPrice()">
+	                                                <input id="p_Sail_Price" name="p_Sail_Price" type="text" min="0" data-parsley-max="6" placeholder="할인금액으로 표시됩니다. (선택사항)" class="form-control" onkeyup="resultPrice()">
 	                                            </div>
 	                                        </div>
 	
 	                                        <div class="form-group row">
 	                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">최종판매가격</label>
 	                                            <div class="col-12 col-sm-8 col-lg-6">
-	                                                <input readonly="readonly" id=p_Last_Price name="p_Last_Price" type="number" min="0" max="10000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다. (등록가격-할인가격 = 최종가격)" class="form-control">
+	                                                <input readonly="readonly" id=p_Last_Price name="p_Last_Price" type="text" min="0" max="100000000" placeholder="할인 적용후 금액으로 표시되며 실제판매되는 금액입니다. (등록가격-할인가격 = 최종가격)" class="form-control">
 	                                            </div>
 	                                        </div>
                                        
@@ -189,7 +204,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">카테고리 - 대분류</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-												<select id="big-category" name="p_Bcategory" class="btn btn-secondary dropdown-toggle" style="height: 38px;background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+												<select id="big-category"  class="btn btn-secondary dropdown-toggle" style="height: 38px;background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 													<option value="">카테고리</option>
 													<option value="상의">상의</option>
 													<option value="아우터">아우터</option>
@@ -209,7 +224,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">카테고리 - 소분류</label>
                                             <div class="col-sm-4 col-lg-3 mb-3 mb-sm-0">
-													<select id="small-category-A" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-A"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="티셔츠">- 티셔츠</option>
 														<option value="셔츠">- 셔츠</option>
@@ -218,7 +233,7 @@
 														<option value="니트/스웨터/가디건">- 니트/스웨터/가디건</option>
 														<option value="기타상의">- 기타상의</option>
 													</select>
-													<select id="small-category-B" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-B"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="블루종/MA-1">- 블루종/MA-1</option>
 														<option value="레더/라이더스재킷">- 레더/라이더스재킷</option>
@@ -230,14 +245,14 @@
 														<option value="헤비아우터">- 헤비아우터</option>
 														<option value="기타아우터">- 기타아우터</option>
 													</select>
-													<select id="small-category-C" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-C"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="미니원피스">- 미니원피스</option>
 														<option value="미디원피스">- 미디원피스</option>
 														<option value="맥시원피스">- 맥시원피스</option>
 														<option value="점프수트">- 점프수트</option>
 													</select>
-													<select id="small-category-D" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-D"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="데님팬츠">- 데님팬츠</option>
 														<option value="코튼팬츠">- 코튼팬츠</option>
@@ -247,13 +262,13 @@
 														<option value="레깅스">- 레깅스</option>
 														<option value="기타">- 기타</option>
 													</select>
-													<select id="small-category-E" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-E"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="미니스커트">- 미니스커트</option>
 														<option value="미디스커트">- 미디스커트</option>
 														<option value="롱스커트">- 롱스커트</option>
 													</select>
-													<select id="small-category-F" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-F"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="백팩">- 백팩</option>
 														<option value="메신저/크로스백">- 메신저/크로스백</option>
@@ -262,7 +277,7 @@
 														<option value="웨이스트백">- 웨이스트백</option>
 														<option value="기타가방">- 기타가방</option>
 													</select>
-													<select id="small-category-G" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-G"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="스니커즈">- 스니커즈</option>
 														<option value="구두">- 구두</option>
@@ -272,7 +287,7 @@
 														<option value="로퍼">- 로퍼</option>
 														<option value="기타신발">- 기타신발</option>
 													</select>
-													<select id="small-category-H" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-H"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="캡/야구모자">- 캡/야구모자</option>
 														<option value="헌팅/베레">- 헌팅/베레</option>
@@ -280,7 +295,7 @@
 														<option value="버킷/사파리">- 버킷/사파리</option>
 														<option value="기타모자">- 기타모자</option>
 													</select>
-													<select id="small-category-I" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-I"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="안경">- 안경</option>
 														<option value="마스크">- 마스크</option>
@@ -297,18 +312,18 @@
 														<option value="헤어악세서리">- 헤어악세서리</option>
 														<option value="기타">- 기타</option>
 													</select>
-													<select id="small-category-J" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-J"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="양말">- 양말</option>
 														<option value="속옷">- 속옷</option>
 														<option value="스타킹">- 스타킹</option>
 														<option value="홈웨어">- 홈웨어</option>
 													</select>
-													<select id="small-category-Z" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-Z"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="기타전체">- 기타전체</option>
 													</select>
-													<select id="small-category-" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="A">- </option>
 														<option value="B">- </option>
@@ -323,7 +338,7 @@
 														<option value="K">- </option>
 														<option value="">- </option>
 													</select>
-													<select id="small-category-" name="p_Scategory" class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
+													<select id="small-category-"   class="btn btn-secondary dropdown-toggle p_Scategory" style="height: 38px; width: 350px; background-color: #e6e6f2; color: black; border-color: #e6e6f2;">
 														<option value="">카테고리</option>
 														<option value="A">- </option>
 														<option value="B">- </option>
@@ -338,8 +353,6 @@
 														<option value="K">- </option>
 														<option value="">- </option>
 													</select>
-												
-												
                                             </div>
 
                                         </div>
@@ -399,7 +412,7 @@
 								                                         </tbody>
 						                                        	</table >
 						                                        </div>
-						                                        <a class="btn btn-secondary" onclick="productOptionAdd()" style="color: #FFFFFF;">옵션리스트에 등록</a>
+						                                        <a style="color: #FFFFFF;" class="btn btn-secondary" onclick="productOptionAdd()">옵션리스트에 등록</a>
 						                                    </div>
 						                                </div>
 						                            </div>
@@ -415,16 +428,18 @@
 					                                        <thead style="text-align: center;">
 					                                            <tr>
 		                                                          <th scope="col" style="width: 15%;">번호</th>
-														          <th scope="col" style="width: 20%;">옵션1</th>
-														          <th scope="col" style="width: 20%;">옵션2</th>
-														          <th scope="col">재고</th>
+														          <th scope="col" style="width: 25%;">옵션1</th>
+														          <th scope="col" style="width: 25%;">옵션2</th>
+														          <th scope="col" style="width: 20%;">재고</th>
 														          <th scope="col">비고</th>
 					                                            </tr>
 					                                        </thead>
 					                                        <tbody  id="product-add-Option" style="text-align: center;">
-					                                           
 					                                        </tbody>
 					                                    </table>
+					                                    	<hr>
+					                                        <a style="color: #FFFFFF; float: right;" onclick="allCloseBtn()" class="btn btn-danger">옵션전체삭제</a>
+					                                        <a style="color: #FFFFFF; float: right; margin-right: 10px;" onclick="closeBtn()" class="btn btn-danger">삭제</a>
 					                                </div>
 					                            </div>
 					                        </div>
@@ -439,7 +454,9 @@
                                                 <button type="submit" class="btn btn-space btn-primary">등록</button>
                                                 <button class="btn btn-space btn-secondary">취소</button>
                                             </div>
-                                		<input readonly="readonly" id="p_Brand_NO" name="p_Brand_NO"  style="border: noen; background: none; z-index: -10;" value="${loginUser.brand_NO }"/>
+                                            <input readonly="readonly" type="text" id="selectScategory" name="p_Scategory" style="border: none; background: none; color: #FFFFFF; z-index: -9; float: left;"/>
+                                            <input readonly="readonly" type="text" id="selectBcategory" name="p_Bcategory" style="border: none; background: none; color: #FFFFFF; z-index: -9; float: left;"/>
+                                		<input readonly="readonly" id="p_Brand_NO" name="p_Brand_NO" type="number" style="border: noen; background: none; z-index: -10;" value="${loginUser.brand_NO }"/>
                                         </div>
                                     </form>
                                 </div>
@@ -468,38 +485,62 @@
         작성일 : 2020-04-03
         내용: 옵션리스트 등록/삭제 스크립트 -->
     <script>
+    var count = 0;
 	    function productOptionAdd(){
 	        var option1 = $('#Option1').val();
 	        var option2 = $('#Option2').val();
 	        var stock = $('#stock').val();
-	        var count = 0;
+	        
 	        
 		    $('#product-add-Option').append('<tr>'+
 		            '<th scope="row">'+count+'</th>'+
-		            '<td id="Option_1" name="Option_1">'+option1+'</td>'+
-		            '<td id="Option_2" name="Option_2">'+option2+'</td>'+
-		            '<td id="op_Stock" name="op_Stock">'+stock+'</td>'+
-		            '<td><button onclick="closeBtn(this)" class="btn btn-danger">삭제</button></td>'+
+		            '<td id="Option_1_'+count+'" ><input name="Product_OptionVOList['+count+'].Option_1" type="text" class="form-control" value="'+option1+'"/></td>'+
+		            '<td id="Option_2" ><input name="Product_OptionVOList['+count+'].Option_2" type="text" class="form-control" value="'+option2+'"/></td>'+
+		            '<td id="op_Stock" ><input id="checkStock" name="Product_OptionVOList['+count+'].op_Stock" type="number" class="form-control" value="'+stock+'" /></td>'+
+		            '<td></td>'+
 		            '</tr>');
 		    
 		 	count++;   
 	    }
 		            
 	    
-	    function closeBtn(en){
-	          $(en).parents('tr').remove('tr');
+	    function closeBtn(){
+	          $('#Option_1_'+count+'').parents('tr').remove('tr');
+	          if(count != 0){
+	          count--;
+	          }
 	    }
+	    
+	    function allCloseBtn(){
+	          $('#Option_2').parents('tbody').empty('tbody');
+	          count = 0;
+	    }
+	    
     </script>
     
 <!--    작성자 : 박주완
-        작성일 : 2020-04-03
-        내용: 할인가격 자동 계산 스크립트 -->
+        작성일 : 2020-04-06
+        내용: 할인가격 자동 계산, 3자리수 콤마 스크립트 -->
     <script>
 	    function resultPrice() {
 	    	var price = document.getElementById("p_Price").value;	
-	    	var sailPrice = document.getElementById("p_Sail_Price").value;	
+	    	var sailPrice = document.getElementById("p_Sail_Price").value;
+	    	price = price.replace(",","");
+	    	sailPrice = sailPrice.replace(",","");
 	    	document.getElementById("p_Last_Price").value = parseInt(price) - parseInt(sailPrice);
+	    	var LastPrice = document.getElementById("p_Last_Price").value;
+	    	
+	    	price = price.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
+	    	price = price.replace(/,/g,'');          // ,값 공백처리
+	    	sailPrice = sailPrice.replace(/[^0-9]/g,'');
+	    	sailPrice = sailPrice.replace(/,/g,'');     
+	    	LastPrice = LastPrice.replace(/[^0-9]/g,'');
+	    	LastPrice = LastPrice.replace(/,/g,'');     
+	    	$("#p_Price").val(price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")); 		// 정규식을 이용해서 3자리 마다 , 추가 
+	    	$("#p_Sail_Price").val(sailPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+	    	$("#p_Last_Price").val(LastPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	    }
+
     </script>
     
     <script>
@@ -737,6 +778,88 @@
             jQuery('#small-category-Z').hide();
         }
     });
+    
+    
+    jQuery('#big-category').change(function() {
+        var state = jQuery('#big-category option:selected').val();
+            jQuery('#selectBcategory').val(state);
+    });
+    
+    jQuery('#small-category-A').change(function() {
+        var state = jQuery('#small-category-A option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-B').change(function() {
+        var state = jQuery('#small-category-B option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-C').change(function() {
+        var state = jQuery('#small-category-C option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-D').change(function() {
+        var state = jQuery('#small-category-D option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-E').change(function() {
+        var state = jQuery('#small-category-E option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-F').change(function() {
+        var state = jQuery('#small-category-F option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-G').change(function() {
+        var state = jQuery('#small-category-G option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-H').change(function() {
+        var state = jQuery('#small-category-H option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-I').change(function() {
+        var state = jQuery('#small-category-I option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-J').change(function() {
+        var state = jQuery('#small-category-J option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-K').change(function() {
+        var state = jQuery('#small-category-K option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-L').change(function() {
+        var state = jQuery('#small-category-L option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-N').change(function() {
+        var state = jQuery('#small-category-N option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-O').change(function() {
+        var state = jQuery('#small-category-O option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-P').change(function() {
+        var state = jQuery('#small-category-P option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-Q').change(function() {
+        var state = jQuery('#small-category-Q option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-R').change(function() {
+        var state = jQuery('#small-category-R option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    jQuery('#small-category-Z').change(function() {
+        var state = jQuery('#small-category-Z option:selected').val();
+            jQuery('#selectScategory').val(state);
+    });
+    
+    
+    
     </script>
 
 <!--    작성자 : 박주완
@@ -938,15 +1061,19 @@
 		  return false; 
 		} */
 	
-/* 	    //재고 공백 확인 
-	  	if($("#stock").val() != ""){
-		}else{
-			  alert("등록재고를 입력해 주세요."); 
-			  $("#stock").focus(); 
-			  return false; 			
-		} */
+	    //재고 공백 확인 
+	  	if($("#checkStock").val() == null){
+	  		alert("등록재고를 입력해 주세요."); 
+			  $("#checkStock").focus(); 
+			  return false; 
+		}else if($("#checkStock").val() == ""){
+			alert("등록재고를 입력해 주세요."); 
+			  $("#checkStock").focus(); 
+			  return false; 
+		}
     }
     </script>
+
     
 </body>
  

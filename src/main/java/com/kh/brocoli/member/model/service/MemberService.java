@@ -32,13 +32,31 @@ public interface MemberService {
 	ArrayList<Product> selectpList();
 
 	
+	
+	/**
+	 * 작성자 : 윤석훈
+	 * 메인 페이지 이벤트
+	 * @return
+	 */
+	ArrayList<Product> selectEList();
 
 	/**
+	 * 작성자 : 김주희
 	 * 회원 탈퇴
 	 * @param mId
 	 * @return
 	 */
 	int deleteMember(String mId);
+
+
+	/**
+	 * 작성자 : 김주희
+	 * 회원 수정
+	 * @param m
+	 * @return
+	 */
+	int updateMember(Member m);
+
 
 
 

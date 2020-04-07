@@ -37,5 +37,27 @@
 			FROM MEMBER
 			WHERE MID = #{mId}
 	</select>
+	
+	<update id="updateMemberUpdate" parameterType="Member">
+			UPDATE MEMBER
+			SET MID=#{mId},PWD=#{pwd},MNAME=#{mName},EMAIL=#{email},PHONE=#{phone},
+				ADDRESS=#{address},GENDER=#{gender},BIRTHDAY=#{birthDay},MGRANT=#{mGrant},
+				MPOINT=#{mPoint},ORDER_COUNT=#{order_Count},ORDER_PRICE=#{order_Price},REPORT_YN=#{report_YN},
+				BLOCK_YN=#{block_YN},BLOCK_CONTENT=#{block_Content},DEL_FLAG_YN=#{del_Flag_YN},DEL_DATE=#{del_Date},
+				ENROLLDATE=#{enrollDate},BRAND=#{brand},BRAND_NO=#{brand_NO}
+			WHERE MID=#{mId}
+	</update>
+	
+	<update id="deleteMemberDelete" parameterType="Member">
+			UPDATE MEMBER
+			SET DEL_FLAG_YN='Y'
+			WHERE MID=#{mId}
+	</update>
+	
+	<select id="selectOwnerDetail" parameterType="Member" resultMap="memberResultSet">
+			SELECT *
+			FROM MEMBER
+			WHERE MID = #{mId}
+	</select>
 
 </mapper>
