@@ -24,5 +24,21 @@ public class BoardServiceImpl implements BoardService{
 	public ArrayList<Notice> selectList(Notice_PageInfo pi) {
 		return bnDao.selectList(pi);
 	}
+	
+	@Override
+	public int insertBoardNotice(Notice n) {
+		return bnDao.insertBoardNotice(n);
+	}
+
+	@Override
+	public Notice selectBoardNotice(int n_No) {
+		
+		int result = bnDao.updateCount(n_No);
+		if(result > 0) {
+			return bnDao.selectBoardNotice(n_No);
+		}else {
+			return null;
+		}		
+	}
 
 }

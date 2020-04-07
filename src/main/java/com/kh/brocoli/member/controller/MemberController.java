@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -198,12 +200,34 @@ public class MemberController {
 	}
 	
 	/**
-	 * 브랜드 페이지로 이동
+	 * 브랜드 이름 페이지로 이동
 	 * @return
 	 */
 	@RequestMapping("brandView.mn")
-	public String BrandView() {
-		return "Main-Brand";
+	public ModelAndView BrandView(Brand br,ModelAndView mv) {
+		
+		ArrayList<Brand> blist = mService.selectbList();
+		mv.addObject("BrandList",blist);
+		mv.setViewName("Main-Brand");
+		return mv;
+	}
+	
+	/**
+	 * 브랜드 상품 페이지로 이동
+	 * 작성자 : 윤석훈
+	 * @param br
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("bproduct.mn")
+	public ModelAndView BrandProductView(Brand br,ModelAndView mv,String b_Name) {
+		
+		ArrayList<Brand> bplist = mService.selectbpList(b_Name);
+		mv.addObject("bProductList",bplist);
+		mv.setViewName("Main-BrandProduct");
+		System.out.println(b_Name + "123213");
+		System.out.println(bplist + "00000000000");
+		return mv;
 	}
 	
 	/**
@@ -303,11 +327,38 @@ public class MemberController {
 	 *  내용 : 개인정보수정
 	 * @return
 	 */
-//	@RequestMapping(".mn")
-//	public String () {
-//		return "";
-//	}
+	@RequestMapping("mupdate.mn")
+	public String memberUpdate(Member m,Model model,
+			   @RequestParam("post") String post,
+			   @RequestParam("address1") String addr1,
+			   @RequestParam("address2") String addr2) {
+    // 주소데이터들 ','를 구분자로 저장
+    if(!post.equals("")) {
+    m.setAddress(post+","+addr1+","+addr2);
+    }
+
+    int result = mService.updateMember(m);
+
+    if(result > 0) {
+    model.addAttribute("loginUser",m);
+    return "redirect:index.jsp";
+    }else {
+    model.addAttribute("msg","회원 정보 수정 실패!");
+    return "common/errorPage";
+   }
+}
 	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 정보수정 -> 비밀번호변경
+	 * @return
+	 */
+	@RequestMapping("p_change.mn")
+	public String p_change() {
+		return "My-P-Change";
+
+	}
 	
 	
 	

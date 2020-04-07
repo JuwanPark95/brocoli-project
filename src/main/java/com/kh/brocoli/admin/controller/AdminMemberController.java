@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -59,27 +60,63 @@ public class AdminMemberController {
 	
 	/**
 	 * 작성자 : 신은지
-	 * 회원 정보 수정
+	 * 3.회원 정보 수정
 	 * @param mv
 	 * @param m
-	 * @param switch1
-	 * @param switch2
-	 * @param switch3
 	 * @return
 	 */
 	@RequestMapping("memberUpdate.ad")
-	public ModelAndView memberUpdate (ModelAndView mv, Member m, 
-									  @RequestParam("switch1") String switch1, 
-									  @RequestParam("switch2") String switch2) {
+	public ModelAndView memberUpdate (ModelAndView mv, Member m) {
 		
-		System.out.println("나오삼"+ m);
-		System.out.println("나오삼"+ switch1);
-		System.out.println("나오삼"+ switch2);
+		System.out.println("??"+m);
+		int result = AMService.memberUpdate(m);
 		
-		Member mUpdate = AMService.memberUpdate(m, switch1, switch2);
-		
-		return mv;
+		if(result>0) {
+			mv.setViewName("redirect:memberManagement.ad");
+		}
+		return mv;	
 	}
 	
+	/**
+	 * 작성자 : 신은지
+	 * 4.회원 정보 삭제
+	 * @param model
+	 * @param mId
+	 * @return
+	 */
+	@RequestMapping("memberDelete.ad")
+	public String memberDelete(Model model,@RequestParam("mId") String mId) {
+		int result = AMService.memberDelete(mId);
+		
+		if(result>0) {
+		return "redirect:memberManagement.ad";
+		}
+		else {
+			model.addAttribute("msg","회원 삭제 실패");
+			return "common/errorPage";
+		}
+	}
+	
+//	/**
+//	 * 작성자: 신은지
+//	 * 5.회원 상세보기
+//	 * @param mv
+//	 * @param mId
+//	 * @return
+//	 */
+//	@RequestMapping("ownerDetail.ad")
+//	public ModelAndView ownerManagementDetail (ModelAndView mv,
+//										  @RequestParam("mId") String mId) {
+//		
+//		Member m = AMService.selectOwnerDetail(mId);
+//		
+//		if(m != null) {
+//			mv.addObject("m",m);	
+//			mv.setViewName("member-owner-detail");
+//		}
+//		
+//		return mv;
+//	}
+//	
 	
 }

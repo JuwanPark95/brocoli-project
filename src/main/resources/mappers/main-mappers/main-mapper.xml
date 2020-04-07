@@ -37,7 +37,7 @@
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
-		<collection property="pfList" javaType="java.util.ArrayList" resultMap="productFileResultSet"/>
+		<collection property="pfList" resultMap="productFileResultSet"/>
 	</resultMap>
 	
 	<resultMap type="Product_File" id="productFileResultSet">
@@ -63,6 +63,33 @@
 		<result property="pf_P_NO" column="PF_P_NO"/>
 	</resultMap>
 	
+	<resultMap type="Brand" id="brandResultSet">
+		<id property="brand_NO" column="BRAND_NO"/>
+		<result property="b_Name" column="B_NAME"/>
+		<result property="b_Logo" column="B_LOGO"/>
+		<result property="b_Logo_Rename" column="B_LOGO_RENAME"/>
+		<result property="b_Business_NO" column="B_BUSINESS_NO"/>
+		<result property="b_Status" column="B_STATUS"/>
+		<result property="b_Enter_Date" column="B_ENTER_DATE"/>
+		<result property="b_Close_Date" column="B_CLOSE_DATE"/>
+		<result property="b_Close_Content" column="B_CLOSE_CONTENT"/>
+		<result property="b_Modify_ID" column="B_MODIFY_ID"/>
+		<result property="b_Modify_Date" column="B_MODIFY_DATE"/>
+		<result property="b_Owner1_ID" column="B_OWNER1_ID"/>
+		<result property="b_Owner2_ID" column="B_OWNER2_ID"/>
+		<result property="b_Owner3_ID" column="B_OWNER3_ID"/>
+		<result property="b_Phone" column="B_PHONE"/>
+		<result property="b_Address" column="B_ADDRESS"/>
+		<result property="b_Owner_Name" column="B_OWNER_NAME"/>
+		<result property="b_Comment" column="B_COMMENT"/>
+		<result property="b_Email1" column="B_EMAIL1"/>
+		<result property="b_Email2" column="B_EMAIL2"/>
+		<result property="b_Email3" column="B_EMAIL3"/>
+		
+		
+		<collection property="pfList" resultMap="productResultSet"/>
+	</resultMap>
+	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
 	FROM AUCTION
@@ -71,18 +98,39 @@
 	</select>
 	
 	<select id="ranklist" resultMap="productResultSet">
+	<![CDATA[
    SELECT *
-    FROM PRODUCT P
+    FROM (SELECT *
+          FROM PRODUCT
+          ORDER BY P_ORDER_COUNT DESC)P
     JOIN PRODUCT_FILE PF
-    ON P.P_NO =  PF.PF_NO
-    ORDER BY P.P_ORDER_COUNT DESC
+    ON P.P_NO =  PF.PF_P_NO
+   WHERE ROWNUM <=20
+   ]]>
 	</select>
 	
 	<select id="eventlist" resultMap="productResultSet">
 	SELECT *
     FROM PRODUCT P
     JOIN PRODUCT_FILE PF
-    ON P.P_NO = PF.PF_NO
+    ON P.P_NO = PF.PF_P_NO
     ORDER BY P.P_SAIL_PRICE DESC
+	</select>
+	
+	<select id="brandlist" resultMap="brandResultSet">
+	SELECT *
+	FROM BRAND
+	ORDER BY B_NAME ASC
+	
+	</select>
+	
+	<select id="bproductlist" resultMap="brandResultSet">
+	SELECT * FROM BRAND B
+	JOIN PRODUCT P
+	ON B.BRAND_NO = p.p_brand_no
+	JOIN PRODUCT_FILE PF
+	ON P.P_NO = PF.PF_P_NO
+	WHERE P.P_SHOW_YN ='Y'
+	AND B.B_NAME= #{b_Name}
 	</select>
 </mapper>

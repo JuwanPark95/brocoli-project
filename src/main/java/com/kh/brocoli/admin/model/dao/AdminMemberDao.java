@@ -33,6 +33,35 @@ public class AdminMemberDao {
 		return sqlSession.selectOne("AdminMember.selectMemberDetail",mId);
 	}
 
+	/**
+	 * 작성자 : 신은지
+	 * 3. 회원 정보 수정 dao
+	 * @param m
+	 * @return
+	 */
+	public int updateMemberUpdate(Member m) {
+		return sqlSession.update("AdminMember.updateMemberUpdate",m);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 회원 정보 삭제 dao
+	 * @param mId
+	 * @return
+	 */
+	public int deleteMemberDelete(String mId) {
+		return sqlSession.delete("AdminMember.deleteMemberDelete",mId);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 5. owner 상세보기 dao
+	 * @param mId
+	 * @return
+	 */
+	public Member selectOwnerDetail(String mId) {
+		return sqlSession.selectOne("AdminMember.selectOwnerDetail",mId);
+	}
 
 	
 }

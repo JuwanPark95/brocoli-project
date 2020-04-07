@@ -137,51 +137,51 @@
                                                 <input type="text" class="form-control" name="del_Date" value="${m.del_Date}">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">브랜드</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input type="text" class="form-control" name="mPoint" value="${m.brand}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">브랜드 NO</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input type="text" class="form-control" name="order_Count" value="${m.brand_NO}">
+                                            </div>
+                                        </div>
                                        <div class="form-group row" style="padding-bottom:3px;">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">회원정지 사유</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
                                                 <input type="text" class="form-control" name="block_Content" value="${m.block_Content}">
                                             </div>
-                                            <div class="form-group row"><label class="col-12 col-sm-3 col-form-label text-sm-right"></label>정지
-                                                <div class="col-12 col-sm-8 col-lg-6 pt-1">
-                                                    <div class="switch-button switch-button-danger">
-                                                        <input type="checkbox" checked="" name="switch1" id="switch1"><span>
-                                                              <label for="switch1"></label></span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="form-group row" style="padding-bottom:3px;">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">회원삭제 사유</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="block_Content" value="${m.block_Content}">
-                                            </div>
-                                            <div class="form-group row" >
-                                                <label class="col-12 col-sm-3 col-form-label text-sm-right"></label> 삭제 
-                                                <div class="col-12 col-sm-8 col-lg-6">
-                                                    <div class="switch-button switch-button-danger">
-                                                        <input type="checkbox" checked="" name="switch2" id="switch2">
-                                                        	<span><label for="switch2"></label></span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">회원 정지여부</label>
+                                            <div class="btn-group">
+                                                <select name="block_YN" style="margin-left:15px">
+                                                	<option value="N">정지X</option>
+                                                	<option value="Y">정지O</option>
+                                                </select>
+                                            </div>		
                                         </div>
                                         <div class="form-group row" style="padding-bottom:3px;">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">owner 권한부여</label>
                                             <div class="btn-group">
                                                 <select name="mGrant" style="margin-left:15px">
-                                                	<option value="1">admin</option>
-                                                	<option value="2">owner</option>
                                                 	<option value="3">일반</option>
+                                                	<option value="2">owner</option>
+                                                	<option value="1">admin</option>
                                                 </select>
                                             </div>		
                                         </div>
-                                        <div class="form-group row text-right">
-                                            <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                                <button type="submit" class="btn btn-dark">저장</button>
-                                            </div>
-                                        </div>
+                                       	<div style="padding-left:70%">
+                                            <button type="submit" class="btn btn-dark" >저장</button>
                                     </form>
+                                        </div>
+                                        	<form action="memberDelete.ad" method="post" style="padding-left:68.5%; margin-top:1%">
+                                        		<input type="hidden" name="mId" value="${m.mId}"/>	
+                                            		<button type="submit" class="btn btn-dark">회원삭제</button>
+                                            </form>
                                 </div>
                             </div>
                         </div>
