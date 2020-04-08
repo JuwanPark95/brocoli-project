@@ -93,6 +93,7 @@
                                     <table id="example" class="table table-striped table-bordered second" >
                                         <thead>
                                             <tr>
+                                            	<th>옵션 번호</th>
                                             	<th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>잔여재고</th>
@@ -106,8 +107,8 @@
                                         	<c:forEach var="r" items="${ list }">
 	                                            <tr>
 	                                            	<td>${r.op_NO }</td>
-	                                                <td>${r.Option_1 }</td>
-	                                                <td>${r.Option_2 }</td>
+	                                                <td>${r.option_1 }</td>
+	                                                <td>${r.option_2 }</td>
 	                                                <td>${r.op_Stock }</td>
 	                                                <td><input type="number"></td>
 	                                                <td>${r.op_Status_YN }</td>
@@ -127,6 +128,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th>옵션 번호</th>
                                             	<th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>잔여재고</th>

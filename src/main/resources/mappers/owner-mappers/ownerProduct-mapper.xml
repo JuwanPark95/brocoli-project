@@ -64,8 +64,8 @@
 	<resultMap id="productOptionResultSet" type="Product_Option">
 		<id property="op_NO" column="OP_NO"/>
 		
-		<result property="Option_1" column="OPTION_1"/>
-		<result property="Option_2" column="OPTION_2"/>
+		<result property="option_1" column="OPTION_1"/>
+		<result property="option_2" column="OPTION_2"/>
 		<result property="op_Stock" column="OP_STOCK"/>
 		<result property="op_Rec_Date" column="OP_REC_DATE"/>
 		<result property="op_Status_YN" column="OP_STATUS_YN"/>
