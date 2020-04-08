@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<resultMap type="Product" id="productResultSet">
-		<id property="p_No" column="P_NO"/>
+		<id property="p_NO" column="P_NO"/>
 		<result property="p_Name" column="P_NAME"/>
 		<result property="p_Price" column="P_PRICE"/>
 		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>

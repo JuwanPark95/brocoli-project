@@ -52,7 +52,7 @@
 			<tr>
 				<td>작 성 자</td>
 				<td><input type="text" readonly name="n_Writer" value="${ loginUser.mName }"></td>
-				<td><input type="text" readonly name="n_Mno" value="${ loginUser.mNO }"></td>
+				<td><input type="hidden" readonly name="n_Mno" value="${ loginUser.mNO }"></td>
 			</tr>
 			<tr>
 				<td>작 성 일</td>
@@ -74,8 +74,9 @@
 		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
 		value="작성 완료">
 		</div>
-		</div>
 	</form>
+		</div>
+
 <%@ include file="All-Footer.jsp" %>
 
 <!--===============================================================================================-->	

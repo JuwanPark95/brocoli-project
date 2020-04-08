@@ -86,13 +86,14 @@
                             <div class="card-header">
                                 <h5 class="mb-0">선택상품재고관리</h5>
                                 <p>선택한 상품의 옵션별 재고 현황입니다.</p>
-								<h5>선택상품 : DIM. REVERSIBLE FAKE FUR MUFFLER_GRAY</h5>
+								<h5>선택상품 : ${pName}</h5>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example" class="table table-striped table-bordered second" >
                                         <thead>
                                             <tr>
+                                            	<th>옵션 번호</th>
                                             	<th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>잔여재고</th>
@@ -103,86 +104,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>BROWN</td>
-                                                <td>S</td>
-                                                <td>12</td>
-                                                <td><input type="number"></td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<select name="status" style="height: 31px;">
-													    <option value="Y">판매중</option>
-													    <option value="N">품절</option>
-													</select>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">적용</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>M</td>
-                                                <td>12</td>
-                                                <td><input type="number"></td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<select name="status" style="height: 31px;">
-													    <option value="Y">판매중</option>
-													    <option value="N">품절</option>
-													</select>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">적용</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>L</td>
-                                                <td>131</td>
-                                                <td><input type="number"></td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<select name="status" style="height: 31px;">
-													    <option value="Y">판매중</option>
-													    <option value="N">품절</option>
-													</select>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">적용</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>XL</td>
-                                                <td>0</td>
-                                                <td><input type="number"></td>
-                                                <td>품절</td>
-                                                <td>
-                                                	<select name="status" style="height: 31px;">
-													    <option value="Y">판매중</option>
-													    <option value="N">품절</option>
-													</select>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">적용</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                        <!-- 더미데이터 시작 -->
-                               				
-                                        <!-- 더미데이터 끝 -->
-                                        
-                                            
+                                        	<c:forEach var="r" items="${ list }">
+	                                            <tr>
+	                                            	<td>${r.op_NO }</td>
+	                                                <td>${r.option_1 }</td>
+	                                                <td>${r.option_2 }</td>
+	                                                <td>${r.op_Stock }</td>
+	                                                <td><input type="number"></td>
+	                                                <td>${r.op_Status_YN }</td>
+	                                                <td>
+	                                                	<select name="status" style="height: 31px;">
+														    <option value="Y">판매중</option>
+														    <option value="N">품절</option>
+														</select>
+	                                                </td>
+	                                                <td>
+	                                                	<div class="btn-group ml-auto">
+				                                            <button class="btn btn-sm btn-outline-light">적용</button>
+				                                        </div>
+	                                                </td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th>옵션 번호</th>
                                             	<th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>잔여재고</th>

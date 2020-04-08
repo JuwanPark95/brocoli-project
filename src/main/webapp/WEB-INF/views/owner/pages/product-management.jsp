@@ -102,20 +102,24 @@
                                         <tbody>
 	                       					<c:forEach var="r" items="${ list }">                     
 	                                            <tr>
-	                                                <td>${r.p_No}</td>
+	                                                <td>${r.p_NO}</td>
 	                                                <td>${r.p_Bcategory }-${r.p_Scategory}</td>
 	                                                <td align="center" >
-	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pfList[0].pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
 	                                                </td>				
 	                                                <td class="product-name">${r.p_Name}</td>
 	                                                <td>${r.p_Price}</td>
 	                                                <td>${r.p_Sail_Price}</td>
 	                                                <td>${r.p_Last_Price}</td>
 	                                                <td>${r.p_Status}</td>
-	                                                <td>20-11-01</td>
+	                                                <td>${r.p_Insert_Date }</td>
 	                                                <td>
 		                                                <div class="btn-group ml-auto">
-				                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
+		                                                <c:url var="stockdetail" value="stock_detail.ow">
+		                                                	<c:param name="pNO" value="${r.p_NO}"/>
+		                                                	<c:param name="pName" value="${r.p_Name}"/>
+				                                        </c:url>
+				                                            <a class="btn btn-sm btn-outline-light" href="${stockdetail}">재고확인</a>
 				                                        </div>
 	                                                </td>
 	                                                <td>

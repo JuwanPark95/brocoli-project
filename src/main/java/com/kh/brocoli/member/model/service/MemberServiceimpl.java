@@ -31,6 +31,26 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	@Override
+
+	public int idCheck(String id) {
+		
+		return mDao.idCheck(id);
+	}
+
+	@Override
+	public int insertMember(Member m) {
+		int result = mDao.insertMember(m);
+		
+		return result;
+	}
+
+	@Override
+	public int mailCheck(String email) {
+		return mDao.mailCheck(email);
+	}
+
+	
+
 	public ArrayList<Auction> selectList() {
 		return mDao.selectList();
 	}
@@ -56,10 +76,10 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.updateMember(m);
 	}
 
-	@Override
-	public int pwdCheck(String password) {
-		return mDao.pwdCheck(password);
-	}
+//	@Override
+//	public int pwdCheck(String password) {
+//		return mDao.pwdCheck(password);
+//	}
 
 
 	@Override
@@ -70,6 +90,17 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return mDao.selectbpList(b_Name);
+	}
+
+	@Override
+	public String mailCheck2(String email) {
+		String result = mDao.mailCheck2(email);
+		System.out.println("result : " + result);
+		if(result != null) {
+			return result;
+		}else {
+			return null;
+		}
 	}
 
 

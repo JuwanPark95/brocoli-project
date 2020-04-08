@@ -30,7 +30,11 @@ public class Member {
 	
 	public Member() {
 		super();
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 	}
 
 	public Member(int mNO, String mId, String pwd, String mName, String email, String phone, String address,
@@ -238,5 +242,7 @@ public class Member {
 				+ block_Content + ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrollDate="
 				+ enrollDate + ", brand=" + brand + ", brand_NO=" + brand_NO + "]";
 	}
-
+	
 }
+	
+	
