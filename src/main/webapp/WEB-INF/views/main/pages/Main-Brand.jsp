@@ -5,9 +5,9 @@
 <html lang="ko">
 <head>
 
-	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 	
 <style>
 #header-color3{

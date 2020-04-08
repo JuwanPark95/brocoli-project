@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 	
 
 <link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/SRCSS.css">

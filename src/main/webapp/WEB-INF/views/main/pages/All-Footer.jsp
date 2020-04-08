@@ -95,7 +95,12 @@ font-size: 15px;
 
 						<li class="p-b-10">
 							<c:url var="QnA" value="QnAView.mn"/>
+							<c:if test="${!empty sessionScope.loginUser }">
 							<a href="${QnA }" class="stext-107 cl7 hov-cl1 trans-04">
+							</c:if>
+							<c:if test="${empty sessionScope.loginUser }">
+							<a href="${loginPage }" class="stext-107 cl7 hov-cl1 trans-04">
+							</c:if>
 								문의하기
 							</a>
 						</li>
