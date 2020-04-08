@@ -23,19 +23,19 @@ public class Member {
 	private String block_YN;
 	private String block_Content;
 	private String del_Flag_YN;
-	private String del_Date;
+	private Date del_Date;
 	private Date enrollDate;
 	private String brand;
 	private String brand_NO;
 	
 	public Member() {
 		super();
-	
+		
 	}
 
 	public Member(int mNO, String mId, String pwd, String mName, String email, String phone, String address,
 			String gender, String birthDay, String mGrant, String mPoint, int order_Count, String order_Price,
-			String report_YN, String block_YN, String block_Content, String del_Flag_YN, String del_Date,
+			String report_YN, String block_YN, String block_Content, String del_Flag_YN, Date del_Date,
 			Date enrollDate, String brand, String brand_NO) {
 		super();
 		this.mNO = mNO;
@@ -197,11 +197,11 @@ public class Member {
 		this.del_Flag_YN = del_Flag_YN;
 	}
 
-	public String getDel_Date() {
+	public Date getDel_Date() {
 		return del_Date;
 	}
 
-	public void setDel_Date(String del_Date) {
+	public void setDel_Date(Date del_Date) {
 		this.del_Date = del_Date;
 	}
 
