@@ -494,8 +494,8 @@
 	        
 		    $('#product-add-Option').append('<tr>'+
 		            '<th scope="row">'+count+'</th>'+
-		            '<td id="Option_1_'+count+'" ><input name="Product_OptionVOList['+count+'].Option_1" type="text" class="form-control" value="'+option1+'"/></td>'+
-		            '<td id="Option_2" ><input name="Product_OptionVOList['+count+'].Option_2" type="text" class="form-control" value="'+option2+'"/></td>'+
+		            '<td id="Option_1_'+count+'" ><input name="Product_OptionVOList['+count+'].option_1" type="text" class="form-control" value="'+option1+'"/></td>'+
+		            '<td id="Option_2" ><input name="Product_OptionVOList['+count+'].option_2" type="text" class="form-control" value="'+option2+'"/></td>'+
 		            '<td id="op_Stock" ><input id="checkStock" name="Product_OptionVOList['+count+'].op_Stock" type="number" class="form-control" value="'+stock+'" /></td>'+
 		            '<td></td>'+
 		            '</tr>');

@@ -28,11 +28,11 @@
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
-		<collection property="pfList" resultMap="productFileResultSet"/>
+		<collection property="pfList" resultMap="ProductFileResultSet"/>
 	</resultMap>
 	
 	<!-- 상품 이미지 등록정보 -->
-	<resultMap  type="Product_File" id="productImgSet">
+	<resultMap  type="Product_File" id="ProductFileResultSet">
 		<id property="pf_NO" column="PF_NO"/>
 		
 		<result property="pf_Img1" column="PF_IMG1"/>
@@ -54,45 +54,25 @@
 		<result property="pf_Dimg3" column="PF_DIMG3"/>	
 		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
 		<result property="pf_P_NO" column="PF_P_NO"/>	
+		
 	</resultMap>
 	
-	<resultMap type="Product_File" id="productFileResultSet">
-		<id property="pf_NO" column="PF_NO"/>
-		
-		<result property="pf_Img1" column="PF_IMG1"/>
-		<result property="pf_Img1_ReName" column="PF_IMG1_RENAME"/>
-		<result property="pf_Img2" column="PF_IMG2"/>
-		<result property="pf_Img2_ReName" column="PF_IMG2_RENAME"/>
-		<result property="pf_Img3" column="PF_IMG3"/>
-		<result property="pf_Img3_ReName" column="PF_IMG3_RENAME"/>
-		<result property="pf_Img4" column="PF_IMG4"/>
-		<result property="pf_Img4_ReName" column="PF_IMG4_RENAME"/>
-		<result property="pf_Img5" column="PF_IMG5"/>
-		<result property="pf_Img5_ReName" column="PF_IMG5_RENAME"/>
-		<result property="pf_Img6" column="PF_IMG6"/>
-		<result property="pf_Img6_ReName" column="PF_IMG6_RENAME"/>
-		<result property="pf_Dimg1" column="PF_DIMG1"/>
-		<result property="pf_Dimg1_ReName" column="PF_DIMG1_RENAME"/>
-		<result property="pf_Dimg2" column="PF_DIMG2"/>
-		<result property="pf_Dimg2_ReName" column="PF_DIMG2_RENAME"/>
-		<result property="pf_Dimg3" column="PF_DIMG3"/>
-		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
-		<result property="pf_P_NO" column="PF_P_NO"/>
-	</resultMap>
+
 	
 	<!-- 상품 옵션 등록정보 -->
-<!-- 	
-	<resultMap id="productOPSet" type="Product_Option">
+
+	<resultMap id="productOptionResultSet" type="Product_Option">
 		<id property="op_NO" column="OP_NO"/>
 		
-		<result property="Option_1" column="OPTION_1"/>
-		<result property="Option_2" column="OPTION_2"/>
+		<result property="option_1" column="OPTION_1"/>
+		<result property="option_2" column="OPTION_2"/>
 		<result property="op_Stock" column="OP_STOCK"/>
 		<result property="op_Rec_Date" column="OP_REC_DATE"/>
 		<result property="op_Status_YN" column="OP_STATUS_YN"/>
 		<result property="op_P_NO" column="OP_P_NO"/>
+		
 	</resultMap>
-	 -->
+
 	
 <!-- ***************************** resultMap 끝 ***************************** -->
 	
@@ -130,6 +110,12 @@
 		ORDER BY P.P_NO DESC
 	</select>
 	
+	<select id="selectStockDetail" resultMap="productOptionResultSet">
+		SELECT * 
+		FROM PRODUCT_OPTION
+		WHERE OP_P_NO = #{pNO}
+		ORDER BY OP_NO DESC
+	</select>
 
 	
 </mapper>
