@@ -3,7 +3,6 @@ package com.kh.brocoli.product.model.vo;
 import java.sql.Date;
 
 public class QNAProduct {
-	private int pq_No;
 	private String pq_Writer;
 	private String pq_Id;
 	private String pq_Code;
@@ -23,11 +22,10 @@ public class QNAProduct {
 		super();
 	}
 
-	public QNAProduct(int pq_No, String pq_Writer, String pq_Id, String pq_Code, String pq_Content, Date pq_Date,
+	public QNAProduct(String pq_Writer, String pq_Id, String pq_Code, String pq_Content, Date pq_Date,
 			Date pq_Modify_Date, String pq_Count, String pq_Check, String pq_Img1, String pq_Img1_ReName,
 			String pq_Img2, String pq_Img2_ReName, int pq_Mno, int pq_P_NO) {
 		super();
-		this.pq_No = pq_No;
 		this.pq_Writer = pq_Writer;
 		this.pq_Id = pq_Id;
 		this.pq_Code = pq_Code;
@@ -44,13 +42,7 @@ public class QNAProduct {
 		this.pq_P_NO = pq_P_NO;
 	}
 
-	public int getPq_No() {
-		return pq_No;
-	}
 
-	public void setPq_No(int pq_No) {
-		this.pq_No = pq_No;
-	}
 
 	public String getPq_Writer() {
 		return pq_Writer;
@@ -166,7 +158,7 @@ public class QNAProduct {
 
 	@Override
 	public String toString() {
-		return "QNAProduct [pq_No=" + pq_No + ", pq_Writer=" + pq_Writer + ", pq_Id=" + pq_Id + ", pq_Code=" + pq_Code
+		return "QNAProduct [pq_Writer=" + pq_Writer + ", pq_Id=" + pq_Id + ", pq_Code=" + pq_Code
 				+ ", pq_Content=" + pq_Content + ", pq_Date=" + pq_Date + ", pq_Modify_Date=" + pq_Modify_Date
 				+ ", pq_Count=" + pq_Count + ", pq_Check=" + pq_Check + ", pq_Img1=" + pq_Img1 + ", pq_Img1_ReName="
 				+ pq_Img1_ReName + ", pq_Img2=" + pq_Img2 + ", pq_Img2_ReName=" + pq_Img2_ReName + ", pq_Mno=" + pq_Mno

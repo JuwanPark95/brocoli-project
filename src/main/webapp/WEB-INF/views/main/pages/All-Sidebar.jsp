@@ -43,9 +43,9 @@
 						</a>
 					</li>
 					
-					<c:url var="Mypage" value="myPageView.mn"/>
-					<c:url var="Mycart" value="myCartView.mn"/>
-					<c:url var="MyOrderlist" value="myOrderView.mn"/>
+					<c:url var="Mypage" value="mypage.mn"/>
+					<c:url var="Mycart" value="myCart.mn"/>
+					<c:url var="MyOrderlist" value="myOrderList.mn"/>
 					<li class="p-b-13">
 						<c:if test="${!empty sessionScope.loginUser }">
 						<a href="${Mypage }" class="stext-102 cl2 hov-cl1 trans-04">
@@ -82,7 +82,7 @@
 					
 					<li class="p-b-13">
 						<c:if test="${!empty sessionScope.loginUser }">
-						<a href="<c:url value='myOrderView.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
+						<a href="<c:url value='myOrderList.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
 						</c:if>
 						<c:if test="${empty sessionScope.loginUser }">
 						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">

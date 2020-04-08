@@ -3,7 +3,6 @@ package com.kh.brocoli.member.model.vo;
 import java.sql.Date;
 
 public class Change {
-	private int ch_NO;
 	private String ch_Pname;
 	private String ch_Price;
 	private String ch_Reason;
@@ -16,10 +15,10 @@ public class Change {
 	public Change() {
 		super();
 	}
-	public Change(int ch_NO, String ch_Pname, String ch_Price, String ch_Reason, String ch_Comment, Date ch_Date,
+	public Change(String ch_Pname, String ch_Price, String ch_Reason, String ch_Comment, Date ch_Date,
 			Date ch_EnDate, String ch_Status, int ch_Or_NO, int ch_Mno) {
 		super();
-		this.ch_NO = ch_NO;
+
 		this.ch_Pname = ch_Pname;
 		this.ch_Price = ch_Price;
 		this.ch_Reason = ch_Reason;
@@ -30,12 +29,8 @@ public class Change {
 		this.ch_Or_NO = ch_Or_NO;
 		this.ch_Mno = ch_Mno;
 	}
-	public int getCh_NO() {
-		return ch_NO;
-	}
-	public void setCh_NO(int ch_NO) {
-		this.ch_NO = ch_NO;
-	}
+
+	
 	public String getCh_Pname() {
 		return ch_Pname;
 	}
@@ -92,7 +87,7 @@ public class Change {
 	}
 	@Override
 	public String toString() {
-		return "Change [ch_NO=" + ch_NO + ", ch_Pname=" + ch_Pname + ", ch_Price=" + ch_Price + ", ch_Reason="
+		return "Change [ch_Pname=" + ch_Pname + ", ch_Price=" + ch_Price + ", ch_Reason="
 				+ ch_Reason + ", ch_Comment=" + ch_Comment + ", ch_Date=" + ch_Date + ", ch_EnDate=" + ch_EnDate
 				+ ", ch_Status=" + ch_Status + ", ch_Or_NO=" + ch_Or_NO + ", ch_Mno=" + ch_Mno + "]";
 	}

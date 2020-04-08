@@ -37,6 +37,7 @@
 		
 		</select>
 		
+<<<<<<< HEAD
 		<insert id="insertMember" parameterType="Member">
 		 INSERT INTO MEMBER
     	 VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
@@ -53,4 +54,23 @@
 		FROM MEMBER
 		WHERE EMAIL=#{email}
 	</select>
+=======
+		<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER
+		SET ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
+		WHERE MID=#{mId}
+	    </update>
+	
+	    <update id="deleteMember" parameterType="string">
+		UPDATE MEMBER
+		SET DEL_FLAG_YN='Y'
+		WHERE MID=#{mId}
+	    </update>
+	    
+	    <select id="pwdCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE PWD=#{password}
+	    </select>
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 </mapper>

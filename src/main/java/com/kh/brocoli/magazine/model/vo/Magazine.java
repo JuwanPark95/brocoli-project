@@ -3,7 +3,6 @@ package com.kh.brocoli.magazine.model.vo;
 import java.sql.Date;
 
 public class Magazine {
-	private int m_NO;
 	  private String m_ID;
 	  private String m_Title;
 	  private String m_Comment;
@@ -16,10 +15,9 @@ public class Magazine {
 	public Magazine() {
 		super();
 	}
-	public Magazine(int m_NO, String m_ID, String m_Title, String m_Comment, Date m_Date, String m_Status,
+	public Magazine(String m_ID, String m_Title, String m_Comment, Date m_Date, String m_Status,
 			String m_Category, String m_Count, int m_Brand_NO, int m_Mno) {
 		super();
-		this.m_NO = m_NO;
 		this.m_ID = m_ID;
 		this.m_Title = m_Title;
 		this.m_Comment = m_Comment;
@@ -30,12 +28,7 @@ public class Magazine {
 		this.m_Brand_NO = m_Brand_NO;
 		this.m_Mno = m_Mno;
 	}
-	public int getM_NO() {
-		return m_NO;
-	}
-	public void setM_NO(int m_NO) {
-		this.m_NO = m_NO;
-	}
+
 	public String getM_ID() {
 		return m_ID;
 	}
@@ -92,7 +85,7 @@ public class Magazine {
 	}
 	@Override
 	public String toString() {
-		return "Magazine [m_NO=" + m_NO + ", m_ID=" + m_ID + ", m_Title=" + m_Title + ", m_Comment=" + m_Comment
+		return "Magazine [m_ID=" + m_ID + ", m_Title=" + m_Title + ", m_Comment=" + m_Comment
 				+ ", m_Date=" + m_Date + ", m_Status=" + m_Status + ", m_Category=" + m_Category + ", m_Count="
 				+ m_Count + ", m_Brand_NO=" + m_Brand_NO + ", m_Mno=" + m_Mno + "]";
 	}

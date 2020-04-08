@@ -1,7 +1,6 @@
 package com.kh.brocoli.general.model.vo;
 
 public class Setting {
-	private int set_No;
 	private String op1;
 	private String op2;
 	private String op3;
@@ -9,12 +8,22 @@ public class Setting {
 	private String op5;
 	private String op6;
 	private int op_Mno;
-	public int getSet_No() {
-		return set_No;
+	
+	
+	public Setting() {
+		super();
 	}
-	public void setSet_No(int set_No) {
-		this.set_No = set_No;
+	public Setting(String op1, String op2, String op3, String op4, String op5, String op6, int op_Mno) {
+		super();
+		this.op1 = op1;
+		this.op2 = op2;
+		this.op3 = op3;
+		this.op4 = op4;
+		this.op5 = op5;
+		this.op6 = op6;
+		this.op_Mno = op_Mno;
 	}
+
 	public String getOp1() {
 		return op1;
 	}
@@ -57,23 +66,10 @@ public class Setting {
 	public void setOp_Mno(int op_Mno) {
 		this.op_Mno = op_Mno;
 	}
-	public Setting() {
-		super();
-	}
-	public Setting(int set_No, String op1, String op2, String op3, String op4, String op5, String op6, int op_Mno) {
-		super();
-		this.set_No = set_No;
-		this.op1 = op1;
-		this.op2 = op2;
-		this.op3 = op3;
-		this.op4 = op4;
-		this.op5 = op5;
-		this.op6 = op6;
-		this.op_Mno = op_Mno;
-	}
+
 	@Override
 	public String toString() {
-		return "Setting [set_No=" + set_No + ", op1=" + op1 + ", op2=" + op2 + ", op3=" + op3 + ", op4=" + op4
+		return "Setting [op1=" + op1 + ", op2=" + op2 + ", op3=" + op3 + ", op4=" + op4
 				+ ", op5=" + op5 + ", op6=" + op6 + ", op_Mno=" + op_Mno + "]";
 	}
 	

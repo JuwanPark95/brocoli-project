@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html lang="en">
 	
@@ -20,15 +22,16 @@
 	</section>	
 
     <div id="contentWrapper"  style="padding-top: 0px;">
+    <form action="mypage.mn">
         <div id="contentWrap">
             <div id="content">
                 <div id="mypage" class="mypage SMP-container" >
                     <!-- mypage common section -->
                     <div class="mypage-common-container">
                         <!-- mypage link section -->
-                        <div class="mypage-link-container">
-                            <a href="index.jsp" class="home">home</a>
-							<a href="/shop/mypage.html" class="test">"MY PAGE"</a>
+                        <div class="mypage-link-container"  style="margin-left: 12px;">
+                            <a href="<c:url value='Main'/>" class="home">home</a>
+							<a href="<c:url value='mypage.mn'/>" class="test">"MY PAGE"</a>
 						</div>
 						<!-- mypage link section-->
 					</div>
@@ -43,7 +46,7 @@
                                 </div class="test2">
                                 <div style="padding-left: 70px;">
                                 <p>안녕하세요.
-                                    <span class="id">김주희</span> 님
+                                    <span class="id">${loginUser.mName}</span> 님
 								</p>
 								<p>
 									 오늘도 좋은하루 되세요.
@@ -83,7 +86,7 @@
                     <div class="mypage-menu-container">
                         <ul class="mypage-menu-list" style=" width: 1200px; margin: auto;" >
                             <li class="my-info" img="/brocoli/resources/mainResources/images/mypage_me1.png">
-                                <a href="WEB-INF/views/main/pages/MyInformation.jsp">
+                                <a href="<c:url value='/p_check.mn'/>">
                                     <h4>개인정보관리</h4>
                                     <p>
                                         "개인정보를 수정 및 관리"
@@ -93,7 +96,7 @@
                                 </a>
                             </li>
                             <li class="order-list" img="/brocoli/resources/mainResources/images/mypage_list1.png">
-                                <a href="/brocoli/main/orderlist.jsp">
+                                <a href="<c:url value='myOrderList.mn'/>">
                                     <h4>주문현황</h4>
                                     <p>"주문한 상품을 하는데"
                                         <br>
@@ -102,7 +105,7 @@
                                 </a>
                             </li>
                             <li class="wish-list" img="/brocoli/resources/mainResources/images/mypage_like1.png">
-                                <a href="/brocoli/main/wishlist.jsp">
+                                <a href="<c:url value='myWishList.mn'/>">
                                     <h4>관심상품관리</h4>
                                     <p>"내가 찜 해둔 상품을"
                                         <br>
@@ -111,7 +114,7 @@
                                 </a>
                             </li>
                             <li class="reserve-deposit" img="/brocoli/resources/mainResources/images/mypage_cart1.png">
-                                <a href="/brocoli/main/shoping-cart.jsp">
+                                <a href="<c:url value='myCart.mn'/>">
                                     <h4>장바구니</h4>
                                     <p>"장바구니를"
                                         <br>
@@ -120,7 +123,7 @@
                                 </a>
                             </li>
                             <li class="my-article" img="/brocoli/resources/mainResources/images/mypage_my1.png">
-                                <a href="">
+                                <a href="<c:url value='B_Alllist.mn'/>">
                                     <h4>내가 쓴 글 보기</h4>
                                     <p>"주문관련문의, 상품후기 등"
                                         <br>
@@ -139,6 +142,7 @@
             <!--#content-->
         </div>
        <!--contentWrap-->
+      </form>
     </div>
 	<!--#contentWrapper-->
 

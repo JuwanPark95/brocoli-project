@@ -100,94 +100,34 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>000BS001</td>
-                                                <td>악세서리-머플러</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td class="product-name">DIM. REVERSIBLE FAKE FUR MUFFLER_GRAY</td>
-                                                <td>49,000</td>
-                                                <td>-4,500</td>
-                                                <td>44,500</td>
-                                                <td>판매중</td>
-                                                <td>19-10-01</td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
-			                                        </div>
-                                                </td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">변경</button>
-			                                            <button class="btn btn-sm btn-outline-light">
-			                                                <i class="far fa-trash-alt"></i>
-			                                            </button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td>000BS000</td>
-                                                <td>악세서리-머플러</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11002.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td class="product-name">DIM. REVERSIBLE FAKE FUR MUFFLER_BROWN</td>
-                                                <td>49,000</td>
-                                                <td>-4,500</td>
-                                                <td>44,500</td>
-                                                <td>판매중</td>
-                                                <td>19-10-01</td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
-			                                        </div>
-                                                </td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">변경</button>
-			                                            <button class="btn btn-sm btn-outline-light">
-			                                                <i class="far fa-trash-alt"></i>
-			                                            </button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td>000BS000</td>
-                                                <td>모자-버킷햇</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11003.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td class="product-name">DIM. E CRES. MAGICIAN BUCKET HAT_ORANGE</td>
-                                                <td>48,000</td>
-                                                <td>-24,000</td>
-                                                <td>24,000</td>
-                                                <td>판매중</td>
-                                                <td>20-01-12</td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
-			                                        </div>
-                                                </td>
-                                                <td>
-	                                                <div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">변경</button>
-			                                            <button class="btn btn-sm btn-outline-light">
-			                                                <i class="far fa-trash-alt"></i>
-			                                            </button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            
-                                            
-                                            
-                                        <!-- 더미데이터 시작 -->
-                               				
-                                        <!-- 더미데이터 끝 -->
-                                        
-                                            
+	                       					<c:forEach var="r" items="${ list }">                     
+	                                            <tr>
+	                                                <td>${r.p_NO}</td>
+	                                                <td>${r.p_Bcategory }-${r.p_Scategory}</td>
+	                                                <td align="center" >
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                </td>				
+	                                                <td class="product-name">${r.p_Name}</td>
+	                                                <td>${r.p_Price}</td>
+	                                                <td>${r.p_Sail_Price}</td>
+	                                                <td>${r.p_Last_Price}</td>
+	                                                <td>${r.p_Status}</td>
+	                                                <td>${r.p_Insert_Date }</td>
+	                                                <td>
+		                                                <div class="btn-group ml-auto">
+				                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
+				                                        </div>
+	                                                </td>
+	                                                <td>
+		                                                <div class="btn-group ml-auto">
+				                                            <button class="btn btn-sm btn-outline-light">변경</button>
+				                                            <button class="btn btn-sm btn-outline-light">
+				                                                <i class="far fa-trash-alt"></i>
+				                                            </button>
+				                                        </div>
+	                                                </td>
+	                                            </tr>
+	                                  		</c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>

@@ -67,6 +67,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:3%">번호</th>
+                                                <th style="width:3%">브랜드번호</th>
                                                 <th style="width:5%">로고</th>
                                                 <th style="width:8%">브랜드명</th>
                                                 <th style="width:8%">사업자번호</th>
@@ -78,17 +79,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="b" items="${BrandList}" varStatus="bl">
                                             <tr>
-                                                <td>1</td>
-                                                <td><img src="/brocoli/resources/adminResources/images/nike.PNG" width="50" height="50"></td>
-                                                <td>NIKE</td>
-                                                <td>123456789</td>
-                                                <td>나대표</td>
-                                                <td>서울시 강남구 역삼1동</td>
-                                                <td>010-1212-2323</td>
-                                                <td>1989/01/01</td>
-                                                <td>Y</td>
+                                                <td>${bl.count }</td>
+                                                <td>${b.brand_NO}</td>
+                                                <td><img src="/brocoli/resources/adminResources/images/${b.b_Logo}" width="50" height="50"></td>
+                                                <td>${b.b_Name}</td>
+                                                <td>${b.b_Business_NO}</td>
+                                                <td>${b.b_Owner_Name }</td>
+                                                <td>${b.b_Address }</td>
+                                                <td>${b.b_Phone }</td>
+                                                <td>${b.b_Enter_Date }</td>
+                                                <td>${b.b_Status }</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
@@ -123,9 +125,8 @@
 				$("#brand-management").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="brand-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
+					var brand_NO = $(this).parents().children("td").eq(1).text();	
+					location.href="brandDetail.ad?brand_NO="+brand_NO
 				});
 			});
 		</script>

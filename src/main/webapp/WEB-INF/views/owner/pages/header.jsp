@@ -185,10 +185,14 @@
                                  <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/product-insert.jsp">상품업로드</a>
+                                            <c:url var="Product_insert" value="productInsertMenu.ow"/>
+                                            <a class="nav-link" href="${Product_insert}">상품업로드</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/product-management.jsp">판매상품관리</a>
+			                                <c:url var="BRAND_NO" value="productList.ow">
+			                                   <c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+			                                </c:url>
+                                            <a class="nav-link" href="${BRAND_NO}">판매상품관리</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/stock-management.jsp">재고관리</a>

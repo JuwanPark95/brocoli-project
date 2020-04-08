@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <link rel="shortcut icon" type="image/x-icon" href="https://ssl.pstatic.net/static.checkout/layout/202003261038/images/mobile/icon/android_legacy_xxxhpdi_192x192.png" />

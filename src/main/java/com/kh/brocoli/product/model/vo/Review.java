@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Review {
 	
-	private int v_No;	
 	private String v_Writer;
 	private String v_Code;
 	private String v_Content;
@@ -24,11 +23,10 @@ public class Review {
 		super();
 	}
 
-	public Review(int v_No, String v_Writer, String v_Code, String v_Content, Date v_Date, Date v_Modify_Date,
+	public Review(String v_Writer, String v_Code, String v_Content, Date v_Date, Date v_Modify_Date,
 			String v_Count, String v_Score, String v_Check, String v_Img1, String v_Img1_ReName, String v_Img2,
 			String v_Img2_ReName, int v_Mno, int v_P_NO) {
 		super();
-		this.v_No = v_No;
 		this.v_Writer = v_Writer;
 		this.v_Code = v_Code;
 		this.v_Content = v_Content;
@@ -45,13 +43,7 @@ public class Review {
 		this.v_P_NO = v_P_NO;
 	}
 
-	public int getV_No() {
-		return v_No;
-	}
 
-	public void setV_No(int v_No) {
-		this.v_No = v_No;
-	}
 
 	public String getV_Writer() {
 		return v_Writer;
@@ -167,7 +159,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [v_No=" + v_No + ", v_Writer=" + v_Writer + ", v_Code=" + v_Code + ", v_Content=" + v_Content
+		return "Review [v_Writer=" + v_Writer + ", v_Code=" + v_Code + ", v_Content=" + v_Content
 				+ ", v_Date=" + v_Date + ", v_Modify_Date=" + v_Modify_Date + ", v_Count=" + v_Count + ", v_Score="
 				+ v_Score + ", v_Check=" + v_Check + ", v_Img1=" + v_Img1 + ", v_Img1_ReName=" + v_Img1_ReName
 				+ ", v_Img2=" + v_Img2 + ", v_Img2_ReName=" + v_Img2_ReName + ", v_Mno=" + v_Mno + ", v_P_NO=" + v_P_NO

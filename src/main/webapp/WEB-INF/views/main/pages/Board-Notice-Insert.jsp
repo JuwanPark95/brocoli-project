@@ -39,39 +39,46 @@
 <div id="all">
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 작성</h2><Br>
-	
+    <form action="bnInsert.mn" method="post" enctype="multipart/form-data">
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
-				<td>1</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>제  목</td>
-				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+				<td><input type="text" class="form-control" id="ntitle" name="n_Title"></td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
-				<td>ㅎ</b></td>
+				<td><input type="text" readonly name="n_Writer" value="${ loginUser.mName }"></td>
+				<td><input type="hidden" readonly name="n_Mno" value="${ loginUser.mNO }"></td>
 			</tr>
 			<tr>
 				<td>작 성 일</td>
-				<td>ㅎ</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
-				<td>첨부파일 하기</td>
+				<td><input type="file" name="uploadFile"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
 				<td><textarea class="form-control" rows="5" id="comment"
-					 style="height: 250px; resize: none"></textarea></td>
+					 style="height: 250px; resize: none" name="n_Content"></textarea></td>
 			</tr>				
 		</table>
+
+
 		<div align="center">
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">작성 완료</button>
+		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+		value="작성 완료">
 		</div>
+	</form>
 		</div>
+
 <%@ include file="All-Footer.jsp" %>
+
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
