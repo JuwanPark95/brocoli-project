@@ -4,6 +4,8 @@ package com.kh.brocoli.member.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -361,7 +363,7 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("mupdate.mn")
-	public String memberUpdate(Member m,Model model,
+	public String memberUpdate(Member m,Model model,SessionStatus status,
 			   @RequestParam("post") String post,
 			   @RequestParam("address1") String addr1,
 			   @RequestParam("address2") String addr2) {
@@ -372,12 +374,14 @@ public class MemberController {
     m.setAddress(post+","+addr1+","+addr2);
     }
 
+    System.out.println("id :" + m.getmId());
     int result = mService.updateMember(m);
     System.out.println("result : " +  result);
 
     if(result > 0) {
     model.addAttribute("loginUser",m);
-    return "redirect:logout";
+    status.setComplete();
+    return "redirect:index.jsp";
     }else {
     model.addAttribute("msg","회원 정보 수정 실패!");
     return "common/errorPage";
@@ -392,21 +396,40 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("p_change.mn")
-	public String p_change(Member m,Model model,
-			   @RequestParam("password1") String pwd1,
-			   @RequestParam("password2") String pwd2) {
-    
-    
-
-    int result = mService.updateMember(m);
-
-    if(result > 0) {
-    model.addAttribute("loginUser",m);
-    return "redirect:index.jsp";
-    }else {
-    model.addAttribute("msg","비밀번호 변경 실패");
-    return "common/errorPage";
-    }
+	public String p_ChangeView() {
+		return "My-P-Change";
+	}
+	
+	/**
+	 * 사용자 비밀번호 변경
+	 * @author 김주희
+	 * @param model
+	 * @param session
+	 * @param pwd2
+	 * @return
+	 */
+	@RequestMapping(value="password_change.mn" ,method=RequestMethod.POST)
+	public String p_Change(Model model,
+			   HttpSession session,
+			   @RequestParam("p_change2") String pwd2) {
+	    // Session에서 사용자 정보 추출해서 새로받은 password를 갱신
+	    Member m = (Member)session.getAttribute("loginUser");
+	     m.setPwd(pwd2);
+	
+	    // password 업데이트 
+	    int result = mService.updateMember(m);
+	    
+	    if(result > 0) {
+	    	
+	    	session.setAttribute("loginUser", m);
+	    	
+	    	return "redirect:index.jsp";
+	    }else {
+	    	
+	    	model.addAttribute("msg","비밀번호 변경 실패");
+	    	
+	    	return "common/errorPage";
+	    }
 
 	}
 	
@@ -420,7 +443,7 @@ public class MemberController {
 	@RequestMapping("mdelete.mn")
 	public String memberDelete(String mId, Model model) {
 		int result = mService.deleteMember(mId);
-		
+		System.out.println("result1 : " +result);
 		if(result > 0) {
 			return "redirect:index.jsp";
 		}else {

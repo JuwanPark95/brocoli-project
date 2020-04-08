@@ -49,6 +49,12 @@ public class MemberDao {
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
+
+	public int pwdCheck(String password) {
+		return sqlSession.selectOne("memberMapper.pwdCheck",password);
+	}
+
+
 	
 
 }

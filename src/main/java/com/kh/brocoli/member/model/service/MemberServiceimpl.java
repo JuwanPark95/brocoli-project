@@ -72,6 +72,8 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.selectbpList(b_Name);
 	}
 
+	
+
 
 
 
