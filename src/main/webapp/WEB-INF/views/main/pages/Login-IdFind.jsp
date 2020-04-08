@@ -42,8 +42,8 @@
 				placeholder="이메일 ">
 		</div>		
 		<div>
-		 <c:url var="idEmail" value="idEmail.mn"/>
-		<a class="btn btn-primary btn-lg btn-block"  href='${idEmail}' id="sending"
+		 <%-- <c:url var="idEmail" value="idEmail.mn"/> --%>
+		<a class="btn btn-primary btn-lg btn-block"   id="sending"
 			style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;">인증번호 발송</a>
 		</div>
 
