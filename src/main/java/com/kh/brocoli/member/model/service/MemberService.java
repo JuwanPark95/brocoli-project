@@ -17,7 +17,7 @@ public interface MemberService {
 	 */
 	Member loginMember(Member m);
 
-<<<<<<< HEAD
+
 	/**
 	 * 작성자 : 임현섭
 	 * ID 중복체크
@@ -44,7 +44,7 @@ public interface MemberService {
 
 	
 	
-=======
+
 	
 	/**
 	 * 작성자 : 윤석훈
@@ -117,6 +117,5 @@ public interface MemberService {
 
 
 
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 	
 }

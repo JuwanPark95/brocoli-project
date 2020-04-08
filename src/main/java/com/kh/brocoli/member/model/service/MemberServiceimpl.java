@@ -31,7 +31,7 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public int idCheck(String id) {
 		
 		return mDao.idCheck(id);
@@ -50,7 +50,7 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	
-=======
+
 	public ArrayList<Auction> selectList() {
 		return mDao.selectList();
 	}
@@ -94,6 +94,5 @@ public class MemberServiceimpl implements MemberService {
 
 
 
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 
 }
