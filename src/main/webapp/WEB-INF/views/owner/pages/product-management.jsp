@@ -115,7 +115,11 @@
 	                                                <td>${r.p_Insert_Date }</td>
 	                                                <td>
 		                                                <div class="btn-group ml-auto">
-				                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-management.jsp">재고확인</a>
+		                                                <c:url var="stockdetail" value="stock_detail.ow">
+		                                                	<c:param name="pNO" value="${r.p_NO}"/>
+		                                                	<c:param name="pName" value="${r.p_Name}"/>
+				                                        </c:url>
+				                                            <a class="btn btn-sm btn-outline-light" href="${stockdetail}">재고확인</a>
 				                                        </div>
 	                                                </td>
 	                                                <td>

@@ -48,6 +48,11 @@ public class ownerProductServiceimpl implements ownerProductService {
 		return oDao.listProduct(Brand_NO);
 	}
 
+	@Override
+	public ArrayList<Product_Option> stockDetail(int pNO) {
+		return oDao.stockDetail(pNO);
+	}
+
 
 
 }
