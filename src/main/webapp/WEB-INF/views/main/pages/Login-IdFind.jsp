@@ -17,10 +17,11 @@
 <style>
 
 </style>
-	<%@ include file="All-Header.jsp" %>
+	
+		<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
+	
 
 </head>
 <body>
@@ -37,26 +38,58 @@
 			<h2 style="margin-bottom: 25px; color: #222; font-size: 30px;"><strong>아이디찾기</strong></h2>
 			<input type="email"
 				class="form-control form-control"
-				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
+				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;" name="email" id="email"
 				placeholder="이메일 ">
 		</div>		
 		<div>
-			<a class="btn btn-primary btn-lg btn-block" onclick="location.href='/brocoli/find/idFindEmail.jsp'"
-				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;">인증번호 발송</a>
+		 <c:url var="idEmail" value="idEmail.mn"/>
+		<a class="btn btn-primary btn-lg btn-block"  href='${idEmail}' id="sending"
+			style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;">인증번호 발송</a>
 		</div>
 
 	</div>
 
-				
+			<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>	
+<!-- ============================================================================================= -->
+	<script>
+	$(function(){
+		$("#sending").on("click",function(){
+			$.ajax({
+		 		url:"mailCheck.do",
+		 		data:{email:email},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			if(data =="ok"){
+		 				alert("당첨~!");
+		 				
+		 			}else{	
+		 				alert("메일 주소를 확인해주세요~!");
+		 				return;
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+		})
+		
+	})
+	</script>
 <!--===============================================================================================-->   
-   <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/animsition/js/animsition.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/bootstrap/js/popper.js"></script>
-   <script src="../main/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-   <script src="vendor/select2/select2.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
       $(".js-select2").each(function(){
          $(this).select2({
@@ -66,18 +99,18 @@
       })
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/daterangepicker/moment.min.js"></script>
-   <script src="../main/vendor/daterangepicker/daterangepicker.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/moment.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/slick/slick.min.js"></script>
-   <script src="../main/js/slick-custom.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/slick/slick.min.js"></script>
+   <script src="/brocoli/resources/mainResources/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/parallax100/parallax100.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/parallax100/parallax100.js"></script>
    <script>
         $('.parallax100').parallax100();
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
    <script>
       $('.gallery-lb').each(function() { // the containers for all your galleries
          $(this).magnificPopup({
@@ -91,9 +124,9 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/isotope/isotope.pkgd.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/sweetalert/sweetalert.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
    <script>
       $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
          e.preventDefault();
@@ -131,7 +164,7 @@
    
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
    <script>
       $('.js-pscroll').each(function(){
          $(this).css('position','relative');
@@ -148,6 +181,6 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/js/main.js"></script>
+   <script src="/brocoli/resources/mainResources/js/main.js"></script>
 </body>
 </html>

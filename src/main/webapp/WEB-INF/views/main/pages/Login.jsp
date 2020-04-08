@@ -14,8 +14,9 @@
   
 <title>로그인 창</title>
 
-	<%@ include file="All-Header.jsp" %>
+		<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 
 
 </head>
@@ -42,9 +43,12 @@
 			<button class="btn btn-primary btn-lg btn-block"
 				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto;">로그인</button>
 			<br>
-			<a href="/brocoli/login/memberJoin.jsp">회원가입</a> &nbsp;&nbsp; 
-			<a href="/brocoli/find/idFind.jsp">아이디 찿기</a>&nbsp;&nbsp; 
-			<a href="/brocoli/find/pwdFind.jsp">비밀번호 찿기</a>
+			<c:url var="JoinView" value="joinView.mn"/>
+			<c:url var="FindId" value="findId.mn"/>
+			<c:url var="FindPwd" value="findPwd.mn"/>
+			<a href="${JoinView }">회원가입</a> &nbsp;&nbsp; 
+			<a href="${FindId }">아이디 찿기</a>&nbsp;&nbsp; 
+			<a href="${FindPwd }">비밀번호 찿기</a>
 		</div>
 
 	</div>

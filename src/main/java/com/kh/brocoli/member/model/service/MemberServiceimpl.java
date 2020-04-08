@@ -25,4 +25,24 @@ public class MemberServiceimpl implements MemberService {
 		return loginUser;
 	}
 
+	@Override
+	public int idCheck(String id) {
+		
+		return mDao.idCheck(id);
+	}
+
+	@Override
+	public int insertMember(Member m) {
+		int result = mDao.insertMember(m);
+		
+		return result;
+	}
+
+	@Override
+	public int mailCheck(String email) {
+		return mDao.mailCheck(email);
+	}
+
+	
+
 }

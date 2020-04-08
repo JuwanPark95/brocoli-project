@@ -1,10 +1,15 @@
 package com.kh.brocoli.member.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -18,6 +23,10 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService mService;
+	
+	// 암호화 처리 
+		@Autowired
+		private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	/**
 	 * 로그인 페이지 뷰
@@ -48,21 +57,38 @@ public class MemberController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String memberLogin( Member m, Model model) {
-
-		Member loginUser = mService.loginMember(m);
-		System.out.println("loginuser : " + loginUser );
-		if (loginUser != null) {
-			model.addAttribute("loginUser",loginUser);
-			return "main/Main";
-
-		} else {
-			model.addAttribute("msg","로그인 실패!!");
-			return "common/errorPage";
-		}
-
+//	@RequestMapping(value = "login", method = RequestMethod.POST)
+//	public String memberLogin( Member m, Model model) {
+//
+//		Member loginUser = mService.loginMember(m);
+//		System.out.println("loginuser : " + loginUser );
+//		if (loginUser != null) {
+//			model.addAttribute("loginUser",loginUser);
+//			return "main/Main";
+//
+//		} else {
+//			model.addAttribute("msg","로그인 실패!!");
+//			return "common/errorPage";
+//		}
+//
+//	}
+	
+/************************ 로그인 창  이동***************************/
+	/**
+	 * 작성자 : 임현섭
+	 * 작성일 200408
+	 * 아이디 찾기 페이지 이동
+	 * @return
+	 */
+	@RequestMapping("findId.mn")
+	public String findId() {
+		return "Login-IdFind";
 	}
+	@RequestMapping("findPwd")
+	public String findPwd() {
+		return "Login-PwdFind";
+	}
+	
 /************************footer 페이지 이동*******************************/
 	/**
 	 * 작성자: 임현섭
@@ -234,8 +260,101 @@ public class MemberController {
 		return "MyCart";
 	}
 
+	/**주문조회 페이지로 이동
+	 * @return
+	 */
 	@RequestMapping("myOrderView.mn")
 	public String MyOrderView() {
 		return "MyOrderList";
 	}
+	
+	/**
+	 * 회원가입 페이지로 이동
+	 * @return
+	 */
+	@RequestMapping("joinView.mn")
+	public String JoinView() {
+		return "Login-Join"; 
+	}
+	
+	/**
+	 * 작성자 : 임현섭
+	 * 작성일 : 20-04-03
+	 * Id 중복체크
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("idCheck.do")
+	public String idCheck(String id) throws IOException {
+		
+		int result = mService.idCheck(id);
+		
+		
+		
+		
+		if(result > 0) {
+			return "fail";
+		}else {
+			return "ok";
+		}
+	}
+	
+	
+	  @ResponseBody
+	  
+	  @RequestMapping("mailCheck.do") public String mailCheck(String email) throws
+	  IOException{
+	  
+	  int result = mService.mailCheck(email);
+	  
+	  if(result > 0) { return "fail"; }else { return "ok"; } }
+	 
+	
+	@RequestMapping("join.mn")
+	public String insertMember(Member m,Model model,
+							   @RequestParam("post") String post,
+							   @RequestParam("address1") String address1,
+							   @RequestParam("address2") String address2) {
+		// 회원 가입 전 회원정보를 출력
+		System.out.println(m);
+		System.out.println(post + ", " + address1 + ", " + address2);
+		
+		
+		String encPwd = bcryptPasswordEncoder.encode(m.getPwd());
+		
+		m.setPwd(encPwd);
+		
+		// 주소데이터들 ","를 구분자로 저장
+		if(!post.contentEquals("")) {
+			m.setAddress(post+","+address1 + "," + address2);
+		}
+		System.out.println(m.getAddress());
+		int result = mService.insertMember(m);
+		
+		if(result > 0) {
+			return "redirect:index.jsp";
+	}else {
+			model.addAttribute("msg","회원가입실패!!");
+			return "common/errorPage";}
+		
+		
+	}
+		
+	// 암호화 처리 후 로그인 부분
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public String memberLogin(Member m,Model model) {
+		
+		Member loginUser = mService.loginMember(m);
+
+		if(loginUser != null && bcryptPasswordEncoder.matches(m.getPwd(), loginUser.getPwd())) {
+			model.addAttribute("loginUser", loginUser);
+			return "redirect:index.jsp";
+		}else {
+			System.out.println("에러에러~~");
+			model.addAttribute("msg","로그인 실패!!");
+			return "common/errorPage";
+		}
+	}
+	
+	
 }
