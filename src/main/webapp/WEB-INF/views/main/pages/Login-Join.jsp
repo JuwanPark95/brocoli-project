@@ -675,6 +675,13 @@
    <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
    
+   function phoneCheck(){ //휴대폰 유효성 검사
+	      
+	    
+	      
+	      
+	   }
+   
    $(function(){
 	   
 	  
@@ -692,19 +699,29 @@
    
    function validate2(){
 	   
-	   
+	   var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+      var phone = document.getElementById("phone");
 		// 가입하기 클릭시 최종 점검
-		if($("#idDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck2").val()==1 && $("#mailDuplicateCheck2").val()==1 ){
+		if($("#idDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck2").val()==1 && $("#mailDuplicateCheck2").val()==1 && rgEx.test(phone.value) == true){
 			return true;
 		}else{
 			if($("#idDuplicateCheck2").val()!=1){
 				$("#mId").focus();
+				alert("ID 중복체크를 실시해주세요")
 			}else if($("#pwdDuplicateCheck2").val()!=1){
 				$("#pwd").focus();
+				alert("비밀버호를 다시 한붠 확인해주세요.")
 			}else if($("#mailDuplicateCheck2").val()!=1){
 				$("#email").focus();
-			}
-			alert("입력된 정보를 다시 한번 체크해주세요.")
+				alert("이메일 주소를 다시 한번 확인해주세요.")
+			}else{
+		         
+		         alert("휴대폰 번호를 다시 입력하세요.");
+		         phone.value="";
+		         phone.focus();
+		       
+		      }
+			
 			
 			return false;
 		}

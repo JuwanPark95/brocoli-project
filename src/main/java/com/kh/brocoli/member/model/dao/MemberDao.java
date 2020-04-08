@@ -62,6 +62,10 @@ public class MemberDao {
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
+
+	public String mailCheck2(String email) {
+		return sqlSession.selectOne("memberMapper.mailCheck2",email);
+	}
 	
 
 }

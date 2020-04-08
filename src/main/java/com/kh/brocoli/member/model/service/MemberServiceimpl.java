@@ -76,10 +76,10 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.updateMember(m);
 	}
 
-	@Override
-	public int pwdCheck(String password) {
-		return mDao.pwdCheck(password);
-	}
+//	@Override
+//	public int pwdCheck(String password) {
+//		return mDao.pwdCheck(password);
+//	}
 
 
 	@Override
@@ -90,6 +90,17 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return mDao.selectbpList(b_Name);
+	}
+
+	@Override
+	public String mailCheck2(String email) {
+		String result = mDao.mailCheck2(email);
+		System.out.println("result : " + result);
+		if(result != null) {
+			return result;
+		}else {
+			return null;
+		}
 	}
 
 

@@ -40,33 +40,39 @@
 				class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;" name="email" id="email"
 				placeholder="이메일 ">
+			
 		</div>		
 		<div>
-		 <%-- <c:url var="idEmail" value="idEmail.mn"/> --%>
-		<a class="btn btn-primary btn-lg btn-block"   id="sending"
-			style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;">인증번호 발송</a>
-		</div>
+		 
+		 <input type="button" class="btn btn-primary btn-lg btn-block" 
+		 id="sending" style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;" value="ID 찾기"/>
+		
 
+	</div>
 	</div>
 
 			<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>	
 <!-- ============================================================================================= -->
+	
 	<script>
+	
 	$(function(){
 		$("#sending").on("click",function(){
+		var email = $("#email").val();
+		console.log("이메일값은?" + email );	
 			$.ajax({
-		 		url:"mailCheck.do",
+		 		url:"loginIdCheck.do",
 		 		data:{email:email},
 		 		type:"post",
 		 		success:function(data){
 		 			console.log(data);
-		 			if(data =="ok"){
-		 				alert("당첨~!");
-		 				
+		 			if(data == "fail"){
+		 				alert("검색된 아이디가 존재하지 않습니다.");
 		 			}else{	
-		 				alert("메일 주소를 확인해주세요~!");
-		 				return;
+		 				
+		 				alert("사용자가 찾으신 아이디는 " + data + "입니다.");
+		 				
 		 			}
 		 		},error:function(jqxhr, textStatus, errorThrown){
 					console.log("ajax 처리실패");
@@ -77,9 +83,9 @@
 					console.log(errorThrown);
 				}
 		 	});
-		})
+		});
 		
-	})
+	});
 	</script>
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
