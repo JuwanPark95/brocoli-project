@@ -5,7 +5,6 @@ import java.sql.Date;
 public class Orders {
 	 private int or_NO;
 	 private Date or_Date;
-	 private String or_Pcode;
 	 private String or_Pname;
 	 private String or_Option1;
 	 private String or_Option2;
@@ -24,13 +23,12 @@ public class Orders {
 		super();
 	 }
 
-	public Orders(int or_NO, Date or_Date, String or_Pcode, String or_Pname, String or_Option1, String or_Option2,
+	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2,
 			String or_Amount, String or_Address, String or_Message, String or_Price, String or_Status,
 			String or_Deliver_Num, String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO) {
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
-		this.or_Pcode = or_Pcode;
 		this.or_Pname = or_Pname;
 		this.or_Option1 = or_Option1;
 		this.or_Option2 = or_Option2;
@@ -60,14 +58,6 @@ public class Orders {
 
 	public void setOr_Date(Date or_Date) {
 		this.or_Date = or_Date;
-	}
-
-	public String getOr_Pcode() {
-		return or_Pcode;
-	}
-
-	public void setOr_Pcode(String or_Pcode) {
-		this.or_Pcode = or_Pcode;
 	}
 
 	public String getOr_Pname() {
@@ -176,7 +166,7 @@ public class Orders {
 
 	@Override
 	public String toString() {
-		return "Orders [or_NO=" + or_NO + ", or_Date=" + or_Date + ", or_Pcode=" + or_Pcode + ", or_Pname=" + or_Pname
+		return "Orders [or_NO=" + or_NO + ", or_Date=" + or_Date + ", or_Pcode=" + ", or_Pname=" + or_Pname
 				+ ", or_Option1=" + or_Option1 + ", or_Option2=" + or_Option2 + ", or_Amount=" + or_Amount
 				+ ", or_Address=" + or_Address + ", or_Message=" + or_Message + ", or_Price=" + or_Price
 				+ ", or_Status=" + or_Status + ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender="

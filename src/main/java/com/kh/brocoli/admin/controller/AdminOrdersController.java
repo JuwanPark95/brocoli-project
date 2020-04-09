@@ -11,19 +11,26 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.admin.model.service.AdminOrdersService;
 import com.kh.brocoli.member.model.vo.Orders;
 
-
 @Controller
-@SessionAttributes
+@SessionAttributes("loginUser")
 public class AdminOrdersController {
 
 	@Autowired
 	private AdminOrdersService AOService;
 	
-	@RequestMapping("order-status.ad")
+	/**
+	 * 작성자 : 신은지
+	 * 1. 주문현황 목록 list
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("orderStatus.ad")
 	public ModelAndView ordersStatus(ModelAndView mv) {
 		
 		ArrayList<Orders> ordersList = AOService.selectOrdersList();
 		
-		return null;
+		mv.addObject(ordersList);
+		mv.setViewName("order-status");
+		return mv;
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.member.model.vo.Orders;
 
-@Repository
+@Repository("AODao")
 public class AdminOrdersDao {
 
 	@Autowired

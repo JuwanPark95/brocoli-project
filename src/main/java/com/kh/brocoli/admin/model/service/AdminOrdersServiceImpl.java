@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.admin.model.dao.AdminOrdersDao;
 import com.kh.brocoli.member.model.vo.Orders;
 
-@Service
+@Service("AOSerivce")
 public class AdminOrdersServiceImpl implements AdminOrdersService{
 
 	@Autowired
