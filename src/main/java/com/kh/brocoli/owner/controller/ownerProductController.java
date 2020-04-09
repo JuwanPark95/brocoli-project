@@ -39,6 +39,11 @@ public class ownerProductController {
 		return "redirect:index-owner.jsp";
 	}
 	
+	@RequestMapping("productInsertMenu.ow")
+	public String PinsertMenu() {
+		return "product-insert";
+	}
+	
 	/** 작성자 : 박주완
 	 *  작성일 : 2020-04-02
 	 *  내용  : 상품등록
@@ -207,7 +212,7 @@ public class ownerProductController {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		
-		String renameDimageName = name + "_" + count2 + "_" +  sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
+		String renameDimageName = name + "_Detail_" + count2 + "_" +  sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
 									originDimageName.substring(originDimageName.lastIndexOf(".")+1); 
 		
 		String renamePath = folder + "\\" + renameDimageName;
@@ -226,14 +231,29 @@ public class ownerProductController {
 	@RequestMapping("productList.ow")
 	public ModelAndView productList(ModelAndView mv, String Brand_NO) {
 		
-		System.out.println(Brand_NO);
+		System.out.println("선택한 브랜드번호 : " +Brand_NO);
 		ArrayList<Product> list = oService.productList(Brand_NO);
 		
 		mv.addObject("list",list);
 		mv.setViewName("product-management");
 		
 		return mv;
+	};
+	
+	@RequestMapping("stock_detail.ow")
+	public ModelAndView stock_detail(ModelAndView mv, int pNO, String pName) {
 		
+		System.out.println("*** 선택상품 재고관리페이지 이동 ***");
+		System.out.println("선택한 상품번호  : " + pNO + "  선택한 상품명 : " + pName);
+		
+		ArrayList<Product_Option> list = oService.stockDetail(pNO);
+		
+		mv.addObject("list",list);
+		mv.addObject("pName",pName);
+		mv.setViewName("stock-detail");
+		
+		System.out.println("***************************");
+		return mv;
 	};
 	
 	

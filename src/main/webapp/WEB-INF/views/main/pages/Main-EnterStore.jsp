@@ -14,9 +14,9 @@
 
 <title>입점 문의</title>
 
-	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
+	<%@ include file="All-Cart.jsp" %>
 	
 
 

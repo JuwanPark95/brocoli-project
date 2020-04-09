@@ -13,6 +13,8 @@ public interface ownerProductService {
 
 	ArrayList<Product> productList(String Brand_NO);
 
+	ArrayList<Product_Option> stockDetail(int pNO);
+
 
 
 

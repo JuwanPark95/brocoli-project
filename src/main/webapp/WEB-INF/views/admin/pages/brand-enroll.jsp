@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>브랜드 상세페이지</title>
+    <title>브랜드 등록페이지</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/bootstrap/css/bootstrap.min.css">
     <link href="/brocoli/resources/adminResources/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -62,8 +62,16 @@
                                     	<div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">로고</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                            	<img src="/brocoli/resources/images/${b.b_Logo}" width="120" height="120">
+                                            <div class="form-group row">
+                                               <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                                                  <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+                                               </div>
                                             </div>
+                                        	</div>
+	                                        <div class="productImgArea" id="productImgArea">
+	                                           <input type="file" id="pf_Img1" name="file1" accept="resources/product-Img/*" onchange="loadImg(this, 1);" />
+	                                        </div>
+                                            
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">브랜드명</label>
@@ -108,36 +116,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">수정자</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="email" class="form-control" name="b_Modify_ID" value="${b.b_Modify_ID}" readonly="readonly">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">수정일</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="b_Modify_Date"  value="${b.b_Modify_Date}" readonly="readonly">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">입점일</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="b_Enter_Date" value="${b.b_Enter_Date}" readonly="readonly">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">폐점일</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control"  name="b_Close_Date" value="${b.b_Close_Date}" readonly="readonly">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">폐점 사유</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="b_Close_Content" value="${b.b_Close_Content}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">owner 아이디1</label>
                                             <div class="col-lg-2">
                                                 <input type="text" class="form-control" name="b_Owner1_ID" value="${b.b_Owner1_ID}">
@@ -167,29 +145,12 @@
                                                 <input type="text" class="form-control" name="b_Email3" value="${b.b_Email3}">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">입점 여부</label>
-                                            <div class="btn-group">
-                                                <select name="block_YN" style="margin-left:15px">
-                                                	<option value="N">입점X</option>
-                                                	<option value="Y">입점O</option>
-                                                </select>
-                                            </div>		
-                                        </div>
                                         <div class="form-group row text-right">
                                             <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                                 <button type="submit" class="btn btn-dark">저장</button>
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="form-group row text-right">
-                                    	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                    		<%-- <form action="memberDelete.ad" method="post" >
-                                        		<input type="hidden" name="brand_NO" value="${brand_NO}"/>	
-                                            	<button type="submit" class="btn btn-dark">브랜드삭제</button>
-                                    		</form> --%>
-                                    	</div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -231,6 +192,40 @@
     })();
     
     </script>
+    
+    <!--    작성자 : 박주완
+        작성일 : 2020-04-03
+        내용: 이미지 클릭시 이미지 파일 업로드 스크립트 -->
+   <script>
+   //사진 게시판 미리보기 기능 지원 스크립트
+   $(function(){
+      $('#productImgArea').hide();
+      
+         
+      $('#titleImgArea').click() => {
+         $('#pf_Img1').click();
+      });
+         
+   });
+
+   function loadImg(value, num){
+      
+      if(value.files && value.files[0])  {
+         
+         var reader = new FileReader();
+         
+         reader.onload = function(e){
+            
+            switch(num) {
+            case 1 : $('#titleImg').attr('src', e.target.result);
+               break;
+            }
+         }
+         reader.readAsDataURL(value.files[0]);
+      }
+   }
+   </script>
+    
     
 </body>
 </html>

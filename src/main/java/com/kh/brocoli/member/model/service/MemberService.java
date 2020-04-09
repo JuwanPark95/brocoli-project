@@ -17,6 +17,34 @@ public interface MemberService {
 	 */
 	Member loginMember(Member m);
 
+
+	/**
+	 * 작성자 : 임현섭
+	 * ID 중복체크
+	 * @param id
+	 * @return
+	 */
+	int idCheck(String id);
+
+	/**
+	 * 작성자 : 임현섭
+	 * 회원가입 
+	 * @param m
+	 * @return
+	 */
+	int insertMember(Member m);
+
+	/**
+	 * 작성자 : 임현섭
+	 * mail 중복체크
+	 * @param email
+	 * @return
+	 */
+	int mailCheck(String email);
+
+	
+	
+
 	
 	/**
 	 * 작성자 : 윤석훈
@@ -81,6 +109,15 @@ public interface MemberService {
 	 * @return
 	 */
 	int pwdCheck(String password);
+
+
+	/**
+	 * 작성자 : 임현섭
+	 * 아이디 찾기
+	 * @param email
+	 * @return
+	 */
+	String mailCheck2(String email);
 
 
 

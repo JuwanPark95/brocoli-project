@@ -59,6 +59,12 @@
                                 <h5 class="card-header">owner 정보</h5>
                                 <div class="card-body">
                                     <form action="memberUpdate.ad" method="post">
+                                    	<div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">회원번호</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input type="text" class="form-control" name="mNO" value="${m.mNO}">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">이름</label>
                                             <div class="col-12 col-sm-8 col-lg-6">

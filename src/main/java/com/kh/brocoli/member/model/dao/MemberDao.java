@@ -22,6 +22,19 @@ public class MemberDao {
 		return (Member)sqlSession.selectOne("memberMapper.loginMember",m);
 	}
 
+	public int idCheck(String id) {
+		
+		return sqlSession.selectOne("memberMapper.idCheck",id);
+	}
+
+	public int insertMember(Member m) {
+		
+		return sqlSession.insert("memberMapper.insertMember",m);
+	}
+
+	public int mailCheck(String email) {
+		return sqlSession.selectOne("memberMapper.mailCheck",email);
+	}
 	public ArrayList<Auction> selectList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
 	}
@@ -48,6 +61,10 @@ public class MemberDao {
 
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
+	}
+
+	public String mailCheck2(String email) {
+		return sqlSession.selectOne("memberMapper.mailCheck2",email);
 	}
 	
 

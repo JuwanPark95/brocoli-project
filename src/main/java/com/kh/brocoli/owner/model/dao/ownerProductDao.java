@@ -40,6 +40,10 @@ public class ownerProductDao {
 		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectProductList",Brand_NO);
 	}
 
+	public ArrayList<Product_Option> stockDetail(int pNO) {
+		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectStockDetail",pNO);
+	}
+
 //	public int insertProductOP(ArrayList<Product_Option> po) {	//박주완-2020-04-03-상품옵션정보등록
 //		return sqlSession.insert("owner-mapper.insertProductOP",po);
 //	}

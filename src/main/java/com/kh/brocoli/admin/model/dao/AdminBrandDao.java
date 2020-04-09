@@ -15,23 +15,42 @@ public class AdminBrandDao {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 작성자 : 신은지
-	 * 1. 브랜드 list dao
+	 * 작성자 : 신은지 1. 브랜드 list dao
+	 * 
 	 * @return
 	 */
 	public ArrayList<Brand> selectBrandList() {
-		return (ArrayList)sqlSession.selectList("AdminBrand.selectBrandList");
+		return (ArrayList) sqlSession.selectList("AdminBrand.selectBrandList");
 	}
 
 	/**
-	 * 작성자: 신은지
-	 * 2. 브랜드 상세보기 dao
+	 * 작성자: 신은지 2. 브랜드 상세보기 dao
+	 * 
 	 * @param brand_NO
 	 * @return
 	 */
 	public Brand selectBrandDetail(int brand_NO) {
-		return sqlSession.selectOne("AdminBrand.selectBrandDetail",brand_NO);
+		return sqlSession.selectOne("AdminBrand.selectBrandDetail", brand_NO);
 	}
-	
-	
+
+	/**
+	 * 작성자 : 신은지 3. 브랜드 수정 dao
+	 * 
+	 * @param b
+	 * @return
+	 */
+	public int updateBrandUpdate(Brand b) {
+		return sqlSession.update("AdminBrand.updateBrand", b);
+	}
+	/*
+		*//**
+			 * 작성자 : 신은지 4. 브랜드 삭제 dao
+			 * 
+			 * @param brand_NO
+			 * @return
+			 *//*
+				 * public int deleteBrand(int brand_NO) { return
+				 * sqlSession.update("AdminBrand.deleteBrand", ); }
+				 */
+
 }

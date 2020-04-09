@@ -33,11 +33,28 @@
 		SELECT * 
 		FROM MEMBER
 		WHERE MID=#{mId}
-		AND PWD=#{pwd}
 		AND DEL_FLAG_YN='N'
 		
 		</select>
 		
+
+		<insert id="insertMember" parameterType="Member">
+		 INSERT INTO MEMBER
+    	 VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
+    	 NULL,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
+	</insert>
+	
+	<select  id="idCheck" parameterType="String" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MID=#{mId}
+	</select>
+	<select  id="mailCheck" parameterType="String" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE EMAIL=#{email}
+	</select>
+
 		<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
 		SET ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
@@ -55,4 +72,12 @@
 		FROM MEMBER
 		WHERE PWD=#{password}
 	    </select>
+
+		
+		<select id="mailCheck2" parameterType="string" resultType="string">
+		SELECT MID
+		FROM MEMBER
+		WHERE EMAIL=#{email}
+		</select>
+
 </mapper>

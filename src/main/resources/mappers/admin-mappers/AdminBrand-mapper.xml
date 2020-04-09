@@ -35,4 +35,13 @@
 		FROM BRAND
 		WHERE BRAND_NO = #{brand_NO}
 	</select>
+	
+	<update id="updateBrand" parameterType="Brand">
+		UPDATE	BRAND
+		SET	BRAND_NO=#{brand_NO},B_NAME=#{b_Name},B_BUSINESS_NO=#{b_Business_NO},B_STATUS=#{b_Status},B_ENTER_DATE=#{b_Enter_Date},
+			B_CLOSE_DATE=#{b_Close_Date},B_CLOSE_CONTENT=#{b_Close_Content},B_MODIFY_ID=#{b_Modify_ID},B_MODIFY_DATE=SYSDATE,
+			B_OWNER1_ID=#{b_Owner1_ID},B_OWNER2_ID=#{b_Owner2_ID},B_OWNER3_ID=#{b_Owner3_ID},B_PHONE=#{b_Phone},B_ADDRESS=#{b_Address},
+			B_OWNER_NAME=#{b_Owner_Name},B_COMMENT=#{b_Comment},B_EMAIL1=#{b_Email1},B_EMAIL2=#{b_Email2},B_EMAIL3=#{b_Email3}
+		WHERE BRAND_NO=#{brand_NO}
+	</update>
 </mapper>

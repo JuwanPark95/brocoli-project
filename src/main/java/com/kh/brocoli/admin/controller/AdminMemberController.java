@@ -68,7 +68,6 @@ public class AdminMemberController {
 	@RequestMapping("memberUpdate.ad")
 	public ModelAndView memberUpdate (ModelAndView mv, Member m) {
 		
-		System.out.println("??"+m);
 		int result = AMService.memberUpdate(m);
 		
 		if(result>0) {
@@ -86,6 +85,7 @@ public class AdminMemberController {
 	 */
 	@RequestMapping("memberDelete.ad")
 	public String memberDelete(Model model,@RequestParam("mId") String mId) {
+		
 		int result = AMService.memberDelete(mId);
 		
 		if(result>0) {

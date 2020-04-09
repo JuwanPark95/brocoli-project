@@ -14,11 +14,9 @@
 
 <title>회원가입 창</title>
 
-	<%@ include file="All-Header.jsp" %>
+		<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	<%@ include file="All-Footer.jsp" %>
-	<%@ include file="All-BacktoTop.jsp" %>
-
+	<%@ include file="All-Cart.jsp" %>
 <style>
 	#all{
 		  /* border:1px solid red; */
@@ -46,76 +44,96 @@
 		height:150px;
 	}
 	
+
+	span.guide{display:none; font-size: 12px; top: 12px; right: 10px;}
+	span.ok{color:green;}
+	span.error{color:red;}
+
+	span.mGuide{display:none; font-size: 12px; top: 12px; right: 10px;}
+	span.error2{color:red;}
+	span.ok2{color:green;}
 </style>
 
 </head>
 <body>
 
-<form>
+<form action="join.mn" method="post">
 	<div id="all">
 			<h2 style="background: #222; color: white; padding:4%; text-align: center">회원 가입</h2><Br>
 			<hr>
 	<div id="all2">
 		<div class="form-group">
       		<label for="userId">이름 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:80%;">
+    		<input type="text" class="form-control" id="mName" name="mName" style="width:80%;" required>
    		</div>   		
    		
   		<div class="form-group">
       		<label for="userId">아이디 : </label>
       		<div style="display: flex;">
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:80%;"> &nbsp;&nbsp;&nbsp;
-    		<button class="btn btn-primary" style="background: #222; border: 1px solid #999; width: 19%;">중복확인</button>
+    		<input type="text" class="form-control" id="mId" name="mId" style="width:80%;" required> &nbsp;&nbsp;&nbsp;
+    		<button type="button" class="btn btn-primary" onclick="validateCheck();" style="background: #222; border: 1px solid #999; width: 19%;">중복확인</button>
+    		<input type="hidden" name="idDuplicateCheck2" id="idDuplicateCheck2" value="0" />
     		</div>
    		</div>
    		
    		<div class="form-group">
       		<label for="userId">비밀번호 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:80%;">
+    		<input type="password" class="form-control" id="pwd" name="pwd" style="width:80%;" required>
    		</div>
    		
    		<div class="form-group">
       		<label for="userId">비밀번호 확인 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:80%;">
+    		<input type="password" class="form-control" id="pwd2" name="pwd2" style="width:80%;" required>
+    		<span class="guide ok">비밀번호가 일치합니다.</span>
+						<span class="guide error">비밀번호를 다시 확인해주세요.</span>
+						<input type="hidden" name="pwdDuplicateCheck2" id="pwdDuplicateCheck2" value="0" />
+						
    		</div>
    		
    		<div class="form-group">
-      		<label for="year">생년월일 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:80%;">
+      		<label>생년월일 : </label>
+    		<input type="text" class="form-control" id="birthDay" name="birthDay" style="width:80%;" required>
    		</div>
    		
    		<div class="form-group" >
-	   		<label for="year">성별 : </label>
+	   		<label >성별 : </label>
 	   		
 	   		<div style="display: inline-flex">
-	   			<input type="checkBox" name="cate" id="ck" value="">&nbsp; 남
+	   			<input type="radio" name="gender" id="gender" value="M">&nbsp; 남
 	   		</div>
 	   		&nbsp;
 	   		<div style="display: inline-flex">
-	   			<input type="checkBox" name="cate" id="ck" value="">&nbsp; 여
+	   			<input type="radio" name="gender" id="gender" value="F">&nbsp; 여
    			</div>			
    		</div>
    		
    		<div class="form-group">
-      		<label for="year">배송지 입력 : </label>
+      		<label>배송지 입력 : </label>
       		<div style="display: flex;">
-	      		<input type="text" class="form-control" id="year" name="year" style="width:30%;">&nbsp;&nbsp;&nbsp;
-	      		<button class="btn btn-primary" style="background: #222; border: 1px solid #999; width: 20%;">우편번호 검색</button>
+	      		<input type="text" class="form-control" id="post" name="post" style="width:30%;" placeholder="우편번호">&nbsp;&nbsp;&nbsp;
+	      		<button type="button" class="btn btn-primary" style="background: #222; border: 1px solid #999; width: 20%;" onclick="postcodify_search();">우편번호 검색</button>
       		</div>
+      		<br />
+      		<div>
+    		<input type="text" class="form-control" id="address1" name="address1" style="width:80%;" placeholder="도로명  + 지번주소">    		
+    		<span id="amado" name="amado" style="color:#999;display:none"></span>
+    		
+   			</div>   		
       		<br>
       		<div>
-    		<input type="text" class="form-control" id="year" name="year" style="width:80%;" placeholder="상세주소">    		
+    		<input type="text" class="form-control" id="address2" name="address2"  style="width:80%;" placeholder="상세주소">    		
    			</div>   		
    		</div>
    		
-   		<div class="form-group">
-      		<label for="phone">연락처 : </label>
-    		<input type="text" class="form-control" id="phone" name="phone" style="width:80%;">
-   		</div>
+   	
+   		
    		
    		<div class="form-group">
       		<label for="userId">이메일 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:80%;">
+    		<input type="text" class="form-control" id="email" name="email" style="width:80%;">
+    		<span class="mGuide ok2">사용가능한 메일주소입니다.</span>
+    		<span class="mGuide error2">메일주소를 다시 확인해주세요.</span>
+    		<input type="hidden" name="mailDuplicateCheck2" id="mailDuplicateCheck2" value="0" />
    		</div>
 
 		<div class="form-group">
@@ -134,7 +152,7 @@
    		<div class="form-group">
    			<label for="Agree">이용 약관 동의</label>
    			<div style="display: inline-flex">
-   			<input type="checkBox" name="cate" id="ck" value="">&nbsp; BROCOLI 개인정보수집동의(필수)
+   			<input type="checkBox" name="ck" id="ck" value="">&nbsp; BROCOLI 개인정보수집동의(필수)
    			</div>
    			
    			<div>
@@ -179,7 +197,7 @@
    			</div>
    			
    			<div style="display: inline-flex">
-   			<input type="checkBox" name="cate" id="ck" value="">&nbsp; BROCOLI 이용 약관(필수)
+   			<input type="checkBox" name="ck" id="ck" value="">&nbsp; BROCOLI 이용 약관(필수)
    			</div>
    			<div>
 <pre id="agree">
@@ -609,7 +627,7 @@
    			</div>
    			
    			<div style="display: inline-flex">
-   			<input type="checkBox" name="cate" id="ck" value="">&nbsp; BROCOLI 마케팅 활용및 광고정보 수신(필수)
+   			<input type="checkBox" name="ck" id="ck" value="">&nbsp; BROCOLI 마케팅 활용및 광고정보 수신(필수)
    			</div>
    			<div>
    			<pre id="agree">
@@ -638,23 +656,147 @@
    		</div>
    		<br>
    		<div style="margin-left: 40%">
-   		<button type="submit" class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;">가   입</button>
+   		<button type="submit" onclick="return validate2();" name="subBtn" id="subBtn"  class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;" disabled>가   입</button>
    		</div>
 	<br><br>
 	
 </form>
-		
+	<%@ include file="All-Footer.jsp" %>
+	<%@ include file="All-BacktoTop.jsp" %>	
 		
 <!--===============================================================================================-->   
-   <script src="../main/vendor/jquery/jquery-3.2.1.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/animsition/js/animsition.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/bootstrap/js/popper.js"></script>
-   <script src="../main/vendor/bootstrap/js/bootstrap.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/popper.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-   <script src="vendor/select2/select2.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
+   
+   function phoneCheck(){ //휴대폰 유효성 검사
+	      
+	    
+	      
+	      
+	   }
+   
+   $(function(){
+	   
+	  
+		$("[name='ck']").on("click",function(){
+			var f=document.forms[0];
+
+			 if($('input:checkbox[id="ck"]:checked').length == 3 ){
+				 f.subBtn.disabled=false;
+			 }else{
+				 f.subBtn.disabled=true;
+			 }
+	});
+   });
+
+   
+   function validate2(){
+	   
+	   var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+      var phone = document.getElementById("phone");
+		// 가입하기 클릭시 최종 점검
+		if($("#idDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck2").val()==1 && $("#mailDuplicateCheck2").val()==1 && rgEx.test(phone.value) == true){
+			return true;
+		}else{
+			if($("#idDuplicateCheck2").val()!=1){
+				$("#mId").focus();
+				alert("ID 중복체크를 실시해주세요")
+			}else if($("#pwdDuplicateCheck2").val()!=1){
+				$("#pwd").focus();
+				alert("비밀버호를 다시 한붠 확인해주세요.")
+			}else if($("#mailDuplicateCheck2").val()!=1){
+				$("#email").focus();
+				alert("이메일 주소를 다시 한번 확인해주세요.")
+			}else{
+		         
+		         alert("휴대폰 번호를 다시 입력하세요.");
+		         phone.value="";
+		         phone.focus();
+		       
+		      }
+			
+			
+			return false;
+		}
+		
+	}
+   
+   $(function(){
+		$("#email").on("keyup",function(){
+			
+			var email= $(this).val();
+			
+			if(email.length < 7){
+				$(".mGuide").hide();
+				$("#mailDuplicateCheck2").val(0);
+				
+				return;
+			}
+			
+			$.ajax({
+		 		url:"mailCheck.do",
+		 		data:{email:email},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			if(data =="ok"){
+		 				$(".error2").hide();
+						$(".ok2").show();
+						$("#mailDuplicateCheck2").val(1);
+		 				
+		 			}else{	
+		 				$(".ok2").hide();
+						$(".error2").show();
+						$("#mailDuplicateCheck2").val(0);
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+			
+			
+		});
+	});
+   
+   $(function(){
+		$("#pwd2").on("keyup",function(){
+			var pwd = $("#pwd").val();
+			var pwd2 = $(this).val();
+			
+			if(pwd.length > pwd2.length){
+				$(".guide").hide();
+				$("#pwdDuplicateCheck2").val(0);
+				
+				return;
+			}
+			
+			if(pwd != pwd2){
+				$(".ok").hide();
+				$(".error").show();
+				$("#pwdDuplicateCheck2").val(0);
+			}else{
+			
+				$(".error").hide();
+				$(".ok").show();
+				$("#pwdDuplicateCheck2").val(1);
+			}
+			
+			
+		});
+	});
+   
       $(".js-select2").each(function(){
          $(this).select2({
             minimumResultsForSearch: 20,
@@ -663,18 +805,18 @@
       })
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/daterangepicker/moment.min.js"></script>
-   <script src="../main/vendor/daterangepicker/daterangepicker.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/moment.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/slick/slick.min.js"></script>
-   <script src="../main/js/slick-custom.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/slick/slick.min.js"></script>
+   <script src="/brocoli/resources/mainResources/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/parallax100/parallax100.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/parallax100/parallax100.js"></script>
    <script>
         $('.parallax100').parallax100();
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
    <script>
       $('.gallery-lb').each(function() { // the containers for all your galleries
          $(this).magnificPopup({
@@ -688,9 +830,9 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/isotope/isotope.pkgd.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/sweetalert/sweetalert.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
    <script>
       $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
          e.preventDefault();
@@ -728,7 +870,7 @@
    
    </script>
 <!--===============================================================================================-->
-   <script src="../main/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+   <script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
    <script>
       $('.js-pscroll').each(function(){
          $(this).css('position','relative');
@@ -745,6 +887,104 @@
       });
    </script>
 <!--===============================================================================================-->
-   <script src="../main/js/main.js"></script>
+   <script src="/brocoli/resources/mainResources/js/main.js"></script>
+ <!--===============================================================================================-->
+ 
+ <script>
+ function validateCheck(){
+	 var mId = $("#mId").val();
+	 console.log(mId);
+ 	$.ajax({
+ 		url:"idCheck.do",
+ 		data:{id:mId},
+ 		type:"post",
+ 		success:function(data){
+ 			console.log(data);
+ 			if(data =="ok"){
+ 				alert("ID 사용 가능!");
+ 				$("#idDuplicateCheck2").val(1);
+ 			}else{	
+ 				alert("중복된 ID가 존재합니다!");
+ 				$("#idDuplicateCheck2").val(0);
+ 			}
+ 		},error:function(jqxhr, textStatus, errorThrown){
+			console.log("ajax 처리실패");
+			
+			// 에러로그
+			console.log(jqxhr);
+			console.log(textStatus);
+			console.log(errorThrown);
+		}
+ 	});
+ }
+ </script>
+ <!-- 우편 주소 API -->
+ <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    
+    function postcodify_search() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('post').value = data.zonecode;
+                document.getElementById("address1").value = roadAddr;
+                document.getElementById("address1").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                	document.getElementById("address2").value = extraRoadAddr;
+                } else {
+                	document.getElementById("address2").value = '';
+                }
+
+                var guideTextBox = document.getElementById("amado");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    if(document.getElementById("address1").value.length > 0){
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    }else{
+                    	document.getElementById("address1").value = expRoadAddr;
+                    }
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    if(document.getElementById("address1").value.length > 0){
+                    	 guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                        }else{
+                        	document.getElementById("address1").value = expJibunAddr;
+                        }
+                   
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
 	</body>
 </html>

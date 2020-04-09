@@ -83,7 +83,7 @@
                                             <tr>
                                                 <td>${bl.count }</td>
                                                 <td>${b.brand_NO}</td>
-                                                <td><img src="/brocoli/resources/adminResources/images/${b.b_Logo}" width="50" height="50"></td>
+                                                <td><img src="/brocoli/resources/images/${b.b_Logo}" width="50" height="50"></td>                                              	
                                                 <td>${b.b_Name}</td>
                                                 <td>${b.b_Business_NO}</td>
                                                 <td>${b.b_Owner_Name }</td>
