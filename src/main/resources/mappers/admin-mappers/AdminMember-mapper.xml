@@ -24,7 +24,6 @@
 		<result property="enrollDate" column="ENROLLDATE"/>
 		<result property="brand" column="BRAND"/>
 		<result property="brand_NO" column="BRAND_NO"/>
-	
 	</resultMap>
 
 
