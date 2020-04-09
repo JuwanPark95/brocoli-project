@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.kh.brocoli.member.model.vo.Orders;
 
-public interface AdminOrderService {
+public interface AdminOrdersService {
 
 	/**
 	 * 작성자 : 신은지
 	 * 1.주문현황 목록 list Service
 	 * @return
 	 */
-	ArrayList<Orders> selectOrderList();
+	ArrayList<Orders> selectOrdersList();
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.member.model.vo.Orders;
 
 @Repository
-public class AdminOrderDao {
+public class AdminOrdersDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -19,7 +19,7 @@ public class AdminOrderDao {
 	 * 1.주문 현황 목록 list Dao
 	 * @return
 	 */
-	public ArrayList<Orders> selectOrderList() {
-		return (ArrayList)sqlSession.selectList("AdminOrder.selectOrderList");
+	public ArrayList<Orders> selectOrdersList() {
+		return (ArrayList)sqlSession.selectList("AdminOrders.selectOrdersList");
 	}
 }

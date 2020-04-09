@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.brocoli.admin.model.service.AdminOrderService;
+import com.kh.brocoli.admin.model.service.AdminOrdersService;
 import com.kh.brocoli.member.model.vo.Orders;
 
 
 @Controller
 @SessionAttributes
-public class AdminOrderController {
+public class AdminOrdersController {
 
 	@Autowired
-	private AdminOrderService AOService;
+	private AdminOrdersService AOService;
 	
 	@RequestMapping("order-status.ad")
-	public ModelAndView orderStatus(ModelAndView mv) {
+	public ModelAndView ordersStatus(ModelAndView mv) {
 		
-		ArrayList<Orders> orderList = AOService.selectOrderList();
+		ArrayList<Orders> ordersList = AOService.selectOrdersList();
 		
 		return null;
 	}
