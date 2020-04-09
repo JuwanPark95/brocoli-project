@@ -41,4 +41,12 @@ public class BoardDao {
 	public int updateCount(int n_No) {
 		return sqlSession.update("boardNotice-mapper.updateCount", n_No);
 	}
+
+	public int updateBoardNotice(Notice n) {
+		return sqlSession.update("boardNotice-mapper.updateBoardNotice", n);
+	}
+
+	public int deleteBoardNotice(int n_No) {
+		return sqlSession.update("boardNotice-mapper.deleteBoardNotice", n_No);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.Notice_PageInfo;
+import com.kh.brocoli.board.model.vo.Search;
 
 public interface BoardService {
 
@@ -33,5 +34,21 @@ public interface BoardService {
 	 * @return
 	 */
 	Notice selectBoardNotice(int n_No);
+
+	/**
+	 * 게시판 수정
+	 * @param n_No
+	 * @return
+	 */
+	Notice selectUpdateBoardNotice(int n_No);
+	int updateBoardNotice(Notice n);
+
+	/**
+	 * 게시판 삭제
+	 * @param n_No
+	 * @return
+	 */
+	int deleteBoardNtice(int n_No);
+
 
 }

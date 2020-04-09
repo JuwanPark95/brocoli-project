@@ -64,5 +64,17 @@
 		AND N.N_STATUS='Y'
 	</select>
 	
+	<update id="updateBoardNotice" parameterType="Notice">
+		UPDATE NOTICE
+		SET N_WRITER=#{n_Writer},N_TITLE=#{n_Title},N_CONTENT=#{n_Content},
+		    N_MODIFY_DATE=SYSDATE,N_IMG=#{n_Img},N_IMG_RENAME=#{n_Img_ReName}
+		WHERE N_NO=#{n_No}	
+	</update>
+	
+	<update id="deleteBoardNotice" parameterType="_int">
+		UPDATE NOTICE
+		SET N_STATUS='N'
+		WHERE N_NO=#{n_No}	
+	</update>
 </mapper>
 	

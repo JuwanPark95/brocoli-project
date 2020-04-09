@@ -42,106 +42,27 @@
 <table class="table table-hover" align="center">
     <thead>
       <tr>
-        <th style="width:10%">글번호</th>
-        <th style="width:10%">구분</th>
-        <th style="width:40%">제목</th>
-        <th style="width:10%">작성자</th>
-        <th style="width:20%">작성일</th>
-        <th style="width:10%">댭변여부</th>
+        <th>글번호</th>
+        <th>구분</th>
+        <th style="width:50%">제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>답변여부</th>
       </tr>
     </thead>
     <tbody>
       
+     <c:forEach var="q" items="${ list }">
      <tr>
-        <td align="center">1</td>
+        <td align="center">${ q.q_No }</td>
         <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">확인</td>
+        <td align="center">제목</td>
+        <td align="center">${ q.q_Writer }</td>
+        <td align="center">${ q.q_Date }</td>
+        <td align="center">${ q.q_View_Check }</td>
       </tr>
       
-      <tr>
-        <td align="center">2</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">3</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">4</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">5</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">6</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">7</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">8</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">9</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-      
-      <tr>
-        <td align="center">10</td>
-        <td align="center">배송</td>
-        <td align="center">고객문의</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-        <td align="center">미확인</td>
-      </tr>
-     
+    </c:forEach>
     </tbody>
   </table>
  <div style="margin-left: 40%; display: flex;">
