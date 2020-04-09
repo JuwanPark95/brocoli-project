@@ -3,8 +3,7 @@ package com.kh.brocoli.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.brocoli.board.model.vo.Notice;
-import com.kh.brocoli.board.model.vo.Notice_PageInfo;
-import com.kh.brocoli.board.model.vo.Search;
+import com.kh.brocoli.board.model.vo.PageInfo;
 
 public interface BoardService {
 
@@ -19,7 +18,7 @@ public interface BoardService {
 	 * @param pi
 	 * @return
 	 */
-	ArrayList<Notice> selectList(Notice_PageInfo pi);
+	ArrayList<Notice> selectList(PageInfo pi);
 
 	/**
 	 * 게시판 작성

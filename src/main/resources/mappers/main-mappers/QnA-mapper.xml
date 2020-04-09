@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QnA-mapper">
+
+	<resultMap type="QnA" id="qnaResultSet">
+	
+		<id property="q_No" column="Q_NO"/>
+		
+		<result property="q_Writer" column="Q_WRITER"/>
+		<result property="q_Title" column="Q_TITLE"/>
+		<result property="q_Content" column="Q_CONTENT"/>
+		<result property="q_Date" column="Q_DATE"/>
+		<result property="q_Count" column="Q_COUNT"/>
+		<result property="q_Modify_ID" column="Q_MODIFY_ID"/>
+		<result property="q_Modify_Date" column="Q_MODIFY_DATE"/>
+		<result property="q_Kind" column="Q_KINDS"/>
+		<result property="q_Status" column="Q_STATUS"/>
+		<result property="q_View_Check" column="Q_VIEW_CHECK"/>
+		<result property="q_Img1" column="Q_IMG1"/>
+		<result property="q_Img1_ReName" column="Q_IMG1_RENAME"/>
+		<result property="q_Img2" column="Q_IMG2"/>
+		<result property="q_Img2_ReName" column="Q_IMG2_RENAME"/>
+		<result property="q_Mno" column="Q_MNO"/>
+		<!-- <result property="q_Writer" column="Q_MID"/> -->	
+	</resultMap>
+	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+	</select>
+	
+	<select id="selectList" resultMap="qnaResultSet">
+		SELECT * 
+		FROM QNA
+		WHERE Q_STATUS='Y'
+		ORDER BY Q_NO DESC
+	</select>
+
+</mapper>

@@ -127,10 +127,12 @@
 			</ul>
 			
 			<div>
-			<c:if test="${ !empty sessionScope.loginUser }">
+			<c:if test="${ !empty sessionScope.loginUser && loginUser.mGrant eq 1}">
+				
 				<button class="btn btn-primary"
 					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
 					onclick="location.href='bnInsertView.mn';">작 성</button>
+				
 			</c:if>
 			</div>
 		</div>

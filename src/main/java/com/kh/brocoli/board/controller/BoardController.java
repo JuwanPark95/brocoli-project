@@ -17,9 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.board.model.service.BoardService;
 import com.kh.brocoli.board.model.vo.Notice;
-import com.kh.brocoli.board.model.vo.Notice_PageInfo;
-import com.kh.brocoli.board.model.vo.Notice_Pagination;
-import com.kh.brocoli.board.model.vo.Search;
+import com.kh.brocoli.board.model.vo.PageInfo;
+import com.kh.brocoli.commons.Pagination;
 
 
 @Controller
@@ -42,7 +41,7 @@ public class BoardController {
 
 		int listCount = bnService.getListCount();
 
-		Notice_PageInfo pi = Notice_Pagination.getPageInfo(currentPage, listCount);
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 
 		ArrayList<Notice> list = bnService.selectList(pi);
 

@@ -37,8 +37,8 @@
 		<typeAlias type="com.kh.brocoli.general.model.vo.Setting" alias="Setting"/>
 		<!-- 게시판 -->
 		<typeAlias type="com.kh.brocoli.board.model.vo.Notice" alias="Notice"/>
-		<typeAlias type="com.kh.brocoli.board.model.vo.QNA_Reply" alias="QNA_Reply"/>
-		<typeAlias type="com.kh.brocoli.board.model.vo.QNA" alias="QNA"/>
+		<typeAlias type="com.kh.brocoli.board.model.vo.QnA_Reply" alias="QnA_Reply"/>
+		<typeAlias type="com.kh.brocoli.board.model.vo.QnA" alias="QnA"/>
 
  	</typeAliases>
  	
@@ -53,6 +53,7 @@
  	<mappers>
 		<mapper resource="mappers/main-mappers/member-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/boardNotice-mapper.xml"/>
+ 		<mapper resource="mappers/main-mappers/QnA-mapper.xml"/>
 		<mapper resource="mappers/admin-mappers/AdminMember-mapper.xml"/>
 		<mapper resource="mappers/main-mappers/main-mapper.xml"/>
  		<mapper resource="mappers/owner-mappers/ownerProduct-mapper.xml"/>

@@ -47,6 +47,7 @@
         <th style="width:50%">제목</th>
         <th>작성자</th>
         <th>작성일</th>
+        <th>첨부파일</th>
         <th>답변여부</th>
       </tr>
     </thead>
@@ -55,25 +56,81 @@
      <c:forEach var="q" items="${ list }">
      <tr>
         <td align="center">${ q.q_No }</td>
-        <td align="center">배송</td>
-        <td align="center">제목</td>
+        <td align="center">${ q.q_Kind }</td>
+        <td align="center">
+								<c:url var="qnadetail" value="qnaDetail.mn">
+									<c:param name="q_No" value="${ q.q_No }" />
+									<c:param name="currentPage" value="${ pi.currentPage }" />
+								</c:url>
+								<a href="${ qnadetail }" style="color: #222" >${ q.q_Title }</a>
+		</td>
+		
         <td align="center">${ q.q_Writer }</td>
         <td align="center">${ q.q_Date }</td>
+        <td align="center"><c:if test="${ !empty q.q_Img1 }">
+        						o
+        	</c:if> <c:if test="${ empty q.q_Img1_ReName }">
+        		&nbsp;
+        	</c:if></td>
         <td align="center">${ q.q_View_Check }</td>
       </tr>
       
     </c:forEach>
     </tbody>
   </table>
+  <!-- 페이징--------------------------------------------- -->
  <div style="margin-left: 40%; display: flex;">
   <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222"><</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">2</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);" style="color: #222">></a></li>
-  </ul>
+
+				<c:if test="${ pi.currentPage eq 1 }">
+					<li class="page-item"><a class="page-link" style="color: #222"> < </a></li>
+				</c:if>
+
+				<c:if test="${ pi.currentPage ne 1}">
+				<li class="page-item">
+					<c:url var="before" value="QnAlist.mn">
+						<c:param name="currentPage" value="${ pi.currentPage - 1 }" />
+					</c:url>
+					<a href="${ before }" class="page-link" aria-label="Previous" style="color: #222"> < </a></li>
+				</c:if>
+	
+			<!-- 페이지 -->
+			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+				<c:if test="${ p eq pi.currentPage }">
+					<li class="page-item active">
+					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
+				</c:if>
+				
+				<c:if test="${ p ne pi.currentPage }">
+					<c:url var="pageNext" value="QnAlist.mn">
+						<c:param name = "currentPage" value="${ p }"/>
+					</c:url>
+					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
+			</c:forEach>
+			
+			<!-- 다음 -->
+			<c:if test="${ pi.currentPage eq pi.maxPage }">
+				<li class="page-item"><a class="page-link" aria-label="Next"> > </a></li>
+			</c:if>
+			
+			<c:if test = "${ pi.currentPage ne pi.maxPage }">
+			<c:url var = "next" value="QnAlist.mn">
+				<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
+			</c:url>
+				<li class="page-item"><a href="${ next }" class="page-link" aria-label="Next" style="color: #222"> > </a></li>
+			</c:if>
+			
+			</ul>
+			
   <div>
-  <button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;">작 성</button>
+  	<c:if test="${ !empty sessionScope.loginUser }">
+				
+				<button class="btn btn-primary"
+					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
+					onclick="location.href='qnaInsertView.mn';">작 성</button>
+				
+	</c:if>
   </div>
   </div>
   <div id="searchArea" align="center" >
