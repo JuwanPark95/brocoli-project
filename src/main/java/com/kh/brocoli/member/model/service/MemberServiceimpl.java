@@ -103,6 +103,12 @@ public class MemberServiceimpl implements MemberService {
 		}
 	}
 
+	@Override
+	public int pwdCheck(String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 

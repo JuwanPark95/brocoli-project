@@ -127,15 +127,17 @@
 			</ul>
 			
 			<div>
-			<c:if test="${ !empty sessionScope.loginUser }">
+			<c:if test="${ !empty sessionScope.loginUser && loginUser.mGrant eq 1}">
+				
 				<button class="btn btn-primary"
 					style="background: #222; width: 100px; border: 1px solid #222; margin-left: 370px;"
 					onclick="location.href='bnInsertView.mn';">작 성</button>
+				
 			</c:if>
 			</div>
 		</div>
 		<div id="searchArea" align="center">
-			<form action="${ contextPath }/search.mn"
+			<form action="${ contextPath }/bnlist.mn"
 				style="display: inline-flex;">
 
 				<select id="searchCondition" name="condition">
@@ -145,12 +147,14 @@
 					<option value="content">내용</option>
 				</select> <br> <input type="search" name="search"
 					class="form-control form-control" style="width: 300px;">
-				<button class="btn btn-primary"
-					style="background: #222; width: 100px; border: 1px solid #222;">검색</button>
+					
+				<input type="search" name="search" class="btn btn-primary"
+					style="background: #222; width: 100px; border: 1px solid #222;" value="검색">
 
 			</form>
 		</div>
 	</div>
+	
 	<%@ include file="All-Footer.jsp"%>
 	<!--===============================================================================================-->
 	<script

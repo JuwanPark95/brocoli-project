@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.board.model.vo.Notice;
-import com.kh.brocoli.board.model.vo.Notice_PageInfo;
+import com.kh.brocoli.board.model.vo.PageInfo;
 
 @Repository("bnDao")
 public class BoardDao {
@@ -21,10 +21,10 @@ public class BoardDao {
 
 	}
 	
-	public ArrayList<Notice> selectList(Notice_PageInfo pi) {
+	public ArrayList<Notice> selectList(PageInfo pi) {
 		
-		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		int offset = (pi.getCurrentPage() - 1) * pi.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getLimit());
 		
 		return (ArrayList)sqlSession.selectList("boardNotice-mapper.selectList",null, rowBounds);
 		
@@ -40,5 +40,13 @@ public class BoardDao {
 
 	public int updateCount(int n_No) {
 		return sqlSession.update("boardNotice-mapper.updateCount", n_No);
+	}
+
+	public int updateBoardNotice(Notice n) {
+		return sqlSession.update("boardNotice-mapper.updateBoardNotice", n);
+	}
+
+	public int deleteBoardNotice(int n_No) {
+		return sqlSession.update("boardNotice-mapper.deleteBoardNotice", n_No);
 	}
 }

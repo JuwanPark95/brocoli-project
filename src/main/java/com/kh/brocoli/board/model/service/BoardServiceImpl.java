@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.brocoli.board.model.dao.BoardDao;
 import com.kh.brocoli.board.model.vo.Notice;
-import com.kh.brocoli.board.model.vo.Notice_PageInfo;
+import com.kh.brocoli.board.model.vo.PageInfo;
 
 @Service("bnService")
 public class BoardServiceImpl implements BoardService{
@@ -21,7 +21,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public ArrayList<Notice> selectList(Notice_PageInfo pi) {
+	public ArrayList<Notice> selectList(PageInfo pi) {
 		return bnDao.selectList(pi);
 	}
 	
@@ -40,5 +40,22 @@ public class BoardServiceImpl implements BoardService{
 			return null;
 		}		
 	}
+
+	@Override
+	public Notice selectUpdateBoardNotice(int n_No) {
+		return bnDao.selectBoardNotice(n_No);
+	}
+
+	@Override
+	public int updateBoardNotice(Notice n) {
+		return bnDao.updateBoardNotice(n);
+	}
+
+	@Override
+	public int deleteBoardNtice(int n_No) {
+		return bnDao.deleteBoardNotice(n_No);
+	}
+
+	
 
 }

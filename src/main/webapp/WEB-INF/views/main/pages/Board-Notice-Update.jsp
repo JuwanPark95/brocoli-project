@@ -39,21 +39,21 @@
 
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 ${ n.n_No }번 글 수정</h2><Br>
-    <form action="bnUPdate.mn" method="post" enctype="multipart/form-data">
+	<h2 style="color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 ${ n.n_No }번 글 수정</h2><Br>
+    <form action="bnUpdate.mn" method="post" enctype="multipart/form-data">
     
-		<input type="hidden" name="bId" value="${ n.n_No }">
-		<input type="hidden" name="originalFileName" value="${ n.n_Img }">
-		<input type="hidden" name="renameFileName" value="${ n.n_Img }">
+		<input type="hidden" name="n_No" value="${ n.n_No }">
+		<input type="hidden" name="n_Img" value="${ n.n_Img }">
+		<input type="hidden" name="n_Img_ReName" value="${ n.n_Img_ReName }"> 
 		
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
-				<td></td>
+				<td>${ n.n_No }</td>
 			</tr>
 			<tr>
 				<td>제  목</td>
-				<td><input type="text" class="form-control" id="ntitle" name="n_Title"></td>
+				<td><input type="text" class="form-control" id="ntitle" name="n_Title" value="${ n.n_Title }"></td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
@@ -62,23 +62,29 @@
 			</tr>
 			<tr>
 				<td>작 성 일</td>
-				<td></td>
+				<td>${ n.n_Date }</td>
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
-				<td><input type="file" name="uploadFile"></td>
+				<td>
+					<input type="file" name="reloadFile">
+					<c:if test="${ !empty n.n_Img }">
+					<br>현재 업로드한 파일 : 
+					<a href="${ contextPath }/resource/nuploadFiles/${ n.n_Img_ReName }" download="${ n.n_Img }">${ n.n_Img }</a>
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td>내용</td>
 				<td><textarea class="form-control" rows="5" id="comment"
-					 style="height: 250px; resize: none" name="n_Content"></textarea></td>
+					 style="height: 250px; resize: none" name="n_Content">${ n.n_Content }</textarea></td>
 			</tr>				
 		</table>
 
 
 		<div align="center">
 		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-		value="작성 완료">
+		value="수정 완료">
 		</div>
 	</form>
 		</div>
