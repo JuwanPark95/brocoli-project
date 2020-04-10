@@ -26,30 +26,42 @@
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
 	<div id="login" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
+		<form action="pwdFind.mn" name="pwsearch" method="post" >
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 40px;">
 			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>B R O C O L I</strong></p>
 		</div>
 		<div style="margin-bottom: 25px;">
 			<h2 style="margin-bottom: 25px; color: #222; font-size: 30px;"><strong>비밀번호 찾기</strong></h2>
-			<input type="text" class="form-control form-control"
+			<input type="text" class="form-control form-control" id="mId" name="mId"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
 				placeholder="아이디 ">
-			<input type="email"
-				class="form-control form-control"
+			<input type="email"	class="form-control form-control" id="email" name="email"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
 				placeholder="이메일 ">
 		</div>		
 		<div>
-			<a class="btn btn-primary btn-lg btn-block" onclick="location.href='/brocoli/find/pwdFindEmail.jsp'"
-				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;">인증번호 발송</a>
+		
+			<button type="button"  class="btn btn-primary btn-lg btn-block"  
+				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;" onclick="return sendInfo();">인증번호 발송</button>
 		</div>
 
+	</form>
 	</div>
-
 <%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-				
+<script type="text/javascript">
+function sendInfo(){
+	if((pwsearch.mId.value!=null && pwsearch.mId.value!="")&&(pwsearch.email.value!=null && pwsearch.email.value!="")){
+		alert("메일로 임시 비밀번호가 전송되었습니다. 로그인하여 새로운 비밀번호를 설정해주세요.")
+		pwsearch.submit();
+	}else if(pwsearch.mId.value == null || pwsearch.mId.value== "") {
+		alert("아이디를 입력하세요.");
+	}else if(pwsearch.email.value==null || pwsearch.email.value== "") {
+		alert("이메일주소를 입력하세요.");
+	}
+}
+</script>		
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

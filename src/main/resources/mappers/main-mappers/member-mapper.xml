@@ -79,5 +79,21 @@
 		FROM MEMBER
 		WHERE EMAIL=#{email}
 		</select>
+		
+		<select id="pwdFind" parameterType="Member" resultType="_int">
+			SELECT COUNT(*)
+			FROM MEMBER
+			WHERE MID = #{mId}
+			AND EMAIL= #{email}
+		</select>
 
+	<update id="newPassword" parameterType="Member">
+
+		update MEMBER
+
+		set PWD = #{pwd}
+
+		where email=#{email} and MID=#{mId}
+
+	</update>
 </mapper>

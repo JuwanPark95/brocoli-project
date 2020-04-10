@@ -11,43 +11,6 @@ public interface MemberService {
 
 	/**
 	 * 작성자 : 윤석훈
-	 * 회원 로그인
-	 * @param m
-	 * @return
-	 */
-	Member loginMember(Member m);
-
-
-	/**
-	 * 작성자 : 임현섭
-	 * ID 중복체크
-	 * @param id
-	 * @return
-	 */
-	int idCheck(String id);
-
-	/**
-	 * 작성자 : 임현섭
-	 * 회원가입 
-	 * @param m
-	 * @return
-	 */
-	int insertMember(Member m);
-
-	/**
-	 * 작성자 : 임현섭
-	 * mail 중복체크
-	 * @param email
-	 * @return
-	 */
-	int mailCheck(String email);
-
-	
-	
-
-	
-	/**
-	 * 작성자 : 윤석훈
 	 * 메인 페이지 옥션
 	 * @return
 	 */
@@ -84,23 +47,19 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<Brand> selectbpList(String b_Name);
-	
-	/**
-	 * 작성자 : 임현섭
-	 * 아이디 찾기
-	 * @param email
-	 * @return
-	 */
-	String mailCheck2(String email);
-
-
-
-
-
-
-
-
 
 
 	
+
+
 }
+
+
+
+
+
+
+
+
+	
+

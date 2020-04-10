@@ -2,10 +2,14 @@ package com.kh.brocoli.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+
+import javax.servlet.http.HttpSession;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +23,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
+import com.kh.brocoli.member.model.vo.Email;
+import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
-
-@SessionAttributes("loginUser")
 @Controller
 public class MemberController {
 	
 	@Autowired
 	private MemberService mService;
-	
 	
 	/**
 	 * 메인페이지 로딩
@@ -54,33 +57,8 @@ public class MemberController {
 		System.out.println(elist);
 		return mv;
 	}
+
 	
-	// 암호화 처리 
-		@Autowired
-		private BCryptPasswordEncoder bcryptPasswordEncoder;
-	
-	/**
-	 * 로그인 페이지 뷰
-	 * @return
-	 */
-	@RequestMapping(value="loginPage.mn")
-	public String loginPage() {
-		return "Login";
-	}
-	
-	
-	/**
-	 * 로그아웃
-	 * @param status
-	 * @return
-	 */
-	@RequestMapping(value="logoutPage")
-	public String logoutPage(SessionStatus status) {
-		
-		status.setComplete();
-		
-		return "redirect:index.jsp";
-	}
 	
 	/**
 	 * 로그인 기능
@@ -104,95 +82,6 @@ public class MemberController {
 //
 //	}
 	
-/************************ 로그인 창  이동***************************/
-	/**
-	 * 작성자 : 임현섭
-	 * 작성일 200408
-	 * 아이디 찾기 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("findId.mn")
-	public String findId() {
-		return "Login-IdFind";
-	}
-	@RequestMapping("findPwd")
-	public String findPwd() {
-		return "Login-PwdFind";
-	}
-/************************footer 페이지 이동*******************************/
-	/**
-	 * 작성자: 임현섭
-	 * 작성일 : 20-04-02
-	 * 회사소개 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("mIntroduceView.mn")
-	public String mIntroduceView() {
-		return "Main-Introduce";
-	}
-	
-	/**
-	 * 개인정보보호정책 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("pPolicyView.mn")
-	public String pPolicyView() {
-		return "Privacy-Policy";
-	}
-	
-	/**
-	 * Contact 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("mContactView.mn")
-	public String mContactView() {
-		return "Main-Contact";
-	}
-	
-	/**
-	 * 배송조회 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("mTrackListView.mn")
-	public String mTrackListView() {
-		return "My-Track-List";
-	}
-	
-	/**
-	 * 교환 환불 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("pChangeView.mn")
-	public String pChangeView() {
-		return "My-Product-Change";
-	}
-	
-	/**
-	 * 문의하기 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("QnAView.mn")
-	public String QnAView() {
-		return "Board-QnA-List";
-	}
-	
-	/**
-	 * 자주묻는질문 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("FAQView.mn")
-	public String FAQView() {
-		return "Board-FAQ-List";
-	}
-	
-	/**
-	 * 입점문의 페이지 이동
-	 * @return
-	 */
-	@RequestMapping("eStoreView.mn")
-	public String eStoreView() {
-		return "Main-EnterStore";
-	}
 	/*************************Header 페이지 이동 (못찾을시 Footer 참조)********************************/
 	/**
 	 * 공지사항 페이지 이동
@@ -298,117 +187,6 @@ public class MemberController {
 //		return "MyOrderList";
 //	}
 
-	/*****************************로그인***************************************/
-	
-	@RequestMapping("idEmail.mn")
-	public String idEmail() {
-		return "Login-IdEmail";
-	}
-		
-	/**
-	 * 회원가입 페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("joinView.mn")
-	public String JoinView() {
-		return "Login-Join"; 
-	}
-	
-	/**
-	 * 작성자 : 임현섭
-	 * 작성일 : 20-04-03
-	 * Id 중복체크
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping("idCheck.do")
-	public String idCheck(String id) throws IOException {
-		
-		int result = mService.idCheck(id);
-		
-		
-		
-		
-		if(result > 0) {
-			return "fail";
-		}else {
-			return "ok";
-		}
-	}
-	
-	
-	  @ResponseBody
-	  @RequestMapping("mailCheck.do") public String mailCheck(String email) throws
-	  IOException{
-	  
-	  int result = mService.mailCheck(email);
-	  
-	  if(result > 0) {
-		  return "fail"; 
-		  }else { 
-		  return "ok"; 
-		  } 
-	  	}
-	 
-	  @ResponseBody
-	  @RequestMapping("loginIdCheck.do") public String mailCheck2(String email) throws IOException{
-	  
-		  String result = mService.mailCheck2(email);
-		  System.out.println(result);
-		  if(result == null ) {
-			  return "fail"; 
-		  }else { 
-			  return result; 
-		  } 
-	  }
-	
-	@RequestMapping("join.mn")
-	public String insertMember(Member m,Model model,
-							   @RequestParam("post") String post,
-							   @RequestParam("address1") String address1,
-							   @RequestParam("address2") String address2) {
-		// 회원 가입 전 회원정보를 출력
-		System.out.println(m);
-		System.out.println(post + ", " + address1 + ", " + address2);
-		
-		
-		String encPwd = bcryptPasswordEncoder.encode(m.getPwd());
-		
-		m.setPwd(encPwd);
-		
-		// 주소데이터들 ","를 구분자로 저장
-		if(!post.contentEquals("")) {
-			m.setAddress(post+","+address1 + "," + address2);
-		}
-		System.out.println(m.getAddress());
-		int result = mService.insertMember(m);
-		
-		if(result > 0) {
-			return "redirect:index.jsp";
-	}else {
-			model.addAttribute("msg","회원가입실패!!");
-			return "common/errorPage";}
-		
-		
-	}
-		
-	// 암호화 처리 후 로그인 부분
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String memberLogin(Member m,Model model) {
-		
-		Member loginUser = mService.loginMember(m);
-
-		if(loginUser != null && bcryptPasswordEncoder.matches(m.getPwd(), loginUser.getPwd())) {
-			model.addAttribute("loginUser", loginUser);
-			return "redirect:index.jsp";
-		}else {
-			System.out.println("에러에러~~");
-			model.addAttribute("msg","로그인 실패!!");
-			return "common/errorPage";
-		}
-	}
-	
-	
 
 
 }
