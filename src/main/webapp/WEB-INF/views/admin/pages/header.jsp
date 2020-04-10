@@ -233,6 +233,14 @@
 								<div id="submenu-3" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
+											href="<c:url value=''/>">입점문의</a></li>
+									</ul>
+									<ul class="nav flex-column">
+										<li class="nav-item"><a class="nav-link"
+											href="<c:url value='brand-enroll.ad'/>">브랜드등록</a></li>
+									</ul>
+									<ul class="nav flex-column">
+										<li class="nav-item"><a class="nav-link"
 											href="<c:url value='brandManagement.ad'/>">가맹브랜드</a></li>
 									</ul>
 									<ul class="nav flex-column">
@@ -249,7 +257,7 @@
 								<div id="submenu-4" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='order-status.ad'/>">주문/배송 현황</a></li>
+											href="<c:url value='orderStatus.ad'/>">주문/배송 현황</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"

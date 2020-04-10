@@ -1,9 +1,7 @@
 package com.kh.brocoli.board.model.vo;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class Notice_PageInfo {
+public class PageInfo {
+	
 	private int currentPage;
 	private int listCount;
 	private int pageLimit;
@@ -11,14 +9,13 @@ public class Notice_PageInfo {
 	private int startPage;
 	private int endPage;
 	
-	private int boardLimit;
+	private int limit;
 
-	public Notice_PageInfo() {
+	public PageInfo() {
 		super();
 	}
 
-	public Notice_PageInfo(int currentPage, int listCount, int pageLimit, int maxPage, int startPage, int endPage,
-			int boardLimit) {
+	public PageInfo(int currentPage, int listCount, int pageLimit, int maxPage, int startPage, int endPage, int limit) {
 		super();
 		this.currentPage = currentPage;
 		this.listCount = listCount;
@@ -26,7 +23,7 @@ public class Notice_PageInfo {
 		this.maxPage = maxPage;
 		this.startPage = startPage;
 		this.endPage = endPage;
-		this.boardLimit = boardLimit;
+		this.limit = limit;
 	}
 
 	public int getCurrentPage() {
@@ -77,21 +74,20 @@ public class Notice_PageInfo {
 		this.endPage = endPage;
 	}
 
-	public int getBoardLimit() {
-		return boardLimit;
+	public int getLimit() {
+		return limit;
 	}
 
-	public void setBoardLimit(int boardLimit) {
-		this.boardLimit = boardLimit;
+	public void setLimit(int limit) {
+		this.limit = limit;
 	}
 
 	@Override
 	public String toString() {
-		return "Notice_pageInfo [currentPage=" + currentPage + ", listCount=" + listCount + ", pageLimit=" + pageLimit
-				+ ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage=" + endPage + ", boardLimit="
-				+ boardLimit + "]";
+		return "PageInfo [currentPage=" + currentPage + ", listCount=" + listCount + ", pageLimit=" + pageLimit
+				+ ", maxPage=" + maxPage + ", startPage=" + startPage + ", endPage=" + endPage + ", limit=" + limit
+				+ "]";
 	}
-	
-	
+
 	
 }

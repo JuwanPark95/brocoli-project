@@ -88,7 +88,7 @@
                                         <c:if test="${m.mGrant eq '3'}" >
                                             <tr>
                                             	<td>${ml.count}</td>
-                                            	<td>${m.mNo}</td>
+                                            	<td>${m.mNO}</td>
                                                 <td>${m.mId}</td>
                                                 <td>${m.mName}</td>                                                
                                                 <td>${m.birthDay}</td>
@@ -142,7 +142,7 @@
                                         <c:if test="${m.mGrant != 3}"  >
                                             <tr>
                                             	<td><%=count++ %></td>
-                                            	<td>${m.mNo}</td>
+                                            	<td>${m.mNO}</td>
                                                 <td>${m.mId}</td>
                                                 <td>${m.brand}</td>
                                                 <td>${m.mName}</td>                                                
@@ -177,7 +177,7 @@
 				$("#memberManagement").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var mId = $(this).parents().children("td").eq(1).text();	
+					var mId = $(this).parents().children("td").eq(2).text();	
 					location.href="memberDetail.ad?mId="+mId
 				});
 			});
@@ -189,7 +189,7 @@
 				$("#ownerManagement").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var mId = $(this).parents().children("td").eq(1).text();	
+					var mId = $(this).parents().children("td").eq(2).text();	
 					location.href="memberDetail.ad?mId="+mId
 				});
 			});

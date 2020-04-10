@@ -1,20 +1,21 @@
-package com.kh.brocoli.board.model.vo;
+package com.kh.brocoli.commons;
 
-public class Notice_Pagination {
+import com.kh.brocoli.board.model.vo.PageInfo;
+
+public class Pagination {
 	
-	public static Notice_PageInfo getPageInfo(int currentPage, int listCount) {
+	public static PageInfo getPageInfo(int currentPage, int listCount) {
 		
-		Notice_PageInfo pi = null;
+		PageInfo pi = null;
 		
 		int pageLimit = 10; //한 페이지에서 보여질 페이징 수
 		int maxPage; 		//전체 페이징 수 중 가장 마지막 페이지
 		int startPage;		//현재 페이지에서 보여질 페이징 버튼의 시작페이지
 		int endPage;		//현재 페이이에서 보여질 페이징 버튼의 끝 페이지
 		
-		int boardLimit = 7; //한 페이지에 보여질 게시슬 개수 
-		
+		int Limit = 7; //한 페이지에 보여질 게시슬 개수 
 		//* maxPage : 총 페이지 수 
-		maxPage = (int)Math.ceil((double)listCount/boardLimit);
+		maxPage = (int)Math.ceil((double)listCount/Limit);
 		
 		//* startPage : 현재 페이지에 보여질 시작 페이지 수 
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
@@ -27,9 +28,9 @@ public class Notice_Pagination {
 			endPage = maxPage;
 		}
 		
-		pi = new Notice_PageInfo(currentPage,listCount,pageLimit,maxPage,startPage,endPage,boardLimit);
+		pi = new PageInfo(currentPage,listCount,pageLimit,maxPage,startPage,endPage,Limit);
 		
 		return pi;
+		
+		}
 	}
-
-}

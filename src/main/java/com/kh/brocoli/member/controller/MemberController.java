@@ -522,6 +522,12 @@ public class MemberController {
 		
 
 	/*****************************로그인***************************************/
+	
+	@RequestMapping("idEmail.mn")
+	public String idEmail() {
+		return "Login-IdEmail";
+	}
+		
 	/**
 	 * 회원가입 페이지로 이동
 	 * @return
@@ -555,14 +561,29 @@ public class MemberController {
 	
 	
 	  @ResponseBody
-	  
 	  @RequestMapping("mailCheck.do") public String mailCheck(String email) throws
 	  IOException{
 	  
 	  int result = mService.mailCheck(email);
 	  
-	  if(result > 0) { return "fail"; }else { return "ok"; } }
+	  if(result > 0) {
+		  return "fail"; 
+		  }else { 
+		  return "ok"; 
+		  } 
+	  	}
 	 
+	  @ResponseBody
+	  @RequestMapping("loginIdCheck.do") public String mailCheck2(String email) throws IOException{
+	  
+		  String result = mService.mailCheck2(email);
+		  System.out.println(result);
+		  if(result == null ) {
+			  return "fail"; 
+		  }else { 
+			  return result; 
+		  } 
+	  }
 	
 	@RequestMapping("join.mn")
 	public String insertMember(Member m,Model model,

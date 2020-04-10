@@ -73,4 +73,11 @@
 		WHERE PWD=#{password}
 	    </select>
 
+		
+		<select id="mailCheck2" parameterType="string" resultType="string">
+		SELECT MID
+		FROM MEMBER
+		WHERE EMAIL=#{email}
+		</select>
+
 </mapper>

@@ -72,10 +72,22 @@
 
 		<div align="center">
 		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-		value="작성 완료">
+		 onsubmit="return checks()" value="작성 완료">
 		</div>
 	</form>
 		</div>
+		
+	<script>
+		function checks(){
+	      	  var title = $("#ntitle").val();
+	      
+	       	 if(title == ""){
+	       		 alert("제목을 입력해주세요."); 
+	       			title.focus(); 
+	       	 return false; 
+	      }
+		}	
+	</script>
 
 <%@ include file="All-Footer.jsp" %>
 

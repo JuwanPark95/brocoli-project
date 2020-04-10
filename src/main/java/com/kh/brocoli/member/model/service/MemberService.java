@@ -111,6 +111,15 @@ public interface MemberService {
 	int pwdCheck(String password);
 
 
+	/**
+	 * 작성자 : 임현섭
+	 * 아이디 찾기
+	 * @param email
+	 * @return
+	 */
+	String mailCheck2(String email);
+
+
 
 
 
