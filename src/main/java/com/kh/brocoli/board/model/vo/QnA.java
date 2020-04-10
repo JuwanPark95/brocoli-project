@@ -2,7 +2,8 @@ package com.kh.brocoli.board.model.vo;
 
 import java.sql.Date;
 
-public class QNA {
+public class QnA {
+	private int q_No;
 	private String q_Writer;
 	private String q_Title;
 	private String q_Content;
@@ -10,6 +11,7 @@ public class QNA {
 	private String q_Count;
 	private String q_Modify_ID;
 	private Date q_Modify_Date;
+	private String q_Kind;
 	private String q_Status;
 	private String q_View_Check;
 	private String q_Img1;
@@ -17,15 +19,17 @@ public class QNA {
 	private String q_Img2;
 	private String q_Img2_ReName;
 	private int q_Mno;
+	private String q_MID;
 	
-	public QNA() {
+	public QnA() {
 		super();
 	}
 
-	public QNA(String q_Writer, String q_Title, String q_Content, Date q_Date, String q_Count,
-			String q_Modify_ID, Date q_Modify_Date, String q_Status, String q_View_Check, String q_Img1,
-			String q_Img1_ReName, String q_Img2, String q_Img2_ReName, int q_Mno) {
+	public QnA(int q_No, String q_Writer, String q_Title, String q_Content, Date q_Date, String q_Count,
+			String q_Modify_ID, Date q_Modify_Date, String q_Kind, String q_Status, String q_View_Check, String q_Img1,
+			String q_Img1_ReName, String q_Img2, String q_Img2_ReName, int q_Mno, String q_MID) {
 		super();
+		this.q_No = q_No;
 		this.q_Writer = q_Writer;
 		this.q_Title = q_Title;
 		this.q_Content = q_Content;
@@ -33,6 +37,7 @@ public class QNA {
 		this.q_Count = q_Count;
 		this.q_Modify_ID = q_Modify_ID;
 		this.q_Modify_Date = q_Modify_Date;
+		this.q_Kind = q_Kind;
 		this.q_Status = q_Status;
 		this.q_View_Check = q_View_Check;
 		this.q_Img1 = q_Img1;
@@ -40,8 +45,16 @@ public class QNA {
 		this.q_Img2 = q_Img2;
 		this.q_Img2_ReName = q_Img2_ReName;
 		this.q_Mno = q_Mno;
+		this.q_MID = q_MID;
 	}
 
+	public int getQ_No() {
+		return q_No;
+	}
+
+	public void setQ_No(int q_No) {
+		this.q_No = q_No;
+	}
 
 	public String getQ_Writer() {
 		return q_Writer;
@@ -97,6 +110,14 @@ public class QNA {
 
 	public void setQ_Modify_Date(Date q_Modify_Date) {
 		this.q_Modify_Date = q_Modify_Date;
+	}
+
+	public String getQ_Kind() {
+		return q_Kind;
+	}
+
+	public void setQ_Kind(String q_Kind) {
+		this.q_Kind = q_Kind;
 	}
 
 	public String getQ_Status() {
@@ -155,14 +176,20 @@ public class QNA {
 		this.q_Mno = q_Mno;
 	}
 
+	public String getQ_MID() {
+		return q_MID;
+	}
+
+	public void setQ_MID(String q_MID) {
+		this.q_MID = q_MID;
+	}
+
 	@Override
 	public String toString() {
-		return "QNA [q_Writer=" + q_Writer + ", q_Title=" + q_Title + ", q_Content=" + q_Content
+		return "QnA [q_No=" + q_No + ", q_Writer=" + q_Writer + ", q_Title=" + q_Title + ", q_Content=" + q_Content
 				+ ", q_Date=" + q_Date + ", q_Count=" + q_Count + ", q_Modify_ID=" + q_Modify_ID + ", q_Modify_Date="
-				+ q_Modify_Date + ", q_Status=" + q_Status + ", q_View_Check=" + q_View_Check + ", q_Img1=" + q_Img1
-				+ ", q_Img1_ReName=" + q_Img1_ReName + ", q_Img2=" + q_Img2 + ", q_Img2_ReName=" + q_Img2_ReName
-				+ ", q_Mno=" + q_Mno + "]";
+				+ q_Modify_Date + ", q_Kind=" + q_Kind + ", q_Status=" + q_Status + ", q_View_Check=" + q_View_Check
+				+ ", q_Img1=" + q_Img1 + ", q_Img1_ReName=" + q_Img1_ReName + ", q_Img2=" + q_Img2 + ", q_Img2_ReName="
+				+ q_Img2_ReName + ", q_Mno=" + q_Mno + ", q_MID=" + q_MID + "]";
 	}
-	
-	
 }

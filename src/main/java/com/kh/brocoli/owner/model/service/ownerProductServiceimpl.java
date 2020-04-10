@@ -31,6 +31,7 @@ public class ownerProductServiceimpl implements ownerProductService {
 		//2개의 DAO 반환값중 1가지만 '0'이 반환되어도 실패!
 		int productSet =  oDao.insertProduct(p);
 		int result = 0;
+		
 		int PNO = p.getP_NO();
 		
 		pf.setPf_P_NO(PNO); //product  insert 후 생성된 P_NO값을 PF의 외래키로 set시켜준다.
@@ -39,7 +40,6 @@ public class ownerProductServiceimpl implements ownerProductService {
 			int productOptionSet = oDao.insertProductOption(po,PNO);
 			result =  productSet * productImgSet * productOptionSet;
 		}
-
 		return result;
 	}
 
@@ -51,6 +51,11 @@ public class ownerProductServiceimpl implements ownerProductService {
 	@Override
 	public ArrayList<Product_Option> stockDetail(int pNO) {
 		return oDao.stockDetail(pNO);
+	}
+
+	@Override
+	public int stockChange(Product_Option po) {
+		return oDao.stockChange(po);
 	}
 
 

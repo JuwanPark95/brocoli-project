@@ -19,23 +19,6 @@ public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public Member loginMember(Member m) {
-		return (Member)sqlSession.selectOne("memberMapper.loginMember",m);
-	}
-
-	public int idCheck(String id) {
-		
-		return sqlSession.selectOne("memberMapper.idCheck",id);
-	}
-
-	public int insertMember(Member m) {
-		
-		return sqlSession.insert("memberMapper.insertMember",m);
-	}
-
-	public int mailCheck(String email) {
-		return sqlSession.selectOne("memberMapper.mailCheck",email);
-	}
 	public ArrayList<Auction> selectList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
 	}
@@ -48,13 +31,6 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.eventlist");
 	}
 
-	public int deleteMember(String mId) {
-		return sqlSession.delete("memberMapper.deleteMember",mId);
-	}
-
-	public int updateMember(Member m) {
-		return sqlSession.update("memberMapper.updateMember",m);
-	}
 
 	public ArrayList<Brand> selectbList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.brandlist");
@@ -64,28 +40,7 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
 
-	public String mailCheck2(String email) {
-		return sqlSession.selectOne("memberMapper.mailCheck2",email);
-	}
 
-	public int pwdFind(Member m) {
-		return sqlSession.selectOne("memberMapper.pwdFind",m);
-	}
-	// 비밀번호 변경
-		@Transactional
-		public int update_pw(Member m) throws Exception{
-			return sqlSession.update("member.update_pw", m);
-		}
-
-		public int newPassword(Member m) {
-//			String password = AuthenticationKey;
-//
-			
-			
-			return sqlSession.update("memberMapper.newPassword", m);
-			
-		}
 
 }
-
 

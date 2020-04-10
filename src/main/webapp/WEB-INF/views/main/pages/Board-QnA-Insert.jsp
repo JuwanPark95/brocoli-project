@@ -38,51 +38,56 @@
 <body>
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">문의 사항 입력</h2><Br>
-	
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">문의 사항 작성</h2><Br>
+	<form action="qnaInsert.mn" method="post" enctype="multipart/form-data">
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
-				<td>1</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td width="100">구 분</td>
 				<td>
 					<select>
-						<option>배송</option>
-						<option>사이즈</option>
-						<option>기타문의</option>
+						<option value="배송">배송</option>
+						<option value="사이즈">사이즈</option>
+						<option value="기타문의">기타문의</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>제  목</td>
-				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+				<td><input type="text" class="form-control" id="qtitle" name="q_Title"></td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
-				<td>ㅎ</b></td>
+				<td><input type="text" readonly name="q_Writer" value="${ loginUser.mName }"></td>
+				<td><input type="hidden" readonly name="q_Mno" value="${ loginUser.mNO }"></td>
 			</tr>
 
 			<tr>
 				<td>작 성 일</td>
-				<td>ㅎ</td>
+				<td></td>
 			</tr>
 			
 			<tr>
 				<td>첨부 파일</td>
-				<td>첨부하기</td>
+				<td><input type="file" name="uploadFile"></td>
 			</tr>
 			
 			<tr>
 				<td>내용</td>
 				<td><textarea class="form-control" rows="5" id="comment"
-					 style="height: 250px; resize: none"></textarea></td>
+					 style="height: 250px; resize: none" name="q_Content"></textarea></td>
 			</tr>				
 		</table>
+		
 		<div align="center">
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">작성 완료</button>
+		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+		 onsubmit="return checks()" value="작성 완료">
 		</div>
+		
+</form>
 </div>
 <%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	

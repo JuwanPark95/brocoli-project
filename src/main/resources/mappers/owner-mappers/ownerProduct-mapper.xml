@@ -98,7 +98,7 @@
 
 	<insert id="insertProductOption" parameterType="Product_Option">
 		INSERT INTO PRODUCT_OPTION
-		VALUES(SEQ_OP_NO.NEXTVAL, #{Option_1}, #{Option_2}, #{op_Stock}, SYSDATE, DEFAULT, #{op_P_NO})
+		VALUES(SEQ_OP_NO.NEXTVAL, #{option_1}, #{option_2}, #{op_Stock}, SYSDATE, DEFAULT, #{op_P_NO})
 	</insert>
 	
 	<select id="selectProductList" resultMap="productResultSet">
@@ -116,6 +116,13 @@
 		WHERE OP_P_NO = #{pNO}
 		ORDER BY OP_NO DESC
 	</select>
+	
+	<update id="updateStockChange" parameterType="Product_Option">
+		UPDATE PRODUCT_OPTION
+	    SET OP_STATUS_YN = #{op_Status_YN},
+	    	OP_STOCK = #{op_Stock}
+	    WHERE OP_NO = #{op_NO}
+	</update>
 
 	
 </mapper>

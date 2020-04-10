@@ -35,7 +35,7 @@ public class ownerProductDao {
         }
 		return result;
 	}
-
+	
 	public ArrayList<Product> listProduct(String Brand_NO) {
 		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectProductList",Brand_NO);
 	}
@@ -43,9 +43,18 @@ public class ownerProductDao {
 	public ArrayList<Product_Option> stockDetail(int pNO) {
 		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectStockDetail",pNO);
 	}
-
-//	public int insertProductOP(ArrayList<Product_Option> po) {	//박주완-2020-04-03-상품옵션정보등록
-//		return sqlSession.insert("owner-mapper.insertProductOP",po);
-//	}
-
+	
+	public int stockChange(Product_Option po) {
+		int result = 0;
+		List<Product_Option> poList = po.getProduct_OptionVOList();
+		for(Product_Option Option : poList) {
+			result = sqlSession.insert("ownerProduct-mapper.updateStockChange",Option);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 }

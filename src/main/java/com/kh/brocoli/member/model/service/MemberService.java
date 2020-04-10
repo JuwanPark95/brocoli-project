@@ -11,43 +11,6 @@ public interface MemberService {
 
 	/**
 	 * 작성자 : 윤석훈
-	 * 회원 로그인
-	 * @param m
-	 * @return
-	 */
-	Member loginMember(Member m);
-
-
-	/**
-	 * 작성자 : 임현섭
-	 * ID 중복체크
-	 * @param id
-	 * @return
-	 */
-	int idCheck(String id);
-
-	/**
-	 * 작성자 : 임현섭
-	 * 회원가입 
-	 * @param m
-	 * @return
-	 */
-	int insertMember(Member m);
-
-	/**
-	 * 작성자 : 임현섭
-	 * mail 중복체크
-	 * @param email
-	 * @return
-	 */
-	int mailCheck(String email);
-
-	
-	
-
-	
-	/**
-	 * 작성자 : 윤석훈
 	 * 메인 페이지 옥션
 	 * @return
 	 */
@@ -84,61 +47,14 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<Brand> selectbpList(String b_Name);
-	/**
-	 * 작성자 : 김주희
-	 * 회원 탈퇴
-	 * @param mId
-	 * @return
-	 */
-	int deleteMember(String mId);
-
-
-	/**
-	 * 작성자 : 김주희
-	 * 회원 수정
-	 * @param m
-	 * @return
-	 */
-	int updateMember(Member m);
-
-
-	/**
-	 * 작성자 : 김주희
-	 * 비밀번호 확인
-	 * @param pwd
-	 * @return
-	 */
-	int pwdCheck(String password);
-
-
-	/**
-	 * 작성자 : 임현섭
-	 * 아이디 찾기
-	 * @param email
-	 * @return
-	 */
-	String mailCheck2(String email);
-
-
-	/**
-	 * 작성자 : 임현섭
-	 * 비밀번호 차지
-	 * @param id
-	 * @param email
-	 * @return
-	 */
-	int pwdFind(Member m);
-
-	
-	 
 
 
 	
 
 
-    public int newPassword(Member m) throws Exception;
- 
 }
+
+
 
 
 

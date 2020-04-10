@@ -57,21 +57,21 @@
                                 <p>적립금</p>
                                 <p>
                                     <a href="" class="reserve"></a>
-                                    <span>원</span>
+                                    <span>${loginUser.mPoint }원</span>
 								</p>
                             </div>
                             <div class="member-deposit-container" :after>
                                 <p>총 주문건수</p>
                                 <p>
                                     <a href="" class="deposit"></a>
-                                    <span>건</span>
+                                    <span>${loginUser.order_Count }건</span>
 								</p>
                             </div>	
 							<div class="member-order-total-price-container">
 							     <p>총 주문금액<p>
 							      <p>
 							        <a href="" class="order-total-price"></a>
-							        <span>원</span>
+							        <span>${loginUser.order_Price }원</span>
 							      </p>  
 							</div>	
                         </div>
