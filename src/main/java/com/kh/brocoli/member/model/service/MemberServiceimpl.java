@@ -1,6 +1,7 @@
 package com.kh.brocoli.member.model.service;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,29 @@ public class MemberServiceimpl implements MemberService {
 			return null;
 		}
 	}
+
+	@Override
+	public int pwdCheck(String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int pwdFind(Member m) {
+		int result = mDao.pwdFind(m);
+		return result;
+	}
+
+	
+	
+
+	@Override
+	public int newPassword(Member m) throws Exception {
+		 return mDao.newPassword(m);
+		
+	}
+
+
 
 
 

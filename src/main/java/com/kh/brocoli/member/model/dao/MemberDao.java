@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
@@ -66,7 +67,24 @@ public class MemberDao {
 	public String mailCheck2(String email) {
 		return sqlSession.selectOne("memberMapper.mailCheck2",email);
 	}
-	
+
+	public int pwdFind(Member m) {
+		return sqlSession.selectOne("memberMapper.pwdFind",m);
+	}
+	// 비밀번호 변경
+		@Transactional
+		public int update_pw(Member m) throws Exception{
+			return sqlSession.update("member.update_pw", m);
+		}
+
+		public int newPassword(Member m) {
+//			String password = AuthenticationKey;
+//
+			
+			
+			return sqlSession.update("memberMapper.newPassword", m);
+			
+		}
 
 }
 

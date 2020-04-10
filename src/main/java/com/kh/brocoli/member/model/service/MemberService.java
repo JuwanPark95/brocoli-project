@@ -120,6 +120,25 @@ public interface MemberService {
 	String mailCheck2(String email);
 
 
+	/**
+	 * 작성자 : 임현섭
+	 * 비밀번호 차지
+	 * @param id
+	 * @param email
+	 * @return
+	 */
+	int pwdFind(Member m);
+
+	
+	 
+
+
+	
+
+
+    public int newPassword(Member m) throws Exception;
+ 
+}
 
 
 
@@ -127,4 +146,4 @@ public interface MemberService {
 
 
 	
-}
+
