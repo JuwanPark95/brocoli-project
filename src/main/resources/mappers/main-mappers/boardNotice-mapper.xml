@@ -17,6 +17,7 @@
 		<result property="n_Img_ReName" column="N_IMG_RENAME"/>
 		<result property="n_Mno" column="N_MNO"/>
 		<result property="n_MID" column="MID"/>
+		
 	</resultMap>
 	
 	<select id="getListCount" resultType="_int">

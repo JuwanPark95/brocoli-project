@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.brocoli.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 130%;  	
+		height: 170%;  	
   		}
   		
   	.tableArea {
@@ -38,57 +38,164 @@
 <body>
 <div id="all">
 <br>
-	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">QnA 세부보기</h2><Br>
+	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">QnA ${ q.q_No }번 글 세부보기</h2><Br>
 	
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
-				<td>1</td>
+				<td>${ q.q_No }</td>
 			</tr>
 			<tr>
 				<td>구 분</td>
-				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+				<td>${ q.q_Kind }</td>
 			</tr>
 			<tr>
 				<td>제 목</td>
-				<td>ㅎ</b></td>
+				<td>${ q.q_Title }</b></td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
-				<td>ㅎ</td>
+				<td>${ q.q_Writer }</td>
 			</tr>
 			<tr>
 				<td>작 성 일</td>
-				<td>ㅎ</td>
+				<td>${ q.q_Date }</td>
 			</tr>
 			<tr>
 				<td>답변여부</td>
-				<td>미확인</td>
+				<td>${ q.q_View_Check }</td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea class="form-control" rows="5" id="comment" 
-				style="height: 250px; resize: none"></textarea></td>
+				<td><div style="height: 250px;">${ q.q_Content }</div></td>
 			</tr>				
 		</table>
 		<hr>
+		<!-- 댓글 -->
 		<div style="display: flex;">
-				<textarea class="form-control" rows="2" cols="80" style="resize: none; width: 900px;
+				<textarea id="rContent" class="form-control" rows="2" cols="80" style="resize: none; width: 900px; 
     			margin-left: 110px;"></textarea>
 				&nbsp;&nbsp;&nbsp;			
-				<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;">등록</button>
+				<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" id="rSubmit">등록</button>
 		</div>
-		<br><br>
-		
+		<br>
+
+		<!-- <div style="display: flex; height: 150px;"> -->
+			<table align="center" width="1000" border="1" cellspacing="0" id="rtb">
+				<thead>
+					<tr>
+						<td colspan="3"><b id="rCount"></b></td>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+			<br>
+		<!-- </div> -->
+
 		<div align="center">
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">확인</button>
-		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;">수정</button>
+		
+		<c:url var="QnAlist" value="QnAlist.mn">
+				<c:param name="currentPage" value="${ currentPage }"/>
+			</c:url>
+			<c:url var="qUpdateView" value="qUpdateView.mn">
+				<c:param name="q_No" value="${ q.q_No }"/>
+			</c:url>
+			<c:url var="qDelete" value="qDelete.mn">
+				<c:param name="q_No" value="${ q.q_No }"/>
+		</c:url>
+				
+			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+			onclick="location.href='QnAlist.mn';">확인</button>
+		<c:if test="${ loginUser.mId eq q.q_MID }">
+			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+				onclick="location.href='${ qUpdateView }';">수정</button>
+				
+			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+				onclick="location.href='${ qDelete }';">삭제</button>
+		</c:if>	
 		</div>
 		<br><br>
 </div>
 
 <%@ include file="All-Footer.jsp" %>
-<!--===============================================================================================-->	
+	<script>
+	$(function(){
+		getReplyList();
+		
+		// setInterval
+		setInterval(function(){
+			getReplyList();
+		},3000);
+		
+		// 댓글등록
+		$("#rSubmit").on("click",function(){
+				var qr_Comment = $("#rContent").val();
+				var qr_Qno = ${q.q_No};
+				var qr_Mname = "<%=((Member)session.getAttribute("loginUser")).getmName()%>";
+				
+				$.ajax({
+						url:"addReply.mn",
+						data:{qr_Comment:qr_Comment,qr_Qno:qr_Qno,qr_Mname:qr_Mname},
+						type:"get",
+						success:function(data){
+								if(data == "success"){
+									  getReplyList(); // 등록 성공시 다시 댓글 리스틀 불러오기
+									  
+									  $("#rContent").val("");
+								}
+						},error:function(){
+							console.log("등록 실패");
+						}
+				});
+		});
+});
+
+		function getReplyList() {
+			var bId = ${q.q_No};
+
+			$.ajax({
+						url : "rList.mn",
+						data : {bId : bId},
+						dataType : "json",
+						success : function(data) {
+							console.log(data);
+							$tableBody = $("#rtb tbody");
+							$tableBody.html("");
+
+							var $tr;
+							var $qr_Mname;
+							var $qr_Comment;
+							var $qr_Date;
+
+							$("#rCount").text("댓글(" + data.length + ")");
+
+							if (data.length > 0) {
+								for ( var i in data) {
+									$tr = $("<tr>");
+									$qr_Mname = $("<td width='100'>").text(data[i].qr_Mname);
+									$qr_Comment = $("<td>").text(data[i].qr_Comment);
+									$qr_Date = $("<td width='100'>").text(data[i].qr_Date);
+
+									$tr.append($qr_Mname);
+									$tr.append($qr_Comment);
+									$tr.append($qr_Date);
+									$tableBody.append($tr);
+								}
+							} else {
+								$tr = $("<tr>");
+								$rContent = $("<td colspan='3'>").text(
+										"등록된 댓글이 없습니다.");
+
+								$tr.append($rContent);
+								$tableBody.append($tr);
+							}
+						}
+					});
+		}
+	</script>
+	<!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/vendor/animsition/js/animsition.min.js"></script>

@@ -4,62 +4,92 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>QNA 수정</title>
 <meta charset="UTF-8">
-<title>자주 묻는 질문 </title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   
 <%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-
   
-  <style>
-    #all{
+<style>
+	#all{
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;
-		display: grid; 	
+		height: 110%;  	
   		}
-  	#all th{
-  		text-align:center;
-  	}
   		
-  </style>
-  
+  	.tableArea {
+	    border:1px solid white;
+	    width:650px;
+	    height:350px;
+	    margin-left:auto;
+	    margin-right:auto;
+   		}
+</style>
 </head>
 <body>
+
 <div id="all">
 <br>
-<h1 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">자주 묻는 질문</h1>
-<br>
-<table class="table table-hover" align="center">
-    <thead>
-      <tr>
-        <th style="width:10%">글번호</th>
-        <th style="width:60%">제목</th>
-        <th style="width:10%">작성자</th>
-        <th style="width:20%">작성일</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="center">1</td>
-        <td align="center">배송이 안와요</td>
-        <td align="center">홍길동</td>
-        <td align="center">2020-03-21</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  
+	<h2 style="color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 ${ q.q_No }번 글 수정</h2><Br>
+    <form action="qUpdate.mn" method="post" enctype="multipart/form-data">
+    
+		<input type="hidden" name="q_No" value="${ q.q_No }">
+		<input type="hidden" name="q_Img1" value="${ q.q_Img1 }">
+		<input type="hidden" name="q_Img1_ReName" value="${ q.q_Img1_ReName }"> 
+		
+	<table align="center" id="tableArea" class="table">
+			<tr>
+				<td width="100">글 번 호</td>
+				<td>${ q.q_No }</td>
+			</tr>
+			<tr>
+				<td>제  목</td>
+				<td><input type="text" class="form-control" id="qtitle" name="q_Title" value="${ q.q_Title }"></td>
+			</tr>
+			<tr>
+				<td>작 성 자</td>
+				<td><input type="text" readonly name="q_Writer" value="${ loginUser.mName }"></td>
+				<td><input type="hidden" readonly name="q_Mno" value="${ loginUser.mNO }"></td>
+			</tr>
+			<tr>
+				<td>작 성 일</td>
+				<td>${ q.q_Date }</td>
+			</tr>
+			<tr>
+				<td>첨부 파일</td>
+				<td>
+					<input type="file" name="reloadFile">
+					<c:if test="${ !empty q.q_Img1 }">
+					<br>현재 업로드한 파일 : 
+					<a href="${ contextPath }/resource/nuploadFiles/${ q.q_Img1_ReName }" download="${ q.q_Img1 }">${ q.q_Img1 }</a>
+					</c:if>
+				</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea class="form-control" rows="5" id="comment"
+					 style="height: 250px; resize: none" name="q_Content">${ q.q_Content }</textarea></td>
+			</tr>				
+		</table>
+
+
+		<div align="center">
+			<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+			value="수정 완료">
+		</div>
+	</form>
+		</div>
 <%@ include file="All-Footer.jsp" %>
+
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -160,5 +190,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
+</body>
+</html>
+
 </body>
 </html>

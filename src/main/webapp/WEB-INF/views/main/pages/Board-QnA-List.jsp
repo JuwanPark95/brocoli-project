@@ -58,7 +58,7 @@
         <td align="center">${ q.q_No }</td>
         <td align="center">${ q.q_Kind }</td>
         <td align="center">
-								<c:url var="qnadetail" value="qnaDetail.mn">
+								<c:url var="qnadetail" value="qDetail.mn">
 									<c:param name="q_No" value="${ q.q_No }" />
 									<c:param name="currentPage" value="${ pi.currentPage }" />
 								</c:url>
