@@ -47,13 +47,6 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.eventlist");
 	}
 
-	public int deleteMember(String mId) {
-		return sqlSession.delete("memberMapper.deleteMember",mId);
-	}
-
-	public int updateMember(Member m) {
-		return sqlSession.update("memberMapper.updateMember",m);
-	}
 
 	public ArrayList<Brand> selectbList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.brandlist");
@@ -62,12 +55,6 @@ public class MemberDao {
 	public ArrayList<Brand> selectbpList(String b_Name) {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
-
-
-	public int pwdCheck(String password) {
-		return sqlSession.selectOne("memberMapper.pwdCheck",password);
-	}
-
 
 	public String mailCheck2(String email) {
 		return sqlSession.selectOne("memberMapper.mailCheck2",email);

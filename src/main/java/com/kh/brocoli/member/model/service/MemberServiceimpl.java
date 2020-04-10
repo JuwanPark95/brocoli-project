@@ -45,21 +45,7 @@ public class MemberServiceimpl implements MemberService {
 	public ArrayList<Product> selectEList() {
 		return mDao.selectEList();
 	}
-	
-	@Override
-	public int deleteMember(String mId) {
-		return mDao.deleteMember(mId);
-	}
 
-	@Override
-	public int updateMember(Member m) {
-		return mDao.updateMember(m);
-	}
-
-	@Override
-	public int pwdCheck(String password) {
-		return mDao.pwdCheck(password);
-	}
 
 
 	@Override

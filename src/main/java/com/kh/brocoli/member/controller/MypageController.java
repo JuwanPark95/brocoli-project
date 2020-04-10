@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.brocoli.member.model.service.MemberService;
+import com.kh.brocoli.member.model.service.MypageService;
 import com.kh.brocoli.member.model.vo.Member;
 
 @SessionAttributes("loginUser")
@@ -22,11 +22,11 @@ public class MypageController {
 	
 	
 	@Autowired
-	private MemberService mService;
+	private MypageService myService;
 	
 	// 암호화 처리 
-	@Autowired
-	private BCryptPasswordEncoder bcryptPasswordEncoder;
+//	@Autowired
+//	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	
 //**************************************마이페이지 이동경로*****************************************//	
@@ -57,7 +57,7 @@ public class MypageController {
 	@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
 	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv, Member m) {
 		System.out.println("pwd1 : " + password);
-		int result = mService.pwdCheck(password);
+		int result = myService.pwdCheck(password);
 		System.out.println("result : " + result);
 		
 	
@@ -105,7 +105,7 @@ public class MypageController {
    }
 
    System.out.println("id :" + m.getmId());
-   int result = mService.updateMember(m);
+   int result = myService.updateMember(m);
    System.out.println("result : " +  result);
 
    if(result > 0) {
@@ -145,7 +145,7 @@ public String p_Change(Model model,
     m.setPwd(pwd2);
 
    // password 업데이트 
-   int result = mService.updateMember(m);
+   int result = myService.updateMember(m);
    
    if(result > 0) {
    	
@@ -172,7 +172,7 @@ public String p_Change(Model model,
 public String memberDelete(String mId, Model model,SessionStatus status) {
 	
 		//SessionStatus : 세션의 상태값을 찾아서 sestComplete를 사용해서 세션을 초기
-		int result = mService.deleteMember(mId);
+		int result = myService.deleteMember(mId);
 		if(result > 0) {
 			status.setComplete();
 	    	return "redirect:index.jsp";
@@ -266,8 +266,4 @@ public String memberDelete(String mId, Model model,SessionStatus status) {
 	public String P_reject() {
 		return "My-Product-Reject";
 	}
-	
-
-
-
 }
