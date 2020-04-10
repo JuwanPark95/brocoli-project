@@ -93,7 +93,8 @@
 
 
 					<li class="p-b-13">
-						<a href="<c:url value='QnAView.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
+					
+						<a href="<c:url value='QnAlist.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
 							문의사항
 						</a>
 					</li>

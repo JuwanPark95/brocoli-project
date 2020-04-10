@@ -67,6 +67,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:3%">번호</th>
+                                                <th style="width:3%">브랜드번호</th>
                                                 <th style="width:5%">로고</th>
                                                 <th style="width:8%">브랜드명</th>
                                                 <th style="width:8%">사업자번호</th>
@@ -81,7 +82,8 @@
                                         <c:forEach var="b" items="${BrandList}" varStatus="bl">
                                             <tr>
                                                 <td>${bl.count }</td>
-                                                <td><img src="/brocoli/resources/adminResources/images/${b.b_Logo}" width="50" height="50"></td>
+                                                <td>${b.brand_NO}</td>
+                                                <td><img src="/brocoli/resources/brandLogo/${b.b_Logo_ReName}" width="50" height="50"></td>                                              	
                                                 <td>${b.b_Name}</td>
                                                 <td>${b.b_Business_NO}</td>
                                                 <td>${b.b_Owner_Name }</td>
@@ -123,8 +125,8 @@
 				$("#brand-management").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(2).text();	
-					location.href="brandDetail.ad?b_Name="+b_Name
+					var brand_NO = $(this).parents().children("td").eq(1).text();	
+					location.href="brandDetail.ad?brand_NO="+brand_NO
 				});
 			});
 		</script>

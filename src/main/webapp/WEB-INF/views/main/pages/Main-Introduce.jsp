@@ -4,10 +4,9 @@
 <html>
 <link rel="stylesheet" type="text/css" href="/brocoli/resources/mainResources/css/trackList.css">
 
-	<%@ include file="All-Cart.jsp" %>
 	<%@ include file="All-Header.jsp" %>
 	<%@ include file="All-Sidebar.jsp" %>
-	
+	<%@ include file="All-Cart.jsp" %>
 	
 
 <body>

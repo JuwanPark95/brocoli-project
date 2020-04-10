@@ -3,7 +3,7 @@ package com.kh.brocoli.board.model.service;
 import java.util.ArrayList;
 
 import com.kh.brocoli.board.model.vo.Notice;
-import com.kh.brocoli.board.model.vo.Notice_PageInfo;
+import com.kh.brocoli.board.model.vo.PageInfo;
 
 public interface BoardService {
 
@@ -18,7 +18,7 @@ public interface BoardService {
 	 * @param pi
 	 * @return
 	 */
-	ArrayList<Notice> selectList(Notice_PageInfo pi);
+	ArrayList<Notice> selectList(PageInfo pi);
 
 	/**
 	 * 게시판 작성
@@ -33,5 +33,21 @@ public interface BoardService {
 	 * @return
 	 */
 	Notice selectBoardNotice(int n_No);
+
+	/**
+	 * 게시판 수정
+	 * @param n_No
+	 * @return
+	 */
+	Notice selectUpdateBoardNotice(int n_No);
+	int updateBoardNotice(Notice n);
+
+	/**
+	 * 게시판 삭제
+	 * @param n_No
+	 * @return
+	 */
+	int deleteBoardNtice(int n_No);
+
 
 }

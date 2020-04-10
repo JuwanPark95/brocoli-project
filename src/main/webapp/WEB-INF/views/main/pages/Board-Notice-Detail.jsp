@@ -81,8 +81,11 @@
 			<c:url var="bnlist" value="bnlist.mn">
 				<c:param name="currentPage" value="${ currentPage }"/>
 			</c:url>
-			<c:url var="bnupdate" value="bnupdate.mn">
-				<c:param name="currentPage" value="${ currentPage }"/>
+			<c:url var="bnUpdateView" value="bnUpdateView.mn">
+				<c:param name="n_No" value="${ n.n_No }"/>
+			</c:url>
+			<c:url var="bnDelete" value="bnDelete.mn">
+				<c:param name="n_No" value="${ n.n_No }"/>
 			</c:url>
 			
 		<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
@@ -90,7 +93,10 @@
 		
 		<c:if test="${ loginUser.mId eq n.n_MID }">
 			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-				onclick="location.href='bnupdate.mn';">수정</button>
+				onclick="location.href='${ bnUpdateView }';">수정</button>
+				
+			<button class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
+				onclick="location.href='${ bnDelete }';">삭제</button>
 		</c:if>		
 		
 	</div>

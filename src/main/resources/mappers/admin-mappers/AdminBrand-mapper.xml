@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AdminBrand">
 	<resultMap id="brandResultSet" type="Brand">
-		<id property="b_Name" column="B_NAME"/>
+		<id property="brand_NO" column="BRAND_NO"/>
+		<result property="b_Name" column="B_NAME"/>
 		<result property="b_Logo" column="B_LOGO"/>
 		<result property="b_Logo_ReName" column="B_LOGO_RENAME"/>
 		<result property="b_Business_NO" column="B_BUSINESS_NO"/>
@@ -28,4 +29,57 @@
 		SELECT * 
 		FROM BRAND
 	</select>
+	
+	<select id="selectBrandDetail" parameterType="Brand" resultMap="brandResultSet">
+		SELECT *
+		FROM BRAND
+		WHERE BRAND_NO = #{brand_NO}
+	</select>
+	
+	<update id="updateBrand" parameterType="Brand">
+		UPDATE	BRAND
+		SET	BRAND_NO=#{brand_NO},B_NAME=#{b_Name},B_BUSINESS_NO=#{b_Business_NO},B_STATUS=#{b_Status},B_ENTER_DATE=#{b_Enter_Date},
+			B_CLOSE_DATE=#{b_Close_Date},B_CLOSE_CONTENT=#{b_Close_Content},B_MODIFY_ID=#{b_Modify_ID},B_MODIFY_DATE=SYSDATE,
+			B_OWNER1_ID=#{b_Owner1_ID},B_OWNER2_ID=#{b_Owner2_ID},B_OWNER3_ID=#{b_Owner3_ID},B_PHONE=#{b_Phone},B_ADDRESS=#{b_Address},
+			B_OWNER_NAME=#{b_Owner_Name},B_COMMENT=#{b_Comment},B_EMAIL1=#{b_Email1},B_EMAIL2=#{b_Email2},B_EMAIL3=#{b_Email3}
+		WHERE BRAND_NO=#{brand_NO}
+	</update>
+	
+	<select id="brandNameCheck" parameterType="Brand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BRAND
+		WHERE B_NAME=#{b_Name}
+	</select>
+	
+	<select id="ownerId1Check" parameterType="Brand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BRAND
+		WHERE B_OWNER1_ID=#{b_Owner1_ID}
+	</select>
+	
+	<select id="ownerId2Check" parameterType="Brand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BRAND
+		WHERE B_OWNER2_ID=#{b_Owner2_ID}
+	</select>
+	
+	<select id="ownerId3Check" parameterType="Brand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BRAND
+		WHERE B_OWNER3_ID=#{b_Owner3_ID}
+	</select>
+	
+	<insert id="brandEnroll" parameterType="Brand">
+		INSERT INTO BRAND
+		VALUES(SEQ_BRAND_NO.NEXTVAL,#{b_Name},#{b_Logo},#{b_Logo_ReName},#{b_Business_NO},'Y',DEFAULT,
+				TO_DATE('20300101','YYYY-MM-DD'),#{b_Close_Content},#{b_Modify_ID},DEFAULT,#{b_Owner1_ID},#{b_Owner2_ID},#{b_Owner3_ID},
+				#{b_Phone},#{b_Address},#{b_Owner_Name},#{b_Comment},#{b_Email1},#{b_Email2},#{b_Email3})
+	</insert>
+	
+	<update id="brandOwnerUpdate" parameterType="Brand">
+		UPDATE MEMBER
+		SET MGRANT='2'
+		WHERE MID = #{b_Owner1_ID} OR MID = #{b_Owner2_ID} OR MID = #{b_Owner3_ID} 
+	</update> 
+	
 </mapper>

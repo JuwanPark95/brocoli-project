@@ -59,6 +59,12 @@
                                 <h5 class="card-header">회원정보</h5>
                                 <div class="card-body">
                                     <form action="memberUpdate.ad" method="post">
+                                    	<div class="form-group row">
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">회원번호</label>
+                                            <div class="col-12 col-sm-8 col-lg-6">
+                                                <input type="text" class="form-control" name="mNO" value="${m.mNO}">
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">이름</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
@@ -174,14 +180,20 @@
                                                 </select>
                                             </div>		
                                         </div>
-                                       	<div style="padding-left:70%">
-                                            <button type="submit" class="btn btn-dark" >저장</button>
-                                    </form>
+                                       	<div class="form-group row text-right">
+                                    		<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                            	<button type="submit" class="btn btn-dark" >저장</button>
+                                            </div>
                                         </div>
-                                        	<form action="memberDelete.ad" method="post" style="padding-left:68.5%; margin-top:1%">
+                                    </form>
+                                    <div class="form-group row text-right">
+                                    	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                    		<form action="memberDelete.ad" method="post" >
                                         		<input type="hidden" name="mId" value="${m.mId}"/>	
-                                            		<button type="submit" class="btn btn-dark">회원삭제</button>
-                                            </form>
+                                            	<button type="submit" class="btn btn-dark">회원삭제</button>
+                                    		</form>
+                                    	</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

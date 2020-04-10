@@ -56,10 +56,10 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.updateMember(m);
 	}
 
-	@Override
-	public int pwdCheck(String password) {
-		return mDao.pwdCheck(password);
-	}
+//	@Override
+//	public int pwdCheck(String password) {
+//		return mDao.pwdCheck(password);
+//	}
 
 
 	@Override
@@ -73,6 +73,23 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	
+
+	@Override
+	public String mailCheck2(String email) {
+		String result = mDao.mailCheck2(email);
+		System.out.println("result : " + result);
+		if(result != null) {
+			return result;
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public int pwdCheck(String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 

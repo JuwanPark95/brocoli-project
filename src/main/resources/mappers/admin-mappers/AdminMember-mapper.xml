@@ -3,7 +3,8 @@
 
 <mapper namespace="AdminMember">
 	<resultMap id="memberResultSet" type="Member">
-		<id property="mId" column="MID"/>
+		<id property="mNO" column="MNO"/>
+		<result property="mId" column="MID"/>
 		<result property="pwd" column="PWD"/>
 		<result property="mName" column="MNAME"/>
 		<result property="email" column="EMAIL"/>
@@ -23,7 +24,6 @@
 		<result property="enrollDate" column="ENROLLDATE"/>
 		<result property="brand" column="BRAND"/>
 		<result property="brand_NO" column="BRAND_NO"/>
-	
 	</resultMap>
 
 
@@ -40,7 +40,7 @@
 	
 	<update id="updateMemberUpdate" parameterType="Member">
 			UPDATE MEMBER
-			SET MID=#{mId},PWD=#{pwd},MNAME=#{mName},EMAIL=#{email},PHONE=#{phone},
+			SET MNO=#{mNO},MID=#{mId},PWD=#{pwd},MNAME=#{mName},EMAIL=#{email},PHONE=#{phone},
 				ADDRESS=#{address},GENDER=#{gender},BIRTHDAY=#{birthDay},MGRANT=#{mGrant},
 				MPOINT=#{mPoint},ORDER_COUNT=#{order_Count},ORDER_PRICE=#{order_Price},REPORT_YN=#{report_YN},
 				BLOCK_YN=#{block_YN},BLOCK_CONTENT=#{block_Content},DEL_DATE=#{del_Date},

@@ -39,7 +39,7 @@
 <div id="all">
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 작성</h2><Br>
-<form action="bnInsert.mn" method="post" enctype="multipart/form-data">
+    <form action="bnInsert.mn" method="post" enctype="multipart/form-data">
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
@@ -47,15 +47,16 @@
 			</tr>
 			<tr>
 				<td>제  목</td>
-				<td><input type="text" class="form-control" id="ntitle" name="ntitle"></td>
+				<td><input type="text" class="form-control" id="ntitle" name="n_Title"></td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
-				<td><input type="text" readonly name="n_Writer" value="${ loginUser.n.n_MID }"></td>
+				<td><input type="text" readonly name="n_Writer" value="${ loginUser.mName }"></td>
+				<td><input type="hidden" readonly name="n_Mno" value="${ loginUser.mNO }"></td>
 			</tr>
 			<tr>
 				<td>작 성 일</td>
-				<td>${ n.n_Date }</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
@@ -71,10 +72,23 @@
 
 		<div align="center">
 		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-		value="작성 완료">
-		</div>
+		 onsubmit="return checks()" value="작성 완료">
 		</div>
 	</form>
+		</div>
+		
+	<script>
+		function checks(){
+	      	  var title = $("#ntitle").val();
+	      
+	       	 if(title == ""){
+	       		 alert("제목을 입력해주세요."); 
+	       			title.focus(); 
+	       	 return false; 
+	      }
+		}	
+	</script>
+
 <%@ include file="All-Footer.jsp" %>
 
 <!--===============================================================================================-->	
