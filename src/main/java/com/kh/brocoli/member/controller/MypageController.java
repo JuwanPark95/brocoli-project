@@ -87,102 +87,103 @@ public class MypageController {
 	
 	
 	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 개인정보수정
-	 * @return
-	 */
-	@RequestMapping("mupdate.mn")
-	public String memberUpdate(Member m,Model model,SessionStatus status,
-			   @RequestParam("post") String post,
-			   @RequestParam("address1") String addr1,
-			   @RequestParam("address2") String addr2) {
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 개인정보수정
+		 * @return
+		 */
+		@RequestMapping("mupdate.mn")
+		public String memberUpdate(Member m,Model model,SessionStatus status,
+				   @RequestParam("post") String post,
+				   @RequestParam("address1") String addr1,
+				   @RequestParam("address2") String addr2) {
+			
+			
+	   // 주소데이터들 ','를 구분자로 저장
+	   if(!post.equals("")) {
+	   m.setAddress(post+","+addr1+","+addr2);
+	   }
+	
+	   System.out.println("id :" + m.getmId());
+	   int result = myService.updateMember(m);
+	   System.out.println("result : " +  result);
+	
+	   if(result > 0) {
+	   model.addAttribute("loginUser",m);
+	   status.setComplete();
+	   return "redirect:index.jsp";
+	   }else {
+	   model.addAttribute("msg","회원 정보 수정 실패!");
+	   return "common/errorPage";
+	  }
+	}
+
+		/** 작성자 : 김주희
+		*  작성일 : 2020-04-02
+		*  내용 : 정보수정 -> 비밀번호변경
+		* @return
+		*/
+		@RequestMapping("p_change.mn")
+		public String p_ChangeView() {
+			return "My-P-Change";
+		}
+
+		
+		/**
+		* 사용자 비밀번호 변경
+		* @author 김주희
+		* @param model
+		* @param session
+		* @param pwd2
+		* @return
+		*/
+		@RequestMapping(value="password_change.mn" ,method=RequestMethod.POST)
+		public String p_Change(Model model,
+				   HttpSession session,
+				   @RequestParam("p_change2") String pwd2) {
+		   // Session에서 사용자 정보 추출해서 새로받은 password를 갱신
+		   Member m = (Member)session.getAttribute("loginUser");
+		    m.setPwd(pwd2);
+		
+		   // password 업데이트 
+		   int result = myService.updateMember(m);
+		   
+		   if(result > 0) {
+		   	
+		   	session.setAttribute("loginUser", m);
+		   	
+		   	return "redirect:index.jsp";
+		   }else {
+		   	
+		   	model.addAttribute("msg","비밀번호 변경 실패");
+		   	
+		   	return "common/errorPage";
+		   }
+		
+		}
+
 		
 		
-   // 주소데이터들 ','를 구분자로 저장
-   if(!post.equals("")) {
-   m.setAddress(post+","+addr1+","+addr2);
-   }
-
-   System.out.println("id :" + m.getmId());
-   int result = myService.updateMember(m);
-   System.out.println("result : " +  result);
-
-   if(result > 0) {
-   model.addAttribute("loginUser",m);
-   status.setComplete();
-   return "redirect:index.jsp";
-   }else {
-   model.addAttribute("msg","회원 정보 수정 실패!");
-   return "common/errorPage";
-  }
-}
-
-/** 작성자 : 김주희
-*  작성일 : 2020-04-02
-*  내용 : 정보수정 -> 비밀번호변경
-* @return
-*/
-@RequestMapping("p_change.mn")
-public String p_ChangeView() {
-	return "My-P-Change";
-}
-
-/**
-* 사용자 비밀번호 변경
-* @author 김주희
-* @param model
-* @param session
-* @param pwd2
-* @return
-*/
-@RequestMapping(value="password_change.mn" ,method=RequestMethod.POST)
-public String p_Change(Model model,
-		   HttpSession session,
-		   @RequestParam("p_change2") String pwd2) {
-   // Session에서 사용자 정보 추출해서 새로받은 password를 갱신
-   Member m = (Member)session.getAttribute("loginUser");
-    m.setPwd(pwd2);
-
-   // password 업데이트 
-   int result = myService.updateMember(m);
-   
-   if(result > 0) {
-   	
-   	session.setAttribute("loginUser", m);
-   	
-   	return "redirect:index.jsp";
-   }else {
-   	
-   	model.addAttribute("msg","비밀번호 변경 실패");
-   	
-   	return "common/errorPage";
-   }
-
-}
-
-
-
-/** 작성자 : 김주희
-*  작성일 : 2020-04-02
-*  내용 : 회원탈퇴
-* @return
-*/
-@RequestMapping("mdelete.mn")
-public String memberDelete(String mId, Model model,SessionStatus status) {
-	
-		//SessionStatus : 세션의 상태값을 찾아서 sestComplete를 사용해서 세션을 초기
-		int result = myService.deleteMember(mId);
-		if(result > 0) {
-			status.setComplete();
-	    	return "redirect:index.jsp";
-	    }else {
-	    model.addAttribute("msg","비밀번호 변경 실패");
-	    	return "common/errorPage";
-	    }
-
-}
-	
+		/** 작성자 : 김주희
+		*  작성일 : 2020-04-02
+		*  내용 : 회원탈퇴
+		* @return
+		*/
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model,SessionStatus status) {
+			
+				//SessionStatus : 세션의 상태값을 찾아서 sestComplete를 사용해서 세션을 초기
+				int result = myService.deleteMember(mId);
+				if(result > 0) {
+					status.setComplete();
+			    	return "redirect:index.jsp";
+			    }else {
+			    model.addAttribute("msg","비밀번호 변경 실패");
+			    	return "common/errorPage";
+			    }
+		
+		}
+			
 	
 //************************************************주문상세 이동경로********************************************************//	
 	
@@ -208,6 +209,18 @@ public String memberDelete(String mId, Model model,SessionStatus status) {
 	public String P_change() {
 		return "My-Product-Change";
 	}
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 교환->반품  
+	 * @return
+	 */
+	@RequestMapping("my_p_reject.mn")
+	public String P_reject() {
+		return "My-Product-Reject";
+	}
+	
 	
 	
 	/** 작성자 : 김주희
@@ -256,14 +269,5 @@ public String memberDelete(String mId, Model model,SessionStatus status) {
 		return "Board-All-List";
 	}
 	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 교환->반품  
-	 * @return
-	 */
-	@RequestMapping("my_p_reject.mn")
-	public String P_reject() {
-		return "My-Product-Reject";
-	}
+
 }
