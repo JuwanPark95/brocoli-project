@@ -15,6 +15,8 @@ public interface ownerProductService {
 
 	ArrayList<Product_Option> stockDetail(int pNO);
 
+	int stockChange(Product_Option po);
+
 
 
 
