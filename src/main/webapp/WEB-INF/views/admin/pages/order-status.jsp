@@ -67,31 +67,32 @@
                                         <thead>
                                             <tr>
                                                 <th style="width:3%">번호</th>
+                                                <th style="width:5%">주문번호</th>
                                                 <th style="width:8%">주문일자</th>
-                                                <th style="width:10%">상품번호</th>
                                                 <th style="width:10%">상품명</th>
+                                                <th style="width:10%">상품번호</th>
                                                 <th style="width:3%">수량</th>
                                                 <th style="width:8%">주문자</th>
                                                 <th style="width:8%">아이디</th> 
                                                 <th style="width:10%">배송지</th>
                                                 <th style="width:8%">가격</th>
                                                 <th style="width:8%">현재주문상태</th>
-                                                <th style="width:12%">상품명?상품코드?</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="o" items="${ordersList}" varStatus="ol" >
                                             <tr>
-                                                <td>1</td>
-                                                <td>2020/02/02</td>
-                                                <td>a1d1</td>
-                                                <td>나이키맨투맨</td>
-                                                <td>2</td>
-                                                <td>홍길순</td>
-                                                <td>hongsoon</td>
-                                                <td>서울시 강남구 역삼1동</td>
-                                                <td>30000</td>
+                                                <td>${ol.count}</td>
+                                                <td>${o.or_NO}</td>
+                                                <td>${o.or_Date}</td>
+                                                <td>${o.or_Pname}</td>
+                                                <td>${o.or_P_NO}</td>
+                                                <td>${o.or_Amount}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>${o.or_Address}</td>
+                                                <td>${o.or_Price}</td>
                                                 <td>배송준비중</td>
                                                 <td>
                                                  <select name="cls" style="height: 30px; background-color: white;">
@@ -109,7 +110,7 @@
                                         </c:forEach>
                                       </tbody>
                                     </table>
-                            </div>
+                            	</div>
                         </div>
                     </div>
                     <!-- ============================================================== -->

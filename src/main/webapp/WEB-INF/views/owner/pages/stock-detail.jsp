@@ -86,10 +86,11 @@
                             <div class="card-header">
                                 <h5 class="mb-0">선택상품재고관리</h5>
                                 <p>선택한 상품의 옵션별 재고 현황입니다.</p>
-								<h5>선택상품 : ${pName}</h5>
+								<h5 style="float: left;">선택상품 : ${pName}</h5>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                <form action="stock_change.ow" method="post" enctype="multipart/form-data" >
                                     <table id="example" class="table table-striped table-bordered second" >
                                         <thead>
                                             <tr>
@@ -100,30 +101,31 @@
                                                 <th>재고변경</th>
                                                 <th>현재상태</th>
                                                 <th>상태변경</th>
-                                                <th>수정</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<% int count = 0; %>
                                         	<c:forEach var="r" items="${ list }">
 	                                            <tr>
-	                                            	<td>${r.op_NO }</td>
+	                                            	<td style="width: 10%;"><input  name="Product_OptionVOList[<%=count%>].op_NO" value="${r.op_NO }" readonly="readonly" type="number" style="width: 100%; text-align: center; border: none; background: none; color=#71748D;"></td>
 	                                                <td>${r.option_1 }</td>
 	                                                <td>${r.option_2 }</td>
 	                                                <td>${r.op_Stock }</td>
-	                                                <td><input type="number"></td>
-	                                                <td>${r.op_Status_YN }</td>
-	                                                <td>
-	                                                	<select name="status" style="height: 31px;">
+	                                                <td><input type="number" name="Product_OptionVOList[<%=count%>].op_Stock" value="${r.op_Stock }"></td>
+	                                                <td id="status">
+	                                                <c:choose>
+														<c:when test="${r.op_Status_YN eq 'Y'}"><span class="badge-dot badge-success"></span><a id="statusText<%= count %>">판매중</a></c:when>
+														<c:when test="${r.op_Status_YN eq 'N'}"><span class="badge-dot badge-warning"></span><a id="statusText<%= count %>">품절</a></c:when>
+													</c:choose>	
+													</td>
+	                                                <td><%-- name="Product_OptionVOList[<%= count %>].op_Status_YN" --%>
+	                                                	<select id="opStatus<%= count %>" name="Product_OptionVOList[<%= count %>].op_Status_YN" style="height: 31px; width: 100%;">
 														    <option value="Y">판매중</option>
-														    <option value="N">품절</option>
-														</select>
-	                                                </td>
-	                                                <td>
-	                                                	<div class="btn-group ml-auto">
-				                                            <button class="btn btn-sm btn-outline-light">적용</button>
-				                                        </div>
+														    <option value="N">판매중지</option>
+														</select>														
 	                                                </td>
 	                                            </tr>
+                                             <% count++; %>
                                             </c:forEach>
                                         </tbody>
                                         <tfoot>
@@ -135,10 +137,13 @@
                                                 <th>재고변경</th>
                                                 <th>현재상태</th>
                                                 <th>상태변경</th>
-                                                <th>수정</th>
                                             </tr>
                                         </tfoot>
                                     </table>
+                                    <button type="submit" class="btn btn-primary" style="float: right; color: #FFFFFF; margin-top: 20px; margin-right: 5px; margin-bottom: 20px;">변경사항 적용</button>
+				                    <input type="text" name="pName" value="${pName}" style="display: none;" >
+				                    <input type="number" name="pNO" value="${pNO}" style="display: none;" > 
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -160,13 +165,32 @@
             </div>
 
         </div>
-  
+<!--  
+	작성자 : 박주완
+	작성일 : 2020-04-09
+	내용 : 불러온 값에따라 상품상태 select box select 값 변경
+	-->
+	<script>
+	$(function(){
+		for(var i=0; i<<%= count %>; i++){
+	    	var status = $('#statusText'+i+'').text();
+	    	var sale = '판매중';
+	    	var soldout = '품절';
+			if(status == sale){
+				$("#opStatus"+i+" option[value='Y']").attr("selected","selected");
+			}else{
+				$("#opStatus"+i+" option[value='N']").attr("selected","selected");
+			}
+		}
+	 });
+	</script>
+
+
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
+    
     <!-- Optional JavaScript -->
-    <!-- <script src="/brocoli/resources/ownerResources/vendor/jquery/jquery-3.3.1.min.js"></script> -->
-    <!-- <script src="/brocoli/resources/ownerResources/vendor/bootstrap/js/bootstrap.bundle.js"></script> -->
     <script src="/brocoli/resources/ownerResources/vendor/slimscroll/jquery.slimscroll.js"></script>
     <script src="/brocoli/resources/ownerResources/vendor/multi-select/js/jquery.multi-select.js"></script>
     <script src="/brocoli/resources/ownerResources/libs/js/main-js.js"></script>

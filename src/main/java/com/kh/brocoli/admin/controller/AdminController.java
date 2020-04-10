@@ -36,10 +36,10 @@ public class AdminController {
 //		return "brand-owner-contact";
 //	}
 //	
-//	@RequestMapping("order-status.ad")
-//	public String orderStatus() {
-//		return "order-status";
-//	}
+	@RequestMapping("order-status.ad")
+	public String orderStatus() {
+		return "order-status";
+	}
 //	
 //	@RequestMapping("order-exchange.ad")
 //	public String orderExchange() {

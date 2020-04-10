@@ -58,6 +58,8 @@
 		<mapper resource="mappers/main-mappers/main-mapper.xml"/>
  		<mapper resource="mappers/owner-mappers/ownerProduct-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminBrand-mapper.xml"/>
+ 		<mapper resource="mappers/admin-mappers/AdminOrders-mapper.xml"/>
+ 		
 		
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
