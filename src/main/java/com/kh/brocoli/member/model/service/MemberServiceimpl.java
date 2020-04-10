@@ -56,10 +56,10 @@ public class MemberServiceimpl implements MemberService {
 		return mDao.updateMember(m);
 	}
 
-//	@Override
-//	public int pwdCheck(String password) {
-//		return mDao.pwdCheck(password);
-//	}
+	@Override
+	public int pwdCheck(String password) {
+		return mDao.pwdCheck(password);
+	}
 
 
 	@Override
@@ -86,7 +86,19 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 	@Override
-	public int pwdCheck(String password) {
+	public int idCheck(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insertMember(Member m) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int mailCheck(String email) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
