@@ -3,28 +3,39 @@ package com.kh.brocoli.board.model.vo;
 import java.sql.Date;
 
 public class QnA_Reply {
+	
+	private int qr_No;
 	private String qr_Comment;
 	private String qr_Qno;
 	private Date qr_Date;
 	private String qr_Modify_Check;
 	private Date qr_Modify_Date;
 	private String qr_Status;
-	private int qr_Mno;
+	private String qr_Mname;
 	
 	public QnA_Reply() {
 		super();
 	}
 
-	public QnA_Reply(String qr_Comment, String qr_Qno, Date qr_Date, String qr_Modify_Check, Date qr_Modify_Date,
-			String qr_Status, int qr_Mno) {
+	public QnA_Reply(int qr_No, String qr_Comment, String qr_Qno, Date qr_Date, String qr_Modify_Check,
+			Date qr_Modify_Date, String qr_Status, String qr_Mname) {
 		super();
+		this.qr_No = qr_No;
 		this.qr_Comment = qr_Comment;
 		this.qr_Qno = qr_Qno;
 		this.qr_Date = qr_Date;
 		this.qr_Modify_Check = qr_Modify_Check;
 		this.qr_Modify_Date = qr_Modify_Date;
 		this.qr_Status = qr_Status;
-		this.qr_Mno = qr_Mno;
+		this.qr_Mname = qr_Mname;
+	}
+
+	public int getQr_No() {
+		return qr_No;
+	}
+
+	public void setQr_No(int qr_No) {
+		this.qr_No = qr_No;
 	}
 
 	public String getQr_Comment() {
@@ -75,19 +86,19 @@ public class QnA_Reply {
 		this.qr_Status = qr_Status;
 	}
 
-	public int getQr_Mno() {
-		return qr_Mno;
+	public String getQr_Mname() {
+		return qr_Mname;
 	}
 
-	public void setQr_Mno(int qr_Mno) {
-		this.qr_Mno = qr_Mno;
+	public void setQr_Mname(String qr_Mname) {
+		this.qr_Mname = qr_Mname;
 	}
 
 	@Override
 	public String toString() {
-		return "QnA_Reply [qr_Comment=" + qr_Comment + ", qr_Qno=" + qr_Qno + ", qr_Date=" + qr_Date
-				+ ", qr_Modify_Check=" + qr_Modify_Check + ", qr_Modify_Date=" + qr_Modify_Date + ", qr_Status="
-				+ qr_Status + ", qr_Mno=" + qr_Mno + "]";
+		return "QnA_Reply [qr_No=" + qr_No + ", qr_Comment=" + qr_Comment + ", qr_Qno=" + qr_Qno + ", qr_Date="
+				+ qr_Date + ", qr_Modify_Check=" + qr_Modify_Check + ", qr_Modify_Date=" + qr_Modify_Date
+				+ ", qr_Status=" + qr_Status + ", qr_Mname=" + qr_Mname + "]";
 	}
 	
 }
