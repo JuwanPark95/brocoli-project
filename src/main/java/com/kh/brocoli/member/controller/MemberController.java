@@ -59,28 +59,6 @@ public class MemberController {
 	}
 
 	
-	/**
-	 * 로그인 페이지 뷰
-	 * @return
-	 */
-	@RequestMapping(value="loginPage.mn")
-	public String loginPage() {
-		return "Login";
-	}
-	
-	
-	/**
-	 * 로그아웃
-	 * @param status
-	 * @return
-	 */
-	@RequestMapping(value="logoutPage")
-	public String logoutPage(SessionStatus status) {
-		
-		status.setComplete();
-		
-		return "redirect:index.jsp";
-	}
 	
 	/**
 	 * 로그인 기능

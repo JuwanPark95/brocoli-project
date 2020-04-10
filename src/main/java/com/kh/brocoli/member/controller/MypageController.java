@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.member.model.service.MypageService;
 import com.kh.brocoli.member.model.vo.Member;
 
-@SessionAttributes("loginUser")
+
 @Controller
 public class MypageController {
 	
