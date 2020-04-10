@@ -250,11 +250,35 @@ public class ownerProductController {
 		
 		mv.addObject("list",list);
 		mv.addObject("pName",pName);
+		mv.addObject("pNO",pNO);
+		System.out.println("넘겨줄 pNO값 : "+pNO);
 		mv.setViewName("stock-detail");
 		
 		System.out.println("***************************");
 		return mv;
 	};
+	
+	
+	@RequestMapping("stock_change.ow")
+	public ModelAndView stockchange(ModelAndView mv ,Product_Option po ,int pNO ,String pName ,HttpServletRequest request) {
+		int result = oService.stockChange(po);
+		
+		System.out.println("stockchang의 받아온 pNo : " + pNO);
+		System.out.println("stockchang의 받아온 pName : " + pName);
+		
+		mv.addObject("pName",pName);
+		mv.addObject("pNO",pNO);
+		
+		if(result > 0) {
+			mv.setViewName("redirect:stock_detail.ow");
+			System.out.println("상품재고 변경 성공");
+		}else {
+			mv.setViewName("404-Page");
+			System.out.println("상품재고 변경 실패");
+		}
+		
+		return mv;
+	}
 	
 	
 	

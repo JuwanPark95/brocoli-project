@@ -65,7 +65,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0">재고/입고</h5>
-                                <p>현재등록 상품의 재고 현황입니다. </p>
+                                <p>현재등록 상품의 전체재고 현황입니다. </p>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
