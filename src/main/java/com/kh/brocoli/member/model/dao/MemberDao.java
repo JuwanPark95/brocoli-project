@@ -63,9 +63,17 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
 
+<<<<<<< HEAD
+	public int pwdCheck(String password) {
+		return sqlSession.selectOne("memberMapper.pwdCheck",password);
+	}
+
+
+=======
 	public String mailCheck2(String email) {
 		return sqlSession.selectOne("memberMapper.mailCheck2",email);
 	}
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 	
 
 }

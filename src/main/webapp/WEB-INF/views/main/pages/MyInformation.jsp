@@ -20,7 +20,7 @@
 
 <body>
 
-<form action="mupdate.mn" method="post" id="myInfo">
+<form action="mupdate.mn" >
 	<div id="contentWrapper">
 		<div id="contentWrap">
 
@@ -70,7 +70,7 @@
 													</th>
 													<td>
 														<div style="    display: inline-flex;">
-															<input type="password" name="pwd" id="pwd1" class="MS_input_txt w180" value="${loginUser.pwd }" size="15" maxlength="20" style="margin-left: -376px;" readonly >
+															<input type="password" name="pwd" id="pwd" class="MS_input_txt w180" value="${loginUser.pwd }" size="15" maxlength="20" style="margin-left: -376px;" readonly >
 															 &nbsp;&nbsp;&nbsp;
 															<div class="button_base b01_simple_rollover" style="padding-top:0px; height: 25px; border-radius: 3px;">
                                                               <a href="<c:url value='p_change.mn'/>" style="color: #fff;"> 변경하기
@@ -89,7 +89,7 @@
 														<div class="custom_select cb_clear "
 															style="margin-left: -251px;">
 															<div>
-																<input type="text" name="birthDay" value="${loginUser.birthDay }" style="display: inline-block; margin-left: -353px;">
+																<input type="text" name="birthDay" value="${loginUser.birthDay }" style="display: inline-block; margin-left: -353px;" readonly>
 															
 															</div>
 														</div>
@@ -183,8 +183,8 @@
 													</th>
 													<td>
 														<div>
-															<input type="hidden" name="email" value="${loginUser.email }"> 
-														    <input type="text" name="email" id="email" class="MS_input_txt MS_input_txt06 w180" size="20" maxlength="35" value="${loginUser.email }" onchange="this.form.emailcheck.value=''">
+															<input type="hidden" name="email" value=""> 
+														    <input type="text" name="email" id="email" class="MS_input_txt MS_input_txt06 w180" size="20" maxlength="35" value="${loginUser.email }" >
 														</div>
 													</td>
 												</tr>
@@ -196,7 +196,7 @@
 													</th>
 													<td>
 														<div>
-															<input type="text" name="phone" form="join_form" id="phone" class="MS_input_tel w180" size="15" maxlength="30" value="${loginUser.phone }">
+															<input type="text" name="phone" id="phone" class="MS_input_tel w180" size="15" maxlength="30" value="${loginUser.phone }">
 														</div>
 													</td>
 												</tr>
@@ -209,11 +209,12 @@
 							<!-- #personInfo -->
 							<div style="padding-top: 9px; padding-right: 50px;">
 								<button style="height: 35px; width: 140px; border-radius: 3px; padding: 0px; padding-bottom: 2px;">
-									 <strong>수정</strong>
+									<strong>수정</strong>
 								</button>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<button style="height: 35px; width: 140px; border-radius: 3px; padding: 0px; padding-bottom: 2px;">
-									 <strong>삭제</strong>
+								
+								<button style="height: 35px; width: 140px; border-radius: 3px; padding: 0px; padding-bottom: 2px;" onclick="location.href='mdelete.mn'">
+									<strong>삭제</strong>
 								</button>
 							</div>
 						<!-- </form> -->

@@ -57,7 +57,7 @@
 
 		<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
-		SET ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
+		SET PWD=#{pwd},ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
 		WHERE MID=#{mId}
 	    </update>
 	

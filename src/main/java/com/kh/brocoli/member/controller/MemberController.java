@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -122,7 +123,6 @@ public class MemberController {
 	public String findPwd() {
 		return "Login-PwdFind";
 	}
-	
 /************************footer 페이지 이동*******************************/
 	/**
 	 * 작성자: 임현섭
@@ -388,6 +388,22 @@ public class MemberController {
 	   }
 	}
 		
+		return "MyInformation";
+	}
+	
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 개인정보수정
+	 * @return
+	 */
+	@RequestMapping("mupdate.mn")
+	public String memberUpdate(Member m,Model model,SessionStatus status,
+			   @RequestParam("post") String post,
+			   @RequestParam("address1") String addr1,
+			   @RequestParam("address2") String addr2) {
 		
 		
 		/** 작성자 : 김주희
@@ -404,6 +420,1226 @@ public class MemberController {
 
 	    int result = mService.updateMember(m);
 
+    if(result > 0) {
+    model.addAttribute("loginUser",m);
+    status.setComplete();
+    return "redirect:index.jsp";
+    }else {
+    model.addAttribute("msg","회원 정보 수정 실패!");
+    return "common/errorPage";
+   }
+}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 정보수정 -> 비밀번호변경
+	 * @return
+	 */
+	@RequestMapping("p_change.mn")
+	public String p_ChangeView() {
+		return "My-P-Change";
+	}
+	
+	/**
+	 * 사용자 비밀번호 변경
+	 * @author 김주희
+	 * @param model
+	 * @param session
+	 * @param pwd2
+	 * @return
+	 */
+	@RequestMapping(value="password_change.mn" ,method=RequestMethod.POST)
+	public String p_Change(Model model,
+			   HttpSession session,
+			   @RequestParam("p_change2") String pwd2) {
+	    // Session에서 사용자 정보 추출해서 새로받은 password를 갱신
+	    Member m = (Member)session.getAttribute("loginUser");
+	     m.setPwd(pwd2);
+	
+	    // password 업데이트 
+	    int result = mService.updateMember(m);
+	    
+	    if(result > 0) {
+	    	
+	    	session.setAttribute("loginUser", m);
+	    	
+	    	return "redirect:index.jsp";
+	    }else {
+	    	
+	    	model.addAttribute("msg","비밀번호 변경 실패");
+	    	
+	    	return "common/errorPage";
+	    }
+
+	}
+	
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 회원탈퇴
+	 * @return
+	 */
+	@RequestMapping("mdelete.mn")
+	public String memberDelete(String mId, Model model) {
+		int result = mService.deleteMember(mId);
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
+	    if(result > 0) {
+	    model.addAttribute("loginUser",m);
+	    return "redirect:index.jsp";
+	    }else {
+	    model.addAttribute("msg","비밀번호 변경 실패");
+	    return "common/errorPage";
+	    }
+
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 회원탈퇴
+		 * @return
+		 */
+		@RequestMapping("mdelete.mn")
+		public String memberDelete(String mId, Model model) {
+			int result = mService.deleteMember(mId);
+			
+			if(result > 0) {
+				return "redirect:index.jsp";
+			}else {
+				model.addAttribute("msg","회원 탈퇴 실패");
+				return null;
+			}
+		}
+		
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public String myorderlist() {
+			return "MyOrderList";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public String alllist() {
+			return "Board-All-List";
+		}
+		
+
+	//************************************************주문상세 이동경로********************************************************//	
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public String T_process() {
+			return "My-Track-Process";
+		}
+		
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public String P_change() {
+			return "My-Product-Change";
+		}
+		
+		
 	    if(result > 0) {
 	    model.addAttribute("loginUser",m);
 	    return "redirect:index.jsp";
@@ -632,4 +1868,16 @@ public class MemberController {
 	}
 	
 	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-02
+	 *  내용 : 교환->반품  
+	 * @return
+	 */
+	@RequestMapping("my_p_reject.mn")
+	public String P_reject() {
+		return "My-Product-Reject";
+	}
+	
+
 }

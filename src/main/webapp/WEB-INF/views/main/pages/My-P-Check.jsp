@@ -35,10 +35,8 @@
 				placeholder="비밀번호 " >
 		</div>
 		
-<!--     	 <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>  -->
 
-	
-		<div>
+        <div>
 			<button class="btn btn-primary btn-lg btn-block" 
 				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto;">
 				확인
@@ -47,25 +45,7 @@
 <br>
 <br>
 	
-<!--  	<script type="text/javascript"> 
-	
-	$(function(){ 
-		$("#alert-danger").hide();
-		$("input").keyup(function(){ 
-			var pwd1=$("#pwd1").val(); 
-			
-			if(pwd1 != ""){ ; 
-				$("#alert-danger").hide(); 
-				$("#submit").removeAttr("disabled"); 
-				
-				}else{ 
-					$("#alert-danger").show(); 
-					$("#submit").attr("disabled", "disabled"); 
-					} 
-				} 
-			}); 
-		}); 
-	</script>  -->
+
 
 	</form>
 	<%@ include file="All-Footer.jsp" %>
