@@ -85,28 +85,28 @@
                                         </thead>
                                         <tbody>
                                         <% int count = 0; %>
-                                        	<c:forEach var="i" items=" ${lsit}">
+                                        	<c:forEach var="r" items="${ list }">
 	                                            <tr>
-	                                                <td>${i.p_NO }</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
-	                                                <td align="center">
-	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
+	                                                <td>${r.pList.p_NO }</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
+	                                                <td align="center" >
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
 	                                                </td>
-	                                                <td>${i.p_Name }</td>
-	                                                <td>${i.op_NO }</td>
-	                                                <td>${i.option_1 }</td>
-	                                                <td>${i.option_2 }</td>
-	                                                <td>${i.op_Stock }</td>
+	                                                <td>${r.pList.p_Name }</td>
+	                                                <td>${r.op_NO }</td>
+	                                                <td>${r.option_1 }</td>
+	                                                <td>${r.option_2 }</td>
+	                                                <td>${r.op_Stock }</td>
 	                                                <td id="status">
 	                                                <c:choose>
-														<c:when test="${i.op_Status_YN eq 'Y'}"><span class="badge-dot badge-success"></span><a id="statusText<%= count %>">판매중</a></c:when>
-														<c:when test="${i.op_Status_YN eq 'N'}"><span class="badge-dot badge-warning"></span><a id="statusText<%= count %>">품절</a></c:when>
+														<c:when test="${r.op_Status_YN eq 'Y'}"><span class="badge-dot badge-success"></span><a id="statusText<%= count %>">판매중</a></c:when>
+														<c:when test="${r.op_Status_YN eq 'N'}"><span class="badge-dot badge-warning"></span><a id="statusText<%= count %>">품절</a></c:when>
 													</c:choose>	
 													</td>
 	                                                <td>
 	                                                	<div class="btn-group ml-auto">
 		                                                <c:url var="stockdetail" value="stock_detail.ow">
-		                                                	<c:param name="pNO" value="${i.p_NO}"/>
-		                                                	<c:param name="pName" value="${i.p_Name}"/>
+		                                                	<c:param name="pNO" value="${r.pList.p_NO}"/>
+		                                                	<c:param name="pName" value="${r.pList.p_Name}"/>
 				                                        </c:url>
 				                                            <a class="btn btn-sm btn-outline-light" href="${stockdetail}">재고관리</a>
 				                                        </div>

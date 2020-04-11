@@ -195,10 +195,10 @@
                                             <a class="nav-link" href="${BRAND_NO}">판매상품관리</a>
                                         </li>
                                         <li class="nav-item">
-                                        	<c:url var="BRAND_NO" value="stockList.ow">
+                                        	<c:url var="Brand_NO" value="stockList.ow">
 			                                   <c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
 			                                </c:url>
-                                            <a class="nav-link" href="${BRAND_NO}">재고관리</a>
+                                            <a class="nav-link" href="${Brand_NO}">재고관리</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">판매제품순위(제작중)</a>
