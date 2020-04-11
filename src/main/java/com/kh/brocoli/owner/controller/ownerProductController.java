@@ -181,7 +181,7 @@ public class ownerProductController {
 		
 		String renameImageName = name + "_" + count + "_" + sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
 									originImageName.substring(originImageName.lastIndexOf(".")+1); 
-		
+																			
 		String renamePath = folder + "\\" + renameImageName;
 		
 		try {
@@ -279,6 +279,19 @@ public class ownerProductController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("stockList.ow")
+	public ModelAndView stockList(ModelAndView mv, Product_Option po, int bNO ) {
+		
+		
+		
+		
+		return mv;
+	}
+	
+	
+	
+	
 	
 	
 	
