@@ -181,7 +181,7 @@ public class ownerProductController {
 		
 		String renameImageName = name + "_" + count + "_" + sdf.format(new java.sql.Date(System.currentTimeMillis())) + "." + 
 									originImageName.substring(originImageName.lastIndexOf(".")+1); 
-		
+																			
 		String renamePath = folder + "\\" + renameImageName;
 		
 		try {
@@ -231,7 +231,6 @@ public class ownerProductController {
 	@RequestMapping("productList.ow")
 	public ModelAndView productList(ModelAndView mv, String Brand_NO) {
 		
-		System.out.println("선택한 브랜드번호 : " +Brand_NO);
 		ArrayList<Product> list = oService.productList(Brand_NO);
 		
 		mv.addObject("list",list);
@@ -242,19 +241,13 @@ public class ownerProductController {
 	
 	@RequestMapping("stock_detail.ow")
 	public ModelAndView stock_detail(ModelAndView mv, int pNO, String pName) {
-		
-		System.out.println("*** 선택상품 재고관리페이지 이동 ***");
-		System.out.println("선택한 상품번호  : " + pNO + "  선택한 상품명 : " + pName);
-		
 		ArrayList<Product_Option> list = oService.stockDetail(pNO);
 		
 		mv.addObject("list",list);
 		mv.addObject("pName",pName);
 		mv.addObject("pNO",pNO);
-		System.out.println("넘겨줄 pNO값 : "+pNO);
 		mv.setViewName("stock-detail");
 		
-		System.out.println("***************************");
 		return mv;
 	};
 	
@@ -262,10 +255,6 @@ public class ownerProductController {
 	@RequestMapping("stock_change.ow")
 	public ModelAndView stockchange(ModelAndView mv ,Product_Option po ,int pNO ,String pName ,HttpServletRequest request) {
 		int result = oService.stockChange(po);
-		
-		System.out.println("stockchang의 받아온 pNo : " + pNO);
-		System.out.println("stockchang의 받아온 pName : " + pName);
-		
 		mv.addObject("pName",pName);
 		mv.addObject("pNO",pNO);
 		
@@ -279,6 +268,29 @@ public class ownerProductController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("stockList.ow")
+	public ModelAndView stockList(ModelAndView mv, Product_Option po, String Brand_NO, HttpServletRequest request) {
+		ArrayList<Product_Option> list = oService.stockList(Brand_NO);
+		System.out.println("받아온 브랜드번호 : " + Brand_NO);
+		for (Product_Option product_Option : list) {
+			System.out.println("불러온 LIST : " + product_Option);
+		}
+		
+		
+		if(list != null) {
+			mv.addObject("list",list);
+			mv.setViewName("stock-management");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
+	
+	
+	
+	
 	
 	
 	
