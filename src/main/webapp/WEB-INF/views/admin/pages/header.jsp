@@ -245,7 +245,7 @@
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='brand-owner-contact.ad'/>">오너콘택트</a></li>
+											href="<c:url value='brandOwnerContact.ad'/>">오너콘택트</a></li>
 									</ul>
 								</div>
 							</li>

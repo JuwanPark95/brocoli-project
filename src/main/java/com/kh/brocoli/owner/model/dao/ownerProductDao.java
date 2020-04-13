@@ -52,6 +52,11 @@ public class ownerProductDao {
 		}
 		return result;
 	}
+
+	public ArrayList<Product_Option> stockList(String bNO) {
+		System.out.println("DAO 단계에서의 bNO : " + bNO);
+		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectStockList",bNO);
+	}
 	
 	
 	

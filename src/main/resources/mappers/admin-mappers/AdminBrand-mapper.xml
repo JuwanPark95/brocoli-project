@@ -25,6 +25,46 @@
 		<result property="b_Email3" column="B_EMAIL3"/>
 	</resultMap>
 	
+	<resultMap id="memberResultSet" type="Member">
+		<id property="mNO" column="MNO"/>
+		<result property="mId" column="MID"/>
+		<result property="pwd" column="PWD"/>
+		<result property="mName" column="MNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="gender" column="GENDER"/>
+		<result property="birthDay" column="BIRTHDAY"/>
+		<result property="mGrant" column="MGRANT"/>
+		<result property="mPoint" column="MPOINT"/>
+		<result property="order_Count" column="ORDER_COUNT"/>
+		<result property="order_Price" column="ORDER_PRICE"/>
+		<result property="report_YN" column="REPORT_YN"/>
+		<result property="block_YN" column="BLOCK_YN"/>
+		<result property="block_Content" column="BLOCK_CONTENT"/>
+		<result property="del_Flag_YN" column="DEL_FLAG_YN"/>
+		<result property="del_Date" column="DEL_DATE"/>
+		<result property="enrollDate" column="ENROLLDATE"/>
+		<result property="brand" column="BRAND"/>
+		<result property="brand_NO" column="BRAND_NO"/>
+	</resultMap>
+	
+	<resultMap id="contactResultSet" type="Contact">
+		<id property="con_NO" column="CON_NO"/>
+		<result property="con_Date" column="CON_DATE"/>
+		<result property="con_Writer" column="CON_WRITER"/>
+		<result property="con_Content" column="CON_CONTENT"/>
+		<result property="con_Title" column="CON_TITLE"/>
+		<result property="con_View_Check" column="CON_VIEW_CHECK"/>
+		<result property="con_Img" column="CON_IMG"/>
+		<result property="con_Img_ReName" column="CON_IMG_RENAME"/>
+		<result property="con_Status" column="CON_STATUS"/>
+		<result property="con_Mno" column="CON_MNO"/>
+		
+		<result property="brandName" column="BRAND"/>
+	</resultMap>
+	
+	
 	<select id="selectBrandList" parameterType="Brand" resultMap="brandResultSet">
 		SELECT * 
 		FROM BRAND
@@ -81,5 +121,12 @@
 		SET MGRANT='2'
 		WHERE MID = #{b_Owner1_ID} OR MID = #{b_Owner2_ID} OR MID = #{b_Owner3_ID} 
 	</update> 
+	
+	<select id="ownerContactList" parameterType="Contact" resultMap="contactResultSet">
+		SELECT C.*, M.BRAND
+		FROM CONTACT C 
+     		JOIN MEMBER M
+     		ON C.CON_MNO = M.MNO
+	</select>
 	
 </mapper>

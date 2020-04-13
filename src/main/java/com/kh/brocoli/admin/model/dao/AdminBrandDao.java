@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 
@@ -108,12 +109,21 @@ public class AdminBrandDao {
 
 	/**
 	 * 작성자 : 신은지
-	 * 10. 브랜드 등록시 owner 권한 수정
+	 * 9_2. 브랜드 등록시 owner 권한 수정
 	 * @param b
 	 * @return
 	 */
 	public int brandOwnerUpdate(Brand b) {
 		return sqlSession.update("AdminBrand.brandOwnerUpdate",b);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 10. 오너 콘택트 목록
+	 * @return
+	 */
+	public ArrayList<Contact> ownerContactList() {
+		return (ArrayList)sqlSession.selectList("AdminBrand.ownerContactList");
 	}
 
 }

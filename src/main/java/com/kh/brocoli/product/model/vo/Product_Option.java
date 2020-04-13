@@ -16,8 +16,10 @@ public class Product_Option {
 	private String op_Status_YN;
 	private int op_P_NO;
 	
-	private List<Product_Option> Product_OptionVOList;
+	private Product pList;
 	
+	private List<Product_Option> Product_OptionVOList;
+
 	
 	public Product_Option() {
 		super();
@@ -36,7 +38,7 @@ public class Product_Option {
 	}
 
 	public Product_Option(int op_NO, String option_1, String option_2, String op_Stock, Date op_Rec_Date,
-			String op_Status_YN, int op_P_NO, List<Product_Option> product_OptionVOList) {
+			String op_Status_YN, int op_P_NO, Product pList, List<Product_Option> product_OptionVOList) {
 		super();
 		this.op_NO = op_NO;
 		this.option_1 = option_1;
@@ -45,8 +47,10 @@ public class Product_Option {
 		this.op_Rec_Date = op_Rec_Date;
 		this.op_Status_YN = op_Status_YN;
 		this.op_P_NO = op_P_NO;
+		this.pList = pList;
 		Product_OptionVOList = product_OptionVOList;
 	}
+	
 
 	public int getOp_NO() {
 		return op_NO;
@@ -104,6 +108,14 @@ public class Product_Option {
 		this.op_P_NO = op_P_NO;
 	}
 
+	public Product getpList() {
+		return pList;
+	}
+
+	public void setpList(Product pList) {
+		this.pList = pList;
+	}
+
 	public List<Product_Option> getProduct_OptionVOList() {
 		return Product_OptionVOList;
 	}
@@ -116,8 +128,9 @@ public class Product_Option {
 	public String toString() {
 		return "Product_Option [op_NO=" + op_NO + ", option_1=" + option_1 + ", option_2=" + option_2 + ", op_Stock="
 				+ op_Stock + ", op_Rec_Date=" + op_Rec_Date + ", op_Status_YN=" + op_Status_YN + ", op_P_NO=" + op_P_NO
-				+ ", Product_OptionVOList=" + Product_OptionVOList + "]";
+				+ ", pList=" + pList + ", Product_OptionVOList=" + Product_OptionVOList + "]";
 	}
+	
 	
 	
 	

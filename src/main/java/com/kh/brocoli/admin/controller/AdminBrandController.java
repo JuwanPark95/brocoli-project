@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.admin.model.service.AdminBrandService;
-import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.product.model.vo.Brand;
 
 /**
@@ -32,7 +32,7 @@ public class AdminBrandController {
    
 	/**
 	 * 작성자 : 신은지
-	 * 1.브랜드 등록 페이지 이동
+	 * 1. 브랜드 등록 페이지 이동
 	 * @return
 	 */
 	@RequestMapping("brand-enroll.ad")
@@ -96,7 +96,7 @@ public class AdminBrandController {
    
    	/**
    	 * 작성자 : 신은지
-   	 * 5.ajax 유효성 검사 브랜드이름
+   	 * 5. ajax 유효성 검사 브랜드이름
    	 * @param brandName
    	 * @return
    	 */
@@ -115,7 +115,7 @@ public class AdminBrandController {
    	
    	/**
    	 * 작성자 : 신은지
-   	 * 6.ajax 유효성 검사 ownerId1
+   	 * 6. ajax 유효성 검사 ownerId1
    	 * @param brandName
    	 * @return
    	 */
@@ -133,7 +133,7 @@ public class AdminBrandController {
    	
    	/**
    	 * 작성자 : 신은지
-   	 * 7.ajax 유효성 검사 ownerId2
+   	 * 7. ajax 유효성 검사 ownerId2
    	 * @param brandName
    	 * @return
    	 */
@@ -151,7 +151,7 @@ public class AdminBrandController {
    	
    	/**
    	 * 작성자 : 신은지
-   	 * 8.ajax 유효성 검사 ownerId3
+   	 * 8. ajax 유효성 검사 ownerId3
    	 * @param brandName
    	 * @return
    	 */
@@ -169,7 +169,7 @@ public class AdminBrandController {
    	
    	/**
    	 * 작성자 : 신은지
-   	 * 브랜드 등록 
+   	 * 9. 브랜드 등록 
    	 * @param b
    	 * @param request
    	 * @param file
@@ -224,6 +224,23 @@ public class AdminBrandController {
    		}
    		
    		return renameFileName;
+   	}
+   	
+   	/**
+   	 * 작성자 : 신은지
+   	 * 10. 오너 콘택트 목록
+   	 * @param mv
+   	 * @return
+   	 */
+   	@RequestMapping("brandOwnerContact.ad")
+   	public ModelAndView brandOwnerContact(ModelAndView mv){
+   		
+   		ArrayList<Contact> OwnerContactList = ABService.selectOwnerContactList();
+   		System.out.println("???????"+ OwnerContactList);
+        mv.addObject("OwnerContactList",OwnerContactList);
+        mv.setViewName("brand-owner-contact");
+        
+        return mv;
    	}
    	
 }
