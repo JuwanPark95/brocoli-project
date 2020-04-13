@@ -135,6 +135,31 @@
 		WHERE P_BRAND_NO = #{bNO}
 		ORDER BY P.P_NO DESC
 	</select>
+	
+	<select id="selectProduct" resultMap="productResultSet">
+		SELECT *
+		FROM PRODUCT
+		WHERE P_NO = #{pNO}
+	</select>
+	
+	<select id="selectProductFile" resultMap="ProductFileResultSet">
+		SELECT *
+		FROM PRODUCT_FILE
+		WHERE PF_P_NO = #{pNO}	
+	</select>
+	
+	<select id="selectOptionList" resultMap="productOptionResultSet">
+		SELECT * 
+		FROM PRODUCT_OPTION
+		WHERE OP_P_NO = #{pNO} 
+	</select>
+	
+	
+	
+	
+	
+	
+	
 
 	
 </mapper>

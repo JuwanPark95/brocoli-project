@@ -63,6 +63,21 @@ public class ownerProductServiceimpl implements ownerProductService {
 		return oDao.stockList(bNO);
 	}
 
+	@Override
+	public Product productSet(int PNO) {
+		return oDao.productSet(PNO);
+	}
+
+	@Override
+	public Product_File productFileSet(int PNO) {
+		return oDao.productFilrSet(PNO);
+	}
+
+	@Override
+	public ArrayList<Product_Option> prodictOption(int PNO) {
+		return oDao.productOptionset(PNO);
+	}
+
 
 
 }
