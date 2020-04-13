@@ -115,6 +115,36 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 		return ABDao.ownerContactList();
 	}
 
+	/**
+	 *	작성자 : 신은지
+	 *	12. 오너 콘택트 상세보기
+	 */
+	@Override
+	public Contact ownerContactDetail(String ocId) {
+		//읽음여부 업데이트
+		ABDao.ownerCheckView(ocId);
+		//상세보기
+		return ABDao.ownerContactDetail(ocId);
+	}
+
+	/**
+	 *	작성자 : 신은지
+	 *	13. 오너 콘택트 게시판 글쓰기
+	 */
+	@Override
+	public int ownerContactWrite(Contact c) {
+		return ABDao.ownerContactWrite(c);
+	}
+
+	/**
+	 *	작성자 : 신은지 
+	 *	14. 오너 콘택트 게시판 수정하기 view
+	 */
+	@Override
+	public Contact ownerContactUpdate(int ocNO) {
+		return ABDao.ownerContactUpdate(ocNO);
+	}
+
 
 
 }

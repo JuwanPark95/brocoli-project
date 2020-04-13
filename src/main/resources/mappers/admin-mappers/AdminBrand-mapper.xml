@@ -129,4 +129,27 @@
      		ON C.CON_MNO = M.MNO
 	</select>
 	
+	<select id="ownerContactDetail" parameterType="Contact" resultMap="contactResultSet">
+		SELECT *
+		FROM CONTACT
+		WHERE CON_NO = #{ocId}
+	</select>
+	
+	<insert id="ownerContactWrite" parameterType="Contact">
+		INSERT INTO CONTACT
+		VALUES(SEQ_CONTACT.NEXTVAL,SYSDATE,#{con_Writer},#{con_Content},#{con_Title},DEFAULT,
+				#{con_Img},#{con_Img_ReName},DEFAULT,#{con_Mno})
+	</insert>
+	
+	<update id="ownerCheckView">
+		UPDATE CONTACT
+		SET CON_VIEW_CHECK = 'Y'
+		WHERE CON_NO = #{ocId}
+	</update>
+	
+	<select id="ownerContactUpdate" parameterType="Contact" resultMap="contactResultSet">
+		SELECT *
+		FROM CONTACT
+		WHERE CON_NO = #{ocNO}
+	</select>
 </mapper>
