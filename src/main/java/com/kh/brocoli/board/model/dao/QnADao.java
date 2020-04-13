@@ -77,4 +77,10 @@ ArrayList<Notice> list = null;
 		return list;
 	}
 
+	public int updateReply(String qr_No) {
+		System.out.println("dao에서 qrno : " + qr_No);
+		return sqlSession.update("QnA-mapper.updateReply",qr_No);
+		
+	}
+
 }
