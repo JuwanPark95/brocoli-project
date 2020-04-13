@@ -134,7 +134,7 @@
   </div>
   </div>
   <div id="searchArea" align="center" >
-				<form action="${ contextPath }/search.bo" style="display: inline-flex;" >
+				<form action="qSearch.mn" style="display: inline-flex;" >
 					<select id="searchCondition" name="condition">
 						<option>--------선택--------</option>
 						<option value="writer">작성자</option>

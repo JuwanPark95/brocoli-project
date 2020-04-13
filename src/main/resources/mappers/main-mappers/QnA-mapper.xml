@@ -130,5 +130,45 @@
 		WHERE Q_NO=#{q_No}
 	</update>
 
+	<select id="getSearchResultListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+		<!-- 1. if문으로 하는 방법 -->
+		<if test="writer != null">
+			AND Q_WRITER LIKE '%' || #{writer} || '%'
+		</if>
+		<if test="title != null">
+			AND Q_TITLE LIKE '%' || #{title} || '%'
+		</if>
+		<if test="content != null">
+			AND Q_CONTENT LIKE '%' || #{content} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchResultList" resultMap="qnaResultSet">	
+		<!-- 
+			쿼리문을 평소와 같이 작성한다면
+			안에 < 라는 기호가 포함된다면 연산자로 인식하지 않고 태그로 인식해버린다.
+			-> 이걸 해결해주기 위해서 쿼리문을 CDATE주석으로 감싸는 경우도 있다.
+			<![CDATE[...]]>
+		 -->	
+		SELECT *
+		FROM QNA
+		WHERE Q_STATUS='Y'
+		<!-- 2. choose, when, otherwise -->
+		<choose>
+			<when test="writer != null">
+				AND Q_WRITER LIKE '%' || #{writer} ||'%'
+			</when>
+			<when test="title != null">
+				AND Q_TITLE LIKE '%' || #{title} ||'%'
+			</when>
+			<otherwise>
+				AND Q_CONTENT LIKE '%' || #{content} ||'%'
+			</otherwise>
+		</choose>
+		ORDER BY Q_NO DESC
+	</select>
 
 </mapper>
