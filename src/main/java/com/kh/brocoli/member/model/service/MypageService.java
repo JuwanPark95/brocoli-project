@@ -10,7 +10,7 @@ public interface MypageService {
 	 * @param mId
 	 * @return
 	 */
-	int deleteMember(String mId);
+	int deleteMember(Member m);
 
 
 	/**

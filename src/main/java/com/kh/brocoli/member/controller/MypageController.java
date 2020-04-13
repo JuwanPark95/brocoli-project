@@ -14,19 +14,19 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.member.model.service.MypageService;
+import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Member;
 
 
 @Controller
 public class MypageController {
 	
-	
 	@Autowired
 	private MypageService myService;
 	
 	// 암호화 처리 
-//	@Autowired
-//	private BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	
 //**************************************마이페이지 이동경로*****************************************//	
@@ -55,13 +55,15 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
-	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv, Member m) {
-		System.out.println("pwd1 : " + password);
-		int result = myService.pwdCheck(password);
-		System.out.println("result : " + result);
+	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv,HttpSession session) {
 		
-	
-		if(result > 0 ) {
+		//System.out.println("result : " + result);
+		
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		
+		System.out.println("result : " + m);
+		if(m != null && bcryptPasswordEncoder.matches(password,m.getPwd() ) ) {
 			mv.setViewName("MyInformation");
 		}else {
 		
@@ -143,22 +145,23 @@ public class MypageController {
 				   @RequestParam("p_change2") String pwd2) {
 		   // Session에서 사용자 정보 추출해서 새로받은 password를 갱신
 		   Member m = (Member)session.getAttribute("loginUser");
-		    m.setPwd(pwd2);
+		    m.setPwd(bcryptPasswordEncoder.encode(pwd2)); // 현재 pwd2는 그냥 문자열 --> 암호화를 감싸서 
 		
+		   System.out.println("m :" + m);
 		   // password 업데이트 
 		   int result = myService.updateMember(m);
 		   
 		   if(result > 0) {
-		   	
-		   	session.setAttribute("loginUser", m);
-		   	
-		   	return "redirect:index.jsp";
+			   model.addAttribute("loginUser",m);
+			   session.invalidate();
+			   return "redirect:index.jsp";
 		   }else {
 		   	
 		   	model.addAttribute("msg","비밀번호 변경 실패");
-		   	
 		   	return "common/errorPage";
 		   }
+		    
+		   
 		
 		}
 
@@ -170,12 +173,15 @@ public class MypageController {
 		* @return
 		*/
 		@RequestMapping("mdelete.mn")
-		public String memberDelete(String mId, Model model,SessionStatus status) {
+		public String memberDelete(String mId, Model model,HttpSession session) {
 			
+			    Member m = (Member)session.getAttribute("loginUser");
 				//SessionStatus : 세션의 상태값을 찾아서 sestComplete를 사용해서 세션을 초기
-				int result = myService.deleteMember(mId);
+				int result = myService.deleteMember(m);
+				System.out.println("result1 : " + result);
+				
 				if(result > 0) {
-					status.setComplete();
+					session.invalidate();
 			    	return "redirect:index.jsp";
 			    }else {
 			    model.addAttribute("msg","비밀번호 변경 실패");

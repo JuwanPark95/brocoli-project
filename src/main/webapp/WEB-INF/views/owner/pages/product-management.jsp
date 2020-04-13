@@ -124,10 +124,13 @@
 	                                                </td>
 	                                                <td>
 		                                                <div class="btn-group ml-auto">
-				                                            <button class="btn btn-sm btn-outline-light">변경</button>
-				                                            <button class="btn btn-sm btn-outline-light">
+		                                                	<c:url var="productChange" value="productChagne.ow">
+		                                                		<c:param name="pNO" value="${r.p_NO}"/>
+				                                            </c:url>
+				                                            	<a class="btn btn-sm btn-outline-light" href="${productChange}">변경</a>
+				                                            <a class="btn btn-sm btn-outline-light">
 				                                                <i class="far fa-trash-alt"></i>
-				                                            </button>
+				                                            </a>
 				                                        </div>
 	                                                </td>
 	                                            </tr>
