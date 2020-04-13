@@ -13,8 +13,8 @@ public class MypageServiceimpl implements MypageService {
 	private MypageDao myDao;
 	
 	@Override
-	public int deleteMember(String mId) {
-		return myDao.deleteMember(mId);
+	public int deleteMember(Member m) {
+		return myDao.deleteMember(m);
 	}
 
 	@Override

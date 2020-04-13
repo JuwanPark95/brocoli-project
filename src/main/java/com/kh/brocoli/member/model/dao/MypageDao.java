@@ -12,8 +12,8 @@ public class MypageDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int deleteMember(String mId) {
-		return sqlSession.delete("memberMapper.deleteMember",mId);
+	public int deleteMember(Member m) {
+		return sqlSession.delete("memberMapper.deleteMember",m);
 	}
 
 	public int updateMember(Member m) {
