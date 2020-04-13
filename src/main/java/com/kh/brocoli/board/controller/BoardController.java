@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.board.model.service.BoardService;
 import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 import com.kh.brocoli.commons.Pagination;
 
 
@@ -240,6 +241,47 @@ public class BoardController {
 			model.addAttribute("msg", "삭제 시 실패");
 			return "comoon/errorPage";
 		}
+	}
+	
+	@RequestMapping("bnSearch.mn")
+	public ModelAndView searchBoard(ModelAndView mv, 
+									@RequestParam(value = "search", required = false) String search,
+									@RequestParam(value = "condition", required = false) String condition,
+									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+									) {
+		
+		System.out.println("bnSearch.mn" + search);
+		System.out.println("bnSearch.mn" + condition);
+		
+		SearchCondition sc = new SearchCondition();
+		
+		if(condition.equals("writer")) {
+			sc.setWriter(search);
+		}else if(condition.equals("title")) {
+			sc.setTitle(search);
+		}else if(condition.equals("content")) {
+			sc.setContent(search);
+		}
+		
+		// 검색 결과에 해당되는 게시물 갯수 조회
+		int listCount = bnService.getSearchResultListCount(sc);
+		
+		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		// 검색결과에 해당되는 게시물 목록 조회
+		ArrayList<Notice> list = bnService.selectSearchResultList(sc, pi);
+		
+		mv.addObject("list", list);
+		mv.addObject("pi", pi);
+		
+		mv.addObject("sc", sc);
+		mv.addObject("contdition", condition);
+		mv.addObject("search", search);
+		
+		mv.setViewName("Board-Notice-List");
+		
+		return mv;
 	}
 	  
 }

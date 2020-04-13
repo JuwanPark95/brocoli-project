@@ -19,6 +19,12 @@ public interface ownerProductService {
 
 	ArrayList<Product_Option> stockList(String bNO);
 
+	Product productSet(int PNO);
+
+	Product_File productFileSet(int PNO);
+
+	ArrayList<Product_Option> prodictOption(int PNO);
+
 
 
 

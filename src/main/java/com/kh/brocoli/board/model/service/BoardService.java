@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 
 public interface BoardService {
 
@@ -49,5 +50,7 @@ public interface BoardService {
 	 */
 	int deleteBoardNtice(int n_No);
 
+	int getSearchResultListCount(SearchCondition sc);
 
+	ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi);
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.board.model.dao.BoardDao;
 import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 
 @Service("bnService")
 public class BoardServiceImpl implements BoardService{
@@ -56,6 +57,15 @@ public class BoardServiceImpl implements BoardService{
 		return bnDao.deleteBoardNotice(n_No);
 	}
 
-	
+	@Override
+	public int getSearchResultListCount(SearchCondition sc) {
+		return bnDao.getSearchResultListCount(sc);
+	}
+
+	@Override
+	public ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		return bnDao.selectSearchResultList(sc,pi);
+	}
+
 
 }

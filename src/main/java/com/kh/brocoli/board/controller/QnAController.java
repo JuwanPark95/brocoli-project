@@ -22,9 +22,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.kh.brocoli.board.model.service.QnAService;
+import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 import com.kh.brocoli.commons.Pagination;
 
 @Controller
@@ -197,7 +199,8 @@ public class QnAController {
 	@ResponseBody
 	public String addReply(QnA_Reply qr) {
 		
-		System.out.println("controller qr : " + qr);
+		System.out.println("댓글 qr : " + qr);
+		System.out.println("컨트롤러 댓글 : " + qr.getQr_Qno());
 		
 		int result = qService.insertReply(qr);
 		
@@ -246,6 +249,47 @@ public class QnAController {
 			model.addAttribute("msg","삭제 시 실패");
 			return "common/errorPage";
 		}
+	}
+	
+	@RequestMapping("qSearch.mn")
+	public ModelAndView searchBoard(ModelAndView mv, 
+									@RequestParam(value = "search", required = false) String search,
+									@RequestParam(value = "condition", required = false) String condition,
+									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
+									) {
+		
+		System.out.println("bnSearch.mn" + search);
+		System.out.println("bnSearch.mn" + condition);
+		
+		SearchCondition sc = new SearchCondition();
+		
+		if(condition.equals("writer")) {
+			sc.setWriter(search);
+		}else if(condition.equals("title")) {
+			sc.setTitle(search);
+		}else if(condition.equals("content")) {
+			sc.setContent(search);
+		}
+		
+		// 검색 결과에 해당되는 게시물 갯수 조회
+		int listCount = qService.getSearchResultListCount(sc);
+		
+		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		// 검색결과에 해당되는 게시물 목록 조회
+		ArrayList<Notice> list = qService.selectSearchResultList(sc, pi);
+		
+		mv.addObject("list", list);
+		mv.addObject("pi", pi);
+		
+		mv.addObject("sc", sc);
+		mv.addObject("contdition", condition);
+		mv.addObject("search", search);
+		
+		mv.setViewName("Board-QnA-List");
+		
+		return mv;
 	}
 	
 }

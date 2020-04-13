@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td>제 목</td>
-				<td>${ q.q_Title }</b></td>
+				<td>${ q.q_Title }</td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>
@@ -72,19 +72,21 @@
 		</table>
 		<hr>
 		<!-- 댓글 -->
+		
 		<div style="display: flex;">
 				<textarea id="rContent" class="form-control" rows="2" cols="80" style="resize: none; width: 900px; 
     			margin-left: 110px;"></textarea>
 				&nbsp;&nbsp;&nbsp;			
 				<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" id="rSubmit">등록</button>
 		</div>
+		
 		<br>
 
 		<!-- <div style="display: flex; height: 150px;"> -->
-			<table align="center" width="1000" border="1" cellspacing="0" id="rtb">
+			<table align="center" class="table table-bordered" id="rtb">
 				<thead>
 					<tr>
-						<td colspan="3"><b id="rCount"></b></td>
+						<td><b id="rCount"></b></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -176,7 +178,7 @@
 									$tr = $("<tr>");
 									$qr_Mname = $("<td width='100'>").text(data[i].qr_Mname);
 									$qr_Comment = $("<td>").text(data[i].qr_Comment);
-									$qr_Date = $("<td width='100'>").text(data[i].qr_Date);
+									$qr_Date = $("<td width='110'>").text(data[i].qr_Date);
 
 									$tr.append($qr_Mname);
 									$tr.append($qr_Comment);

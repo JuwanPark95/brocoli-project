@@ -48,7 +48,7 @@
 			<tr>
 				<td width="100">구 분</td>
 				<td>
-					<select>
+					<select name="q_Kind">
 						<option value="배송">배송</option>
 						<option value="사이즈">사이즈</option>
 						<option value="기타문의">기타문의</option>
@@ -67,6 +67,11 @@
 
 			<tr>
 				<td>작 성 일</td>
+				<td></td>
+			</tr>
+			
+			<tr>
+				<td>답변여부</td>
 				<td></td>
 			</tr>
 			
