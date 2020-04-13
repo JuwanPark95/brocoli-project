@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.brocoli.admin.model.dao.AdminBrandDao;
+import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 
@@ -104,6 +105,16 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 		
 		return result;
 	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  10. 오너 콘택트 목록
+	 */
+	@Override
+	public ArrayList<Contact> selectOwnerContactList() {
+		return ABDao.ownerContactList();
+	}
+
 
 
 }

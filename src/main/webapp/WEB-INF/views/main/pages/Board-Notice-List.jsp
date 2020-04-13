@@ -137,7 +137,7 @@
 			</div>
 		</div>
 		<div id="searchArea" align="center">
-			<form action="${ contextPath }/bnlist.mn"
+			<form action="bnSearch.mn"
 				style="display: inline-flex;">
 
 				<select id="searchCondition" name="condition">
@@ -145,11 +145,13 @@
 					<option value="writer">작성자</option>
 					<option value="title">제목</option>
 					<option value="content">내용</option>
-				</select> <br> <input type="search" name="search"
-					class="form-control form-control" style="width: 300px;">
+				</select> 
+				
+				<br> 
+				
+				<input type="search" name="search" class="form-control form-control" style="width: 300px;">
 					
-				<input type="search" name="search" class="btn btn-primary"
-					style="background: #222; width: 100px; border: 1px solid #222;" value="검색">
+				<input type="submit" class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" value="검색">
 
 			</form>
 		</div>

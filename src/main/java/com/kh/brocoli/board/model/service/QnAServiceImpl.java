@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.brocoli.board.model.dao.QnADao;
+import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 
 
 @Service("qService")
@@ -67,5 +69,15 @@ public class QnAServiceImpl implements QnAService{
 	@Override
 	public int updateQnA(QnA q) {
 		return qDao.updateQnA(q);
+	}
+
+	@Override
+	public int getSearchResultListCount(SearchCondition sc) {
+		return qDao.getSearchResultListCount(sc);
+	}
+
+	@Override
+	public ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		return qDao.selectSearchResultList(sc,pi);
 	}
 }

@@ -11,6 +11,7 @@ import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 
 @Repository("qDao")
 public class QnADao {
@@ -58,6 +59,22 @@ public class QnADao {
 
 	public int updateQnA(QnA q) {
 		return sqlSession.update("QnA-mapper.updateQnA", q);
+	}
+
+	public int getSearchResultListCount(SearchCondition sc) {
+		return sqlSession.selectOne("QnA-mapper.getSearchResultListCount", sc);
+	}
+
+	public ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+ArrayList<Notice> list = null;
+		
+		int offset = (pi.getCurrentPage() -1) * pi.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getLimit());
+		
+		list = (ArrayList)sqlSession.selectList("QnA-mapper.selectSearchResultList",sc,rowBounds);
+		
+		return list;
 	}
 
 }

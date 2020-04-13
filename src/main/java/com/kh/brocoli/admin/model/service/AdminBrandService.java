@@ -2,6 +2,7 @@ package com.kh.brocoli.admin.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 
@@ -77,6 +78,13 @@ public interface AdminBrandService {
 	 * @return
 	 */
 	int brandEnroll(Brand b);
+
+	/**
+	 * 작성자 : 신은지
+	 * 10. 오너 콘택트 목록
+	 * @return
+	 */
+	ArrayList<Contact> selectOwnerContactList();
 
 	
 }

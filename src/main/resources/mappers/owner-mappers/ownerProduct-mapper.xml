@@ -71,6 +71,7 @@
 		<result property="op_Status_YN" column="OP_STATUS_YN"/>
 		<result property="op_P_NO" column="OP_P_NO"/>
 		
+		<collection property="pList" resultMap="productResultSet"/>
 	</resultMap>
 
 	
@@ -123,6 +124,17 @@
 	    	OP_STOCK = #{op_Stock}
 	    WHERE OP_NO = #{op_NO}
 	</update>
+	
+	<select id="selectStockList" resultMap="productOptionResultSet">
+		SELECT * 
+		FROM PRODUCT_OPTION PO
+		JOIN PRODUCT P
+		ON PO.OP_P_NO = P.P_NO
+        JOIN PRODUCT_FILE PF 
+        ON P.P_NO = PF.PF_P_NO
+		WHERE P_BRAND_NO = #{bNO}
+		ORDER BY P.P_NO DESC
+	</select>
 
 	
 </mapper>
