@@ -92,7 +92,7 @@
 			where email=#{email} and MID=#{mId}
 	    </update>
 	    
-	    <select id="myorderList" parameterType="Member" resultMap="">
+	    <select id="myorderList" parameterType="Member" resultMap="memberResultSet">
 			SELECT COUNT(*)
 			FROM MEMBER
 			WHERE MID = #{mId}
