@@ -56,6 +56,16 @@ public interface MemberService {
 	ArrayList<Product> selectapList();
 
 
+	/**
+	 * 작성자 : 윤석훈
+	 * 상품 디테일
+	 * @param p_NO
+	 * @return
+	 */
+	ArrayList<Product> selectpDetail(String p_NO);
+
+
+
 	
 
 
