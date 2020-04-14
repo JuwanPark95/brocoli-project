@@ -63,25 +63,29 @@
 			</tr>
 			<tr>
 				<td>답변여부</td>
-				<td><input type="hidden" value="${ q.q_View_Check }"></td> 
+				<%-- <td><input type="hidden" value="${ q.q_View_Check }"></td>  --%>
 				
-					<c:if test="${ q.q_View_Check == Y }">
+					<c:if test="${ q.q_View_Check == 'Y' }">
 						<td>읽음</td>
 					</c:if>
 					
-					<c:if test="${ q.q_View_Check == N }">
-						<td>안읽음</td>
-					</c:if>
-		
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td> 안읽음</td>
+					</c:if>		
 			</tr>
 			
 			<tr>
 				<td>첨부 파일</td>
 				<td>
-					<c:if test="${ !empty q.q_Img1 }">
-						<a href="${ contextPath }/resources/buploadFiles/${ q.q_Img1_ReName }"
-						download="${ q.n_Img1 }"> ${ q.q_Img1 }</a>
+				<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" width="45">
+				<%-- 	<c:if test="${ !empty q.q_Img1 }">
+						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"
+						download="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"> ${ q.q_Img1_ReName }</a>
 					</c:if>
+					<c:if test="${ !empty q.q_Img2 }">
+						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"
+						download="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"> ${ q.q_Img2_ReName }</a>
+					</c:if> --%>
 				</td>
 			</tr>
 			
