@@ -61,11 +61,13 @@
 						<td align="center">${ b.n_No }</td>
 
 						<td align="center"><%-- <c:if test="${ !empty loginUser }"> --%>
+						
 								<c:url var="bndetail" value="bnDetail.mn">
 									<c:param name="n_No" value="${ b.n_No }" />
 									<c:param name="currentPage" value="${ pi.currentPage }" />
 								</c:url>
 								<a href="${ bndetail }" style="color: #222" >${ b.n_Title }</a>
+								
 							<%-- </c:if> <c:if test="${ empty loginUser }"> ${b.n_Title } 로그인 안해도 보여지는것
         	</c:if> --%></td>
 
@@ -99,17 +101,35 @@
 	
 			<!-- 페이지 -->
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+				
+				
 				<c:if test="${ p eq pi.currentPage }">
 					<li class="page-item active">
 					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
 				</c:if>
 				
+				
+				<c:if test="${empty sc }">
 				<c:if test="${ p ne pi.currentPage }">
 					<c:url var="pageNext" value="bnlist.mn">
 						<c:param name = "currentPage" value="${ p }"/>
 					</c:url>
 					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
 				</c:if>
+				</c:if>
+				
+				<c:if test="${!empty sc }">
+				<c:if test="${ p ne pi.currentPage }">
+					<c:url var="pageNext" value="bnSearch.mn">
+						<c:param name = "currentPage" value="${ p }"/>
+						<c:param name = "search" value="${ search }"/>
+ 					    <c:param name = "condition" value="${ sc.condition }"/>
+					</c:url>
+					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
+				</c:if>
+				
+				
 			</c:forEach>
 			
 			<!-- 다음 -->
@@ -137,7 +157,7 @@
 			</div>
 		</div>
 		<div id="searchArea" align="center">
-			<form action="${ contextPath }/bnlist.mn"
+			<form action="bnSearch.mn"
 				style="display: inline-flex;">
 
 				<select id="searchCondition" name="condition">
@@ -145,11 +165,13 @@
 					<option value="writer">작성자</option>
 					<option value="title">제목</option>
 					<option value="content">내용</option>
-				</select> <br> <input type="search" name="search"
-					class="form-control form-control" style="width: 300px;">
+				</select> 
+				
+				<br> 
+				
+				<input type="search" name="search" class="form-control form-control" style="width: 300px;">
 					
-				<input type="search" name="search" class="btn btn-primary"
-					style="background: #222; width: 100px; border: 1px solid #222;" value="검색">
+				<input type="submit" class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" value="검색">
 
 			</form>
 		</div>

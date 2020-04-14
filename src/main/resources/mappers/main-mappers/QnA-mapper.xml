@@ -65,7 +65,7 @@
 		SYSDATE,
 		#{q_Kind},
 		DEFAULT,
-		#{q_View_Check},
+		DEFAULT,
 		#{q_Img1},
 		#{q_Img1_ReName},
 		#{q_Img2},
@@ -104,22 +104,10 @@
 		AND Q.Q_STATUS='Y'
 	</select>
 	
-	<insert id="insertReply" parameterType="QnA_Reply">
-		INSERT INTO 
-		QNA_REPLY VALUES(SEQ_QR_NO.NEXTVAL,#{qr_Comment},#{qr_Qno},DEFAULT,DEFAULT,DEFAULT,DEFAULT,#{qr_Mname})
-	</insert>
-	
-	<select id="selectReplyList" resultMap="qnaReplyResultSet" parameterType="_int">
-		SELECT *
-		FROM QNA_REPLY
-		WHERE QR_STATUS ='Y'
-		ORDER BY QR_NO DESC
-	</select>
-	
 	<update id="deleteQnA" parameterType="_int">
 		UPDATE QNA
 		SET Q_STATUS='N'
-		WHERE Q_NO=#{q_No}
+		WHERE Q_NO=#{qr_No}
 	</update>
 	
 	<update id="updateQnA" parameterType="QnA">
@@ -129,6 +117,76 @@
 			Q_IMG1=#{q_Img1}, Q_IMG1_RENAME=#{q_Img1_ReName}
 		WHERE Q_NO=#{q_No}
 	</update>
+	
+	<!-- 댓글 -->
+	<insert id="insertReply" parameterType="QnA_Reply">
+		INSERT INTO 
+		QNA_REPLY VALUES(SEQ_QR_NO.NEXTVAL,#{qr_Comment},#{qr_Qno},DEFAULT,'Y',DEFAULT,DEFAULT,#{qr_Mname})
+	</insert>
+	
+	<select id="selectReplyList" resultMap="qnaReplyResultSet" parameterType="_int">
+		SELECT *
+		FROM QNA_REPLY
+		WHERE QR_STATUS ='Y'
+		AND QR_QNO = #{qr_Qno}
+		ORDER BY QR_NO DESC
+	</select>
+	
+	<update id="updateReply" >
+		UPDATE QNA
+		SET Q_VIEW_CHECK ='Y'
+		WHERE Q_NO=#{q_No}
+	</update>
 
+<!-- 검색 -->
+	<select id="getSearchResultListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+		
+		<if test="writer != null">
+			AND Q_WRITER LIKE '%' || #{writer} || '%'
+		</if>
+		<if test="title != null">
+			AND Q_TITLE LIKE '%' || #{title} || '%'
+		</if>
+		<if test="content != null">
+			AND Q_CONTENT LIKE '%' || #{content} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchResultList" resultMap="qnaResultSet">	
+		SELECT *
+		FROM QNA
+		WHERE Q_STATUS='Y'
+	
+		<choose>
+			<when test="writer != null">
+				AND Q_WRITER LIKE '%' || #{writer} ||'%'
+			</when>
+			<when test="title != null">
+				AND Q_TITLE LIKE '%' || #{title} ||'%'
+			</when>
+			<otherwise>
+				AND Q_CONTENT LIKE '%' || #{content} ||'%'
+			</otherwise>
+		</choose>
+		ORDER BY Q_NO DESC
+	</select>
+	
+	
+	
+	 <select id="getmyListCount" resultType="_int" >
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+	</select>
+		
+	<select id="myselectList" resultMap="qnaResultSet">
+		SELECT * 
+		FROM QNA
+		WHERE Q_STATUS='Y' AND Q_WRITER=#{mName}
+		ORDER BY Q_NO DESC
+	</select>
 
 </mapper>

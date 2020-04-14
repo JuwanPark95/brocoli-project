@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td>제 목</td>
-				<td>${ q.q_Title }</b></td>
+				<td>${ q.q_Title }</td>
 			</tr>
 			<tr>
 				<td>작 성 자</td>

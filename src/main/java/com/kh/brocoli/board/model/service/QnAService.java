@@ -2,9 +2,11 @@ package com.kh.brocoli.board.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
+import com.kh.brocoli.board.model.vo.SearchCondition;
 
 public interface QnAService {
 
@@ -59,6 +61,10 @@ public interface QnAService {
 	 * @return
 	 */
 	int deleteQnA(int q_No);
+
+	int getSearchResultListCount(SearchCondition sc);
+
+	ArrayList<QnA> selectSearchResultList(SearchCondition sc, PageInfo pi);
 
 	
 
