@@ -94,8 +94,15 @@
 	    
 	    <select id="myorderList" parameterType="Member" resultMap="memberResultSet">
 			SELECT *
-			FROM ORDERS
-			WHERE MID = #{mId}
+			FROM ORDERS OR
+			JOIN PRODUCT_OPTION PO
+			ON OR.OR_OPTION1 = PO.OPTION_1
+			JOIN PRODUCT P
+			ON PO.OP_P_NO = P.P_NO
+			JOIN PRODUCT_FILE PF
+			ON P.P_NO = PF.PF_P_NO
+			WHERE OR_PNAME = #{Pname}
+			ORDER BY P.P_NO DESC
 		</select>
 	    
 	    

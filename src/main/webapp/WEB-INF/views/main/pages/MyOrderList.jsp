@@ -143,7 +143,7 @@
 							<table class="table-shopping-cart">
 								<tr class="table_head" >
 									<th style="width:8%; text-align:center;">주문번호</th>
-									<th style="width:8%; text-align:center;"> 주문일자</th>
+									<th style="width:8%; text-align:center;">주문일자</th>
 									<th style="width:10%; text-align:center;">이미지</th>
 									<th style="width:20%; text-align:center;">상품정보</th>
 									<th style="width:8%; text-align:center;">판매금액</th>
@@ -166,12 +166,12 @@
 											<li>${ Orders.or_Option2 }</li>
 										</ul>
 									</td>
-									<td style="text-align:center;"><strike>36,000원</strike>
-																	   <br>34,000원</td>
-									<td style="text-align:center;">-2000원</td>
-									<td style="text-align:center;">360원</td>
-									<td style="text-align:center;">2</td>
-									<td style="text-align:center;">68,000원</td>
+									<td style="text-align:center;"><strike>${ Orders.p_Price }</strike>
+																	   <br>${ Orders.p_Last_Price }</td>
+									<td style="text-align:center;">-${ Orders.p_Sail_Price }</td>
+									<td style="text-align:center;">${ Orders.or_Price }/100</td>
+									<td style="text-align:center;">${ Orders.or_Amount }</td>
+									<td style="text-align:center;">${ Orders.or_Price }</td>
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>

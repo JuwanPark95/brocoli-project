@@ -71,7 +71,7 @@ public interface MypageService {
 	 * @param m
 	 * @return
 	 */
-	ArrayList<Orders> myorderList(Member m);
+	ArrayList<Orders> myorderList(String Pname);
 
 
 
