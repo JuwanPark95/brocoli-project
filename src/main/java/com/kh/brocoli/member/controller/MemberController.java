@@ -52,9 +52,6 @@ public class MemberController {
 		mv.addObject("RankList",plist);
 		mv.addObject("EventList",elist);
 		mv.setViewName("main/Main");
-		System.out.println(alist);
-		System.out.println(plist);
-		System.out.println(elist);
 		return mv;
 	}
 
@@ -69,7 +66,7 @@ public class MemberController {
 //	@RequestMapping(value = "login", method = RequestMethod.POST)
 //	public String memberLogin( Member m, Model model) {
 //
-//		Member loginUser = mService.loginMember(m);
+//		Member loginUser = mService.loginMember(m);  
 //		System.out.println("loginuser : " + loginUser );
 //		if (loginUser != null) {
 //			model.addAttribute("loginUser",loginUser);
@@ -92,14 +89,6 @@ public class MemberController {
 		return "Board-Notice-List";
 	}
 	
-	/**
-	 * 홈 화면으로 
-	 * @return
-	 */
-	@RequestMapping("Main")
-	public String Main() {
-		return "main/Main";
-	}
 	
 	/**
 	 * 랭킹 페이지로 이동
@@ -111,12 +100,33 @@ public class MemberController {
 	}
 	
 	/**
-	 * 브랜드 페이지로 이동
+	 * 브랜드 이름 페이지로 이동
 	 * @return
 	 */
 	@RequestMapping("brandView.mn")
-	public String BrandView() {
-		return "Main-Brand";
+	public ModelAndView BrandView(Brand br,ModelAndView mv) {
+		
+		ArrayList<Brand> blist = mService.selectbList();
+		mv.addObject("BrandList",blist);
+		mv.setViewName("Main-Brand");
+		return mv;
+	}
+	
+	/**
+	 * 브랜드 상품 페이지로 이동
+	 * 작성자 : 윤석훈
+	 * @param br
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("bproduct.mn")
+	public ModelAndView BrandProductView(Brand br,ModelAndView mv,String b_Name) {
+		
+		ArrayList<Brand> bplist = mService.selectbpList(b_Name);
+		mv.addObject("bProductList",bplist);
+		mv.setViewName("Main-BrandProduct");
+		System.out.println("bplist : " + bplist);
+		return mv;
 	}
 	
 	/**
@@ -124,8 +134,12 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("productView.mn")
-	public String ProductView() {
-		return  "Main-Product";
+	public ModelAndView ProductView(Product pr,ModelAndView mv) {
+		
+		ArrayList<Product> aplist = mService.selectapList();
+		mv.addObject("aProductList",aplist);
+		mv.setViewName("Main-Product");
+		return  mv;
 	}
 	
 	/**
@@ -160,7 +174,13 @@ public class MemberController {
 		return "redirect:index-admin.jsp";
 	}
 	
-/************************************사이드 바*******************************/
+	@RequestMapping("productDetail.mn")
+	public ModelAndView ProductDetail(Product pd,String p_NO,ModelAndView mv) {
+		mv.setViewName("Main-Product-Detail");
+		return mv;
+	}
+	
+/************************************사이드 바*******************************/	
 //	/**
 //	 * 마이페이지로 이동
 //	 * @return

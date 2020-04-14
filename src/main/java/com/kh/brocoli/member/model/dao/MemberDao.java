@@ -40,6 +40,14 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
 
+<<<<<<< HEAD
+	public ArrayList<Product> selectapList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.aproductlist");
+	}
+
+=======
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
+
 
 
 }

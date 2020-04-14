@@ -111,13 +111,13 @@ public class QnAController {
 			folder.mkdir();
 		}
 
-		String n_Img1 = file.getOriginalFilename();
+		String q_Img1 = file.getOriginalFilename();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String ReName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
-				+ n_Img1.substring(n_Img1.lastIndexOf(".") + 1);
+				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
 
-		System.out.println("n_Img1_ReName : " + ReName);
+		System.out.println("q_Img1_ReName : " + ReName);
 
 		String renamePath = folder + "\\" + ReName;
 
@@ -253,7 +253,7 @@ public class QnAController {
 	}
 	
 	@RequestMapping("qSearch.mn")
-	public ModelAndView searchBoard(ModelAndView mv, @ModelAttribute("ma") SearchCondition ma,
+	public ModelAndView searchBoard(ModelAndView mv,
 									@RequestParam(value = "search", required = false) String search,
 									@RequestParam(value = "condition", required = false) String condition,
 									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
@@ -263,6 +263,9 @@ public class QnAController {
 		System.out.println("qSearch.mn" + condition);
 		
 		SearchCondition sc = new SearchCondition();
+		
+		sc.setSearch(search);
+		sc.setCondition(condition);
 		
 		if(condition.equals("writer")) {
 			sc.setWriter(search);
