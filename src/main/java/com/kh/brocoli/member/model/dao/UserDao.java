@@ -47,12 +47,19 @@ public class UserDao {
 	}
 	
 		public int newPassword(Member m) {
-//			String password = AuthenticationKey;
-//
-			
+				
 			
 			return sqlSession.update("memberMapper.newPassword", m);
 			
+		}
+
+		public int sEnter(Brand b) {
+			return sqlSession.insert("memberMapper.sEnter",b);
+		}
+
+		public int bNameCheck(String name) {
+			
+			return sqlSession.selectOne("memberMapper.bNameCheck",name);
 		}
 
 

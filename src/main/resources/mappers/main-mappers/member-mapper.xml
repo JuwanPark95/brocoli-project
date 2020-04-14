@@ -87,7 +87,7 @@
 			AND EMAIL= #{email}
 		</select>
 
-	<update id="newPassword" parameterType="Member">
+	<update id="newPassword" parameterType="Member" >
 
 		update MEMBER
 
@@ -96,4 +96,17 @@
 		where email=#{email} and MID=#{mId}
 
 	</update>
+	
+	<select id="sEnter" parameterType="Brand">
+	INSERT INTO BRAND 
+	VALUES(SEQ_BRAND_NO.NEXTVAL,#{b_Name},NULL,NULL,NULL,DEFAULT,NULL,NULL,NULL,NULL,NULL,
+	#{b_Owner1_ID},NULL,NULL,#{b_Phone},#{b_Address},#{b_Owner_Name},#{b_Comment},#{b_Email1},NULL,NULL
+	)
+	</select>
+	
+	<select id="bNameCheck" parameterType="string" resultType="_int">
+	SELECT COUNT(*)
+	FROM BRAND
+	WHERE B_NAME = #{b_Name}
+	</select>
 </mapper>

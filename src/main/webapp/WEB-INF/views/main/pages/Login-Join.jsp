@@ -130,7 +130,7 @@
    		
    		<div class="form-group">
       		<label for="userId">이메일 : </label>
-    		<input type="text" class="form-control" id="email" name="email" style="width:80%;">
+    		<input type="email" class="form-control" id="email" name="email" style="width:80%;">
     		<span class="mGuide ok2">사용가능한 메일주소입니다.</span>
     		<span class="mGuide error2">메일주소를 다시 확인해주세요.</span>
     		<input type="hidden" name="mailDuplicateCheck2" id="mailDuplicateCheck2" value="0" />
@@ -138,7 +138,7 @@
 
 		<div class="form-group">
       		<label for="phone">휴대폰 : </label>
-    		<input type="text" class="form-control" id="phone" name="phone" style="width:80%;">
+    		<input type="tel" class="form-control" id="phone" name="phone" style="width:80%;">
    		</div>
    		
    		
@@ -674,13 +674,7 @@
 <!--===============================================================================================-->
    <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
-   
-   function phoneCheck(){ //휴대폰 유효성 검사
-	      
-	    
-	      
-	      
-	   }
+  
    
    $(function(){
 	   
@@ -710,7 +704,7 @@
 				alert("ID 중복체크를 실시해주세요")
 			}else if($("#pwdDuplicateCheck2").val()!=1){
 				$("#pwd").focus();
-				alert("비밀버호를 다시 한붠 확인해주세요.")
+				alert("비밀번호를 다시 한번 확인해주세요.")
 			}else if($("#mailDuplicateCheck2").val()!=1){
 				$("#email").focus();
 				alert("이메일 주소를 다시 한번 확인해주세요.")
@@ -732,6 +726,7 @@
 		$("#email").on("keyup",function(){
 			
 			var email= $(this).val();
+		
 			
 			if(email.length < 7){
 				$(".mGuide").hide();
@@ -746,6 +741,7 @@
 		 		type:"post",
 		 		success:function(data){
 		 			console.log(data);
+		 			
 		 			if(data =="ok"){
 		 				$(".error2").hide();
 						$(".ok2").show();

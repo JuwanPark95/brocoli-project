@@ -65,7 +65,7 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public int insertMember(Member m) {
-int result = uDao.insertMember(m);
+		int result = uDao.insertMember(m);
 		
 		return result;
 	}
@@ -73,6 +73,18 @@ int result = uDao.insertMember(m);
 	@Override
 	public int mailCheck(String email) {
 		return uDao.mailCheck(email);
+	}
+
+	@Override
+	public int sEnter(Brand b) {
+		int result = uDao.sEnter(b);
+		return result;
+	}
+
+	@Override
+	public int bNameCheck(String name) {
+		
+		return uDao.bNameCheck(name);
 	}
 
 	

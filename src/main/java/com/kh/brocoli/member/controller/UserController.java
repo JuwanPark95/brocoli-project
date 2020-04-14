@@ -21,6 +21,7 @@ import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 
 @SessionAttributes("loginUser")
 @Controller
@@ -304,65 +305,45 @@ public class UserController {
 		}
 	}
 	
-	//@RequestMapping("pwdFind.mn")
-	//public ModelAndView pwdFind(ModelAndView mv,String mId, String email) {
-	//	Member m = new Member();
-	//	m.setmId(mId);
-	//	m.setEmail(email);
-	//	System.out.println("m:::"+ m);
-	//	int result = mService.pwdFind(m);
-	//	System.out.println("result :::"+result);
-	//	/*****************************난수생성************************************/
-	//	StringBuffer temp =new StringBuffer();
-    //    Random rnd = new Random();
-    //    for(int i=0;i<10;i++){
-    //        int rIndex = rnd.nextInt(3);
-    //        switch (rIndex) {
-    //        case 0:
-    //            // a-z
-    //            temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-    //            break;
-    //        case 1:
-    //            // A-Z
-    //            temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-    //            break;
-    //        case 2:
-    //            // 0-9
-    //            temp.append((rnd.nextInt(10)));
-    //            break;
-    //        }
-    //    }
-    //    String AuthenticationKey = temp.toString();
-    //    System.out.println(AuthenticationKey);
-    //   
-    //    session.setAttribute("AuthenticationKey", AuthenticationKey);
+	@ResponseBody
+	@RequestMapping("pwdFind.do")
+	public String pwdFind(String mId, String email, HttpSession session) throws Exception {
+		Member m = new Member();
+		m.setmId(mId);
+		m.setEmail(email);
+		System.out.println("m:::"+ m);
+		int result = uService.pwdFind(m);
+		System.out.println("result :::"+result);
+	
+		String newPwd = newPasswordCreate(m);
+		m.setPwd(newPwd);
+        System.out.println("newPwd ::::" + newPwd);
+		if(result >0) {
+			findPasswordOK(m);
+		 String encPwd = bcryptPasswordEncoder.encode(newPwd);
+		 m.setPwd(encPwd);
+			uService.newPassword(m);
+	
+			
+			return "ok";
 
-		/*******************************난수생성끝***********************************/
-        
-    //    email.setContent("인증번호는 "+pw+" 입니다.");
-    //    email.setReceiver(email);
-    //    email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
-    //    emailSender.SendEmail(email);
+		}else {
 
+			return "fail";
+		}
+		
+	}
 
-        
-	//	if(result >0) {
-	//		mv.setViewName("Login-PwdEmail");
-	//	}else {
-	//		mv.setViewName("common/errorPage");
-	//	}
-	//	return mv;
-	//}
+	
 
-	// 새로운 비밀번호가 생성된다.
+//		@RequestMapping("pwdFind.mn")
 
-		@RequestMapping("pwdFind.mn")
-
-		public String newPassword( Member m, HttpSession session) throws Exception {
-
-//			Random r = new Random();
-//
-//			int num = r.nextInt(89999) + 10000;
+		/**
+		 * 비밀번호 생성기
+		 * @param m
+		 * @return
+		 */
+		public String newPasswordCreate(Member m)  {
 
 			 //인증 번호 생성기
 	        StringBuffer temp =new StringBuffer();
@@ -390,20 +371,23 @@ public class UserController {
 			
 //			String npassword = "bapsi" + Integer.toString(num);// 새로운 비밀번호 변경
 			
-			String encPwd = bcryptPasswordEncoder.encode(AuthenticationKey);
+//			String encPwd = AuthenticationKey;
 			
-			m.setPwd(encPwd);
+			//m.setPwd(encPwd);
 			
 //			m.setPwd(npassword);
 
-			session.setAttribute("m", m);
-			session.setAttribute("pass", AuthenticationKey);
-			 uService.newPassword(m);
-
+//			int result = uService.newPassword(m);
+//			if(result > 0 ) {
+//			
+//			}else {
+//				
+//			}
+			
+			return AuthenticationKey;
 			
 			
 			
-			return "redirect:findPassword.mn";
 
 		}
 
@@ -411,27 +395,53 @@ public class UserController {
 
 		// 이메일로 비밀번호가 전송이된다.
 
-		@RequestMapping("findPassword.mn")
+//		@RequestMapping("findPassword.mn")
 
-		public String findPasswordOK(Member m, HttpSession session) throws Exception {
+		public void findPasswordOK(Member m) throws Exception {
 
-			m = (Member) session.getAttribute("m");
-			String str = (String)session.getAttribute("pass");
-				email.setContent("새로운 비밀번호는 " + str + " 입니다." );
+//			m = (Member) session.getAttribute("m");
+//			String str = (String)session.getAttribute("pass");
+				email.setContent("임시 비밀번호는 " + m.getPwd() + " 입니다.  \n 혹시라도 비밀번호 변경 요청을 하신적이 없다면, "
+						+ "즉시 비밀번호 변경을 권장드립니다. \n 감사합니다.");
 				
 				email.setReceiver(m.getEmail());
 
-				email.setSubject("안녕하세요"+m.getEmail() +"님  재설정된 비밀번호를 확인해주세요");
+				email.setSubject("안녕하세요"+m.getEmail() +"님  재설정된 비밀번호를 확인해주세요."
+						);
 
 				emailSender.SendEmail(email);
 
-				System.out.println(email);
+				System.out.println("email::::"+email);
 
-				session.invalidate();
+//				session.invalidate();
 				
 			
-				return "Login";
+				
+		}
+		
+		@RequestMapping("sEnter.mn")
+		public String sEnter(Brand b, Model model) throws Exception{
+			System.out.println(b);
+			b.setB_Comment(b.getB_Comment());
+			int result = uService.sEnter(b);
+			System.out.println("2"+b);
+			if(result > 0) {
+				return "redirect:index.jsp";
+		}else {
+				model.addAttribute("msg","입점문의실패!!");
+				return "common/errorPage";}
 		}
 
+	@ResponseBody
+	@RequestMapping("bNameCheck.do")
+	public String bNameCheck(String name) {
+		int result = uService.bNameCheck(name);
+		
+		if (result>0) {
+			return "fail";
+		}else {
+			return "ok";
+		}
+	}
 	
 }

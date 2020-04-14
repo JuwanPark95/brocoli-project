@@ -60,7 +60,32 @@ public interface UserService {
 	int pwdFind(Member m);
 
 	
+    /**
+     * 작성자 임현섭
+     * 비밀번호 찾기 비밀번호 수정
+     * @param m
+     * @return
+     * @throws Exception
+     */
     public int newPassword(Member m) throws Exception;
+
+	/**
+	 * 작성자 임현섭
+	 * 입점
+	 * @param b
+	 * @return
+	 */
+	public int sEnter(Brand b);
+
+	/**
+	 * 작성자 임현섭
+	 * 브랜드명 중복체크
+	 * @param name
+	 * @return
+	 */
+	public int bNameCheck(String name);
+
+	
  
 }
 
