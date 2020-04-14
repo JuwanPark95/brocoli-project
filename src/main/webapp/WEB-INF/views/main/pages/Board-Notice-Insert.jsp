@@ -79,14 +79,13 @@
 		
 	<script>
 		function checks(){
-	      	  var title = $("#ntitle").val();
-	      
-	       	 if(title == ""){
-	       		 alert("제목을 입력해주세요."); 
-	       			title.focus(); 
-	       	 return false; 
-	      }
-		}	
+		       //상품명 공백 확인 
+		        if($("#n_Title").val() == ""){
+		        	alert("상품명을 입력해 주세요."); 
+		        $("#n_Title").focus(); 
+		       		return false; 
+		      }
+	}
 	</script>
 
 <%@ include file="All-Footer.jsp" %>

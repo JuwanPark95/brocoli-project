@@ -64,7 +64,7 @@ public interface QnAService {
 
 	int getSearchResultListCount(SearchCondition sc);
 
-	ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi);
+	ArrayList<QnA> selectSearchResultList(SearchCondition sc, PageInfo pi);
 
 	
 

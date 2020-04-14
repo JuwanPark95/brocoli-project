@@ -82,11 +82,11 @@
  <div style="margin-left: 40%; display: flex;">
   <ul class="pagination justify-content-center">
 
-				<c:if test="${ pi.currentPage eq 1 }">
+				<c:if test="${ pi.currentPage == 1 }">
 					<li class="page-item"><a class="page-link" style="color: #222"> < </a></li>
 				</c:if>
 
-				<c:if test="${ pi.currentPage ne 1}">
+				<c:if test="${ pi.currentPage > 1}">
 				<li class="page-item">
 					<c:url var="before" value="QnAlist.mn">
 						<c:param name="currentPage" value="${ pi.currentPage - 1 }" />
@@ -110,15 +110,15 @@
 			</c:forEach>
 			
 			<!-- 다음 -->
-			<c:if test="${ pi.currentPage eq pi.maxPage }">
+			<c:if test="${ pi.currentPage == pi.maxPage }">
 				<li class="page-item"><a class="page-link" aria-label="Next"> > </a></li>
 			</c:if>
 			
-			<c:if test = "${ pi.currentPage ne pi.maxPage }">
+			<c:if test = "${ pi.currentPage < pi.maxPage }">
 			<c:url var = "next" value="QnAlist.mn">
 				<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
 			</c:url>
-				<li class="page-item"><a href="${ next }" class="page-link" aria-label="Next" style="color: #222"> > </a></li>
+				<li class="page-item"><a href="${ next }"<%=  %> class="page-link" aria-label="Next" style="color: #222"> > </a></li>
 			</c:if>
 			
 			</ul>

@@ -83,7 +83,7 @@ public class QnAServiceImpl implements QnAService{
 	}
 
 	@Override
-	public ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+	public ArrayList<QnA> selectSearchResultList(SearchCondition sc, PageInfo pi) {
 		return qDao.selectSearchResultList(sc,pi);
 	}
 }

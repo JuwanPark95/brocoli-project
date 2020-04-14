@@ -65,8 +65,9 @@ public class QnADao {
 		return sqlSession.selectOne("QnA-mapper.getSearchResultListCount", sc);
 	}
 
-	public ArrayList<Notice> selectSearchResultList(SearchCondition sc, PageInfo pi) {
-ArrayList<Notice> list = null;
+	public ArrayList<QnA> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		
+		ArrayList<QnA> list = null;
 		
 		int offset = (pi.getCurrentPage() -1) * pi.getLimit();
 		
