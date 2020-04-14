@@ -38,6 +38,8 @@
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
 		<collection property="pfList" resultMap="productFileResultSet"/>
+		<collection property="poList" resultMap="productOptionResultSet"/>
+		<collection property="brList" resultMap="brandResultSet"/>
 	</resultMap>
 	
 	<resultMap type="Product_File" id="productFileResultSet">
@@ -89,6 +91,18 @@
 		
 		<collection property="pfList" resultMap="productResultSet"/>
 	</resultMap>
+	
+		<resultMap id="productOptionResultSet" type="Product_Option">
+		<id property="op_NO" column="OP_NO"/>
+		
+		<result property="option_1" column="OPTION_1"/>
+		<result property="option_2" column="OPTION_2"/>
+		<result property="op_Stock" column="OP_STOCK"/>
+		<result property="op_Rec_Date" column="OP_REC_DATE"/>
+		<result property="op_Status_YN" column="OP_STATUS_YN"/>
+		<result property="op_P_NO" column="OP_P_NO"/>
+		
+		</resultMap>
 	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
@@ -157,4 +171,40 @@
     ORDER BY P.P_LAST_PRICE
 	
 	</select>
+	
+	<select id="pDetail" resultMap="productResultSet">
+	SELECT P_NO,P_NAME
+	        ,TO_CHAR( P_PRICE , '999,999,999,999,999') AS P_PRICE
+	        ,TO_CHAR( P_SAIL_PRICE , '999,999,999,999,999') AS P_SAIL_PRICE 
+	        ,TO_CHAR( P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+	        ,P_BCATEGORY
+	        ,P_SCATEGORY
+	        ,P_COMMENT
+	        ,P_ORDER_COUNT
+	        ,P_STATUS
+	        ,P_WRITER
+	        ,OPTION_1
+	        ,OPTION_2
+	        ,PF_IMG1_RENAME
+	        ,PF_IMG2_RENAME
+	        ,PF_IMG3_RENAME
+	        ,PF_IMG4_RENAME
+	        ,PF_IMG5_RENAME
+	        ,PF_IMG6_RENAME
+	        ,PF_DIMG1_RENAME
+	        ,PF_DIMG2_RENAME
+	        ,PF_DIMG3_RENAME
+	        ,B_NAME
+	        ,B_LOGO_RENAME
+	        FROM PRODUCT P
+	JOIN PRODUCT_OPTION PO
+	ON P.P_NO = PO.OP_P_NO
+	JOIN PRODUCT_FILE PF
+	ON P.P_NO = PF.PF_P_NO
+	JOIN BRAND B
+	ON P.P_BRAND_NO = B.BRAND_NO
+	WHERE P_NO=#{p_NO}
+	</select>
+	
+	
 </mapper>

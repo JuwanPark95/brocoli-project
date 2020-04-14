@@ -50,7 +50,7 @@
 			                 		</c:url>
 			                 		
 	                 					<a href="${bproduct}" id="Allbrand" style="width: 33%; float: left; margin-bottom: 12px; color:black;">
-	                 					<img src="/brocoli/resources/mainResources/images/seokhun/${brand.b_Logo_ReName}" style="width: 80px;">
+	                 					<img src="/brocoli/resources/product-Img/${brand.b_Logo_ReName}" style="width: 80px;">
 	                 					<strong>${brand.b_Name }</strong></a>
 	                			</c:forEach>                 		
 	                 		</td>

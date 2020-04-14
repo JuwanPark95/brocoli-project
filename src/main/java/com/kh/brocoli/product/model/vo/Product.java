@@ -27,6 +27,10 @@ public class Product {
    
    private Product_File pfList;
    
+   private Product_Option poList;
+   
+   private Brand brList;
+   
    public Product() {
       super();
    }
@@ -34,7 +38,7 @@ public class Product {
 	public Product(int p_NO, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price, String p_Bcategory,
 			String p_Scategory, String p_Comment, String p_Order_Count, String p_Status, String p_Writer,
 			Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN, int p_Brand_NO,
-			Product_File pfList) {
+			Product_File pfList, Product_Option poList, Brand brList) {
 		super();
 		this.p_NO = p_NO;
 		this.p_Name = p_Name;
@@ -53,6 +57,8 @@ public class Product {
 		this.p_Show_YN = p_Show_YN;
 		this.p_Brand_NO = p_Brand_NO;
 		this.pfList = pfList;
+		this.poList = poList;
+		this.brList = brList;
 	}
 	
 	public int getP_NO() {
@@ -191,15 +197,33 @@ public class Product {
 		this.pfList = pfList;
 	}
 	
+	public Product_Option getPoList() {
+		return poList;
+	}
+	
+	public void setPoList(Product_Option poList) {
+		this.poList = poList;
+	}
+	
+	public Brand getBrList() {
+		return brList;
+	}
+	
+	public void setBrList(Brand brList) {
+		this.brList = brList;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [p_NO=" + p_NO + ", p_Name=" + p_Name + ", p_Price=" + p_Price + ", p_Sail_Price=" + p_Sail_Price
-				+ ", p_Last_Price=" + p_Last_Price + ", p_Bcategory=" + p_Bcategory + ", p_Scategory=" + p_Scategory
-				+ ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count + ", p_Status=" + p_Status + ", p_Writer="
-				+ p_Writer + ", p_Insert_Date=" + p_Insert_Date + ", p_Modify_Id=" + p_Modify_Id + ", p_Modify_Date="
-				+ p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO=" + p_Brand_NO + ", pfList=" + pfList + "]";
+		return "Product [p_NO=" + p_NO + ", p_Name=" + p_Name + ", p_Price=" + p_Price + ", p_Sail_Price="
+				+ p_Sail_Price + ", p_Last_Price=" + p_Last_Price + ", p_Bcategory=" + p_Bcategory + ", p_Scategory="
+				+ p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count + ", p_Status="
+				+ p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date + ", p_Modify_Id="
+				+ p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO="
+				+ p_Brand_NO + ", pfList=" + pfList + ", poList=" + poList + ", brList=" + brList + "]";
 	}
-   
-   
-   
+
+
+	
+	
 }
