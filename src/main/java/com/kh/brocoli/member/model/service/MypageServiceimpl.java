@@ -60,8 +60,8 @@ public class MypageServiceimpl implements MypageService {
 	}
 
 	@Override
-	public ArrayList<Orders> myorderList(Member m) {
-		return myDao.myorderList(m);
+	public ArrayList<Orders> myorderList(String Pname) {
+		return myDao.myorderList(Pname);
 	}
 
 	

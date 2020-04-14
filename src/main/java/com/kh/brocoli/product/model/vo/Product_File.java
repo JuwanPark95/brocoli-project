@@ -1,5 +1,7 @@
 package com.kh.brocoli.product.model.vo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,6 +27,8 @@ public class Product_File {
 	private String pf_Dimg3;
 	private String pf_Dimg3_ReName;
 	private int pf_P_NO;
+	
+	private List<Product_Option> Product_OptionVOList;
 	
 	public Product_File() {
 		super();
