@@ -102,7 +102,6 @@
 			<!-- 페이지 -->
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 				
-				
 				<c:if test="${ p eq pi.currentPage }">
 					<li class="page-item active">
 					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
