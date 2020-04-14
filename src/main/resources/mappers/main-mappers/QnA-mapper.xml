@@ -65,7 +65,7 @@
 		SYSDATE,
 		#{q_Kind},
 		DEFAULT,
-		#{q_View_Check},
+		DEFAULT,
 		#{q_Img1},
 		#{q_Img1_ReName},
 		#{q_Img2},
@@ -104,22 +104,10 @@
 		AND Q.Q_STATUS='Y'
 	</select>
 	
-	<insert id="insertReply" parameterType="QnA_Reply">
-		INSERT INTO 
-		QNA_REPLY VALUES(SEQ_QR_NO.NEXTVAL,#{qr_Comment},#{qr_Qno},DEFAULT,DEFAULT,DEFAULT,DEFAULT,#{qr_Mname})
-	</insert>
-	
-	<select id="selectReplyList" resultMap="qnaReplyResultSet" parameterType="_int">
-		SELECT *
-		FROM QNA_REPLY
-		WHERE QR_STATUS ='Y'
-		ORDER BY QR_NO DESC
-	</select>
-	
 	<update id="deleteQnA" parameterType="_int">
 		UPDATE QNA
 		SET Q_STATUS='N'
-		WHERE Q_NO=#{q_No}
+		WHERE Q_NO=#{qr_No}
 	</update>
 	
 	<update id="updateQnA" parameterType="QnA">
@@ -129,12 +117,33 @@
 			Q_IMG1=#{q_Img1}, Q_IMG1_RENAME=#{q_Img1_ReName}
 		WHERE Q_NO=#{q_No}
 	</update>
+	
+	<!-- 댓글 -->
+	<insert id="insertReply" parameterType="QnA_Reply">
+		INSERT INTO 
+		QNA_REPLY VALUES(SEQ_QR_NO.NEXTVAL,#{qr_Comment},#{qr_Qno},DEFAULT,'Y',DEFAULT,DEFAULT,#{qr_Mname})
+	</insert>
+	
+	<select id="selectReplyList" resultMap="qnaReplyResultSet" parameterType="_int">
+		SELECT *
+		FROM QNA_REPLY
+		WHERE QR_STATUS ='Y'
+		AND QR_QNO = #{qr_Qno}
+		ORDER BY QR_NO DESC
+	</select>
+	
+	<update id="updateReply" >
+		UPDATE QNA
+		SET Q_VIEW_CHECK ='Y'
+		WHERE Q_NO=#{q_No}
+	</update>
 
+<!-- 검색 -->
 	<select id="getSearchResultListCount" resultType="_int">
 		SELECT COUNT(*)
 		FROM QNA
 		WHERE Q_STATUS='Y'
-		<!-- 1. if문으로 하는 방법 -->
+		
 		<if test="writer != null">
 			AND Q_WRITER LIKE '%' || #{writer} || '%'
 		</if>
@@ -147,16 +156,10 @@
 	</select>
 	
 	<select id="selectSearchResultList" resultMap="qnaResultSet">	
-		<!-- 
-			쿼리문을 평소와 같이 작성한다면
-			안에 < 라는 기호가 포함된다면 연산자로 인식하지 않고 태그로 인식해버린다.
-			-> 이걸 해결해주기 위해서 쿼리문을 CDATE주석으로 감싸는 경우도 있다.
-			<![CDATE[...]]>
-		 -->	
 		SELECT *
 		FROM QNA
 		WHERE Q_STATUS='Y'
-		<!-- 2. choose, when, otherwise -->
+	
 		<choose>
 			<when test="writer != null">
 				AND Q_WRITER LIKE '%' || #{writer} ||'%'

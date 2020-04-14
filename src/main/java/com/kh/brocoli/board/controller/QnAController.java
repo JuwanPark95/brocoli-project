@@ -199,7 +199,8 @@ public class QnAController {
 	@ResponseBody
 	public String addReply(QnA_Reply qr) {
 		
-		System.out.println("controller qr : " + qr);
+		System.out.println("댓글 qr : " + qr);
+		System.out.println("컨트롤러 댓글 : " + qr.getQr_Qno());
 		
 		int result = qService.insertReply(qr);
 		

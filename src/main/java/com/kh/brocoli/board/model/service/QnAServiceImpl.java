@@ -45,10 +45,16 @@ public class QnAServiceImpl implements QnAService{
 			return null;
 		}
 	}
-
+	
 	@Override
 	public int insertReply(QnA_Reply qr) {
-		return qDao.insertReply(qr);
+		int result = qDao.insertReply(qr);
+		if(result > 0) {
+			System.out.println("서비스 리절트 : " + result);
+			return qDao.updateReply(qr.getQr_Qno());
+		}else {
+			return 0;
+		}
 	}
 
 	@Override

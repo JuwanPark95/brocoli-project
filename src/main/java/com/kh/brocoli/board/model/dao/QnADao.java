@@ -93,4 +93,11 @@ public class QnADao {
 		return (ArrayList)sqlSession.selectList("QnA-mapper.myselectList",m,rowBounds);
 	}		
 
+	public int updateReply(String qr_No) {
+		System.out.println("dao에서 qrno : " + qr_No);
+		return sqlSession.update("QnA-mapper.updateReply",qr_No);
+		
+	}
+
+
 }
