@@ -278,7 +278,7 @@ public class QnAController {
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 		
 		// 검색결과에 해당되는 게시물 목록 조회
-		ArrayList<Notice> list = qService.selectSearchResultList(sc, pi);
+		ArrayList<QnA> list = qService.selectSearchResultList(sc, pi);
 		
 		mv.addObject("list", list);
 		mv.addObject("pi", pi);
