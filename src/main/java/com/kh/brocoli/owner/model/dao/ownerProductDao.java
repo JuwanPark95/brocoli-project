@@ -57,18 +57,6 @@ public class ownerProductDao {
 		System.out.println("DAO 단계에서의 bNO : " + bNO);
 		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectStockList",bNO);
 	}
-
-	public Product productSet(int pNO) {
-		return sqlSession.selectOne("ownerProduct-mapper.selectProduct",pNO);
-	}
-
-	public Product_File productFilrSet(int pNO) {
-		return sqlSession.selectOne("ownerProduct-mapper.selectProductFile",pNO);
-	}
-
-	public ArrayList<Product_Option> productOptionset(int pNO) {
-		return (ArrayList)sqlSession.selectList("ownerProduct-mapper.selectOptionList",pNO);
-	}
 	
 	
 	

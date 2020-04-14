@@ -78,6 +78,21 @@ public class QnADao {
 		return list;
 	}
 
+	
+//************************************************내가쓴글보기******************************************//	
+	
+	public int getmyListCount() {
+		return sqlSession.selectOne("QnA-mapper.getmyListCount");
+	}
+
+	public ArrayList<QnA> myselectList(PageInfo pi, Member m) {
+				
+		int offset = (pi.getCurrentPage() - 1) * pi.getLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getLimit());
+				
+		return (ArrayList)sqlSession.selectList("QnA-mapper.myselectList",m,rowBounds);
+	}		
+
 	public int updateReply(String qr_No) {
 		System.out.println("dao에서 qrno : " + qr_No);
 		return sqlSession.update("QnA-mapper.updateReply",qr_No);

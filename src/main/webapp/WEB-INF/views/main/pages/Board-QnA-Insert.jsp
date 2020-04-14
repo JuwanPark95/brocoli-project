@@ -71,11 +71,6 @@
 			</tr>
 			
 			<tr>
-				<td>답변여부</td>
-				<td></td>
-			</tr>
-			
-			<tr>
 				<td>첨부 파일</td>
 				<td><input type="file" name="uploadFile"></td>
 			</tr>
