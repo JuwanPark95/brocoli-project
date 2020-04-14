@@ -67,7 +67,7 @@
 		<id property="brand_NO" column="BRAND_NO"/>
 		<result property="b_Name" column="B_NAME"/>
 		<result property="b_Logo" column="B_LOGO"/>
-		<result property="b_Logo_Rename" column="B_LOGO_RENAME"/>
+		<result property="b_Logo_ReName" column="B_LOGO_RENAME"/>
 		<result property="b_Business_NO" column="B_BUSINESS_NO"/>
 		<result property="b_Status" column="B_STATUS"/>
 		<result property="b_Enter_Date" column="B_ENTER_DATE"/>
@@ -99,22 +99,31 @@
 	
 	<select id="ranklist" resultMap="productResultSet">
 	<![CDATA[
-   SELECT *
+   SELECT P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
     FROM (SELECT *
           FROM PRODUCT
           ORDER BY P_ORDER_COUNT DESC)P
     JOIN PRODUCT_FILE PF
     ON P.P_NO =  PF.PF_P_NO
    WHERE ROWNUM <=20
+   AND P.P_STATUS='1'
    ]]>
 	</select>
 	
 	<select id="eventlist" resultMap="productResultSet">
-	SELECT *
-    FROM PRODUCT P
+	<![CDATA[
+	SELECT P.P_NO,P.P_NAME,
+            TO_CHAR( P.P_PRICE , '999,999,999,999,999') AS P_PRICE,
+            TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+             ,PF.PF_IMG1_RENAME
+    FROM (SELECT *
+          FROM PRODUCT
+          ORDER BY LENGTH(P_SAIL_PRICE) DESC,P_SAIL_PRICE DESC)P
     JOIN PRODUCT_FILE PF
     ON P.P_NO = PF.PF_P_NO
-    ORDER BY P.P_SAIL_PRICE DESC
+    WHERE ROWNUM <=20
+    AND P.P_STATUS='1'
+    ]]>
 	</select>
 	
 	<select id="brandlist" resultMap="brandResultSet">
@@ -125,12 +134,27 @@
 	</select>
 	
 	<select id="bproductlist" resultMap="brandResultSet">
-	SELECT * FROM BRAND B
+	SELECT P.P_NO,P.P_NAME,B.B_NAME,B.B_LOGO_RENAME,P_BCATEGORY,P_SCATEGORY,
+            TO_CHAR( P.P_PRICE , '999,999,999,999,999') AS P_LAST_PRICE,
+            PF.PF_IMG1_RENAME FROM BRAND B
 	JOIN PRODUCT P
 	ON B.BRAND_NO = p.p_brand_no
 	JOIN PRODUCT_FILE PF
 	ON P.P_NO = PF.PF_P_NO
 	WHERE P.P_SHOW_YN ='Y'
+    AND P_STATUS = '1'
 	AND B.B_NAME= #{b_Name}
+	</select>
+	
+	<select id="aproductlist" resultMap="productResultSet">
+	
+	SELECT P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+		  ,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+    FROM PRODUCT P
+    JOIN PRODUCT_FILE PF
+    ON P.P_NO =  PF.PF_P_NO
+    WHERE P.P_STATUS='1'
+    ORDER BY P.P_LAST_PRICE
+	
 	</select>
 </mapper>

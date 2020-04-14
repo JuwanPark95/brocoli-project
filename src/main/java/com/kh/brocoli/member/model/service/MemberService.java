@@ -48,6 +48,13 @@ public interface MemberService {
 	 */
 	ArrayList<Brand> selectbpList(String b_Name);
 
+	/**
+	 * 작성자 : 윤석훈
+	 * 상품 페이지 전체 출력
+	 * @return
+	 */
+	ArrayList<Product> selectapList();
+
 
 	
 

@@ -40,6 +40,11 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
 	}
 
+	public ArrayList<Product> selectapList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.aproductlist");
+	}
+
+
 
 
 }
