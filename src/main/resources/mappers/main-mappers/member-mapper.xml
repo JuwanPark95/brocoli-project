@@ -93,10 +93,9 @@
 	    </update>
 	    
 	    <select id="myorderList" parameterType="Member" resultMap="memberResultSet">
-			SELECT COUNT(*)
-			FROM MEMBER
+			SELECT *
+			FROM ORDERS
 			WHERE MID = #{mId}
-			AND EMAIL= #{email}
 		</select>
 	    
 	    
