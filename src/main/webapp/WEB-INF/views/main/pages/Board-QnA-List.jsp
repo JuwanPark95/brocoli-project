@@ -137,7 +137,6 @@
 				<form action="qSearch.mn" style="display: inline-flex;" >
 					<select id="searchCondition" name="condition">
 						<option>--------선택--------</option>
-						<option value="writer">작성자</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>					
 					</select>

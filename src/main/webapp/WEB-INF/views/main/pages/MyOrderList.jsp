@@ -154,8 +154,9 @@
 									<th style="width:8%; text-align:center;">상태</th>
 									<th style="width:8%; text-align:center;">확인</th>
 								</tr>
+						  <c:forEach var="Orders" items="">
 								<tr>
-									<td style="text-align:center;">1</td>
+									<td style="text-align:center;">${ or_No }</td>
 									<td style="text-align:center;">2020-03-30</td>
 									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
 									<td style="text-align:left;">
@@ -178,7 +179,7 @@
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>
-
+                             </c:forEach>
 								<tr>
 									<td style="text-align:center;">2</td>
 									<td style="text-align:center;">2020-03-30</td>

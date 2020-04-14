@@ -170,5 +170,20 @@
 		</choose>
 		ORDER BY Q_NO DESC
 	</select>
+	
+	
+	
+	 <select id="getmyListCount" resultType="_int" >
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE Q_STATUS='Y'
+	</select>
+		
+	<select id="myselectList" resultMap="qnaResultSet">
+		SELECT * 
+		FROM QNA
+		WHERE Q_STATUS='Y' AND Q_WRITER=#{mName}
+		ORDER BY Q_NO DESC
+	</select>
 
 </mapper>
