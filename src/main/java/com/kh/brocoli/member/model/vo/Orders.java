@@ -2,8 +2,6 @@ package com.kh.brocoli.member.model.vo;
 
 import java.sql.Date;
 
-import com.kh.brocoli.product.model.vo.Product;
-
 public class Orders {
 	 private int or_NO;
 	 private Date or_Date;
@@ -22,7 +20,6 @@ public class Orders {
 	 private int or_Brand_NO;
 	
 	
-	 private Product pList;
 	 
 	 
 	 public Orders() {
