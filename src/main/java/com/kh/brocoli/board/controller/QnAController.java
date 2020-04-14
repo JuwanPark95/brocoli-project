@@ -38,6 +38,7 @@ public class QnAController {
 	@RequestMapping("QnAlist.mn")
 	public ModelAndView boardlist(ModelAndView mv,
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
+		
 		System.out.println("커런트 페이지유 : " + currentPage);
 
 		int listCount = qService.getListCount();
@@ -252,14 +253,14 @@ public class QnAController {
 	}
 	
 	@RequestMapping("qSearch.mn")
-	public ModelAndView searchBoard(ModelAndView mv, 
+	public ModelAndView searchBoard(ModelAndView mv, @ModelAttribute("ma") SearchCondition ma,
 									@RequestParam(value = "search", required = false) String search,
 									@RequestParam(value = "condition", required = false) String condition,
 									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 									) {
 		
-		System.out.println("bnSearch.mn" + search);
-		System.out.println("bnSearch.mn" + condition);
+		System.out.println("qSearch.mn" + search);
+		System.out.println("qSearch.mn" + condition);
 		
 		SearchCondition sc = new SearchCondition();
 		
@@ -271,12 +272,10 @@ public class QnAController {
 			sc.setContent(search);
 		}
 		
-		// 검색 결과에 해당되는 게시물 갯수 조회
 		int listCount = qService.getSearchResultListCount(sc);
 		
-		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-		
+
 		// 검색결과에 해당되는 게시물 목록 조회
 		ArrayList<QnA> list = qService.selectSearchResultList(sc, pi);
 		
