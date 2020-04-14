@@ -90,6 +90,27 @@
 </form>
 </div>
 <%@ include file="All-Footer.jsp" %>
+
+	<script>
+	function checks(){
+	       //상품명 공백 확인 
+	        if($("#comment").text() == ""){
+	        	alert("내용을입력해주세요.");
+	        	console.log(comment);
+	        $("#comment").focus(); 
+	      	  return false; 
+	        }else if{
+	        	if($("#comment").text() == null){
+		        	alert("내용을입력해주세요.");
+		        	console.log(comment);
+		        $("#comment").focus(); 
+		       	 return false; 
+	        }
+	}
+		}	
+	</script>
+	
+
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
