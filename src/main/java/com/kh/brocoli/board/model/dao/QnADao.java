@@ -12,6 +12,7 @@ import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
 import com.kh.brocoli.board.model.vo.SearchCondition;
+import com.kh.brocoli.member.model.vo.Member;
 
 @Repository("qDao")
 public class QnADao {
@@ -85,7 +86,7 @@ public class QnADao {
 		return sqlSession.selectOne("QnA-mapper.getmyListCount");
 	}
 
-	public ArrayList<QnA> myselectList(PageInfo pi, Member m) {
+	public ArrayList<QnA> myselectList(PageInfo pi,Member m) {
 				
 		int offset = (pi.getCurrentPage() - 1) * pi.getLimit();
 		RowBounds rowBounds = new RowBounds(offset,pi.getLimit());

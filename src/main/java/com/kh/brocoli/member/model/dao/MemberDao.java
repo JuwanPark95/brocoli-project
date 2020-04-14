@@ -20,24 +20,24 @@ public class MemberDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public ArrayList<Auction> selectList() {
-		return (ArrayList)sqlSession.selectList("mainMapper.auctionlist");
+		return (ArrayList)sqlSession.selectList("main-Mapper.auctionlist");
 	}
 	
 	public ArrayList<Product> selectpList() {
-		return (ArrayList)sqlSession.selectList("mainMapper.ranklist");
+		return (ArrayList)sqlSession.selectList("main-Mapper.ranklist");
 	}
 	
 	public ArrayList<Product> selectEList() {
-		return (ArrayList)sqlSession.selectList("mainMapper.eventlist");
+		return (ArrayList)sqlSession.selectList("main-Mapper.eventlist");
 	}
 
 
 	public ArrayList<Brand> selectbList() {
-		return (ArrayList)sqlSession.selectList("mainMapper.brandlist");
+		return (ArrayList)sqlSession.selectList("main-Mapper.brandlist");
 	}
 
 	public ArrayList<Brand> selectbpList(String b_Name) {
-		return (ArrayList)sqlSession.selectList("mainMapper.bproductlist",b_Name);
+		return (ArrayList)sqlSession.selectList("main-Mapper.bproductlist",b_Name);
 	}
 
 
