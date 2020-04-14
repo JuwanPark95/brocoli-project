@@ -13,6 +13,9 @@
 #header-color3{
 	color:#6c7ae0
 }
+#Allbrand:hover{
+	opacity:0.5;
+}
 </style>
 </head>
 <body class="animsition">
@@ -40,12 +43,15 @@
 	
 	                 	<tr style="width:100%">
 	                 		<td style="width:10%;"></td>
-	                 		<td style="width:90%;">
+	                 		<td style="width:90%;" >
 		                 		<c:forEach var="brand" items="${ BrandList }"> 
 			                 		<c:url var="bproduct" value="bproduct.mn">
 			                 			<c:param name="b_Name" value="${ brand.b_Name }"/>
 			                 		</c:url>
-	                 					<a href="${bproduct}" style="width: 33%; float: left; margin-bottom: 12px; color:black;">${brand.b_Name }</a>
+			                 		
+	                 					<a href="${bproduct}" id="Allbrand" style="width: 33%; float: left; margin-bottom: 12px; color:black;">
+	                 					<img src="/brocoli/resources/mainResources/images/seokhun/${brand.b_Logo_ReName}" style="width: 80px;">
+	                 					<strong>${brand.b_Name }</strong></a>
 	                			</c:forEach>                 		
 	                 		</td>
 	

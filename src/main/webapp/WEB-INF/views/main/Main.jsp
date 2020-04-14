@@ -26,7 +26,7 @@
 				<c:if test="${b.ac_Banner_NO<3}"> 
 				<div class="col-md-6 p-b-30 m-lr-auto">
 					<div class="block1 wrap-pic-w">
-						<img src="/brocoli/resources/mainResources/images/${b.ac_Img }" alt="IMG-BANNER">
+						<img src="/brocoli/resources/mainResources/images/seokhun/${b.ac_Img }" alt="IMG-BANNER">
 						<a href="product.jsp" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
@@ -50,7 +50,7 @@
 				<c:if test="${b.ac_Banner_NO>=3 }">
 				  <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
 					<div class="block1 wrap-pic-w">
-						<img src="/brocoli/resources/mainResources/images/${b.ac_Img }" alt="IMG-BANNER">
+						<img src="/brocoli/resources/mainResources/images/seokhun/${b.ac_Img }" alt="IMG-BANNER">
 						<a href="product.jsp" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
@@ -76,26 +76,32 @@
 			</div>
 		</div>
 	</div>
-
+	
 
 	<!-- Product -->
 	<section class="bg0 p-t-23 p-b-130">
 		<div class="container">
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					주간랭킹TOP 20
+					주간랭킹TOP 20<br><br>
 				</h3>
 			</div>
 
 			<div class="row isotope-grid">
 			<c:forEach var="r" items="${ RankList }"> 
+			
+				<!-- 상품 상세 페이지로 가는 url -->
+           		<c:url var="productDetail" value="productDetail.mn">
+           			<c:param name="p_NO" value="${ r.p_NO }"/>
+   	        	</c:url>
+				<!-- -------------------- -->
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->
 					
 					<div class="block2">
 				
 						<div class="block2-pic hov-img0 label-new" data-label="New">
-							<img src="/brocoli/resources/mainResources/images/${r.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT">
+							<img src="/brocoli/resources/mainResources/images/seokhun/${r.pfList.pf_Img1_ReName }" style="height:378px;" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
@@ -104,12 +110,13 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="product-detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="${productDetail}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									${r.p_Name}
 								</a>
 
 								<span class="stext-105 cl3">
-									${r.p_Last_Price }<b>원</b>
+									${r.p_Last_Price }<b>원</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									구매 : ${r.p_Order_Count}
 								</span>
 							</div>
 
@@ -125,10 +132,10 @@
 				</c:forEach>
 
 			</div>
-			
+			<br><br><br>
 			<div class="p-b-10">
 				<h3 class="ltext-103 cl5">
-					EVENT
+					EVENT<br><br>
 				</h3>
 			</div>
 
@@ -140,7 +147,7 @@
 					<div class="block2">
 				
 						<div class="block2-pic hov-img0 label-new" data-label="New">
-							<img src="/brocoli/resources/mainResources/images/${e.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT">
+							<img src="/brocoli/resources/mainResources/images/seokhun/${e.pfList.pf_Img1_ReName}"style="height:378px;" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
@@ -154,7 +161,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									${e.p_Last_Price }<b>원</b>
+									<strike>${e.p_Price}</strike>${e.p_Last_Price }<b>원</b>
 								</span>
 							</div>
 
