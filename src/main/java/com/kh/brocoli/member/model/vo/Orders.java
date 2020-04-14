@@ -19,11 +19,16 @@ public class Orders {
 	 private int or_P_NO;
 	 private int or_Brand_NO;
 	
+	
+	 
+	 
 	 public Orders() {
 		super();
 	 }
 
-	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2,
+	
+	 
+	 public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2,
 			String or_Amount, String or_Address, String or_Message, String or_Price, String or_Status,
 			String or_Deliver_Num, String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO) {
 		super();
@@ -44,6 +49,8 @@ public class Orders {
 		this.or_Brand_NO = or_Brand_NO;
 	}
 
+	
+	 
 	public int getOr_NO() {
 		return or_NO;
 	}
@@ -164,6 +171,7 @@ public class Orders {
 		this.or_Brand_NO = or_Brand_NO;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Orders [or_NO=" + or_NO + ", or_Date=" + or_Date + ", or_Pcode=" + ", or_Pname=" + or_Pname
@@ -172,10 +180,6 @@ public class Orders {
 				+ ", or_Status=" + or_Status + ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender="
 				+ or_Deliver_Vender + ", or_Mno=" + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO
 				+ "]";
-	}	
-	 
-	 
-	
-	 
+	}
 	 
 }
