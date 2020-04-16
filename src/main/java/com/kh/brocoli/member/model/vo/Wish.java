@@ -6,10 +6,12 @@ public class Wish {
 	private int w_Mno;
 	private int w_P_NO;
 	
+	
 	public Wish() {
 		super();
 	}
 
+	
 	public Wish(String w_Option1, String w_Option2, int w_Mno, int w_P_NO) {
 		super();
 		this.w_Option1 = w_Option1;

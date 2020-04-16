@@ -22,4 +22,13 @@ public class AdminOrdersServiceImpl implements AdminOrdersService{
 	public ArrayList<Orders> selectOrdersList() {
 		return AODao.selectOrdersList();
 	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 2. Ajax 주문현황 상태 변경
+	 */
+	@Override
+	public int orderStatusChange(Orders orders) {
+		return AODao.orderStatusChange(orders);
+	}
 }

@@ -4,21 +4,13 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
-import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.SearchCondition;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 
-/**
- * @author kjh
- *
- */
-/**
- * @author kjh
- *
- */
+
 public interface MypageService {
 	
 	/**
@@ -79,7 +71,7 @@ public interface MypageService {
 	 * @param m
 	 * @return
 	 */
-	ArrayList<Orders> myorderList(Member m);
+	ArrayList<Orders> myorderList(String Pname);
 
 
 

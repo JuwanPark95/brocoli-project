@@ -247,11 +247,9 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("myOrderList.mn")
-	public ModelAndView myorderlist(ModelAndView mv, HttpSession session) {
-		
-		Member m = (Member)session.getAttribute("loginUser");
-		
-		ArrayList<Orders> list = myService.myorderList(m);
+	public ModelAndView myorderlist(ModelAndView mv, String Pname) {
+				
+		ArrayList<Orders> list = myService.myorderList(Pname);
 		
 
 		mv.addObject("list", list);

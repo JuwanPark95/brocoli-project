@@ -23,7 +23,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 140%;  	
   		}
   		
   	.tableArea {
@@ -51,6 +51,18 @@
 				<td width="100">글 번 호</td>
 				<td>${ q.q_No }</td>
 			</tr>
+			
+			<tr>
+				<td>구 분</td>
+					<td>
+					<select name="q_Kind">
+						<option value="배송">배송</option>
+						<option value="사이즈">사이즈</option>
+						<option value="기타문의">기타문의</option>
+					</select>
+				</td>
+			</tr>
+
 			<tr>
 				<td>제  목</td>
 				<td><input type="text" class="form-control" id="qtitle" name="q_Title" value="${ q.q_Title }"></td>
@@ -67,11 +79,22 @@
 			<tr>
 				<td>첨부 파일</td>
 				<td>
-					<input type="file" name="reloadFile">
-					<c:if test="${ !empty q.q_Img1 }">
-					<br>현재 업로드한 파일 : 
-					<a href="${ contextPath }/resource/nuploadFiles/${ q.q_Img1_ReName }" download="${ q.q_Img1 }">${ q.q_Img1 }</a>
-					</c:if>
+					<div class="productImgArea" id="productImgArea">
+	                	<input type="file" id="pf_Img1" name="reloadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" />
+	                    <input type="file" id="pf_Img2" name="reloadFile2" accept="resources/buploadFiles/" onchange="loadImg(this, 2);" />
+					</div>
+					
+					<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                	<c:if test="${ !empty q.q_Img1 }">
+	                	<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                	</c:if>
+	              	</div>
+	           
+	                <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                	<c:if test="${ !empty q.q_Img2 }">
+	                	<img src="/brocoli/resources/QnA-Img/${q.q_Img2_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                	</c:if>
+	             	</div>
 				</td>
 			</tr>
 			<tr>
@@ -89,6 +112,43 @@
 	</form>
 		</div>
 <%@ include file="All-Footer.jsp" %>
+
+<script>
+
+$(function(){
+  $('#productImgArea').hide();
+  
+     
+  $('#titleImgArea').click(() => {
+     $('#pf_Img1').click();
+  });
+     
+  $('#contentImgArea1').click(() => {
+     $('#pf_Img2').click();
+  });
+});
+
+function loadImg(value, num){
+  
+  if(value.files && value.files[0])  {
+     
+     var reader = new FileReader();
+     
+     reader.onload = function(e){
+        
+        switch(num) {
+        case 1 : $('#titleImgArea img').attr('src', e.target.result);
+        	console.log(e.target.result);
+           break;
+        case 2 : $('#contentImgArea1 img').attr('src', e.target.result);
+           break;
+           
+        }
+     }
+     reader.readAsDataURL(value.files[0]);
+  }
+} 
+</script>
 
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>

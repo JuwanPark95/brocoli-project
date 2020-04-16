@@ -105,7 +105,7 @@ public class BoardController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\bnuploadRiles";
+		String savePath = root + "\\Notice-Img";
 
 		File folder = new File(savePath);
 
@@ -254,6 +254,10 @@ public class BoardController {
 		System.out.println("bnSearch.mn" + condition);
 		
 		SearchCondition sc = new SearchCondition();
+		
+		sc.setSearch(search);
+		sc.setCondition(condition);
+		
 		
 		if(condition.equals("writer")) {
 			sc.setWriter(search);

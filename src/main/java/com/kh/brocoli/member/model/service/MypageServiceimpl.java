@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.brocoli.board.model.dao.QnADao;
-import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.SearchCondition;
@@ -61,8 +60,8 @@ public class MypageServiceimpl implements MypageService {
 	}
 
 	@Override
-	public ArrayList<Orders> myorderList(Member m) {
-		return myDao.myorderList(m);
+	public ArrayList<Orders> myorderList(String Pname) {
+		return myDao.myorderList(Pname);
 	}
 
 	

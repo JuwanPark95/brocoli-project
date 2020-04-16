@@ -28,7 +28,7 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="/brocoli/WEB-INF/views/main/Main.jsp" class="stext-109 cl8 hov-cl1 trans-04">
+<!-- 			<a href="/brocoli/WEB-INF/views/main/Main.jsp" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
@@ -36,10 +36,15 @@
 			<a href="/brocoli/WEB-INF/views/main/pages/Main-Product.jsp" class="stext-109 cl8 hov-cl1 trans-04">
 				Men
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-			</a>
-
+			</a> -->
 			<span class="stext-109 cl4">
-				Lightweight Jacket
+				${aProductList[0].p_Bcategory} &nbsp;>&nbsp;
+			</span>
+			<span class="stext-109 cl4">
+				${aProductList[0].p_Scategory} &nbsp;>&nbsp;
+			</span>
+			<span class="stext-109 cl4">
+				${aProductList[0].p_Name}
 			</span>
 		</div>
 	</div>
@@ -56,35 +61,39 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/mainResources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
+							<c:if test="${aProductList[0].pf_Img2_ReName != NULL}">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/mainResources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-
-								<div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-03.jpg">
+							</c:if>
+							
+							<c:if test="${aProductList[0].pf_Img3_ReName != NULL}">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/mainResources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
+								
+							</c:if>
 							</div>
 						</div>
 					</div>
@@ -92,16 +101,16 @@
 					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px; font-size:30px;">
-								<strong>그냥 아우터</strong>
+							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px; font-size:25px;">
+								<strong>${aProductList[0].p_Name}</strong>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 " style="display:inline-block; padding:5px;">
-								<strong>브랜드  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ABC
+								<strong>브랜드  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${aProductList[0].b_Name} 
 							</p>
 							&nbsp;&nbsp;&nbsp;
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
-								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp; AB12CD34
+								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp; ${aProductList[0].p_NO} 
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
@@ -115,18 +124,17 @@
 							<hr>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
 								<strong>판매가  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size:18px;"><strong><strike>36,000원</strike></strong></span>
+								<span style="font-size:18px;"><strong><strike>${aProductList[0].p_Price}원</strike></strong></span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
 								<strong>할인가  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size:18px;"><strong>34,000원</strong></span>
+								<span style="font-size:18px;"><strong>${aProductList[0].p_Last_Price}원</strong></span>
 							</p>		
 							<br>					
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
 								<strong>상품 설명  </strong><br>
-								
-								 ㅁㄹㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+								${aProductList[0].p_Comment}
 							</p>
 							
 							<!--  -->
@@ -137,11 +145,11 @@
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
 											<select class="js-select2" name="time" >
-												<option>선택</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
+												<c:forEach var="ap" items="${ aProductList }">
+											  		<c:if test= "${ap.option_1 != NULL }">
+														<option>${ap.option_1 }</option>
+													</c:if>
+										   		 </c:forEach>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -154,11 +162,11 @@
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
 											<select class="js-select2" name="time">
-												<option>선택</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
+												<c:forEach var="ap" items="${ aProductList }"> 
+													<c:if test= "${ap.option_2 != NULL }">
+														<option>${ap.option_2 }</option>
+													</c:if>
+											    </c:forEach>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -244,7 +252,13 @@
 						
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">
-									<img src="/brocoli/resources/mainResources/images/detail/ttt.PNG">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg1_ReName }">
+								<c:if test="${aProductList[0].pf_Dimg2_ReName != NULL}">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg2_ReName }">
+								</c:if>
+								<c:if test="${aProductList[0].pf_Dimg3_ReName != NULL}">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg3_ReName }">
+								</c:if>
 								</p>
 							</div>
 						</div>

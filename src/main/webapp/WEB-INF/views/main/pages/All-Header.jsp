@@ -61,11 +61,7 @@
 </head>
 <!-- Header -->
 <header class="header-v4">
-	<!-- 
-   	작성자 : 윤석훈
-   	작성일 : 2020-03-18
-   	내용 : 헤더 수정
-    -->
+
 	<!-- 
     	작성자 : 문예림
     	작성일 : 2020-03-26
@@ -122,26 +118,27 @@
 			<nav class="limiter-menu-desktop container">
 
 				<!-- Logo desktop -->
-				<c:url var="Main" value="Main" />
-				<a href="${Main }" class="logo"> 
+				<c:url var="MainPage" value="MainPage" />
+				<c:url var="Rank" value="rankView.mn" />
+				<c:url var="Brand" value="brandView.mn" />
+				<c:url var="Product" value="productView.mn" />
+				<c:url var="Magazine" value="magazineView.mn" />
+				<c:url var="Contact" value="mContactView.mn" />
+				<a href="${MainPage}" class="logo"> 
 				<img src="/brocoli/resources/mainResources/images/icons/logo-01.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
 					<ul class="main-menu">
-						<li><a href="${Main }" id="header-color1">Home</a> 
+						<li><a href="${MainPage }" id="header-color1">Home</a> 
 									<!-- <ul class="sub-menu main-menu">
 									<li><a href="index.jsp">Homepage 1</a></li>
 									<li><a href="home-02.jsp">Homepage 2</a></li>
 									<li><a href="home-03.jsp">Homepage 3</a></li>
 								</ul>  --></li>
 
-						<c:url var="Rank" value="rankView.mn" />
-						<c:url var="Brand" value="brandView.mn" />
-						<c:url var="Product" value="productView.mn" />
-						<c:url var="Magazine" value="magazineView.mn" />
-						<c:url var="Contact" value="mContactView.mn" />
+
 						<li class="label1" data-label1="hot"><a href="${Rank }" id="header-color2">RANK</a></li>
 
 						<li><a href="${Brand }" id="header-color3">BRAND</a></li>

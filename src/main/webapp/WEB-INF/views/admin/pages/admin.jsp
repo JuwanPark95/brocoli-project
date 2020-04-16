@@ -144,7 +144,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
+													<!-- <tr>
 														<td>1</td>
 														<td>
 															<div class="m-r-10">
@@ -216,7 +216,7 @@
 														<td colspan="9"><a href="#"
 															class="btn btn-outline-light float-right">View
 																Details</a></td>
-													</tr>
+													</tr> -->
 												</tbody>
 											</table>
 										</div>

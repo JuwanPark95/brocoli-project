@@ -40,7 +40,7 @@
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">QnA ${ q.q_No }번 글 세부보기</h2><Br>
 	
-	<table align="center" id="tableArea" class="table">
+	<table align="center" id="tableArea" class="table" enctype="multipart/form-data">
 			<tr>
 				<td width="100">글 번 호</td>
 				<td>${ q.q_No }</td>
@@ -63,8 +63,31 @@
 			</tr>
 			<tr>
 				<td>답변여부</td>
-				<td>${ q.q_View_Check }</td>
+				<%-- <td><input type="hidden" value="${ q.q_View_Check }"></td>  --%>
+				
+					<c:if test="${ q.q_View_Check == 'Y' }">
+						<td>읽음</td>
+					</c:if>
+					
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td> 안읽음</td>
+					</c:if>		
 			</tr>
+			
+			<tr>
+				<td>첨부 파일</td>
+				
+				<td>				
+				<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
+              	
+                <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img2_ReName}" alt="user" class="rounded"style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+             	</div>
+				</td>
+			</tr>
+			
 			<tr>
 				<td>내용</td>
 				<td><div style="height: 250px;">${ q.q_Content }</div></td>
@@ -73,15 +96,17 @@
 		<hr>
 		<!-- 댓글 -->
 		<div style="display: flex;">
+		<c:if test="${ !empty sessionScope.loginUser && loginUser.mGrant eq 1}">
 				<textarea id="rContent" class="form-control" rows="2" cols="80" style="resize: none; width: 900px; 
     			margin-left: 110px;"></textarea>
 				&nbsp;&nbsp;&nbsp;			
 				<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" id="rSubmit">등록</button>
+		</c:if>
 		</div>
 		<br>
 
 		<!-- <div style="display: flex; height: 150px;"> -->
-			<table align="center" width="1000" border="1" cellspacing="0" id="rtb">
+			<table align="center" width="1000" id="rtb" class="table">
 				<thead>
 					<tr>
 						<td colspan="3"><b id="rCount"></b></td>

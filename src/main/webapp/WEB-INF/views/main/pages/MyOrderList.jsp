@@ -143,7 +143,7 @@
 							<table class="table-shopping-cart">
 								<tr class="table_head" >
 									<th style="width:8%; text-align:center;">주문번호</th>
-									<th style="width:8%; text-align:center;"> 주문일자</th>
+									<th style="width:8%; text-align:center;">주문일자</th>
 									<th style="width:10%; text-align:center;">이미지</th>
 									<th style="width:20%; text-align:center;">상품정보</th>
 									<th style="width:8%; text-align:center;">판매금액</th>
@@ -154,24 +154,24 @@
 									<th style="width:8%; text-align:center;">상태</th>
 									<th style="width:8%; text-align:center;">확인</th>
 								</tr>
-						  <c:forEach var="Orders" items="">
+						  <c:forEach var="Orders" items="${list }">
 								<tr>
-									<td style="text-align:center;">${ or_No }</td>
-									<td style="text-align:center;">2020-03-30</td>
+									<td style="text-align:center;">${ Orders.or_No }</td>
+									<td style="text-align:center;">${ Orders.or_Date }</td>
 									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
 									<td style="text-align:left;">
 										<ul>
-											<li>상품명 : 패딩</li>
-											<li>옵션 1 : 레드 </li>
-											<li>옵션 2 : XL </li>
+											<li>${ Orders.or_Pname }</li>
+											<li>${ Orders.or_Option1 }</li>
+											<li>${ Orders.or_Option2 }</li>
 										</ul>
 									</td>
-									<td style="text-align:center;"><strike>36,000원</strike>
-																	   <br>34,000원</td>
-									<td style="text-align:center;">-2000원</td>
-									<td style="text-align:center;">360원</td>
-									<td style="text-align:center;">2</td>
-									<td style="text-align:center;">68,000원</td>
+									<td style="text-align:center;"><strike>${ Orders.p_Price }</strike>
+																	   <br>${ Orders.p_Last_Price }</td>
+									<td style="text-align:center;">-${ Orders.p_Sail_Price }</td>
+									<td style="text-align:center;">${ Orders.or_Price }/100</td>
+									<td style="text-align:center;">${ Orders.or_Amount }</td>
+									<td style="text-align:center;">${ Orders.or_Price }</td>
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
@@ -180,30 +180,7 @@
 									</td>
 								</tr>
                              </c:forEach>
-								<tr>
-									<td style="text-align:center;">2</td>
-									<td style="text-align:center;">2020-03-30</td>
-									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-03.jpg" alt="IMG" style="padding: 15px;"></td>
-									<td style="text-align:left;">
-										<ul>
-											<li>상품명 : 시계 </li>
-											<li>옵션 1 : ? </li>
-											<li>옵션 2 : ? </li>
-										</ul>
-									</td>
-									<td style="text-align:center;"><strike>36,000원</strike>
-																	   <br>34,000원</td>
-									<td style="text-align:center;">-2000원</td>
-									<td style="text-align:center;">360원</td>
-									<td style="text-align:center;">2</td>
-									<td style="text-align:center;">68,000원</td>
-									<td style="text-align:center;"><!-- <span style="color:blue;">●</span> --><strong>배송 중</strong></td>
-									<td style="text-align:center;">
-									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
-									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
-									<button class="ord-btn"><strong>리뷰 작성</strong></button>
-									</td>
-								</tr>
+								
 							</table>
 			</div>
 							<br><br><br><br>

@@ -5,17 +5,21 @@ public class SearchCondition {
 	private String writer;
 	private String title;
 	private String content;
+	private String search;
+	private String condition;
 	
 	public SearchCondition() {
 		super();
 	
 	}
 
-	public SearchCondition(String writer, String title, String content) {
+	public SearchCondition(String writer, String title, String content, String search, String condition) {
 		super();
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
+		this.search = search;
+		this.condition = condition;
 	}
 
 	public String getWriter() {
@@ -42,13 +46,26 @@ public class SearchCondition {
 		this.content = content;
 	}
 
-	@Override
-	public String toString() {
-		return "SearchCondition [witer=" + writer + ", title=" + title + ", content=" + content + "]";
+	public String getSearch() {
+		return search;
 	}
 
-	
-	
-	
-	
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	@Override
+	public String toString() {
+		return "SearchCondition [writer=" + writer + ", title=" + title + ", content=" + content + ", search=" + search
+				+ ", condition=" + condition + "]";
+	}
+
 }

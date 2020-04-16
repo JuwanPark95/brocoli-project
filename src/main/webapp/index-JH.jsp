@@ -10,6 +10,6 @@
 
 <!-- 각자 자신의 index 파일인지 반드시 확인후 forward할 경로를 수정하세요.  -->
 
-	<jsp:forward page="WEB-INF/views/main/pages/MyPage.jsp"/>
+	<jsp:forward page="WEB-INF/views/main/pages/MyOrderList.jsp"/>
 </body>
 </html>

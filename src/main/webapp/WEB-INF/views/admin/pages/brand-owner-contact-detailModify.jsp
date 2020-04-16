@@ -5,21 +5,20 @@
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="/brocoli/resources/adminResources/vendor/bootstrap/css/bootstrap.min.css">
-<link
-	href="/brocoli/resources/adminResources/vendor/fonts/circular-std/style.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="/brocoli/resources/adminResources/libs/css/style.css">
-<link rel="stylesheet"
-	href="/brocoli/resources/adminResources/vendor/fonts/fontawesome/css/fontawesome-all.css">
-<title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/bootstrap/css/bootstrap.min.css">
+	<link href="/brocoli/resources/adminResources/vendor/fonts/circular-std/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="/brocoli/resources/adminResources/libs/css/style.css">
+	<link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/fonts/fontawesome/css/fontawesome-all.css">
+	<!-- 글작성 에디터-->
+    <!-- css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+    <!-- /글작성 에디터-->
+	<title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
 <body>
@@ -47,7 +46,7 @@
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item">가맹브랜드 관리</a></li>
 											<li class="breadcrumb-item">오너콘택트</a></li>
-											<li class="breadcrumb-item">게시글 수정</a></li>
+											<li class="breadcrumb-item">수정하기</a></li>
 										</ol>
 									</nav>
 								</div>
@@ -58,76 +57,129 @@
 					<!-- end pageheader  -->
 					<!-- ============================================================== -->
 					<div class="row">
-						<div
-							class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
+						  <form action="ownerContactUpdateSave.ad" enctype="multipart/form-data" method="post">
 							<div class="card">
 								<div class="card-header p-4">
-									<div class="card-header"
-										style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none; font-family: 'Do Hyeon', sans-serif;">
-										<h3 class="card-title"
-											style="margin-bottom: 0px; font-size: 17px">
-											<span style="float: left;">작성자 </span> <span
-												style="float: right; padding-right: 80px;">조회수 </span><br>
+									<div class="card-header" style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none;">
+										<h2 class="card-title" style="margin-bottom: 0px; font-size: 17px">
+											<input type="hidden" name="con_NO" value="${c.con_NO}">
+											<input type="hidden" name="con_Img" value="${ c.con_Img }">
+											<input type="hidden" name="con_Img_ReName" value="${ c.con_Img_ReName }">
+		
+											<span style="font-size: 85%;">작성자</span> 
+											<span style="padding-left: 6%; font-size: 85%;">
+												<input type="text" name="con_Writer" value="${c.con_Writer}" style="width:16.5vw; border: solid 1.2px lightgrey;">
+											</span>
+											<br>
 											<hr>
-											<span
-												style="float: left; margin-top: 10px; margin-bottom: 10px;">제목
-											</span> <span
-												style="float: right; padding-top: 10px; padding-right: 80px;">작성일
-											</span><br> <br>
+											<div style="float: left; width: 50%">
+												<span style="font-size: 85%;">제 목</span> 
+												<span style="padding-left: 15%; font-size: 85%;">
+													<input type="text" name="con_Title" value="${c.con_Title}" style="width:16.5vw; border: solid 1.2px lightgrey;">
+												</span>
+											</div>
+											<div style="float: left; width:20vw">
+												<span style="padding-left: 9vw; font-size: 85%;">작성일</span>
+												<span style="padding-left: 1vw; font-size: 85%;">${c.con_Date}</span>
+												<input type="hidden" name="con_Date" value="${c.con_Date}">
+											</div>
+											<br>
 											<hr>
-											<span
-												style="float: left; width: 1000px; margin-right: 810px;">첨부파일
-												미리보기 </span>
-										</h3>
+											<span style="padding-left: 5%; font-size: 85%;"> 
+												<%-- <div class="col-12 col-sm-8 col-lg-6">
+		                                           <div class="form-group row">
+		                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+		                                                 <img id="titleImg" src="http://via.placeholder.com/"  alt="${c.con_Img}" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+		                                              </div>
+		                                           </div>
+                                       			</div>
+		                                        <div class="ownerContactImgArea" id="ownerContactImgArea">
+		                                           <input type="file" id="pf_Img1" name="file1" accept="resources/ownerContact/*" onchange="loadImg(this, 1);" />
+		                                        </div> --%>
+												<input type="file" name="reloadFile">
+												<c:if test="${ !empty b.originalFileName }">
+													<br>현재 업로드한 파일 : 
+													<a href="${ contextPath }/resources/ownerContact/${ c.con_Img_ReName}" download="${ c.con_Img }">${ c.con_Img }</a>
+												</c:if>
+											</span>
+										</h2>
 									</div>
-
 								</div>
-
 								<div class="card-body">
 									<div class="row mb-4">
 										<div class="col-sm-6">
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Gerald A. Garcia</h3>
-
-											<div>2546 Penn Street</div>
-											<div>Sikeston, MO 63801</div>
-											<div>Email: info@gerald.com.pl</div>
-											<div>Phone: +573-282-9117</div>
-										</div>
-										<div class="col-sm-6">
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Anthony K. Friel</h3>
-											<div>478 Collins Avenue</div>
-											<div>Canal Winchester, OH 43110</div>
-											<div>Email: info@anthonyk.com</div>
-											<div>Phone: +614-837-8483</div>
+										<textarea type="" name="con_Content" style="width:47vw; height:20vw; border: solid 1.2px lightgrey;">${c.con_Content}</textarea>
 										</div>
 									</div>
-
-									<div class="card-footer float-right"
-										style="background-color: transparent !important; border-top: white;">
-										<button type="submit" class="btn btn-light "
-											    onclick="location.href = '/brocoli/admin/pages/brand-owner-contact.jsp'">저장</button>
+									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
+										<button type="submit" class="btn btn-light">저장</button>
 									</div>
 								</div>
+								<div class="card-footer bg-white"></div>
 							</div>
+						  </form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- ============================================================== -->
-			<!-- end wrapper  -->
-			<!-- ============================================================== -->
 		</div>
+	</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- end wrapper  -->
+	<!-- ============================================================== -->
+	</div>
 	</div>
 	<!-- ============================================================== -->
 	<!-- end main wrapper  -->
 	<!-- ============================================================== -->
-
-
-
-
 	<!-- Optional JavaScript -->
+	<!-- 첨부파일 미리보기 기능 지원 -->
+	<script>
+	   //사진 게시판 미리보기 기능 지원 스크립트
+	   $(function(){
+	      $('#ownerContactImgArea').hide();
+	      
+	      $('#titleImgArea').click(() => {
+	          $('#pf_Img1').click();
+	       });
+	         
+	   });
+	
+	   function loadImg(value, num){
+	      
+	      if(value.files && value.files[0])  {
+	         
+	         var reader = new FileReader();
+	         
+	         reader.onload = function(e){          
+	            switch(num) {
+	            case 1 : $('#titleImg').attr('src', e.target.result);
+	               break;
+	            }
+	         }
+	         reader.readAsDataURL(value.files[0]);
+	      }
+	   }
+	</script>
+	
+	<!-- 글작성 에디터 -->
+	<script>
+	  $(document).ready(function() {
+	      $('#summernote').summernote();
+	  });
+	  $('#summernote').summernote({
+	      height: 300,
+	      width: 1000,                 // set editor height
+	      minHeight: null,             // set minimum height of editor
+	      maxHeight: null,             // set maximum height of editor
+	      focus: true                  // set focus to editable area after initializing summernote
+	  });
+	</script>
+	<!-- /글작성 에디터 -->
+	
+	
 	<!-- slimscroll js -->
 	<script
 		src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>
