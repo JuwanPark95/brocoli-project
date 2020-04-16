@@ -52,8 +52,6 @@
 									<th class="column-0"><input type="checkbox"></th>
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
-									<th class="column-3">옵션1</th>
-									<th class="column-4">옵션2</th>
 									<th class="column-5">판매금액</th>
 									<th class="column-6">할인가</th>
 									<th class="column-7">총 금액</th>
@@ -67,32 +65,14 @@
 										</div>
 									</td>
 									<td class="column-2">패딩</td>
-									<td class="column-3">Red</td>
-									<td class="column-4">XL</td>
 									<td class="column-5">36,000원</td>
 									<td class="column-6">-2,000원</td>
 									<td class="column-7">34,000원</td>
 									
 								</tr>
 								
-								
-
-								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/images/item-cart-05.jpg" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">아우터</td>
-									<td class="column-3">BLACK</td>
-									<td class="column-4">L</td>
-									<td class="column-5">72,000원</td>
-									<td class="column-6">-4,000원</td>
-									<td class="column-7">68,000원</td>
-								</tr>
 								<tr style="height:100px;">
-									<td colspan="6"></td>
+									<td colspan="4"></td>
 									<td >총 금액 : </td>
 									<td>102,000원 </td>
 								</tr>
@@ -111,10 +91,7 @@
 								선택 상품 삭제
 							</div>
 						</div> -->
-						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; width: 200px; float: right; border-radius:5px;"	>
-							장바구니에 담기
-						</div>
+						
 						
 						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
    						 color: white; width: 200px; float: right; border-radius:5px;"	>
