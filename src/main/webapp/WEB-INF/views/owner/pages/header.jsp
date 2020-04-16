@@ -163,7 +163,10 @@
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-day.jsp">일간매출</a>
+                                        	<c:url var="incomeDay_select" value="incomeDaySelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeDay_select}">일간매출</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/income-week.jsp">주간매출</a>

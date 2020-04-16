@@ -99,57 +99,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>2020-03-22</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-21</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-20</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-19</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-18</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            
-                                            
+                                        	<c:forEach var="r" items="${olist}">
+	                                            <tr>
+	                                                <td>${r.day}</td>
+	                                                <td>${r.orderCount}</td>
+	                                                <td>${r.orderPrice}</td>
+	                                                <td>${r.rejectCount} / ${r.rejectPrice}</td>
+	                                                <td>${r.changeCount} / ${r.changePrice}</td>
+	                                                <td></td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>날짜</th>
+                                               	<th>날짜</th>
                                                 <th>주문건수</th>
                                                 <th>매출 (원)</th>
-                                                <th>환불 건/금액</th>
-                                                <th>교환 건/금액</th>
-                                                <th>총 계</th>
+                                                <th>환불 건/금액 (원)</th>
+                                                <th>교환 건/금액 (원)</th>
+                                                <th>총 계 (원)</th>
                                             </tr>
                                         </tfoot>
                                         

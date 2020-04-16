@@ -8,7 +8,7 @@
 	
 	<!-- resultMap -->
 	<!-- 상품등록정보 -->
-	
+	<!-- 작성자 : 박주완 -->
  	<resultMap  type="Product" id="productResultSet">
 		<id property="p_NO" column="P_NO"/>
 		
@@ -135,6 +135,5 @@
 		WHERE P_BRAND_NO = #{bNO}
 		ORDER BY P.P_NO DESC
 	</select>
-
 	
 </mapper>
