@@ -23,7 +23,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 130%;  	
   		}
   		
   	.tableArea {
@@ -60,7 +60,16 @@
 			</tr>
 			<tr>
 				<td>첨부 파일</td>
-				<td><input type="file" name="uploadFile"></td>
+				<td>
+				<div class="productImgArea" id="productImgArea">
+                	<input type="file" id="pf_Img1" name="uploadFile" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" />
+                </div>
+                
+                <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	 <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
+              	
+				</td>
 			</tr>
 			<tr>
 				<td>내용</td>
@@ -96,7 +105,33 @@
 		});
 	});
 	
-	</script>
+
+	$(function(){
+	  $('#productImgArea').hide();
+	  
+	     
+	  $('#titleImgArea').click(() => {
+	     $('#pf_Img1').click();
+	  });
+	});
+
+	function loadImg(value, num){
+	  
+	  if(value.files/*  && value.files[0] */)  {
+	     
+	     var reader = new FileReader();
+	     
+	     reader.onload = function(e){
+	        
+	        switch(num) {
+	        case 1 : $('#titleImg').attr('src', e.target.result);
+	           break;
+	        }
+	     }
+	     reader.readAsDataURL(value.files[0]);
+	  }
+	} 
+		</script>
 
 <%@ include file="All-Footer.jsp" %>
 

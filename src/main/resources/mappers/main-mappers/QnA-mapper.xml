@@ -114,7 +114,7 @@
 		UPDATE QNA
 		SET Q_WRITER=#{q_Writer}, Q_TITLE=#{q_Title}, Q_CONTENT=#{q_Content},
 			q_Modify_ID=#{q_Modify_ID}, q_Modify_Date=SYSDATE, Q_KINDS=#{q_Kind},
-			Q_IMG1=#{q_Img1}, Q_IMG1_RENAME=#{q_Img1_ReName}
+			Q_IMG1=#{q_Img1}, Q_IMG1_RENAME=#{q_Img1_ReName}, Q_IMG2=#{q_Img2}, Q_IMG2_RENAME=#{q_Img2_ReName}
 		WHERE Q_NO=#{q_No}
 	</update>
 	
