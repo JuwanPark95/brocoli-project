@@ -46,11 +46,7 @@
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item">가맹브랜드 관리</a></li>
 											<li class="breadcrumb-item">오너콘택트</a></li>
-<<<<<<< HEAD
 											<li class="breadcrumb-item">수정하기</a></li>
-=======
-											<li class="breadcrumb-item">게시글 수정</a></li>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 										</ol>
 									</nav>
 								</div>
@@ -65,7 +61,6 @@
 						  <form action="ownerContactUpdateSave.ad" enctype="multipart/form-data" method="post">
 							<div class="card">
 								<div class="card-header p-4">
-<<<<<<< HEAD
 									<div class="card-header" style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none;">
 										<h2 class="card-title" style="margin-bottom: 0px; font-size: 17px">
 											<input type="hidden" name="con_NO" value="${c.con_NO}">
@@ -77,16 +72,7 @@
 												<input type="text" name="con_Writer" value="${c.con_Writer}" style="width:16.5vw; border: solid 1.2px lightgrey;">
 											</span>
 											<br>
-=======
-									<div class="card-header"
-										style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none; font-family: 'Do Hyeon', sans-serif;">
-										<h3 class="card-title"
-											style="margin-bottom: 0px; font-size: 17px">
-											<span style="float: left;">작성자 </span> <span
-												style="float: right; padding-right: 80px;">조회수 </span><br>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 											<hr>
-<<<<<<< HEAD
 											<div style="float: left; width: 50%">
 												<span style="font-size: 85%;">제 목</span> 
 												<span style="padding-left: 15%; font-size: 85%;">
@@ -99,15 +85,7 @@
 												<input type="hidden" name="con_Date" value="${c.con_Date}">
 											</div>
 											<br>
-=======
-											<span
-												style="float: left; margin-top: 10px; margin-bottom: 10px;">제목
-											</span> <span
-												style="float: right; padding-top: 10px; padding-right: 80px;">작성일
-											</span><br> <br>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 											<hr>
-<<<<<<< HEAD
 											<span style="padding-left: 5%; font-size: 85%;"> 
 												<%-- <div class="col-12 col-sm-8 col-lg-6">
 		                                           <div class="form-group row">
@@ -126,68 +104,36 @@
 												</c:if>
 											</span>
 										</h2>
-=======
-											<span
-												style="float: left; width: 1000px; margin-right: 810px;">첨부파일
-												미리보기 </span>
-										</h3>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 									</div>
 								</div>
 								<div class="card-body">
 									<div class="row mb-4">
 										<div class="col-sm-6">
-<<<<<<< HEAD
 										<textarea type="" name="con_Content" style="width:47vw; height:20vw; border: solid 1.2px lightgrey;">${c.con_Content}</textarea>
-=======
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Gerald A. Garcia</h3>
-
-											<div>2546 Penn Street</div>
-											<div>Sikeston, MO 63801</div>
-											<div>Email: info@gerald.com.pl</div>
-											<div>Phone: +573-282-9117</div>
-										</div>
-										<div class="col-sm-6">
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Anthony K. Friel</h3>
-											<div>478 Collins Avenue</div>
-											<div>Canal Winchester, OH 43110</div>
-											<div>Email: info@anthonyk.com</div>
-											<div>Phone: +614-837-8483</div>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 										</div>
 									</div>
-<<<<<<< HEAD
 									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
 										<button type="submit" class="btn btn-light">저장</button>
-=======
-
-									<div class="card-footer float-right"
-										style="background-color: transparent !important; border-top: white;">
-										<button type="submit" class="btn btn-light "
-											    onclick="location.href = '/brocoli/admin/pages/brand-owner-contact.jsp'">저장</button>
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 									</div>
 								</div>
+								<div class="card-footer bg-white"></div>
 							</div>
 						  </form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- ============================================================== -->
-			<!-- end wrapper  -->
-			<!-- ============================================================== -->
 		</div>
+	</div>
+	</div>
+	<!-- ============================================================== -->
+	<!-- end wrapper  -->
+	<!-- ============================================================== -->
+	</div>
 	</div>
 	<!-- ============================================================== -->
 	<!-- end main wrapper  -->
 	<!-- ============================================================== -->
-
-
-
-
 	<!-- Optional JavaScript -->
 	<!-- 첨부파일 미리보기 기능 지원 -->
 	<script>
