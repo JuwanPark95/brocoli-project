@@ -63,8 +63,32 @@
 			</tr>
 			<tr>
 				<td>답변여부</td>
-				<td>${ q.q_View_Check }</td>
+				<%-- <td><input type="hidden" value="${ q.q_View_Check }"></td>  --%>
+				
+					<c:if test="${ q.q_View_Check == 'Y' }">
+						<td>읽음</td>
+					</c:if>
+					
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td> 안읽음</td>
+					</c:if>		
 			</tr>
+			
+			<tr>
+				<td>첨부 파일</td>
+				<td>
+				<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" width="45">
+				<%-- 	<c:if test="${ !empty q.q_Img1 }">
+						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"
+						download="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"> ${ q.q_Img1_ReName }</a>
+					</c:if>
+					<c:if test="${ !empty q.q_Img2 }">
+						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"
+						download="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"> ${ q.q_Img2_ReName }</a>
+					</c:if> --%>
+				</td>
+			</tr>
+			
 			<tr>
 				<td>내용</td>
 				<td><div style="height: 250px;">${ q.q_Content }</div></td>
@@ -72,21 +96,21 @@
 		</table>
 		<hr>
 		<!-- 댓글 -->
-		
 		<div style="display: flex;">
+		<c:if test="${ !empty sessionScope.loginUser && loginUser.mGrant eq 1}">
 				<textarea id="rContent" class="form-control" rows="2" cols="80" style="resize: none; width: 900px; 
     			margin-left: 110px;"></textarea>
 				&nbsp;&nbsp;&nbsp;			
 				<button class="btn btn-primary" style="background: #222; width: 100px; border: 1px solid #222;" id="rSubmit">등록</button>
+		</c:if>
 		</div>
-		
 		<br>
 
 		<!-- <div style="display: flex; height: 150px;"> -->
-			<table align="center" class="table table-bordered" id="rtb">
+			<table align="center" width="1000" id="rtb" class="table">
 				<thead>
 					<tr>
-						<td><b id="rCount"></b></td>
+						<td colspan="3"><b id="rCount"></b></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -178,7 +202,7 @@
 									$tr = $("<tr>");
 									$qr_Mname = $("<td width='100'>").text(data[i].qr_Mname);
 									$qr_Comment = $("<td>").text(data[i].qr_Comment);
-									$qr_Date = $("<td width='110'>").text(data[i].qr_Date);
+									$qr_Date = $("<td width='100'>").text(data[i].qr_Date);
 
 									$tr.append($qr_Mname);
 									$tr.append($qr_Comment);

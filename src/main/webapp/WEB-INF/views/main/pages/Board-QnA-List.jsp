@@ -72,7 +72,14 @@
         	</c:if> <c:if test="${ empty q.q_Img1_ReName }">
         		&nbsp;
         	</c:if></td>
-        <td align="center">${ q.q_View_Check }</td>
+        
+        	<c:if test="${ q.q_View_Check == 'Y' }">
+						<td style="text-align:center;">읽음</td>
+					</c:if>
+					
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td style="text-align:center;">안읽음</td>
+			</c:if>
       </tr>
       
     </c:forEach>
@@ -96,16 +103,30 @@
 	
 			<!-- 페이지 -->
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+			
 				<c:if test="${ p eq pi.currentPage }">
 					<li class="page-item active">
 					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
 				</c:if>
 				
+				<c:if test="${empty sc }">
 				<c:if test="${ p ne pi.currentPage }">
 					<c:url var="pageNext" value="QnAlist.mn">
 						<c:param name = "currentPage" value="${ p }"/>
 					</c:url>
 					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
+				</c:if>
+				
+				<c:if test="${!empty sc}">
+				<c:if test="${p ne pi.currentPage }">
+				<c:url var="pageNext" value="qSearch.mn">
+						<c:param name = "currentPage" value="${ p }"/>
+						<c:param name = "search" value="${ search }"/>
+ 					    <c:param name = "condition" value="${ sc.condition }"/>
+					</c:url>
+					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
 				</c:if>
 			</c:forEach>
 			

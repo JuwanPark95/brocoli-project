@@ -39,7 +39,7 @@
 <div id="all">
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">공지사항 작성</h2><Br>
-    <form action="bnInsert.mn" method="post" enctype="multipart/form-data">
+    <form id="as" method="post" enctype="multipart/form-data">
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
@@ -71,22 +71,31 @@
 
 
 		<div align="center">
-		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-		 onsubmit="return checks()" value="작성 완료">
+		<input type="submit" id="btnSubmit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;" value="작성 완료">
 		</div>
 	</form>
 		</div>
 		
 	<script>
-		function checks(){
-	      	  var title = $("#ntitle").val();
-	      
-	       	 if(title == ""){
-	       		 alert("제목을 입력해주세요."); 
-	       			title.focus(); 
-	       	 return false; 
-	      }
-		}	
+	$(function(){
+		$("#btnSubmit").on("click",function(){
+			
+			if($("#ntitle").val().length == 0){
+				alert("제목을 입력해 주세요.");
+				$("#ntitle").focus();
+				return false;
+			}
+			
+			if($("#comment").val().length == 0){
+				alert("내용을 입력해 주세요.");
+				$("#comment").focus();
+				return false;
+			}else{
+				$("#as").attr("action","bnInsert.mn").submit();
+			}
+		});
+	});
+	
 	</script>
 
 <%@ include file="All-Footer.jsp" %>

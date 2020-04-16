@@ -75,7 +75,7 @@
                                                 <th style="width:10%">주소</th>
                                                 <th style="width:8%">전화번호</th>
                                                 <th style="width:8%">입점일</th>
-                                                <th style="width:3%">입점상태</th>
+                                                <th style="width:3%">입점상태(Y/N)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -90,20 +90,16 @@
                                                 <td>${b.b_Address }</td>
                                                 <td>${b.b_Phone }</td>
                                                 <td>${b.b_Enter_Date }</td>
-                                                <td>
-                                                <c:set var="b_Status" value="${b.b_Status}"/>
-                                                	<c:if test="${b_Status eq 'Y'}">
-                                                		입점 <span style="color:#3ADF00; white-space: nowrap;">O</span>
-                                                	</c:if>
-                                                	<c:if test="${b_Status eq 'N'}">
-                                                		<span style="color:#FA372A; white-space: nowrap;">X</span>                                               	
-                                                	</c:if>
-                                                
-                                                </td>
+                                                <td>${b.b_Status }</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
+                      			<div class="form-group row text-right" style="width:136%">
+                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                     	<button class="btn btn-dark" onclick="location.href='brand-add.jsp'">추가</button>
+                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>

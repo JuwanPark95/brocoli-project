@@ -51,4 +51,16 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 
+	@Override
+	public ArrayList<Product> selectapList() {
+		return mDao.selectapList();
+	}
+
+
+	@Override
+	public ArrayList<Product> selectpDetail(String p_NO) {
+		return mDao.selectpDetail(p_NO);
+	}
+
+
 }

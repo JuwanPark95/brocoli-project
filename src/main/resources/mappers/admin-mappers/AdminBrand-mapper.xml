@@ -128,7 +128,7 @@
      		JOIN MEMBER M
      		ON C.CON_MNO = M.MNO
 	</select>
-	
+
 	<select id="ownerContactDetail" parameterType="Contact" resultMap="contactResultSet">
 		SELECT *
 		FROM CONTACT

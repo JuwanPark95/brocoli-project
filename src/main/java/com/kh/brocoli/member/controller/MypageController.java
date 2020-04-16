@@ -1,5 +1,7 @@
 package com.kh.brocoli.member.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,23 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.brocoli.board.model.service.QnAService;
+import com.kh.brocoli.board.model.vo.Notice;
+import com.kh.brocoli.board.model.vo.PageInfo;
+import com.kh.brocoli.board.model.vo.QnA;
+import com.kh.brocoli.board.model.vo.SearchCondition;
+import com.kh.brocoli.commons.Pagination;
 import com.kh.brocoli.member.model.service.MypageService;
 import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 
 
 @Controller
 public class MypageController {
+	
+	@Autowired
+	private QnAService qService;
 	
 	@Autowired
 	private MypageService myService;
@@ -184,7 +196,7 @@ public class MypageController {
 					session.invalidate();
 			    	return "redirect:index.jsp";
 			    }else {
-			    model.addAttribute("msg","비밀번호 변경 실패");
+			        model.addAttribute("msg","비밀번호 변경 실패");
 			    	return "common/errorPage";
 			    }
 		
@@ -235,8 +247,15 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("myOrderList.mn")
-	public String myorderlist() {
-		return "MyOrderList";
+	public ModelAndView myorderlist(ModelAndView mv, String Pname) {
+				
+		ArrayList<Orders> list = myService.myorderList(Pname);
+		
+
+		mv.addObject("list", list);
+		mv.setViewName("MyOrderList");
+		
+		return mv;
 	}
 	
 	
@@ -271,9 +290,72 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("B_Alllist.mn")
-	public String alllist() {
-		return "Board-All-List";
+	public ModelAndView alllist(ModelAndView mv, HttpSession session,
+			@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage) {
+		
+        System.out.println(currentPage);
+        
+        Member m = (Member)session.getAttribute("loginUser");
+		
+		int listCount = myService.getmyListCount();
+		
+		System.out.println("listCount : " + listCount);
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage,listCount);
+		
+		ArrayList<QnA> list = myService.myselectList(pi,m);
+		
+		
+		mv.addObject("list", list);
+		mv.addObject("pi",pi);
+		mv.setViewName("Board-All-List");
+		
+		return mv;
+		
 	}
+	
+
+	@RequestMapping("mySearch.mn")
+	public ModelAndView searchBoard(ModelAndView mv, HttpSession session,
+									@RequestParam(value = "search", required = false) String search,
+									@RequestParam(value = "condition", required = false) String condition,
+									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
+		
+		System.out.println("bnSearch.mn" + search);
+		System.out.println("bnSearch.mn" + condition);
+		
+		SearchCondition sc = new SearchCondition();
+		
+		if(condition.equals("writer")) {
+			
+			sc.setWriter(search);
+		}else if(condition.equals("title")) {
+			sc.setTitle(search);
+		}else if(condition.equals("content")) {
+			sc.setContent(search);
+		}
+		
+		// 검색 결과에 해당되는 게시물 갯수 조회
+		int listCount = myService.getSearchResultListCount(sc);
+		
+		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		// 검색결과에 해당되는 게시물 목록 조회
+		ArrayList<QnA> list = myService.selectSearchResultList(session, sc, pi);
+		
+		mv.addObject("list", list);
+		mv.addObject("pi", pi);
+		
+		mv.addObject("sc", sc);
+		mv.addObject("contdition", condition);
+		mv.addObject("search", search);
+		
+		mv.setViewName("Board-All-List");
+		
+		return mv;
+	}
+	
 	
 
 }

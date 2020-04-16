@@ -78,7 +78,7 @@
                                                 <th>옵션번호</th>
                                                 <th>옵션1</th>
                                                 <th>옵션2</th>
-                                                <th aria-sort="ascending">재고</th>
+                                                <th>재고</th>
                                                 <th>상태</th>
                                                 <th>상세보기</th>
                                             </tr>

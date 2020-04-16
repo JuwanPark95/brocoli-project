@@ -77,40 +77,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        
                                         <c:forEach var="c" items="${OwnerContactList}" varStatus="cl"> <!-- for -->
                                             <tr>
                                             	<td>${cl.count}</td>
                                                 <td>${c.con_NO}</td>
                                                 <td>${c.con_Writer}</td>
                                                 <td>
-	                                                <c:set var="brandName" value="${c.brandName}"/>
-	                                                <c:if test="${brandName eq 'NO'}">
-	                                                	-
-	                                                </c:if>
-	                                                <c:if test="${brandName != 'NO'}">
-	                                                	${c.brandName}
-	                                                </c:if>
+                                                <c:set var="brandName" value="${c.brandName}"/>
+                                                <c:if test="${empty brandName}">
+                                                	-
+                                                </c:if>
+                                                ${c.brandName}
                                                 </td>
                                                 <td>${c.con_Title}</td>
                                                 <td>${c.con_Date}</td>
-                                                <td>
-                                                	<c:set var="viewCheck" value="${c.con_View_Check}"/>
-                                                	<c:if test="${viewCheck eq 'Y'}">
-                                                		읽음 <span style="color:#3ADF00; white-space: nowrap;">O</span>
-                                                	</c:if>
-                                                	<c:if test="${viewCheck eq 'N'}">
-                                                		읽음 <span style="color:#FA372A; white-space: nowrap;">X</span>                                               	
-                                                	</c:if>
-                                                </td>
-												</tr>
+                                                <td>${c.con_View_Check}</td>
+											</tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
-                                    <div class="form-group row text-right" style="width:136%">
-                                     	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                     		<button class="btn btn-dark" onclick="location.href='contactWrite.ad'">글쓰기</button>
-                                     </div>
-                                </div>
                                 </div>
                             </div>
                         </div>
@@ -129,19 +115,24 @@
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     
-    <!-- 오너콘택트 상세보기용 -->
-	<script>
-		$(function(){
-			$("#brand-owner-contact").find("td").mouseenter(function(){
-				$(this).parents("tr").css({ "cursor":"pointer"});
-			}).click(function(){
-				var ocId = $(this).parents().children("td").eq(1).text();
-				location.href="ownerContactDetail.ad?ocId="+ocId;
+    	<!-- 오너콘택트 상세보기용 -->
+		<script>
+			$(function(){
+				$("#brand-owner-contact").find("td").mouseenter(function(){
+					$(this).parents("tr").css({ "cursor":"pointer"});
+				}).click(function(){
+					var bId = $(this).parents().children("td").eq(0).text();	
+					location.href="brand-owner-contact-detail.jsp";
+					//location.href="detail.bo?bId="+bId;
+				});
 			});
-		});
-	</script>
-	<!-- 오너콘택트 상세보기용 -->
-	
+		</script>
+		
+		
+
+    
+    
+    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

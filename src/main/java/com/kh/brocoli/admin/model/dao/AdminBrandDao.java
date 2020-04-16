@@ -126,6 +126,7 @@ public class AdminBrandDao {
 		return (ArrayList)sqlSession.selectList("AdminBrand.ownerContactList");
 	}
 
+
 	/**
 	 * 작성자  : 신은지
 	 * 12. 오너 콘택트 상세보기

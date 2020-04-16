@@ -29,55 +29,54 @@
 	
 	
 		<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
-
-		SELECT * 
-		FROM MEMBER
-		WHERE MID=#{mId}
-		AND DEL_FLAG_YN='N'
-		
+			SELECT * 
+			FROM MEMBER
+			WHERE MID=#{mId}
+			AND DEL_FLAG_YN='N'
 		</select>
 		
 
 		<insert id="insertMember" parameterType="Member">
-		 INSERT INTO MEMBER
-    	 VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
-    	 NULL,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
-	</insert>
+			INSERT INTO MEMBER
+	    	VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
+	    	NULL,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
+	    </insert>
 	
-	<select  id="idCheck" parameterType="String" resultType="_int">
-		SELECT COUNT(*)
-		FROM MEMBER
-		WHERE MID=#{mId}
-	</select>
-	<select  id="mailCheck" parameterType="String" resultType="_int">
-		SELECT COUNT(*)
-		FROM MEMBER
-		WHERE EMAIL=#{email}
-	</select>
+		<select  id="idCheck" parameterType="String" resultType="_int">
+			SELECT COUNT(*)
+			FROM MEMBER
+			WHERE MID=#{mId}
+		</select>
+		
+		<select  id="mailCheck" parameterType="String" resultType="_int">
+			SELECT COUNT(*)
+			FROM MEMBER
+			WHERE EMAIL=#{email}
+		</select>
 
 		<update id="updateMember" parameterType="Member">
-		UPDATE MEMBER
-		SET PWD=#{pwd},ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
-		WHERE MID=#{mId}
+			UPDATE MEMBER
+			SET PWD=#{pwd},ADDRESS=#{address},EMAIL=#{email},PHONE=#{phone}
+			WHERE MID=#{mId}
 	    </update>
 	
 	    <update id="deleteMember" parameterType="string">
-		UPDATE MEMBER
-		SET DEL_FLAG_YN='Y'
-		WHERE MID=#{mId}
+			UPDATE MEMBER
+			SET DEL_FLAG_YN='Y'
+			WHERE MID=#{mId}
 	    </update>
 	    
 	    <select id="pwdCheck" parameterType="string" resultType="_int">
-		SELECT COUNT(*)
-		FROM MEMBER
-		WHERE  MID=#{mId}
+			SELECT COUNT(*)
+			FROM MEMBER
+			WHERE  MID=#{mId}
 	    </select>
 
 		
 		<select id="mailCheck2" parameterType="string" resultType="string">
-		SELECT MID
-		FROM MEMBER
-		WHERE EMAIL=#{email}
+			SELECT MID
+			FROM MEMBER
+			WHERE EMAIL=#{email}
 		</select>
 		
 		<select id="pwdFind" parameterType="Member" resultType="_int">
@@ -87,13 +86,24 @@
 			AND EMAIL= #{email}
 		</select>
 
-	<update id="newPassword" parameterType="Member">
-
-		update MEMBER
-
-		set PWD = #{pwd}
-
-		where email=#{email} and MID=#{mId}
-
-	</update>
+		<update id="newPassword" parameterType="Member">
+			update MEMBER
+			set PWD = #{pwd}
+			where email=#{email} and MID=#{mId}
+	    </update>
+	    
+	    <select id="myorderList" parameterType="Member" resultMap="memberResultSet">
+			SELECT *
+			FROM ORDERS OR
+			JOIN PRODUCT_OPTION PO
+			ON OR.OR_OPTION1 = PO.OPTION_1
+			JOIN PRODUCT P
+			ON PO.OP_P_NO = P.P_NO
+			JOIN PRODUCT_FILE PF
+			ON P.P_NO = PF.PF_P_NO
+			WHERE OR_PNAME = #{Pname}
+			ORDER BY P.P_NO DESC
+		</select>
+	    
+	    
 </mapper>

@@ -255,6 +255,10 @@ public class BoardController {
 		
 		SearchCondition sc = new SearchCondition();
 		
+		sc.setSearch(search);
+		sc.setCondition(condition);
+		
+		
 		if(condition.equals("writer")) {
 			sc.setWriter(search);
 		}else if(condition.equals("title")) {

@@ -38,6 +38,7 @@ public class QnAController {
 	@RequestMapping("QnAlist.mn")
 	public ModelAndView boardlist(ModelAndView mv,
 			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
+		
 		System.out.println("커런트 페이지유 : " + currentPage);
 
 		int listCount = qService.getListCount();
@@ -71,14 +72,29 @@ public class QnAController {
 	 */
 	@RequestMapping("qnaInsert.mn")
 	public String insertQna(QnA q, HttpServletRequest request,
-			@RequestParam(name = "uploadFile", required = false) MultipartFile file) {
-		if(!file.getOriginalFilename().equals("")) {
+			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
+			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2){
+		
+		System.out.println("파일1이유 : " + file1);
+		System.out.println("파일2이유 : " + file2);
+		
+		if(!file1.getOriginalFilename().equals("")) {
 			
-			String q_Img1_Rename = saveFile(file, request);
+			String q_Img1_Rename = saveFile(file1, request);
 			
 			if(q_Img1_Rename != null) {
-				q.setQ_Img1(file.getOriginalFilename());
+				q.setQ_Img1(file1.getOriginalFilename());
 				q.setQ_Img1_ReName(q_Img1_Rename);
+			}
+		}
+		
+		if(!file2.getOriginalFilename().equals("")) {
+			
+			String q_Img2_Rename = saveFile(file2, request);
+			
+			if(q_Img2_Rename != null) {
+				q.setQ_Img2(file2.getOriginalFilename());
+				q.setQ_Img2_ReName(q_Img2_Rename);
 			}
 		}
 		System.out.println("qna 인설트 : " + q);
@@ -102,7 +118,7 @@ public class QnAController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\bnuploadRiles";
+		String savePath = root + "\\QnA-Img";
 
 		File folder = new File(savePath);
 
@@ -110,13 +126,13 @@ public class QnAController {
 			folder.mkdir();
 		}
 
-		String n_Img1 = file.getOriginalFilename();
+		String q_Img1 = file.getOriginalFilename();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String ReName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
-				+ n_Img1.substring(n_Img1.lastIndexOf(".") + 1);
+				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
 
-		System.out.println("n_Img1_ReName : " + ReName);
+		System.out.println("q_Img1_ReName : " + ReName);
 
 		String renamePath = folder + "\\" + ReName;
 
@@ -252,16 +268,19 @@ public class QnAController {
 	}
 	
 	@RequestMapping("qSearch.mn")
-	public ModelAndView searchBoard(ModelAndView mv, 
+	public ModelAndView searchBoard(ModelAndView mv,
 									@RequestParam(value = "search", required = false) String search,
 									@RequestParam(value = "condition", required = false) String condition,
 									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage
 									) {
 		
-		System.out.println("bnSearch.mn" + search);
-		System.out.println("bnSearch.mn" + condition);
+		System.out.println("qSearch.mn" + search);
+		System.out.println("qSearch.mn" + condition);
 		
 		SearchCondition sc = new SearchCondition();
+		
+		sc.setSearch(search);
+		sc.setCondition(condition);
 		
 		if(condition.equals("writer")) {
 			sc.setWriter(search);
@@ -271,14 +290,12 @@ public class QnAController {
 			sc.setContent(search);
 		}
 		
-		// 검색 결과에 해당되는 게시물 갯수 조회
 		int listCount = qService.getSearchResultListCount(sc);
 		
-		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
-		
+
 		// 검색결과에 해당되는 게시물 목록 조회
-		ArrayList<Notice> list = qService.selectSearchResultList(sc, pi);
+		ArrayList<QnA> list = qService.selectSearchResultList(sc, pi);
 		
 		mv.addObject("list", list);
 		mv.addObject("pi", pi);

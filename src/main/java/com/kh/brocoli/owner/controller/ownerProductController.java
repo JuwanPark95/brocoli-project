@@ -288,23 +288,6 @@ public class ownerProductController {
 		return mv;
 	}
 	
-	@RequestMapping("productChagne.ow")
-	public ModelAndView productChagne(ModelAndView mv,int pNO,HttpServletRequest request) {
-		Product p = oService.productSet(pNO);
-		Product_File pf = oService.productFileSet(pNO);
-		ArrayList<Product_Option> polist = oService.prodictOption(pNO);
-		
-		if(p != null) {
-			mv.addObject("p",p);
-			mv.addObject("pf", pf);
-			mv.addObject("polist",polist);
-			mv.setViewName("product-change");
-		}else {
-			mv.setViewName("404-Page");
-		}
-		
-		return mv;
-	}
 	
 	
 	
