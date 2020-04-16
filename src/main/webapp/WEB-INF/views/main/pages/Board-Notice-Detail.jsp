@@ -22,7 +22,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 150%;  	
   		}
   		
   	.tableArea {
@@ -63,10 +63,9 @@
 			<tr>
 				<td>첨부 파일</td>
 				<td>
-					<c:if test="${ !empty n.n_Img }">
-						<a href="${ contextPath }/resources/buploadFiles/${ n.n_Img_ReName }"
-						download="${ n.n_Img }"> ${ n.n_Img }</a>
-					</c:if>
+					<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/Notice-Img/${n.n_Img_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
 				</td>
 			</tr>
 			<tr>
