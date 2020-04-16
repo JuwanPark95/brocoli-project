@@ -65,18 +65,6 @@ public class ownerProductController {
 							@RequestParam(name="file9",required=false) MultipartFile file9
 	) {
 
-		//VO변수에 추가된 가격 컬럼들을 불러와서 콤마제거.	
-		String price = p.getP_Price();
-		String sail = p.getP_Sail_Price();
-		String lprice = p.getP_Last_Price();
-		price.replaceAll(",","");
-		sail.replaceAll(",","");
-		lprice.replaceAll(",","");
-		p.setP_Price(price);
-		p.setP_Sail_Price(sail);
-		p.setP_Last_Price(lprice);
-
-		
 		//파일이름 저장시 앞쪽에 상품명 접두사로 추가.
 		String name = p.getP_Name();
 		

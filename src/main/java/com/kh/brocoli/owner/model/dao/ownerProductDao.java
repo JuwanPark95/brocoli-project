@@ -19,6 +19,15 @@ public class ownerProductDao {
 	@Autowired SqlSessionTemplate sqlSession;
 
 	public int insertProduct(Product p) {	//박주완-2020-04-03 상품정보등록
+		String price = p.getP_Price().replaceAll(",","");
+		String sail = p.getP_Sail_Price().replaceAll(",","");
+		String lprice = p.getP_Last_Price().replaceAll(",","");
+		p.setP_Price(price);
+		p.setP_Sail_Price(sail);
+		p.setP_Last_Price(lprice);
+		System.out.println("콤마제거후 최종가격 : " + lprice);
+		
+		
 		return sqlSession.insert("ownerProduct-mapper.insertProduct",p);
 	}
 	

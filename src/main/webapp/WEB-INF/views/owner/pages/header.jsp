@@ -169,13 +169,16 @@
                                             <a class="nav-link" href="${incomeDay_select}">일간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-week.jsp">주간매출</a>
+                                       		<c:url var="incomeMonth_select" value="incomeMonthSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeMonth_select}">월간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-month.jsp">월간매출</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-year.jsp">연간매출</a>
+                                        	<c:url var="incomeYear_select" value="incomeYearSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeYear_select}">연간매출</a>
                                         </li>
                                          <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">매출분석(제작중)</a>

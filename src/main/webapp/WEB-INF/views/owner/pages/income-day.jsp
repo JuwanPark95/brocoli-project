@@ -106,7 +106,7 @@
 	                                                <td>${r.orderPrice}</td>
 	                                                <td>${r.rejectCount} / ${r.rejectPrice}</td>
 	                                                <td>${r.changeCount} / ${r.changePrice}</td>
-	                                                <td></td>
+	                                                <td>${r.orderPrice - r.rejectPrice - r.changePrice}</td>
 	                                            </tr>
                                             </c:forEach>
                                         </tbody>
