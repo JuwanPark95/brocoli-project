@@ -51,4 +51,10 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 
+	@Override
+	public ArrayList<Product> selectapList() {
+		return mDao.selectapList();
+	}
+
+
 }

@@ -44,6 +44,12 @@
 		height:150px;
 	}
 	
+	input[id="birthDay"]::-webkit-outer-spin-button,
+	input[id="birthDay"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 	span.guide{display:none; font-size: 12px; top: 12px; right: 10px;}
 	span.ok{color:green;}
@@ -77,13 +83,14 @@
    		</div>
    		
    		<div class="form-group">
-      		<label for="userId">비밀번호 : </label>
-    		<input type="password" class="form-control" id="pwd" name="pwd" style="width:80%;" required>
+      		<label>비밀번호 : </label>
+    		<input type="password" class="form-control" id="pwd" name="pwd" style="width:80%;" placeholder="비밀번호는 8자 이상 20자 이내로 입력해주세요." required>
+    		<input type="hidden" name="pwdDuplicateCheck3" id="pwdDuplicateCheck3" value="0" />
    		</div>
    		
    		<div class="form-group">
       		<label for="userId">비밀번호 확인 : </label>
-    		<input type="password" class="form-control" id="pwd2" name="pwd2" style="width:80%;" required>
+    		<input type="password" class="form-control" id="pwd2" name="pwd2" style="width:80%;"  required>
     		<span class="guide ok">비밀번호가 일치합니다.</span>
 						<span class="guide error">비밀번호를 다시 확인해주세요.</span>
 						<input type="hidden" name="pwdDuplicateCheck2" id="pwdDuplicateCheck2" value="0" />
@@ -92,7 +99,8 @@
    		
    		<div class="form-group">
       		<label>생년월일 : </label>
-    		<input type="text" class="form-control" id="birthDay" name="birthDay" style="width:80%;" required>
+    		<input type="number" class="form-control" id="birthDay" name="birthDay" style="width:80%;" placeholder="- 없이 yyyyMMdd 형식으로 입력" required>
+    		<input type="hidden" name="birthDuplicateCheck2" id="birthDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group" >
@@ -130,10 +138,13 @@
    		
    		<div class="form-group">
       		<label for="userId">이메일 : </label>
-    		<input type="email" class="form-control" id="email" name="email" style="width:80%;">
-    		<span class="mGuide ok2">사용가능한 메일주소입니다.</span>
+      		<div style="display: flex;">
+    		<input type="email" class="form-control" id="email" name="email" style="width:80%;">&nbsp;&nbsp;&nbsp;
+    		<button type="button" class="btn btn-primary" style="background: #222; border: 1px solid #999; width: 20%;" onclick="pop_up();">이메일 인증하기</button>
+    		</div>
     		<span class="mGuide error2">메일주소를 다시 확인해주세요.</span>
     		<input type="hidden" name="mailDuplicateCheck2" id="mailDuplicateCheck2" value="0" />
+    		<input type="hidden" name="mailDuplicateCheck3" id="mailDuplicateCheck3" value="0" />
    		</div>
 
 		<div class="form-group">
@@ -674,7 +685,38 @@
 <!--===============================================================================================-->
    <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
    <script>
-  
+  function pop_up(){
+	  var email = $("#email").val();
+	
+	  if(email == null || email==""){
+		  alert("메일을 입력해주세요.");
+		  
+	  }else{
+	  $.ajax({
+	 		url:"sendEmail.do",
+	 		data:{email:email},
+	 		type:"post",
+	 		success:function(data){
+	 			console.log(data);
+	 			if(data == "ok"){
+	 				alert("메일로 인증번호가 전송되었습니다.");
+	 				var openwin = window.open("<c:url value='logingo.mn'/>","인증번호 입력","width = 500, height = 500, top = 100, left = 200, location = no, resizable = no");
+	 				console.log("openwin:::"+openwin);
+	 			}else{
+	 				alert("이미 사용중인 이메일입니다.");
+	 			}
+	 			
+	 		},error:function(jqxhr, textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				// 에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+	 	});
+	  }
+  }
    
    $(function(){
 	   
@@ -695,21 +737,92 @@
 	   
 	   var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
       var phone = document.getElementById("phone");
+      
+      var pwd = $("#pwd").val();
+		
+	
+		var num = pwd.search(/[0-9]/g);
+		 var eng = pwd.search(/[a-z]/ig);
+		 var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		 
+		 if(pwd.length < 8 || pwd.length > 20){
+			 $("#pwdDuplicateCheck3").val(0);
+			 $("#pwd").focus();
+			  alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
+			  return false;
+			 }else if(pwd.search(/\s/) != -1){
+				 $("#pwdDuplicateCheck3").val(0);
+				 $("#pwd").focus();
+			  alert("비밀번호는 공백 없이 입력해주세요.");
+			  return false;
+			 }else if(num < 0 || eng < 0 || spe < 0 ){
+				 $("#pwdDuplicateCheck3").val(0);
+				 $("#pwd").focus();
+			  alert("비밀번호에 영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+			  return false;
+			 }else {
+				 $("#pwdDuplicateCheck3").val(1);
+			    
+			 } 
+      
+			var dateStr = $("#birthDay").val();
+		 	var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
+			var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+			var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+			var today = new Date(); // 날짜 변수 선언
+			var yearNow = today.getFullYear(); // 올해 연도 가져옴
+			if (dateStr.length <=8) {
+			// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환합니다.
+				if (1900 > year || year > yearNow){
+					alert("생년월일을 알맞게 입력해주세요.");
+					return false;
+				} else if (month < 1 || month > 12) {
+					alert("생년월일을 알맞게 입력해주세요.");
+					return false;
+				} else if (day < 1 || day > 31) {
+					alert("생년월일을 알맞게 입력해주세요.");
+					return false;
+				} else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+					alert("생년월일을 알맞게 입력해주세요.");
+					return false;
+				} else if (month == 2) {
+
+					var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+					if (day>29 || (day==29 && !isleap)) {
+						alert("생년월일을 알맞게 입력해주세요.");
+						return false;
+					}//end of if (day>29 || (day==29 && !isleap))
+				} else {
+					$("#birthDuplicateCheck2").val(1);
+				}//end of if
+			}
+			else {
+				//1.입력된 생년월일이 8자 초과할때 :  auth:false
+				alert("생년월일을 정확히 입력해주세요.");
+				return false;
+			}
+		 
 		// 가입하기 클릭시 최종 점검
-		if($("#idDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck2").val()==1 && $("#mailDuplicateCheck2").val()==1 && rgEx.test(phone.value) == true){
+		if($("#idDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck2").val()==1 && $("#mailDuplicateCheck2").val()==1&&
+				$("#mailDuplicateCheck3").val()==1 && $("#pwdDuplicateCheck3").val()==1 && $("#birthDuplicateCheck2").val()==1 && rgEx.test(phone.value) == true ){
 			return true;
 		}else{
 			if($("#idDuplicateCheck2").val()!=1){
 				$("#mId").focus();
-				alert("ID 중복체크를 실시해주세요")
-			}else if($("#pwdDuplicateCheck2").val()!=1){
+				alert("ID 중복체크를 실시해주세요");
+			}else if($("#pwdDuplicateCheck2").val()!=1 || $("#pwdDuplicateCheck3").val()!=1){
 				$("#pwd").focus();
-				alert("비밀번호를 다시 한번 확인해주세요.")
+				alert("비밀번호를 다시 한번 확인해주세요.");
+			}else if($("#birthDuplicateCheck2").val()!=1){
+				$("#birthDay").focus();
+				alert("생년월일을 정확히 입력해주세요.");
 			}else if($("#mailDuplicateCheck2").val()!=1){
 				$("#email").focus();
 				alert("이메일 주소를 다시 한번 확인해주세요.")
+			}else if($("#mailDuplicateCheck3").val()!=1){
+				alert("이메일 인증이 필요합니다.");
+				$("#email").focus();
 			}else{
-		         
 		         alert("휴대폰 번호를 다시 입력하세요.");
 		         phone.value="";
 		         phone.focus();
@@ -770,6 +883,7 @@
 		$("#pwd2").on("keyup",function(){
 			var pwd = $("#pwd").val();
 			var pwd2 = $(this).val();
+			
 			
 			if(pwd.length > pwd2.length){
 				$(".guide").hide();
@@ -889,8 +1003,28 @@
  <script>
  function validateCheck(){
 	 var mId = $("#mId").val();
-	 console.log(mId);
- 	$.ajax({
+	
+
+	 var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	
+	 var checkKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+	 
+	 if(mId == null || mId==""){
+		 alert("ID를 입력해주세요!");
+	 }else if(checkKor.test(mId)){
+		 alert("ID에는 한글을 사용할 수 없습니다.");
+	 
+ }else if(mId.search(/\s/) != -1){
+		 alert("ID는 빈 칸을 포함 할 수 없습니다.");
+
+	 }else  if (mId.length < 4 || mId.length > 15){
+		 alert("아이디는 4자 에서 15자 까지만 허용합니다.");
+	 }else if(specialCheck.test(mId)){
+		 alert("ID는 특수문자를 포함 할 수 없습니다.");
+
+	 }else{
+		 $.ajax({
  		url:"idCheck.do",
  		data:{id:mId},
  		type:"post",
@@ -912,6 +1046,7 @@
 			console.log(errorThrown);
 		}
  	});
+	 }
  }
  </script>
  <!-- 우편 주소 API -->

@@ -3,6 +3,8 @@ package com.kh.brocoli.member.controller;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Email;
@@ -187,6 +190,7 @@ public class UserController {
 	@RequestMapping("idCheck.do")
 	public String idCheck(String id) throws IOException {
 		
+		
 		int result = uService.idCheck(id);
 		
 		
@@ -290,21 +294,35 @@ public class UserController {
 	}
 		
 	// 암호화 처리 후 로그인 부분
+	@ResponseBody
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String memberLogin(Member m,Model model) {
+	public String memberLogin(Member m,HttpSession session) {
+		
 		
 		Member loginUser = uService.loginMember(m);
 
 		if(loginUser != null && bcryptPasswordEncoder.matches(m.getPwd(), loginUser.getPwd())) {
-			model.addAttribute("loginUser", loginUser);
-			return "redirect:index.jsp";
+//			model.addAttribute("loginUser", loginUser);
+			session.setAttribute("loginUser", loginUser);
+			
+			return "ok";
 		}else {
-			System.out.println("에러에러~~");
-			model.addAttribute("msg","로그인 실패!!");
-			return "common/errorPage";
+			
+			
+			return "fail";
 		}
 	}
 	
+	/**
+	 * 작성자 임현섭
+	 * 비밀번호 새로 설정 후 메일 발송
+	 * @param mId
+	 * @param email
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	/**********************************메일발송*********************************************/
 	@ResponseBody
 	@RequestMapping("pwdFind.do")
 	public String pwdFind(String mId, String email, HttpSession session) throws Exception {
@@ -418,7 +436,16 @@ public class UserController {
 			
 				
 		}
+		/*********************************메일발송 끝**********************************/
 		
+		/**
+		 * 작성자 임현섭
+		 * 입점문의
+		 * @param b
+		 * @param model
+		 * @return
+		 * @throws Exception
+		 */
 		@RequestMapping("sEnter.mn")
 		public String sEnter(Brand b, Model model) throws Exception{
 			System.out.println(b);
@@ -443,5 +470,63 @@ public class UserController {
 			return "ok";
 		}
 	}
+	@ResponseBody
+	@RequestMapping("sendEmail.do")
+	public String sendEmail(String email, HttpSession session) throws Exception {
+		Member m = new Member();
+		m.setEmail(email);
+		
+		int result = uService.mailCheck(email);
 	
+		String newPwd = newPasswordCreate(m);
+		session.setAttribute("keys", newPwd);
+		m.setPwd(newPwd);
+        System.out.println("newPwd ::::" + newPwd);
+		if(result >0) {
+			
+		
+		
+			
+	
+			
+			return "fail";
+
+		}else {
+			sendMail(m);
+			return "ok";
+		}
+		
+	
+	
+}
+	
+	public void sendMail(Member m) throws Exception {
+
+
+			email.setContent("인증번호는 " + m.getPwd() + " 입니다.");
+			
+			email.setReceiver(m.getEmail());
+
+			email.setSubject("안녕하세요 "+m.getEmail() +"님  인증번호를 확인해주세요.");
+
+			emailSender.SendEmail(email);
+
+			System.out.println("email::::"+email);
+
+
+		
+			
+	}
+	
+	@RequestMapping("logingo.mn")
+	public ModelAndView logingo(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String keys = (String) session.getAttribute("keys");
+		
+		mav.setViewName("Login-IdEmail");
+		mav.addObject("keys",keys);
+		session.invalidate();
+		return mav;
+	}
+
 }

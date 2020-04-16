@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">재고/입고현황</h2>
+                            <h2 class="pageheader-title">재고 현황</h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
@@ -64,7 +64,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">재고/입고</h5>
+                                <h5 class="mb-0">재고</h5>
                                 <p>현재등록 상품의 전체재고 현황입니다. </p>
                             </div>
                             <div class="card-body">
@@ -75,6 +75,7 @@
                                             	<th>상품번호</th>
                                                 <th>이미지</th>
                                                 <th>제품명</th>
+                                                <th>옵션번호</th>
                                                 <th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>재고</th>
@@ -83,81 +84,42 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>P98001</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
-                                                <td align="center">
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>DIM. REVERSIBLE FAKE FUR MUFFLER_BROWN</td>
-                                                <td>BROWN</td>
-                                                <td>M</td>
-                                                <td>12</td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-detail.jsp">재고관리</a>
-			                                        </div>
-                                                </td>
-                                            </tr>
-
-                                            
-                                            <tr>
-                                                <td>P98001</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
-                                                <td align="center">
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>DIM. REVERSIBLE FAKE FUR MUFFLER_BROWN</td>
-                                                <td>BROWN</td>
-                                                <td>S</td>
-                                                <td>12</td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-detail.jsp">재고관리</a>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>P98001</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
-                                                <td align="center">
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>DIM. REVERSIBLE FAKE FUR MUFFLER_BROWN</td>
-                                                <td>BROWN</td>
-                                                <td>L</td>
-                                                <td>131</td>
-                                                <td>판매중</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-detail.jsp">재고관리</a>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>P98001</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
-                                                <td align="center">
-                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/P11001.jpg" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>DIM. REVERSIBLE FAKE FUR MUFFLER_BROWN</td>
-                                                <td>BROWN</td>
-                                                <td>XL</td>
-                                                <td>0</td>
-                                                <td>품절</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <a class="btn btn-sm btn-outline-light" href="/brocoli/owner/pages/stock-detail.jsp">재고관리</a>
-			                                        </div>
-                                                </td>
-                                            </tr>
-
-                                             <!-- 이하 더미데이터 끝 --> 
-                                            
+                                        <% int count = 0; %>
+                                        	<c:forEach var="r" items="${ list }">
+	                                            <tr>
+	                                                <td>${r.pList.p_NO }</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
+	                                                <td align="center" >
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                </td>
+	                                                <td>${r.pList.p_Name }</td>
+	                                                <td>${r.op_NO }</td>
+	                                                <td>${r.option_1 }</td>
+	                                                <td>${r.option_2 }</td>
+	                                                <td>${r.op_Stock }</td>
+	                                                <td id="status">
+	                                                <c:choose>
+														<c:when test="${r.op_Status_YN eq 'Y'}"><span class="badge-dot badge-success"></span><a id="statusText<%= count %>">판매중</a></c:when>
+														<c:when test="${r.op_Status_YN eq 'N'}"><span class="badge-dot badge-warning"></span><a id="statusText<%= count %>">품절</a></c:when>
+													</c:choose>	
+													</td>
+	                                                <td>
+	                                                	<div class="btn-group ml-auto">
+		                                                <c:url var="stockdetail" value="stock_detail.ow">
+		                                                	<c:param name="pNO" value="${r.pList.p_NO}"/>
+		                                                	<c:param name="pName" value="${r.pList.p_Name}"/>
+				                                        </c:url>
+				                                            <a class="btn btn-sm btn-outline-light" href="${stockdetail}">재고관리</a>
+				                                        </div>
+	                                                </td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                             	<th>상품번호</th>
                                                 <th>이미지</th>
                                                 <th>제품명</th>
+                                                <th>옵션번호</th>
                                                 <th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>재고</th>
@@ -171,11 +133,8 @@
                         </div>
                     </div>
                     <!-- ============================================================== -->
-                    <!-- end 판매상품관리 테이블  -->
+                    <!-- end 재고관리 테이블  -->
                     <!-- ============================================================== -->
-             
-
-
 
              
              </div>
@@ -187,7 +146,26 @@
             </div>
 
         </div>
-  
+  	
+  	<!--  
+	작성자 : 박주완
+	작성일 : 2020-04-09
+	내용 : 불러온 값에따라 상품상태 select box select 값 변경
+	-->
+	<script>
+	$(function(){
+		for(var i=0; i<<%= count %>; i++){
+	    	var status = $('#statusText'+i+'').text();
+	    	var sale = '판매중';
+	    	var soldout = '품절';
+			if(status == sale){
+				$("#opStatus"+i+" option[value='Y']").attr("selected","selected");
+			}else{
+				$("#opStatus"+i+" option[value='N']").attr("selected","selected");
+			}
+		}
+	 });
+	</script>
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->

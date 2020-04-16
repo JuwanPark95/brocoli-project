@@ -29,12 +29,10 @@
 	
 	
 		<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
-
 		SELECT * 
 		FROM MEMBER
 		WHERE MID=#{mId}
 		AND DEL_FLAG_YN='N'
-		
 		</select>
 		
 
@@ -49,6 +47,7 @@
 		FROM MEMBER
 		WHERE MID=#{mId}
 	</select>
+	
 	<select  id="mailCheck" parameterType="String" resultType="_int">
 		SELECT COUNT(*)
 		FROM MEMBER

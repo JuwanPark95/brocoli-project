@@ -66,21 +66,33 @@
                                     <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">번호</th>
-                                                <th style="width:5%">브랜드명</th>
-                                                <th style="width:8%">제목</th>
+                                            	<th style="width:3%">번호</th>
+                                                <th style="width:5%">글번호</th>
                                                 <th style="width:8%">작성자</th>
+                                                <th style="width:8%">브랜드명</th>
+                                                <th style="width:13%">제목</th>
                                                 <th style="width:8%">작성일</th>
+                                                <th style="width:5%">읽음여부</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        
+                                        <c:forEach var="c" items="${OwnerContactList}" varStatus="cl"> <!-- for -->
                                             <tr>
-                                                <td>1</td>
-                                                <td>나이키</td>
-                                                <td>brand-contact</td>
-                                                <td>나이키직원1</td>
-                                                <td>오늘날짜</td>
+                                            	<td>${cl.count}</td>
+                                                <td>${c.con_NO}</td>
+                                                <td>${c.con_Writer}</td>
+                                                <td>
+                                                <c:set var="brandName" value="${c.brandName}"/>
+                                                <c:if test="${empty brandName}">
+                                                	-
+                                                </c:if>
+                                                ${c.brandName}
+                                                </td>
+                                                <td>${c.con_Title}</td>
+                                                <td>${c.con_Date}</td>
+                                                <td>${c.con_View_Check}</td>
 											</tr>
                                         </c:forEach>
                                       </tbody>

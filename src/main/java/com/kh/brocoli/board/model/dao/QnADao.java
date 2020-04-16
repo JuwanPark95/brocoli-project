@@ -11,6 +11,8 @@ import com.kh.brocoli.board.model.vo.Notice;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.QnA_Reply;
+import com.kh.brocoli.board.model.vo.SearchCondition;
+import com.kh.brocoli.member.model.vo.Member;
 
 @Repository("qDao")
 public class QnADao {
@@ -58,6 +60,44 @@ public class QnADao {
 
 	public int updateQnA(QnA q) {
 		return sqlSession.update("QnA-mapper.updateQnA", q);
+	}
+
+	public int getSearchResultListCount(SearchCondition sc) {
+		return sqlSession.selectOne("QnA-mapper.getSearchResultListCount", sc);
+	}
+
+    public ArrayList<QnA> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		
+		ArrayList<QnA> list = null;
+		
+		int offset = (pi.getCurrentPage() -1) * pi.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getLimit());
+		
+		list = (ArrayList)sqlSession.selectList("QnA-mapper.selectSearchResultList",sc,rowBounds);
+		
+		return list;
+	}
+
+	
+//************************************************내가쓴글보기******************************************//	
+	
+	public int getmyListCount() {
+		return sqlSession.selectOne("QnA-mapper.getmyListCount");
+	}
+
+	public ArrayList<QnA> myselectList(PageInfo pi,Member m) {
+				
+		int offset = (pi.getCurrentPage() - 1) * pi.getLimit();
+		RowBounds rowBounds = new RowBounds(offset,pi.getLimit());
+				
+		return (ArrayList)sqlSession.selectList("QnA-mapper.myselectList",m,rowBounds);
+	}		
+
+	public int updateReply(String qr_No) {
+		System.out.println("dao에서 qrno : " + qr_No);
+		return sqlSession.update("QnA-mapper.updateReply",qr_No);
+		
 	}
 
 }

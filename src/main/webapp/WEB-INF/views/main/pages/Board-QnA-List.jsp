@@ -96,16 +96,30 @@
 	
 			<!-- 페이지 -->
 			<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+			
 				<c:if test="${ p eq pi.currentPage }">
 					<li class="page-item active">
 					<a class="page-link" style="background-color: #3333; border-color: #3333;" style="color: #222">${ p }</a></li>
 				</c:if>
 				
+				<c:if test="${empty sc }">
 				<c:if test="${ p ne pi.currentPage }">
 					<c:url var="pageNext" value="QnAlist.mn">
 						<c:param name = "currentPage" value="${ p }"/>
 					</c:url>
 					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
+				</c:if>
+				
+				<c:if test="${!empty sc}">
+				<c:if test="${p ne pi.currentPage }">
+				<c:url var="pageNext" value="qSearch.mn">
+						<c:param name = "currentPage" value="${ p }"/>
+						<c:param name = "search" value="${ search }"/>
+ 					    <c:param name = "condition" value="${ sc.condition }"/>
+					</c:url>
+					<li class="page-item"><a href="${pageNext}" class="page-link" style="color: #222">${ p }</a></li>
+				</c:if>
 				</c:if>
 			</c:forEach>
 			
@@ -134,7 +148,7 @@
   </div>
   </div>
   <div id="searchArea" align="center" >
-				<form action="${ contextPath }/search.bo" style="display: inline-flex;" >
+				<form action="qSearch.mn" style="display: inline-flex;" >
 					<select id="searchCondition" name="condition">
 						<option>--------선택--------</option>
 						<option value="writer">작성자</option>

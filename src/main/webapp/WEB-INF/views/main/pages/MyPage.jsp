@@ -122,7 +122,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="my-article" img="/brocoli/resources/mainResources/images/mypage_my1.png">
+                            <li class="my-article" name="mylist" img="/brocoli/resources/mainResources/images/mypage_my1.png">
                                 <a href="<c:url value='B_Alllist.mn'/>">
                                     <h4>내가 쓴 글 보기</h4>
                                     <p>"주문관련문의, 상품후기 등"

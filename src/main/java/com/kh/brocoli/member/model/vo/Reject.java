@@ -14,10 +14,14 @@ public class Reject {
 	private int re_MN_OR_NO;
 	private int re_Mno;
 	
+	
+	
 	public Reject() {
 		super();
 	}
 
+	
+	
 	public Reject(String re_Pname, String re_Price, String re_Reason, String re_Comment, Date re_Date,
 			Date re_Enddate, String re_Status, int re_MN_OR_NO, int re_Mno) {
 		super();
@@ -106,6 +110,8 @@ public class Reject {
 		this.re_Mno = re_Mno;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Reject [re_Pname=" + re_Pname + ", re_Price=" + re_Price + ", re_Reason="
