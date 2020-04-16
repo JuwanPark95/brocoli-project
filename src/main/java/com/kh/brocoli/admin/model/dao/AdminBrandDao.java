@@ -126,4 +126,56 @@ public class AdminBrandDao {
 		return (ArrayList)sqlSession.selectList("AdminBrand.ownerContactList");
 	}
 
+	/**
+	 * 작성자  : 신은지
+	 * 12. 오너 콘택트 상세보기
+	 * @param ocId
+	 * @return
+	 */
+	public Contact ownerContactDetail(int ocId) {
+		return sqlSession.selectOne("AdminBrand.ownerContactDetail",ocId);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 12_1. 오너 콘택트 게시판 읽음여부 업데이트
+	 * @param ocId
+	 */
+	public void ownerCheckView(int ocId) {
+		sqlSession.selectOne("AdminBrand.ownerCheckView",ocId);
+		
+	}
+	
+	/**
+	 *	작성자 : 신은지
+	 *	13. 오너 콘택트 게시판 글쓰기
+	 * @param c
+	 * @return
+	 */
+	public int ownerContactWrite(Contact c) {
+		return sqlSession.insert("AdminBrand.ownerContactWrite",c);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  14. 오너 콘택트 게시판 수정하기 view
+	 * @param ocNO
+	 * @return
+	 */
+	public Contact ownerContactUpdate(int ocNO) {
+		return sqlSession.selectOne("AdminBrand.ownerContactUpdate",ocNO);
+	}
+
+	/**
+	 * 	작성자 : 신은지
+	 * 	15. 오너 콘택트 게시판 수정 update
+	 * @param c
+	 * @return
+	 */
+	public int ownerContactUpdateSave(Contact c) {
+		System.out.println("dao c 들어갔나 "+ c);
+		return sqlSession.update("AdminBrand.ownerContactUpdateSave",c);
+	}
+
+
 }

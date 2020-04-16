@@ -128,5 +128,34 @@
      		JOIN MEMBER M
      		ON C.CON_MNO = M.MNO
 	</select>
+
+	<select id="ownerContactDetail" parameterType="Contact" resultMap="contactResultSet">
+		SELECT *
+		FROM CONTACT
+		WHERE CON_NO = #{ocId}
+	</select>
 	
+	<insert id="ownerContactWrite" parameterType="Contact">
+		INSERT INTO CONTACT
+		VALUES(SEQ_CONTACT.NEXTVAL,SYSDATE,#{con_Writer},#{con_Content},#{con_Title},DEFAULT,
+				#{con_Img},#{con_Img_ReName},DEFAULT,#{con_Mno})
+	</insert>
+	
+	<update id="ownerCheckView">
+		UPDATE CONTACT
+		SET CON_VIEW_CHECK = 'Y'
+		WHERE CON_NO = #{ocId}
+	</update>
+	
+	<select id="ownerContactUpdate" parameterType="Contact" resultMap="contactResultSet">
+		SELECT *
+		FROM CONTACT
+		WHERE CON_NO = #{con_NO}
+	</select>
+	
+	<update id="ownerContactUpdateSave">
+		UPDATE CONTACT
+		SET CON_CONTENT=#{con_Content},CON_TITLE=#{con_Title},CON_IMG=#{con_Img},CON_IMG_RENAME=#{con_Img_ReName}
+		WHERE CON_NO = #{con_NO}
+	</update>
 </mapper>

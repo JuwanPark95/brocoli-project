@@ -24,6 +24,12 @@
 		SELECT *
 		FROM ORDERS
 	</select>
+	
+	<update id="orderStatusChange" parameterType="Orders">
+		UPDATE Orders
+		SET OR_STATUS=#{or_Status}
+		WHERE OR_NO=#{or_NO}
+	</update>
 
 
 
