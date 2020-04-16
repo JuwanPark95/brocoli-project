@@ -156,7 +156,9 @@
                                 	        메뉴
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="/brocoli/owner/owner.jsp" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
+                            	<c:url var="goToHome" value="goToHome.ow">
+                            	</c:url>
+                                <a class="nav-link active" href="${goToHome}" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#" aria-expanded="false" data-toggle="collapse" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>매출관리</a>
@@ -180,9 +182,9 @@
                                         	</c:url>
                                             <a class="nav-link" href="${incomeYear_select}">연간매출</a>
                                         </li>
-                                         <li class="nav-item">
+<!--                                          <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">매출분석(제작중)</a>
-                                        </li> 
+                                        </li>  -->
                                     </ul>
                                 </div>
                             </li>
@@ -206,12 +208,12 @@
 			                                </c:url>
                                             <a class="nav-link" href="${Brand_NO}">재고관리</a>
                                         </li>
-                                        <li class="nav-item">
+<!--                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">판매제품순위(제작중)</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/product-list.jsp">판매상품전체보기</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </li>
@@ -231,9 +233,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/order-exchange.jsp">교환</a>
                                         </li>
-                                        <li class="nav-item">
+  <!--                                       <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">주문분석(제작중)</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 
@@ -328,10 +330,12 @@
                                 <div id="submenu-9" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/Cropper.jsp">사진편집<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="Cropper" value="Cropper.ow"></c:url>
+                                            <a class="nav-link" href="${Cropper}">사진편집<span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/color-picker.jsp">RGB색상표<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="color_picker" value="color_picker.ow"></c:url>
+                                            <a class="nav-link" href="${color_picker}">RGB색상표<span class="badge badge-secondary">New</span></a>
                                         </li>
 
                                     </ul>

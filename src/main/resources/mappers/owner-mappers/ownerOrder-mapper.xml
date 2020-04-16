@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ownerOrder-mapper">
+	
+	<resultMap type="Orders" id="orderResultSet">
+		<id property="or_NO" column="OR_NO"/>
+		
+		<result property="or_Date" column="OR_DATE"/>
+		<result property="or_Pname" column="OR_PNAME"/>
+		<result property="or_Option1" column="OR_OPTION1"/>
+		<result property="or_Option2" column="OR_OPTION2"/>
+		<result property="or_Amount" column="OR_AMOUNT"/>
+		<result property="or_Address" column="OR_ADDRESS"/>
+		<result property="or_Message" column="OR_MESSAGE"/>
+		<result property="or_Price" column="OR_PRICE"/>
+		<result property="or_Status" column="OR_STATUS"/>
+		<result property="or_Deliver_Num" column="OR_DELIVER_NUM"/>
+		<result property="or_Deliver_Vender" column="OR_DELIVER_VENDER"/>
+		<result property="or_Mno" column="OR_MNO"/>
+		<result property="or_P_NO" column="OR_P_NO"/>
+		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
+	</resultMap>
+	
+	<resultMap type="Statistics" id="statisticsResultSet">
+		<id property="day" column="DAY"/>
+		
+		<result property="orderCount" column="ORDERCOUNT"/>
+		<result property="orderPrice" column="ORDERPRICE"/>
+		<result property="rejectCount" column="REJECTCOUNT"/>
+		<result property="rejectPrice" column="REJECTPRICE"/>
+		<result property="changeCount" column="CHANGECOUNT"/>
+		<result property="changePrice" column="CHANGEPRICE"/>
+	</resultMap>
+	
+<!-- ===================================================================	 -->
+	
+	<select id="selectIncomeDay" resultMap="statisticsResultSet">
+		SELECT TO_CHAR(OR_DATE,'YYYY-MM-DD') as DAY
+		    , NVL(COUNT(CASE WHEN OR_BRAND_NO=#{bNO} THEN 1 END),0) as ORDERCOUNT
+		    , NVL(SUM(CASE WHEN OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) ORDERPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '6' AND OR_BRAND_NO=#{bNO} THEN 1 END),0 ) REJECTCOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '6' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) REJECTPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '7' AND OR_BRAND_NO=#{bNO} THEN 1 END),0) CHANGECOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '7' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) CHANGEPRICE
+		FROM ORDERS
+		GROUP BY TO_CHAR(OR_DATE,'YYYY-MM-DD')
+		ORDER BY TO_CHAR(OR_DATE,'YYYY-MM-DD') ASC
+	</select>
+	
+	<select id="selectIncomeMonth" resultMap="statisticsResultSet">
+		SELECT TO_CHAR(OR_DATE,'YYYY-MM') as DAY
+		    , NVL(COUNT(CASE WHEN OR_BRAND_NO=#{bNO} THEN 1 END),0) as ORDERCOUNT
+		    , NVL(SUM(CASE WHEN OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) ORDERPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '6' AND OR_BRAND_NO=#{bNO} THEN 1 END),0 ) REJECTCOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '6' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) REJECTPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '7' AND OR_BRAND_NO=#{bNO} THEN 1 END),0) CHANGECOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '7' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) CHANGEPRICE
+		FROM ORDERS
+		GROUP BY TO_CHAR(OR_DATE,'YYYY-MM')
+		ORDER BY TO_CHAR(OR_DATE,'YYYY-MM') ASC
+	</select>
+
+	<select id="selectIncomeYear" resultMap="statisticsResultSet">
+		SELECT TO_CHAR(OR_DATE,'YYYY') as DAY
+		    , NVL(COUNT(CASE WHEN OR_BRAND_NO=#{bNO} THEN 1 END),0) as ORDERCOUNT
+		    , NVL(SUM(CASE WHEN OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) ORDERPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '6' AND OR_BRAND_NO=#{bNO} THEN 1 END),0 ) REJECTCOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '6' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) REJECTPRICE
+		    , NVL(COUNT(CASE WHEN OR_STATUS= '7' AND OR_BRAND_NO=#{bNO} THEN 1 END),0) CHANGECOUNT
+		    , NVL(SUM(CASE WHEN OR_STATUS = '7' AND OR_BRAND_NO=#{bNO} THEN OR_PRICE END),0) CHANGEPRICE
+		FROM ORDERS
+		GROUP BY TO_CHAR(OR_DATE,'YYYY')
+		ORDER BY TO_CHAR(OR_DATE,'YYYY') ASC
+	</select>
+	
+
+	
+</mapper>

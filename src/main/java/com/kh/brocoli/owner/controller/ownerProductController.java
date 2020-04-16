@@ -136,11 +136,6 @@ public class ownerProductController {
 		
 		
 		int result = oService.productInsert(p,pf,po);
-		System.out.println("상품 옵션 : " + po);
-		System.out.println("프로덕트 : " + p);
-		System.out.println("이미지 리네임작업 후 : " + pf);
-		
-		
 		if(result > 0) {
 				return "redirect:index-owner.jsp";
 		}else {
@@ -260,11 +255,6 @@ public class ownerProductController {
 	@RequestMapping("stockList.ow")
 	public ModelAndView stockList(ModelAndView mv, Product_Option po, String Brand_NO, HttpServletRequest request) {
 		ArrayList<Product_Option> list = oService.stockList(Brand_NO);
-		System.out.println("받아온 브랜드번호 : " + Brand_NO);
-		for (Product_Option product_Option : list) {
-			System.out.println("불러온 LIST : " + product_Option);
-		}
-		
 		
 		if(list != null) {
 			mv.addObject("list",list);
