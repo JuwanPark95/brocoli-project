@@ -120,7 +120,7 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 	 *	12. 오너 콘택트 상세보기
 	 */
 	@Override
-	public Contact ownerContactDetail(String ocId) {
+	public Contact ownerContactDetail(int ocId) {
 		//읽음여부 업데이트
 		ABDao.ownerCheckView(ocId);
 		//상세보기
@@ -141,8 +141,17 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 	 *	14. 오너 콘택트 게시판 수정하기 view
 	 */
 	@Override
-	public Contact ownerContactUpdate(int ocNO) {
-		return ABDao.ownerContactUpdate(ocNO);
+	public Contact ownerContactUpdate(int con_NO) {
+		return ABDao.ownerContactUpdate(con_NO);
+	}
+
+	/**
+	 *	작성자 : 신은지
+	 *15. 오너 콘택트 게시판 수정 update
+	 */
+	@Override
+	public int ownerContactUpdateSave(Contact c) {
+		return ABDao.ownerContactUpdateSave(c);
 	}
 
 

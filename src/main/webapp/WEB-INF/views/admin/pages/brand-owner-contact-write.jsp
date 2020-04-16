@@ -73,7 +73,7 @@
 										<div class="col-12 col-sm-8 col-lg-6">
                                            <div class="form-group row">
                                               <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-                                                 <img id="titleImg" src="http://via.placeholder.com/"  alt="첨부파일 " style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+                                                 <img id="titleImg" src="http://via.placeholder.com/"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
                                               </div>
                                            </div>
                                        	</div>

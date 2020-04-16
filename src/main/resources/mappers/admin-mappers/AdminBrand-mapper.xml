@@ -150,6 +150,12 @@
 	<select id="ownerContactUpdate" parameterType="Contact" resultMap="contactResultSet">
 		SELECT *
 		FROM CONTACT
-		WHERE CON_NO = #{ocNO}
+		WHERE CON_NO = #{con_NO}
 	</select>
+	
+	<update id="ownerContactUpdateSave">
+		UPDATE CONTACT
+		SET CON_CONTENT=#{con_Content},CON_TITLE=#{con_Title},CON_IMG=#{con_Img},CON_IMG_RENAME=#{con_Img_ReName}
+		WHERE CON_NO = #{con_NO}
+	</update>
 </mapper>

@@ -132,7 +132,7 @@ public class AdminBrandDao {
 	 * @param ocId
 	 * @return
 	 */
-	public Contact ownerContactDetail(String ocId) {
+	public Contact ownerContactDetail(int ocId) {
 		return sqlSession.selectOne("AdminBrand.ownerContactDetail",ocId);
 	}
 
@@ -141,7 +141,7 @@ public class AdminBrandDao {
 	 * 12_1. 오너 콘택트 게시판 읽음여부 업데이트
 	 * @param ocId
 	 */
-	public void ownerCheckView(String ocId) {
+	public void ownerCheckView(int ocId) {
 		sqlSession.selectOne("AdminBrand.ownerCheckView",ocId);
 		
 	}
@@ -164,6 +164,17 @@ public class AdminBrandDao {
 	 */
 	public Contact ownerContactUpdate(int ocNO) {
 		return sqlSession.selectOne("AdminBrand.ownerContactUpdate",ocNO);
+	}
+
+	/**
+	 * 	작성자 : 신은지
+	 * 	15. 오너 콘택트 게시판 수정 update
+	 * @param c
+	 * @return
+	 */
+	public int ownerContactUpdateSave(Contact c) {
+		System.out.println("dao c 들어갔나 "+ c);
+		return sqlSession.update("AdminBrand.ownerContactUpdateSave",c);
 	}
 
 

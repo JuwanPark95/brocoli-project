@@ -258,7 +258,7 @@ public class AdminBrandController {
    	 * @return
    	 */
    	@RequestMapping("ownerContactDetail.ad")
-   	public ModelAndView ownerContactDetail(ModelAndView mv, String ocId) {
+   	public ModelAndView ownerContactDetail(ModelAndView mv, int ocId) {
    		
    		Contact c = ABService.ownerContactDetail(ocId);
    		
@@ -336,14 +336,55 @@ public class AdminBrandController {
 	 * @return
 	 */
 	@RequestMapping("ownerContactUpdate.ad")
-	public ModelAndView ownerContactUpdate(ModelAndView mv,int ocNO) {
-		Contact c = ABService.ownerContactUpdate(ocNO);
+	public ModelAndView ownerContactUpdate(ModelAndView mv,int con_NO) {
+		Contact c = ABService.ownerContactUpdate(con_NO);
 		
 		if( c != null) {
 			mv.addObject("c",c);
 			mv.setViewName("brand-owner-contact-detailModify");
 		}
 		return mv;
+	}
+	
+	@RequestMapping("ownerContactUpdateSave.ad")
+	public ModelAndView ownerContactUpdateSave (ModelAndView mv, Contact c,HttpServletRequest request, 
+		      								@RequestParam(name="reloadFile",required=false) MultipartFile file) {
+		if(file != null & !file.isEmpty()) { //새로 업로드된 파일이 있다면
+			if(c.getCon_Img_ReName() != null) {
+				deleteFile(c.getCon_Img_ReName(),request);
+			}
+			
+			//첨부파일 수정시 넣어주기
+			String Con_Img_ReName = saveFile(file,request);
+			
+			if(Con_Img_ReName != null) {
+				c.setCon_Img(file.getOriginalFilename());
+				c.setCon_Img_ReName(Con_Img_ReName);
+			}
+		}
+		
+		int result = ABService.ownerContactUpdateSave(c);
+		
+		if(result>0) {
+			mv.addObject("ocId",c.getCon_NO())
+			.setViewName("redirect:ownerContactDetail.ad");
+		}else {
+			mv.addObject("msg","수정실패");
+		}
+		
+		return mv;
+	}
+	
+	public void deleteFile(String fileName,HttpServletRequest request) {
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String savePath = root + "\\buploadFIles";
+		
+		File f = new File(savePath + "\\" + fileName);
+		// webapp/resource/buploadFiles/202003261111.png
+		
+		if(f.exists()) {
+			f.delete();
+		}
 	}
 }
 

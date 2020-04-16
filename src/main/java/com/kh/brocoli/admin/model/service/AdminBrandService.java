@@ -92,7 +92,7 @@ public interface AdminBrandService {
 	 * @param ocId
 	 * @return
 	 */
-	Contact ownerContactDetail(String ocId);
+	Contact ownerContactDetail(int ocId);
 
 	/**
 	 * 작성자 : 신은지
@@ -108,7 +108,15 @@ public interface AdminBrandService {
 	 * @param ocNO
 	 * @return
 	 */
-	Contact ownerContactUpdate(int ocNO);
+	Contact ownerContactUpdate(int con_NO);
+
+	/**
+	 * 작성자 : 신은지
+	 * 15. 오너 콘택트 게시판 수정 update
+	 * @param c
+	 * @return
+	 */
+	int ownerContactUpdateSave(Contact c);
 
 	
 }
