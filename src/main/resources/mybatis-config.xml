@@ -21,6 +21,7 @@
         <typeAlias type="com.kh.brocoli.member.model.vo.Wish" alias="Wish"/>
         <!--  상품   -->
         <typeAlias type="com.kh.brocoli.product.model.vo.Brand" alias="Brand"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.ProductDetail" alias="ProductDetail"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Product_File" alias="Product_File"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Product_Option" alias="Product_Option"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Product" alias="Product"/>

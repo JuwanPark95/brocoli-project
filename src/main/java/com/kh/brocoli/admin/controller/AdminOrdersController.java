@@ -32,7 +32,7 @@ public class AdminOrdersController {
 	public ModelAndView ordersStatus(ModelAndView mv) {
 		
 		ArrayList<Orders> ordersList = AOService.selectOrdersList();
-		
+		System.out.println("orders"+ordersList);
 		mv.addObject(ordersList);
 		mv.setViewName("order-status");
 		return mv;

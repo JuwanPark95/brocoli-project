@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file="All-Header.jsp" %>
 
 <title>Insert title here</title>
 <style>
@@ -82,19 +81,20 @@
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px; font-size: 30px;">
-								<strong>${ModalList[0].p_Name}</strong>
+								style="display: inline-block; padding: 5px; font-size: 18px; width: 533px;">
+								<strong><input type="text" id="productName" style="display: inline-block; width: 533px;" readonly="readonly"></strong>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 "
 								style="display: inline-block; padding: 5px;">
 								<strong>브랜드 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								${ModalList[0].brList.b_Name}
+								<input type="text" id="brandName" style="display: inline-block;" readonly="readonly">
 							</p>
 							&nbsp;&nbsp;&nbsp;
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px;">
-								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp; 1
+								style="display: inline-block; padding: 5px; float: right;">
+								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp;
+								<input type="text" id="pNo" style="display: inline-block;" readonly="readonly">
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
