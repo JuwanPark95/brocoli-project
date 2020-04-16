@@ -13,4 +13,13 @@ public interface AdminOrdersService {
 	 */
 	ArrayList<Orders> selectOrdersList();
 
+	/**
+	 * 작성자 : 신은지
+	 * 2. Ajax 주문현황 상태 변경
+	 * @param orderStatus
+	 * @return
+	 */
+	int orderStatusChange(Orders orders);
+
+
 }

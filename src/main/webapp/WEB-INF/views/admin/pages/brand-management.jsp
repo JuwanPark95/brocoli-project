@@ -95,10 +95,6 @@
                                         </c:forEach>
                                       </tbody>
                                     </table>
-                      			<div class="form-group row text-right" style="width:136%">
-                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                     	<button class="btn btn-dark" onclick="location.href='brand-add.jsp'">추가</button>
-                                     </div>
                                 </div>
                                 </div>
                             </div>

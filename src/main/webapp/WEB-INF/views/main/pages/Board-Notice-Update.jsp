@@ -23,7 +23,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 140%;  	
   		}
   		
   	.tableArea {
@@ -67,11 +67,15 @@
 			<tr>
 				<td>첨부 파일</td>
 				<td>
-					<input type="file" name="reloadFile">
-					<c:if test="${ !empty n.n_Img }">
-					<br>현재 업로드한 파일 : 
-					<a href="${ contextPath }/resource/nuploadFiles/${ n.n_Img_ReName }" download="${ n.n_Img }">${ n.n_Img }</a>
-					</c:if>
+					<div class="productImgArea" id="productImgArea">
+	                	<input type="file" id="pf_Img1" name="reloadFile" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" />
+	                </div>
+	                
+	                <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+	                	<c:if test="${ !empty n.n_Img }">
+	                	<img src="/brocoli/resources/Notice-Img/${n.n_Img_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                	</c:if>
+	              	</div>
 				</td>
 			</tr>
 			<tr>
@@ -89,6 +93,35 @@
 	</form>
 		</div>
 <%@ include file="All-Footer.jsp" %>
+
+<script>
+$(function(){
+  $('#productImgArea').hide();
+  
+     
+  $('#titleImgArea').click(() => {
+     $('#pf_Img1').click();
+  });
+});
+
+function loadImg(value, num){
+  
+  if(value.files && value.files[0])  {
+     
+     var reader = new FileReader();
+     
+     reader.onload = function(e){
+        
+        switch(num) {
+        case 1 : $('#titleImgArea img').attr('src', e.target.result);
+        	console.log(e.target.result);
+           break;         
+        }
+     }
+     reader.readAsDataURL(value.files[0]);
+  }
+} 
+</script>
 
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>

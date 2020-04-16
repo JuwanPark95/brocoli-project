@@ -40,7 +40,7 @@
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">QnA ${ q.q_No }번 글 세부보기</h2><Br>
 	
-	<table align="center" id="tableArea" class="table">
+	<table align="center" id="tableArea" class="table" enctype="multipart/form-data">
 			<tr>
 				<td width="100">글 번 호</td>
 				<td>${ q.q_No }</td>
@@ -76,16 +76,15 @@
 			
 			<tr>
 				<td>첨부 파일</td>
-				<td>
-				<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" width="45">
-				<%-- 	<c:if test="${ !empty q.q_Img1 }">
-						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"
-						download="${ contextPath }/resources/QnA-Img/${ q.q_Img1_ReName }"> ${ q.q_Img1_ReName }</a>
-					</c:if>
-					<c:if test="${ !empty q.q_Img2 }">
-						<a href="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"
-						download="${ contextPath }/resources/QnA-Img/${ q.q_Img2_ReName }"> ${ q.q_Img2_ReName }</a>
-					</c:if> --%>
+				
+				<td>				
+				<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
+              	
+                <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img2_ReName}" alt="user" class="rounded"style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+             	</div>
 				</td>
 			</tr>
 			
