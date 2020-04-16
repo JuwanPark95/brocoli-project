@@ -91,8 +91,8 @@
                                             <tr>
                                                 <td>${ol.count}</td>
                                                 <td name="orNO">${o.or_NO}</td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>${o.ordersMember.mName}</td>
+                                                <td>${o.ordersMember.mId}</td>
                                                 <td>${o.or_Date}</td>
                                                 <td>${o.or_Pname}</td>
                                                 <td>${o.or_Option1}</td>
