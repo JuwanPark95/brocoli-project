@@ -23,7 +23,7 @@
 		/* border:1px solid red; */
 		margin: auto;
 		width: 70%;
-		height: 110%;  	
+		height: 140%;  	
   		}
   		
   	.tableArea {
@@ -39,7 +39,7 @@
 <div id="all">
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">문의 사항 작성</h2><Br>
-	<form action="qnaInsert.mn" method="post" enctype="multipart/form-data">
+	<form id="fr" method="post" enctype="multipart/form-data">
 	<table align="center" id="tableArea" class="table">
 			<tr>
 				<td width="100">글 번 호</td>
@@ -72,7 +72,23 @@
 			
 			<tr>
 				<td>첨부 파일</td>
-				<td><input type="file" name="uploadFile"></td>
+				<td>
+				
+				<div class="productImgArea" id="productImgArea">
+                	<input type="file" id="pf_Img1" name="uploadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" />
+                    <input type="file" id="pf_Img2" name="uploadFile2" accept="resources/buploadFiles/" onchange="loadImg(this, 2);" />
+				</div>
+				
+				<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	 <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
+              	
+                <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	 <img id="contentImg1" src="http://via.placeholder.com/160x200" alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px; ">
+             	</div>
+             	
+              	</td>
+				
 			</tr>
 			
 			<tr>
@@ -83,31 +99,68 @@
 		</table>
 		
 		<div align="center">
-		<input type="submit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;"
-		 onsubmit="return checks()" value="작성 완료">
+		<input type="submit" id="btnSubmit" class="btn btn-primary" style="background: #222; width: 200px; border: 1px solid #222;" value="작성 완료">
 		</div>
-		
+       
 </form>
 </div>
 <%@ include file="All-Footer.jsp" %>
 
-	<script>
-	function checks(){
-	       //상품명 공백 확인 
-	        if($("#comment").text() == ""){
-	        	alert("내용을입력해주세요.");
-	        	console.log(comment);
-	        $("#comment").focus(); 
-	      	  return false; 
-	        }else if{
-	        	if($("#comment").text() == null){
-		        	alert("내용을입력해주세요.");
-		        	console.log(comment);
-		        $("#comment").focus(); 
-		       	 return false; 
-	        }
-	}
-		}	
+<script> 
+
+$(function(){
+	$("#btnSubmit").on("click",function(){
+		
+		if($("#qtitle").val().length == 0){
+     		alert("제목을 입력해 주세요."); 
+        	$("#qtitle").focus();
+        	return false;
+		}
+		if($("#comment").val().length == 0){
+     		alert("내용을 입력해 주세요."); 
+        	$("#comment").focus();
+        	return false
+			
+		}else{
+			$("#fr").attr("action","qnaInsert.mn").submit();
+		}
+		
+	});
+	
+});
+
+$(function(){
+  $('#productImgArea').hide();
+  
+     
+  $('#titleImgArea').click(() => {
+     $('#pf_Img1').click();
+  });
+     
+  $('#contentImgArea1').click(() => {
+     $('#pf_Img2').click();
+  });
+});
+
+function loadImg(value, num){
+  
+  if(value.files && value.files[0])  {
+     
+     var reader = new FileReader();
+     
+     reader.onload = function(e){
+        
+        switch(num) {
+        case 1 : $('#titleImg').attr('src', e.target.result);
+           break;
+        case 2 : $('#contentImg1').attr('src', e.target.result);
+           break;
+           
+        }
+     }
+     reader.readAsDataURL(value.files[0]);
+  }
+} 
 	</script>
 	
 

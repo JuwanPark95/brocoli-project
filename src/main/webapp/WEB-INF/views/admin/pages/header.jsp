@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/charts/c3charts/c3.css">
 <link rel="stylesheet"
 	href="/brocoli/resources/adminResources/vendor/fonts/flag-icon-css/flag-icon.min.css">
+
 </head>
 
 <body>

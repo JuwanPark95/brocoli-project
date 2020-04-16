@@ -72,14 +72,29 @@ public class QnAController {
 	 */
 	@RequestMapping("qnaInsert.mn")
 	public String insertQna(QnA q, HttpServletRequest request,
-			@RequestParam(name = "uploadFile", required = false) MultipartFile file) {
-		if(!file.getOriginalFilename().equals("")) {
+			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
+			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2){
+		
+		System.out.println("파일1이유 : " + file1);
+		System.out.println("파일2이유 : " + file2);
+		
+		if(!file1.getOriginalFilename().equals("")) {
 			
-			String q_Img1_Rename = saveFile(file, request);
+			String q_Img1_Rename = saveFile(file1, request);
 			
 			if(q_Img1_Rename != null) {
-				q.setQ_Img1(file.getOriginalFilename());
+				q.setQ_Img1(file1.getOriginalFilename());
 				q.setQ_Img1_ReName(q_Img1_Rename);
+			}
+		}
+		
+		if(!file2.getOriginalFilename().equals("")) {
+			
+			String q_Img2_Rename = saveFile(file2, request);
+			
+			if(q_Img2_Rename != null) {
+				q.setQ_Img2(file2.getOriginalFilename());
+				q.setQ_Img2_ReName(q_Img2_Rename);
 			}
 		}
 		System.out.println("qna 인설트 : " + q);
@@ -103,7 +118,7 @@ public class QnAController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\bnuploadRiles";
+		String savePath = root + "\\QnA-Img";
 
 		File folder = new File(savePath);
 

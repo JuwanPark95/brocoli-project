@@ -104,6 +104,15 @@
 										</div>
 									</div>
 
+<<<<<<< HEAD
+									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
+										<c:url var="ownerContactUpdate" value="ownerContactUpdate.ad">
+											<c:param name="con_NO" value="${c.con_NO}"/>
+										</c:url>
+										<a href="${ownerContactUpdate}">
+											<button  class="btn btn-dark">수정</button>
+										</a>
+=======
 									<div class="card-footer float-right"
 										style="background-color: transparent !important; border-top: white;">
 										<form
@@ -113,82 +122,7 @@
 										</form>
 										<button type="submit" class="btn btn-light "
 											onclick="location.href='brand-owner-contact.jsp'">목록</button>
-									</div>
-								</div>
-								<div class="card-footer bg-white">
-									<!--댓글-->
-									<div class="container" style="padding: 0">
-										<div>
-											<div class="card"
-												style="font-family: 'Do Hyeon', sans-serif;">
-												<div class="card-header"
-													style="background-color: rgb(240, 248, 255);">
-													<h6 style="margin-bottom: 0px;">댓글</h6>
-												</div>
-												<div class="card-body" style="padding-bottom: 0px;">
-													<form action="" method="post">
-														<div>
-															<textarea id="textbox_comment_input" name="replyContent"
-																class="form-control" rows="3" placeholder="Enter ..."></textarea>
-															<button type="submit" id="btn_comment_save"
-																class="btn btn-dark"
-																style="margin-top: 10px; float: right;" onclick="">작성</button>
-														</div>
-
-													</form>
-												</div>
-
-
-
-												<!-- ============================================================== -->
-												<!-- 댓글 보여주기 부분 -->
-												<!-- ============================================================== -->
-												<div id="textbox_comment_list" style="width: 100%;">
-													<table id="replySelectTable" style="width: 108%">
-														<tr id="con-tr">
-															<td style="width: 720px;"><div name="conCno"
-																	style="display: none;">
-																	<input type="hidden" name="ntype" value="">
-																</div>
-																<div id="conModify" name="conModify"
-																	style="display: none;">
-																	<textarea id="conUpdate" name="conUpdate" value=""></textarea>
-																	<button name="conUpdateButton" class="btn btn-inverse"
-																		type="button">저장</button>
-																</div>
-																<div id="conUpdate" name="con"></div></td>
-															<hr style="border: solid 0.4px lightgray;">
-															&nbsp
-															<td
-																style="float: right; margin-left: 30px; margin-right: 50px;"></td>
-															<td style="float: right;"></td>
-															<td style="float: right;">
-
-																<form method="post">
-																	<button type="button" name="modifyCon"
-																		class="btn btn-inverse" style="font-size: 0.8em;">
-																		<i class="fas fa-pencil-alt"></i>
-																	</button>
-
-																</form>
-
-																<form action="" method="post">
-																	<button class="btn btn-inverse"
-																		style="font-size: 0.8em; margin-top: 5px;"
-																		onclick="location.href ">
-																		<i class="fas fa-trash"></i>
-																	</button>
-																</form>
-															</td>
-														</tr>
-													</table>
-													<br>
-												</div>
-												<!-- ============================================================== -->
-												<!-- /댓글 보여주기 부분 -->
-												<!-- ============================================================== -->
-											</div>
-										</div>
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 									</div>
 								</div>
 							</div>
@@ -206,6 +140,8 @@
 	<!-- ============================================================== -->
 
 
+<<<<<<< HEAD
+=======
 	<!-- ============================================================== -->
 	<!-- 댓글 script  -->
 	<!-- ============================================================== -->
@@ -331,6 +267,7 @@
 
 
 
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 	<!-- Optional JavaScript -->
 	<!-- slimscroll js -->
 	<script
