@@ -222,10 +222,16 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-progress.jsp">진행중인 주문</a>
+                                        	<c:url var="Brand_NO" value="order_progress.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">진행중인 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-complete.jsp">완료된 주문</a>
+                                        	<c:url var="Brand_NO" value="order_complete.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">완료된 주문</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/order-return.jsp">반품</a>

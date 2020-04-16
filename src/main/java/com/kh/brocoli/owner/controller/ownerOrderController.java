@@ -65,7 +65,34 @@ public class ownerOrderController {
 		return mv;
 	}
 
+	@RequestMapping("order_progress.ow")
+	public ModelAndView order_progress(ModelAndView mv, int Brand_NO) {
+		
+		ArrayList<Orders> list = oService.orderProgress(Brand_NO);
+		
+		if(list != null) {
+			mv.addObject("list",list);
+			mv.setViewName("order-progress");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
 	
-	
+	@RequestMapping("order_complete.ow")
+	public ModelAndView order_complete(ModelAndView mv, int Brand_NO) {
+		
+		ArrayList<Orders> list = oService.orderComplete(Brand_NO);
+		
+		if(list != null) {
+			mv.addObject("list",list);
+			mv.setViewName("order-complete");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
 	
 }

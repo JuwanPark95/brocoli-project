@@ -21,8 +21,34 @@
 		<result property="or_Mno" column="OR_MNO"/>
 		<result property="or_P_NO" column="OR_P_NO"/>
 		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
+		
+		<collection property="ordersMember" resultMap="memberResultSet"/>
 	</resultMap>
 	
+	<resultMap id="memberResultSet" type="Member">
+		<id property="mNO" column="MNO"/>
+		<result property="mId" column="MID"/>
+		<result property="pwd" column="PWD"/>
+		<result property="mName" column="MNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="gender" column="GENDER"/>
+		<result property="birthDay" column="BIRTHDAY"/>
+		<result property="mGrant" column="MGRANT"/>
+		<result property="mPoint" column="MPOINT"/>
+		<result property="order_Count" column="ORDER_COUNT"/>
+		<result property="order_Price" column="ORDER_PRICE"/>
+		<result property="report_YN" column="REPORT_YN"/>
+		<result property="block_YN" column="BLOCK_YN"/>
+		<result property="block_Content" column="BLOCK_CONTENT"/>
+		<result property="del_Flag_YN" column="DEL_FLAG_YN"/>
+		<result property="del_Date" column="DEL_DATE"/>
+		<result property="enrollDate" column="ENROLLDATE"/>
+		<result property="brand" column="BRAND"/>
+		<result property="brand_NO" column="BRAND_NO"/>
+	</resultMap>
+
 	<resultMap type="Statistics" id="statisticsResultSet">
 		<id property="day" column="DAY"/>
 		
@@ -75,6 +101,47 @@
 		ORDER BY TO_CHAR(OR_DATE,'YYYY') ASC
 	</select>
 	
+	<select id="selectOrderProgress" resultMap="orderResultSet">
+		SELECT *
+		FROM ORDERS OD
+		JOIN MEMBER M
+		ON OD.OR_NO = M.MNO
+		WHERE OR_BRAND_NO = #{bNO}
+		AND OR_STATUS != 5
+		AND OR_STATUS != 6
+		AND OR_STATUS != 7
+		ORDER BY OR_DATE DESC
+	</select>
+
+	<select id="selectOrderComplete" resultMap="orderResultSet">
+		SELECT *
+		FROM ORDERS OD
+		JOIN MEMBER M
+		ON OD.OR_NO = M.MNO
+		WHERE OR_BRAND_NO = 4 
+		AND OR_STATUS = 5
+		ORDER BY OR_DATE DESC
+	</select>
+
+	<select id="selectOrderReturn" resultMap="orderResultSet">
+		SELECT *
+		FROM ORDERS OD
+		JOIN MEMBER M
+		ON OD.OR_NO = M.MNO
+		WHERE OR_BRAND_NO = 4
+		AND OR_STATUS = 6
+		ORDER BY OR_DATE DESC
+	</select>
+	
+	<select id="selectOrderChange" resultMap="orderResultSet">
+		SELECT *
+		FROM ORDERS OD
+		JOIN MEMBER M
+		ON OD.OR_NO = M.MNO
+		WHERE OR_BRAND_NO = 4
+		AND OR_STATUS = 7
+		ORDER BY OR_DATE DESC
+	</select>
 
 	
 </mapper>

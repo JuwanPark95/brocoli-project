@@ -31,6 +31,16 @@ public class ownerOrderServiceimpl implements ownerOrderService{
 		return oDao.selectIncomeYear(bNO);
 	}
 
+	@Override
+	public ArrayList<Orders> orderProgress(int bNO) {
+		return oDao.selectOrderProgress(bNO);
+	}
+
+	@Override
+	public ArrayList<Orders> orderComplete(int bNO) {
+		return oDao.selectOrderComplete(bNO);
+	}
+
 
 	
 	

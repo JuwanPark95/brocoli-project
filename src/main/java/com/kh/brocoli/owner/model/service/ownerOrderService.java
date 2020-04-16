@@ -15,6 +15,10 @@ public interface ownerOrderService {
 
 	ArrayList<Statistics> incomeYearSelect(int brand_NO);
 
+	ArrayList<Orders> orderProgress(int brand_NO);
+
+	ArrayList<Orders> orderComplete(int brand_NO);
+
 
 
 

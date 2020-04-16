@@ -26,4 +26,12 @@ public class ownerOrderDao {
 		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectIncomeYear",bNO);
 	}
 
+	public ArrayList<Orders> selectOrderProgress(int bNO) {
+		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderProgress",bNO);
+	}
+
+	public ArrayList<Orders> selectOrderComplete(int bNO) {
+		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderComplete",bNO);
+	}
+
 }
