@@ -215,15 +215,24 @@
 	<script>
 	$('#productModal a[id=ModalView]').click(function(){
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
+		
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
 			dataType:"json",
 			success:function(data){
+				var name = $("#img111").data("thumb");
+				alert(name);
 				$('#productName').val(data[0].p_Name);
 				$('#brandName').val(data[0].b_Name);
 				$('#pNo').val(data[0].p_NO);
-		
+				$('#orderCount').val(data[0].p_Order_Count);
+				$('#productPrice').val(data[0].p_Price);
+				$('#lastPrice').val(data[0].p_Last_Price);
+				$('#productComment').val(data[0].p_Comment);
+				$('#img1_1').attr("src", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
+				$('#img1_2').attr("href", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
+				
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
 				
