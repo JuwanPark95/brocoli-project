@@ -50,7 +50,7 @@ public class AdminOrdersDao {
 	 * @return
 	 */
 	public ArrayList<Reject> selectRejectList() {
-		return (ArrayList)sqlSession.selectList("selectRejectList.selectRejectList");
+		return (ArrayList)sqlSession.selectList("AdminOrders.selectRejectList");
 	}
 	
 }
