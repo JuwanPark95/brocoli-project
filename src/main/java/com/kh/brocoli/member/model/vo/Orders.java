@@ -39,14 +39,10 @@ public class Orders {
 
 
 	
-	 public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
+	   public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
 			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
-			Product_Option pOptionlist) {
-
-	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
-			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
-			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member ordersMember,
+			Product_Option pOptionlist, Member ordersMember,
 			Reject ordersReject, Change ordersChange) {
 
 		super();
