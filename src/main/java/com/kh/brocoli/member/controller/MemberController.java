@@ -2,17 +2,19 @@ package com.kh.brocoli.member.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Email;
@@ -28,6 +33,7 @@ import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 @Controller
 public class MemberController {
@@ -125,7 +131,6 @@ public class MemberController {
 		ArrayList<Brand> bplist = mService.selectbpList(b_Name);
 		mv.addObject("bProductList",bplist);
 		mv.setViewName("Main-BrandProduct");
-		System.out.println("bplist : " + bplist);
 		return mv;
 	}
 	
@@ -174,10 +179,31 @@ public class MemberController {
 		return "redirect:index-admin.jsp";
 	}
 	
+	/**
+	 * 상품 상세화면
+	 * @return
+	 */
 	@RequestMapping("productDetail.mn")
-	public ModelAndView ProductDetail(Product pd,String p_NO,ModelAndView mv) {
+	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
+		
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
+		mv.addObject("aProductList",pDetail);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
+	}
+	
+	@RequestMapping("productModal")
+	public void productModal(HttpServletResponse response,String p_NO) throws JsonIOException, IOException{
+		
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("pDetail : " + pDetail );
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(pDetail,response.getWriter());
+		
 	}
 	
 /************************************사이드 바*******************************/	

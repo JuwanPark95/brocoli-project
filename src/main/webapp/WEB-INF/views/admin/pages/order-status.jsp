@@ -4,6 +4,7 @@
 <!Doctype html>
 <html lang="en">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -68,15 +69,20 @@
                                             <tr>
                                                 <th style="width:3%">번호</th>
                                                 <th style="width:5%">주문번호</th>
-                                                <th style="width:8%">주문일자</th>
-                                                <th style="width:10%">상품명</th>
-                                                <th style="width:10%">상품번호</th>
-                                                <th style="width:3%">수량</th>
-                                                <th style="width:8%">주문자</th>
+                                                <th style="width:5%">주문자</th>
                                                 <th style="width:8%">아이디</th> 
-                                                <th style="width:10%">배송지</th>
+                                                <th style="width:7%">주문일자</th>
+                                                <th style="width:10%">상품명</th>
+                                                <th style="width:5%">옵션1</th>
+                                                <th style="width:6%">옵션2</th>
+                                                <th style="width:4%">상품번호</th>
+                                                <th style="width:3%">수량</th>
                                                 <th style="width:8%">가격</th>
-                                                <th style="width:8%">현재주문상태</th>
+                                                <th style="width:10%">배송지</th>
+                                                <th style="width:5%">택배사</th>
+                                                <th style="width:5%">송장번호</th>
+                                                <th style="width:8%">주문상태</th>
+                                                <th style="width:8%">상태변경</th>
                                                 
                                             </tr>
                                         </thead>
@@ -84,26 +90,32 @@
                                         <c:forEach var="o" items="${ordersList}" varStatus="ol" >
                                             <tr>
                                                 <td>${ol.count}</td>
-                                                <td>${o.or_NO}</td>
+                                                <td name="orNO">${o.or_NO}</td>
+                                                <td>${o.ordersMember.mName}</td>
+                                                <td>${o.ordersMember.mId}</td>
                                                 <td>${o.or_Date}</td>
                                                 <td>${o.or_Pname}</td>
+                                                <td>${o.or_Option1}</td>
+                                                <td>${o.or_Option2}</td>
                                                 <td>${o.or_P_NO}</td>
                                                 <td>${o.or_Amount}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>${o.or_Address}</td>
                                                 <td>${o.or_Price}</td>
-                                                <td>배송준비중</td>
+                                                <td>${o.or_Address}</td>
+                                                <td>${o.or_Deliver_Vender}</td>
+                                                <td>${o.or_Deliver_Num}</td>
+                                                <td name="orderStatus">${o.or_Status}</td>
                                                 <td>
-                                                 <select name="cls" style="height: 30px; background-color: white;">
+                                                 <select name="orderStatusSelect" style="height: 30px; background-color: white;">
+                                                 	<option value="주문확인">주문확인</option>
 									                <option value="상품준비중">상품준비중</option>
-									                <option value="배송준비중">배송준비중</option>
-									                <option value="배송중">배송중</option>
+									                <option value="상품배송중">상품배송중</option>
 									                <option value="배송완료">배송완료</option>
+									                <option value="구매확정">구매확정</option>
+									                <option value="환불 진행 중">환불 진행 중</option>
+									                <option value="교환 진행 중">교환 진행 중</option>
 									              </select>
-									              <button type="submit" class="btn btn-light "
-									                      style="width:50px; height:40px; ">
-									                      <i class="fas fa-sync"></i>
+									              <button name="orderStatusBtn" id="orderStatusBtn" type="submit" class="btn btn-light" style="width:50px; height:40px; ">
+									                  <i class="fas fa-sync"></i>
 									               </button>
                                                 </td>
                                             </tr>
@@ -115,8 +127,7 @@
                     </div>
                     <!-- ============================================================== -->
                     <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                    
+                    <!-- ============================================================== -->               
                 </div>
                 <div class="row">
                     <!-- ============================================================== -->
@@ -127,6 +138,40 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
+    
+    <!-- 작성자 : 신은지  / 주문상태 변경 ajax -->
+    <script>
+    
+    	$(function(){
+    		$("button[name=orderStatusBtn]").on("click",function(){
+    			//var jsonData = new Object();
+    			//jsonData.or_Status = $(this).parent().children('#orderStatusSelect').val();
+    			//jsonData.or_NO = $(this).parent().prevAll("td[name=orNO]").text();
+    			var orderStatus = $(this).parents('#orderStatus');
+    			var or_NO = $(this).parent().prevAll("td[name=orNO]").text();
+    			
+    			or_Status = $(this).parent().children('select[name=orderStatusSelect]').val();
+    		
+    			$.ajax({
+    				url:'orderStatusChange.ad',
+    				//data:JSON.stringify(jsonData),
+    				data:{or_NO:or_NO,or_Status:or_Status},
+    				type:'post',
+    				success:function(data){
+    					if(data == 'Sucess'){
+    					or_Status = $(this).parent().children('select[name=orderStatusSelect]').val();
+    					}
+    					console.log('END');
+    				},error:function(){
+    					console.log("전송실패");
+    				}	
+    			});    			
+    			//주문 상태변경 버튼 누르면 주문상태 변경해줌
+    			$(this).parent().prevAll('td[name=orderStatus]').text(or_Status);
+    		});
+    	});
+    </script>
+    
     
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->

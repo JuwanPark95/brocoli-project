@@ -60,7 +60,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">회원 테이블</h5>
+                            <h5 class="card-header"></h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
@@ -85,18 +85,33 @@
                                                 <td>${c.con_Writer}</td>
                                                 <td>
                                                 <c:set var="brandName" value="${c.brandName}"/>
-                                                <c:if test="${empty brandName}">
+                                                <c:if test="${brandName != 'NO'}">
+                                                	${c.brandName}
+                                                </c:if>
+                                                <c:if test="${brandName eq 'NO'}">
                                                 	-
                                                 </c:if>
-                                                ${c.brandName}
                                                 </td>
                                                 <td>${c.con_Title}</td>
                                                 <td>${c.con_Date}</td>
-                                                <td>${c.con_View_Check}</td>
+                                                <td>
+                                                	<c:set var="viewCheck" value="${c.con_View_Check}"/>
+                                                	<c:if test="${viewCheck eq 'Y'}">
+                                                		<strong><span style="color:#63C386;">읽음O</span></strong>
+                                                	</c:if>
+                                                	<c:if test="${viewCheck eq 'N'}">
+                                                		<strong><span style="color:tomato;">읽음X</span></strong>
+                                                	</c:if>
+                                                </td>
 											</tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
+                                </div>
+                                <div class="form-group row text-right" style="width:136%">
+                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                     	<button class="btn btn-dark" onclick="location.href='contactWrite.ad'">글작성</button>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +136,8 @@
 				$("#brand-owner-contact").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="brand-owner-contact-detail.jsp";
+					var ocId = $(this).parents().children("td").eq(1).text();	
+					location.href="ownerContactDetail.ad?ocId="+ocId;
 					//location.href="detail.bo?bId="+bId;
 				});
 			});

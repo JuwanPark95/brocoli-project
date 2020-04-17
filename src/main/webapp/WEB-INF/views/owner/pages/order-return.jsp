@@ -86,66 +86,29 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<c:forEach var="r" items="${list}">
                                             <tr>
-                                                <td>2020-04-01 03:00:12</td>
-                                                <td>1225412</td>
-                                                <td>이준용</td>
-                                                <td>레거시 스우.. 외 13개</td>
-                                                <td>211,000</td>
-                                                <td>택배손망실</td>
-                                                <td>2020-04-05 18:00:12</td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span>창고입고</td>
+                                                <td>${r.or_Date }</td>
+                                                <td>${r.or_NO }</td>
+                                                <td>${r.ordersMember.mName }</td>
+                                                <td>${r.or_Pname }</td>
+                                                <td>${r.or_Price }</td>
+                                                <td>${r.ordersReject.re_Reason }</td>
+                                                <td>${r.ordersReject.re_Date}</td>
+                                                <td>
+                                                	 <c:choose>
+														<c:when test="${r.ordersReject.re_Status eq '1'}"><span class="badge-dot badge-brand"></span><a id="statusText">반품접수</a></c:when>
+														<c:when test="${r.ordersReject.re_Status eq '2'}"><span class="badge-dot badge-info"></span><a id="statusText">반품진행중</a></c:when>
+														<c:when test="${r.ordersReject.re_Status eq '3'}"><span class="badge-dot badge-primary"></span><a id="statusText">반품완료</a></c:when>
+													</c:choose>	
+                                                </td>
                                                 <td>
                                                 	<div class="btn-group ml-auto">
 			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
 			                                        </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2020-03-31 15:10:12</td>
-                                                <td>1225100</td>
-                                                <td>유영재</td>
-                                                <td> BULKY KNEE.. 외 8개</td>
-                                                <td>2,321,000</td>
-                                                <td>제품불량</td>
-                                                <td>2020-04-05 18:00:12</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>반품완료</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-30 21:08:52</td>
-                                                <td>1225100</td>
-                                                <td>유민정</td>
-                                                <td>REVERSIBLE F.. 외 21개</td>
-                                                <td>151,000</td>
-                                                <td>고객변심</td>
-                                                <td>2020-04-05 18:00:12</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>반품완료</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-04-02 18:12:21</td>
-                                                <td>1225100</td>
-                                                <td>최유빈</td>
-                                                <td>DUCK DOWN SHORT .. 외 2개</td>
-                                                <td>214,000</td>
-                                                <td>제품누락</td>
-                                                <td>2020-04-05 18:00:12</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>재발송완료</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
+                                            </c:forEach>
                                             
                                         </tbody>
                                         <tfoot>
@@ -172,106 +135,7 @@
                 </div>
  
  
- 				<div class="row">
-                    <!-- ============================================================== -->
-                    <!-- data table  -->
-                    <!-- ============================================================== -->
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">완료된 주문</h5>
-                                <p> - 구매 확정된 주문입니다. <br>
-                                	- Print, Excel, CSV, PDF 버튼 클릭시 저장됩니다.</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example" class="table table-striped table-bordered second" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>주문시간</th>
-                                                <th>주문번호</th>
-                                                <th>주문자</th>
-                                                <th>품 목</th>
-                                                <th>주문금액</th>
-                                                <th>상태</th>
-                                                <th>상세보기</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2020-04-01 03:00:12</td>
-                                                <td>1225412</td>
-                                                <td>이준용</td>
-                                                <td>레거시 스우.. 외 13개</td>
-                                                <td>211,000</td>
-                                                <td>구매확정</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-31 15:10:12</td>
-                                                <td>1225100</td>
-                                                <td>유영재</td>
-                                                <td> BULKY KNEE.. 외 8개</td>
-                                                <td>2,321,000</td>
-                                                <td>구매확정</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-30 21:08:52</td>
-                                                <td>1225100</td>
-                                                <td>유민정</td>
-                                                <td>REVERSIBLE F.. 외 21개</td>
-                                                <td>151,000</td>
-                                                <td>구매확정</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-04-02 18:12:21</td>
-                                                <td>1225100</td>
-                                                <td>최유빈</td>
-                                                <td>DUCK DOWN SHORT .. 외 2개</td>
-                                                <td>214,000</td>
-                                                <td>구매확정</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>주문시간</th>
-                                                <th>주문번호</th>
-                                                <th>주문자</th>
-                                                <th>금액</th>
-                                                <th>상태</th>
-                                                <th>상세보기</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end data table  -->
-                    <!-- ============================================================== -->
-                </div>
-
+ 	
             </div>
 
         </div>

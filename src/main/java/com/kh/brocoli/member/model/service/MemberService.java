@@ -6,6 +6,7 @@ import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 public interface MemberService {
 
@@ -54,6 +55,16 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<Product> selectapList();
+
+
+	/**
+	 * 작성자 : 윤석훈
+	 * 상품 디테일
+	 * @param p_NO
+	 * @return
+	 */
+	ArrayList<ProductDetail> selectpDetail(String p_NO);
+
 
 
 	

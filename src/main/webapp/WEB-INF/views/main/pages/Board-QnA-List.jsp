@@ -72,7 +72,14 @@
         	</c:if> <c:if test="${ empty q.q_Img1_ReName }">
         		&nbsp;
         	</c:if></td>
-        <td align="center">${ q.q_View_Check }</td>
+        
+        	<c:if test="${ q.q_View_Check == 'Y' }">
+						<td style="text-align:center;">읽음</td>
+					</c:if>
+					
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td style="text-align:center;">안읽음</td>
+			</c:if>
       </tr>
       
     </c:forEach>

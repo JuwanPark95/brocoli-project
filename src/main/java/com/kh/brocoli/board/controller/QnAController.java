@@ -72,14 +72,29 @@ public class QnAController {
 	 */
 	@RequestMapping("qnaInsert.mn")
 	public String insertQna(QnA q, HttpServletRequest request,
-			@RequestParam(name = "uploadFile", required = false) MultipartFile file) {
-		if(!file.getOriginalFilename().equals("")) {
+			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
+			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2){
+		
+		System.out.println("파일1이유 : " + file1);
+		System.out.println("파일2이유 : " + file2);
+		
+		if(!file1.getOriginalFilename().equals("")) {
 			
-			String q_Img1_Rename = saveFile(file, request);
+			String q_Img1_Rename = saveFile(file1, request,"f1");
 			
 			if(q_Img1_Rename != null) {
-				q.setQ_Img1(file.getOriginalFilename());
+				q.setQ_Img1(file1.getOriginalFilename());
 				q.setQ_Img1_ReName(q_Img1_Rename);
+			}
+		}
+		
+		if(!file2.getOriginalFilename().equals("")) {
+			
+			String q_Img2_Rename = saveFile(file2, request,"f2");
+			
+			if(q_Img2_Rename != null) {
+				q.setQ_Img2(file2.getOriginalFilename());
+				q.setQ_Img2_ReName(q_Img2_Rename);
 			}
 		}
 		System.out.println("qna 인설트 : " + q);
@@ -99,11 +114,11 @@ public class QnAController {
 	 * @param request
 	 * @return
 	 */
-	private String saveFile(MultipartFile file, HttpServletRequest request) {
+	private String saveFile(MultipartFile file, HttpServletRequest request,String pre) {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\bnuploadRiles";
+		String savePath = root + "\\QnA-Img";
 
 		File folder = new File(savePath);
 
@@ -114,7 +129,7 @@ public class QnAController {
 		String q_Img1 = file.getOriginalFilename();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String ReName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+		String ReName = pre+sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
 
 		System.out.println("q_Img1_ReName : " + ReName);
@@ -160,21 +175,40 @@ public class QnAController {
 	
 	@RequestMapping("qUpdate.mn")
 	public ModelAndView qnaUpdate(ModelAndView mv, @ModelAttribute QnA q, HttpServletRequest request,
-			@RequestParam(value = "reloadFile", required = false) MultipartFile file) {
+			@RequestParam(value = "reloadFile1", required = false) MultipartFile file1,
+			@RequestParam(value = "reloadFile2", required = false) MultipartFile file2) {
 		
 		System.out.println("업뎃 q : " + q);
 		
-		if(file != null && file.isEmpty()) {
-			if(q.getQ_Img1_ReName() != null) {
+		if(file1 != null && file1.isEmpty() || file2 != null && file2.isEmpty()) {
+			if(q.getQ_Img1_ReName() != null  ) {
 				deleteFile(q.getQ_Img1_ReName(), request);
 			}
+			if(q.getQ_Img2_ReName() != null) {
+				deleteFile(q.getQ_Img2_ReName(), request);
+			}
 		}
-		String renameFileName = saveFile(file, request);
-		System.out.println("업뎃 renameFileName : " + renameFileName);
-
-		if (renameFileName != null) {
-			q.setQ_Img1(file.getOriginalFilename());
-			q.setQ_Img1_ReName(renameFileName);
+		String renameFileName1 = "";
+		String renameFileName2 = "";
+		
+		if(file1 != null) {
+			renameFileName1 = saveFile(file1, request,"f1");
+			System.out.println("업뎃 renameFileName1 : " + renameFileName1);
+		}
+		
+		if(file2 != null) {
+			renameFileName2 = saveFile(file2, request,"f2");
+			System.out.println("업뎃 renameFileName2 : " + renameFileName2);
+		}
+		
+		if (renameFileName1 != null) {
+			q.setQ_Img1(file1.getOriginalFilename());
+			q.setQ_Img1_ReName(renameFileName1);
+		}
+		
+		if (renameFileName2 != null) {
+			q.setQ_Img2(file2.getOriginalFilename());
+			q.setQ_Img2_ReName(renameFileName2);
 		}
 
 		int result = qService.updateQnA(q);

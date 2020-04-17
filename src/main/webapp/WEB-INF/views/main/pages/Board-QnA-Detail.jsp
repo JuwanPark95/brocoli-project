@@ -40,7 +40,7 @@
 <br>
 	<h2 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">QnA ${ q.q_No }번 글 세부보기</h2><Br>
 	
-	<table align="center" id="tableArea" class="table">
+	<table align="center" id="tableArea" class="table" enctype="multipart/form-data">
 			<tr>
 				<td width="100">글 번 호</td>
 				<td>${ q.q_No }</td>
@@ -63,25 +63,28 @@
 			</tr>
 			<tr>
 				<td>답변여부</td>
-				<td><input type="hidden" value="${ q.q_View_Check }"></td> 
+				<%-- <td><input type="hidden" value="${ q.q_View_Check }"></td>  --%>
 				
-					<c:if test="${ q.q_View_Check == Y }">
+					<c:if test="${ q.q_View_Check == 'Y' }">
 						<td>읽음</td>
 					</c:if>
 					
-					<c:if test="${ q.q_View_Check == N }">
-						<td>안읽음</td>
-					</c:if>
-		
+					<c:if test="${ q.q_View_Check == 'N' }">
+						<td> 안읽음</td>
+					</c:if>		
 			</tr>
 			
 			<tr>
 				<td>첨부 파일</td>
-				<td>
-					<c:if test="${ !empty q.q_Img1 }">
-						<a href="${ contextPath }/resources/buploadFiles/${ q.q_Img1_ReName }"
-						download="${ q.n_Img1 }"> ${ q.q_Img1 }</a>
-					</c:if>
+				
+				<td>				
+				<div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img1_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+              	</div>
+              	
+                <div id="contentImgArea1"  style="float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+                	<img src="/brocoli/resources/QnA-Img/${q.q_Img2_ReName}" alt="user" class="rounded"style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+             	</div>
 				</td>
 			</tr>
 			

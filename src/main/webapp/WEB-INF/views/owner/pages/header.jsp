@@ -156,27 +156,35 @@
                                 	        메뉴
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="/brocoli/owner/owner.jsp" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
+                            	<c:url var="goToHome" value="goToHome.ow">
+                            	</c:url>
+                                <a class="nav-link active" href="${goToHome}" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#" aria-expanded="false" data-toggle="collapse" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>매출관리</a>
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-day.jsp">일간매출</a>
+                                        	<c:url var="incomeDay_select" value="incomeDaySelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeDay_select}">일간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-week.jsp">주간매출</a>
+                                       		<c:url var="incomeMonth_select" value="incomeMonthSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeMonth_select}">월간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-month.jsp">월간매출</a>
+                                        	<c:url var="incomeYear_select" value="incomeYearSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeYear_select}">연간매출</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-year.jsp">연간매출</a>
-                                        </li>
-                                         <li class="nav-item">
+<!--                                          <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">매출분석(제작중)</a>
-                                        </li> 
+                                        </li>  -->
                                     </ul>
                                 </div>
                             </li>
@@ -200,12 +208,12 @@
 			                                </c:url>
                                             <a class="nav-link" href="${Brand_NO}">재고관리</a>
                                         </li>
-                                        <li class="nav-item">
+<!--                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">판매제품순위(제작중)</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/product-list.jsp">판매상품전체보기</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </li>
@@ -214,20 +222,32 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-progress.jsp">진행중인 주문</a>
+                                        	<c:url var="Brand_NO" value="order_progress.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">진행중인 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-complete.jsp">완료된 주문</a>
+                                        	<c:url var="Brand_NO" value="order_complete.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">완료된 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-return.jsp">반품</a>
+                                        	<c:url var="order_reject" value="order_reject.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_reject }">반품</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-exchange.jsp">교환</a>
+                                        	<c:url var="order_change" value="order_change.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_change }">교환</a>
                                         </li>
-                                        <li class="nav-item">
+  <!--                                       <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">주문분석(제작중)</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 
@@ -269,13 +289,19 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-Tip.jsp">광고요령</a>
+                                        	<c:url var="banner_Tip" value="banner_Tip.ow"></c:url>
+                                            <a class="nav-link" href="${banner_Tip}">광고요령</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-sale.jsp">광고신청</a>
+                                        	<c:url var="banner_sale" value="banner_sale.ow"></c:url>
+                                            <a class="nav-link" href="${banner_sale}">광고신청</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-result.jsp">결과확인</a>
+                                        	<c:url var="banner_result" value="banner_result.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }}"/>
+												<c:param name="mNO" value="${loginUser.mNO }"/>      
+                                        	</c:url>
+                                            <a class="nav-link" href="${banner_result}">결과확인</a>
                                         </li>
 
                                     </ul>
@@ -322,10 +348,12 @@
                                 <div id="submenu-9" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/Cropper.jsp">사진편집<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="Cropper" value="Cropper.ow"></c:url>
+                                            <a class="nav-link" href="${Cropper}">사진편집<span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/color-picker.jsp">RGB색상표<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="color_picker" value="color_picker.ow"></c:url>
+                                            <a class="nav-link" href="${color_picker}">RGB색상표<span class="badge badge-secondary">New</span></a>
                                         </li>
 
                                     </ul>

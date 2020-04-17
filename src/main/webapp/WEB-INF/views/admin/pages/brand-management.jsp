@@ -90,15 +90,21 @@
                                                 <td>${b.b_Address }</td>
                                                 <td>${b.b_Phone }</td>
                                                 <td>${b.b_Enter_Date }</td>
-                                                <td>${b.b_Status }</td>
+                                                <td>
+	                                                <c:set var="b_Status" value="${b.b_Status}" />
+	                                            	<c:choose>
+	                                            		<c:when test="${b_Status eq 'Y'}">
+	                                            			<strong><span style="color:#60DA8D;">입점</span></strong>
+	                                            		</c:when>
+	                                            		<c:when test="${b_Status eq 'N'}">
+	                                            			<strong><span style="color:tomato;">폐점</span></strong>
+	                                            		</c:when>
+	                                            	</c:choose>
+                                            	</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
-                      			<div class="form-group row text-right" style="width:136%">
-                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                     	<button class="btn btn-dark" onclick="location.href='brand-add.jsp'">추가</button>
-                                     </div>
                                 </div>
                                 </div>
                             </div>

@@ -42,6 +42,7 @@ public class AdminBrandDao {
 	 * @return
 	 */
 	public int updateBrandUpdate(Brand b) {
+		System.out.println("브랜드 수정 DAO: "+ b);
 		return sqlSession.update("AdminBrand.updateBrand", b);
 	}
 	
@@ -125,5 +126,66 @@ public class AdminBrandDao {
 	public ArrayList<Contact> ownerContactList() {
 		return (ArrayList)sqlSession.selectList("AdminBrand.ownerContactList");
 	}
+
+	/**
+	 * 작성자  : 신은지
+	 * 12. 오너 콘택트 상세보기
+	 * @param ocId
+	 * @return
+	 */
+	public Contact ownerContactDetail(int ocId) {
+		return sqlSession.selectOne("AdminBrand.ownerContactDetail",ocId);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 12_1. 오너 콘택트 게시판 읽음여부 업데이트
+	 * @param ocId
+	 */
+	public void ownerCheckView(int ocId) {
+		sqlSession.selectOne("AdminBrand.ownerCheckView",ocId);
+		
+	}
+	
+	/**
+	 *	작성자 : 신은지
+	 *	13. 오너 콘택트 게시판 글쓰기
+	 * @param c
+	 * @return
+	 */
+	public int ownerContactWrite(Contact c) {
+		return sqlSession.insert("AdminBrand.ownerContactWrite",c);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  14. 오너 콘택트 게시판 수정하기 view
+	 * @param ocNO
+	 * @return
+	 */
+	public Contact ownerContactUpdate(int ocNO) {
+		return sqlSession.selectOne("AdminBrand.ownerContactUpdate",ocNO);
+	}
+
+	/**
+	 * 	작성자 : 신은지
+	 * 	15. 오너 콘택트 게시판 수정 update
+	 * @param c
+	 * @return
+	 */
+	public int ownerContactUpdateSave(Contact c) {
+		return sqlSession.update("AdminBrand.ownerContactUpdateSave",c);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  16. 브랜드 삭제
+	 * @param brand_NO
+	 * @return
+	 */
+	public int brandDelete(int brand_NO) {
+		return sqlSession.update("AdminBrand.brandDelete",brand_NO);
+	}
+
 
 }

@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/charts/c3charts/c3.css">
 <link rel="stylesheet"
 	href="/brocoli/resources/adminResources/vendor/fonts/flag-icon-css/flag-icon.min.css">
+
 </head>
 
 <body>
@@ -261,7 +262,7 @@
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='order-exchange.ad'/>">교환/반품</a></li>
+											href="<c:url value='orderChangeReject.ad.ad'/>">교환/반품</a></li>
 									</ul>
 								</div>
 							</li>

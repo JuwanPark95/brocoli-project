@@ -12,6 +12,7 @@ import com.kh.brocoli.member.model.dao.MemberDao;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 
 @Service("mService")
@@ -54,6 +55,12 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Product> selectapList() {
 		return mDao.selectapList();
+	}
+
+
+	@Override
+	public ArrayList<ProductDetail> selectpDetail(String p_NO) {
+		return mDao.selectpDetail(p_NO);
 	}
 
 

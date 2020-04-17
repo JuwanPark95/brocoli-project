@@ -86,5 +86,45 @@ public interface AdminBrandService {
 	 */
 	ArrayList<Contact> selectOwnerContactList();
 
+	/**
+	 * 작성자  : 신은지
+	 * 12. 오너 콘택트 상세보기
+	 * @param ocId
+	 * @return
+	 */
+	Contact ownerContactDetail(int ocId);
+
+	/**
+	 * 작성자 : 신은지
+	 * 13. 오너 콘택트 게시판 글쓰기
+	 * @param c
+	 * @return
+	 */
+	int ownerContactWrite(Contact c);
+
+	/**
+	 * 작성자 : 신은지
+	 * 14. 오너 콘택트 게시판 수정 view
+	 * @param ocNO
+	 * @return
+	 */
+	Contact ownerContactUpdate(int con_NO);
+
+	/**
+	 * 작성자 : 신은지
+	 * 15. 오너 콘택트 게시판 수정 update
+	 * @param c
+	 * @return
+	 */
+	int ownerContactUpdateSave(Contact c);
+
+	/**
+	 * 작성자 : 신은지
+	 * 16. 브랜드 삭제
+	 * @param brand_NO
+	 * @return
+	 */
+	int brandDelete(int brand_NO);
+
 	
 }

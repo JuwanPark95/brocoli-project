@@ -24,6 +24,12 @@ public class Orders {
 	
 	 private Product pList;
 	 private Product_Option pOptionlist;
+
+	 
+	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
+	 private Reject ordersReject;  //반품정보
+	 private Change ordersChange;  //교환정보
+
 	 
 	 
 	 public Orders() {
@@ -31,11 +37,18 @@ public class Orders {
 	 }
 
 
+
 	
 	 public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
 			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
 			Product_Option pOptionlist) {
+
+	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
+			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
+			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member ordersMember,
+			Reject ordersReject, Change ordersChange) {
+
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
@@ -52,8 +65,14 @@ public class Orders {
 		this.or_Mno = or_Mno;
 		this.or_P_NO = or_P_NO;
 		this.or_Brand_NO = or_Brand_NO;
+
 		this.pList = pList;
 		this.pOptionlist = pOptionlist;
+
+		this.ordersMember = ordersMember;
+		this.ordersReject = ordersReject;
+		this.ordersChange = ordersChange;
+
 	}
 
 
@@ -129,7 +148,7 @@ public class Orders {
 	}
 
 
-
+	
 	public String getOr_Address() {
 		return or_Address;
 	}
@@ -238,6 +257,7 @@ public class Orders {
 
 
 
+
 	public Product getpList() {
 		return pList;
 	}
@@ -260,6 +280,36 @@ public class Orders {
 		this.pOptionlist = pOptionlist;
 	}
 
+	
+	public Member getOrdersMember() {
+		return ordersMember;
+	}
+
+
+	public void setOrdersMember(Member ordersMember) {
+		this.ordersMember = ordersMember;
+	}
+
+
+	public Reject getOrdersReject() {
+		return ordersReject;
+	}
+
+
+	public void setOrdersReject(Reject ordersReject) {
+		this.ordersReject = ordersReject;
+	}
+
+
+	public Change getOrdersChange() {
+		return ordersChange;
+	}
+
+
+	public void setOrdersChange(Change ordersChange) {
+		this.ordersChange = ordersChange;
+	}
+
 
 
 	@Override
@@ -269,13 +319,15 @@ public class Orders {
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
 				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList
-				+ ", pOptionlist=" + pOptionlist + "]";
+				+ ", pOptionlist=" + pOptionlist
+                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
+				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
+
 	}
 	 
-	 
+
 	 
 	 
 
 
-	
 }
