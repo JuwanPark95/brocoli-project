@@ -95,4 +95,19 @@ public class ownerOrderController {
 		return mv;
 	}
 	
+	@RequestMapping("order_reject.ow")
+	public ModelAndView order_reject(ModelAndView mv, int bNO) {
+		ArrayList<Orders> list = oService.orderReJect(bNO);
+		
+		if(list != null) {
+			mv.addObject("list",list);
+			mv.setViewName("order-return");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
+	
+	
 }

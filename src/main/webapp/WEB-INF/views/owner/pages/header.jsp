@@ -234,7 +234,10 @@
                                             <a class="nav-link" href="${Brand_NO }">완료된 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-return.jsp">반품</a>
+                                        	<c:url var="order_reject" value="order_reject.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_reject }">반품</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/order-exchange.jsp">교환</a>
