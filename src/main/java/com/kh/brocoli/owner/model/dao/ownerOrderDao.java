@@ -34,4 +34,8 @@ public class ownerOrderDao {
 		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderComplete",bNO);
 	}
 
+	public ArrayList<Orders> selectOrderReject(int bNO) {
+		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderReject",bNO);
+	}
+
 }

@@ -118,5 +118,13 @@ public interface AdminBrandService {
 	 */
 	int ownerContactUpdateSave(Contact c);
 
+	/**
+	 * 작성자 : 신은지
+	 * 16. 브랜드 삭제
+	 * @param brand_NO
+	 * @return
+	 */
+	int brandDelete(int brand_NO);
+
 	
 }

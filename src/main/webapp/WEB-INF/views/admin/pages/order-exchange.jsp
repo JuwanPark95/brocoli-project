@@ -60,48 +60,44 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">주문 테이블</h5>
+                            <h5 class="card-header">교환 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
-                                            <tr>
-                                                <th style="width:3%">번호</th>
-                                                <th style="width:8%">주문일자</th>
-                                                <th style="width:10%">상품번호</th>
-                                                <th style="width:10%">상품명</th>
-                                                <th style="width:3%">수량</th>
-                                                <th style="width:8%">주문자</th>
-                                                <th style="width:8%">아이디</th> 
-                                                <th style="width:10%">배송지</th>
-                                                <th style="width:8%">가격</th>
-                                                <th style="width:8%">현재주문상태</th>
-                                                <th style="width:12%">교환/반품</th>
-                                                
-                                            </tr>
+	                                        <tr>
+	                                        	<th style="width:3%">번호</th>
+	                                            <th style="width:3%">교환번호</th>
+	                                            <th style="width:8%">주문자</th>
+	                                            <th style="width:8%">아이디</th> 
+	                                            <th style="width:10%">상품명</th>
+	                                            <th style="width:8%">가격</th>
+	                                            <th style="width:8%">교환사유</th>
+	                                            <th style="width:8%">교환내용</th>
+	                                            <th style="width:8%">교환요청일</th>
+	                                            <th style="width:8%">교환완료일</th>
+	                                            <th style="width:12%">교환상태</th>
+	                                        </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="c" items="${}" varStatus="cl"> 
                                             <tr>
-                                                <td>1</td>
-                                                <td>2020/02/02</td>
-                                                <td>a1d1</td>
-                                                <td>나이키맨투맨</td>
-                                                <td>2</td>
-                                                <td>홍길순</td>
-                                                <td>hongsoon</td>
-                                                <td>서울시 강남구 역삼1동</td>
-                                                <td>30000</td>
-                                                <td>배송준비중</td>
-                                                <td>
-									              <button type="submit" class="btn btn-outline-dark"
-									                      style="width:60px; height:40px; ">
-									                      	교환
-									               </button>
-									               <button type="submit" class="btn btn-outline-danger "
-									                      style="width:60px; height:40px; ">
-									                      	반품
-									               </button>
+                                                <td>${cl.count}</td>
+	                                            <td>${c.ch_NO}</td>
+	                                            <td>${}</td>
+	                                            <td>${}</td>
+	                                            <td>${c.ch_Pname}</td>
+	                                            <td>${c.ch_Price}</td>
+	                                            <td>${c.ch_Reason}</td>
+	                                            <td>${c.ch_Comment}</td>
+	                                            <td>${c.ch_Date}</td>
+	                                            <td>${c.ch_EnDate}</td>
+	                                            <td>${c.ch_Status}</td>
+	                                            <td>
+								                <button type="submit" class="btn btn-outline-dark"
+								                      style="width:60px; height:40px; ">
+								                      	교환
+								                </button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -115,11 +111,55 @@
                     <!-- ============================================================== -->
                     
                 </div>
-                <div class="row">
-                    <!-- ============================================================== -->
-                    <!-- data table  -->
-                    <!-- ============================================================== -->            
-        </div>
+        		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <h5 class="card-header">환불 테이블</h5>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <thead>
+                                        <tr>
+                                        	<th style="width:3%">번호</th>
+                                            <th style="width:3%">환불번호</th>
+                                            <th style="width:8%">주문자</th>
+                                            <th style="width:8%">아이디</th> 
+                                            <th style="width:10%">상품명</th>
+                                            <th style="width:8%">가격</th>
+                                            <th style="width:8%">환불사유</th>
+                                            <th style="width:8%">환불내용</th>
+                                            <th style="width:8%">환불요청일</th>
+                                            <th style="width:8%">환불완료일</th>
+                                            <th style="width:12%">환불상태</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="r" items="${}" varStatus="rl"> <!-- for -->
+                                        <tr>
+                                        	<td>${rl.count}</td>
+                                            <td>${r.re_NO}</td>
+                                            <td>${}</td>
+                                            <td>${}</td>
+                                            <td>${r.re_Pname}</td>
+                                            <td>${r.re_Price}</td>
+                                            <td>${r.re_Reason}</td>
+                                            <td>${r.re_Comment}</td>
+                                            <td>${r.re_Date}</td>
+                                            <td>${r.re_Enddate}</td>
+                                            <td>${r.re_Status}</td>
+                                            <td>
+					               <button type="submit" class="btn btn-outline-danger "
+					                      style="width:60px; height:40px; ">
+					                      	반품
+					               </button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </div>
     <!-- ============================================================== -->
     <!-- end main wrapper -->

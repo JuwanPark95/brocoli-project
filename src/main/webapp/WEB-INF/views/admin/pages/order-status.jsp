@@ -112,7 +112,7 @@
 									                <option value="배송완료">배송완료</option>
 									                <option value="구매확정">구매확정</option>
 									                <option value="환불 진행 중">환불 진행 중</option>
-									                <option value="교혼 진행 중">교환 진행 중</option>
+									                <option value="교환 진행 중">교환 진행 중</option>
 									              </select>
 									              <button name="orderStatusBtn" id="orderStatusBtn" type="submit" class="btn btn-light" style="width:50px; height:40px; ">
 									                  <i class="fas fa-sync"></i>
