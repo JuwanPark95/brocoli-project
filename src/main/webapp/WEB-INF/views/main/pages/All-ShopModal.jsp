@@ -37,7 +37,7 @@
 
 								<div class="slick3 gallery-lb">
 								
-									<div class="item-slick3" id="img1" data-thumb="">
+									<div class="item-slick3" data-thumb="">
 								
 										<div class="wrap-pic-w pos-relative">
 											<img id="img1_1" alt="IMG-PRODUCT"> 
