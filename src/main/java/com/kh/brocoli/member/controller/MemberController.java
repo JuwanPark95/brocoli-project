@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -34,6 +33,7 @@ import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 @Controller
 public class MemberController {
@@ -184,9 +184,9 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("productDetail.mn")
-	public ModelAndView ProductDetail(Product pd,String p_NO,ModelAndView mv) {
+	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
 		
-		ArrayList<Product> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
 		mv.addObject("aProductList",pDetail);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
@@ -195,10 +195,12 @@ public class MemberController {
 	@RequestMapping("productModal")
 	public void productModal(HttpServletResponse response,String p_NO) throws JsonIOException, IOException{
 		
-		ArrayList<Product> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
 		
-		response.setContentType("application/json; charset=utf-8");
-		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("pDetail : " + pDetail );
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(pDetail,response.getWriter());
 		

@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file="All-Header.jsp" %>
 
 <title>Insert title here</title>
 <style>
@@ -35,14 +34,11 @@
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
+									<div class="item-slick3" id="img111" data-thumb="/brocoli/resources/product-Img/" >
 										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-01.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
+											<img id="img1_1" alt="IMG-PRODUCT"> 
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												id="img1_2">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -82,25 +78,26 @@
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px; font-size: 30px;">
-								<strong>${ModalList[0].p_Name}</strong>
+								style="display: inline-block; padding: 5px; font-size: 16px; width: 430px;">
+								<strong><input type="text" id="productName" style="display: inline-block; width: 430px;" readonly="readonly"></strong>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 "
 								style="display: inline-block; padding: 5px;">
 								<strong>브랜드 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								${ModalList[0].brList.b_Name}
+								<input type="text" id="brandName" style="display: inline-block;" readonly="readonly">
 							</p>
 							&nbsp;&nbsp;&nbsp;
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px;">
-								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp; 1
+								style="display: inline-block; padding: 5px; float: right;">
+								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp;
+								<input type="text" id="pNo" style="display: inline-block;" readonly="readonly">
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
-								<strong>조회 수 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								3,000
+								<strong>주문 수 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="orderCount" style="display: inline-block; width: 60px;" readonly="readonly">
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
@@ -112,18 +109,25 @@
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
 								<strong>판매가 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size: 18px;"><strong><strike>36,000원</strike></strong></span>
+								<span style="font-size: 18px;">
+								<input type="text" id="productPrice" style="display: inline-block; width: 130px; text-decoration:line-through;" readonly="readonly"/>원
+								</span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
 								<strong>할인가 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size: 18px;"><strong>34,000원</strong></span>
+								<span style="font-size: 18px;">
+								<input type="text" id="lastPrice" style="display: inline-block; width: 130px;" readonly="readonly">원
+								</span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
-								<strong>상품 설명 </strong><br> ㅁㄹㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+								<strong>상품 설명 </strong><br>
+								<div>
+								<textarea id="productComment" style="display: inline-block; width: 100%; resize: none; font-size: 14px;" readonly="readonly" ></textarea>
+								</div>
 							</p>
 
 							<!--  -->

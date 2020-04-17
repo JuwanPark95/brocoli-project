@@ -98,33 +98,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>2020</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2019</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018</td>
-                                                <td>2031건</td>
-                                                <td>21,023,000</td>
-                                                <td>61 / 321,300</td>
-                                                <td>12 / 120,000</td>
-                                                <td>20,581,700</td>
-                                            </tr>
-                                            
-                                            
-                                            
+                                        	<c:forEach var="r" items="${olist}">
+	                                            <tr>
+	                                                <td>${r.day}</td>
+	                                                <td>${r.orderCount}</td>
+	                                                <td>${r.orderPrice}</td>
+	                                                <td>${r.rejectCount} / ${r.rejectPrice}</td>
+	                                                <td>${r.changeCount} / ${r.changePrice}</td>
+	                                                <td>${r.orderPrice - r.rejectPrice - r.changePrice}</td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>

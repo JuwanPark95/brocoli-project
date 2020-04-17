@@ -61,33 +61,33 @@
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img1_ReName}">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img1_ReName}" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img1_ReName}">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img1_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
-							<c:if test="${aProductList[0].pfList.pf_Img2_ReName != NULL}">
-								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img2_ReName}">
+							<c:if test="${aProductList[0].pf_Img2_ReName != NULL}">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img2_ReName}" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img2_ReName}">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img2_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
 							</c:if>
 							
-							<c:if test="${aProductList[0].pfList.pf_Img3_ReName != NULL}">
-								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img3_ReName}">
+							<c:if test="${aProductList[0].pf_Img3_ReName != NULL}">
+								<div class="item-slick3" data-thumb="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img3_ReName}" alt="IMG-PRODUCT">
+										<img src="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}" alt="IMG-PRODUCT">
 
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pfList.pf_Img3_ReName}">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/product-Img/${aProductList[0].pf_Img3_ReName}">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -106,7 +106,7 @@
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 " style="display:inline-block; padding:5px;">
-								<strong>브랜드  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${aProductList[0].brList.b_Name} 
+								<strong>브랜드  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${aProductList[0].b_Name} 
 							</p>
 							&nbsp;&nbsp;&nbsp;
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
@@ -145,9 +145,11 @@
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
 											<select class="js-select2" name="time" >
-											<c:forEach var="ap" items="${ aProductList }"> 
-												<option>${ap.poList.option_1 }</option>
-										    </c:forEach>
+												<c:forEach var="ap" items="${ aProductList }">
+											  		<c:if test= "${ap.option_1 != NULL }">
+														<option>${ap.option_1 }</option>
+													</c:if>
+										   		 </c:forEach>
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -159,11 +161,13 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<c:forEach var="ap" items="${ aProductList }"> 
 											<select class="js-select2" name="time">
-												<option>${ap.poList.option_2 }</option>
+												<c:forEach var="ap" items="${ aProductList }"> 
+													<c:if test= "${ap.option_2 != NULL }">
+														<option>${ap.option_2 }</option>
+													</c:if>
+											    </c:forEach>
 											</select>
-										    </c:forEach>
 											<div class="dropDownSelect2"></div>
 										</div>
 									</div>
@@ -248,12 +252,12 @@
 						
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">
-									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pfList.pf_Dimg1_ReName }">
-								<c:if test="${aProductList[0].pfList.pf_Dimg2_ReName != NULL}">
-									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pfList.pf_Dimg2_ReName }">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg1_ReName }">
+								<c:if test="${aProductList[0].pf_Dimg2_ReName != NULL}">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg2_ReName }">
 								</c:if>
-								<c:if test="${aProductList[0].pfList.pf_Dimg3_ReName != NULL}">
-									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pfList.pf_Dimg3_ReName }">
+								<c:if test="${aProductList[0].pf_Dimg3_ReName != NULL}">
+									<img src="/brocoli/resources/product-Detail-Img/${aProductList[0].pf_Dimg3_ReName }">
 								</c:if>
 								</p>
 							</div>

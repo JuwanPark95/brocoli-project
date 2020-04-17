@@ -30,7 +30,7 @@
 						<c:param name="b_Name" value="${ b.ac_Brand }"/>
 					</c:url>
 					<div class="block1 wrap-pic-w">
-						<img src="/brocoli/resources/product-Img/${b.ac_Img }" alt="IMG-BANNER">
+						<img src="/brocoli/resources/product-Img/${b.ac_Img_Rename }" alt="IMG-BANNER">
 						<a href="${bproduct}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
@@ -57,7 +57,7 @@
 						<c:param name="b_Name" value="${ b.ac_Brand }"/>
 					</c:url>
 					<div class="block1 wrap-pic-w">
-						<img src="/brocoli/resources/product-Img/${b.ac_Img }" alt="IMG-BANNER">
+						<img src="/brocoli/resources/product-Img/${b.ac_Img_Rename}" alt="IMG-BANNER">
 						<a href="${bproduct}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
@@ -211,15 +211,27 @@
 
 	
 <%@ include file = "pages/All-ShopModal.jsp" %>
-			
+			 
 	<script>
 	$('#productModal a[id=ModalView]').click(function(){
-		var p_NO = $(this).parent().find('input[id=productNo]').val()
+		var p_NO = $(this).parent().find('input[id=productNo]').val();
+		
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
 			dataType:"json",
 			success:function(data){
+				var name = $("#img111").data("thumb");
+				alert(name);
+				$('#productName').val(data[0].p_Name);
+				$('#brandName').val(data[0].b_Name);
+				$('#pNo').val(data[0].p_NO);
+				$('#orderCount').val(data[0].p_Order_Count);
+				$('#productPrice').val(data[0].p_Price);
+				$('#lastPrice').val(data[0].p_Last_Price);
+				$('#productComment').val(data[0].p_Comment);
+				$('#img1_1').attr("src", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
+				$('#img1_2').attr("href", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
