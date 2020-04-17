@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	<%@ include file="header.jsp" %>
+   <%@ include file="header.jsp" %>
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -38,13 +38,13 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">주문현황</h2>
+                            <h2 class="pageheader-title">교환/환불</h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a class="breadcrumb-link">주문관리</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">주문현황</li>
+                                        <li class="breadcrumb-item active" aria-current="page">교환/환불</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -63,9 +63,9 @@
                             <h5 class="card-header">교환 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <table id="change" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
-	                                        <tr>
+                                            <tr>
 	                                        	<th style="width:3%">번호</th>
 	                                            <th style="width:3%">교환번호</th>
 	                                            <th style="width:8%">주문자</th>
@@ -77,15 +77,16 @@
 	                                            <th style="width:8%">교환요청일</th>
 	                                            <th style="width:8%">교환완료일</th>
 	                                            <th style="width:12%">교환상태</th>
+	                                            <th style="width:12%">교환</th>
 	                                        </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="c" items="${}" varStatus="cl"> 
+                                        <c:forEach var="c" items="${changeList}" varStatus="cl"> 
                                             <tr>
                                                 <td>${cl.count}</td>
-	                                            <td>${c.ch_NO}</td>
-	                                            <td>${}</td>
-	                                            <td>${}</td>
+	                                            <td>${c.ch_No}</td>
+	                                            <td>${c.changeMember.mId}</td>
+	                                            <td>${c.changeMember.mName}</td>
 	                                            <td>${c.ch_Pname}</td>
 	                                            <td>${c.ch_Price}</td>
 	                                            <td>${c.ch_Reason}</td>
@@ -94,29 +95,26 @@
 	                                            <td>${c.ch_EnDate}</td>
 	                                            <td>${c.ch_Status}</td>
 	                                            <td>
-								                <button type="submit" class="btn btn-outline-dark"
-								                      style="width:60px; height:40px; ">
-								                      	교환
-								                </button>
+									                <button type="submit" class="btn btn-outline-dark"
+									                      style="width:60px; height:40px; ">
+									                      	교환
+									                </button>
                                                 </td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
                                     </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- end basic table  -->
-                    <!-- ============================================================== -->
-                    
-                </div>
-        		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <h5 class="card-header">환불 테이블</h5>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
+                     
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">환불 테이블</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="reject" class="table table-striped table-bordered first" style="text-align:center;">
                                     <thead>
                                         <tr>
                                         	<th style="width:3%">번호</th>
@@ -130,15 +128,16 @@
                                             <th style="width:8%">환불요청일</th>
                                             <th style="width:8%">환불완료일</th>
                                             <th style="width:12%">환불상태</th>
+                                            <th style="width:12%">환불</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="r" items="${}" varStatus="rl"> <!-- for -->
+                                    <c:forEach var="r" items="${rejectList}" varStatus="rl"> <!-- for -->
                                         <tr>
                                         	<td>${rl.count}</td>
-                                            <td>${r.re_NO}</td>
-                                            <td>${}</td>
-                                            <td>${}</td>
+                                            <td>${r.re_No}</td>
+                                            <td>${r.rejectMember.mId}</td>
+                                            <td>${r.rejectMember.mName}</td>
                                             <td>${r.re_Pname}</td>
                                             <td>${r.re_Price}</td>
                                             <td>${r.re_Reason}</td>
@@ -147,72 +146,75 @@
                                             <td>${r.re_Enddate}</td>
                                             <td>${r.re_Status}</td>
                                             <td>
-					               <button type="submit" class="btn btn-outline-danger "
-					                      style="width:60px; height:40px; ">
-					                      	반품
-					               </button>
+								               <button type="submit" class="btn btn-outline-danger "
+								                      style="width:60px; height:40px; ">
+								                      	반품
+								               </button>
                                             </td>
                                         </tr>
                                     </c:forEach>
                                   </tbody>
                                 </table>
+                               </div>
                             </div>
                         </div>
                     </div>
                 </div>
+             </div>
+         </div>       
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper -->
-    <!-- ============================================================== -->
-    
-    <!-- ============================================================== -->
-    <!--반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
-    
-    
-    <!-- ============================================================== -->
-    <!--/ 반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
-    
-    <!-- ============================================================== -->
-    <!--교환시 팝업창 띄우기-->  
-    <!-- ============================================================== -->
-    
-    
-    
-    <!-- ============================================================== -->
-    <!--교환시 팝업창  -->  
-    <!-- ============================================================== -->
-    
-    
-    
+		    <!-- ============================================================== -->
+		    <!-- end main wrapper -->
+		    <!-- ============================================================== -->
+		    
+		    <!-- ============================================================== -->
+		    <!--반품시 alert창으로 한번 확인 -->  
+		    <!-- ============================================================== -->
+		    
+		    
+		    
+		    <!-- ============================================================== -->
+		    <!--/ 반품시 alert창으로 한번 확인 -->  
+		    <!-- ============================================================== -->
+		    
+		    
+		    <!-- ============================================================== -->
+		    <!--교환시 팝업창 띄우기-->  
+		    <!-- ============================================================== -->
+		    
+		    
+		    
+		    <!-- ============================================================== -->
+		    <!--교환시 팝업창  -->  
+		    <!-- ============================================================== -->
+		    
     
     
     
-    <!-- ============================================================== -->
-    <!-- Optional JavaScript -->
-    <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src="/brocoli/resources/adminResources/vendor/multi-select/js/jquery.multi-select.js"></script>
-    <script src="/brocoli/resources/adminResources/libs/js/main-js.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="/brocoli/resources/adminResources/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="/brocoli/resources/adminResources/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
-    <script src="/brocoli/resources/adminResources/vendor/datatables/js/data-table.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
     
-    <!-- end Optional JavaScript -->
-    <!-- ============================================================== -->
+    
+		    <!-- ============================================================== -->
+		    <!-- Optional JavaScript -->
+		    <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>
+		    <script src="/brocoli/resources/adminResources/vendor/multi-select/js/jquery.multi-select.js"></script>
+		    <script src="/brocoli/resources/adminResources/libs/js/main-js.js"></script>
+		    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/data-table.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+		    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+		    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+		    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+		    
+		    <!-- end Optional JavaScript -->
+		    <!-- ============================================================== -->
          
 </body>
  

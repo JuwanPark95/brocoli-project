@@ -21,6 +21,8 @@ public interface ownerOrderService {
 
 	ArrayList<Orders> orderReJect(int bNO);
 
+	ArrayList<Orders> orderChange(int bNO);
+
 
 
 

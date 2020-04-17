@@ -2,6 +2,9 @@ package com.kh.brocoli.member.model.vo;
 
 import java.sql.Date;
 
+import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.Product_Option;
+
 public class Orders {
 	 private int or_NO;
 	 private Date or_Date;
@@ -18,10 +21,15 @@ public class Orders {
 	 private int or_Mno;
 	 private int or_P_NO;
 	 private int or_Brand_NO;
+	
+	 private Product pList;
+	 private Product_Option pOptionlist;
+
 	 
 	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
 	 private Reject ordersReject;  //반품정보
-	
+	 private Change ordersChange;  //교환정보
+
 	 
 	 
 	 public Orders() {
@@ -30,10 +38,13 @@ public class Orders {
 
 
 
-	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
+	
+	   public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
-			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member ordersMember,
-			Reject ordersReject) {
+			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
+			Product_Option pOptionlist, Member ordersMember,
+			Reject ordersReject, Change ordersChange) {
+
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
@@ -50,8 +61,14 @@ public class Orders {
 		this.or_Mno = or_Mno;
 		this.or_P_NO = or_P_NO;
 		this.or_Brand_NO = or_Brand_NO;
+
+		this.pList = pList;
+		this.pOptionlist = pOptionlist;
+
 		this.ordersMember = ordersMember;
 		this.ordersReject = ordersReject;
+		this.ordersChange = ordersChange;
+
 	}
 
 
@@ -127,7 +144,7 @@ public class Orders {
 	}
 
 
-
+	
 	public String getOr_Address() {
 		return or_Address;
 	}
@@ -236,10 +253,33 @@ public class Orders {
 
 
 
+
+	public Product getpList() {
+		return pList;
+	}
+
+
+
+	public void setpList(Product pList) {
+		this.pList = pList;
+	}
+
+
+
+	public Product_Option getpOptionlist() {
+		return pOptionlist;
+	}
+
+
+
+	public void setpOptionlist(Product_Option pOptionlist) {
+		this.pOptionlist = pOptionlist;
+	}
+
+	
 	public Member getOrdersMember() {
 		return ordersMember;
 	}
-
 
 
 	public void setOrdersMember(Member ordersMember) {
@@ -247,15 +287,23 @@ public class Orders {
 	}
 
 
-
 	public Reject getOrdersReject() {
 		return ordersReject;
 	}
 
 
-
 	public void setOrdersReject(Reject ordersReject) {
 		this.ordersReject = ordersReject;
+	}
+
+
+	public Change getOrdersChange() {
+		return ordersChange;
+	}
+
+
+	public void setOrdersChange(Change ordersChange) {
+		this.ordersChange = ordersChange;
 	}
 
 
@@ -266,13 +314,16 @@ public class Orders {
 				+ or_Option1 + ", or_Option2=" + or_Option2 + ", or_Amount=" + or_Amount + ", or_Address=" + or_Address
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
-				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
-				+ ", ordersReject=" + ordersReject + "]";
+				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList
+				+ ", pOptionlist=" + pOptionlist
+                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
+				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
+
 	}
-
-
 	 
 
-	
 	 
+	 
+
+
 }

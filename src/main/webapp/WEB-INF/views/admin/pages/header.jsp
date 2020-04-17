@@ -262,7 +262,7 @@
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='orderChangeReject.ad.ad'/>">교환/반품</a></li>
+											href="<c:url value='orderChangeReject.ad'/>">교환/반품</a></li>
 									</ul>
 								</div>
 							</li>

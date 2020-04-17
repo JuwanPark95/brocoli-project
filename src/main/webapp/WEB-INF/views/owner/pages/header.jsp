@@ -240,7 +240,10 @@
                                             <a class="nav-link" href="${order_reject }">반품</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-exchange.jsp">교환</a>
+                                        	<c:url var="order_change" value="order_change.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_change }">교환</a>
                                         </li>
   <!--                                       <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">주문분석(제작중)</a>

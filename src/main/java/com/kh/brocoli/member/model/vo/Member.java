@@ -29,6 +29,9 @@ public class Member {
 	private String brand_NO;
 	
 	
+	private Orders mOds;
+	
+	
 	
 	public Member() {
 		super();
