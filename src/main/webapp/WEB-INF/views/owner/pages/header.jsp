@@ -283,13 +283,19 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-Tip.jsp">광고요령</a>
+                                        	<c:url var="banner_Tip" value="banner_Tip.ow"></c:url>
+                                            <a class="nav-link" href="${banner_Tip}">광고요령</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-sale.jsp">광고신청</a>
+                                        	<c:url var="banner_sale" value="banner_sale.ow"></c:url>
+                                            <a class="nav-link" href="${banner_sale}">광고신청</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-result.jsp">결과확인</a>
+                                        	<c:url var="banner_result" value="banner_result.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }}"/>
+												<c:param name="mNO" value="${loginUser.mNO }"/>      
+                                        	</c:url>
+                                            <a class="nav-link" href="${banner_result}">결과확인</a>
                                         </li>
 
                                     </ul>
