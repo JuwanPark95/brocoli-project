@@ -97,10 +97,10 @@
                                                 <td>
                                                 	<c:set var="viewCheck" value="${c.con_View_Check}"/>
                                                 	<c:if test="${viewCheck eq 'Y'}">
-                                                		<span style="color:#6DDC75;">읽음O</span>
+                                                		<strong><span style="color:#63C386;">읽음O</span></strong>
                                                 	</c:if>
                                                 	<c:if test="${viewCheck eq 'N'}">
-                                                		<span style="color:tomato;">읽음X</span>
+                                                		<strong><span style="color:tomato;">읽음X</span></strong>
                                                 	</c:if>
                                                 </td>
 											</tr>

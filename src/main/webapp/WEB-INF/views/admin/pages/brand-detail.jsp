@@ -58,7 +58,7 @@
                             <div class="card">
                                 <h5 class="card-header">브랜드정보</h5>
                                 <div class="card-body">
-                                    <form action="brandUpdate.ad" method="post">
+                                    <form action="brandUpdate.ad" method="post" enctype="multipart/form-data">
                                     	<div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">로고</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
@@ -111,7 +111,7 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">수정자</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="b_Modify_ID" value="${b.b_Modify_ID}" readonly="readonly">
+                                                <input type="text" class="form-control" name="b_Modify_ID" value="${loginUser.mName}" readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -182,7 +182,6 @@
                                             	</c:choose>
                                             </div>
                                         </div>
-                                        
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">입점 상태 변경</label>
                                             <div class="btn-group">
@@ -200,8 +199,8 @@
                                     </form>
                                     <div class="form-group row text-right">
                                     	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                    		<form action="memberDelete.ad" method="post" >
-                                        		<input type="hidden" name="brand_NO" value="${brand_NO}"/>	
+                                    		<form action="brandDelete.ad" method="post" >
+                                        		<input type="hidden" name="brand_NO" value="${b.brand_NO}"/>	
                                             	<button type="submit" class="btn btn-dark">브랜드삭제</button>
                                     		</form>
                                     	</div>
@@ -230,14 +229,12 @@
      	var b_Status = $("#b_Status").text();
      	var enter = "입점";
      	var out = "폐점";
-     	
      	if(b_Status == enter ){
      		$("#block_YN option[value='Y']").attr("selected","selected"); 
      	}else if(b_Status == out){
      		$("#block_YN option[value='N']").attr("selected","selected"); 	
      	}
     </script>
-    
     <!-- //신은지 -->
     
     <script>
