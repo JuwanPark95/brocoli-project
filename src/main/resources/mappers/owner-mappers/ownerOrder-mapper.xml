@@ -24,6 +24,7 @@
 		
 		<collection property="ordersMember" resultMap="memberResultSet"/>
 		<collection property="ordersReject" resultMap="rejectResultSet"/>
+		<collection property="ordersChange" resultMap="changeResultSet"/>
 		
 	</resultMap>
 	
@@ -77,6 +78,21 @@
 		<result property="re_Mno" column="RE_MNO"/>
 		
 	</resultMap>
+	
+	<resultMap id="changeResultSet" type="Change">
+      <id property="ch_No" column="CH_NO"/>
+      
+      <result property="ch_Pname" column="CH_PNAME"/>
+      <result property="ch_Price" column="CH_PRICE"/>
+      <result property="ch_Reason" column="CH_REASON"/>
+      <result property="ch_Comment" column="CH_COMMENT"/>
+      <result property="ch_Date" column="CH_DATE"/>
+      <result property="ch_EnDate" column="CH_ENDDATE"/>
+      <result property="ch_Status" column="CH_STATUS"/>
+      <result property="ch_Or_NO" column="CH_OR_NO"/>
+      <result property="ch_Mno" column="CH_MNO"/>
+   </resultMap>
+
 	
 <!-- ===================================================================	 -->
 	
@@ -168,6 +184,17 @@
 		ON OD.OR_MNO = M.MNO
 		JOIN REJECT RJ
 		ON OD.OR_NO = RJ.RE_MN_OR_NO
+		WHERE OR_BRAND_NO = #{bNO}
+		ORDER BY OR_DATE DESC
+	</select>
+	
+	<select id="selectOrderExChange" resultMap="orderResultSet">
+		SELECT * 
+		FROM ORDERS OD
+		JOIN MEMBER M
+		ON OD.OR_MNO = M.MNO
+		JOIN CHANGE CH
+		ON OD.OR_NO = CH.CH_OR_NO
 		WHERE OR_BRAND_NO = #{bNO}
 		ORDER BY OR_DATE DESC
 	</select>

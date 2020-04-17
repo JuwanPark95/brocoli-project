@@ -109,5 +109,19 @@ public class ownerOrderController {
 		return mv;
 	}
 	
+	@RequestMapping("order_change.ow")
+	public ModelAndView order_change(ModelAndView mv, int bNO) {
+		ArrayList<Orders> list = oService.orderChange(bNO);
+		
+		if(list != null) {
+			mv.addObject("list",list);
+			mv.setViewName("order-exchange");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
+	
 	
 }

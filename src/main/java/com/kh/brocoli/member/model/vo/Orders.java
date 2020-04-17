@@ -21,7 +21,7 @@ public class Orders {
 	 
 	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
 	 private Reject ordersReject;  //반품정보
-	
+	 private Change ordersChange;  //교환정보
 	 
 	 
 	 public Orders() {
@@ -29,11 +29,10 @@ public class Orders {
 	 }
 
 
-
 	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
 			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member ordersMember,
-			Reject ordersReject) {
+			Reject ordersReject, Change ordersChange) {
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
@@ -52,8 +51,8 @@ public class Orders {
 		this.or_Brand_NO = or_Brand_NO;
 		this.ordersMember = ordersMember;
 		this.ordersReject = ordersReject;
+		this.ordersChange = ordersChange;
 	}
-
 
 
 	public int getOr_NO() {
@@ -61,11 +60,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_NO(int or_NO) {
 		this.or_NO = or_NO;
 	}
-
 
 
 	public Date getOr_Date() {
@@ -73,11 +70,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Date(Date or_Date) {
 		this.or_Date = or_Date;
 	}
-
 
 
 	public String getOr_Pname() {
@@ -85,11 +80,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Pname(String or_Pname) {
 		this.or_Pname = or_Pname;
 	}
-
 
 
 	public String getOr_Option1() {
@@ -97,11 +90,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Option1(String or_Option1) {
 		this.or_Option1 = or_Option1;
 	}
-
 
 
 	public String getOr_Option2() {
@@ -109,11 +100,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Option2(String or_Option2) {
 		this.or_Option2 = or_Option2;
 	}
-
 
 
 	public String getOr_Amount() {
@@ -121,11 +110,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Amount(String or_Amount) {
 		this.or_Amount = or_Amount;
 	}
-
 
 
 	public String getOr_Address() {
@@ -133,11 +120,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Address(String or_Address) {
 		this.or_Address = or_Address;
 	}
-
 
 
 	public String getOr_Message() {
@@ -145,11 +130,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Message(String or_Message) {
 		this.or_Message = or_Message;
 	}
-
 
 
 	public String getOr_Price() {
@@ -157,11 +140,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Price(String or_Price) {
 		this.or_Price = or_Price;
 	}
-
 
 
 	public String getOr_Status() {
@@ -169,11 +150,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Status(String or_Status) {
 		this.or_Status = or_Status;
 	}
-
 
 
 	public String getOr_Deliver_Num() {
@@ -181,11 +160,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Deliver_Num(String or_Deliver_Num) {
 		this.or_Deliver_Num = or_Deliver_Num;
 	}
-
 
 
 	public String getOr_Deliver_Vender() {
@@ -193,11 +170,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Deliver_Vender(String or_Deliver_Vender) {
 		this.or_Deliver_Vender = or_Deliver_Vender;
 	}
-
 
 
 	public int getOr_Mno() {
@@ -205,11 +180,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Mno(int or_Mno) {
 		this.or_Mno = or_Mno;
 	}
-
 
 
 	public int getOr_P_NO() {
@@ -217,11 +190,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_P_NO(int or_P_NO) {
 		this.or_P_NO = or_P_NO;
 	}
-
 
 
 	public int getOr_Brand_NO() {
@@ -229,11 +200,9 @@ public class Orders {
 	}
 
 
-
 	public void setOr_Brand_NO(int or_Brand_NO) {
 		this.or_Brand_NO = or_Brand_NO;
 	}
-
 
 
 	public Member getOrdersMember() {
@@ -241,11 +210,9 @@ public class Orders {
 	}
 
 
-
 	public void setOrdersMember(Member ordersMember) {
 		this.ordersMember = ordersMember;
 	}
-
 
 
 	public Reject getOrdersReject() {
@@ -253,11 +220,19 @@ public class Orders {
 	}
 
 
-
 	public void setOrdersReject(Reject ordersReject) {
 		this.ordersReject = ordersReject;
 	}
 
+
+	public Change getOrdersChange() {
+		return ordersChange;
+	}
+
+
+	public void setOrdersChange(Change ordersChange) {
+		this.ordersChange = ordersChange;
+	}
 
 
 	@Override
@@ -267,11 +242,13 @@ public class Orders {
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
 				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
-				+ ", ordersReject=" + ordersReject + "]";
+				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
 	}
-
-
 	 
+	 
+
+
+	
 
 	
 	 

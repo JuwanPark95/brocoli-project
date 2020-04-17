@@ -38,4 +38,8 @@ public class ownerOrderDao {
 		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderReject",bNO);
 	}
 
+	public ArrayList<Orders> selectOrderChange(int bNO) {
+		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderExChange",bNO);
+	}
+
 }
