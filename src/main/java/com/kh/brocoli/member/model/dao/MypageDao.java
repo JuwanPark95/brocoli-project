@@ -49,12 +49,10 @@ public class MypageDao {
 		return list;
 	}
 
-	public ArrayList<Orders> myorderList(String Pname) {
-		 ArrayList<Orders> list = null;
-		 
-		 list = (ArrayList)sqlSession.selectList("membermapper.myorderList",Pname);
+	public ArrayList<Orders> myorderList(Member m) {
+		 return (ArrayList)sqlSession.selectList("memberMapper.myorderList",m);
 		
-		return list;
+		
 	}
 
 	
