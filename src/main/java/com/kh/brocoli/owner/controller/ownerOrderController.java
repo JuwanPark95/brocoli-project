@@ -98,7 +98,7 @@ public class ownerOrderController {
 	@RequestMapping("order_reject.ow")
 	public ModelAndView order_reject(ModelAndView mv, int bNO) {
 		ArrayList<Orders> list = oService.orderReJect(bNO);
-		
+		System.out.println("BNO:" + bNO);
 		if(list != null) {
 			mv.addObject("list",list);
 			mv.setViewName("order-return");
@@ -112,6 +112,13 @@ public class ownerOrderController {
 	@RequestMapping("order_change.ow")
 	public ModelAndView order_change(ModelAndView mv, int bNO) {
 		ArrayList<Orders> list = oService.orderChange(bNO);
+		
+		
+		System.out.println("BNO:" + bNO);
+		
+		for (Orders orders : list) {
+			System.out.println("orders : " + orders);
+		}
 		
 		if(list != null) {
 			mv.addObject("list",list);

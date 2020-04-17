@@ -29,7 +29,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header" style="z-index: 20;">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="/brocoli/owner/owner.jsp">BroColi</a>
+                <a class="navbar-brand" href="/brocoli/owner/owner.jsp"><strong> BROCOLI</strong>  PARTNER</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -126,7 +126,7 @@
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name"><c:out value="${ loginUser.mName }"/>  </h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
+                                    <span class="status"></span><span class="ml-2">${ loginUser.brand }</span>
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
@@ -245,7 +245,7 @@
                                         	</c:url>
                                             <a class="nav-link" href="${order_change }">교환</a>
                                         </li>
-  <!--                                       <li class="nav-item">
+  <!--                                  <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">주문분석(제작중)</a>
                                         </li> -->
                                     </ul>
