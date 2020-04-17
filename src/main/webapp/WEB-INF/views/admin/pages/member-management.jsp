@@ -81,6 +81,7 @@
                                                 <th style="width:6%">주문액</th>
                                                 <th style="width:5%">신고</th>
                                                 <th style="width:5%">정지</th>
+                                                <th style="width:5%">삭제</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -101,7 +102,8 @@
                                                 <td>${m.order_Count}</td>
                                                 <td>${m.order_Price}</td>
                                                 <td>${m.report_YN}</td>
-                                                <td>${m.block_YN}</td>                                              
+                                                <td>${m.block_YN}</td> 
+                                                <td>${m.del_Flag_YN}</td>                                                
                                             </tr>
                                         </c:if>
                                         </c:forEach>
@@ -139,12 +141,18 @@
                                         <tbody>
                                         <% int count=1; %>
                                         <c:forEach var="m" items="${MemberList}" > 
-                                        <c:if test="${m.mGrant != 3}"  >
+                                        <c:if test="${m.mGrant != 3}">
                                             <tr>
                                             	<td><%=count++ %></td>
                                             	<td>${m.mNO}</td>
                                                 <td>${m.mId}</td>
-                                                <td>${m.brand}</td>
+                                                <td>
+	                                                <c:set var="brand" value="${m.brand}"/>
+	                                                	<c:if  test="${brand == null }">
+	                                                		-
+	                                                	</c:if>
+	                                                ${m.brand}
+                                                </td>
                                                 <td>${m.mName}</td>                                                
                                                 <td>${m.birthDay}</td>
                                                 <td>${m.email}</td>
@@ -195,11 +203,6 @@
 			});
 		</script>
 		
-		
-
-    
-    
-    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

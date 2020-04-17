@@ -213,16 +213,59 @@
 <%@ include file = "pages/All-ShopModal.jsp" %>
 			 
 	<script>
+
+	 
 	$('#productModal a[id=ModalView]').click(function(){
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
-		
+		 
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
 			dataType:"json",
+			async: false,
 			success:function(data){
-				var name = $("#img111").data("thumb");
-				alert(name);
+
+				var test = data[0].pf_Img1_ReName; 
+/* 				
+				var mainText = "";
+				
+				mainText += "<div class='wrap-slick3-dots'></div>"
+				mainText += "<div class='wrap-slick3-arrows flex-sb-m flex-w'></div>"
+
+				mainText += "<div class='slick3 gallery-lb'>"
+				mainText += "<div class='item-slick3' data-thumb='/brocoli/resources/product-Img/"+test +"'>"
+				mainText += "<div class='wrap-pic-w pos-relative'>"
+				mainText += "<img id='img1_1' alt='IMG-PRODUCT'>" 
+				mainText += "<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' id='img1_2'>"
+				mainText += "		<i class='fa fa-expand'></i>"
+				mainText += "	</a>"
+				mainText += "	</div>"
+				mainText += "</div>"
+				mainText +=	"<div class='item-slick3' data-thumb='/brocoli/resources/mainResources/images/product-detail-02.jpg'>"
+				mainText +=	"<div class='wrap-pic-w pos-relative'>"
+				mainText +=	"<img src='/brocoli/resources/mainResources/images/product-detail-02.jpg' alt='IMG-PRODUCT'>"
+				mainText += "<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/mainResources/images/product-detail-02.jpg'>"
+				mainText +=	"<i class='fa fa-expand'></i>"
+				mainText +=	"</a>"
+				mainText +=	"</div>"
+				mainText +=	"</div>"
+
+				mainText +=	"<div class='item-slick3' data-thumb='/brocoli/resources/mainResources/images/product-detail-03.jpg'>"
+				mainText +=	"<div class='wrap-pic-w pos-relative'>"
+				mainText +=	"<img src='/brocoli/resources/mainResources/images/product-detail-03.jpg' alt='IMG-PRODUCT'>"
+				mainText +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/mainResources/images/product-detail-03.jpg'>"
+				mainText +=	"<i class='fa fa-expand'></i>"
+				mainText +=	"</a>"
+				mainText +=	"</div>"
+				mainText +=	"</div>"
+				mainText +=	"</div>"
+				
+				
+				$("#test1").html(mainText);
+				 */
+				
+			
+				
 				$('#productName').val(data[0].p_Name);
 				$('#brandName').val(data[0].b_Name);
 				$('#pNo').val(data[0].p_NO);
@@ -230,9 +273,10 @@
 				$('#productPrice').val(data[0].p_Price);
 				$('#lastPrice').val(data[0].p_Last_Price);
 				$('#productComment').val(data[0].p_Comment);
+				$('#img1').attr("data-thumb","/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				$('#img1_1').attr("src", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				$('#img1_2').attr("href", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
-				
+				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
 				
@@ -242,6 +286,7 @@
 				console.log(errorThrown);
 			}
 		});
+		
 	})
 	
 	
