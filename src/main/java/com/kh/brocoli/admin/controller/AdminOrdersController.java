@@ -79,17 +79,16 @@ public class AdminOrdersController {
 		ArrayList<Change> changeList = AOService.selectChangeList(); 
 		ArrayList<Reject> rejectList = AOService.selectRejectList(); 
 		
-		System.out.println("CHANGE"+changeList);
-		System.out.println("REJECT"+rejectList);
-		
-		
 		mv.addObject(changeList);
 		mv.addObject(rejectList);
 		mv.setViewName("order-exchange");
 		
 		return mv;
-		
-		
+	}
+	
+	@RequestMapping("orderChangeModal.ad")
+	public String orderChangeModal() {
+		return "order-change-modal";
 	}
 	
 }

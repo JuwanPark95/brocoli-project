@@ -27,6 +27,7 @@ public class Orders {
 
 	 
 	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
+	 private String or_Status_Str; //admin 주문상태 한글
 	 private Reject ordersReject;  //반품정보
 	 private Change ordersChange;  //교환정보
 
@@ -189,6 +190,7 @@ public class Orders {
 
 	public void setOr_Status(String or_Status) {
 		this.or_Status = or_Status;
+		this.setOr_Status_Str(or_Status);
 	}
 
 
@@ -305,6 +307,37 @@ public class Orders {
 	public void setOrdersChange(Change ordersChange) {
 		this.ordersChange = ordersChange;
 	}
+
+
+	public String getOr_Status_Str() {
+		return or_Status_Str;
+	}
+
+	public void setOr_Status_Str(String or_Status) {
+		switch(or_Status){
+		case "1":
+			this.or_Status_Str = "주문확인"; break;
+		case "2":
+			this.or_Status_Str = "상품준비중"; break;
+		case "3":
+			this.or_Status_Str = "상품배송중"; break;
+		case "4":
+			this.or_Status_Str = "배송완료"; break;
+		case "5":
+			this.or_Status_Str = "구매확정"; break;
+		case "6":
+			this.or_Status_Str = "환불진행중"; break;
+		case "7":
+			this.or_Status_Str = "교환진행중"; break;
+		case "8":
+			this.or_Status_Str = "반품완료"; break;
+		case "9":
+			this.or_Status_Str = "교환완료"; break;
+		default:
+				this.or_Status_Str = ""; break;
+		}
+	}
+
 
 
 
