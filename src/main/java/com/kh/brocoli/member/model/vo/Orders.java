@@ -26,7 +26,7 @@ public class Orders {
 	 private Product_Option pOptionlist;
 
 	 
-	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
+	 private Member or_Member;  //admin 주문 멤버정보 받아오기
 	 private String or_Status_Str; //admin 주문상태 한글
 	 private Reject ordersReject;  //반품정보
 	 private Change ordersChange;  //교환정보
@@ -43,7 +43,7 @@ public class Orders {
 	   public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
 			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
-			Product_Option pOptionlist, Member ordersMember,
+			Product_Option pOptionlist, Member or_Member,
 			Reject ordersReject, Change ordersChange) {
 
 		super();
@@ -66,7 +66,7 @@ public class Orders {
 		this.pList = pList;
 		this.pOptionlist = pOptionlist;
 
-		this.ordersMember = ordersMember;
+		this.or_Member = or_Member;
 		this.ordersReject = ordersReject;
 		this.ordersChange = ordersChange;
 
@@ -279,13 +279,13 @@ public class Orders {
 	}
 
 	
-	public Member getOrdersMember() {
-		return ordersMember;
+	public Member getOr_Member() {
+		return or_Member;
 	}
 
 
-	public void setOrdersMember(Member ordersMember) {
-		this.ordersMember = ordersMember;
+	public void setOr_Member(Member or_Member) {
+		this.or_Member = or_Member;
 	}
 
 
@@ -308,7 +308,7 @@ public class Orders {
 		this.ordersChange = ordersChange;
 	}
 
-
+	//admin 주문 상태변경 getter,setter
 	public String getOr_Status_Str() {
 		return or_Status_Str;
 	}
@@ -349,7 +349,7 @@ public class Orders {
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
 				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList
 				+ ", pOptionlist=" + pOptionlist
-                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
+                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", or_Member=" + or_Member
 				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
 
 	}

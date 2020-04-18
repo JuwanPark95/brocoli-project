@@ -85,8 +85,8 @@
                                             <tr>
                                                 <td>${cl.count}</td>
 	                                            <td>${c.ch_No}</td>
-	                                            <td>${c.changeMember.mId}</td>
-	                                            <td>${c.changeMember.mName}</td>
+	                                            <td>${c.ch_ordersMember.or_Member.mId}</td>
+	                                            <td>${c.ch_ordersMember.or_Member.mName}</td>
 	                                            <td>${c.ch_Pname}</td>
 	                                            <td>${c.ch_Price}</td>
 	                                            <td>${c.ch_Reason}</td>
@@ -95,9 +95,9 @@
 	                                            <td>${c.ch_EnDate}</td>
 	                                            <td>${c.ch_Status}</td>
 	                                            <td>
-									                <button type="submit" class="btn btn-outline-dark"
-									                      style="width:60px; height:40px; ">
-									                      	교환
+									                <button name="orderChangeBtn" type="button" class="btn btn-outline-dark"
+									                        style="width:60px; height:40px; ">
+									                 		교환
 									                </button>
                                                 </td>
                                             </tr>
@@ -108,6 +108,81 @@
                             </div>
                         </div>
                     </div>
+                     
+                    <!-- 교환 Modal -->
+
+				  	<div class="modal fade" id="orderChangeModal" role="dialog"> 
+				
+				    <div class="modal-dialog">
+				
+				     <!-- Modal content-->
+				
+				      <div class="modal-content">
+					  <form>
+				        <div class="modal-header">
+				        
+				          <button type="button" class="close" data-dismiss="modal">×</button>
+				
+				        </div>
+				
+				        <div class="modal-body">
+				        
+				        <div class="form-group row">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1</label>
+                            <div class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            	 ${c.ch_Status }
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-bottom:3px;">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1 변경</label>
+                            <div class="btn-group">
+                                <select id="or_Option1Select" name="or_Option1Select" style="margin-left:15px; margin-top:3px;">
+                                	<option value="">정지X</option>
+                                	<option value="">정지O</option>
+                                </select>
+                            </div>		
+                        </div>
+				        
+				        <br><hr>
+				        
+				        <div class="form-group row">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2</label>
+                            <div class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                                <c:set var="or_Option2" value="" />
+                            	<%-- <c:choose>
+                            		<c:when test="${or_Option2 eq 'Y'}">
+                            			<h4 id="or_Option2">정지O</h4>
+                            		</c:when>
+                            		<c:when test="${or_Option2 eq 'N'}">
+                            			<h4 id="or_Option2">정지X</h4>
+                            		</c:when>
+                            	</c:choose> --%>
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-bottom:3px;">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2 변경</label>
+                            <div class="btn-group">
+                                <select id="or_Option2Select" name="or_Option2Select" style="margin-left:15px; margin-top:3px;">
+                                	<option value="">정지X</option>
+                                	<option value="">정지O</option>
+                                </select>
+                            </div>		
+                        </div>
+				        </div>
+				
+				        <div class="modal-footer">
+						  <button type="submit" class="btn btn-default" data-dismiss="modal">등록</button>	
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+					  </form>
+				      </div>
+				
+				    </div>
+				
+				  	</div>
+                     
+                     <!-- // 교환 Modal -->
+                     
                      
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -136,8 +211,8 @@
                                         <tr>
                                         	<td>${rl.count}</td>
                                             <td>${r.re_No}</td>
-                                            <td>${r.rejectMember.mId}</td>
-                                            <td>${r.rejectMember.mName}</td>
+                                            <td>${r.re_ordersMember.or_Member.mId}</td>
+                                            <td>${r.re_ordersMember.or_Member.mName}</td>
                                             <td>${r.re_Pname}</td>
                                             <td>${r.re_Price}</td>
                                             <td>${r.re_Reason}</td>
@@ -163,59 +238,61 @@
              </div>
          </div>       
     </div>
-		    <!-- ============================================================== -->
-		    <!-- end main wrapper -->
-		    <!-- ============================================================== -->
-		    
-		    <!-- ============================================================== -->
-		    <!--반품시 alert창으로 한번 확인 -->  
-		    <!-- ============================================================== -->
-		    
-		    
-		    
-		    <!-- ============================================================== -->
-		    <!--/ 반품시 alert창으로 한번 확인 -->  
-		    <!-- ============================================================== -->
-		    
-		    
-		    <!-- ============================================================== -->
-		    <!--교환시 팝업창 띄우기-->  
-		    <!-- ============================================================== -->
-		    
-		    
-		    
-		    <!-- ============================================================== -->
-		    <!--교환시 팝업창  -->  
-		    <!-- ============================================================== -->
-		    
+    <!-- ============================================================== -->
+    <!-- end main wrapper -->
+    <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!--반품시 alert창으로 한번 확인 -->  
+    <!-- ============================================================== -->
     
     
     
+    <!-- ============================================================== -->
+    <!--/ 반품시 alert창으로 한번 확인 -->  
+    <!-- ============================================================== -->
     
     
-		    <!-- ============================================================== -->
-		    <!-- Optional JavaScript -->
-		    <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>
-		    <script src="/brocoli/resources/adminResources/vendor/multi-select/js/jquery.multi-select.js"></script>
-		    <script src="/brocoli/resources/adminResources/libs/js/main-js.js"></script>
-		    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
-		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
-		    <script src="/brocoli/resources/adminResources/vendor/datatables/js/data-table.js"></script>
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-		    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-		    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-		    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
-		    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
-		    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
-		    
-		    <!-- end Optional JavaScript -->
-		    <!-- ============================================================== -->
-         
+    <!-- ============================================================== -->
+    <!--교환시 모달창 띄우기-->  
+    <!-- ============================================================== -->
+    
+    <script>
+	    $(document).ready(function(){
+	    	$("button[name=orderChangeBtn]").click(function(){
+	    		$("#orderChangeModal").modal();
+	    		${c.ch_ordersMember.or_Option1 }
+	    	});
+	    });
+    </script>
+    
+    <!-- ============================================================== -->
+    <!--교환시 팝업창  -->  
+    <!-- ============================================================== -->
+    
+  
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/brocoli/resources/adminResources/vendor/multi-select/js/jquery.multi-select.js"></script>
+    <script src="/brocoli/resources/adminResources/libs/js/main-js.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/brocoli/resources/adminResources/vendor/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="/brocoli/resources/adminResources/vendor/datatables/js/buttons.bootstrap4.min.js"></script>
+    <script src="/brocoli/resources/adminResources/vendor/datatables/js/data-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    
+    <!-- end Optional JavaScript -->
+    <!-- ============================================================== -->         
 </body>
  
 </html>

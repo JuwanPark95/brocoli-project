@@ -79,6 +79,8 @@ public class AdminOrdersController {
 		ArrayList<Change> changeList = AOService.selectChangeList(); 
 		ArrayList<Reject> rejectList = AOService.selectRejectList(); 
 		
+		System.out.println("changeList"+changeList);
+		System.out.println("rejectList"+rejectList);
 		mv.addObject(changeList);
 		mv.addObject(rejectList);
 		mv.setViewName("order-exchange");

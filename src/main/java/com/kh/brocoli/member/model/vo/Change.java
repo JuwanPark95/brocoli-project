@@ -15,14 +15,14 @@ public class Change {
 	private int ch_Or_NO;
 	private int ch_Mno;
 	
-	private Member changeMember; //멤버 정보 가져오기 admin
+	private Orders ch_ordersMember; //orders 정보 가져오기 admin
 
 	public Change() {
 		super();
 	}
 
 	public Change(int ch_No, String ch_Pname, String ch_Price, String ch_Reason, String ch_Comment, Date ch_Date,
-			Date ch_EnDate, String ch_Status, int ch_Or_NO, int ch_Mno, Member changeMember) {
+			Date ch_EnDate, String ch_Status, int ch_Or_NO, int ch_Mno, Orders ch_ordersMember) {
 		super();
 		this.ch_No = ch_No;
 		this.ch_Pname = ch_Pname;
@@ -34,7 +34,7 @@ public class Change {
 		this.ch_Status = ch_Status;
 		this.ch_Or_NO = ch_Or_NO;
 		this.ch_Mno = ch_Mno;
-		this.changeMember = changeMember;
+		this.ch_ordersMember = ch_ordersMember;
 	}
 
 	public int getCh_No() {
@@ -117,20 +117,20 @@ public class Change {
 		this.ch_Mno = ch_Mno;
 	}
 
-	public Member getChangeMember() {
-		return changeMember;
+	public Orders getCh_ordersMember() {
+		return ch_ordersMember;
 	}
 
-	public void setChangeMember(Member changeMember) {
-		this.changeMember = changeMember;
+	public void setCh_ordersMember(Orders ch_ordersMember) {
+		this.ch_ordersMember = ch_ordersMember;
 	}
 
 	@Override
 	public String toString() {
 		return "Change [ch_No=" + ch_No + ", ch_Pname=" + ch_Pname + ", ch_Price=" + ch_Price + ", ch_Reason="
 				+ ch_Reason + ", ch_Comment=" + ch_Comment + ", ch_Date=" + ch_Date + ", ch_EnDate=" + ch_EnDate
-				+ ", ch_Status=" + ch_Status + ", ch_Or_NO=" + ch_Or_NO + ", ch_Mno=" + ch_Mno + ", changeMember="
-				+ changeMember + "]";
+				+ ", ch_Status=" + ch_Status + ", ch_Or_NO=" + ch_Or_NO + ", ch_Mno=" + ch_Mno + ", ch_ordersMember="
+				+ ch_ordersMember + "]";
 	}
 	
 }

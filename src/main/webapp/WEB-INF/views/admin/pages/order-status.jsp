@@ -91,8 +91,8 @@
                                             <tr>
                                                 <td>${ol.count}</td>
                                                 <td name="orNO">${o.or_NO}</td>
-                                                <td>${o.ordersMember.mName}</td>
-                                                <td>${o.ordersMember.mId}</td>
+                                                <td>${o.or_Member.mName}</td>
+                                                <td>${o.or_Member.mId}</td>
                                                 <td>${o.or_Date}</td>
                                                 <td>${o.or_Pname}</td>
                                                 <td>${o.or_Option1}</td>
@@ -111,7 +111,7 @@
 									                <option value="3">상품배송중</option>
 									                <option value="4">배송완료</option>
 									                <option value="5">구매확정</option>
-									                <option value="6">반품 진행 중</option>
+									                <option value="6">환불 진행 중</option>
 									                <option value="7">교환 진행 중</option>
 									                <option value="8">반품완료</option>
 									                <option value="9">교환완료</option>

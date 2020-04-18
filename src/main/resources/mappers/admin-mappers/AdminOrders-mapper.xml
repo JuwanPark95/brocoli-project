@@ -19,7 +19,7 @@
 		<result property="or_P_NO" column="OR_P_NO"/>
 		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
 		
-		<collection property="ordersMember" resultMap="memberResultSet"/>
+		<collection property="or_Member" resultMap="memberResultSet"/>
 	</resultMap>
 	
 	<resultMap id="memberResultSet" type="Member">
@@ -58,7 +58,7 @@
 		<result property="ch_Or_NO" column="CH_OR_NO"/>
 		<result property="ch_Mno" column="CH_MNO"/>
 		
-		<collection property="changeMember" resultMap="memberResultSet"/>
+		<collection property="ch_ordersMember" resultMap="ordersResultSet"/>
 	</resultMap>
 	
 	<resultMap id="RejectResultSet" type="Reject">
@@ -73,7 +73,7 @@
 		<result property="re_MN_OR_NO" column="RE_MN_OR_NO"/>
 		<result property="re_Mno" column="RE_MNO"/>
 		
-		<collection property="rejectMember" resultMap="memberResultSet"/>
+		<collection property="re_ordersMember" resultMap="ordersResultSet"/>
 	</resultMap>
 	
 
@@ -92,12 +92,14 @@
 	<select id="selectChangeList" resultMap="changeResultSet" parameterType="Change">
 		SELECT *
 		FROM CHANGE C
-		JOIN MEMBER M ON CH_MNO = MNO 
+     	JOIN ORDERS O ON CH_OR_NO = OR_NO
+    	JOIN MEMBER M ON CH_MNO = MNO
 	</select>
 	
 	<select id="selectRejectList" resultMap="RejectResultSet" parameterType="Reject">
 		SELECT *
 		FROM REJECT R
+		JOIN ORDERS O ON RE_NO = OR_NO
 		JOIN MEMBER M ON RE_MNO = MNO 
 	</select>
 
