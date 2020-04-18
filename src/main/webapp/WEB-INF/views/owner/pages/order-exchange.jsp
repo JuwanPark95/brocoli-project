@@ -100,7 +100,7 @@
 															<c:when test="${r.ordersChange.ch_Status eq '1'}"><span class="badge-dot badge-brand"></span><a id="statusText">교환접수</a></c:when>
 															<c:when test="${r.ordersChange.ch_Status eq '2'}"><span class="badge-dot badge-info"></span><a id="statusText">교환진행중</a></c:when>
 															<c:when test="${r.ordersChange.ch_Status eq '3'}"><span class="badge-dot badge-primary"></span><a id="statusText">상품재발송</a></c:when>
-															<c:when test="${r.ordersChange.ch_Status eq '4'}"><span class="badge-dot badge-success"></span><a id="statusText">교환왑료</a></c:when>
+															<c:when test="${r.ordersChange.ch_Status eq '4'}"><span class="badge-dot badge-success"></span><a id="statusText">교환완료</a></c:when>
 														</c:choose>	
 	                                                </td>
 	                                                <td>

@@ -215,18 +215,15 @@
 	<script>
 
 	 
-	$('#productModal a[id=ModalView]').click(function(){
+	$('#productModal a[id=ModalView]').click(function(obj){
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
-		 
+		alert($(obj).data("thumb"));
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
 			dataType:"json",
-			async: false,
 			success:function(data){
-
-				var test = data[0].pf_Img1_ReName; 
-/* 				
+/* 				a
 				var mainText = "";
 				
 				mainText += "<div class='wrap-slick3-dots'></div>"
@@ -273,7 +270,7 @@
 				$('#productPrice').val(data[0].p_Price);
 				$('#lastPrice').val(data[0].p_Last_Price);
 				$('#productComment').val(data[0].p_Comment);
-				$('#img1').attr("data-thumb","/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
+				$('.item-slick3').attr("data-thumb","/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				$('#img1_1').attr("src", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				$('#img1_2').attr("href", "/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName);
 				 
