@@ -247,7 +247,7 @@
 				img +=		"</a>"
 				img +=	"</div>"
 				img += "</div>"
-				if(data[0].pf_Img2_ReName != null){
+/* 				if(data[0].pf_Img2_ReName != null){
 					img += "<div class='item-slick3' data-thumb=''>"
 					img +=	"<div class='wrap-pic-w pos-relative'>"
 					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName + "'alt='IMG-PRODUCT'>"
@@ -265,7 +265,7 @@
 					img +=		"</a>"
 					img +=	"</div>"
 					img += "</div>"
-				}
+				} */
 				
 				$('#imgcheck').html(img);
 				
@@ -325,7 +325,7 @@
 				img +=		"</a>"
 				img +=	"</div>"
 				img += "</div>"
-				if(data[0].pf_Img2_ReName != null){
+/* 				if(data[0].pf_Img2_ReName != null){
 					img += "<div class='item-slick3' data-thumb=''>"
 					img +=	"<div class='wrap-pic-w pos-relative'>"
 					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName + "'alt='IMG-PRODUCT'>"
@@ -343,7 +343,7 @@
 					img +=		"</a>"
 					img +=	"</div>"
 					img += "</div>"
-				}
+				} */
 				
 				$('#imgcheck').html(img);
 				
