@@ -101,10 +101,15 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("rankView.mn")
-	public String RankView() {
-		return "Main-Rank";
+	public ModelAndView dayRank(Product pd, ModelAndView mv) {
+		
+		ArrayList<Product> plist = mService.selectapList();
+		
+		mv.addObject("dayList",plist);
+		
+		mv.setViewName("Main-Rank");
+		return mv;
 	}
-	
 	/**
 	 * 브랜드 이름 페이지로 이동
 	 * @return
@@ -205,33 +210,8 @@ public class MemberController {
 		gson.toJson(pDetail,response.getWriter());
 		
 	}
+
 	
-/************************************사이드 바*******************************/	
-//	/**
-//	 * 마이페이지로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myPageView.mn")
-//	public String MyPageView() {
-//		return "MyPage";
-//	}
-//
-//	/**
-//	 * 장바구니로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myCartView")
-//	public String MyCartView() {
-//		return "MyCart";
-//	}
-//
-//	/**주문조회 페이지로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myOrderView.mn")
-//	public String MyOrderView() {
-//		return "MyOrderList";
-//	}
 
 
 
