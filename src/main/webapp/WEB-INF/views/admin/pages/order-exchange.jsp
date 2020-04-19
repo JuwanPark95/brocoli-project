@@ -71,6 +71,8 @@
 	                                            <th style="width:8%">주문자</th>
 	                                            <th style="width:8%">아이디</th> 
 	                                            <th style="width:10%">상품명</th>
+	                                            <th style="width:8%">옵션1</th>
+	                                            <th style="width:8%">옵션2</th>
 	                                            <th style="width:8%">가격</th>
 	                                            <th style="width:8%">교환사유</th>
 	                                            <th style="width:8%">교환내용</th>
@@ -84,10 +86,12 @@
                                         <c:forEach var="c" items="${changeList}" varStatus="cl"> 
                                             <tr>
                                                 <td>${cl.count}</td>
-	                                            <td>${c.ch_No}</td>
+	                                            <td name="chNO">${c.ch_No}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mId}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mName}</td>
 	                                            <td>${c.ch_Pname}</td>
+	                                            <td name="option1">${c.ch_ordersMember.or_Option1}</td>
+	                                            <td name="option2">${c.ch_ordersMember.or_Option2}</td>
 	                                            <td>${c.ch_Price}</td>
 	                                            <td>${c.ch_Reason}</td>
 	                                            <td>${c.ch_Comment}</td>
@@ -129,8 +133,8 @@
 				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1</label>
-                            <div class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
-                            	 ${c.ch_Status }
+                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            	 
                             </div>
                         </div>
                         <div class="form-group row" style="padding-bottom:3px;">
@@ -147,7 +151,8 @@
 				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2</label>
-                            <div class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            	
                                 <c:set var="or_Option2" value="" />
                             	<%-- <c:choose>
                             		<c:when test="${or_Option2 eq 'Y'}">
@@ -261,7 +266,13 @@
 	    $(document).ready(function(){
 	    	$("button[name=orderChangeBtn]").click(function(){
 	    		$("#orderChangeModal").modal();
-	    		${c.ch_ordersMember.or_Option1 }
+	    		/* var chNO = $(this).parents("td[name=chNO]").text();
+	    		var option1 = $(this).parents("td[name=option1]").test();
+	    		var option2 = $(this).parents("td[name=option2]").text();
+    			alert("dgd");
+	    		alert(this().parents("td[name=option1]"));
+	    		alert(option1);
+	    		$("#modalOption1").text(option1); */
 	    	});
 	    });
     </script>
