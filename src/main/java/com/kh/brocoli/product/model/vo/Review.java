@@ -5,45 +5,45 @@ import java.sql.Date;
 public class Review {
 	
 	private String v_Writer;
-	private String v_Code;
 	private String v_Content;
 	private Date v_Date;
 	private Date v_Modify_Date;
 	private String v_Count;
 	private String v_Score;
 	private String v_Check;
+	private String v_Status;
 	private String v_Img1;
 	private String v_Img1_ReName;
 	private String v_Img2;
 	private String v_Img2_ReName;
 	private int v_Mno;
 	private int v_P_NO;
+	private int v_B_NO;
 	
 	public Review() {
 		super();
 	}
 
-	public Review(String v_Writer, String v_Code, String v_Content, Date v_Date, Date v_Modify_Date,
-			String v_Count, String v_Score, String v_Check, String v_Img1, String v_Img1_ReName, String v_Img2,
-			String v_Img2_ReName, int v_Mno, int v_P_NO) {
+	public Review(String v_Writer, String v_Content, Date v_Date, Date v_Modify_Date, String v_Count, String v_Score,
+			String v_Check, String v_Status, String v_Img1, String v_Img1_ReName, String v_Img2, String v_Img2_ReName,
+			int v_Mno, int v_P_NO, int v_B_NO) {
 		super();
 		this.v_Writer = v_Writer;
-		this.v_Code = v_Code;
 		this.v_Content = v_Content;
 		this.v_Date = v_Date;
 		this.v_Modify_Date = v_Modify_Date;
 		this.v_Count = v_Count;
 		this.v_Score = v_Score;
 		this.v_Check = v_Check;
+		this.v_Status = v_Status;
 		this.v_Img1 = v_Img1;
 		this.v_Img1_ReName = v_Img1_ReName;
 		this.v_Img2 = v_Img2;
 		this.v_Img2_ReName = v_Img2_ReName;
 		this.v_Mno = v_Mno;
 		this.v_P_NO = v_P_NO;
+		this.v_B_NO = v_B_NO;
 	}
-
-
 
 	public String getV_Writer() {
 		return v_Writer;
@@ -51,14 +51,6 @@ public class Review {
 
 	public void setV_Writer(String v_Writer) {
 		this.v_Writer = v_Writer;
-	}
-
-	public String getV_Code() {
-		return v_Code;
-	}
-
-	public void setV_Code(String v_Code) {
-		this.v_Code = v_Code;
 	}
 
 	public String getV_Content() {
@@ -109,6 +101,14 @@ public class Review {
 		this.v_Check = v_Check;
 	}
 
+	public String getV_Status() {
+		return v_Status;
+	}
+
+	public void setV_Status(String v_Status) {
+		this.v_Status = v_Status;
+	}
+
 	public String getV_Img1() {
 		return v_Img1;
 	}
@@ -157,15 +157,22 @@ public class Review {
 		this.v_P_NO = v_P_NO;
 	}
 
+	public int getV_B_NO() {
+		return v_B_NO;
+	}
+
+	public void setV_B_NO(int v_B_NO) {
+		this.v_B_NO = v_B_NO;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [v_Writer=" + v_Writer + ", v_Code=" + v_Code + ", v_Content=" + v_Content
-				+ ", v_Date=" + v_Date + ", v_Modify_Date=" + v_Modify_Date + ", v_Count=" + v_Count + ", v_Score="
-				+ v_Score + ", v_Check=" + v_Check + ", v_Img1=" + v_Img1 + ", v_Img1_ReName=" + v_Img1_ReName
-				+ ", v_Img2=" + v_Img2 + ", v_Img2_ReName=" + v_Img2_ReName + ", v_Mno=" + v_Mno + ", v_P_NO=" + v_P_NO
-				+ "]";
+		return "Review [v_Writer=" + v_Writer + ", v_Content=" + v_Content + ", v_Date=" + v_Date + ", v_Modify_Date="
+				+ v_Modify_Date + ", v_Count=" + v_Count + ", v_Score=" + v_Score + ", v_Check=" + v_Check
+				+ ", v_Status=" + v_Status + ", v_Img1=" + v_Img1 + ", v_Img1_ReName=" + v_Img1_ReName + ", v_Img2="
+				+ v_Img2 + ", v_Img2_ReName=" + v_Img2_ReName + ", v_Mno=" + v_Mno + ", v_P_NO=" + v_P_NO + ", v_B_NO="
+				+ v_B_NO + "]";
 	}
-	
 	
 	
 	
