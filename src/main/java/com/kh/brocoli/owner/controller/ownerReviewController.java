@@ -33,13 +33,7 @@ public class ownerReviewController {
 		
 		return mv;
 	}
-	
-	@RequestMapping("readReview.ow")
-	public ModelAndView readReview(ModelAndView mv,int bNO) {
-		
-		
-		return mv;
-	}
+
 	
 	
 }

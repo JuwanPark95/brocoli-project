@@ -4,7 +4,7 @@
 
 <mapper namespace="ownerReView-mapper">
 	
-	<resultMap type="Review" id="selectNoReadReviewList">
+	<resultMap type="Review" id="reviewResultSet">
 		<id property="v_NO" column="V_NO"/>
 		
 		<result property="v_Writer" column="V_WRITER"/>
@@ -25,7 +25,7 @@
 
 	</resultMap>
 	
-	<select id="selectNoReadReviewList" resultMap="Review">
+	<select id="selectNoReadReviewList" resultMap="reviewResultSet">
 		SELECT *
 		FROM REVIEW 
 		WHERE V_STATUS = 'Y'

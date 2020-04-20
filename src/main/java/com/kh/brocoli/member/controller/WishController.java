@@ -2,8 +2,11 @@ package com.kh.brocoli.member.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,6 +52,12 @@ public class WishController {
 	      return mv;
 	   }
 	
+	@RequestMapping("wDelete.mn")
+	public String wishDelete(Model model, @RequestParam("mNo") int mNo, HttpServletRequest request) {
+		wService.deleteWish(mNo);
+		System.out.println("삭제 버튼 눌렸나유? " + mNo);
+		return "redirect:wishList.mn";
+	}
 	
 
 }

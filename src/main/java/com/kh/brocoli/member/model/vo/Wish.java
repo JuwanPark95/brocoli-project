@@ -1,8 +1,7 @@
 package com.kh.brocoli.member.model.vo;
 
-import java.util.ArrayList;
-
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.Product_File;
 
 public class Wish {
 
@@ -11,17 +10,19 @@ public class Wish {
 	private int w_P_NO; // 상품번호
 	
 	private Product productList;
+	private Product_File p_File;
 
 	public Wish() {
 		super();
 	}
 
-	public Wish(int w_No, int w_Mno, int w_P_NO, Product productList) {
+	public Wish(int w_No, int w_Mno, int w_P_NO, Product productList, Product_File p_File) {
 		super();
 		this.w_No = w_No;
 		this.w_Mno = w_Mno;
 		this.w_P_NO = w_P_NO;
 		this.productList = productList;
+		this.p_File = p_File;
 	}
 
 	public int getW_No() {
@@ -54,6 +55,14 @@ public class Wish {
 
 	public void setProductList(Product productList) {
 		this.productList = productList;
+	}
+
+	public Product_File getP_File() {
+		return p_File;
+	}
+
+	public void setP_File(Product_File p_File) {
+		this.p_File = p_File;
 	}
 
 	@Override
