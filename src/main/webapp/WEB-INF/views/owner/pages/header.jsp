@@ -259,10 +259,16 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/review-management.jsp">읽지않은 후기</a>
+                                        	<c:url var="noReadReview" value="${noReadReview.ow }">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${noReadReview }">읽지않은 후기</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/review-complete.jsp">완료된 후기</a>
+                                        	<c:url var="readReview" value="${readReview.ow }">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${readReview }">완료된 후기</a>
                                         </li>
                                     </ul>
                                 </div>
