@@ -55,6 +55,7 @@
 		<mapper resource="mappers/main-mappers/member-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/boardNotice-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/QnA-mapper.xml"/>
+ 		<mapper resource="mappers/main-mappers/Wish-mapper.xml"/>
 		<mapper resource="mappers/admin-mappers/AdminMember-mapper.xml"/>
 		<mapper resource="mappers/main-mappers/main-mapper.xml"/>
  		<mapper resource="mappers/owner-mappers/ownerProduct-mapper.xml"/>
