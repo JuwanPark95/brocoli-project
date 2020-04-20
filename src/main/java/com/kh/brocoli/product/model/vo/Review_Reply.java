@@ -5,33 +5,31 @@ import java.sql.Date;
 public class Review_Reply {
 	private String vr_Parentno;
 	private String vr_Writer;
-	private String vr_Code;
 	private String vr_Content;
 	private Date vr_Date;
 	private Date vr_Modify_Date;
 	private String vr_Count;
 	private String vr_Check;
+	private String vr_Status;
 	private int vr_Mno;
 	
 	public Review_Reply() {
 		super();
 	}
 
-	public Review_Reply(String vr_Parentno, String vr_Writer, String vr_Code, String vr_Content,
-			Date vr_Date, Date vr_Modify_Date, String vr_Count, String vr_Check, int vr_Mno) {
+	public Review_Reply(String vr_Parentno, String vr_Writer, String vr_Content, Date vr_Date, Date vr_Modify_Date,
+			String vr_Count, String vr_Check, String vr_Status, int vr_Mno) {
 		super();
 		this.vr_Parentno = vr_Parentno;
 		this.vr_Writer = vr_Writer;
-		this.vr_Code = vr_Code;
 		this.vr_Content = vr_Content;
 		this.vr_Date = vr_Date;
 		this.vr_Modify_Date = vr_Modify_Date;
 		this.vr_Count = vr_Count;
 		this.vr_Check = vr_Check;
+		this.vr_Status = vr_Status;
 		this.vr_Mno = vr_Mno;
 	}
-
-
 
 	public String getVr_Parentno() {
 		return vr_Parentno;
@@ -47,14 +45,6 @@ public class Review_Reply {
 
 	public void setVr_Writer(String vr_Writer) {
 		this.vr_Writer = vr_Writer;
-	}
-
-	public String getVr_Code() {
-		return vr_Code;
-	}
-
-	public void setVr_Code(String vr_Code) {
-		this.vr_Code = vr_Code;
 	}
 
 	public String getVr_Content() {
@@ -97,6 +87,14 @@ public class Review_Reply {
 		this.vr_Check = vr_Check;
 	}
 
+	public String getVr_Status() {
+		return vr_Status;
+	}
+
+	public void setVr_Status(String vr_Status) {
+		this.vr_Status = vr_Status;
+	}
+
 	public int getVr_Mno() {
 		return vr_Mno;
 	}
@@ -107,11 +105,12 @@ public class Review_Reply {
 
 	@Override
 	public String toString() {
-		return "Review_Reply [vr_Parentno=" + vr_Parentno + ", vr_Writer=" + vr_Writer
-				+ ", vr_Code=" + vr_Code + ", vr_Content=" + vr_Content + ", vr_Date=" + vr_Date + ", vr_Modify_Date="
-				+ vr_Modify_Date + ", vr_Count=" + vr_Count + ", vr_Check=" + vr_Check + ", vr_Mno=" + vr_Mno + "]";
+		return "Review_Reply [vr_Parentno=" + vr_Parentno + ", vr_Writer=" + vr_Writer + ", vr_Content=" + vr_Content
+				+ ", vr_Date=" + vr_Date + ", vr_Modify_Date=" + vr_Modify_Date + ", vr_Count=" + vr_Count
+				+ ", vr_Check=" + vr_Check + ", vr_Status=" + vr_Status + ", vr_Mno=" + vr_Mno + "]";
 	}
-
+	
+	
 	
 		
 	
