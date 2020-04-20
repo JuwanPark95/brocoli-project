@@ -24,6 +24,13 @@ public class ownerReviewController {
 		
 		ArrayList<Review> rv = oService.noReadReviewSelect(bNO);
 		
+		if(rv != null) {
+			mv.addObject("list",rv);
+			mv.setViewName("review-management");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
 		return mv;
 	}
 	

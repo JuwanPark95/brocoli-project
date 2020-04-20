@@ -12,7 +12,7 @@ public interface ownerReviewService {
 
 	ArrayList<Review> noReadReviewSelect(int bNO);
 
-
+	
 	
 	
 	
