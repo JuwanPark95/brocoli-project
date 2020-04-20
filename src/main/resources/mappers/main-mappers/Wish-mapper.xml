@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Wish-mapper">
+
+<resultMap type="Wish" id="wishResultSet">
+
+	<id property="w_No" column="W_NO"/>
+	
+	<result property="w_Mno" column="W_MNO"/>
+	<result property="w_P_NO" column="W_P_NO"/>
+
+</resultMap>
+
+<resultMap type="Product" id="productResultSet">
+		<id property="p_NO" column="P_NO"/>
+		<result property="p_Name" column="P_NAME"/>
+		<result property="p_Price" column="P_PRICE"/>
+		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>
+		<result property="p_Last_Price" column="P_LAST_PRICE"/>
+		<result property="p_Bcategory" column="P_BCATEGORY"/>
+		<result property="p_Scategory" column="P_SCATEGORY"/>
+		<result property="p_Comment" column="P_COMMENT"/>
+		<result property="p_Order_Count" column="P_ORDER_COUNT"/>
+		<result property="p_Status" column="P_STATUS"/>
+		<result property="p_Writer" column="P_WRITER"/>
+		<result property="p_Insert_Date" column="P_INSERT_DATE"/>
+		<result property="p_Modify_Id" column="P_MODIFY_ID"/>
+		<result property="p_Modify_Date" column="P_MODIFY_DATE"/>
+		<result property="p_Show_YN" column="P_SHOW_YN"/>
+		<result property="p_Brand_NO" column="P_BRAND_NO"/>
+
+</resultMap>
+
+<resultMap type="Wish" id="wishListResultSet">
+
+	<id property="w_No" column="W_NO"/>
+	
+	<result property="w_Mno" column="W_MNO"/>
+	<result property="w_P_NO" column="W_P_NO"/>
+	
+	<collection property="productList" resultMap="productResultSet"/>
+</resultMap>
+
+<insert id="wInsert" parameterType="Wish">
+	INSERT INTO WISH
+	VALUES(SEQ_W_NO.NEXTVAL,#{w_Mno},#{w_P_NO})
+</insert>
+
+<select id = "wishList" resultMap="wishListResultSet" parameterType="Product">
+
+	SELECT * 
+	FROM WISH W
+		JOIN PRODUCT P ON(P.P_NO = W.W_P_NO)
+		JOIN MEMBER M ON(M.MNO = W.W_MNO)
+	WHERE W.W_MNO = #{M.mNo}
+
+</select> 
+
+</mapper>
