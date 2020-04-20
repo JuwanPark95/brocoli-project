@@ -62,144 +62,109 @@
                                     	<div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품번호</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_NO" value="${p[0].p_NO}" readonly="readonly">
+                                                <input type="text" class="form-control" name="p_NO" value="${po.p_NO}" readonly="readonly">
                                             </div>
                                         </div>
                                     	<div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img1_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img2_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img3_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img4_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img5_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${p[0].pfList.pf_Img6_ReName}" width="120" height="120">                                           
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img1_ReName}" width="120" height="120">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img2_ReName}" width="120" height="120">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img3_ReName}" width="120" height="120">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img4_ReName}" width="120" height="120">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img5_ReName}" width="120" height="120">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img6_ReName}" width="120" height="120">                                           
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품명</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Name" value="${p[0].p_Name}">
+                                                <input type="text" class="form-control" name="p_Name" value="${po.p_Name}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">브랜드</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="b_Name" value="${p[0].brList.b_Name}">
+                                                <input type="text" class="form-control" name="b_Name" value="${po.brList.b_Name}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">기본가</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Price" value="${p[0].p_Price}">
+                                                <input type="text" class="form-control" name="p_Price" value="${po.p_Price}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">할인가</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Sail_Price" value="${p[0].p_Sail_Price}">
+                                                <input type="text" class="form-control" name="p_Sail_Price" value="${po.p_Sail_Price}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">판매가</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Last_Price" value="${p[0].p_Last_Price}">
+                                                <input type="text" class="form-control" name="p_Last_Price" value="${po.p_Last_Price}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">카테고리(대)</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Bcategory" value="${p[0].p_Bcategory}">
+                                                <input type="text" class="form-control" name="p_Bcategory" value="${po.p_Bcategory}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">카테고리(소)</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Scategory" value="${p[0].p_Scategory}">
-                                            </div>
-                                        </div>                                            
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품상태</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Status" value="${p[0].p_Status}">
+                                                <input type="text" class="form-control" name="p_Scategory" value="${po.p_Scategory}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">총 주문수</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Order_Count"  value="${p[0].p_Order_Count}">
+                                                <input type="text" class="form-control" name="p_Order_Count"  value="${po.p_Order_Count}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품설명</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Comment" value="${p[0].p_Comment}">
+                                                <input type="text" class="form-control" name="p_Comment" value="${po.p_Comment}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품입고일</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Insert_Date" value="${p[0].p_Insert_Date}">
+                                                <input type="text" class="form-control" name="p_Insert_Date" value="${po.p_Insert_Date}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품수정날짜</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Modify_Date" value="${p[0].p_Modify_Date}">
+                                                <input type="text" class="form-control" name="p_Modify_Date" value="${po.p_Modify_Date}" readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">작성자</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Writer" value="${p[0].p_Writer}">
+                                                <input type="text" class="form-control" name="p_Writer" value="${po.p_Writer}" readonly="readonly">
                                             </div>
                                         </div>
+                                        <input type="hidden" class="form-control" name="p_Modify_Id" value="${loginUser.mId}"> 
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품수정ID</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="p_Modify_Id" value="${p[0].p_Modify_Id}">
+                                                <input type="text" class="form-control" value="${po.p_Modify_Id}" readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품옵션 번호</label>
+                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품판매여부</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control"  name="op_NO" value="${p[0].poList.op_NO}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품옵션1</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control"  name="option_1" value="${p[0].poList.option_1}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품옵션2</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control"  name="option_2" value="${p[0].poList.option_2}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">재고</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control"  name="op_Stock" value="${p[0].poList.op_Stock}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">입고예정일</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="op_Rec_Date" value="${p[0].poList.op_Rec_Date}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-12 col-sm-3 col-form-label text-sm-right">상품옵션상태</label>
-                                            <div class="col-12 col-sm-8 col-lg-6">
-                                                <input type="text" class="form-control" name="op_Status_YN" value="${p[0].poList.op_Status_YN}">
+                                                <input id="p_Show_YN" type="text" class="form-control" name="p_Show_YN" value="${po.p_Show_YN}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상태</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
-                                                <c:set var="p_Status" value="${p[0].p_Status}" />
+                                                <c:set var="p_Status" value="${po.p_Status}" />
                                             	<c:choose>
                                             		<c:when test="${p_Status eq '1'}">
                                             			<h4 id="p_Status">판매중</h4>
@@ -222,7 +187,7 @@
                                                 	<option value="3" >품절</option>
                                                 </select>
                                             </div>		
-                                        </div>
+                                        </div>                                                                            
                                         <div class="form-group row text-right">
                                             <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                                 <button type="submit" class="btn btn-dark">저장</button>
@@ -232,7 +197,7 @@
                                     <div class="form-group row text-right">
                                     	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                     		<form action="brandDelete.ad" method="post" >
-                                        		<input type="hidden" name="brand_NO" value="${b.brand_NO}"/>	
+                                        		<input type="hidden" name="brand_NO" value=""/>	
                                             	<button type="submit" class="btn btn-dark">상품삭제</button>
                                     		</form>
                                     	</div>
@@ -258,13 +223,16 @@
     <!-- 작성자 : 신은지 
          1. dropdown 저장값 불러오기  -->
     <script>
-     	var b_Status = $("#b_Status").text();
-     	var enter = "입점";
-     	var out = "폐점";
-     	if(b_Status == enter ){
-     		$("#block_YN option[value='Y']").attr("selected","selected"); 
-     	}else if(b_Status == out){
-     		$("#block_YN option[value='N']").attr("selected","selected"); 	
+     	var p_Status = $("#p_Status").text();
+     	var selling = "판매중";
+     	var sale = "할인중";
+     	var soldOut = "품절";
+     	if(p_Status == selling ){
+     		$("#p_StatusOP option[value='1']").attr("selected","selected"); 
+     	}else if(p_Status == sale){
+     		$("#p_StatusOP option[value='2']").attr("selected","selected"); 	
+     	}else if(p_Status == soldOut){
+     		$("#p_StatusOP option[value='3']").attr("selected","selected"); 	
      	}
     </script>
     <!-- //신은지 -->

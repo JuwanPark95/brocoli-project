@@ -58,6 +58,8 @@
 		<result property="op_Rec_Date" column="OP_REC_DATE"/>
 		<result property="op_Status_YN" column="OP_STATUS_YN"/>
 		<result property="op_P_NO" column="OP_P_NO"/>
+		
+		<collection property="pList" resultMap="productResultSet"/>
 	</resultMap>
 	
 	<resultMap id="brandResultSet" type="Brand">
@@ -90,34 +92,40 @@
      	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
      	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
      	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
-     	WHERE OP_STATUS_YN ='Y'  
+     	WHERE P_SHOW_YN ='Y'  
 	</select>
 	
 	<select id="selectproductDetail" resultMap="productResultSet" parameterType="Product">
 		SELECT *
 		FROM PRODUCT P
      	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
-     	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
      	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
 		WHERE P_NO = #{p_NO}
 	</select>
 	
-	<select id="selectStockManagement" resultMap="productResultSet" parameterType="Product">
+	<select id="selectStockManagement" resultMap="productOptionResultSet" parameterType="Product_Option">
 		SELECT *
-		FROM PRODUCT P
-     	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
-     	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
-     	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
+		FROM PRODUCT_OPTION
+        JOIN PRODUCT PO ON OP_P_NO = P_NO
+        JOIN PRODUCT_FILE PF ON PO.P_NO = PF_P_NO 
+     	JOIN BRAND B ON PO.P_BRAND_NO = BRAND_NO 
 	</select>
 	
+	<update id="productUpdate" parameterType="Product">
+		UPDATE PRODUCT 
+		SET P_NO=#{p_NO},P_NAME=#{p_Name},P_PRICE=#{p_Price},P_SAIL_PRICE=#{p_Sail_Price},P_LAST_PRICE=#{p_Last_Price}
+		   ,P_BCATEGORY=#{p_Bcategory},P_SCATEGORY=#{p_Scategory},P_COMMENT=#{p_Comment},P_ORDER_COUNT=#{p_Order_Count}
+		   ,P_STATUS=#{p_Status},P_WRITER=#{p_Writer},P_INSERT_DATE=#{p_Insert_Date},P_MODIFY_ID=#{p_Modify_Id}
+		   ,P_MODIFY_DATE=SYSDATE,P_SHOW_YN=#{p_Show_YN}
+		WHERE P_NO=#{p_NO}
+	</update>
 	
-	<!-- <select id="selectProductList" resultMap="productResultSet" parameterType="Product">
+	<select id="selectProductStopList" resultMap="productResultSet" parameterType="Product">
 		SELECT *
 		FROM PRODUCT P
      	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
      	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
      	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
-     	WHERE OP_STATUS_YN ='N'  
-	</select> -->
-
+     	WHERE P_SHOW_YN ='N' 
+	</select>
 </mapper>

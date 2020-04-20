@@ -30,8 +30,8 @@ public class AdminProductDao {
 	 * @param p_NO
 	 * @return
 	 */
-	public ArrayList<Product> selectproductDetail(int p_NO) {
-		return (ArrayList)sqlSession.selectList("AdminProduct.selectproductDetail", p_NO);
+	public Product selectproductDetail(int p_NO) {
+		return sqlSession.selectOne("AdminProduct.selectproductDetail", p_NO);
 	}
 
 	/**
@@ -40,7 +40,26 @@ public class AdminProductDao {
 	 * @param p_NO
 	 * @return
 	 */
-	public ArrayList<Product> selectStockManagement() {
+	public ArrayList<Product_Option> selectStockManagement() {
 		return (ArrayList)sqlSession.selectList("AdminProduct.selectStockManagement");
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 상품 수정
+	 * @param p
+	 * @return
+	 */
+	public int productUpdate(Product p) {
+		return sqlSession.update("AdminProduct.productUpdate",p);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 5. 판매 중지 상품 list
+	 * @return
+	 */
+	public ArrayList<Product> selectProductStopList() {
+		return (ArrayList)sqlSession.selectList("AdminProduct.selectProductStopList");
 	}
 }

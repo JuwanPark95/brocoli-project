@@ -8,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>판매중지상품</title>
+    <title>상품관리</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/brocoli/resources/adminResources/vendor/bootstrap/css/bootstrap.min.css">
     <link href="/brocoli/resources/adminResources/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -59,48 +59,53 @@
                     <!-- basic table  -->
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card">
-                            <h5 class="card-header">판매중지상품 테이블</h5>
+                        <div class="card"> 
+                            <h5 class="card-header">판매중지 상품 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <table id="product-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">번호</th>
-                                                <th style="width:8%">브랜드번호</th>
-                                                <th style="width:10%">브랜드명</th>
-                                                <th style="width:10%">상품번호</th>
-                                                <th style="width:10%">상품명</th>
-                                                <th style="width:8%"></th>
-                                                <th style="width:5%">색상</th> 
-                                                <th style="width:5%">사이즈</th> 
-                                                <th style="width:7%">판매가격</th>
-                                                <th style="width:5%">재고</th>
-                                                <th style="width:8%">누적주문횟수</th>
-                                                <th style="width:10%">삭제</th>
-                                                
+                                                <th>번호</th>
+                                                <th>상품번호</th>
+                                                <th>상품이미지</th>
+                                                <th>상품명</th>
+                                                <th>브랜드</th>
+                                                <th>기본가</th>
+                                                <th>할인가</th>
+                                                <th>판매가</th>
+                                                <th>카테고리(대)</th>
+                                                <th>카테고리(소)</th> 
+                                                <th>상품상태</th> 
+                                                <th>총 주문수</th>
+                                                <th>상품입고일</th>
+                                                <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="p" items="${productStopList}" varStatus="pl">
                                             <tr>
-                                                <td>1</td>
-                                                <td>123456</td>
-                                                <td>나이키</td>
-                                                <td>n1a1d1</td>
-                                                <td>나이키맨투맨</td>
-                                                <td></td>
-                                                <td>black</td>
-                                                <td>M</td>
-                                                <td>30000</td>
-                                                <td>100</td>
-                                                <td>1000</td>
+                                                <td>${pl.count }</td>
+                                                <td>${p.p_NO}</td>
+                                            	<td><img src="/brocoli/resources/product-Img/${p.pfList.pf_Img1_ReName}" width="50" height="50"></td>
+                                                <td>${p.p_Name }</td>
+                                                <td>${p.brList.b_Name }</td>
+                                                <td>${p.p_Price }</td>
+                                                <td>${p.p_Sail_Price }</td>
+                                                <td>${p.p_Last_Price }</td>
+                                                <td>${p.p_Bcategory }</td>
+                                                <td>${p.p_Scategory }</td>
+                                                <td>${p.p_Status}</td>
+                                                <td>${p.p_Order_Count }</td>
+                                                <td>${p.p_Insert_Date }</td>
                                                 <td>
-									               <button type="submit" class="btn btn-outline-danger "
-									                      style="width:60px; height:40px; ">
-									                      	삭제
-									               </button>
-                                                </td>
+	                                                <c:set var="p_Show_YN" value="${p.p_Show_YN }" />
+	                                            	<c:choose>
+	                                            		<c:when test="${p_Show_YN eq 'N'}">
+	                                            			<strong><span style="color:tomato;">판매중지</span></strong>
+	                                            		</c:when>
+	                                            	</c:choose>
+                                            	</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
@@ -122,31 +127,18 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
-    
-    <!-- ============================================================== -->
-    <!--반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
-    
-    
-    <!-- ============================================================== -->
-    <!--/ 반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
-    
-    <!-- ============================================================== -->
-    <!--교환시 팝업창 띄우기-->  
-    <!-- ============================================================== -->
-    
-    
-    
-    <!-- ============================================================== -->
-    <!--교환시 팝업창  -->  
-    <!-- ============================================================== -->
-    
-    
-    
-    
+
+    <!-- 상품 상세보기용 -->
+		<script>
+			$(function(){
+				$("#product-management").find("td").mouseenter(function(){
+					$(this).parents("tr").css({ "cursor":"pointer"});
+				}).click(function(){
+					var p_NO = $(this).parents().children("td").eq(1).text();	
+					location.href="productDetail.ad?p_NO="+p_NO
+				});
+			});
+		</script>
     
     
     <!-- ============================================================== -->
