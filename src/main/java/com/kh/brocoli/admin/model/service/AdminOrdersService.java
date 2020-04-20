@@ -2,7 +2,9 @@ package com.kh.brocoli.admin.model.service;
 
 import java.util.ArrayList;
 
+import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.member.model.vo.Reject;
 
 public interface AdminOrdersService {
 
@@ -20,6 +22,20 @@ public interface AdminOrdersService {
 	 * @return
 	 */
 	int orderStatusChange(Orders orders);
+
+	/**
+	 * 작성자 : 신은지
+	 * 3. 교환list 
+	 * @return
+	 */
+	ArrayList<Change> selectChangeList();
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 환불 list
+	 * @return
+	 */
+	ArrayList<Reject> selectRejectList();
 
 
 }

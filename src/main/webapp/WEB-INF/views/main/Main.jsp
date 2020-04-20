@@ -12,6 +12,12 @@
 #header-color1{
 	color:#6c7ae0
 }
+.slick3-dots .slick-active .slick3-dot-overlay {
+	border-color:white;
+}
+.slick3-dots li img {
+	display:none;
+}
 </style>
 </head>
 <body class="animsition">
@@ -107,10 +113,10 @@
 					
 					<div class="block2">
 				
-						<div class="block2-pic hov-img0 label-new" data-label="New">
+						<div class="block2-pic hov-img0 label-new" data-label="New" id="productModal0">
 							<img src="/brocoli/resources/product-Img/${r.pfList.pf_Img1_ReName }" style="height:378px;" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<input type="hidden" id="productNo0" value="${r.p_NO }">
+							<a href="#" id="ModalView0" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
 							</a>
 						</div>
@@ -213,17 +219,72 @@
 <%@ include file = "pages/All-ShopModal.jsp" %>
 			 
 	<script>
-	$('#productModal a[id=ModalView]').click(function(){
-		var p_NO = $(this).parent().find('input[id=productNo]').val();
+	$('#productModal0 a[id=ModalView0]').click(function(obj){
+		var p_NO = $(this).parent().find('input[id=productNo0]').val();
+		var option = "";
+		var option2 = "";
+		var img="";
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
 			dataType:"json",
 			success:function(data){
+
 				$('#productName').val(data[0].p_Name);
 				$('#brandName').val(data[0].b_Name);
 				$('#pNo').val(data[0].p_NO);
-		
+				$('#orderCount').val(data[0].p_Order_Count);
+				$('#productPrice').val(data[0].p_Price);
+				$('#lastPrice').val(data[0].p_Last_Price);
+				$('#productComment').val(data[0].p_Comment);
+
+
+				img += "<div class='item-slick3' data-thumb='-'>"
+				img +=	"<div class='wrap-pic-w pos-relative'>"
+				img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName + "'alt='IMG-PRODUCT'>"
+				img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName+"'>"
+				img +=			"<i class='fa fa-expand'></i>"
+				img +=		"</a>"
+				img +=	"</div>"
+				img += "</div>"
+/* 				if(data[0].pf_Img2_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				}else if(data[0].pf_Img3_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				} */
+				
+				$('#imgcheck').html(img);
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option += "<option>"+data[i].option_1+"</option>"
+					}
+				}
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option2 += "<option>"+data[i].option_2+"</option>"
+					}
+				}
+				
+				$('#select1').html(option);
+				$('#select2').html(option2);
+				
+				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
 				
@@ -233,6 +294,85 @@
 				console.log(errorThrown);
 			}
 		});
+		
+	})
+	 
+	$('#productModal a[id=ModalView]').click(function(obj){
+		var p_NO = $(this).parent().find('input[id=productNo]').val();
+		var option = "";
+		var option2 = "";
+		var img="";
+		$.ajax({
+			url:"productModal",
+			data:{p_NO:p_NO},
+			dataType:"json",
+			success:function(data){
+
+				$('#productName').val(data[0].p_Name);
+				$('#brandName').val(data[0].b_Name);
+				$('#pNo').val(data[0].p_NO);
+				$('#orderCount').val(data[0].p_Order_Count);
+				$('#productPrice').val(data[0].p_Price);
+				$('#lastPrice').val(data[0].p_Last_Price);
+				$('#productComment').val(data[0].p_Comment);
+
+
+				img += "<div class='item-slick3' data-thumb='-'>"
+				img +=	"<div class='wrap-pic-w pos-relative'>"
+				img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName + "'alt='IMG-PRODUCT'>"
+				img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName+"'>"
+				img +=			"<i class='fa fa-expand'></i>"
+				img +=		"</a>"
+				img +=	"</div>"
+				img += "</div>"
+/* 				if(data[0].pf_Img2_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				}else if(data[0].pf_Img3_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				} */
+				
+				$('#imgcheck').html(img);
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option += "<option>"+data[i].option_1+"</option>"
+					}
+				}
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option2 += "<option>"+data[i].option_2+"</option>"
+					}
+				}
+				
+				$('#select1').html(option);
+				$('#select2').html(option2);
+				
+				 
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+		
 	})
 	
 	

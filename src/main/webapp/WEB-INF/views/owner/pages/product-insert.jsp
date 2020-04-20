@@ -1066,6 +1066,7 @@
 		} */
 	
 	    //재고 공백 확인 
+	    
 	  	if($("#checkStock").val() == null){
 	  		alert("등록재고를 입력해 주세요."); 
 			  $("#checkStock").focus(); 

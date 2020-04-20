@@ -262,7 +262,7 @@
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='order-exchange.ad'/>">교환/반품</a></li>
+											href="<c:url value='orderChangeReject.ad'/>">교환/반품</a></li>
 									</ul>
 								</div>
 							</li>
@@ -279,6 +279,10 @@
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
 											href="<c:url value='product-stop.ad'/>">판매중지상품</a></li>
+									</ul>
+									<ul class="nav flex-column">
+										<li class="nav-item">
+										<a class="nav-link" href="<c:url value='stock-management.ad'/>">상품재고</a></li>
 									</ul>
 								</div>
 							</li>

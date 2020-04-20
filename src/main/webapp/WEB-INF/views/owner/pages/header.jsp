@@ -29,7 +29,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header" style="z-index: 20;">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="/brocoli/owner/owner.jsp">BroColi</a>
+                <a class="navbar-brand" href="/brocoli/owner/owner.jsp"><strong> BROCOLI</strong>  PARTNER</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,45 +37,45 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
-                                <input class="form-control" type="text" placeholder="Search..">
+                            <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #4e4e54;"><c:out value="${loginUser.brand }"/></a>
                             </div>
                         </li>
                         <li class="nav-item dropdown notification">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
-                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-title">알림</div>
                                     <div class="notification-list">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">메시지</span>6개의 읽지않은 매니저 메시지가 있습니다.
+                                                        <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name"><c:out value="${ loginUser.mName }"/> </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">리뷰</span>6개의 리뷰가 작성되었습니다.
+                                                        <div class="notification-date">답글달기</div>
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">상품 QnA</span>12개의 읽지않은 상품문의가 있습니다.
+                                                        <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="#" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">주문접수</span>34개의 신규 주문이 접수되었습니다.
+                                                        <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -83,7 +83,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                    <div class="list-footer"> <a href="#">닫기</a></div>
                                 </li>
                             </ul>
                         </li>
@@ -126,7 +126,7 @@
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name"><c:out value="${ loginUser.mName }"/>  </h5>
-                                    <span class="status"></span><span class="ml-2">Available</span>
+                                    <span class="status"></span><span class="ml-2">${ loginUser.brand }</span>
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
@@ -156,27 +156,35 @@
                                 	        메뉴
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="/brocoli/owner/owner.jsp" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
+                            	<c:url var="goToHome" value="goToHome.ow">
+                            	</c:url>
+                                <a class="nav-link active" href="${goToHome}" ><i class="fa fa-fw fa-user-circle"></i>홈</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="#" aria-expanded="false" data-toggle="collapse" data-target="#submenu-1" aria-controls="submenu-1"><i class="fab fa-fw fa-wpforms"></i>매출관리</a>
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-day.jsp">일간매출</a>
+                                        	<c:url var="incomeDay_select" value="incomeDaySelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeDay_select}">일간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-week.jsp">주간매출</a>
+                                       		<c:url var="incomeMonth_select" value="incomeMonthSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeMonth_select}">월간매출</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-month.jsp">월간매출</a>
+                                        	<c:url var="incomeYear_select" value="incomeYearSelect.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${incomeYear_select}">연간매출</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/income-year.jsp">연간매출</a>
-                                        </li>
-                                         <li class="nav-item">
+<!--                                          <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">매출분석(제작중)</a>
-                                        </li> 
+                                        </li>  -->
                                     </ul>
                                 </div>
                             </li>
@@ -200,12 +208,12 @@
 			                                </c:url>
                                             <a class="nav-link" href="${Brand_NO}">재고관리</a>
                                         </li>
-                                        <li class="nav-item">
+<!--                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">판매제품순위(제작중)</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/product-list.jsp">판매상품전체보기</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </li>
@@ -214,20 +222,32 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-progress.jsp">진행중인 주문</a>
+                                        	<c:url var="Brand_NO" value="order_progress.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">진행중인 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-complete.jsp">완료된 주문</a>
+                                        	<c:url var="Brand_NO" value="order_complete.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${Brand_NO }">완료된 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-return.jsp">반품</a>
+                                        	<c:url var="order_reject" value="order_reject.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_reject }">반품</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/order-exchange.jsp">교환</a>
+                                        	<c:url var="order_change" value="order_change.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${order_change }">교환</a>
                                         </li>
-                                        <li class="nav-item">
+  <!--                                  <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">주문분석(제작중)</a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 
@@ -269,13 +289,19 @@
                                 <div id="submenu-6" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-Tip.jsp">광고요령</a>
+                                        	<c:url var="banner_Tip" value="banner_Tip.ow"></c:url>
+                                            <a class="nav-link" href="${banner_Tip}">광고요령</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-sale.jsp">광고신청</a>
+                                        	<c:url var="banner_sale" value="banner_sale.ow"></c:url>
+                                            <a class="nav-link" href="${banner_sale}">광고신청</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/banner-result.jsp">결과확인</a>
+                                        	<c:url var="banner_result" value="banner_result.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }}"/>
+												<c:param name="mNO" value="${loginUser.mNO }"/>      
+                                        	</c:url>
+                                            <a class="nav-link" href="${banner_result}">결과확인</a>
                                         </li>
 
                                     </ul>
@@ -322,10 +348,12 @@
                                 <div id="submenu-9" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/Cropper.jsp">사진편집<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="Cropper" value="Cropper.ow"></c:url>
+                                            <a class="nav-link" href="${Cropper}">사진편집<span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/color-picker.jsp">RGB색상표<span class="badge badge-secondary">New</span></a>
+                                        	<c:url var="color_picker" value="color_picker.ow"></c:url>
+                                            <a class="nav-link" href="${color_picker}">RGB색상표<span class="badge badge-secondary">New</span></a>
                                         </li>
 
                                     </ul>

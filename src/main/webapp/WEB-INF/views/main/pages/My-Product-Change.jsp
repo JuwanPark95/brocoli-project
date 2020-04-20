@@ -27,10 +27,11 @@ padding : 5px;
 <body style="padding:0px;">
     <div id="orderSt">
     <form action="my_p_change.mn">
+    <c:forEach var="member" items="Member">
     <p class="txt-date">
         <span>
-            <strong>(회원이름)</strong>
-            님께서 0000년 00월 00일 주문하신 내역입니다.
+            <strong>${loginUser.mName}</strong>
+                           님께서 ${member.or_Date} 주문하신 내역입니다.
         </span>
     </p>
     <ul class="tab">
@@ -70,13 +71,13 @@ padding : 5px;
                             <div class="tb-center">주문번호</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문번호)</div>
+                            <div class="tb-center">${member.or_NO}</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문일자</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문일자)</div>
+                            <div class="tb-center"> ${member.or_Date}</div>
                         </td>
                     </tr>
                     <tr>
@@ -84,7 +85,7 @@ padding : 5px;
                             <div class="tb-center">주문자</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문자)</div>
+                            <div class="tb-center">${member.mName }</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문서 입금현황</div>
@@ -117,11 +118,11 @@ padding : 5px;
                 <tbody>
                    <tr>
                 <th scope="row">
-                    <div class="tb-center">배송번호</div>
+                    <div class="tb-center">택배사</div>
                 </th>
                 <td>
                     <div class="tb-center">
-                        (배송번호)
+                        ${member.or_Deliver_Vender}
                     </div>
                 </td>
                 <th scope="row">
@@ -129,7 +130,7 @@ padding : 5px;
                 </th>
                  <td>
                      <div class="tb-center">
-                         (송장번호)
+                         ${member.or_Deliver_Num}
                          <a href=""></a>
                      </div>
                  </td>
@@ -311,6 +312,7 @@ padding : 5px;
          </button>
     </div>
 </div>
+</c:forEach>
 </form>
 </div>
 

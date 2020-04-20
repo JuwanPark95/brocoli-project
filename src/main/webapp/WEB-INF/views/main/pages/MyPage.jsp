@@ -82,6 +82,7 @@
                     	 수정일 : 2020-03-31
                     	 내용 : css 중앙 정렬 수정
                     -->
+                    
                     	
                     <div class="mypage-menu-container">
                         <ul class="mypage-menu-list" style=" width: 1200px; margin: auto;" >
@@ -106,6 +107,7 @@
                             </li>
                             <li class="wish-list" img="/brocoli/resources/mainResources/images/mypage_like1.png">
                                 <a href="<c:url value='myWishList.mn'/>">
+                                
                                     <h4>관심상품관리</h4>
                                     <p>"내가 찜 해둔 상품을"
                                         <br>

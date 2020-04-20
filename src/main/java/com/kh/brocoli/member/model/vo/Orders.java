@@ -2,6 +2,9 @@ package com.kh.brocoli.member.model.vo;
 
 import java.sql.Date;
 
+import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.Product_Option;
+
 public class Orders {
 	 private int or_NO;
 	 private Date or_Date;
@@ -18,10 +21,16 @@ public class Orders {
 	 private int or_Mno;
 	 private int or_P_NO;
 	 private int or_Brand_NO;
+	
+	 private Product pList;
+	 private Product_Option pOptionlist;
+
 	 
-	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
-	
-	
+	 private Member or_Member;  //admin 주문 멤버정보 받아오기
+	 private String or_Status_Str; //admin 주문상태 한글
+	 private Reject ordersReject;  //반품정보
+	 private Change ordersChange;  //교환정보
+
 	 
 	 
 	 public Orders() {
@@ -30,10 +39,13 @@ public class Orders {
 
 
 
-
-	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
+	
+	   public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
-			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member ordersMember) {
+			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
+			Product_Option pOptionlist, Member or_Member,
+			Reject ordersReject, Change ordersChange) {
+
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
@@ -50,9 +62,15 @@ public class Orders {
 		this.or_Mno = or_Mno;
 		this.or_P_NO = or_P_NO;
 		this.or_Brand_NO = or_Brand_NO;
-		this.ordersMember = ordersMember;
-	}
 
+		this.pList = pList;
+		this.pOptionlist = pOptionlist;
+
+		this.or_Member = or_Member;
+		this.ordersReject = ordersReject;
+		this.ordersChange = ordersChange;
+
+	}
 
 
 
@@ -62,11 +80,9 @@ public class Orders {
 
 
 
-
 	public void setOr_NO(int or_NO) {
 		this.or_NO = or_NO;
 	}
-
 
 
 
@@ -76,11 +92,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Date(Date or_Date) {
 		this.or_Date = or_Date;
 	}
-
 
 
 
@@ -90,11 +104,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Pname(String or_Pname) {
 		this.or_Pname = or_Pname;
 	}
-
 
 
 
@@ -104,11 +116,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Option1(String or_Option1) {
 		this.or_Option1 = or_Option1;
 	}
-
 
 
 
@@ -118,11 +128,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Option2(String or_Option2) {
 		this.or_Option2 = or_Option2;
 	}
-
 
 
 
@@ -132,18 +140,15 @@ public class Orders {
 
 
 
-
 	public void setOr_Amount(String or_Amount) {
 		this.or_Amount = or_Amount;
 	}
 
 
-
-
+	
 	public String getOr_Address() {
 		return or_Address;
 	}
-
 
 
 
@@ -153,11 +158,9 @@ public class Orders {
 
 
 
-
 	public String getOr_Message() {
 		return or_Message;
 	}
-
 
 
 
@@ -167,11 +170,9 @@ public class Orders {
 
 
 
-
 	public String getOr_Price() {
 		return or_Price;
 	}
-
 
 
 
@@ -181,18 +182,16 @@ public class Orders {
 
 
 
-
 	public String getOr_Status() {
 		return or_Status;
 	}
 
 
 
-
 	public void setOr_Status(String or_Status) {
 		this.or_Status = or_Status;
+		this.setOr_Status_Str(or_Status);
 	}
-
 
 
 
@@ -202,11 +201,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Deliver_Num(String or_Deliver_Num) {
 		this.or_Deliver_Num = or_Deliver_Num;
 	}
-
 
 
 
@@ -216,11 +213,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Deliver_Vender(String or_Deliver_Vender) {
 		this.or_Deliver_Vender = or_Deliver_Vender;
 	}
-
 
 
 
@@ -230,11 +225,9 @@ public class Orders {
 
 
 
-
 	public void setOr_Mno(int or_Mno) {
 		this.or_Mno = or_Mno;
 	}
-
 
 
 
@@ -244,18 +237,15 @@ public class Orders {
 
 
 
-
 	public void setOr_P_NO(int or_P_NO) {
 		this.or_P_NO = or_P_NO;
 	}
 
 
 
-
 	public int getOr_Brand_NO() {
 		return or_Brand_NO;
 	}
-
 
 
 
@@ -266,15 +256,86 @@ public class Orders {
 
 
 
-	public Member getOrdersMember() {
-		return ordersMember;
+	public Product getpList() {
+		return pList;
 	}
 
 
 
+	public void setpList(Product pList) {
+		this.pList = pList;
+	}
 
-	public void setOrdersMember(Member ordersMember) {
-		this.ordersMember = ordersMember;
+
+
+	public Product_Option getpOptionlist() {
+		return pOptionlist;
+	}
+
+
+
+	public void setpOptionlist(Product_Option pOptionlist) {
+		this.pOptionlist = pOptionlist;
+	}
+
+	
+	public Member getOr_Member() {
+		return or_Member;
+	}
+
+
+	public void setOr_Member(Member or_Member) {
+		this.or_Member = or_Member;
+	}
+
+
+	public Reject getOrdersReject() {
+		return ordersReject;
+	}
+
+
+	public void setOrdersReject(Reject ordersReject) {
+		this.ordersReject = ordersReject;
+	}
+
+
+	public Change getOrdersChange() {
+		return ordersChange;
+	}
+
+
+	public void setOrdersChange(Change ordersChange) {
+		this.ordersChange = ordersChange;
+	}
+
+	//admin 주문 상태변경 getter,setter
+	public String getOr_Status_Str() {
+		return or_Status_Str;
+	}
+
+	public void setOr_Status_Str(String or_Status) {
+		switch(or_Status){
+		case "1":
+			this.or_Status_Str = "주문확인"; break;
+		case "2":
+			this.or_Status_Str = "상품준비중"; break;
+		case "3":
+			this.or_Status_Str = "상품배송중"; break;
+		case "4":
+			this.or_Status_Str = "배송완료"; break;
+		case "5":
+			this.or_Status_Str = "구매확정"; break;
+		case "6":
+			this.or_Status_Str = "환불진행중"; break;
+		case "7":
+			this.or_Status_Str = "교환진행중"; break;
+		case "8":
+			this.or_Status_Str = "반품완료"; break;
+		case "9":
+			this.or_Status_Str = "교환완료"; break;
+		default:
+				this.or_Status_Str = ""; break;
+		}
 	}
 
 
@@ -286,10 +347,16 @@ public class Orders {
 				+ or_Option1 + ", or_Option2=" + or_Option2 + ", or_Amount=" + or_Amount + ", or_Address=" + or_Address
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
-				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
-				+ "]";
-	}
+				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList
+				+ ", pOptionlist=" + pOptionlist
+                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", or_Member=" + or_Member
+				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
 
-	
+	}
 	 
+
+	 
+	 
+
+
 }

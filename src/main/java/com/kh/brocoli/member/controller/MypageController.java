@@ -2,6 +2,7 @@ package com.kh.brocoli.member.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +27,10 @@ import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 
-
+@SessionAttributes("loginUser")
 @Controller
 public class MypageController {
-	
-	@Autowired
-	private QnAService qService;
-	
+		
 	@Autowired
 	private MypageService myService;
 	
@@ -247,10 +245,11 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("myOrderList.mn")
-	public ModelAndView myorderlist(ModelAndView mv, String Pname) {
-				
-		ArrayList<Orders> list = myService.myorderList(Pname);
+	public ModelAndView myorderlist(ModelAndView mv, HttpSession session){
 		
+		Member m = (Member)session.getAttribute("loginUser");
+		ArrayList<Orders> list = myService.myorderList(m);
+		System.out.println("list : " + list);
 
 		mv.addObject("list", list);
 		mv.setViewName("MyOrderList");
@@ -325,6 +324,8 @@ public class MypageController {
 		System.out.println("bnSearch.mn" + condition);
 		
 		SearchCondition sc = new SearchCondition();
+		sc.setSearch(search);
+		sc.setCondition(condition);
 		
 		if(condition.equals("writer")) {
 			

@@ -147,11 +147,20 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 
 	/**
 	 *	작성자 : 신은지
-	 *15. 오너 콘택트 게시판 수정 update
+	 *	15. 오너 콘택트 게시판 수정 update
 	 */
 	@Override
 	public int ownerContactUpdateSave(Contact c) {
 		return ABDao.ownerContactUpdateSave(c);
+	}
+
+	/**
+	 *	작성자 : 신은지
+	 * 	16. 브랜드 삭제 
+	 */
+	@Override
+	public int brandDelete(int brand_NO) {
+		return ABDao.brandDelete(brand_NO);
 	}
 
 
