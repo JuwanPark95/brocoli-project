@@ -42,15 +42,15 @@
 					<strong style="font-size: 35px; color: #222; margin-right: 30px; padding-left: 0px; margin-left: 0px;">랭킹</strong>
 					<c:url var="day" value="rankday.mn"/>
 					<a href="${day}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;"data-filter="*">
-						오늘
+					일별
 					</a>
 					<c:url var="month" value="rankmonth.mn"/>
 					<a href="${month }" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" style="font-size:20px;" data-filter=".men">
-						이번달
+					월별
 					</a>
 					<c:url var="year" value="rankyear.mn"/>
 					<a href="${year }" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".bag">
-						올해
+					년별
 					</a>
 					
 				

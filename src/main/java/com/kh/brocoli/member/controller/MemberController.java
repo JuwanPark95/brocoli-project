@@ -245,7 +245,22 @@ public class MemberController {
 		gson.toJson(pDetail,response.getWriter());
 		
 	}
+	
+	@RequestMapping("qnacomment")
+	public void qnacomment(HttpServletResponse response,String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
+		System.out.println("@@"+pq_P_NO);
+		System.out.println("##"+pq_Content);
+		System.out.println("$$"+pq_Writer);
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 
+		Gson gson = new GsonBuilder().create();
+		//gson.toJson(pDetail,response.getWriter());
+		
+	}
+	
 	
 
 
