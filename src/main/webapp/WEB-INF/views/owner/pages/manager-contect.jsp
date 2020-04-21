@@ -100,7 +100,19 @@
 												<td>
 													<div class="card-body">
 														<div class="review-block" style="padding: 8px;">
-															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
+															<div>
+									                           	<img src="/brocoli/resources/ownerResources/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle">
+																<span class="text-dark font-weight-bold">
+																	신은지 - 5월 메인페이지 광고배너 관련입니다.
+																</span>
+																<span class="text-mute" style="margin-left: 13px;" >
+																	<span class="badge-dot badge-light"></span>
+																	2020-04-02 15:12
+																</span>
+																<a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; margin-left: 5px; margin-top: -6px; ">삭제</a>
+																<a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px;  margin-top: -6px;">수정</a>
+															</div>
+															<hr>
 															<div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
 																<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
 																	alt="user" class="rounded" width="100"> 
@@ -110,8 +122,6 @@
 																<textarea style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
 																padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
 																>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
-															<div class="rating-star">
-															</div>
 														</div>
 													</div>
 												</td>
