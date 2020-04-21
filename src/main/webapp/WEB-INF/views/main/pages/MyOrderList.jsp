@@ -176,7 +176,7 @@
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
-									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'"><strong>교환/반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>

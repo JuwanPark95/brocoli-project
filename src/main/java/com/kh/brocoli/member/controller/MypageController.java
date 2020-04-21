@@ -41,60 +41,60 @@ public class MypageController {
 	
 //**************************************마이페이지 이동경로*****************************************//	
 	
-	 /** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("mypage.mn")
-	public String mypage() {
-		return "MyPage";
-	}
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동중 비밀번호 체크
-	 * @return
-	 * @param pwd
-	 */
-
-	@RequestMapping("p_check.mn")
-	public String pwdCheckPage() {
-		return "My-P-Check";
-	}
-	
-	@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
-	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv,HttpSession session) {
-		
-		//System.out.println("result : " + result);
-		
-		Member m = (Member)session.getAttribute("loginUser");
-		
-		
-		System.out.println("result : " + m);
-		if(m != null && bcryptPasswordEncoder.matches(password,m.getPwd() ) ) {
-			mv.setViewName("MyInformation");
-		}else {
-		
-		mv.addObject("msg","로그인 실패!!");
-		mv.setViewName("My-P-Check");
+		 /** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지로 이동
+		 * @return
+		 */
+		@RequestMapping("mypage.mn")
+		public String mypage() {
+			return "MyPage";
 		}
-		return mv;
 		
-	}
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 개인정보수정으로 이동중 비밀번호 체크
+		 * @return
+		 * @param pwd
+		 */
+	
+		@RequestMapping("p_check.mn")
+		public String pwdCheckPage() {
+			return "My-P-Check";
+		}
+		
+		@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
+		public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv,HttpSession session) {
+			
+			//System.out.println("result : " + result);
+			
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			
+			System.out.println("result : " + m);
+			if(m != null && bcryptPasswordEncoder.matches(password,m.getPwd() ) ) {
+				mv.setViewName("MyInformation");
+			}else {
+			
+			mv.addObject("msg","로그인 실패!!");
+			mv.setViewName("My-P-Check");
+			}
+			return mv;
+			
+		}
 	
 	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동
-	 * @return
-	 */
-	@RequestMapping("myInfo.mn")
-	public String myinfo() {
-		
-		return "MyInformation";
-	}
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 개인정보수정으로 이동
+		 * @return
+		 */
+		@RequestMapping("myInfo.mn")
+		public String myinfo() {
+			
+			return "MyInformation";
+		}
 	
 	
 	
@@ -222,10 +222,11 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("my_p_change.mn")
-	public ModelAndView P_change(ModelAndView mv, HttpSession session) {
+	public ModelAndView P_change(ModelAndView mv, HttpSession session,
+		                     	@RequestParam("or_No") String or_No) {
 		Member m = (Member)session.getAttribute("loginUser");
 		
-		ArrayList<Orders> list = myService.P_change(m);
+		ArrayList<Orders> list = myService.P_change(or_No);
 		System.out.println("list : " + list);
 
 		mv.addObject("list", list);

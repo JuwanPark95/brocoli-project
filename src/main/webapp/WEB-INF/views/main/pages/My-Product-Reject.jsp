@@ -16,10 +16,12 @@
 
 <body style="padding:0px;">
     <div id="orderSt">
+    <form>
+    <c:forEach var="Orders" items="${list }">
     <p class="txt-date">
         <span>
-            <strong>(회원이름)</strong>
-            님께서 0000년 00월 00일 주문하신 내역입니다.
+            <strong>${loginUser.mName}</strong>
+                           님께서  ${Orders.or_Date}  주문하신 내역입니다.
         </span>
     </p>
     <ul class="tab">
@@ -59,13 +61,13 @@
                             <div class="tb-center">주문번호</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문번호)</div>
+                            <div class="tb-center"> ${Orders.or_NO}</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문일자</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문일자)</div>
+                            <div class="tb-center"> ${Orders.or_Date} </div>
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +75,7 @@
                             <div class="tb-center">주문자</div>
                         </th>
                         <td>
-                            <div class="tb-center">(주문자)</div>
+                            <div class="tb-center">${loginUser.mName }</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문서 입금현황</div>
@@ -106,11 +108,11 @@
                 <tbody>
                    <tr>
                 <th scope="row">
-                    <div class="tb-center">배송번호</div>
+                    <div class="tb-center">택배사</div>
                 </th>
                 <td>
                     <div class="tb-center">
-                        (배송번호)
+                    ${Orders.or_Deliver_Vender} 
                     </div>
                 </td>
                 <th scope="row">
@@ -118,7 +120,7 @@
                 </th>
                  <td>
                      <div class="tb-center">
-                         (송장번호)
+                     ${Orders.or_Deliver_Num}
                          <a href=""></a>
                      </div>
                  </td>
@@ -128,13 +130,13 @@
                     <div class="tb-center">수취인</div>
                 </th>
                 <td>
-                    <div class="tb-center">(수취인)</div>
+                    <div class="tb-center">${loginUser.mName }</div>
                 </td>
                 <th scope="row">
                     <div class="tb-center">연락처</div>
                 </th>
                 <td>
-                    <div class="tb-center">(연락처)</div>
+                    <div class="tb-center">${loginUser.phone }</div>
                 </td>
             </tr>
             <tr>
@@ -142,7 +144,7 @@
                     <div class="tb-center">주소</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left">(주소)</div>
+                    <div class="tb-left"> ${Orders.or_Address }</div>
                 </td>
             </tr>
             <tr>
@@ -150,7 +152,7 @@
                     <div class="tb-center">배송메세지</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left"></div>
+                    <div class="tb-left"> ${Orders.or_Message }</div>
                 </td>
             </tr>
         </tbody>
@@ -172,11 +174,11 @@
             </colgroup>
            <thead>
                <tr>
-                   <th scope="row" colspan="2">
-                       <div class="tb-center">주문상품정보</div>
-                   </th>
                    <th scope="row">
-                       <div class="tb-center">상품별주문번호</div>
+                       <div class="tb-center">주문번호</div>
+                   </th>
+                   <th colspan="2">
+                       <div class="tb-center">주문상품정보</div>
                    </th>
                    <th scope="row">
                        <div class="tb-center">수량</div>
@@ -195,54 +197,60 @@
                    </th>
                </tr>
            </thead>
+           
            <tfoot>
                <tr>
+                
                    <td colspan="8">
                        <div class="t-right">
-                           (상품금액) + (배송료)(할인/추가금액) =(총금액)
+                        ${Orders.or_Price + 3000 } 
                        </div>
                    </td>
+                 
                </tr>
            </tfoot>
           <tbody>
-             <tr>
+              <tr>
                   <td>
-                       <div class="tb-center">(주문번호)</div> 
+                      <input type="checkbox" name="or_NO" value="check" style="margin-left: 24px;s" checked>
                   </td>
 					<td colspan="2">
 						<div style="float: left;">
 							<img src="/brocoli/resources/product-Img/P11001.jpg" style="width: 58px; height: 78px;">
 						</div>
 						<div style="float: left;">
-							<a href=""> (상품명) <br>
-								</a> <span class="quantity order_table_Td style4"> 타입 : (상품색상 타입) </span>
+							<a href="">${Orders.or_Pname }  <br> </a> 
+							<span class="quantity order_table_Td style4"> 옵션 :  ${Orders.or_Option1 }  <br>
+				                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      ${Orders.or_Option2 }  </span>
 						</div>
 					</td>
 					<td>
-                      <div class="tb-center">(수량)</div>
+                      <div class="tb-center">${Orders.or_Amount } </div>
                   </td>
                   <td>
                       <div class="tb-center tb-price">
                           <strong>
-                              <font color="#FF5D00">(가격)</font>
+                              <font color="#FF5D00"> ${Orders.or_Price } </font>
                           </strong>
                           원
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">
-                          <span class="style4">0</span>
+                          <span class="style4"> ${Orders.or_Price/100} </span>
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">거래완료(상태)</div>
                   </td>
                   <td>
-                      <div class="tb-center">(배송번호)</div>
+                      <div class="tb-center"> ${Orders.or_Deliver_Num } </div>
                   </td>
+              
               </tr>
           </tbody>
         </table>
+        
     </div>
     <h2>반품사유</h2>
     <div class="table-w table-orderinfo">
@@ -263,10 +271,18 @@
                         <div class="tb-center">
                          <select>
                             <option value="선택">--선택--</option>
-                            <option value="단순">단순변심</option>
+                            <option value="단순">단순반품</option>
                             <option value="불량">불량반품</option>
                           </select>  
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="row">
+                        <div class="tb-center">반품</div>
+                    </th>
+                    <td colspan="3">
+                        <div class="tb-left">(신청날짜)</div>
                     </td>
                 </tr>
                 <tr>
@@ -277,14 +293,6 @@
                         <div class="tb-center">
                             <input type="text" id="reason" placeholder="상세 사유를 작성해주세요~" style="width: 700px; height: 100px;">
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="row">
-                        <div class="tb-center">신청일</div>
-                    </th>
-                    <td colspan="3">
-                        <div class="tb-left">(신청날짜)</div>
                     </td>
                 </tr>
             </tbody>
@@ -300,6 +308,8 @@
         </button>
     </div>
 </div>
+</c:forEach>
+</form>
 </div>
 
 
