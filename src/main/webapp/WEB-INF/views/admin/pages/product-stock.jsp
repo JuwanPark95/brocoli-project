@@ -67,32 +67,35 @@
                                         <thead>
                                             <tr>
                                             	<th>상품번호</th>
+                                                <th>브랜드</th>
                                                 <th>이미지</th>
                                                 <th>제품명</th>
                                                 <th>옵션번호</th>
                                                 <th>옵션1</th>
                                                 <th>옵션2</th>
                                                 <th>재고</th>
+                                                <th>입고예정일</th>
                                                 <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <% int count = 0; %>
                                         	<c:forEach var="o" items="${ productOptionList }">
 	                                            <tr>
-	                                                <td>${o.p_NO}</td>
+	                                                <td>${o.pList.p_NO}</td>
+	                                                <td>${o.pList.brList.b_Name }</td>
 	                                                <td align="center" >
-	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${o.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${o.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
 	                                                </td>
-	                                                <td>${o.p_Name }</td>
-	                                                <td>${o.poList.op_NO }</td>
-	                                                <td>${o.poList.option_1 }</td>
-	                                                <td>${o.poList.option_2 }</td>
-	                                                <td>${o.poList.op_Stock }</td>
+	                                                <td>${o.pList.p_Name }</td>
+	                                                <td>${o.op_NO }</td>
+	                                                <td>${o.option_1 }</td>
+	                                                <td>${o.option_2 }</td>
+	                                                <td>${o.op_Stock }</td>
+	                                                <td>${o.op_Rec_Date}</td>
 	                                                <td id="status">
 	                                                <c:choose>
-														<c:when test="${o.poList.op_Status_YN eq 'Y'}">판매상품</c:when>
-														<c:when test="${o.poList.op_Status_YN eq 'N'}">품절</c:when>
+														<c:when test="${o.op_Status_YN eq 'Y'}">판매상품</c:when>
+														<c:when test="${o.op_Status_YN eq 'N'}">품절</c:when>
 													</c:choose>	
 													</td>
 	                                            </tr>
@@ -116,20 +119,6 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
-
-    <!-- 상품 상세보기용 -->
-		<script>
-			$(function(){
-				$("#product-management").find("td").mouseenter(function(){
-					$(this).parents("tr").css({ "cursor":"pointer"});
-				}).click(function(){
-					var p_NO = $(this).parents().children("td").eq(1).text();	
-					location.href="productDetail.ad?p_NO="+p_NO
-				});
-			});
-		</script>
-    
-    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

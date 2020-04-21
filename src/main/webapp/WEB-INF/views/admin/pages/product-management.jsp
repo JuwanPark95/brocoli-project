@@ -66,20 +66,20 @@
                                     <table id="product-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">번호</th>
-                                                <th style="width:5%">상품번호</th>
-                                                <th style="width:5%">상품이미지</th>
-                                                <th style="width:8%">상품명</th>
-                                                <th style="width:5%">브랜드</th>
-                                                <th style="width:5%">기본가</th>
-                                                <th style="width:5%">할인가</th>
-                                                <th style="width:5%">판매가</th>
-                                                <th style="width:8%">카테고리(대)</th>
-                                                <th style="width:5%">카테고리(소)</th> 
-                                                <th style="width:5%">상품상태</th> 
-                                                <th style="width:7%">총 주문수</th>
-                                                <th style="width:5%">상품입고일</th>
-                                                <th style="width:5%">상태</th>
+                                                <th>번호</th>
+                                                <th>상품번호</th>
+                                                <th>상품이미지</th>
+                                                <th>상품명</th>
+                                                <th>브랜드</th>
+                                                <th>기본가</th>
+                                                <th>할인가</th>
+                                                <th>판매가</th>
+                                                <th>카테고리(대)</th>
+                                                <th>카테고리(소)</th> 
+                                                <th>상품상태</th> 
+                                                <th>총 주문수</th>
+                                                <th>상품입고일</th>
+                                                <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -87,7 +87,7 @@
                                             <tr>
                                                 <td>${pl.count }</td>
                                                 <td>${p.p_NO}</td>
-                                            	<td><img src="/brocoli/resources/brandLogo/${p.pfList.pf_Img1_ReName}" width="50" height="50"></td>
+                                            	<td><img src="/brocoli/resources/product-Img/${p.pfList.pf_Img1_ReName}" width="50" height="50"></td>
                                                 <td>${p.p_Name }</td>
                                                 <td>${p.brList.b_Name }</td>
                                                 <td>${p.p_Price }</td>
@@ -100,11 +100,9 @@
                                                 <td>${p.p_Insert_Date }</td>
                                                 <td>
 	                                                <c:set var="p_Show_YN" value="${p.p_Show_YN }" />
-	                                            	<c:choose>
-	                                            		<c:when test="${p_Show_YN eq 'Y'}">
+	                                            		<c:if test="${p_Show_YN eq 'Y'}">
 	                                            			<strong><span style="color:#60DA8D;">판매중</span></strong>
-	                                            		</c:when>
-	                                            	</c:choose>
+	                                            		</c:if>
                                             	</td>
                                             </tr>
                                         </c:forEach>

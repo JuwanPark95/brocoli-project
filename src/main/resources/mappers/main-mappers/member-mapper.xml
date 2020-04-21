@@ -199,6 +199,20 @@
 	        WHERE OR_MNO = ${mNO}
 	        ORDER BY OR_NO ASC
 		</select>
+		
+		<select id="P_change" resultMap="memberResultSet">
+			SELECT *
+	        FROM MEMBER
+	        JOIN ORDERS
+	        ON MNO = OR_MNO
+	        JOIN PRODUCT_OPTION
+	        ON OR_P_NO = OP_P_NO
+	        JOIN PRODUCT
+	        ON OP_P_NO = P_NO
+	        JOIN PRODUCT_FILE
+	        ON P_NO = PF_P_NO
+	        WHERE OR_P_NO = ${or_P_NO}
+		</select>
 	    
 	    
 </mapper>

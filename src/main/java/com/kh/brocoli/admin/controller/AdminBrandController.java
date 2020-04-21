@@ -86,7 +86,6 @@ public class AdminBrandController {
 	 */
    @RequestMapping("brandUpdate.ad")
    public ModelAndView brandUpdate(ModelAndView mv, Brand b, String sessionName){
-	   System.out.println(sessionName);
 	   int result = ABService.brandUpdate(b);
 	   if(result>0) {
 		   mv.setViewName("redirect:brandManagement.ad");

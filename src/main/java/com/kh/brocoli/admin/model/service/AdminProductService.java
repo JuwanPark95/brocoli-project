@@ -20,7 +20,7 @@ public interface AdminProductService {
 	 * @param p_NO
 	 * @return
 	 */
-	ArrayList<Product> selectproductDetail(int p_NO);
+	Product selectproductDetail(int p_NO);
 
 	/**
 	 * 작성자  : 신은지
@@ -28,6 +28,21 @@ public interface AdminProductService {
 	 * @param p_NO
 	 * @return
 	 */
-	ArrayList<Product> selectStockManagement();
+	ArrayList<Product_Option> selectStockManagement();
+
+	/**
+	 * 작성자  : 신은지
+	 * 4. 상품 수정 
+	 * @param p
+	 * @return
+	 */
+	int productUpdate(Product p);
+
+	/**
+	 * 작성자 : 신은지
+	 * 5. 판매 중지상품 list
+	 * @return
+	 */
+	ArrayList<Product> selectProductStopList();
 
 }

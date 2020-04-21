@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.brocoli.member.model.vo.Orders"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +27,10 @@ padding : 5px;
 <body style="padding:0px;">
     <div id="orderSt">
     <form action="my_p_change.mn">
-    <c:forEach var="member" items="Member">
     <p class="txt-date">
         <span>
             <strong>${loginUser.mName}</strong>
-                           님께서 ${member.or_Date} 주문하신 내역입니다.
+                           님께서 ${ordersMember.or_Date} 주문하신 내역입니다.
         </span>
     </p>
     <ul class="tab">
@@ -71,13 +70,13 @@ padding : 5px;
                             <div class="tb-center">주문번호</div>
                         </th>
                         <td>
-                            <div class="tb-center">${member.or_NO}</div>
+                            <div class="tb-center">${ordersMember.or_NO}</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문일자</div>
                         </th>
                         <td>
-                            <div class="tb-center"> ${member.or_Date}</div>
+                            <div class="tb-center"> ${ordersMember.or_Date}</div>
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +84,7 @@ padding : 5px;
                             <div class="tb-center">주문자</div>
                         </th>
                         <td>
-                            <div class="tb-center">${member.mName }</div>
+                            <div class="tb-center">${loginUser.mName }</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문서 입금현황</div>
@@ -122,7 +121,7 @@ padding : 5px;
                 </th>
                 <td>
                     <div class="tb-center">
-                        ${member.or_Deliver_Vender}
+                        ${ordersMember.or_Deliver_Vender}
                     </div>
                 </td>
                 <th scope="row">
@@ -130,7 +129,7 @@ padding : 5px;
                 </th>
                  <td>
                      <div class="tb-center">
-                         ${member.or_Deliver_Num}
+                         ${ordersMember.or_Deliver_Num}
                          <a href=""></a>
                      </div>
                  </td>
@@ -140,13 +139,13 @@ padding : 5px;
                     <div class="tb-center">수취인</div>
                 </th>
                 <td>
-                    <div class="tb-center">(수취인)</div>
+                    <div class="tb-center">${loginUser.mName }</div>
                 </td>
                 <th scope="row">
                     <div class="tb-center">연락처</div>
                 </th>
                 <td>
-                    <div class="tb-center">(연락처)</div>
+                    <div class="tb-center">${loginUser.phone }</div>
                 </td>
             </tr>
             <tr>
@@ -154,7 +153,7 @@ padding : 5px;
                     <div class="tb-center">주소</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left">(주소)</div>
+                    <div class="tb-left">${ordersMember.or_Address }</div>
                 </td>
             </tr>
             <tr>
@@ -162,7 +161,7 @@ padding : 5px;
                     <div class="tb-center">배송메세지</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left"></div>
+                    <div class="tb-left">${ordersMember.or_Message }</div>
                 </td>
             </tr>
         </tbody>
@@ -207,54 +206,61 @@ padding : 5px;
                    </th>
                </tr>
            </thead>
+           
            <tfoot>
                <tr>
+                
                    <td colspan="8">
                        <div class="t-right">
-                           (상품금액) + (배송료)(할인/추가금액) =(총금액)
+                           ${ordersMember.or_Price + 3000 } 
                        </div>
                    </td>
+                 
                </tr>
            </tfoot>
           <tbody>
               <tr>
+              
                   <td>
-                       <div class="tb-center">(주문번호)</div> 
+                       <div class="tb-center">${ordersMember.or_NO }</div> 
                   </td>
 					<td colspan="2">
 						<div style="float: left;">
 							<img src="/brocoli/resources/product-Img/P11001.jpg" style="width: 58px; height: 78px;">
 						</div>
 						<div style="float: left;">
-							<a href=""> (상품명) <br>
-								</a> <span class="quantity order_table_Td style4"> 타입 : (상품색상 타입) </span>
+							<a href=""> ${ordersMember.or_Pname } <br> </a> 
+							<span class="quantity order_table_Td style4"> 타입 : ${ordersMember.or_Option1 } <br>
+							                                                   ${ordersMember.or_Option2 } </span>
 						</div>
 					</td>
 					<td>
-                      <div class="tb-center">(수량)</div>
+                      <div class="tb-center">${ordersMember.or_Amount }</div>
                   </td>
                   <td>
                       <div class="tb-center tb-price">
                           <strong>
-                              <font color="#FF5D00">(가격)</font>
+                              <font color="#FF5D00">${ordersMember.or_Price }</font>
                           </strong>
                           원
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">
-                          <span class="style4">0</span>
+                          <span class="style4">${ordersMember.or_Price/100}</span>
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">거래완료(상태)</div>
                   </td>
                   <td>
-                      <div class="tb-center">(배송번호)</div>
+                      <div class="tb-center">${ordersMember.or_Deliver_Num }</div>
                   </td>
+              
               </tr>
           </tbody>
         </table>
+        
     </div>
     <h2>교환사유</h2>
     <div class="table-w table-orderinfo">
@@ -312,7 +318,6 @@ padding : 5px;
          </button>
     </div>
 </div>
-</c:forEach>
 </form>
 </div>
 

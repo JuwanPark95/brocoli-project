@@ -222,8 +222,17 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("my_p_change.mn")
-	public String P_change() {
-		return "My-Product-Change";
+	public ModelAndView P_change(ModelAndView mv, HttpSession session) {
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		ArrayList<Orders> list = myService.P_change(m);
+		System.out.println("list : " + list);
+
+		mv.addObject("list", list);
+		mv.setViewName("My-Product-Change");
+		
+		
+		return mv;
 	}
 	
 	

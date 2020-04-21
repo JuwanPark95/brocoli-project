@@ -29,7 +29,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 	 * 2. 상품 상세보기
 	 */
 	@Override
-	public ArrayList<Product> selectproductDetail(int p_NO) {
+	public Product selectproductDetail(int p_NO) {
 		return APDao.selectproductDetail(p_NO);
 	}
 
@@ -38,7 +38,25 @@ public class AdminProductServiceImpl implements AdminProductService {
 	 * 3. 상품 재고 list
 	 */
 	@Override
-	public ArrayList<Product> selectStockManagement() {
+	public ArrayList<Product_Option> selectStockManagement() {
 		return APDao.selectStockManagement();
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 상품 수정
+	 */
+	@Override
+	public int productUpdate(Product p) {
+		return APDao.productUpdate(p);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 5. 판매 중지 상품 list
+	 */
+	@Override
+	public ArrayList<Product> selectProductStopList() {
+		return APDao.selectProductStopList();
 	}
 }

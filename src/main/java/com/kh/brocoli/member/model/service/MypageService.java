@@ -74,6 +74,14 @@ public interface MypageService {
 	ArrayList<Orders> myorderList(Member m);
 
 
+	/**
+	 * 교환
+	 * @param m
+	 * @return
+	 */
+	ArrayList<Orders> P_change(Member m);
+
+
 
 
 

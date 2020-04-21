@@ -50,9 +50,6 @@ public class AdminOrdersController {
 	@ResponseBody
 	public String orderStatusChange(@RequestParam("or_NO") int or_No, 
 									@RequestParam("or_Status") String or_Status) {
-		System.out.println("or_no : " + or_No);
-		System.out.println("or_status : " + or_Status);
-		
 		Orders orders = new Orders();
 		orders.setOr_NO(or_No);
 		orders.setOr_Status(or_Status);
@@ -79,8 +76,6 @@ public class AdminOrdersController {
 		ArrayList<Change> changeList = AOService.selectChangeList(); 
 		ArrayList<Reject> rejectList = AOService.selectRejectList(); 
 		
-		System.out.println("changeList"+changeList);
-		System.out.println("rejectList"+rejectList);
 		mv.addObject(changeList);
 		mv.addObject(rejectList);
 		mv.setViewName("order-exchange");
