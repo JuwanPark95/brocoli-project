@@ -157,6 +157,32 @@
 		<result property="op_P_NO" column="OP_P_NO"/>
 		
 		</resultMap>
+		
+	<resultMap type="Product" id="dayproductResutSet">
+		<id property="p_NO" column="P_NO"/>
+		<result property="p_Name" column="P_NAME"/>
+		<result property="p_Price" column="P_PRICE"/>
+		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>
+		<result property="p_Last_Price" column="P_LAST_PRICE"/>
+		<result property="p_Bcategory" column="P_BCATEGORY"/>
+		<result property="p_Scategory" column="P_SCATEGORY"/>
+		<result property="p_Comment" column="P_COMMENT"/>
+		<result property="p_Order_Count" column="P_ORDER_COUNT"/>
+		<result property="p_Status" column="P_STATUS"/>
+		<result property="p_Writer" column="P_WRITER"/>
+		<result property="p_Insert_Date" column="P_INSERT_DATE"/>
+		<result property="p_Modify_Id" column="P_MODIFY_ID"/>
+		<result property="p_Modify_Date" column="P_MODIFY_DATE"/>
+		<result property="p_Show_YN" column="P_SHOW_YN"/>
+		<result property="p_Brand_NO" column="P_BRAND_NO"/>
+		<result property="or_NO" column="OR_NO"/>
+		<result property="or_Date" column="OR_DATE"/>
+		<result property="or_P_NO" column="OR_P_NO"/>
+		
+		<collection property="pfList" resultMap="productFileResultSet"/>
+		<collection property="poList" resultMap="productOptionResultSet"/>
+		<collection property="brList" resultMap="brandResultSet"/>
+	</resultMap>
 	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
@@ -260,5 +286,55 @@
 	WHERE P_NO=#{p_NO}
 	</select>
 	
+	<select id="daylist" resultMap="dayproductResutSet">
+   	SELECT P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+  	,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+        ,ORD.OR_P_NO, TO_CHAR(ORD.OR_DATE, 'yyyy-mm-dd') AS DAY,COUNT(*) count
+    FROM PRODUCT P
+    JOIN PRODUCT_FILE PF
+    ON P.P_NO =  PF.PF_P_NO
+    JOIN ORDERS ORD
+    ON ORD.OR_P_NO = P.P_NO 
+    WHERE P.P_STATUS='1'
+    GROUP BY 
+    TO_CHAR(ORD.OR_DATE, 'yyyy-mm-dd'),
+    ORD.OR_P_NO, P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+	 ,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999')
+    ORDER BY DAY ASC,COUNT DESC
+	</select>
+	
+	<select id="monthlist" resultMap="dayproductResutSet">
+   	SELECT P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+  	,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+        ,ORD.OR_P_NO, TO_CHAR(ORD.OR_DATE, 'yyyy-mm') AS DAY,COUNT(*) count
+    FROM PRODUCT P
+    JOIN PRODUCT_FILE PF
+    ON P.P_NO =  PF.PF_P_NO
+    JOIN ORDERS ORD
+    ON ORD.OR_P_NO = P.P_NO 
+    WHERE P.P_STATUS='1'
+    GROUP BY 
+    TO_CHAR(ORD.OR_DATE, 'yyyy-mm'),
+    ORD.OR_P_NO, P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+	 ,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999')
+    ORDER BY DAY ASC,COUNT DESC
+	</select>
+	
+	<select id="yearlist" resultMap="dayproductResutSet">
+   	SELECT P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+  	,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
+        ,ORD.OR_P_NO, TO_CHAR(ORD.OR_DATE, 'yyyy') AS DAY,COUNT(*) count
+    FROM PRODUCT P
+    JOIN PRODUCT_FILE PF
+    ON P.P_NO =  PF.PF_P_NO
+    JOIN ORDERS ORD
+    ON ORD.OR_P_NO = P.P_NO 
+    WHERE P.P_STATUS='1'
+    GROUP BY 
+    TO_CHAR(ORD.OR_DATE, 'yyyy'),
+    ORD.OR_P_NO, P.P_NO,P.P_ORDER_COUNT,PF.PF_IMG1_RENAME,P_BCATEGORY,P_SCATEGORY
+	 ,P.P_NAME,TO_CHAR( P.P_LAST_PRICE , '999,999,999,999,999')
+    ORDER BY DAY ASC,COUNT DESC
+	</select>
 	
 </mapper>

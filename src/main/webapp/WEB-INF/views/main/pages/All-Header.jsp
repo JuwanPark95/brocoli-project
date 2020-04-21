@@ -119,7 +119,7 @@
 
 				<!-- Logo desktop -->
 				<c:url var="MainPage" value="MainPage" />
-				<c:url var="Rank" value="rankView.mn" />
+				<c:url var="Rank" value="rankday.mn" />
 				<c:url var="Brand" value="brandView.mn" />
 				<c:url var="Product" value="productView.mn" />
 				<c:url var="Magazine" value="magazineView.mn" />
