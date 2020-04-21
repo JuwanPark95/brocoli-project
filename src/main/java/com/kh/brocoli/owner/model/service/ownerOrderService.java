@@ -23,6 +23,8 @@ public interface ownerOrderService {
 
 	ArrayList<Orders> orderChange(int bNO);
 
+	Orders orderDetail(int oNO);
+
 
 
 

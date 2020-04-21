@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/brocoli/resources/ownerResources/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <%@ include file="header.jsp" %>
         
-    <title>오너 : 후기관리</title>
+    <title>오너 : 매니저컨택</title>
     
     <style type="text/css">
     	.dataTables_length{
@@ -69,15 +69,13 @@
 					<div class="row">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="page-header">
-								<h3 class="mb-2">읽지않은 후기</h3>
+								<h3 class="mb-2">매니저컨택</h3>
 								<div class="page-breadcrumb">
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#"
 												class="breadcrumb-link">메뉴</a></li>
-											<li class="breadcrumb-item active" aria-current="page">후기관리</li>
-											<li class="breadcrumb-item active" aria-current="page">읽지않은
-												후기</li>
+											<li class="breadcrumb-item active" aria-current="page">매니저컨택</li>
 										</ol>
 									</nav>
 								</div>
@@ -102,6 +100,7 @@
 												<td>
 													<div class="card-body">
 														<div class="review-block" style="padding: 8px;">
+															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
 															<div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
 																<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
 																	alt="user" class="rounded" width="100"> 
@@ -112,61 +111,15 @@
 																padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
 																>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
 															<div class="rating-star">
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i>
-															</div>
-															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
-															<div style="display: flex;">
-																<textarea
-																	style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
-																<a href="#" class="btn btn-primary active"
-																	style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
 															</div>
 														</div>
 													</div>
 												</td>
 											</tr>
-											<tr>
-												<td>
-													<div class="card-body">
-														<div class="review-block" style="padding: 8px;">
-
-															<div class="m-r-10" style="margin-bottom: 10px;">
-																<img src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
-																	alt="user" class="rounded" width="100"> 
-																<img src="/brocoli/resources/product-Img/HOOD_GREY_11_20200410151011.jpg"
-																	alt="user" class="rounded" width="100">
-															</div>
-																<textarea  style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-																padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
-																>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
-															<div class="rating-star">
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i>
-															</div>
-															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
-															<div style="display: flex;">
-																<textarea
-																	style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
-																<a href="#" class="btn btn-primary active"
-																	style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
-											
 										</tbody>
 										<tfoot style="display: none;">
 											<tr>
 												<th>Name</th>
-
 											</tr>
 										</tfoot>
 									</table>
