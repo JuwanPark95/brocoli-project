@@ -72,20 +72,13 @@
 
 	SELECT * 
 	FROM WISH W
-<<<<<<< HEAD
 		JOIN PRODUCT P 
         ON(P.P_NO = W.W_P_NO)
         JOIN PRODUCT_FILE F 
         ON(W.W_P_NO = F.PF_P_NO)
 		JOIN MEMBER M 
         ON(M.MNO = W.W_MNO)
-	WHERE W.W_MNO = #{w_Mno}
-=======
-		JOIN PRODUCT P ON(P.P_NO = W.W_P_NO)
-        JOIN PRODUCT_FILE F ON(P.P_NO = F.PF_NO)
-		JOIN MEMBER M ON(M.MNO = W.W_MNO)
 	WHERE W.W_MNO = #{M.mNO}
->>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 
 </select>
 
