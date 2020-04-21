@@ -2,15 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Wish-mapper">
 
-<resultMap type="Wish" id="wishResultSet">
-
-	<id property="w_No" column="W_NO"/>
-	
-	<result property="w_Mno" column="W_MNO"/>
-	<result property="w_P_NO" column="W_P_NO"/>
-
-</resultMap>
-
 <resultMap type="Product" id="productResultSet">
 		<id property="p_NO" column="P_NO"/>
 		<result property="p_Name" column="P_NAME"/>
@@ -72,6 +63,7 @@
 
 	INSERT INTO WISH
 	VALUES(SEQ_W_NO.NEXTVAL,#{w_Mno},#{w_P_NO})
+	
 </insert>
 
 <select id = "wishList" resultMap="wishListResultSet" parameterType="Product">
@@ -81,7 +73,7 @@
 		JOIN PRODUCT P ON(P.P_NO = W.W_P_NO)
         JOIN PRODUCT_FILE F ON(P.P_NO = F.PF_NO)
 		JOIN MEMBER M ON(M.MNO = W.W_MNO)
-	WHERE W.W_MNO = #{M.mNo}
+	WHERE W.W_MNO = #{M.mNO}
 
 </select>
 
