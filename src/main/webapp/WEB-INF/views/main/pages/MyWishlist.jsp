@@ -41,7 +41,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<!-- <form role="form" class="bg0 p-t-75 p-b-85" id="a"> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" style="margin-left: -1%;">
@@ -56,11 +56,10 @@
 									<th class="column-7">총 금액</th>
 									<th class="column-7">삭제</th>
 								</tr>
+							<c:set var="sum" value="0"/>
 							<c:forEach var="w" items="${ wList }">
 								<tr class="table_row">
-								<c:set var="sum" value="0"/>
 								
-									
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="/brocoli/resources/product-Img/${w.p_File.pf_Img1_ReName}" alt="IMG">
@@ -71,24 +70,24 @@
 									<td class="column-6">${w.productList.p_Sail_Price}</td>
 									<td class="column-7">${w.productList.p_Last_Price}</td>
 									
-									
-									<c:url var="wDelete" value="wDelete.mn">
-										<c:param name="w_P_NO" value="${ w.w_P_NO }"/>
-									</c:url>
+									<c:set var="sum" value="${sum + w.productList.p_Last_Price }"/>
 			
 									<td style="text-align: center;">
+									<c:url var="wDelete" value="wDelete.mn">
+										<c:param name="p_NO" value="${ w.productList.p_NO }"/>
+									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-										onclick="location.href='${ wDelete }';">삭제</button>
+										onclick="location.href='<c:url value='${ wDelete }'/>';">삭제</button> 
+										
 									</td>
 									
 								</tr>
-								<c:set var="sum" value="${sum + (w.productList.p_Last_Price + w.productList.p_Last_Price) }"/>
 							</c:forEach>
 								<tr style="height:100px;">
 									<td colspan="4"></td>
 									<td >총 금액 : </td>
 									<td>
-										<fmt:formatNumber pattern="###,###,###" value="${sum}"/>
+										<c:out value="${ sum }"/> 원
 									</td>
 								</tr>
 							
@@ -195,23 +194,9 @@
 				</div> -->
 			</div>
 		</div>
-	</form>
+	<!-- </form> -->
 
-	<script>
-			 $(".chBox").click(function(){
-		     $("#allCheck").prop("checked", false);
-		 });
-	</script>
-		<script>
-			$("#allCheck").click(function(){
-			 var chk = $("#allCheck").prop("checked");
-			 if(chk) {
-			  $(".chBox").prop("checked", true);
-			 } else {
-			  $(".chBox").prop("checked", false);
-			 }
-			});
-		</script>
+	
 		
 
 
