@@ -64,4 +64,22 @@ public class MemberServiceimpl implements MemberService {
 	}
 
 
+	@Override
+	public ArrayList<Product> selectdayList() {
+		return mDao.selectdayList();
+	}
+
+
+	@Override
+	public ArrayList<Product> selectmonthList() {
+		return mDao.selectmonthList();
+	}
+
+
+	@Override
+	public ArrayList<Product> selectyearList() {
+		return mDao.selectyearList();
+	}
+
+
 }

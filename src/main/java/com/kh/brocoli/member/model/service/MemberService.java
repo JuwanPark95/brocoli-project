@@ -65,6 +65,24 @@ public interface MemberService {
 	 */
 	ArrayList<ProductDetail> selectpDetail(String p_NO);
 
+	/**
+	 * 일별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectdayList();
+
+	/**
+	 * 월별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectmonthList();
+
+	/**
+	 * 년별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectyearList();
+
 
 
 	
