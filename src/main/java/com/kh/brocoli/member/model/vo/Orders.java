@@ -28,7 +28,7 @@ public class Orders {
 	 
 	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
 	 private Reject ordersReject;  //반품정보
-	 private Change ordersChange;  //교환정보
+	 private Change ordersChange;  //교환정보7
 
 	 
 	 
