@@ -21,19 +21,19 @@ public class WishController {
 	private WishService wService;
 	
 	@RequestMapping("wInsert.mn")
-	public String wInsert(Wish w, int mNo, int pNo) {
+	public String wInsert(Wish w, int w_Mno, int w_P_NO) {
 		
-		System.out.println("인설트 wlist : " + pNo);
-		System.out.println("인설트 wlist : " + mNo);
+		System.out.println("인설트 wlist : " + w_Mno);
+		System.out.println("인설트 wlist : " + w_P_NO);
 		
-		w.setW_P_NO(pNo);
-		w.setW_Mno(mNo);
+		w.setW_P_NO(w_Mno);
+		w.setW_Mno(w_P_NO);
 		
 		int result = wService.wInsert(w);
 		
 		if(result > 0) {
 			System.out.println("컨트롤 리절트 : " + result);
-			return "redirect:wishList.mn?mNo="+mNo;
+			return "redirect:wishList.mn?mNo="+w_Mno;
 		}else {
 			return "common/errorPage";
 		}
