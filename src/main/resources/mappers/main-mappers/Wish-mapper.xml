@@ -65,12 +65,14 @@
 
 	INSERT INTO WISH
 	VALUES(SEQ_W_NO.NEXTVAL,#{w_Mno},#{w_P_NO})
+	
 </insert>
 
 <select id = "wishList" resultMap="wishListResultSet" parameterType="Product">
 
 	SELECT * 
 	FROM WISH W
+<<<<<<< HEAD
 		JOIN PRODUCT P 
         ON(P.P_NO = W.W_P_NO)
         JOIN PRODUCT_FILE F 
@@ -78,6 +80,12 @@
 		JOIN MEMBER M 
         ON(M.MNO = W.W_MNO)
 	WHERE W.W_MNO = #{w_Mno}
+=======
+		JOIN PRODUCT P ON(P.P_NO = W.W_P_NO)
+        JOIN PRODUCT_FILE F ON(P.P_NO = F.PF_NO)
+		JOIN MEMBER M ON(M.MNO = W.W_MNO)
+	WHERE W.W_MNO = #{M.mNO}
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
 
 </select>
 
