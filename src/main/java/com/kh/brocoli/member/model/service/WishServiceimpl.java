@@ -26,8 +26,8 @@ public class WishServiceimpl implements WishService{
 	}
 
 	@Override
-	public int deleteWish(int mNo) {
-		return wDao.deleteWish(mNo);
+	public int deleteWish(int p_NO) {
+		return wDao.deleteWish(p_NO);
 	}
 
 }

@@ -24,7 +24,7 @@
 		<result property="enrollDate" column="ENROLLDATE"/>
 		<result property="brand" column="BRAND"/>
 		<result property="brand_NO" column="BRAND_NO"/>
-		
+	
 	</resultMap>
 	
 	
@@ -76,7 +76,7 @@
       <result property="pf_Dimg3" column="PF_DIMG3"/>   
       <result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
       <result property="pf_P_NO" column="PF_P_NO"/>   
-      
+
    </resultMap>
    
 
@@ -200,7 +200,7 @@
 	        ORDER BY OR_NO ASC
 		</select>
 		
-		<select id="P_change" resultMap="memberResultSet">
+		<select id="P_change" resultMap="orderResultSet">
 			SELECT *
 	        FROM MEMBER
 	        JOIN ORDERS
@@ -211,7 +211,7 @@
 	        ON OP_P_NO = P_NO
 	        JOIN PRODUCT_FILE
 	        ON P_NO = PF_P_NO
-	        WHERE OR_P_NO = ${or_P_NO}
+	        WHERE OR_NO = #{or_No}
 		</select>
 	    
 	    

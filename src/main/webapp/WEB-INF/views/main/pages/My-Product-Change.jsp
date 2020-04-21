@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.brocoli.member.model.vo.Orders"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +26,12 @@ padding : 5px;
 
 <body style="padding:0px;">
     <div id="orderSt">
-    <form action="my_p_change.mn">
+    <form>
+    <c:forEach var="Orders" items="${list }">
     <p class="txt-date">
         <span>
             <strong>${loginUser.mName}</strong>
-                           님께서 ${ordersMember.or_Date} 주문하신 내역입니다.
+                           님께서  ${Orders.or_Date}  주문하신 내역입니다.
         </span>
     </p>
     <ul class="tab">
@@ -70,13 +71,13 @@ padding : 5px;
                             <div class="tb-center">주문번호</div>
                         </th>
                         <td>
-                            <div class="tb-center">${ordersMember.or_NO}</div>
+                            <div class="tb-center"> ${Orders.or_NO}</div>
                         </td>
                         <th scope="row">
                             <div class="tb-center">주문일자</div>
                         </th>
                         <td>
-                            <div class="tb-center"> ${ordersMember.or_Date}</div>
+                            <div class="tb-center"> ${Orders.or_Date} </div>
                         </td>
                     </tr>
                     <tr>
@@ -121,7 +122,7 @@ padding : 5px;
                 </th>
                 <td>
                     <div class="tb-center">
-                        ${ordersMember.or_Deliver_Vender}
+                    ${Orders.or_Deliver_Vender} 
                     </div>
                 </td>
                 <th scope="row">
@@ -129,7 +130,7 @@ padding : 5px;
                 </th>
                  <td>
                      <div class="tb-center">
-                         ${ordersMember.or_Deliver_Num}
+                     ${Orders.or_Deliver_Num}
                          <a href=""></a>
                      </div>
                  </td>
@@ -153,7 +154,7 @@ padding : 5px;
                     <div class="tb-center">주소</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left">${ordersMember.or_Address }</div>
+                    <div class="tb-left"> ${Orders.or_Address }</div>
                 </td>
             </tr>
             <tr>
@@ -161,7 +162,7 @@ padding : 5px;
                     <div class="tb-center">배송메세지</div>
                 </th>
                 <td colspan="3">
-                    <div class="tb-left">${ordersMember.or_Message }</div>
+                    <div class="tb-left"> ${Orders.or_Message }</div>
                 </td>
             </tr>
         </tbody>
@@ -212,7 +213,7 @@ padding : 5px;
                 
                    <td colspan="8">
                        <div class="t-right">
-                           ${ordersMember.or_Price + 3000 } 
+                        ${Orders.or_Price + 3000 } 
                        </div>
                    </td>
                  
@@ -220,41 +221,40 @@ padding : 5px;
            </tfoot>
           <tbody>
               <tr>
-              
                   <td>
-                       <div class="tb-center">${ordersMember.or_NO }</div> 
+                      <input type="checkbox" name="or_NO" value="check" style="margin-left: 24px;s" checked>
                   </td>
 					<td colspan="2">
 						<div style="float: left;">
 							<img src="/brocoli/resources/product-Img/P11001.jpg" style="width: 58px; height: 78px;">
 						</div>
 						<div style="float: left;">
-							<a href=""> ${ordersMember.or_Pname } <br> </a> 
-							<span class="quantity order_table_Td style4"> 타입 : ${ordersMember.or_Option1 } <br>
-							                                                   ${ordersMember.or_Option2 } </span>
+							<a href="">${Orders.or_Pname }  <br> </a> 
+							<span class="quantity order_table_Td style4"> 옵션 :  ${Orders.or_Option1 }  <br>
+				                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      ${Orders.or_Option2 }  </span>
 						</div>
 					</td>
 					<td>
-                      <div class="tb-center">${ordersMember.or_Amount }</div>
+                      <div class="tb-center">${Orders.or_Amount } </div>
                   </td>
                   <td>
                       <div class="tb-center tb-price">
                           <strong>
-                              <font color="#FF5D00">${ordersMember.or_Price }</font>
+                              <font color="#FF5D00"> ${Orders.or_Price } </font>
                           </strong>
                           원
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">
-                          <span class="style4">${ordersMember.or_Price/100}</span>
+                          <span class="style4"> ${Orders.or_Price/100} </span>
                       </div>
                   </td>
                   <td>
                       <div class="tb-center">거래완료(상태)</div>
                   </td>
                   <td>
-                      <div class="tb-center">${ordersMember.or_Deliver_Num }</div>
+                      <div class="tb-center"> ${Orders.or_Deliver_Num } </div>
                   </td>
               
               </tr>
@@ -288,6 +288,14 @@ padding : 5px;
                     </td>
                 </tr>
                 <tr>
+                    <th colspan="row">
+                        <div class="tb-center">교환</div>
+                    </th>
+                    <td colspan="3">
+                        <div class="tb-left">(신청날짜)</div>
+                    </td>
+                </tr>
+                <tr>
                     <th scope="row">
                         <div class="tb-center">상세사유</div>
                     </th>
@@ -295,14 +303,6 @@ padding : 5px;
                         <div class="tb-center">
                             <input type="text" id="reason" placeholder="상세 사유를 작성해주세요~" style="width: 700px; height: 100px;">
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="row">
-                        <div class="tb-center">신청일</div>
-                    </th>
-                    <td colspan="3">
-                        <div class="tb-left">(신청날짜)</div>
                     </td>
                 </tr>
             </tbody>
@@ -318,6 +318,7 @@ padding : 5px;
          </button>
     </div>
 </div>
+</c:forEach>
 </form>
 </div>
 

@@ -79,16 +79,15 @@
 	SELECT * 
 	FROM WISH W
 		JOIN PRODUCT P ON(P.P_NO = W.W_P_NO)
-        JOIN PRODUCT_FILE F ON(W.W_NO = F.PF_NO)
+        JOIN PRODUCT_FILE F ON(P.P_NO = F.PF_NO)
 		JOIN MEMBER M ON(M.MNO = W.W_MNO)
 	WHERE W.W_MNO = #{M.mNo}
 
 </select>
 
-<delete id="deleteWish">
+<delete id="deleteWish" parameterType="_int">
 	DELETE FROM WISH
-	WHERE W_P_NO=#{W_P_NO}
-
+	WHERE W_P_NO=#{p_NO}
 </delete>
 
 </mapper>

@@ -65,8 +65,8 @@ public class MypageServiceimpl implements MypageService {
 	}
 
 	@Override
-	public ArrayList<Orders> P_change(Member m) {
-		return myDao.P_change(m);
+	public ArrayList<Orders> P_change(String or_No) {
+		return myDao.P_change(or_No);
 	}
 
 	

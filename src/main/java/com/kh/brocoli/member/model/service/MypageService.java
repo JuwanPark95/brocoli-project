@@ -79,7 +79,9 @@ public interface MypageService {
 	 * @param m
 	 * @return
 	 */
-	ArrayList<Orders> P_change(Member m);
+	ArrayList<Orders> P_change(String or_NO);
+
+
 
 
 

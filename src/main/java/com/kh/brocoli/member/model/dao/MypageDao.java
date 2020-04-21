@@ -55,9 +55,11 @@ public class MypageDao {
 		
 	}
 
-	public ArrayList<Orders> P_change(Member m) {
-		return (ArrayList)sqlSession.selectList("memberMapper.P_change",m);
+	public ArrayList<Orders> P_change(String or_NO) {
+		return (ArrayList)sqlSession.selectList("memberMapper.P_change",or_NO);
 	}
+
+
 
 	
 

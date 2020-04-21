@@ -53,10 +53,17 @@ public class WishController {
 	   }
 	
 	@RequestMapping("wDelete.mn")
-	public String wishDelete(Model model, @RequestParam("mNo") int mNo, HttpServletRequest request) {
-		wService.deleteWish(mNo);
-		System.out.println("삭제 버튼 눌렸나유? " + mNo);
-		return "redirect:wishList.mn";
+	public String wishDelete(@RequestParam(value = "p_NO") int p_NO) {
+		System.out.println("삭제 버튼 눌렸나유? " + p_NO);
+		int result = wService.deleteWish(p_NO);
+		if(result > 0) {
+			System.out.println("삭제 버튼 눌른 훈가유? " + p_NO);
+			return "redirect:wishList.mn?mNo=1";
+		}else {
+			return "common/errorPage";
+		}
+		
+
 	}
 	
 
