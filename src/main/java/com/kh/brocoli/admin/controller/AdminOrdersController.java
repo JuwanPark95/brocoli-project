@@ -50,9 +50,6 @@ public class AdminOrdersController {
 	@ResponseBody
 	public String orderStatusChange(@RequestParam("or_NO") int or_No, 
 									@RequestParam("or_Status") String or_Status) {
-		System.out.println("or_no : " + or_No);
-		System.out.println("or_status : " + or_Status);
-		
 		Orders orders = new Orders();
 		orders.setOr_NO(or_No);
 		orders.setOr_Status(or_Status);
@@ -84,8 +81,11 @@ public class AdminOrdersController {
 		mv.setViewName("order-exchange");
 		
 		return mv;
-		
-		
+	}
+	
+	@RequestMapping("orderChangeModal.ad")
+	public String orderChangeModal() {
+		return "order-change-modal";
 	}
 	
 }

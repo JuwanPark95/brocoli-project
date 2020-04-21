@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ownerReView-mapper">
+	
+	<resultMap type="Review" id="reviewResultSet">
+		<id property="v_NO" column="V_NO"/>
+		
+		<result property="v_Writer" column="V_WRITER"/>
+		<result property="v_Content" column="V_CONTENT"/>
+		<result property="v_Date" column="V_DATE"/>
+		<result property="v_Modify_Date" column="V_MODIFY_DATE"/>
+		<result property="v_Count" column="V_COUNT"/>
+		<result property="v_Score" column="V_SCORE"/>
+		<result property="v_Check" column="V_CHECK"/>
+		<result property="v_Status" column="V_STATUS"/>
+		<result property="v_Img1" column="V_IMG1"/>
+		<result property="v_Img1_ReName" column="V_IMG1_RENAME"/>
+		<result property="v_Img2" column="V_IMG2"/>
+		<result property="v_Img2_ReName" column="V_IMG2_RENAME"/>		
+		<result property="v_Mno" column="V_MNO"/>
+		<result property="v_P_NO" column="V_P_NO"/>
+		<result property="v_B_NO" column="V_B_NO"/>
+
+	</resultMap>
+	
+	<select id="selectNoReadReviewList" resultMap="reviewResultSet">
+		SELECT *
+		FROM REVIEW 
+		WHERE V_STATUS = 'Y'
+		AND V_B_NO = #{bNO}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

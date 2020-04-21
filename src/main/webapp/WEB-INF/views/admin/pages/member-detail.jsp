@@ -177,7 +177,7 @@
 	                                            </c:choose>
                                         	</div>
                                         </div>
-                                       <div class="form-group row" style="padding-bottom:3px;">
+                                       	<div class="form-group row" style="padding-bottom:3px;">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">회원정지 사유</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
                                                 <input type="text" class="form-control" name="block_Content" value="${m.block_Content}">

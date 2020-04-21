@@ -11,6 +11,12 @@
 #header-color2{
 	color:#6c7ae0
 }
+.slick3-dots .slick-active .slick3-dot-overlay {
+	border-color:white;
+}
+.slick3-dots li img {
+	display:none;
+}
 </style>
 </head>
 <body class="animsition">
@@ -34,10 +40,11 @@
 			<div class="flex-w flex-sb-m p-b-52" style="height:75px;">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10" >
 					<strong style="font-size: 35px; color: #222; margin-right: 30px; padding-left: 0px; margin-left: 0px;">랭킹</strong>
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" style="font-size:20px;"data-filter="*">
+					<c:url var="day" value="rankView.mn"/>
+					<a href="${day}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" style="font-size:20px;"data-filter="*">
 						오늘
-					</button>
-
+					</a>
+		
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".women">
 						이번주
 					</button>
@@ -56,960 +63,47 @@
 				
 			
 			</div>
-		<div class="flex-w flex-sb-m p-b-52">
-		 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" id="category-ALL" data-filter="*">
-                  전체보기
-               </button>
 
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-A" data-filter=".women">
-                  상의
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-B"  data-filter=".men">
-                  아우터
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-C" data-filter=".bag">
-                  원피스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-D" data-filter=".shoes">
-                  하의
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-E" data-filter=".watches">
-                  스커트
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-F" data-filter=".watches">
-                  가방
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-G" data-filter=".watches">
-                  신발
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-H" data-filter=".watches">
-                  모자
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-I" data-filter=".watches">
-                  악세서리
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-J" data-filter=".watches">
-                  언더웨어
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="category-Z" data-filter=".watches">
-                  기타
-               </button>
-               
-            </div>
-           </div>
-			
-<!--  ======== 서브카테고리 영역 시작 ================== -->         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-A" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  티셔츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  셔츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  맨투맨/스웨트셔츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  후드스웨트셔츠/후드집업
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  니트/스웨터/가디건
-               </button>
-               
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타상의
-               </button>
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-B" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  블루종/MA-1
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  레더/라이더스재킷
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  트러커재킷
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  수트/블레이저 재킷
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  나일론/코치/아노락
-               </button>
-               
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  겨울싱글코트
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  겨울기타코트
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                 헤이아우터/패딩
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타아우터
-               </button>
-
-               
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-C" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  미니원피스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  미디원피스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  맥시원피스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  점프수트
-               </button>
-
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-D" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  데님팬츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  코튼팬츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  수트팬츠/슬렉스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  트레이닝/조거팬츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  숏팬츠
-               </button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  레깅스
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타
-               </button>
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-E" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  미니스커트
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  미디스커트
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  롱스커트
-               </button>
-
-                             
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-F" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  백팩
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  메신저/크로스백
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  클러치/파우치
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  브리프케이스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  웨이스트백
-               </button>
-               
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타가방
-               </button>
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-G" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  스니커즈
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  구두
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                 부츠
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  힐/펌프스
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  플랫
-               </button>
-               
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  로퍼
-               </button>
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타신발
-               </button>
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-H" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  캡/야구모자
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  헌팅/베레
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  비니
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  버킷/사파리
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타모자
-               </button>
-               
-           
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-I" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  안경
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  마스크
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  지갑
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  벨트
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  팔찌
-               </button>
-               
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  목걸이
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  귀걸이
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  머플러
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  장갑
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  넥타이
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  키링
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  헤어악세서리
-               </button>
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-                  기타
-               </button>
-               
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-J" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-        ALL
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-                  양말
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-                  속옷
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-                  스타킹
-               </button>
-
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-                  홈웨어
-               </button>
-
-               
-            </div>
-
-
-         </div>
-         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-Z" style="display: none; margin-top: -61px; border-top: 1px solid #666666;" >
-            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
-               
-               <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-       	기타상품전체
-               </button>
-               
-            </div>
-
-
-         </div>
 			
 			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-01.jpg" alt="IMG-PRODUCT">
+         <c:forEach var="day" items="${ dayList }">
+         
+         	<c:url var="productDetail" value="productDetail.mn">
+           		<c:param name="p_NO" value="${day.p_NO }"/>
+   	        </c:url>
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${day.p_Bcategory} ${day.p_Scategory}">
+               <div class="block2">
+                  <div class="block2-pic hov-img0" id="productModal">
+                     <img src="/brocoli/resources/product-Img/${day.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT" style="height:378px;">
+				<input type="hidden" id="productNo" value="${day.p_NO }">
+                     <a href="#" id="ModalView" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                     	미리보기
+                     </a>
+                  </div>
+
+                  <div class="block2-txt flex-w flex-t p-t-14">
+                     <div class="block2-txt-child1 flex-col-l ">
+                        <a href="${productDetail }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                           ${day.p_Name }
+                        </a>
+
+                        <span class="stext-105 cl3">
+                           ${day.p_Last_Price }원
+                        </span>
+                     </div>
+
+                     <div class="block2-txt-child2 flex-r p-t-3">
+                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
+                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+			</c:forEach>
 
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								미리보기
-							</a>
-						</div>
 
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Esprit Ruffle Shirt
-								</a>
-
-								<span class="stext-105 cl3">
-									$16.64
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-02.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
-								</a>
-
-								<span class="stext-105 cl3">
-									$35.31
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-03.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Only Check Trouser
-								</a>
-
-								<span class="stext-105 cl3">
-									$25.50
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-04.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Classic Trench Coat
-								</a>
-
-								<span class="stext-105 cl3">
-									$75.00
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-05.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Front Pocket Jumper
-								</a>
-
-								<span class="stext-105 cl3">
-									$34.75
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-06.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Vintage Inspired Classic 
-								</a>
-
-								<span class="stext-105 cl3">
-									$93.20
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-07.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Shirt in Stretch Cotton
-								</a>
-
-								<span class="stext-105 cl3">
-									$52.66
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-08.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pieces Metallic Printed
-								</a>
-
-								<span class="stext-105 cl3">
-									$18.96
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item shoes">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-09.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Converse All Star Hi Plimsolls
-								</a>
-
-								<span class="stext-105 cl3">
-									$75.00
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-10.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Femme T-Shirt In Stripe
-								</a>
-
-								<span class="stext-105 cl3">
-									$25.85
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-11.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply 
-								</a>
-
-								<span class="stext-105 cl3">
-									$63.16
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-12.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Herschel supply
-								</a>
-
-								<span class="stext-105 cl3">
-									$63.15
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-13.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									T-Shirt with Sleeve
-								</a>
-
-								<span class="stext-105 cl3">
-									$18.49
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-14.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Pretty Little Thing
-								</a>
-
-								<span class="stext-105 cl3">
-									$54.79
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item watches">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-15.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Mini Silver Mesh Watch
-								</a>
-
-								<span class="stext-105 cl3">
-									$86.85
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-					<!-- Block2 -->
-					<div class="block2">
-						<div class="block2-pic hov-img0">
-							<img src="/brocoli/resources/mainResources/images/product-16.jpg" alt="IMG-PRODUCT">
-
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-								Quick View
-							</a>
-						</div>
-
-						<div class="block2-txt flex-w flex-t p-t-14">
-							<div class="block2-txt-child1 flex-col-l ">
-								<a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									Square Neck Back
-								</a>
-
-								<span class="stext-105 cl3">
-									$29.64
-								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 
 			
@@ -1018,62 +112,9 @@
 		
 
 
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		<div class="overlay-modal1 js-hide-modal1"></div>
 
-		<div class="container">
-			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="/brocoli/resources/mainResources/images/icons/icon-close.png" alt="CLOSE">
-				</button>
+	<%@ include file="All-ShopModal.jsp" %>
 
-				<div class="row">
-					<div class="col-md-6 col-lg-7 p-b-30">
-						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
-								<div class="wrap-slick3-dots"></div>
-								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="/brocoli/resources/mainResources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="/brocoli/resources/mainResources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img src="/brocoli/resources/mainResources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<%@ include file="All-ShopModal.jsp" %>
-				</div>
-			</div>
-		</div>
-	</div>
 <%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
 	
@@ -1259,7 +300,83 @@
 	  });
 	});
    
-   
+   $('#productModal a[id=ModalView]').click(function(obj){
+		var p_NO = $(this).parent().find('input[id=productNo]').val();
+		var option = "";
+		var option2 = "";
+		var img="";
+		$.ajax({
+			url:"productModal",
+			data:{p_NO:p_NO},
+			dataType:"json",
+			success:function(data){
+
+				$('#productName').val(data[0].p_Name);
+				$('#brandName').val(data[0].b_Name);
+				$('#pNo').val(data[0].p_NO);
+				$('#orderCount').val(data[0].p_Order_Count);
+				$('#productPrice').val(data[0].p_Price);
+				$('#lastPrice').val(data[0].p_Last_Price);
+				$('#productComment').val(data[0].p_Comment);
+
+
+				img += "<div class='item-slick3' data-thumb='-'>"
+				img +=	"<div class='wrap-pic-w pos-relative'>"
+				img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName + "'alt='IMG-PRODUCT'>"
+				img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName+"'>"
+				img +=			"<i class='fa fa-expand'></i>"
+				img +=		"</a>"
+				img +=	"</div>"
+				img += "</div>"
+/* 				if(data[0].pf_Img2_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img2_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				}else if(data[0].pf_Img3_ReName != null){
+					img += "<div class='item-slick3' data-thumb=''>"
+					img +=	"<div class='wrap-pic-w pos-relative'>"
+					img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName + "'alt='IMG-PRODUCT'>"
+					img +=	"<a class='flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04' href='/brocoli/resources/product-Img/"+data[0].pf_Img3_ReName+"'>"
+					img +=			"<i class='fa fa-expand'></i>"
+					img +=		"</a>"
+					img +=	"</div>"
+					img += "</div>"
+				} */
+				
+				$('#imgcheck').html(img);
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option += "<option>"+data[i].option_1+"</option>"
+					}
+				}
+				
+				for(var i=0; i<data.length; i++){
+					if(data[i] != ""){
+						option2 += "<option>"+data[i].option_2+"</option>"
+					}
+				}
+				
+				$('#select1').html(option);
+				$('#select2').html(option2);
+				
+				 
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+		
+	})
    
    </script>
 

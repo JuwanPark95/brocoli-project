@@ -31,6 +31,8 @@ public class Product {
    
    private Brand brList;
    
+   private ArrayList<Product_Option> poAList;
+   
    public Product() {
       super();
    }
@@ -38,7 +40,7 @@ public class Product {
 	public Product(int p_NO, String p_Name, String p_Price, String p_Sail_Price, String p_Last_Price, String p_Bcategory,
 			String p_Scategory, String p_Comment, String p_Order_Count, String p_Status, String p_Writer,
 			Date p_Insert_Date, String p_Modify_Id, Date p_Modify_Date, String p_Show_YN, int p_Brand_NO,
-			Product_File pfList, Product_Option poList, Brand brList) {
+			Product_File pfList, Product_Option poList, Brand brList, ArrayList<Product_Option> poAList) {
 		super();
 		this.p_NO = p_NO;
 		this.p_Name = p_Name;
@@ -59,6 +61,7 @@ public class Product {
 		this.pfList = pfList;
 		this.poList = poList;
 		this.brList = brList;
+		this.poAList = poAList;
 	}
 	
 	public int getP_NO() {
@@ -213,6 +216,14 @@ public class Product {
 		this.brList = brList;
 	}
 
+	public ArrayList<Product_Option> getPoAList() {
+		return poAList;
+	}
+	
+	public void setPoAList(ArrayList<Product_Option> poAList) {
+		this.poAList = poAList;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [p_NO=" + p_NO + ", p_Name=" + p_Name + ", p_Price=" + p_Price + ", p_Sail_Price="
@@ -220,7 +231,7 @@ public class Product {
 				+ p_Scategory + ", p_Comment=" + p_Comment + ", p_Order_Count=" + p_Order_Count + ", p_Status="
 				+ p_Status + ", p_Writer=" + p_Writer + ", p_Insert_Date=" + p_Insert_Date + ", p_Modify_Id="
 				+ p_Modify_Id + ", p_Modify_Date=" + p_Modify_Date + ", p_Show_YN=" + p_Show_YN + ", p_Brand_NO="
-				+ p_Brand_NO + ", pfList=" + pfList + ", poList=" + poList + ", brList=" + brList + "]";
+				+ p_Brand_NO + ", pfList=" + pfList + ", poList=" + poList + ", brList=" + brList + ", poAList=" + poAList + "]";
 	}
 
 

@@ -91,37 +91,46 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-management" class="table table-striped table-bordered" style="text-align:center;">
+                                    <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%;">번호</th>
+                                                <th style="width:5%;">매출번호</th>
+                                                <th style="width:5%;">주문번호</th>
                                                 <th style="width:10%">판매일</th>
+                                                <th style="width:10%">브랜드번호</th>
                                                 <th style="width:10%">브랜드명</th>
-                                                <th style="width:10%">상품코드</th>
+                                                <th style="width:10%">상품번호</th>
                                                 <th style="width:10%">상품명</th>
                                                 <th style="width:7%">판매가격</th>
+                                                <th style="width:3%">수량</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="s" items="${salesList}" varStatus="sl"> 
                                             <tr>
-                                                <td>1</td>
-                                                <td>2020-01-01</td>
-                                                <td>나이키</td>
-                                                <td>PO010</td>
-                                                <td>나이키맨투맨</td>
-                                                <td>30000</td>
+                                                <td>${sl.count}</td>
+                                                <td>${s.or_NO}</td>
+                                                <td>${s.or_Date}</td>
+                                                <td>${s.or_Brand_NO}</td>
+                                                <td>${s.or_Brand.b_Name}</td>
+                                                <td>${s.or_P_NO}</td>
+                                                <td>${s.or_Pname}</td>
+                                                <td>${s.or_Price}</td>
+                                                <td>${s.or_Amount}</td>
                                             </tr>
                                         </c:forEach>
                                       </tbody>
-                                      <tfoot style="background-color:#ffbe99;">
+                                      <tfoot style="background-color:#ffbe80;">
                                       	<tr style="font-weight: 1000;">
                                       		<th style="font-weight: 1000;">합계</th>
-                                      		<th style="font-weight: 1000;">총 매출</th>
+                                      		<th style="font-weight: 1000;">전체매출</th>
+                                      		<th style="font-weight: 1000;"></th>
+                                      		<th style="font-weight: 1000;">검색매출</th>
                                       		<th style="font-weight: 1000;"></th>
                                       		<th style="font-weight: 1000;">총 주문수</th>
                                       		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;"></th> 
+                                      		<th style="font-weight: 1000;"></th>
+                                      		<th style="font-weight: 1000;"></th>  
                                       	</tr>
                                       
                                       </tfoot>

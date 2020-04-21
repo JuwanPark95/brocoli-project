@@ -19,7 +19,7 @@
 		<result property="or_P_NO" column="OR_P_NO"/>
 		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
 		
-		<collection property="ordersMember" resultMap="memberResultSet"/>
+		<collection property="or_Member" resultMap="memberResultSet"/>
 	</resultMap>
 	
 	<resultMap id="memberResultSet" type="Member">
@@ -47,7 +47,7 @@
 	</resultMap>
 	
 	<resultMap id="changeResultSet" type="Change">
-		<id property="ch_NO" column="CH_NO"/>
+		<id property="ch_No" column="CH_NO"/>
 		<result property="ch_Pname" column="CH_PNAME"/>
 		<result property="ch_Price" column="CH_PRICE"/>
 		<result property="ch_Reason" column="CH_REASON"/>
@@ -57,10 +57,12 @@
 		<result property="ch_Status" column="CH_STATUS"/>
 		<result property="ch_Or_NO" column="CH_OR_NO"/>
 		<result property="ch_Mno" column="CH_MNO"/>
+		
+		<collection property="ch_ordersMember" resultMap="ordersResultSet"/>
 	</resultMap>
 	
 	<resultMap id="RejectResultSet" type="Reject">
-		<id property="re_NO" column="RE_NO"/>
+		<id property="re_No" column="RE_NO"/>
 		<result property="re_Pname" column="RE_PNAME"/>
 		<result property="re_Price" column="RE_PRICE"/>
 		<result property="re_Reason" column="RE_REASON"/>
@@ -70,8 +72,9 @@
 		<result property="re_Status" column="RE_STATUS"/>
 		<result property="re_MN_OR_NO" column="RE_MN_OR_NO"/>
 		<result property="re_Mno" column="RE_MNO"/>
+		
+		<collection property="re_ordersMember" resultMap="ordersResultSet"/>
 	</resultMap>
-	
 	
 
 	<select id="selectOrdersList" resultMap="ordersResultSet" parameterType="Orders">
@@ -88,12 +91,16 @@
 
 	<select id="selectChangeList" resultMap="changeResultSet" parameterType="Change">
 		SELECT *
-		FROM CHANGE
+		FROM CHANGE C
+     	JOIN ORDERS O ON CH_OR_NO = OR_NO
+    	JOIN MEMBER M ON CH_MNO = MNO
 	</select>
 	
 	<select id="selectRejectList" resultMap="RejectResultSet" parameterType="Reject">
 		SELECT *
-		FROM REJECT
+		FROM REJECT R
+		JOIN ORDERS O ON RE_NO = OR_NO
+		JOIN MEMBER M ON RE_MNO = MNO 
 	</select>
 
 

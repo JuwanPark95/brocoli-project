@@ -38,13 +38,13 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">판매중지상품</h2>
+                            <h2 class="pageheader-title">판매상품</h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a class="breadcrumb-link">상품관라</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">판매중지상품</li>
+                                        <li class="breadcrumb-item active" aria-current="page">판매상품</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -59,56 +59,48 @@
                     <!-- basic table  -->
                     <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="card"> 
-                            <h5 class="card-header">판매중지 상품 테이블</h5>
+                        <div class="card">
+                            <h5 class="card-header">판매상품 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="product-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th>번호</th>
-                                                <th>상품번호</th>
-                                                <th>상품이미지</th>
-                                                <th>상품명</th>
+                                            	<th>상품번호</th>
                                                 <th>브랜드</th>
-                                                <th>기본가</th>
-                                                <th>할인가</th>
-                                                <th>판매가</th>
-                                                <th>카테고리(대)</th>
-                                                <th>카테고리(소)</th> 
-                                                <th>상품상태</th> 
-                                                <th>총 주문수</th>
-                                                <th>상품입고일</th>
+                                                <th>이미지</th>
+                                                <th>제품명</th>
+                                                <th>옵션번호</th>
+                                                <th>옵션1</th>
+                                                <th>옵션2</th>
+                                                <th>재고</th>
+                                                <th>입고예정일</th>
                                                 <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="p" items="${productStopList}" varStatus="pl">
-                                            <tr>
-                                                <td>${pl.count }</td>
-                                                <td>${p.p_NO}</td>
-                                            	<td><img src="/brocoli/resources/product-Img/${p.pfList.pf_Img1_ReName}" width="50" height="50"></td>
-                                                <td>${p.p_Name }</td>
-                                                <td>${p.brList.b_Name }</td>
-                                                <td>${p.p_Price }</td>
-                                                <td>${p.p_Sail_Price }</td>
-                                                <td>${p.p_Last_Price }</td>
-                                                <td>${p.p_Bcategory }</td>
-                                                <td>${p.p_Scategory }</td>
-                                                <td>${p.p_Status}</td>
-                                                <td>${p.p_Order_Count }</td>
-                                                <td>${p.p_Insert_Date }</td>
-                                                <td>
-	                                                <c:set var="p_Show_YN" value="${p.p_Show_YN }" />
-	                                            	<c:choose>
-	                                            		<c:when test="${p_Show_YN eq 'N'}">
-	                                            			<strong><span style="color:tomato;">판매중지</span></strong>
-	                                            		</c:when>
-	                                            	</c:choose>
-                                            	</td>
-                                            </tr>
-                                        </c:forEach>
-                                      </tbody>
+                                        	<c:forEach var="o" items="${ productOptionList }">
+	                                            <tr>
+	                                                <td>${o.pList.p_NO}</td>
+	                                                <td>${o.pList.brList.b_Name }</td>
+	                                                <td align="center" >
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${o.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                </td>
+	                                                <td>${o.pList.p_Name }</td>
+	                                                <td>${o.op_NO }</td>
+	                                                <td>${o.option_1 }</td>
+	                                                <td>${o.option_2 }</td>
+	                                                <td>${o.op_Stock }</td>
+	                                                <td>${o.op_Rec_Date}</td>
+	                                                <td id="status">
+	                                                <c:choose>
+														<c:when test="${o.op_Status_YN eq 'Y'}">판매상품</c:when>
+														<c:when test="${o.op_Status_YN eq 'N'}">품절</c:when>
+													</c:choose>	
+													</td>
+	                                            </tr>
+                                            </c:forEach>
+                                        </tbody>
                                     </table>
                             </div>
                         </div>
@@ -127,20 +119,6 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
-
-    <!-- 상품 상세보기용 -->
-		<script>
-			$(function(){
-				$("#product-management").find("td").mouseenter(function(){
-					$(this).parents("tr").css({ "cursor":"pointer"});
-				}).click(function(){
-					var p_NO = $(this).parents().children("td").eq(1).text();	
-					location.href="productDetail.ad?p_NO="+p_NO
-				});
-			});
-		</script>
-    
-    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

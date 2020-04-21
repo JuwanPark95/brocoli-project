@@ -49,33 +49,49 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-0"><input type="checkbox"></th>
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-5">판매금액</th>
 									<th class="column-6">할인가</th>
 									<th class="column-7">총 금액</th>
+									<th class="column-7">삭제</th>
 								</tr>
-
+							<c:forEach var="w" items="${ wList }">
 								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
+								<c:set var="sum" value="0"/>
+								
+									
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG">
+											<img src="/brocoli/resources/product-Img/${w.p_File.pf_Img1_ReName}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">패딩</td>
-									<td class="column-5">36,000원</td>
-									<td class="column-6">-2,000원</td>
-									<td class="column-7">34,000원</td>
+									<td class="column-2">${w.productList.p_Name}</td>
+									<td class="column-5">${w.productList.p_Price}</td>
+									<td class="column-6">${w.productList.p_Sail_Price}</td>
+									<td class="column-7">${w.productList.p_Last_Price}</td>
+									
+									
+									<c:url var="wDelete" value="wDelete.mn">
+										<c:param name="w_P_NO" value="${ w.w_P_NO }"/>
+									</c:url>
+			
+									<td style="text-align: center;">
+									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+										onclick="location.href='${ wDelete }';">삭제</button>
+									</td>
 									
 								</tr>
-								
+								<c:set var="sum" value="${sum + (w.productList.p_Last_Price + w.productList.p_Last_Price) }"/>
+							</c:forEach>
 								<tr style="height:100px;">
 									<td colspan="4"></td>
 									<td >총 금액 : </td>
-									<td>102,000원 </td>
+									<td>
+										<fmt:formatNumber pattern="###,###,###" value="${sum}"/>
+									</td>
 								</tr>
+							
 							</table>
 						</div>
 
@@ -91,12 +107,6 @@
 								선택 상품 삭제
 							</div>
 						</div> -->
-						
-						
-						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; width: 200px; float: right; border-radius:5px;"	>
-							선택 상품 삭제
-						</div>
 					</div>
 				</div>
 
@@ -186,8 +196,22 @@
 			</div>
 		</div>
 	</form>
-		
-	
+
+	<script>
+			 $(".chBox").click(function(){
+		     $("#allCheck").prop("checked", false);
+		 });
+	</script>
+		<script>
+			$("#allCheck").click(function(){
+			 var chk = $("#allCheck").prop("checked");
+			 if(chk) {
+			  $(".chBox").prop("checked", true);
+			 } else {
+			  $(".chBox").prop("checked", false);
+			 }
+			});
+		</script>
 		
 
 

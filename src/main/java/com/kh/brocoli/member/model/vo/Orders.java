@@ -2,6 +2,7 @@ package com.kh.brocoli.member.model.vo;
 
 import java.sql.Date;
 
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Product_Option;
 
@@ -26,7 +27,9 @@ public class Orders {
 	 private Product_Option pOptionlist;
 
 	 
-	 private Member ordersMember;  //admin 주문 멤버정보 받아오기
+	 private Member or_Member;  //admin 주문 멤버정보 받아오기
+	 private Brand or_Brand;
+	 private String or_Status_Str; //admin 주문상태 한글
 	 private Reject ordersReject;  //반품정보
 	 private Change ordersChange;  //교환정보7
 
@@ -42,7 +45,7 @@ public class Orders {
 	   public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
 			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Product pList,
-			Product_Option pOptionlist, Member ordersMember,
+			Product_Option pOptionlist, Member or_Member,Brand or_Brand,
 			Reject ordersReject, Change ordersChange) {
 
 		super();
@@ -65,7 +68,8 @@ public class Orders {
 		this.pList = pList;
 		this.pOptionlist = pOptionlist;
 
-		this.ordersMember = ordersMember;
+		this.or_Member = or_Member;
+		this.or_Brand = or_Brand;
 		this.ordersReject = ordersReject;
 		this.ordersChange = ordersChange;
 
@@ -189,6 +193,7 @@ public class Orders {
 
 	public void setOr_Status(String or_Status) {
 		this.or_Status = or_Status;
+		this.setOr_Status_Str(or_Status);
 	}
 
 
@@ -277,13 +282,13 @@ public class Orders {
 	}
 
 	
-	public Member getOrdersMember() {
-		return ordersMember;
+	public Member getOr_Member() {
+		return or_Member;
 	}
 
 
-	public void setOrdersMember(Member ordersMember) {
-		this.ordersMember = ordersMember;
+	public void setOr_Member(Member or_Member) {
+		this.or_Member = or_Member;
 	}
 
 
@@ -306,7 +311,43 @@ public class Orders {
 		this.ordersChange = ordersChange;
 	}
 
+	//admin 주문 상태변경 getter,setter
+	public String getOr_Status_Str() {
+		return or_Status_Str;
+	}
 
+	public void setOr_Status_Str(String or_Status) {
+		switch(or_Status){
+		case "1":
+			this.or_Status_Str = "주문확인"; break;
+		case "2":
+			this.or_Status_Str = "상품준비중"; break;
+		case "3":
+			this.or_Status_Str = "상품배송중"; break;
+		case "4":
+			this.or_Status_Str = "배송완료"; break;
+		case "5":
+			this.or_Status_Str = "구매확정"; break;
+		case "6":
+			this.or_Status_Str = "환불진행중"; break;
+		case "7":
+			this.or_Status_Str = "교환진행중"; break;
+		case "8":
+			this.or_Status_Str = "반품완료"; break;
+		case "9":
+			this.or_Status_Str = "교환완료"; break;
+		default:
+				this.or_Status_Str = ""; break;
+		}
+	}
+	
+	public Brand getOr_Brand() {
+		return or_Brand;
+	}
+	
+	public void setOr_Brand(Brand or_Brand) {
+		this.or_Brand = or_Brand;
+	}
 
 	@Override
 	public String toString() {
@@ -315,15 +356,8 @@ public class Orders {
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
 				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList
-				+ ", pOptionlist=" + pOptionlist
-                + or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", ordersMember=" + ordersMember
-				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
-
+				+ ", pOptionlist=" + pOptionlist + ", or_Member=" + or_Member + ", or_Brand=" + or_Brand
+				+ ", or_Status_Str=" + or_Status_Str + ", ordersReject=" + ordersReject + ", ordersChange="
+				+ ordersChange + "]";
 	}
-	 
-
-	 
-	 
-
-
 }

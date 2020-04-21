@@ -13,6 +13,7 @@
 	display: inline-block;
 	border: 1px solid black;
 }
+
 </style>
 <script>
 
@@ -35,46 +36,9 @@
 								<div class="wrap-slick3-dots"></div>
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
-								<div class="slick3 gallery-lb">
+								<div class="slick3 gallery-lb" id="imgcheck">
 								
-									<div class="item-slick3" id="img1" data-thumb="">
-								
-										<div class="wrap-pic-w pos-relative">
-											<img id="img1_1" alt="IMG-PRODUCT"> 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												id="img1_2">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
 
-
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-										
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-02.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-03.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -144,12 +108,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time">
-												<option>선택</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
+											<select class="js-select2" id="select1" name="time">
+									
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -161,12 +121,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time">
-												<option>선택</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
+											<select class="js-select2" id="select2" name="time">
+	
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
