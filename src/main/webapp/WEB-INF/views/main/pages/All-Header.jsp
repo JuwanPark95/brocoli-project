@@ -163,7 +163,7 @@
 					</div>
 					<c:if test="${!empty sessionScope.loginUser }">
 						<c:url var="wishList" value="wishList.mn">
-							<c:param name="mNo" value="${loginUser.mNO}"></c:param>
+							<c:param name="w_Mno" value="${loginUser.mNO}"></c:param>
 						</c:url>
 					<a href="${wishList}"
 						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"

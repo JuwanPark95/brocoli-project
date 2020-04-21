@@ -21,8 +21,8 @@ public class WishServiceimpl implements WishService{
 	}
 
 	@Override
-	public ArrayList<Wish> wishList(int mNo) {
-		return wDao.wishList(mNo);
+	public ArrayList<Wish> wishList(int w_Mno) {
+		return wDao.wishList(w_Mno);
 	}
 
 	@Override

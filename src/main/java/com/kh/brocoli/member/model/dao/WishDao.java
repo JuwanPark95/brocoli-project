@@ -19,8 +19,8 @@ public class WishDao {
 		return sqlSession.insert("Wish-mapper.wInsert",w);
 	}
 
-	public ArrayList<Wish> wishList(int mNo) {
-		return (ArrayList)sqlSession.selectList("Wish-mapper.wishList", mNo);
+	public ArrayList<Wish> wishList(int w_Mno) {
+		return (ArrayList)sqlSession.selectList("Wish-mapper.wishList", w_Mno);
 	}
 
 	public int deleteWish(int p_NO) {
