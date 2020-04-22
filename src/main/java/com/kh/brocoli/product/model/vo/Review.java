@@ -25,13 +25,15 @@ public class Review {
 	private int v_P_NO;
 	private int v_B_NO;
 	
+	private Product plist;
+	
 	public Review() {
 		super();
 	}
 
 	public Review(int v_NO, String v_Writer, String v_Content, Date v_Date, Date v_Modify_Date, String v_Count,
 			String v_Score, String v_Check, String v_Status, String v_Img1, String v_Img1_ReName, String v_Img2,
-			String v_Img2_ReName, int v_Mno, int v_P_NO, int v_B_NO) {
+			String v_Img2_ReName, int v_Mno, int v_P_NO, int v_B_NO, Product plist) {
 		super();
 		this.v_NO = v_NO;
 		this.v_Writer = v_Writer;
@@ -49,6 +51,7 @@ public class Review {
 		this.v_Mno = v_Mno;
 		this.v_P_NO = v_P_NO;
 		this.v_B_NO = v_B_NO;
+		this.plist = plist;
 	}
 
 	public int getV_NO() {
@@ -179,13 +182,21 @@ public class Review {
 		this.v_B_NO = v_B_NO;
 	}
 
+	public Product getPlist() {
+		return plist;
+	}
+
+	public void setPlist(Product plist) {
+		this.plist = plist;
+	}
+
 	@Override
 	public String toString() {
 		return "Review [v_NO=" + v_NO + ", v_Writer=" + v_Writer + ", v_Content=" + v_Content + ", v_Date=" + v_Date
 				+ ", v_Modify_Date=" + v_Modify_Date + ", v_Count=" + v_Count + ", v_Score=" + v_Score + ", v_Check="
 				+ v_Check + ", v_Status=" + v_Status + ", v_Img1=" + v_Img1 + ", v_Img1_ReName=" + v_Img1_ReName
 				+ ", v_Img2=" + v_Img2 + ", v_Img2_ReName=" + v_Img2_ReName + ", v_Mno=" + v_Mno + ", v_P_NO=" + v_P_NO
-				+ ", v_B_NO=" + v_B_NO + "]";
+				+ ", v_B_NO=" + v_B_NO + ", plist=" + plist + "]";
 	}
 
 	

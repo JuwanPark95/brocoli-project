@@ -22,9 +22,6 @@ public class ownerReviewController {
 	public ModelAndView noReadReview(ModelAndView mv,int bNO) {
 		
 		ArrayList<Review> list = oService.noReadReviewSelect(bNO);
-		for (Review review : list) {
-			System.out.println("컨트롤러 : " + review);
-		}
 		
 		if(list != null) {
 			mv.addObject("list",list);
@@ -32,7 +29,6 @@ public class ownerReviewController {
 		}else {
 			mv.setViewName("404-Page");
 		}
-		
 		return mv;
 	}
 
