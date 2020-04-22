@@ -106,7 +106,7 @@
                                     <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%;">매출번호</th>
+                                                <!-- <th style="width:5%;">매출번호</th> -->
                                                 <th style="width:5%;">주문번호</th>
                                                 <th style="width:10%">판매일</th>
                                                 <th style="width:10%">브랜드번호</th>
@@ -117,10 +117,10 @@
                                                 <th style="width:3%">수량</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="searchList">
                                         <c:forEach var="s" items="${salesList}" varStatus="sl"> 
                                             <tr>
-                                                <td>${sl.count}</td>
+                                                <%-- <td>${sl.count}</td> --%>
                                                 <td>${s.or_NO}</td>
                                                 <td>${s.or_Date}</td>
                                                 <td>${s.or_Brand_NO}</td>
@@ -142,7 +142,6 @@
                                       		<th style="font-weight: 1000;">총 주문수</th>
                                       		<th style="font-weight: 1000;"></th>
                                       		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;"></th>  
                                       	</tr>
                                       
                                       </tfoot>
@@ -188,7 +187,19 @@
          			dataType:"json",
                     data:{date1:date1 , date2:date2, dropSearch:dropSearch, content:content},
          			success:function(data){
-         				
+         				alert(data);
+         				console.log(data);
+         				$.each(data, function(index,searchList){
+         					$('searchList').append("<tr><td>"+searchList.or_NO+"</td><td>"
+         							                         +searchList.or_Date+"</td><td>"
+         							                         +searchList.or_Brand_NO+"</td><td>"	
+         							                         +searchList.or_Brand.b_Name+"</td><td>"
+         							                         +searchList.or_P_NO+"</td><td>"
+         							                         +searchList.or_Pname+"</td><td>"
+         							                         +searchList.or_Price+"</td><td>"
+         							                         +searchList.or_Amount+"</td></tr>"
+         					);
+         				});
          			},error:function(){
          				
          			}

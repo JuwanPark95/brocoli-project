@@ -5,7 +5,6 @@
 <html>
 <head>
 
-
 <title>Insert title here</title>
 <style>
 .img_color {

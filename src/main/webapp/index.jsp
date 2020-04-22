@@ -11,8 +11,7 @@
 
 <!--  	실제로 프로젝트에서 사용될 index.jsp 입니다.
  	**********수정/변경 금지************* -->
-  <c:url var="MainPage" value="MainPage"/>
-   <jsp:forward page="${MainPage}"/>
-	
+
+	<jsp:forward page="WEB-INF/views/main/Main.jsp"/>
 </body>
 </html>

@@ -24,8 +24,8 @@
 	<!-- 수정자 : 박주완
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
+	 <form action="login" method="post">
 	<div id="login" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
-	<!--  <form> -->
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 55px;">
 			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>B R O C O L I</strong></p>
@@ -33,14 +33,14 @@
 		<div style="margin-bottom: 25px;">
 			<input type="text" class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
-				placeholder="아이디 " id="mId" name="mId" required>
+				placeholder="아이디 " name="mId">
 			<input type="password"
 				class="form-control form-control"
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
-				placeholder="비밀번호 " id="pwd" name="pwd" required>
+				placeholder="비밀번호 " name="pwd">
 		</div>		
 		<div>
-			<button type="button" class="btn btn-primary btn-lg btn-block" onclick="Login();"
+			<button class="btn btn-primary btn-lg btn-block"
 				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto;">로그인</button>
 			<br>
 			<c:url var="JoinView" value="joinView.mn"/>
@@ -51,43 +51,12 @@
 			<a href="${FindPwd }">비밀번호 찿기</a>
 		</div>
 
-	<!-- </form> -->
 	</div>
+	</form>
 	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
 
-	<script>
-	function Login(){
-		var mId = $("#mId").val();
-		var pwd = $("#pwd").val();
-		
-		$.ajax({
-	 		url:"login",
-	 		data:{mId : mId,pwd:pwd},
-	 		type:"post",
-	 		success:function(data){
-	 			console.log("데이타:::"+data);
-	 			if(data == "ok"){
-	 				
-	 				document.location.href="index.jsp";
-	 			}else{
-	 				
-	 				$("#mId").focus();
-	 				alert("아이디와 비밀번호를 다시 한 번 확인해주세요.");
-	 			}
-	 			
-	 		},error:function(jqxhr, textStatus, errorThrown){
-				console.log("ajax 처리실패");
 				
-				// 에러로그
-				console.log(jqxhr);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-	 	});
-		
-	}
-	</script>
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
