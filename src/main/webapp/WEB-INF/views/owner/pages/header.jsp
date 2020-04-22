@@ -37,7 +37,8 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
-                            <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #4e4e54;"><c:out value="${loginUser.brand }"/></a>
+                            <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #1c1d1f;" href="#"><strong>스토어</strong></a>
+                            <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #1c1d1f;"><c:out value="${loginUser.brand }"/></a>
                             </div>
                         </li>
                         <li class="nav-item dropdown notification">
@@ -259,13 +260,13 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                        	<c:url var="noReadReview" value="${noReadReview.ow }">
+                                        	<c:url var="noReadReview" value="noReadReview.ow">
                                         		<c:param name="bNO" value="${loginUser.brand_NO }"/>
                                         	</c:url>
                                             <a class="nav-link" href="${noReadReview }">읽지않은 후기</a>
                                         </li>
                                         <li class="nav-item">
-                                        	<c:url var="readReview" value="${readReview.ow }">
+                                        	<c:url var="readReview" value="readReview.ow">
                                         		<c:param name="bNO" value="${loginUser.brand_NO }"/>
                                         	</c:url>
                                             <a class="nav-link" href="${readReview }">완료된 후기</a>

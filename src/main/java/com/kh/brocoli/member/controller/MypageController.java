@@ -24,8 +24,10 @@ import com.kh.brocoli.board.model.vo.SearchCondition;
 import com.kh.brocoli.commons.Pagination;
 import com.kh.brocoli.member.model.service.MypageService;
 import com.kh.brocoli.member.model.service.UserService;
+import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.member.model.vo.Reject;
 
 @SessionAttributes("loginUser")
 @Controller
@@ -41,60 +43,60 @@ public class MypageController {
 	
 //**************************************마이페이지 이동경로*****************************************//	
 	
-	 /** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("mypage.mn")
-	public String mypage() {
-		return "MyPage";
-	}
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동중 비밀번호 체크
-	 * @return
-	 * @param pwd
-	 */
-
-	@RequestMapping("p_check.mn")
-	public String pwdCheckPage() {
-		return "My-P-Check";
-	}
-	
-	@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
-	public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv,HttpSession session) {
-		
-		//System.out.println("result : " + result);
-		
-		Member m = (Member)session.getAttribute("loginUser");
-		
-		
-		System.out.println("result : " + m);
-		if(m != null && bcryptPasswordEncoder.matches(password,m.getPwd() ) ) {
-			mv.setViewName("MyInformation");
-		}else {
-		
-		mv.addObject("msg","로그인 실패!!");
-		mv.setViewName("My-P-Check");
+		 /** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지로 이동
+		 * @return
+		 */
+		@RequestMapping("mypage.mn")
+		public String mypage() {
+			return "MyPage";
 		}
-		return mv;
 		
-	}
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 개인정보수정으로 이동중 비밀번호 체크
+		 * @return
+		 * @param pwd
+		 */
+	
+		@RequestMapping("p_check.mn")
+		public String pwdCheckPage() {
+			return "My-P-Check";
+		}
+		
+		@RequestMapping(value="password_check.mn",method=RequestMethod.POST)
+		public ModelAndView pwdCheck(@RequestParam("password") String password, ModelAndView mv,HttpSession session) {
+			
+			//System.out.println("result : " + result);
+			
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			
+			System.out.println("result : " + m);
+			if(m != null && bcryptPasswordEncoder.matches(password,m.getPwd() ) ) {
+				mv.setViewName("MyInformation");
+			}else {
+			
+			mv.addObject("msg","로그인 실패!!");
+			mv.setViewName("My-P-Check");
+			}
+			return mv;
+			
+		}
 	
 	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 개인정보수정으로 이동
-	 * @return
-	 */
-	@RequestMapping("myInfo.mn")
-	public String myinfo() {
-		
-		return "MyInformation";
-	}
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 개인정보수정으로 이동
+		 * @return
+		 */
+		@RequestMapping("myInfo.mn")
+		public String myinfo() {
+			
+			return "MyInformation";
+		}
 	
 	
 	
@@ -222,9 +224,45 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("my_p_change.mn")
-	public String P_change() {
-		return "My-Product-Change";
+	public ModelAndView P_change(ModelAndView mv, HttpSession session,
+		                     	@RequestParam("or_No") String or_No) {
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		ArrayList<Orders> list = myService.P_change(or_No);
+		System.out.println("list : " + list);
+
+		mv.addObject("list", list);
+		mv.setViewName("My-Product-Change");
+		
+		
+		return mv;
 	}
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-03
+	 *  내용 : 교환 신청완료
+	 */
+	
+	  @RequestMapping("C_complete.mn") 
+	  public ModelAndView C_complete(ModelAndView mv,Change ch,HttpSession session) {
+	 
+		  Member m = (Member)session.getAttribute("loginUser");
+		  System.out.println(ch);
+		  int result = myService.C_complete(ch);	
+		  System.out.println(result);
+		  
+		  if(result > 0) {
+           
+			   mv.addObject("Change",ch);
+		 
+	           mv.setViewName("redirect:myOrderList.mn");
+			 
+		 }
+	
+		  return mv;
+   }
+	
 	
 	
 	/** 작성자 : 김주희
@@ -233,9 +271,45 @@ public class MypageController {
 	 * @return
 	 */
 	@RequestMapping("my_p_reject.mn")
-	public String P_reject() {
-		return "My-Product-Reject";
+	public ModelAndView P_reject(ModelAndView mv, HttpSession session,
+             	@RequestParam("or_No") String or_No) {
+		Member m = (Member)session.getAttribute("loginUser");
+		
+		ArrayList<Orders> list = myService.P_reject(or_No);
+		System.out.println("list : " + list);
+		
+		mv.addObject("list", list);
+		mv.setViewName("My-Product-Reject");
+
+
+	    return mv;
 	}
+	
+	
+	/** 작성자 : 김주희
+	 *  작성일 : 2020-04-03
+	 *  내용 : 반품 신청완료
+	 */
+	
+	  @RequestMapping("R_complete.mn") 
+	  public ModelAndView R_complete(ModelAndView mv,Reject re,HttpSession session) {
+	 
+		  Member m = (Member)session.getAttribute("loginUser");
+		  System.out.println(re);
+		  int result = myService.R_complete(re);	
+		  System.out.println(result);
+		  
+		  if(result > 0) {
+           
+			   mv.addObject("Reject",re);
+		 
+	           mv.setViewName("redirect:myOrderList.mn");
+			 
+		 }
+	
+		  return mv;
+   }
+	
 	
 	
 	

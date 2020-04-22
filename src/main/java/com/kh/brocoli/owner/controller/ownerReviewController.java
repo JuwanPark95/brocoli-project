@@ -3,6 +3,7 @@ package com.kh.brocoli.owner.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.firewall.FirewalledRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -15,17 +16,18 @@ import com.kh.brocoli.product.model.vo.Review;
 @SessionAttributes("loginUser")
 public class ownerReviewController {
 	
-	
 	@Autowired ownerReviewService oService;
-	
 	
 	@RequestMapping("noReadReview.ow")
 	public ModelAndView noReadReview(ModelAndView mv,int bNO) {
 		
-		ArrayList<Review> rv = oService.noReadReviewSelect(bNO);
+		ArrayList<Review> list = oService.noReadReviewSelect(bNO);
+		for (Review review : list) {
+			System.out.println("컨트롤러 : " + review);
+		}
 		
-		if(rv != null) {
-			mv.addObject("list",rv);
+		if(list != null) {
+			mv.addObject("list",list);
 			mv.setViewName("review-management");
 		}else {
 			mv.setViewName("404-Page");
@@ -33,6 +35,7 @@ public class ownerReviewController {
 		
 		return mv;
 	}
+
 
 	
 	

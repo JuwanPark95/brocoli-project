@@ -12,8 +12,10 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.SearchCondition;
+import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.member.model.vo.Reject;
 
 @Repository("myDao")
 public class MypageDao {
@@ -54,6 +56,24 @@ public class MypageDao {
 		
 		
 	}
+
+	public ArrayList<Orders> P_change(String or_No) {
+		return (ArrayList)sqlSession.selectList("memberMapper.P_change",or_No);
+	}
+
+	public ArrayList<Orders> P_reject(String or_No) {
+		return (ArrayList)sqlSession.selectList("memberMapper.P_reject",or_No);
+	}
+
+	public int C_complete(Change ch) {
+		return sqlSession.insert("memberMapper.C_complete",ch);
+	}
+
+	public int R_complete(Reject re) {
+		return sqlSession.insert("memberMapper.R_complete",re);
+	}
+
+
 
 	
 

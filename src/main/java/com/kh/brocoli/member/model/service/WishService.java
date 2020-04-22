@@ -8,8 +8,8 @@ public interface WishService {
 
 	public int wInsert(Wish w);
 
-	public ArrayList<Wish> wishList(int mNo);
+	public ArrayList<Wish> wishList(int w_Mno);
 
-	public int deleteWish(int mNo);
+	public int deleteWish(int p_NO);
 
 }

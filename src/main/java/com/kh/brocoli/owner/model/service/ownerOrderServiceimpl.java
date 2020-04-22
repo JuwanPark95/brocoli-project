@@ -51,6 +51,11 @@ public class ownerOrderServiceimpl implements ownerOrderService{
 		return oDao.selectOrderChange(bNO);
 	}
 
+	@Override
+	public Orders orderDetail(int oNO) {
+		return oDao.selectOrderDetail(oNO);
+	}
+
 
 	
 	

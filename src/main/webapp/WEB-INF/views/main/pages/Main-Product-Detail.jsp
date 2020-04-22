@@ -99,6 +99,7 @@
 					</div>
 				</div>
 					
+					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px; font-size:25px;">
@@ -136,18 +137,17 @@
 								<strong>상품 설명  </strong><br>
 								${aProductList[0].p_Comment}
 							</p>
-							
-							<!--  -->
+					
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time" >
+											<select class="js-select2" name=ct_Option_1>
 												<c:forEach var="ap" items="${ aProductList }">
 											  		<c:if test= "${ap.option_1 != NULL }">
-														<option>${ap.option_1 }</option>
+														<option value="${ap.option_1 }">${ap.option_1 }</option>														
 													</c:if>
 										   		 </c:forEach>
 											</select>
@@ -161,10 +161,10 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time">
-												<c:forEach var="ap" items="${ aProductList }"> 
+											<select class="js-select2" name="ct_option_2">											
+												<c:forEach var="ap" items="${ aProductList }">
 													<c:if test= "${ap.option_2 != NULL }">
-														<option>${ap.option_2 }</option>
+														<option value="aProductList">${ap.option_2 }</option>														
 													</c:if>
 											    </c:forEach>
 											</select>
@@ -193,10 +193,15 @@
 										즉시 결제
 									</button>
 									&nbsp;&nbsp;&nbsp;
-									<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
+									
+									<c:url var="cInsert" value="cInsert.mn">
+										 <c:param name="ct_P_NO" value="${ aProductList[0].p_NO }"/>
+									 	<c:param name="ct_Mno" value="${ loginUser.mNO }"/>
+									</c:url>
+									<a href="${ cInsert }" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
 									style="color: white; background-color: #333; border-radius:5px;">
-										장바구니+
-									</button>
+										장바구니
+									</a>
 								</div>	
 							</div>
 
@@ -223,7 +228,7 @@
 
 						</div>
 					</div>
-
+				
 			</div>
 
 			<div class="bor10 m-t-50 p-t-43 p-b-40">
@@ -288,6 +293,7 @@
 										</div>
 										
 										<!-- Add review -->
+										<c:if test="${!empty sessionScope.loginUser }">
 										<form class="w-full">
 	
 											<br>
@@ -303,7 +309,7 @@
 													<input type="file" style="display:inline-block; margin-left: 400px; ">
 													
 													</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review" style="resize:none;"></textarea>
 												</div>
 
 <!-- 												<div class="col-sm-6 p-b-5">
@@ -316,11 +322,12 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 											</div>
-
-											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
+											<input type="hidden" id="productNo1" value="${aProductList[0].p_NO }">
+											<a id="qnacomment" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
-											</button>
+											</a>
 										</form>
+										</c:if>
 									</div>
 								</div>
 							</div>
@@ -416,7 +423,7 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 											</div>
-
+											
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
 											</button>
@@ -875,6 +882,34 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
-
+	
+<!-- 댓글 추가 -->	
+	<script>
+	$('#qnacomment').click(function(){
+		var pq_P_NO = $('#productNo1').val();
+		var pq_Content = $('#review').val();
+		var pq_Writer = "${loginUser.mName}";
+		alert(pq_Writer);
+		$.ajax({
+			url:"qnacomment",
+			data:{pq_P_NO:pq_P_NO,
+				  pq_Content:pq_Content,
+				  pq_Writer:pq_Writer
+					},
+			dataType:"json",
+			success:function(data){
+				
+				
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+	})
+	</script>
 </body>
 </html>

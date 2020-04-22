@@ -182,11 +182,14 @@
 									<strike>${e.p_Price}</strike>${e.p_Last_Price }<b>원</b>
 								</span>
 							</div>
-
+							<c:url var="wInsert" value="wInsert.mn">
+							 <c:param name="pNo" value="${ ap.p_NO }"/>
+							 	<c:param name="mNo" value="${ loginUser.mNO }"/>
+							</c:url>	
 							<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
+									<img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON" onclick="location.href='${wInsert}'">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON" onclick="location.href='${wInsert}'">
 								</a>
 							</div>
 						</div>
@@ -283,7 +286,7 @@
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
-				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
@@ -315,8 +318,7 @@
 				$('#productPrice').val(data[0].p_Price);
 				$('#lastPrice').val(data[0].p_Last_Price);
 				$('#productComment').val(data[0].p_Comment);
-
-
+				
 				img += "<div class='item-slick3' data-thumb='-'>"
 				img +=	"<div class='wrap-pic-w pos-relative'>"
 				img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName + "'alt='IMG-PRODUCT'>"
@@ -362,6 +364,7 @@
 				$('#select1').html(option);
 				$('#select2').html(option2);
 				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

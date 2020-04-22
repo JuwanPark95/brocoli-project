@@ -72,7 +72,7 @@
 	     border: 1px solid #3333;
 	    border-radius: 5px;
 	    padding: -1px;
-	    font-size: 14px;
+	    font-size: 13px;
 	    padding: 4px 7px 4px 7px;
 	    color: #555;
 	    margin-bottom: 3px;
@@ -176,7 +176,8 @@
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
-									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>교환</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_reject.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>
