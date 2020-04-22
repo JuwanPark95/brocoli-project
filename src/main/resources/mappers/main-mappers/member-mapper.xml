@@ -120,6 +120,39 @@
       
       <collection property="pOptionlist" resultMap="productOptionResultSet"/>
    </resultMap>
+   
+   
+   <resultMap id="ChangeResultSet" type="Change">
+      <id property="ch_No" column="CH_NO"/>
+      
+      <result property="ch_Pname" column="CH_PNAME"/>
+      <result property="ch_Price" column="CH_PRICE"/>
+      <result property="ch_Reason" column="CH_REASON"/>
+      <result property="ch_Comment" column="CH_COMMENT"/>
+      <result property="ch_Date" column="CH_DATE"/>
+      <result property="ch_EnDate" column="CH_ENDATE"/>
+      <result property="ch_Status" column="CH_STATUS"/>
+      <result property="ch_Or_NO" column="CH_OR_NO"/>
+      <result property="ch_Mno" column="CH_MNO"/>
+      
+   </resultMap>
+   
+   
+   <resultMap id="RejectResultSet" type="Reject">
+      <id property="re_No" column="RE_NO"/>
+      
+      <result property="re_Pname" column="RE_PNAME"/>
+      <result property="re_Price" column="RE_PRICE"/>
+      <result property="re_Reason" column="RE_REASON"/>
+      <result property="re_Comment" column="RE_COMMENT"/>
+      <result property="re_Date" column="RE_DATE"/>
+      <result property="re_EnDate" column="RE_ENDATE"/>
+      <result property="re_Status" column="RE_STATUS"/>
+      <result property="re_MN_OR_NO" column="RE_MN_OR_NO"/>
+      <result property="re_Mno" column="RE_MNO"/>
+      
+   </resultMap>
+   
 	
 	
 		<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
@@ -213,6 +246,33 @@
 	        ON P_NO = PF_P_NO
 	        WHERE OR_NO = #{or_No}
 		</select>
+		
+		<select id="P_reject" resultMap="orderResultSet">
+			SELECT *
+	        FROM MEMBER
+	        JOIN ORDERS
+	        ON MNO = OR_MNO
+	        JOIN PRODUCT_OPTION
+	        ON OR_P_NO = OP_P_NO
+	        JOIN PRODUCT
+	        ON OP_P_NO = P_NO
+	        JOIN PRODUCT_FILE
+	        ON P_NO = PF_P_NO
+	        WHERE OR_NO = #{or_No}
+		</select>
+		
+		<insert id="C_complete" parameterType="Change">
+		    INSERT INTO CHANGE
+	    	VALUES(SEQ_MNO.NEXTVAL,#{ch_Pname},#{ch_Price},#{ch_Reason}
+	    	,#{ch_Comment},SYSDATE,#{ch_EnDate},#{ch_Status},#{ch_Or_NO},#{ch_Mno})
+	    </insert>
+	    
+	    
+	    <insert id="R_complete" parameterType="Reject">
+		    INSERT INTO REJECT
+	    	VALUES(SEQ_MNO.NEXTVAL,#{re_Pname},#{re_Price},#{re_Reason}
+	    	,#{re_Comment},SYSDATE,#{re_Enddate},#{re_Status},#{re_MN_OR_NO},#{re_Mno})
+	    </insert>
 	    
 	    
 </mapper>
