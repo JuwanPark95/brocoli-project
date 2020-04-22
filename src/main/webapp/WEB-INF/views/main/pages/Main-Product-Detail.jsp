@@ -293,6 +293,7 @@
 										</div>
 										
 										<!-- Add review -->
+										<c:if test="${!empty sessionScope.loginUser }">
 										<form class="w-full">
 	
 											<br>
@@ -308,7 +309,7 @@
 													<input type="file" style="display:inline-block; margin-left: 400px; ">
 													
 													</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
+													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review" style="resize:none;"></textarea>
 												</div>
 
 <!-- 												<div class="col-sm-6 p-b-5">
@@ -321,11 +322,12 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 											</div>
-
-											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
+											<input type="hidden" id="productNo1" value="${aProductList[0].p_NO }">
+											<a id="qnacomment" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
-											</button>
+											</a>
 										</form>
+										</c:if>
 									</div>
 								</div>
 							</div>
@@ -421,7 +423,7 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 											</div>
-
+											
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
 											</button>
@@ -880,6 +882,34 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
-
+	
+<!-- 댓글 추가 -->	
+	<script>
+	$('#qnacomment').click(function(){
+		var pq_P_NO = $('#productNo1').val();
+		var pq_Content = $('#review').val();
+		var pq_Writer = "${loginUser.mName}";
+		alert(pq_Writer);
+		$.ajax({
+			url:"qnacomment",
+			data:{pq_P_NO:pq_P_NO,
+				  pq_Content:pq_Content,
+				  pq_Writer:pq_Writer
+					},
+			dataType:"json",
+			success:function(data){
+				
+				
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+	})
+	</script>
 </body>
 </html>

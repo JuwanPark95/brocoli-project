@@ -90,7 +90,7 @@
 	                                            <tr>
 	                                                <td>${r.or_Date }</td>
 	                                                <td>${r.or_NO }</td>
-	                                                <td>${r.ordersMember.mName }</td>
+	                                                <td>${r.or_Member.mName }</td>
 	                                                <td>${r.or_Pname }</td>
 	                                                <td>${r.or_Price }</td>
 	                                                <td>${r.ordersChange.ch_Reason }</td>
@@ -105,8 +105,11 @@
 	                                                </td>
 	                                                <td>
 	                                                	<div class="btn-group ml-auto">
-				                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-				                                        </div>
+		                                                	<c:url var="orderDetails" value="order_detail.ow">
+		                                                		<c:param name="oNO" value="${r.or_NO }"/>
+		                                                	</c:url>
+					                                            <a class="btn btn-sm btn-outline-light" href="${orderDetails}">상세보기</a>
+					                                    </div>
 	                                                </td>
 	                                            </tr>
                                             </c:forEach>
