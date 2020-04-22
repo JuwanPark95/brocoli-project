@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -85,7 +86,6 @@ public class AdminBrandController {
 	 */
    @RequestMapping("brandUpdate.ad")
    public ModelAndView brandUpdate(ModelAndView mv, Brand b, String sessionName){
-	   System.out.println(sessionName);
 	   int result = ABService.brandUpdate(b);
 	   if(result>0) {
 		   mv.setViewName("redirect:brandManagement.ad");
@@ -102,7 +102,7 @@ public class AdminBrandController {
    	 */
    	@RequestMapping("brandCheck.ad")
    	@ResponseBody
-   	public String brandCheck(String brandName) {
+   	public String brandCheck(String brandName ) {
    		int result = ABService.brandNameCheck(brandName);
    		
    		if(result>0) {
@@ -346,6 +346,15 @@ public class AdminBrandController {
 		return mv;
 	}
 	
+	/**
+	 * 작성자 :신은지
+	 * 15. 오너 컨택트 게시판 수정 update
+	 * @param mv
+	 * @param c
+	 * @param request
+	 * @param file
+	 * @return
+	 */
 	@RequestMapping("ownerContactUpdateSave.ad")
 	public ModelAndView ownerContactUpdateSave (ModelAndView mv, Contact c,HttpServletRequest request, 
 		      								@RequestParam(name="reloadFile",required=false) MultipartFile file) {
@@ -386,15 +395,26 @@ public class AdminBrandController {
 			f.delete();
 		}
 	}
+	
+	
+	/**
+	 * 작성자 : 신은지
+	 * 16. 브랜드 삭제
+	 * @param model
+	 * @param brand_NO
+	 * @return
+	 */
+	@RequestMapping("brandDelete.ad")
+	public String brandDelete(Model model,@RequestParam("brand_NO") int brand_NO) {
+		int result = ABService.brandDelete(brand_NO);
+		
+		if(result>0) {
+		return "redirect:brandManagement.ad";
+		}
+		else {
+			model.addAttribute("msg","회원 삭제 실패");
+			return "common/errorPage";
+		}
+	}
 }
-
-
-
-
-
-
-
-
-
-
 

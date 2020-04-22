@@ -41,7 +41,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<!-- <form role="form" class="bg0 p-t-75 p-b-85" id="a"> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" style="margin-left: -1%;">
@@ -49,53 +49,48 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-0"><input type="checkbox"></th>
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
-									<th class="column-3">옵션1</th>
-									<th class="column-4">옵션2</th>
 									<th class="column-5">판매금액</th>
 									<th class="column-6">할인가</th>
 									<th class="column-7">총 금액</th>
+									<th class="column-7">삭제</th>
 								</tr>
-
+							<c:set var="sum" value="0"/>
+							<c:forEach var="w" items="${ wList }">
 								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
+								
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG">
+											<img src="/brocoli/resources/product-Img/${w.p_File.pf_Img1_ReName}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">패딩</td>
-									<td class="column-3">Red</td>
-									<td class="column-4">XL</td>
-									<td class="column-5">36,000원</td>
-									<td class="column-6">-2,000원</td>
-									<td class="column-7">34,000원</td>
+									<td class="column-2">${w.productList.p_Name}</td>
+									<td class="column-5">${w.productList.p_Price}</td>
+									<td class="column-6">${w.productList.p_Sail_Price}</td>
+									<td class="column-7">${w.productList.p_Last_Price}</td>
+									
+									<c:set var="sum" value="${sum + w.productList.p_Last_Price }"/>
+			
+									<td style="text-align: center;">
+									<c:url var="wDelete" value="wDelete.mn">
+										<c:param name="p_NO" value="${ w.productList.p_NO }"/>
+										<c:param name="Mno" value="${loginUser.mNO }"/>
+									</c:url> 
+									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+							      	onclick="location.href='<c:url value='${ wDelete }'/>';">삭제</button> 
+										
+									</td>
 									
 								</tr>
-								
-								
-
-								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/images/item-cart-05.jpg" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">아우터</td>
-									<td class="column-3">BLACK</td>
-									<td class="column-4">L</td>
-									<td class="column-5">72,000원</td>
-									<td class="column-6">-4,000원</td>
-									<td class="column-7">68,000원</td>
-								</tr>
+							</c:forEach>
 								<tr style="height:100px;">
-									<td colspan="6"></td>
+									<td colspan="4"></td>
 									<td >총 금액 : </td>
-									<td>102,000원 </td>
-								</tr>
+									<td>
+										<c:out value="${ sum }"/> 원
+									</td>
+								</tr>		
 							</table>
 						</div>
 
@@ -111,15 +106,6 @@
 								선택 상품 삭제
 							</div>
 						</div> -->
-						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; width: 200px; float: right; border-radius:5px;"	>
-							장바구니에 담기
-						</div>
-						
-						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; width: 200px; float: right; border-radius:5px;"	>
-							선택 상품 삭제
-						</div>
 					</div>
 				</div>
 
@@ -208,8 +194,8 @@
 				</div> -->
 			</div>
 		</div>
-	</form>
-		
+	<!-- </form> -->
+
 	
 		
 

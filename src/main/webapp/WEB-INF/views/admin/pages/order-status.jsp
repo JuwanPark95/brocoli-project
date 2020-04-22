@@ -91,8 +91,8 @@
                                             <tr>
                                                 <td>${ol.count}</td>
                                                 <td name="orNO">${o.or_NO}</td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>${o.or_Member.mName}</td>
+                                                <td>${o.or_Member.mId}</td>
                                                 <td>${o.or_Date}</td>
                                                 <td>${o.or_Pname}</td>
                                                 <td>${o.or_Option1}</td>
@@ -103,16 +103,19 @@
                                                 <td>${o.or_Address}</td>
                                                 <td>${o.or_Deliver_Vender}</td>
                                                 <td>${o.or_Deliver_Num}</td>
-                                                <td name="orderStatus">${o.or_Status}</td>
+                                                <td name="orderStatus">${o.or_Status_Str}</td>
                                                 <td>
                                                  <select name="orderStatusSelect" style="height: 30px; background-color: white;">
-                                                 	<option value="주문확인">주문확인</option>
-									                <option value="상품준비중">상품준비중</option>
-									                <option value="상품배송중">상품배송중</option>
-									                <option value="배송완료">배송완료</option>
-									                <option value="구매확정">구매확정</option>
-									                <option value="환불 진행 중">환불 진행 중</option>
-									                <option value="교혼 진행 중">교환 진행 중</option>
+                                                 	<option value="1">주문확인</option>
+									                <option value="2">상품준비중</option>
+									                <option value="3">상품배송중</option>
+									                <option value="4">배송완료</option>
+									                <option value="5">구매확정</option>
+									                <option value="6">환불 진행 중</option>
+									                <option value="7">교환 진행 중</option>
+									                <option value="8">반품완료</option>
+									                <option value="9">교환완료</option>
+									                
 									              </select>
 									              <button name="orderStatusBtn" id="orderStatusBtn" type="submit" class="btn btn-light" style="width:50px; height:40px; ">
 									                  <i class="fas fa-sync"></i>
@@ -151,7 +154,6 @@
     			var or_NO = $(this).parent().prevAll("td[name=orNO]").text();
     			
     			or_Status = $(this).parent().children('select[name=orderStatusSelect]').val();
-    		
     			$.ajax({
     				url:'orderStatusChange.ad',
     				//data:JSON.stringify(jsonData),
@@ -161,11 +163,23 @@
     					if(data == 'Sucess'){
     					or_Status = $(this).parent().children('select[name=orderStatusSelect]').val();
     					}
-    					console.log('END');
     				},error:function(){
     					console.log("전송실패");
     				}	
-    			});    			
+    			});
+    			
+    		    switch(or_Status){
+    			case '1': or_Status="주문확인"; break;
+    			case '2': or_Status="상품준비중"; break;
+    			case '3': or_Status="상품배송중"; break;
+    			case '4': or_Status="배송완료"; break;
+    			case '5': or_Status="구매확정"; break;
+    			case '6': or_Status="환불진행중"; break;
+    			case '7': or_Status="교환진행중"; break;
+    			case '8': or_Status="반품완료"; break;
+    			case '9': or_Status="교환완료"; break;
+    			}
+    		    
     			//주문 상태변경 버튼 누르면 주문상태 변경해줌
     			$(this).parent().prevAll('td[name=orderStatus]').text(or_Status);
     		});

@@ -86,67 +86,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>2020-04-01 03:00:12</td>
-                                                <td>1225412</td>
-                                                <td>이준용</td>
-                                                <td>레거시 스우.. 외 13개</td>
-                                                <td>211,000</td>
-                                                <td>오배송</td>
-                                                <td>2020-04-03 04:12:00</td>
-                                                <td><span class="badge-dot badge-brand mr-1"></span>교환접수</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-31 15:10:12</td>
-                                                <td>1225100</td>
-                                                <td>유영재</td>
-                                                <td> BULKY KNEE.. 외 8개</td>
-                                                <td>2,321,000</td>
-                                                <td>제품불량</td>
-                                                <td>2020-04-03 04:12:00</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>재배송중</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-03-30 21:08:52</td>
-                                                <td>1225100</td>
-                                                <td>유민정</td>
-                                                <td>REVERSIBLE F.. 외 21개</td>
-                                                <td>151,000</td>
-                                                <td>고객변심</td>
-                                                <td>2020-04-03 04:12:00</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>교환완료</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2020-04-02 18:12:21</td>
-                                                <td>1225100</td>
-                                                <td>최유빈</td>
-                                                <td>DUCK DOWN SHORT .. 외 2개</td>
-                                                <td>214,000</td>
-                                                <td>수량오류</td>
-                                                <td>2020-04-03 04:12:00</td>
-                                                <td><span class="badge-dot badge-success mr-1"></span>재배송중</td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">상세보기</button>
-			                                        </div>
-                                                </td>
-                                            </tr>
-                                            
+                                            <c:forEach var="r" items="${list}">
+	                                            <tr>
+	                                                <td>${r.or_Date }</td>
+	                                                <td>${r.or_NO }</td>
+	                                                <td>${r.or_Member.mName }</td>
+	                                                <td>${r.or_Pname }</td>
+	                                                <td>${r.or_Price }</td>
+	                                                <td>${r.ordersChange.ch_Reason }</td>
+	                                                <td>${r.ordersChange.ch_Date}</td>
+	                                                <td>
+	                                                	 <c:choose>
+															<c:when test="${r.ordersChange.ch_Status eq '1'}"><span class="badge-dot badge-brand"></span><a id="statusText">교환접수</a></c:when>
+															<c:when test="${r.ordersChange.ch_Status eq '2'}"><span class="badge-dot badge-info"></span><a id="statusText">교환진행중</a></c:when>
+															<c:when test="${r.ordersChange.ch_Status eq '3'}"><span class="badge-dot badge-primary"></span><a id="statusText">상품재발송</a></c:when>
+															<c:when test="${r.ordersChange.ch_Status eq '4'}"><span class="badge-dot badge-success"></span><a id="statusText">교환완료</a></c:when>
+														</c:choose>	
+	                                                </td>
+	                                                <td>
+	                                                	<div class="btn-group ml-auto">
+		                                                	<c:url var="orderDetails" value="order_detail.ow">
+		                                                		<c:param name="oNO" value="${r.or_NO }"/>
+		                                                	</c:url>
+					                                            <a class="btn btn-sm btn-outline-light" href="${orderDetails}">상세보기</a>
+					                                    </div>
+	                                                </td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>

@@ -42,6 +42,7 @@ public class AdminBrandDao {
 	 * @return
 	 */
 	public int updateBrandUpdate(Brand b) {
+		System.out.println("브랜드 수정 DAO: "+ b);
 		return sqlSession.update("AdminBrand.updateBrand", b);
 	}
 	
@@ -126,7 +127,6 @@ public class AdminBrandDao {
 		return (ArrayList)sqlSession.selectList("AdminBrand.ownerContactList");
 	}
 
-
 	/**
 	 * 작성자  : 신은지
 	 * 12. 오너 콘택트 상세보기
@@ -174,8 +174,17 @@ public class AdminBrandDao {
 	 * @return
 	 */
 	public int ownerContactUpdateSave(Contact c) {
-		System.out.println("dao c 들어갔나 "+ c);
 		return sqlSession.update("AdminBrand.ownerContactUpdateSave",c);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  16. 브랜드 삭제
+	 * @param brand_NO
+	 * @return
+	 */
+	public int brandDelete(int brand_NO) {
+		return sqlSession.update("AdminBrand.brandDelete",brand_NO);
 	}
 
 

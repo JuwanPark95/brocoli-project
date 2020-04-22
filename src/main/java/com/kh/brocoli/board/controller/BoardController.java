@@ -105,7 +105,7 @@ public class BoardController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\bnuploadRiles";
+		String savePath = root + "\\Notice-Img";
 
 		File folder = new File(savePath);
 

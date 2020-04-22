@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+
 
 <title>Insert title here</title>
 <style>
@@ -14,12 +14,15 @@
 	display: inline-block;
 	border: 1px solid black;
 }
+
 </style>
+<script>
+
+</script>
 </head>
 <body>
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		<div class="overlay-modal1 js-hide-modal1"></div>
-		
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
@@ -30,49 +33,13 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-7 p-b-30">
 						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
+							<div  class="wrap-slick3 flex-sb flex-w">
 								<div class="wrap-slick3-dots"></div>
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-01.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
+								<div class="slick3 gallery-lb" id="imgcheck">
+								
 
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-02.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-03.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -82,25 +49,28 @@
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px; font-size: 30px;">
-								<strong>${ModalList[0].p_Name}</strong>
+								style="display: inline-block; padding: 5px; font-size: 16px; width: 430px;">
+								<input type="hidden" id="test"/>
+								<strong><a id="detailCheck"><input type="text" id="productName" style="display: inline-block; cursor:pointer; width: 430px;" readonly="readonly"></a></strong>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 "
 								style="display: inline-block; padding: 5px;">
-								<strong>브랜드 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								${ModalList[0].brList.b_Name}
+								<strong>브랜드 
+								</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="brandName" style="display: inline-block;" readonly="readonly">
 							</p>
 							&nbsp;&nbsp;&nbsp;
 							<p class="stext-102 cl3 p-t-23"
-								style="display: inline-block; padding: 5px;">
-								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp; 1
+								style="display: inline-block; padding: 5px; float: right;">
+								<strong>상품번호 </strong>&nbsp;&nbsp;&nbsp;
+								<input type="text" id="pNo" style="display: inline-block;" readonly="readonly">
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
-								<strong>조회 수 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								3,000
+								<strong>주문 수 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="text" id="orderCount" style="display: inline-block; width: 60px;" readonly="readonly">
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
@@ -112,18 +82,25 @@
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
 								<strong>판매가 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size: 18px;"><strong><strike>36,000원</strike></strong></span>
+								<span style="font-size: 18px;">
+								<input type="text" id="productPrice" style="display: inline-block; width: 130px; text-decoration:line-through;" readonly="readonly"/>원
+								</span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
 								<strong>할인가 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<span style="font-size: 18px;"><strong>34,000원</strong></span>
+								<span style="font-size: 18px;">
+								<input type="text" id="lastPrice" style="display: inline-block; width: 130px;" readonly="readonly">원
+								</span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
-								<strong>상품 설명 </strong><br> ㅁㄹㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+								<strong>상품 설명 </strong><br>
+								<div>
+								<textarea id="productComment" style="display: inline-block; width: 100%; resize: none; font-size: 14px;" readonly="readonly" ></textarea>
+								</div>
 							</p>
 
 							<!--  -->
@@ -133,12 +110,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time">
-												<option>선택</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
+											<select class="js-select2" id="select1" name="time">
+									
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -150,12 +123,8 @@
 
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
-											<select class="js-select2" name="time">
-												<option>선택</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
+											<select class="js-select2" id="select2" name="time">
+	
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -185,10 +154,15 @@
 										style="color: white; background-color: #333; border-radius: 5px;">
 										즉시 결제</button>
 									&nbsp;&nbsp;&nbsp;
-									<button
+									
+									<c:url var="cInsert" value="cInsert.mn">
+									 <c:param name="ct_P_NO" value="${ ap.p_NO }"/>
+									 	<c:param name="ct_Mno" value="${ loginUser.mNO }"/>
+									</c:url>
+									<a href="${ cInsert }"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
-										style="color: white; background-color: #333; border-radius: 5px;">
-										장바구니+</button>
+										style="color: white; background-color: #333; border-radius: 5px;" >
+										장바구니</a>
 								</div>
 							</div>
 

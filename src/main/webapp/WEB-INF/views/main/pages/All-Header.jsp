@@ -119,7 +119,7 @@
 
 				<!-- Logo desktop -->
 				<c:url var="MainPage" value="MainPage" />
-				<c:url var="Rank" value="rankView.mn" />
+				<c:url var="Rank" value="rankday.mn" />
 				<c:url var="Brand" value="brandView.mn" />
 				<c:url var="Product" value="productView.mn" />
 				<c:url var="Magazine" value="magazineView.mn" />
@@ -162,8 +162,10 @@
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 					<c:if test="${!empty sessionScope.loginUser }">
-						<c:url var="Wishlist" value="wishlistView.mn"/>
-					<a href="${Wishlist }"
+						<c:url var="wishList" value="wishList.mn">
+							<c:param name="w_Mno" value="${loginUser.mNO}"></c:param>
+						</c:url>
+					<a href="${wishList}"
 						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
 					</a>

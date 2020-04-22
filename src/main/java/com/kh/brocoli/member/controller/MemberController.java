@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -34,6 +33,7 @@ import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 @Controller
 public class MemberController {
@@ -97,14 +97,54 @@ public class MemberController {
 	
 	
 	/**
-	 * 랭킹 페이지로 이동
+	 * 랭킹 요일 페이지로 이동
 	 * @return
 	 */
-	@RequestMapping("rankView.mn")
-	public String RankView() {
-		return "Main-Rank";
+	@RequestMapping("rankday.mn")
+	public ModelAndView dayRank(Product pd, ModelAndView mv) {
+		
+		ArrayList<Product> daylist = mService.selectdayList();
+		
+		mv.addObject("dayList",daylist);
+		
+		mv.setViewName("Main-Rank-day");
+		return mv;
 	}
 	
+	/**
+	 * 랭킹 월별 페이지로 이동
+	 * @param pd
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("rankmonth.mn")
+	public ModelAndView monthRank(Product pd, ModelAndView mv) {
+		
+		
+		ArrayList<Product> monthlist = mService.selectmonthList();
+		
+		mv.addObject("monthList",monthlist);
+		
+		mv.setViewName("Main-Rank-month");
+		return mv;
+	}
+	
+	/**
+	 * 랭킹 년별 페이지로 이동
+	 * @param pd
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("rankyear.mn")
+	public ModelAndView yearRank(Product pd, ModelAndView mv) {
+		
+		ArrayList<Product> yearlist = mService.selectyearList();
+		
+		mv.addObject("yearList",yearlist);
+		
+		mv.setViewName("Main-Rank-year");
+		return mv;
+	}
 	/**
 	 * 브랜드 이름 페이지로 이동
 	 * @return
@@ -184,9 +224,9 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("productDetail.mn")
-	public ModelAndView ProductDetail(Product pd,String p_NO,ModelAndView mv) {
+	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
 		
-		ArrayList<Product> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
 		mv.addObject("aProductList",pDetail);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
@@ -195,41 +235,33 @@ public class MemberController {
 	@RequestMapping("productModal")
 	public void productModal(HttpServletResponse response,String p_NO) throws JsonIOException, IOException{
 		
-		ArrayList<Product> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
 		
-		response.setContentType("application/json; charset=utf-8");
-		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("pDetail : " + pDetail );
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(pDetail,response.getWriter());
 		
 	}
 	
-/************************************사이드 바*******************************/	
-//	/**
-//	 * 마이페이지로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myPageView.mn")
-//	public String MyPageView() {
-//		return "MyPage";
-//	}
-//
-//	/**
-//	 * 장바구니로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myCartView")
-//	public String MyCartView() {
-//		return "MyCart";
-//	}
-//
-//	/**주문조회 페이지로 이동
-//	 * @return
-//	 */
-//	@RequestMapping("myOrderView.mn")
-//	public String MyOrderView() {
-//		return "MyOrderList";
-//	}
+	@RequestMapping("qnacomment")
+	public void qnacomment(HttpServletResponse response,String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
+		System.out.println("@@"+pq_P_NO);
+		System.out.println("##"+pq_Content);
+		System.out.println("$$"+pq_Writer);
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		//gson.toJson(pDetail,response.getWriter());
+		
+	}
+	
+	
 
 
 

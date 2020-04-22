@@ -13,4 +13,5 @@
 	<c:url var="MainPage" value="MainPage"/>
 	<jsp:forward page="${MainPage}"/>
 </body>
+
 </html>

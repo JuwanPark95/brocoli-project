@@ -11,6 +11,7 @@ import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 
 @Repository("mDao")
@@ -44,8 +45,20 @@ public class MemberDao {
 		return (ArrayList)sqlSession.selectList("mainMapper.aproductlist");
 	}
 
-	public ArrayList<Product> selectpDetail(String p_NO) {
+	public ArrayList<ProductDetail> selectpDetail(String p_NO) {
 		return (ArrayList)sqlSession.selectList("mainMapper.pDetail",p_NO);
+	}
+
+	public ArrayList<Product> selectdayList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.daylist");
+	}
+
+	public ArrayList<Product> selectmonthList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.monthlist");
+	}
+
+	public ArrayList<Product> selectyearList() {
+		return (ArrayList)sqlSession.selectList("mainMapper.yearlist");
 	}
 
 

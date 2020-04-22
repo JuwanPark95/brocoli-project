@@ -72,7 +72,7 @@
 	     border: 1px solid #3333;
 	    border-radius: 5px;
 	    padding: -1px;
-	    font-size: 14px;
+	    font-size: 13px;
 	    padding: 4px 7px 4px 7px;
 	    color: #555;
 	    margin-bottom: 3px;
@@ -88,8 +88,8 @@
 
 </style>
 </head>
-<body class="animsition">
 
+<body class="animsition">
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			주문현황
@@ -103,7 +103,7 @@
 	<div class="container">
 		
 	<div style=" margin:15px auto; border-bottom:1px solid #666">
-	<label style=" display:inline-block; font-size:20px; "><b>주문 정보</b></label>
+	<label style=" display:inline-block; font-size:20px;"><b>주문 정보</b></label>
 <!-- 	<button style="display:inline-block; float:right; margin-left: 10%; color: #555; margin-right: 30%;">환불</button>&nbsp;
 	<button style="display:inline-block; float:right; margin-left: 10%; color: #555;">교환</button>&nbsp;
 	<button style="display:inline-block; float:right; margin-left: 10%; color: #555;">배송상태</button>&nbsp;
@@ -139,6 +139,7 @@
 	</div>
 	<!-- 끝 -->
 
+   
 			<div class="row" style="padding: 15px;">
 							<table class="table-shopping-cart">
 								<tr class="table_head" >
@@ -154,9 +155,9 @@
 									<th style="width:8%; text-align:center;">상태</th>
 									<th style="width:8%; text-align:center;">확인</th>
 								</tr>
-						  <c:forEach var="Orders" items="${list }">
+						         <c:forEach var="Orders" items="${list }">
 								<tr>
-									<td style="text-align:center;">${ Orders.or_No }</td>
+									<td style="text-align:center;">${ Orders.or_NO }</td>
 									<td style="text-align:center;">${ Orders.or_Date }</td>
 									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
 									<td style="text-align:left;">
@@ -166,21 +167,22 @@
 											<li>${ Orders.or_Option2 }</li>
 										</ul>
 									</td>
-									<td style="text-align:center;"><strike>${ Orders.p_Price }</strike>
-																	   <br>${ Orders.p_Last_Price }</td>
-									<td style="text-align:center;">-${ Orders.p_Sail_Price }</td>
-									<td style="text-align:center;">${ Orders.or_Price }/100</td>
+									<td style="text-align:center;"><strike>${ Orders.pOptionlist.pList.p_Price }</strike>
+																	   <br>${ Orders.pOptionlist.pList.p_Last_Price }</td>
+									<td style="text-align:center;">- ${ Orders.pOptionlist.pList.p_Sail_Price }</td>
+									<td style="text-align:center;">${ Orders.or_Price/100 }</td>
 									<td style="text-align:center;">${ Orders.or_Amount }</td>
 									<td style="text-align:center;">${ Orders.or_Price }</td>
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
-									<button class="ord-btn" onclick="location.href='my_p_change.mn'"><strong>교환/반품</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>교환</strong></button>
+									<button class="ord-btn" onclick="location.href='my_p_reject.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>
-                             </c:forEach>
 								
+                             </c:forEach>
 							</table>
 			</div>
 							<br><br><br><br>

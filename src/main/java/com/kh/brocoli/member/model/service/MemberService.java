@@ -6,6 +6,7 @@ import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 public interface MemberService {
 
@@ -62,7 +63,25 @@ public interface MemberService {
 	 * @param p_NO
 	 * @return
 	 */
-	ArrayList<Product> selectpDetail(String p_NO);
+	ArrayList<ProductDetail> selectpDetail(String p_NO);
+
+	/**
+	 * 일별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectdayList();
+
+	/**
+	 * 월별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectmonthList();
+
+	/**
+	 * 년별 랭킹
+	 * @return
+	 */
+	ArrayList<Product> selectyearList();
 
 
 

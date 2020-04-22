@@ -67,7 +67,6 @@ public class AdminMemberController {
 	 */
 	@RequestMapping("memberUpdate.ad")
 	public ModelAndView memberUpdate (ModelAndView mv, Member m) {
-		
 		int result = AMService.memberUpdate(m);
 		
 		if(result>0) {
