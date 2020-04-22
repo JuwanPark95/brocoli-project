@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.SearchCondition;
+import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.member.model.vo.Reject;
 
 
 public interface MypageService {
@@ -75,11 +77,36 @@ public interface MypageService {
 
 
 	/**
-	 * 교환
+	 * 교환리스트
 	 * @param m
 	 * @return
 	 */
 	ArrayList<Orders> P_change(String or_NO);
+
+
+	/**
+	 * 반품리스트
+	 * @param or_No
+	 * @return
+	 */
+	ArrayList<Orders> P_reject(String or_No);
+
+
+	/**
+	 * 교환완료
+	 * @param selectProduct
+	 * @return
+	 */
+	int C_complete(Change ch);
+
+
+	/**
+	 * 반품완료
+	 * @param re
+	 * @return
+	 */
+	int R_complete(Reject re);
+
 
 
 

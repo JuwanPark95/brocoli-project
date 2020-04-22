@@ -162,7 +162,6 @@
     				success:function(data){
     					if(data == 'Sucess'){
     					or_Status = $(this).parent().children('select[name=orderStatusSelect]').val();
-    					//or_Status = $(this).parent().children('select[name=orderStatusSelect] option:checked').text();
     					}
     				},error:function(){
     					console.log("전송실패");
@@ -180,28 +179,7 @@
     			case '8': or_Status="반품완료"; break;
     			case '9': or_Status="교환완료"; break;
     			}
-    			
-    			/*
-    			if(or_Status=='1'){
-    				or_Status = "주문확인";
-    			}else if(or_Status=='2'){
-    				or_Status = "상품준비중";
-    			}else if(or_Status=='3'){
-    				or_Status = "상품배송중";
-    			}else if(or_Status=='4'){
-    				or_Status = "배송완료";
-    			}else if(or_Status=='5'){
-    				or_Status = "구매확정";
-    			}else if(or_Status=='6'){
-    				or_Status = "환불진행중";
-    			}else if(or_Status=='7'){
-    				or_Status = "교환진행중";
-    			}else if(or_Status=='8'){
-    				or_Status = "반품완료";
-    			}else if(or_Status=='9'){
-    				or_Status = "교환완료";
-    			}
-    			*/
+    		    
     			//주문 상태변경 버튼 누르면 주문상태 변경해줌
     			$(this).parent().prevAll('td[name=orderStatus]').text(or_Status);
     		});

@@ -187,14 +187,14 @@ public class MemberController {
 		return  mv;
 	}
 	
-	/**
-	 * 메거진 페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("magazineView.mn")
-	public String MagazineView() {
-		return "Main-Magazine";
-	}
+//	/**
+//	 * 메거진 페이지로 이동
+//	 * @return
+//	 */
+//	@RequestMapping("magazineView.mn")
+//	public String MagazineView() {
+//		return "Main-Magazine";
+//	}
 	
 	/**
 	 * 찜목록 페이지로 이동

@@ -16,7 +16,7 @@
 
 <body style="padding:0px;">
     <div id="orderSt">
-    <form>
+    <form id="frm2">
     <c:forEach var="Orders" items="${list }">
     <p class="txt-date">
         <span>
@@ -24,26 +24,7 @@
                            님께서  ${Orders.or_Date}  주문하신 내역입니다.
         </span>
     </p>
-    <ul class="tab">
-       <li>
-         <div class="back">
-           <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
-             <a href="<c:url value='my_p_change.mn'/>" style="width: 100%;">
-               <strong>교환</strong>
-             </a>
-           </div>
-         </div>
-       </li>
-       <li>
-         <div class="back">
-            <div class="button_base b01_simple_rollover" style="padding-top:0px; height: 22px; width: 150px; border-radius: 3px;">
-              <a href="<c:url value='my_p_reject.mn'/>" style="width: 100%;">
-               <strong>반품</strong>
-               </a>
-            </div>
-         </div>
-       </li>
-    </ul>   
+    <br>   
     <div id="orderInfo">
         <h2>주문자정보</h2>
         <div class="table-w table-orderinfo">
@@ -63,6 +44,7 @@
                         <td>
                             <div class="tb-center"> ${Orders.or_NO}</div>
                         </td>
+                        <input type="hidden" name="re_MN_OR_NO" value="${Orders.or_NO}"> 
                         <th scope="row">
                             <div class="tb-center">주문일자</div>
                         </th>
@@ -75,21 +57,14 @@
                             <div class="tb-center">주문자</div>
                         </th>
                         <td>
-                            <div class="tb-center">${loginUser.mName }</div>
+                            <div class="tb-center">${Orders.or_Mno }/${loginUser.mName }</div>
                         </td>
+                        <input type="hidden" name="re_Mno" value="${Orders.or_Mno }">
                         <th scope="row">
                             <div class="tb-center">주문서 입금현황</div>
                         </th>
                         <td>
                             <div class="tb-center">입금완료</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th colspan="row">
-                            <div class="tb-center">주문 메모</div>
-                        </th>
-                        <td colspan="3">
-                            <div class="tb-left"></div>
                         </td>
                     </tr>
                 </tbody>
@@ -202,11 +177,11 @@
                <tr>
                 
                    <td colspan="8">
-                       <div class="t-right">
-                        ${Orders.or_Price + 3000 } 
+                       <div class="t-right" style="text-align: right;">
+                        ${Orders.or_Price} + 3000  =${Orders.or_Price + 3000 } 
                        </div>
                    </td>
-                 
+                 <input type="hidden" name="re_Price" value="${Orders.or_Price + 3000 }">
                </tr>
            </tfoot>
           <tbody>
@@ -224,6 +199,7 @@
 				                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      ${Orders.or_Option2 }  </span>
 						</div>
 					</td>
+					<input type="hidden" name="re_Pname" value="${Orders.or_Pname } ">
 					<td>
                       <div class="tb-center">${Orders.or_Amount } </div>
                   </td>
@@ -241,7 +217,7 @@
                       </div>
                   </td>
                   <td>
-                      <div class="tb-center">거래완료(상태)</div>
+                      <div class="tb-center"> ${Orders.or_Status }</div> 
                   </td>
                   <td>
                       <div class="tb-center"> ${Orders.or_Deliver_Num } </div>
@@ -269,20 +245,12 @@
                     </th>
                     <td colspan="3">
                         <div class="tb-center">
-                         <select>
-                            <option value="선택">--선택--</option>
+                         <select name="re_Reason" id="re_Reason">
+                            <option value="">--선택--</option>
                             <option value="단순">단순반품</option>
                             <option value="불량">불량반품</option>
-                          </select>  
+                          </select>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="row">
-                        <div class="tb-center">반품</div>
-                    </th>
-                    <td colspan="3">
-                        <div class="tb-left">(신청날짜)</div>
                     </td>
                 </tr>
                 <tr>
@@ -291,7 +259,7 @@
                     </th>
                     <td colspan="3">
                         <div class="tb-center">
-                            <input type="text" id="reason" placeholder="상세 사유를 작성해주세요~" style="width: 700px; height: 100px;">
+                            <input type="text" id="reason" name="re_Comment" placeholder="상세 사유를 작성해주세요~" style="width: 700px; height: 100px;">
                         </div>
                     </td>
                 </tr>
@@ -299,18 +267,28 @@
         </table>
     </div>
     <div id="pop_order_btn_group">
-        <button style="height: 35px; width: 97px; border-radius: 3px;">
-        <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">신청완료</a>
+        <button style="height: 35px; width: 97px; border-radius: 3px;" onclick="completebtn();">
+                       신청완료
         </button>
         &nbsp;&nbsp;
-        <button style="height: 35px; width: 97px; border-radius: 3px;">
-          <a href="<c:url value='myOrderList.mn'/>" style="width:100%; color:#fff;">돌아가기</a>
+        <button style="height: 35px; width: 97px; border-radius: 3px;" onclick="location.href='myOrderList.mn'" >
+                        돌아가기
         </button>
     </div>
 </div>
 </c:forEach>
 </form>
+
+
+<script>
+	function completebtn(){
+		$("#frm2").attr("action","R_complete.mn").submit();
+	}
+
+</script>
 </div>
+
+
 
 
 <%@ include file="All-Footer.jsp" %>

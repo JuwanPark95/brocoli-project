@@ -71,7 +71,7 @@
 		<result property="pf_Dimg3" column="PF_DIMG3"/>	
 		<result property="pf_Dimg3_ReName" column="PF_DIMG3_RENAME"/>
 		<result property="pf_P_NO" column="PF_P_NO"/>	
-		
+		 
 	</resultMap>
 	
 	<select id="selectNoReadReviewList" resultMap="reviewResultSet">

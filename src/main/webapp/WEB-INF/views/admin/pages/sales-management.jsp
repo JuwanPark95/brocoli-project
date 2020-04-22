@@ -64,28 +64,40 @@
                         <div class="card">
                             <h5 class="card-header">매출 테이블</h5>
                             <div class="card-body">
+                           		<!-- <form action="totalSalesSearch.ad" method="post"> -->
                             	<table id="sales-search" class="table table-basic" style="text-align:center;" border="1" >
                             		<thead>
                             			<tr style="border:1px solid lightgray;" >
                             				<th style="width:10%; padding-bottom: 16px;">날짜</th>
                             				<th style="width:25%;  padding-bottom: 16px;">
 											<p>
-										      <input type="date" id="date" />
+										      <input type="date" id="date1" name="or_Date" />
 										      ~
-										      <input type="date" id="date" />
+										      <input type="date" id="date2" name="or_Date" />
 										    </p>
 										    </th>
-                            				<th style="width:10%; padding-bottom: 16px;">브랜드</th>
-                            				<th style="width:25%; padding-bottom: 16px;"><input></th>
+                            				<th style="width:10%; padding-bottom: 16px;">
+                            				<div class="btn-group" style="height: 30px;">
+                                                <select  id="dropSearch" name="b_Status" style="margin-left:15px">
+                                                	<option value="brand_NO" >브랜드번호</option>
+                                                	<option value="b_Name" >브랜드</option>
+                                                	<option value="p_NO" >상품번호</option>
+                                                	<option value="p_Name" >상품명</option>
+                                                </select>
+                                            </div>
+                            				</th>
+                            				<th style="width:25%; padding-bottom: 16px;">
+                            				  <input type="text" class="form-control" id="content" name="content" >
+                                            </th>
                             				<th style="width:8%">
-                            				  <button type="submit" class="btn btn-light "
-									                  style="width:50px; height:40px; ">
-									                  <i class="fas fa-search"></i>
+                            				  <button id="searchBtn" type="submit" class="btn btn-light "  style="width:50px; height:40px;">
+									            <i class="fas fa-search"></i>
 									          </button>
                             				</th>
                             			</tr>
                             		</thead>                            	
                             	</table>
+                            	<!-- </form> -->
                             
                             
                             </div>
@@ -98,7 +110,7 @@
                                                 <th style="width:5%;">주문번호</th>
                                                 <th style="width:10%">판매일</th>
                                                 <th style="width:10%">브랜드번호</th>
-                                                <th style="width:10%">브랜드명</th>
+                                                <th style="width:10%">브랜드</th>
                                                 <th style="width:10%">상품번호</th>
                                                 <th style="width:10%">상품명</th>
                                                 <th style="width:7%">판매가격</th>
@@ -120,7 +132,7 @@
                                             </tr>
                                         </c:forEach>
                                       </tbody>
-                                      <tfoot style="background-color:#ffbe80;">
+                                      <tfoot style="background-color:#fdf1da;">
                                       	<tr style="font-weight: 1000;">
                                       		<th style="font-weight: 1000;">합계</th>
                                       		<th style="font-weight: 1000;">전체매출</th>
@@ -152,7 +164,40 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
+    
+    <!-- 작성자 : 신은지 
+         1. 검색 Ajax -->
+    <script>     
+         $(function(){
+         	$("#searchBtn").on("click",function(){
+         		
+         		
 
+         		var date1 = $("#date1").val();
+
+         		var date2 =  $("#date2").val();
+
+         		var dropSearch = $("#dropSearch").val();
+
+         		var content = $("#content").val();
+
+         		         		
+         		$.ajax({
+         			type:"POST",
+         			url:"totalSalesSearch.ad",
+         			dataType:"json",
+                    data:{date1:date1 , date2:date2, dropSearch:dropSearch, content:content},
+         			success:function(data){
+         				
+         			},error:function(){
+         				
+         			}
+         		});
+         	});
+         });
+    </script>     
+         
+         
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

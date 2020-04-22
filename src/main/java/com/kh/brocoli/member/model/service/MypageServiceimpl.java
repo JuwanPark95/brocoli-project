@@ -12,8 +12,10 @@ import com.kh.brocoli.board.model.vo.PageInfo;
 import com.kh.brocoli.board.model.vo.QnA;
 import com.kh.brocoli.board.model.vo.SearchCondition;
 import com.kh.brocoli.member.model.dao.MypageDao;
+import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.member.model.vo.Reject;
 
 @Service("myService")
 public class MypageServiceimpl implements MypageService {
@@ -67,6 +69,21 @@ public class MypageServiceimpl implements MypageService {
 	@Override
 	public ArrayList<Orders> P_change(String or_No) {
 		return myDao.P_change(or_No);
+	}
+
+	@Override
+	public ArrayList<Orders> P_reject(String or_No) {
+		return myDao.P_reject(or_No);
+	}
+
+	@Override
+	public int C_complete(Change ch) {
+		return myDao.C_complete(ch);
+	}
+
+	@Override
+	public int R_complete(Reject re) {
+		return myDao.R_complete(re);
 	}
 
 	
