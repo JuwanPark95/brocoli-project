@@ -49,7 +49,8 @@
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px; font-size: 16px; width: 430px;">
-								<strong><input type="text" id="productName" style="display: inline-block; width: 430px;" readonly="readonly"></strong>
+								<input type="hidden" id="test"/>
+								<strong><a id="detailCheck"><input type="text" id="productName" style="display: inline-block; cursor:pointer; width: 430px;" readonly="readonly"></a></strong>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23 "
