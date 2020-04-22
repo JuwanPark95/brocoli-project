@@ -130,5 +130,19 @@ public class ownerOrderController {
 		return mv;
 	}
 	
+	@RequestMapping("order_detail.ow")
+	public ModelAndView order_detail(ModelAndView mv , int oNO) {
+		Orders od = oService.orderDetail(oNO);
+		
+		if(od != null) {
+			mv.addObject("order",od);
+			mv.setViewName("order-detail");
+		}else {
+			mv.setViewName("404-Page");
+		}
+		
+		return mv;
+	}
+	
 	
 }

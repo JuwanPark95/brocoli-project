@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Wish-mapper">
-
-
+<mapper namespace="Cart-mapper">
 
 <resultMap type="Product" id="productResultSet">
 		<id property="p_NO" column="P_NO"/>
@@ -25,7 +23,7 @@
 </resultMap>
 
 <!-- 상품 이미지 등록정보 -->
-	<resultMap  type="Product_File" id="ProductFileResultSet">
+	<resultMap type="Product_File" id="ProductFileResultSet">
 		<id property="pf_NO" column="PF_NO"/>
 		
 		<result property="pf_Img1" column="PF_IMG1"/>
@@ -49,42 +47,30 @@
 		<result property="pf_P_NO" column="PF_P_NO"/>	
 		
 	</resultMap>
-
-<resultMap type="Wish" id="wishListResultSet">
-
-	<id property="w_No" column="W_NO"/>
 	
-	<result property="w_Mno" column="W_MNO"/>
-	<result property="w_P_NO" column="W_P_NO"/>
+	<resultMap type="Cart" id="CartResultSet">
 	
-	<collection property="productList" resultMap="productResultSet"/>
-	<collection property="p_File" resultMap="ProductFileResultSet"/>
-</resultMap>
-
-<insert id="wInsert" parameterType="Wish">
-
-	INSERT INTO WISH
-	VALUES(SEQ_W_NO.NEXTVAL,#{w_Mno},#{w_P_NO})
+		<id property="ct_P_NO" column="CT_NO"/>
+		
+		<result property="ct_Option_1" column="CT_OPTION_1"/>
+		<result property="ct_Option_2" column="CT_OPTION_2"/>
+		<result property="ct_Amount" column="CT_AMOUNT"/>
+		<result property="ct_Mno" column="CT_MNO"/>
+		<result property="ct_P_NO" column="CT_P_NO"/>
 	
-</insert>
-
-<select id = "wishList" resultMap="wishListResultSet" parameterType="Product">
-
-	SELECT * 
-	FROM WISH W
-		JOIN PRODUCT P 
-        ON(P.P_NO = W.W_P_NO)
-        JOIN PRODUCT_FILE F 
-        ON(W.W_P_NO = F.PF_P_NO)
-		JOIN MEMBER M 
-        ON(M.MNO = W.W_MNO)
-	WHERE W.W_MNO = #{M.mNO}
-
-</select>
-
-<delete id="deleteWish" parameterType="_int">
-	DELETE FROM WISH
-	WHERE W_P_NO=#{p_NO}
-</delete>
-
+		<collection property="productList" resultMap="productResultSet"/>
+		<collection property="p_File" resultMap="ProductFileResultSet"/>
+	</resultMap>
+	
+	<insert id="cInsert" parameterType="Cart">
+		INSERT INTO CART
+		VALUES(SEQ_CT_NO.NEXTVAL,#{ct_Option_1},#{ct_Option_2},#{ct_Amount},#{ct_Mno},#{ct_P_NO})	
+	</insert>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

@@ -40,22 +40,18 @@
 			<div class="flex-w flex-sb-m p-b-52" style="height:75px;">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10" >
 					<strong style="font-size: 35px; color: #222; margin-right: 30px; padding-left: 0px; margin-left: 0px;">랭킹</strong>
-					<c:url var="day" value="rankView.mn"/>
+					<c:url var="day" value="rankday.mn"/>
 					<a href="${day}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" style="font-size:20px;"data-filter="*">
-						오늘
+						일별
 					</a>
-		
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".women">
-						이번주
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".men">
-						이번달
-					</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".bag">
-						올해
-					</button>
+					<c:url var="month" value="rankmonth.mn"/>
+					<a href="${month }" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".men">
+						월별
+					</a>
+					<c:url var="year" value="rankyear.mn"/>
+					<a href="${year }" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" style="font-size:20px;" data-filter=".bag">
+						년별
+					</a>
 					
 				
 					
@@ -66,8 +62,8 @@
 
 			
 			<div class="row isotope-grid">
+		
          <c:forEach var="day" items="${ dayList }">
-         
          	<c:url var="productDetail" value="productDetail.mn">
            		<c:param name="p_NO" value="${day.p_NO }"/>
    	        </c:url>
@@ -364,7 +360,7 @@
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
-				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

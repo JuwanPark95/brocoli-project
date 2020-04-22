@@ -75,9 +75,10 @@
 									<td style="text-align: center;">
 									<c:url var="wDelete" value="wDelete.mn">
 										<c:param name="p_NO" value="${ w.productList.p_NO }"/>
+										<c:param name="Mno" value="${loginUser.mNO }"/>
 									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-										onclick="location.href='<c:url value='${ wDelete }'/>';">삭제</button> 
+							      	onclick="location.href='<c:url value='${ wDelete }'/>';">삭제</button> 
 										
 									</td>
 									
@@ -89,8 +90,7 @@
 									<td>
 										<c:out value="${ sum }"/> 원
 									</td>
-								</tr>
-							
+								</tr>		
 							</table>
 						</div>
 

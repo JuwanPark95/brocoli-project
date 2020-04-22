@@ -39,8 +39,11 @@ public class ownerOrderDao {
 	}
 
 	public ArrayList<Orders> selectOrderChange(int bNO) {
-		System.out.println("DAO in bNO : " + bNO);
 		return (ArrayList)sqlSession.selectList("ownerOrder-mapper.selectOrderExChange",bNO);
+	}
+
+	public Orders selectOrderDetail(int oNO) {
+		return sqlSession.selectOne("ownerOrder-mapper.selectOrderDetail",oNO);
 	}
 
 }

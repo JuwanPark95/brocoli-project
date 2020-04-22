@@ -690,8 +690,8 @@
 						
 						
 					 <c:url var="wInsert" value="wInsert.mn">
-					 <c:param name="pNo" value="${ ap.p_NO }"/>
-					 	<c:param name="mNo" value="${ loginUser.mNO }"/>
+					 <c:param name="w_P_NO" value="${ ap.p_NO }"/>
+					 	<c:param name="w_Mno" value="${ loginUser.mNO }"/>
 					 </c:url>	
                      <div class="block2-txt-child2 flex-r p-t-3">
                         <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
@@ -968,7 +968,7 @@
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
-				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

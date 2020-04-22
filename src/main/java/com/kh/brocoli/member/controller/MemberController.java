@@ -97,17 +97,52 @@ public class MemberController {
 	
 	
 	/**
-	 * 랭킹 페이지로 이동
+	 * 랭킹 요일 페이지로 이동
 	 * @return
 	 */
-	@RequestMapping("rankView.mn")
+	@RequestMapping("rankday.mn")
 	public ModelAndView dayRank(Product pd, ModelAndView mv) {
 		
-		ArrayList<Product> plist = mService.selectapList();
+		ArrayList<Product> daylist = mService.selectdayList();
 		
-		mv.addObject("dayList",plist);
+		mv.addObject("dayList",daylist);
 		
-		mv.setViewName("Main-Rank");
+		mv.setViewName("Main-Rank-day");
+		return mv;
+	}
+	
+	/**
+	 * 랭킹 월별 페이지로 이동
+	 * @param pd
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("rankmonth.mn")
+	public ModelAndView monthRank(Product pd, ModelAndView mv) {
+		
+		
+		ArrayList<Product> monthlist = mService.selectmonthList();
+		
+		mv.addObject("monthList",monthlist);
+		
+		mv.setViewName("Main-Rank-month");
+		return mv;
+	}
+	
+	/**
+	 * 랭킹 년별 페이지로 이동
+	 * @param pd
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("rankyear.mn")
+	public ModelAndView yearRank(Product pd, ModelAndView mv) {
+		
+		ArrayList<Product> yearlist = mService.selectyearList();
+		
+		mv.addObject("yearList",yearlist);
+		
+		mv.setViewName("Main-Rank-year");
 		return mv;
 	}
 	/**
@@ -210,7 +245,22 @@ public class MemberController {
 		gson.toJson(pDetail,response.getWriter());
 		
 	}
+	
+	@RequestMapping("qnacomment")
+	public void qnacomment(HttpServletResponse response,String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
+		System.out.println("@@"+pq_P_NO);
+		System.out.println("##"+pq_Content);
+		System.out.println("$$"+pq_Writer);
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 
+		Gson gson = new GsonBuilder().create();
+		//gson.toJson(pDetail,response.getWriter());
+		
+	}
+	
 	
 
 

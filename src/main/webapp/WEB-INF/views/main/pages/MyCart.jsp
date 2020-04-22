@@ -44,7 +44,6 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-0"><input type="checkbox"></th>
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">옵션1</th>
@@ -52,19 +51,23 @@
 									<th class="column-5">판매금액</th>
 									<th class="column-6">수량</th>
 									<th class="column-7">총 금액</th>
+									<th class="column-7">삭제</th>
 								</tr>
-
+							<c:set var="sum" value="0"/>
+							<c:forEach var="w" items="${ wList }">
+	
 								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG">
+											<img src="/brocoli/resources/product-Img/${w.p_File.pf_Img1_ReName}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">패딩</td>
+									<td class="column-2">${w.productList.p_Name}</td>
 									<td class="column-3">Red</td>
 									<td class="column-4">XL</td>
-									<td class="column-5">36,000원</td>
+									<td class="column-7">${w.productList.p_Last_Price}</td>
+									<c:set var="sum" value="${sum + w.productList.p_Last_Price }"/>
+									
 									<td class="column-6">										
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -78,42 +81,25 @@
 											</div>
 										</div>
 									</td>
-									<td class="column-7">36,000원</td>
 									
-								</tr>
-								
-								
-
-								<tr class="table_row">
-									<td class="column-0"><input type="checkbox"></td>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/brocoli/resources/mainResources/image/item-cart-05.jpg" alt="IMG">
-										</div>
+									<td class="column-7">36,000원</td>
+										<td style="text-align: center;">
+									<c:url var="cDelete" value="cDelete.mn">
+										<c:param name="p_NO" value="${ w.productList.p_NO }"/>
+										<c:param name="Mno" value="${loginUser.mNO }"/>
+									</c:url> 
+									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+										
 									</td>
-									<td class="column-2">아우터</td>
-									<td class="column-3">BLACK</td>
-									<td class="column-4">L</td>
-									<td class="column-5">72,000원</td>
-									<td class="column-6">
-									<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-									</td>
-									<td class="column-7">72,000원</td>
 								</tr>
+								</c:forEach>					
 								<tr style="height:100px;">
 									<td colspan="6"></td>
 									<td >총 금액 : </td>
-									<td>98,000원 </td>
+									<td>
+										<c:out value="${ sum }"/> 원
+									</td>
 								</tr>
 							</table>
 						</div>
@@ -124,11 +110,6 @@
 									
 
 							</div> -->
-
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10" style="margin-left: 88%; background: #333;
-    					color: white; border-radius:5px;">
-								선택 상품 삭제
-							</div>
 						</div>
 						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
    						 color: white; border-radius:5px;"	>
