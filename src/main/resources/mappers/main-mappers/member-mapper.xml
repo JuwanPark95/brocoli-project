@@ -27,7 +27,37 @@
 		
 	</resultMap>
 	
-	
+	<resultMap type="Magazine" id="magazineResultSet">
+		<id property="m_NO" column="M_NO"/>
+		<result property="m_ID" column="M_ID"/>
+		<result property="m_Title" column="M_TITLE"/>
+		<result property="m_Comment" column="M_COMMENT"/>
+		<result property="m_Date" column="M_DATE"/>
+		<result property="m_Status" column="M_STATUS"/>
+		<result property="m_Category" column="M_CATEGORY"/>
+		<result property="m_Count" column="M_COUNT"/>
+		<result property="m_Brand_NO" column="M_BRAND_NO"/>
+		<result property="m_Mno" column="M_MNO"/>
+		
+		<collection property="mFile" resultMap="magazineFileResultSet"/>
+	</resultMap>
+	<resultMap type="Magazine_File" id="magazineFileResultSet">
+	<id property="mf_NO" column="MF_NO"/>
+	<result property="mf_Img1" column="MF_IMG1"/>
+	<result property="mf_Img1_ReName" column="MF_IMG1_RENAME"/>
+	<result property="mf_Img2" column="MF_IMG2"/>
+	<result property="mf_Img2_ReName" column="MF_IMG2_RENAME"/>
+	<result property="mf_Img3" column="MF_IMG3"/>
+	<result property="mf_Img3_ReName" column="MF_IMG3_RENAME"/>
+	<result property="mf_Img4" column="MF_IMG4"/>
+	<result property="mf_Img4_ReName" column="MF_IMG4_RENAME"/>
+	<result property="mf_Img5" column="MF_IMG5"/>
+	<result property="mf_Img5_ReName" column="MF_IMG5_RENAME"/>
+	<result property="mf_Img6" column="MF_IMG6"/>
+	<result property="mf_Img6_ReName" column="MF_IMG6_RENAME"/>
+	<result property="mf_M_NO" column="MF_M_NO"/>
+			
+	</resultMap>
 		<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
 		SELECT * 
 		FROM MEMBER
@@ -39,7 +69,7 @@
 		<insert id="insertMember" parameterType="Member">
 		 INSERT INTO MEMBER
     	 VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
-    	 NULL,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
+    	10000,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
 	</insert>
 	
 	<select  id="idCheck" parameterType="String" resultType="_int">
@@ -108,4 +138,94 @@
 	FROM BRAND
 	WHERE B_NAME = #{b_Name}
 	</select>
+	
+	<select id="getListCount3" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_STATUS = 'Y'
+		ORDER BY M_NO DESC
+	</select>
+	<select id="selectmList" resultMap="magazineResultSet">
+		 SELECT * 
+		   FROM( SELECT * FROM MAGAZINE 
+		   JOIN MAGAZINE_FILE ON M_NO = MF_M_NO
+		   ORDER BY MAGAZINE.M_DATE DESC)
+		   WHERE M_STATUS = 'Y'
+	</select>
+	
+	<update id="updateCount" parameterType="_int">
+		UPDATE MAGAZINE
+		SET M_COUNT = M_COUNT +1
+		WHERE M_NO=#{m_NO}
+	</update>
+	
+	<select  id="selectMagazine" resultMap="magazineResultSet">
+		SELECT * FROM ( SELECT * FROM MAGAZINE 
+		   JOIN MAGAZINE_FILE ON M_NO = MF_M_NO
+		   ORDER BY MAGAZINE.M_DATE DESC) 
+		WHERE M_NO=#{m_NO}
+		AND M_STATUS='Y'
+	</select>
+	<select  id="selectM1" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-01-01' AND '2020-01-31'
+	</select>
+	<select  id="selectM2" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-02-01' AND '2020-02-29'
+	</select>
+	<select  id="selectM3" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-03-01' AND '2020-03-31'
+	</select>
+	<select  id="selectM4" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-04-01' AND '2020-04-30'
+	</select>
+	<select  id="selectM5" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-05-01' AND '2020-05-31'
+	</select>
+	<select  id="selectM6" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-06-01' AND '2020-06-30'
+	</select>
+	<select  id="selectM7" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-07-01' AND '2020-07-31'
+	</select>
+	<select  id="selectM8" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-08-01' AND '2020-08-31'
+	</select>
+	<select  id="selectM9" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-09-01' AND '2020-09-30'
+	</select>
+	<select  id="selectM10" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-10-01' AND '2020-10-31'
+	</select>
+	<select  id="selectM11" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-11-01' AND '2020-11-30'
+	</select>
+	<select  id="selectM12" resultType="_int">
+		SELECT COUNT(*)
+		FROM MAGAZINE
+		WHERE M_DATE BETWEEN '2020-12-01' AND '2020-12-31'
+	</select>
+	
+	
 </mapper>

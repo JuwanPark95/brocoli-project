@@ -3,6 +3,7 @@ package com.kh.brocoli.member.model.service;
 import java.util.ArrayList;
 
 import com.kh.brocoli.general.model.vo.Auction;
+import com.kh.brocoli.magazine.model.vo.Magazine;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
@@ -84,6 +85,59 @@ public interface UserService {
 	 * @return
 	 */
 	public int bNameCheck(String name);
+
+	/**
+	 * 작성자 임현섭
+	 * 조회수 측정
+	 * @return
+	 */
+	int getListCount3();
+
+	/**
+	 * 작성자 임현섭
+	 * 매거진 목록 조회용
+	 * @return
+	 */
+	ArrayList<Magazine> selectmList(String ob);
+
+	/**
+	 * 작성자 임현섭
+	 * 메거진 디테일
+	 * @param m_NO
+	 * @return
+	 */
+	Magazine selectMagazine(int m_NO);
+
+	/**
+	 * 작성자 임현섭
+	 * 월별 매거진 갯수 조회
+	 * @return
+	 */
+	
+
+	int selectM1();
+
+	int selectM2();
+
+	int selectM3();
+
+	int selectM4();
+
+	int selectM5();
+
+	int selectM6();
+
+	int selectM7();
+
+	int selectM8();
+
+	int selectM9();
+
+	int selectM10();
+
+	int selectM11();
+
+	int selectM12();
 
 	
  

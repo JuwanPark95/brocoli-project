@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%@ include file="All-Header.jsp" %>
+	
 
 <title>Insert title here</title>
 <style>
