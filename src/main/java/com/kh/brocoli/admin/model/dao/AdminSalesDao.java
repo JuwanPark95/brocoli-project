@@ -1,6 +1,7 @@
 package com.kh.brocoli.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,15 @@ public class AdminSalesDao {
 	 */
 	public ArrayList<Orders> selectSalesList() {
 		return (ArrayList)sqlSession.selectList("AdminSales.selectSalesList");
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  2. 매출 검색(날짜,브랜드) list
+	 * @return
+	 */
+	public ArrayList<Orders> searchList(HashMap<String,String> map) {
+		return (ArrayList)sqlSession.selectList("AdminSales.searchList",map);
 	}
 
 }

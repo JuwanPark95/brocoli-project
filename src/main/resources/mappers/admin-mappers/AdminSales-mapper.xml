@@ -55,4 +55,68 @@
 	</select>
 	
 	
+	<!-- <select id="searchListttt" resultMap="salesResultSet" parameterType="map">
+		SELECT *
+		FROM ORDERS
+		JOIN BRAND ON OR_BRAND_NO = BRAND_NO
+		WHERE  OR_STATUS = '5'
+      	        <if test='"".equals(content)'>
+			   <![CDATA[
+	      	   AND OR_DATE>#{date1} AND OR_DATE<#{date2} 
+		       ]]>
+		       </if>
+	</select> -->
+	
+	<!-- BACKUP -->
+	<select id="searchList" resultMap="salesResultSet" parameterType="map">
+		SELECT *
+		FROM ORDERS
+		JOIN BRAND ON OR_BRAND_NO = BRAND_NO
+		WHERE  OR_STATUS = '5'
+      	        <if test="date1 != null and date2 != null and #{dropSearch} != null and #{content} == null ">
+			   <![CDATA[
+	      	   AND OR_DATE>#{date1} AND OR_DATE<#{date2} 
+		       ]]>
+		       </if>
+		       
+		       <if test="date1 != null and date2 != null and #{dropSearch} != null and #{content} != null ">
+			   <![CDATA[
+	      	   AND OR_DATE>#{date1} AND OR_DATE<#{date2} 
+		       ]]>
+		       		<if test="#{dropSearch} != null and #{content} != null">
+      	            <choose>
+      	       	    <when test="brand_NO = #{dropSearch}">
+      	       	 	AND BRAND_NO LIKE #{content}
+      	       	    </when>
+      	       	    <when test="B_NAME = #{dropSearch}">
+      	       	 	AND B_NAME LIKE '%' + #{content} + '%'
+      	       	    </when>
+      	       	    <when test="p_NO = #{dropSearch}">
+      	       	 	AND OR_P_NO LIKE #{content}
+      	       	    </when>
+      	       	    <when test="p_Name = #{dropSearch}">
+      	       	 	AND OR_PNAME LIKE '%' + #{content} + '%'
+      	       	    </when>
+      	       	    </choose>
+      	            </if>
+		       </if>
+		       
+		       <if test="date1 == null and date2 == null and #{dropSearch} != null and #{content} != null ">
+    	            <choose>
+    	       	    <when test="brand_NO = #{dropSearch}">
+    	       	 	AND BRAND_NO LIKE #{content}
+    	       	    </when>
+    	       	    <when test="B_NAME = #{dropSearch}">
+    	       	 	AND B_NAME LIKE '%' + #{content} + '%'
+    	       	    </when>
+    	       	    <when test="p_NO = #{dropSearch}">
+    	       	 	AND OR_P_NO LIKE #{content}
+    	       	    </when>
+    	       	    <when test="p_Name = #{dropSearch}">
+    	       	 	AND OR_PNAME LIKE '%' + #{content} + '%'
+    	       	    </when>
+    	       	    </choose>
+		       </if>
+		       
+	</select>
 </mapper>
