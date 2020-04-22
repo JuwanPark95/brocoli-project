@@ -968,7 +968,7 @@
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
-				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

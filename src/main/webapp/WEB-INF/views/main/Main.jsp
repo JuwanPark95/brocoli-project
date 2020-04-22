@@ -286,7 +286,7 @@
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
-				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");
@@ -318,8 +318,7 @@
 				$('#productPrice').val(data[0].p_Price);
 				$('#lastPrice').val(data[0].p_Last_Price);
 				$('#productComment').val(data[0].p_Comment);
-
-
+				
 				img += "<div class='item-slick3' data-thumb='-'>"
 				img +=	"<div class='wrap-pic-w pos-relative'>"
 				img += "<img src='/brocoli/resources/product-Img/"+data[0].pf_Img1_ReName + "'alt='IMG-PRODUCT'>"
@@ -365,6 +364,7 @@
 				$('#select1').html(option);
 				$('#select2').html(option2);
 				
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

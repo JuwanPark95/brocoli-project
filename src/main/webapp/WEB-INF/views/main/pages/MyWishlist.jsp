@@ -90,8 +90,7 @@
 									<td>
 										<c:out value="${ sum }"/> 원
 									</td>
-								</tr>
-							
+								</tr>		
 							</table>
 						</div>
 
