@@ -152,10 +152,15 @@
 										style="color: white; background-color: #333; border-radius: 5px;">
 										즉시 결제</button>
 									&nbsp;&nbsp;&nbsp;
-									<button
+									
+									<c:url var="cInsert" value="cInsert.mn">
+									 <c:param name="ct_P_NO" value="${ ap.p_NO }"/>
+									 	<c:param name="ct_Mno" value="${ loginUser.mNO }"/>
+									</c:url>
+									<a href="${ cInsert }"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
-										style="color: white; background-color: #333; border-radius: 5px;">
-										장바구니+</button>
+										style="color: white; background-color: #333; border-radius: 5px;" >
+										장바구니</a>
 								</div>
 							</div>
 
