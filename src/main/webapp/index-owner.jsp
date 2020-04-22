@@ -11,7 +11,7 @@
 <!-- 	커밋테스트용 22		-->
 	<%-- <jsp:forward page="WEB-INF/views/owner/owner.jsp"/> --%>
 	
-	<jsp:forward page="WEB-INF/views/owner/pages/banner-sale.jsp"/>
+	<jsp:forward page="WEB-INF/views/owner/pages/review-management.jsp"/>
 	
 </body>
 </html>

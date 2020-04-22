@@ -97,71 +97,41 @@
 												<th style="width: 100%;">Name</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<div class="card-body">
-														<div class="review-block" style="padding: 8px;">
-															<div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
-																<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
-																	alt="user" class="rounded" width="100"> 
-																<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_GREY_11_20200410151011.jpg"
-																	alt="user" class="rounded" width="100">
-															</div>
-																<textarea style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-																padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
-																>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
-															<div class="rating-star">
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i>
-															</div>
-															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
-															<div style="display: flex;">
-																<textarea
-																	style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
-																<a href="#" class="btn btn-primary active"
-																	style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
-															</div>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="card-body">
-														<div class="review-block" style="padding: 8px;">
-
-															<div class="m-r-10" style="margin-bottom: 10px;">
-																<img src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
-																	alt="user" class="rounded" width="100"> 
-																<img src="/brocoli/resources/product-Img/HOOD_GREY_11_20200410151011.jpg"
-																	alt="user" class="rounded" width="100">
-															</div>
-																<textarea  style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-																padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
-																>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
-															<div class="rating-star">
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i> 
-																<i class="fa fa-fw fa-star"></i>
-															</div>
-															<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
-															<div style="display: flex;">
-																<textarea
-																	style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
-																<a href="#" class="btn btn-primary active"
-																	style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
+										<tbody id="list">
+											<c:forEach var="i" items="${ list}">
+												<tr>
+													<td>
+														<div class="card-body">
+															<div class="review-block" style="padding: 8px;">
+																<div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
+																	<img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
+																		alt="user" class="rounded" width="100"> 
+																	<img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
+																		alt="user" class="rounded" width="100">
+																</div>
+																	<textarea style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
+																	padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
+																	>${i.v_Content }</textarea>
+																<div class="rating-star">
+																	<i class="fa fa-fw fa-star"></i> 
+																	<i class="fa fa-fw fa-star"></i> 
+																	<i class="fa fa-fw fa-star"></i> 
+																	<i class="fa fa-fw fa-star"></i> 
+																	<i class="fa fa-fw fa-star"></i>
+																</div>
+																<span class="text-dark font-weight-bold">${i.v_Writer }</span><small class="text-mute">${i.v_Date }</small>
+																
+																<div style="display: flex;">
+																	<textarea
+																		style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
+																	<a href="#" class="btn btn-primary active"
+																		style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
+																</div>
 															</div>
 														</div>
-													</div>
-												</td>
-											</tr>
-											
+													</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 										<tfoot style="display: none;">
 											<tr>
@@ -178,7 +148,48 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- <script type="text/javascript">
+	window.onload =$(function(){
+			$.ajax({
+				url: "reviewList.ow",
+				dataType: "json",
+				success:function(list){
+					$("#list").append(
+							<td>
+							<div class="card-body">
+								<div class="review-block" style="padding: 8px;">
+									<div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
+										<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
+											alt="user" class="rounded" width="100"> 
+										<img style="float: left;" src="/brocoli/resources/product-Img/HOOD_GREY_11_20200410151011.jpg"
+											alt="user" class="rounded" width="100">
+									</div>
+										<textarea style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
+										padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
+										>배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
+									<div class="rating-star">
+										<i class="fa fa-fw fa-star"></i> 
+										<i class="fa fa-fw fa-star"></i> 
+										<i class="fa fa-fw fa-star"></i> 
+										<i class="fa fa-fw fa-star"></i> 
+										<i class="fa fa-fw fa-star"></i>
+									</div>
+									<span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
+									<div style="display: flex;">
+										<textarea
+											style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
+										<a href="#" class="btn btn-primary active"
+											style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
+									</div>
+								</div>
+							</div>
+						</td>
+						);
+				}
+			});
+		});
+	</script> -->
 
 
 
