@@ -48,7 +48,7 @@ public class AdminSalesController {
 	 */
     @RequestMapping("totalSalesSearch.ad")
     @ResponseBody
-    public void totalSalesSearch(@RequestParam(value="date1", required=false) String date1,
+    public ArrayList<Orders> totalSalesSearch(@RequestParam(value="date1", required=false) String date1,
     											@RequestParam(value="date2", required=false) String date2,
     											@RequestParam(value="dropSearch", required=false) String dropSearch,
     											@RequestParam(value="content", required=false) String content) throws Exception{
@@ -66,6 +66,9 @@ public class AdminSalesController {
     	ArrayList<Orders> searchList = ASService.searchList(hmap);
     	
     	System.out.println("searchList" + searchList);
+    	
+    	return searchList;
+    	
     }
 	 	 
 

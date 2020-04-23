@@ -103,10 +103,13 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <!-- 페이징 + 검색  -->
+                                    <!-- <table id="brand-management" class="table table-striped table-bordered first" style="text-align:center;"> -->
+                                    
+                                    <table id="brand-management" class="table table-striped table-bordered" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%;">매출번호</th>
+                                                <th style="width:5%;">번호</th>
                                                 <th style="width:5%;">주문번호</th>
                                                 <th style="width:10%">판매일</th>
                                                 <th style="width:10%">브랜드번호</th>
@@ -117,7 +120,17 @@
                                                 <th style="width:3%">수량</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                      	<tr style="font-size: 22px; height:70px; background-color:#fdf1da;">
+                                      		<th colspan="4" style="font-weight: 1000;">총매출</th>
+                                      		<th id="searchTotal" colspan="5" style="font-weight: 1000;">
+                                      		<c:set var="totalSum" value="0"/> 
+                                      		<c:forEach  var="s" items="${salesList}"> 
+                                      			<c:set var="totalSum" value="${totalSum + s.or_Price }"/>
+                                      		</c:forEach>
+                                      		<c:out value="${totalSum}"/><span>원</span>
+                                      		</th>
+                                      	</tr>
+                                        <tbody id="salesList">
                                         <c:forEach var="s" items="${salesList}" varStatus="sl"> 
                                             <tr>
                                                 <td>${sl.count}</td>
@@ -132,20 +145,6 @@
                                             </tr>
                                         </c:forEach>
                                       </tbody>
-                                      <tfoot style="background-color:#fdf1da;">
-                                      	<tr style="font-weight: 1000;">
-                                      		<th style="font-weight: 1000;">합계</th>
-                                      		<th style="font-weight: 1000;">전체매출</th>
-                                      		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;">검색매출</th>
-                                      		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;">총 주문수</th>
-                                      		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;"></th>
-                                      		<th style="font-weight: 1000;"></th>  
-                                      	</tr>
-                                      
-                                      </tfoot>
                                     </table>
                             </div>
                         </div>
@@ -158,7 +157,12 @@
                 <div class="row">
                     <!-- ============================================================== -->
                     <!-- data table  -->
-                    <!-- ============================================================== -->            
+                
+                    <!-- ============================================================== -->   
+                       
+                  </div>
+               </div>
+           </div>         
         </div>
     </div>
     <!-- ============================================================== -->
@@ -170,9 +174,6 @@
     <script>     
          $(function(){
          	$("#searchBtn").on("click",function(){
-         		
-         		
-
          		var date1 = $("#date1").val();
 
          		var date2 =  $("#date2").val();
@@ -180,23 +181,45 @@
          		var dropSearch = $("#dropSearch").val();
 
          		var content = $("#content").val();
-
-         		         		
+         		
+         		var count = 1;
+ 				
+ 				
          		$.ajax({
          			type:"POST",
          			url:"totalSalesSearch.ad",
          			dataType:"json",
                     data:{date1:date1 , date2:date2, dropSearch:dropSearch, content:content},
          			success:function(data){
-         				
+         				//기존 테이블 없애주기
+         				$('#salesList').empty();
+         				//결과값에서 매출 총액 더해주기 위해서 변수 sum=0
+         				var sum=0;
+         				//없어진 기존 테이블에 each로 나열 후 append로 테이블 재생성
+         				$.each(data, function(index,searchList){
+         					$('#salesList').append("<tr><td>"+ (count++) +"</td><td>"
+         													 +searchList.or_NO+"</td><td>"
+         							                         +searchList.or_Date+"</td><td>"
+         							                         +searchList.or_Brand_NO+"</td><td>"	
+         							                         +searchList.or_Brand.b_Name+"</td><td>"
+         							                         +searchList.or_P_NO+"</td><td>"
+         							                         +searchList.or_Pname+"</td><td>"
+         							                         +searchList.or_Price+"</td><td>"
+         							                         +searchList.or_Amount+"</td></tr>"
+         					);
+         					//검색 결과 매출총액 계산 (String으로 들어오므로 parseInt로 형변환 후 계산)
+         					sum = sum + parseInt(searchList.or_Price);
+         					//기존 테이블 매출총액 텍스트 변경
+         					$('#searchTotal').text(sum).append("원");
+         				});
          			},error:function(){
          				
          			}
          		});
          	});
          });
-    </script>     
-         
+    </script> 
+    
          
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
