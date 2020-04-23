@@ -37,8 +37,8 @@
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
 					<li class="p-b-13">
-					
-						<a href="${Main }" class="stext-102 cl2 hov-cl1 trans-04">
+					<c:url var="MainPage" value="MainPage" />
+						<a href="${MainPage }" class="stext-102 cl2 hov-cl1 trans-04">
 							메인
 						</a>
 					</li>
@@ -93,8 +93,12 @@
 
 
 					<li class="p-b-13">
-					
+						<c:if test="${!empty sessionScope.loginUser }">
 						<a href="<c:url value='QnAlist.mn'/>" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
+						<c:if test="${empty sessionScope.loginUser }">
+						<a href="${loginPage }" class="stext-102 cl2 hov-cl1 trans-04">
+						</c:if>
 							문의사항
 						</a>
 					</li>
