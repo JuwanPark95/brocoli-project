@@ -63,24 +63,41 @@
                             <h5 class="card-header">매거진 현황 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <table id="magazineUploadTable" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">번호</th>
-                                                <th style="width:5%">브랜드명</th>
-                                                <th style="width:8%">제목</th>
-                                                <th style="width:8%">작성자</th>
-                                                <th style="width:8%">날짜</th>
+                                            	<th>번호</th>
+                                                <th>매거진번호</th>
+                                                <th>작성자</th>
+                                                <th>제목</th>
+                                                <th>브랜드</th>
+                                                <th>카테고리</th>
+                                                <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="mgUp" items="${mgUp}" varStatus="mgUpl">
                                             <tr>
-                                                <td>1</td>
-                                                <td>나이키</td>
-                                                <td>매거진_나이키_</td>
-                                                <td>나길동</td>
-                                                <td>2020-03-03</td>
+                                            	<td>${mgUpl.count}</td>
+                                                <td>${mgUp.m_NO}</td>
+                                                <td>${mgUp.m_ID}</td>
+                                                <td>${mgUp.m_Title}</td>
+                                                <td>${mgUp.m_Brand.b_Name}</td>
+                                                <td>${mgUp.m_Category}</td>
+                                                <td>
+	                                                <c:set var="m_Status" value="${mgUp.m_Status}" />
+	                                            	<c:choose>
+	                                            		<c:when test="${m_Status eq 'Y'}">
+	                                            			<strong><span style="color:#60DA8D;">등록</span></strong>
+	                                            		</c:when>
+	                                            		<c:when test="${m_Status eq 'N'}">
+	                                            			<strong><span style="color:#6EABED;">신청</span></strong>
+	                                            		</c:when>
+	                                            		<c:when test="${m_Status eq 'D'}">
+	                                            			<strong><span style="color:tomato;">삭제</span></strong>
+	                                            		</c:when>
+	                                            	</c:choose>
+                                            	</td>
 											</tr>
                                         </c:forEach>
                                       </tbody>
@@ -103,24 +120,19 @@
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     
-    	<!-- 매거진 현황 상세보기용 -->
+    	<!-- 매거진 상세보기용 -->
 		<script>
 			$(function(){
-				$("#brand-owner-contact").find("td").mouseenter(function(){
+				$("#magazineUploadTable").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="magazine-upload-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
+					var m_NO = $(this).parents().children("td").eq(1).text();	
+					location.href="magazineManagementDetail.ad?m_NO="+m_NO
 				});
 			});
 		</script>
 		
 		
-
-    
-    
-    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

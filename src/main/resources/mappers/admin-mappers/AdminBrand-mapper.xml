@@ -61,7 +61,7 @@
 		<result property="con_Status" column="CON_STATUS"/>
 		<result property="con_Mno" column="CON_MNO"/>
 		
-		<collection property="brandName" column="BRAND"/>
+		<result property="brandName" column="BRAND"/>
 	</resultMap>
 	
 	

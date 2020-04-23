@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,53 +38,65 @@
 			<div class="row">
 				<div class="col-md-8 col-lg-9 p-b-80">
 					<div class="p-r-45 p-r-0-lg">
+					<c:choose>
+					<c:when test="${fn:length(mList) == 0}">
+					<div style="margin-left: 250px; margin-top: 350px;" class="p-b-63">
+						<h1>조회결과가 없습니다.</h1>
+						</div>
+					</c:when>
+					<c:otherwise>
+		
+
+					<c:forEach var="m" items="${ mList }" begin="0" end="2">
 					Home > Magazine
 						<!-- item blog -->
 						<div class="p-b-63">
-							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="/brocoli/resources/mainResources/images/blog-04.jpg" alt="IMG-BLOG">
+						<c:url var="mDetail" value="mDetail.mn">
+							<c:param name="m_NO" value="${ m.m_NO }"/>
+						</c:url>
+							<a href="${ mDetail }" class="hov-img0 how-pos5-parent">
+								<img src="/brocoli/resources/magazine-Img/${m.mFile.mf_Img1_ReName }" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										22
+										<fmt:formatDate  value="${m.m_Date}" pattern="dd" />
 									</span>
 
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										<fmt:formatDate  value="${m.m_Date}" pattern="MM-yyyy" />
 									</span>
 								</div>
 							</a>
 
 							<div class="p-t-32">
 								<h4 class="p-b-15">
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
-										프레젠테이션 | [Brocoli 매거진] 운동도 전부 템빨인 거 다 알지?
+									<a href="${mDetail }" class="ltext-108 cl2 hov-cl1 trans-04">
+										${m.m_Category} | ${m.brand.b_Name } | ${m.m_Title}
 									</a>
 								</h4>
 
-								<p class="stext-117 cl6">
-									쥬시 꾸뛰르 20 S/S 신상품으로 트렌디한 애슬레저 룩을 완성하자.<br>
-									운동할 때도 스타일을 지키고 싶은 당신을 위해 쥬시 꾸뛰르(JUICY COUTURE)가 20 S/S 애슬레저 라인을...
+								<p class="stext-117 cl6" style=" text-overflow: ellipsis; overflow: hidden; white-space: nowrap; height: 20px; width: 600px;">
+									${m.m_Comment }
 								</p>
 
 								<div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
-											<span class="cl4">By</span> Admin  
+											<span class="cl4">By</span> ${ m.m_ID }
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 
 										<span>
-											 커플, 애슬레저, 2020S/S  
-											<span class="cl12 m-l-4 m-r-6">|</span>
+											<fmt:formatDate  value="${m.m_Date}" pattern="yyyy" /> ${m.m_Category}
+											<span class="cl12 m-l-4 m-r-6">|</span>조회 수 : ${m.m_Count }
 										</span>
 
-										<span>
+									<!-- 	<span>
 											8 Comments
-										</span>
+										</span> -->
 									</span>
 
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="${ mDetail }" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										더보기
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -89,139 +104,25 @@
 								</div>
 							</div>
 						</div>
-						Home > Magazine
-						<!-- item blog -->
-						<div class="p-b-63">
-							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="/brocoli/resources/mainResources/images/blog-05.jpg" alt="IMG-BLOG">
-
-								<div class="flex-col-c-m size-123 bg9 how-pos5">
-									<span class="ltext-107 cl2 txt-center">
-										18
-									</span>
-
-									<span class="stext-109 cl3 txt-center">
-										Jan 2018
-									</span>
-								</div>
-							</a>
-
-							<div class="p-t-32">
-								<h4 class="p-b-15">
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
-										프레젠테이션 | 데님 팬츠, 오래오래 새것처럼 입는 법
-									</a>
-								</h4>
-
-								<p class="stext-117 cl6">
-									누구나 쉽게 따라 하는 데님 팬츠 관리 꿀팁을 1분 코디가 알려준다. <br>
-									자, 지금 당장 자신이 입고 있는 데님 팬츠를 보자. 보기 싫게 무릎이 축 늘어져 있거나 퀴퀴한 냄새가 나진...
-								</p>
-
-								<div class="flex-w flex-sb-m p-t-18">
-									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-										<span>
-											<span class="cl4">By</span> Admin  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											스트릿, 데님  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
-									</span>
-
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-										더보기
-
-										<i class="fa fa-long-arrow-right m-l-9"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-						Home > Magazine
-						<!-- item blog -->
-						<div class="p-b-63">
-							<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="hov-img0 how-pos5-parent">
-								<img src="/brocoli/resources/mainResources/images/blog-06.jpg" alt="IMG-BLOG">
-
-								<div class="flex-col-c-m size-123 bg9 how-pos5">
-									<span class="ltext-107 cl2 txt-center">
-										16
-									</span>
-
-									<span class="stext-109 cl3 txt-center">
-										Jan 2018
-									</span>
-								</div>
-							</a>
-
-							<div class="p-t-32">
-								<h4 class="p-b-15">
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="ltext-108 cl2 hov-cl1 trans-04">
-										프레젠테이션 | 티셔츠 하나 바꿨는데 스타일이 업그레이드!
-									</a>
-								</h4>
-
-								<p class="stext-117 cl6">
-									특별한 그래픽의 메인부스 20 S/S 로고 캡슐 컬렉션 단독 발매.<br>
-									하루가 다르게 따뜻해지는 날씨에 다가올 여름이 기대되지? 또 어떤 옷들로 올여름을 보낼까 하는...
-								</p>
-
-								<div class="flex-w flex-sb-m p-t-18">
-									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-										<span>
-											<span class="cl4">By</span> Admin  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											캐쥬얼, 셔츠
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
-									</span>
-
-									<a href="/brocoli/WEB-INF/views/main/pages/Main-Magazine-Detail.jsp" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-										더보기
-
-										<i class="fa fa-long-arrow-right m-l-9"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<!-- Pagination -->
-						<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
-							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-								1
-							</a>
-
-							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-								2
-							</a>
-						</div>
+					</c:forEach>
+					</c:otherwise> 
+			</c:choose>
+				
+				
 					</div>
 				</div>
 
-				<div class="col-md-4 col-lg-3 p-b-80">
+				<div class="col-md-4 col-lg-3 p-b-80" >
 					<div class="side-menu">
-						<div class="bor17 of-hidden pos-relative">
+						<!-- <div class="bor17 of-hidden pos-relative">
 							<input class="stext-103 cl2 plh4 size-116 p-l-28 p-r-55" type="text" name="search" placeholder="Search">
 
 							<button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
 								<i class="zmdi zmdi-search"></i>
 							</button>
-						</div>
+						</div> -->
 
-						<div class="p-t-55">
+						<!-- <div class="p-t-55">
 							<h4 class="mtext-112 cl2 p-b-33">
 								상품
 							</h4>
@@ -257,9 +158,9 @@
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 
-						<div class="p-t-65">
+						<!-- <div class="p-t-65">
 							<h4 class="mtext-112 cl2 p-b-33">
 								연관 상품
 							</h4>
@@ -313,113 +214,172 @@
 									</div>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 
 						<div class="p-t-55">
 							<h4 class="mtext-112 cl2 p-b-20">
 								Archive
 							</h4>
-
 							<ul>
-								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											July 2018
+							<li class="p-b-7">
+							<c:url var="Magazine" value="magazineView.mn"/>
+									<a href="${Magazine }" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span >
+										전체보기
 										</span>
-
-										<span>
-											(9)
-										</span>
+										&nbsp;&nbsp;&nbsp;
+										 <span >
+											
+										</span> 
 									</a>
+								</li>
+								<li class="p-b-7">
+									<button  onclick="orderby1();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a1">
+										January
+										</span>
+										&nbsp;&nbsp;&nbsp;
+										 <span id='m1'>
+											(${m1 })
+										</span> 
+									</button>
 								</li>
 
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											June 2018
+									<button  onclick="orderby2();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a2">
+										February
 										</span>
-
-										<span>
-											(39)
-										</span>
-									</a>
+									&nbsp;&nbsp;&nbsp;
+										 <span id='m2'>
+											(${m2 })
+										</span > 
+									</button>
 								</li>
 
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											May 2018
+									<button  onclick="orderby3();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a3">
+											March
 										</span>
-
-										<span>
-											(29)
-										</span>
-									</a>
+									&nbsp;&nbsp;&nbsp;
+										 <span id='m3'>
+											(${m3 })
+										</span> 
+									</button>
 								</li>
 
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											April  2018
+									<button  onclick="orderby4();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a4">
+											April
 										</span>
+									&nbsp;&nbsp;&nbsp;
+										 <span id='m4'>
+											(${m4 })
+										</span> 
+									</button>
+								</li>
 
-										<span>
-											(35)
+								 <li class="p-b-7">
+									<button  onclick="orderby5();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a5">
+											May
 										</span>
-									</a>
+									&nbsp;&nbsp;&nbsp;
+										<span id='m5'>
+											(${m5 })
+										</span>
+									</button>
+								</li> 
+
+								 <li class="p-b-7">
+									<button onclick="orderby6();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a6">
+											June
+										</span>
+										&nbsp;&nbsp;&nbsp;
+										<span id='m6'>
+											(${m6 })
+										</span>
+									</button>
 								</li>
 
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											March 2018
+									<button onclick="orderby7();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a7">
+											July
 										</span>
-
-										<span>
-											(22)
+										&nbsp;&nbsp;&nbsp;
+										<span id='m7'>
+											(${m7})
 										</span>
-									</a>
+									</button>
 								</li>
 
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											February 2018
+									<button onclick="orderby8();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a8">
+											August
 										</span>
-
-										<span>
-											(32)
+										&nbsp;&nbsp;&nbsp;
+										<span id='m8'>
+											(${m8 })
 										</span>
-									</a>
+									</button>
 								</li>
-
+								
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											January 2018
+									<button onclick="orderby9();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a9">
+											September
 										</span>
-
-										<span>
-											(21)
+										&nbsp;&nbsp;&nbsp;
+										<span id='m9'>
+											(${m9 })
 										</span>
-									</a>
+									</button>
 								</li>
-
+								
 								<li class="p-b-7">
-									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
-										<span>
-											December 2017
+									<button onclick="orderby10();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a10">
+											October
 										</span>
-
-										<span>
-											(26)
+										&nbsp;&nbsp;&nbsp;
+										<span id='m10'>
+											(${m10 })
 										</span>
-									</a>
+									</button>
+								</li>
+								
+								<li class="p-b-7">
+									<button onclick="orderby11();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a11">
+											November
+										</span>
+										&nbsp;&nbsp;&nbsp;
+										<span id='m11'>
+											(${m11 })
+										</span>
+									</button>
+								</li>
+								
+								<li class="p-b-7">
+									<button onclick="orderby12();" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+										<span id="a12">
+										December
+										</span>
+										&nbsp;&nbsp;&nbsp;
+										<span id='m12'>
+											(${m12 })
+										</span>
+									</button>
 								</li>
 							</ul>
-						</div>
+						</div> 
 
-						<div class="p-t-50">
+						<!-- <div class="p-t-50">
 							<h4 class="mtext-112 cl2 p-b-27">
 								Tags
 							</h4>
@@ -445,7 +405,7 @@
 									악세서리
 								</a>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -454,7 +414,8 @@
 	
 		<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-
+	
+<script src="/brocoli/resources/mainResources/vendor/magazine/magazine.js"></script>
 <!--===============================================================================================-->	
 	<script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

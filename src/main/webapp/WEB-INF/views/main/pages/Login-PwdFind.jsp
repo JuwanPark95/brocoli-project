@@ -26,7 +26,7 @@
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
 	<div id="login" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
-		<form action="pwdFind.mn" name="pwsearch" method="post" >
+		<!-- <form action="pwdFind.mn" name="pwsearch" method="post" > -->
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 40px;">
 			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>B R O C O L I</strong></p>
@@ -46,22 +46,50 @@
 				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto; color: white;" onclick="return sendInfo();">인증번호 발송</button>
 		</div>
 
-	</form>
+	<!-- </form> -->
 	</div>
 <%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
 <script type="text/javascript">
 function sendInfo(){
-	if((pwsearch.mId.value!=null && pwsearch.mId.value!="")&&(pwsearch.email.value!=null && pwsearch.email.value!="")){
-		alert("메일로 임시 비밀번호가 전송되었습니다. 로그인하여 새로운 비밀번호를 설정해주세요.")
-		pwsearch.submit();
-	}else if(pwsearch.mId.value == null || pwsearch.mId.value== "") {
+	
+	
+	var mId = $("#mId").val();
+	var email = $("#email").val();
+	
+	if(mId == null || mId== "") {
 		alert("아이디를 입력하세요.");
-	}else if(pwsearch.email.value==null || pwsearch.email.value== "") {
+	}else if(email==null || email== "") {
 		alert("이메일주소를 입력하세요.");
 	}
+	$.ajax({
+ 		url:"pwdFind.do",
+ 		data:{mId : mId,email:email},
+ 		type:"post",
+ 		success:function(data){
+ 			console.log(data);
+ 			if(data == "ok"){
+ 				alert("메일로 임시 비밀번호가 전송되었습니다.\n 로그인하여 새로운 비밀번호를 설정해주세요.");
+ 				document.location.href="loginPage.mn";
+ 			}else{
+ 				alert("아이디와 이메일을 다시 한 번 확인해주세요.");
+ 			}
+ 			
+ 		},error:function(jqxhr, textStatus, errorThrown){
+			console.log("ajax 처리실패");
+			
+			// 에러로그
+			console.log(jqxhr);
+			console.log(textStatus);
+			console.log(errorThrown);
+		}
+ 	});
+	
+	
+	
 }
-</script>		
+</script>	
+	
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
