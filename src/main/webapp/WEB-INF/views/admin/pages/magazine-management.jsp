@@ -63,10 +63,10 @@
                             <h5 class="card-header">매거진 신청 테이블</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
+                                    <table id="magazineTable" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                            	<th>매거진번호</th>
+                                            	<th>번호</th>
                                                 <th>매거진번호</th>
                                                 <th>작성자</th>
                                                 <th>제목</th>
@@ -76,22 +76,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="m" items="${magazineList}" varStatus="ml">
+                                        <c:forEach var="mg" items="${magazineList}" varStatus="mgl">
                                             <tr>
-                                            	<td>${ml.count}</td>
-                                                <td>${m.m_NO}</td>
-                                                <td>${m.m_ID}</td>
-                                                <td>${m.m_Title}</td>
-                                                <td>${m.m_Brand.b_Name}</td>
-                                                <td>${m.m_Category}</td>
+                                            	<td>${mgl.count}</td>
+                                                <td>${mg.m_NO}</td>
+                                                <td>${mg.m_ID}</td>
+                                                <td>${mg.m_Title}</td>
+                                                <td>${mg.m_Brand.b_Name}</td>
+                                                <td>${mg.m_Category}</td>
                                                 <td>
-	                                                <c:set var="b_Status" value="${m.m_Status}" />
+	                                                <c:set var="m_Status" value="${mg.m_Status}" />
 	                                            	<c:choose>
 	                                            		<c:when test="${m_Status eq 'Y'}">
-	                                            			<strong><span style="color:#60DA8D;">승락</span></strong>
+	                                            			<strong><span style="color:#60DA8D;">등록</span></strong>
 	                                            		</c:when>
 	                                            		<c:when test="${m_Status eq 'N'}">
-	                                            			<strong><span style="color:tomato;">신청</span></strong>
+	                                            			<strong><span style="color:#6EABED;">신청</span></strong>
 	                                            		</c:when>
 	                                            	</c:choose>
                                             	</td>
@@ -120,21 +120,16 @@
     	<!-- 매거진 상세보기용 -->
 		<script>
 			$(function(){
-				$("#brand-owner-contact").find("td").mouseenter(function(){
+				$("#magazineTable").find("td").mouseenter(function(){
 					$(this).parents("tr").css({ "cursor":"pointer"});
 				}).click(function(){
-					var bId = $(this).parents().children("td").eq(0).text();	
-					location.href="magazine-management-detail.jsp";
-					//location.href="detail.bo?bId="+bId;
+					var m_NO = $(this).parents().children("td").eq(1).text();	
+					location.href="magazineManagementDetail.ad?m_NO="+m_NO
 				});
 			});
 		</script>
 		
 		
-
-    
-    
-    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

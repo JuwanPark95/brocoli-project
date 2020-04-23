@@ -76,14 +76,14 @@
 											<span style="padding-left:5%; font-size:85%;">${c.con_Date}</span>
 											</div>
 											<br><hr>
-											<span style="font-size:85%;">첨부파일</span>
-											<span style="padding-left:5%; font-size:85%;">
-												<c:if test="${ !empty c.con_Img }">
-													<a href="${ contextPath }/resources/ownerContact/${ c.con_Img_ReName }"
-														download="${ c.con_Img }">${ c.con_Img }</a>
-												</c:if>
-											</span>
-											 
+											<span style="font-size:85%;">이미지</span>
+											<div class="col-12 col-sm-8 col-lg-6">
+                                            <div class="form-group row">
+                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+                                                 <img id="titleImg" src="/brocoli/resources/ownerContact/${c.con_Img_ReName}"  alt=""  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+                                              </div>
+                                            </div>
+                                       	    </div>
 										</h2>
 									</div>
 
@@ -101,7 +101,7 @@
 											<c:param name="con_NO" value="${c.con_NO}"/>
 										</c:url>
 										<a href="${ownerContactUpdate}">
-											<button  class="btn btn-dark">수정</button>
+											<button  class="btn btn-dark btn-xs">수정</button>
 										</a>
 									</div>
 								</div>

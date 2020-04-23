@@ -87,7 +87,7 @@
 									    <textarea id="summernote" name="con_Content" style="height:350px; width:90%; border: solid 1.3px lightgrey"></textarea>
 									</div>
 									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
-										<button type="submit" class="btn btn-light">저장</button>
+										<button type="submit" class="btn btn-light btn-xs">저장</button>
 									</div>
 								</div>
 							</div>
