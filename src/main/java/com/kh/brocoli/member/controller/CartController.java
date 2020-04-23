@@ -1,9 +1,13 @@
 package com.kh.brocoli.member.controller;
 
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.member.model.service.CartService;
 import com.kh.brocoli.member.model.vo.Cart;
@@ -44,5 +48,20 @@ public class CartController {
 		  }else { 
 			  return "common/errorPage"; }
 
-	}	
+	}
+	
+	@RequestMapping("cList.mn")
+	public ModelAndView cartList(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno) {
+		
+		System.out.println("리스트 회원번호 : " + ct_Mno);
+		
+		ArrayList<Cart> cList = cService.cartList(ct_Mno);
+		
+		System.out.println("리스트 들어갔 ? " + cList);
+		
+		mv.addObject("cList", cList);
+		mv.setViewName("MyCart");
+		
+		return mv;
+	}
 }
