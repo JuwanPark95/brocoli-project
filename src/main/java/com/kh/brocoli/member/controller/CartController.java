@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kh.brocoli.member.model.service.CartService;
 import com.kh.brocoli.member.model.vo.Cart;
+import com.kh.brocoli.product.model.vo.ProductDetail;
 
 @Controller
 public class CartController {
@@ -14,21 +15,21 @@ public class CartController {
 	private CartService cService;
 	
 	@RequestMapping("cInsert.mn")
-	public String cInsert(Cart c) {
+	public String cInsert(ProductDetail pc) {
 		
-		System.out.println("장바구니 인설트 회원 : " + c.getCt_Mno());
-		System.out.println("장바구니 인설트 상품 : " + c.getCt_P_NO());
-		System.out.println("장바구니 인설트 옵션1 : " + c.getCt_Option_1());
-		System.out.println("장바구니 인설트 옵션2 : " + c.getCt_Option_2());
-		System.out.println("장바구니 인설트 갯수 : " + c.getCt_Amount());
 		
-		c.setCt_Mno(c.getCt_Mno());
-		c.setCt_P_NO(c.getCt_P_NO());
-		c.setCt_Option_1(c.getCt_Option_1());
-		c.setCt_Option_2(c.getCt_Option_2());
-		c.setCt_Amount(c.getCt_Amount());
+		System.out.println("장바구니 인설트 상품 : " + pc.getP_NO());
+		System.out.println("장바구니 인설트 옵션1 : " + pc.getOption_1());
+		System.out.println("장바구니 인설트 옵션2 : " + pc.getOption_2());
+
 		
-		int result = cService.cInsert(c);
+		
+		pc.setP_NO(pc.getP_NO());
+		pc.setOption_1(pc.getOption_1());
+		pc.setOption_2(pc.getOption_2());
+
+		
+		int result = cService.cInsert(pc);
 		
 		if(result > 0) {
 			System.out.println("장바구니 리절트 : " + result);
