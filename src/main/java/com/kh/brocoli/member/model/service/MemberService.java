@@ -1,6 +1,7 @@
 package com.kh.brocoli.member.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
@@ -82,6 +83,12 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<Product> selectyearList();
+
+	/**
+	 * 옵션 선택
+	 * @return
+	 */
+	ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap);
 
 
 
