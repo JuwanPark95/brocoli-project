@@ -30,6 +30,7 @@ public class AdminMagazineController {
 		   
 		   mv.addObject("magazineList", magazineList).setViewName("magazine-management");
 		   
+		   System.out.println("magazineList"+magazineList);
 		   return mv;
 	   }
 

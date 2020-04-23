@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="AdminMagazine">
-	<resultMap id="magazineResultSet" type="magazine">
+	<resultMap id="magazineResultSet" type="Magazine">
 		<id property="m_NO" column="M_NO"/>
 		<result property="m_ID" column="M_ID"/>
 		<result property="m_Title" column="M_TITLE"/>
@@ -83,7 +83,7 @@
 		<result property="brand_NO" column="BRAND_NO"/>
 	</resultMap>
 	
-	<select id="magazineList" >
+	<select id="magazineList" parameterType="Magazine" resultMap="magazineResultSet">
 		SELECT * 
 		FROM MAGAZINE 
 		JOIN BRAND ON M_BRAND_NO = BRAND_NO
