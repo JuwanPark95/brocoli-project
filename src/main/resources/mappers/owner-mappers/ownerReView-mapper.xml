@@ -26,6 +26,25 @@
 		<collection property="plist" resultMap="productResultSet"/>
 	</resultMap>
 	
+	<resultMap type="Review_Reply" id="reviewReplyResultSet">
+		<id property="" column=""/>
+		
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		
+	
+	</resultMap>
+	
 	<resultMap  type="Product" id="productResultSet">
 		<id property="p_NO" column="P_NO"/>
 		
@@ -125,7 +144,11 @@
 		WHERE V_STATUS = 'Y'
 		AND V_B_NO = #{bNO}
 	</select>
-
+	
+	<select id="selectNoReadReviewReplyList" resultMap="">
+	
+	
+	</select>
 
 
 
