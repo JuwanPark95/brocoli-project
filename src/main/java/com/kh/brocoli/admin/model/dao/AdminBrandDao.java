@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 
 @Repository("ABDao")
 public class AdminBrandDao {
@@ -185,6 +186,14 @@ public class AdminBrandDao {
 	 */
 	public int brandDelete(int brand_NO) {
 		return sqlSession.update("AdminBrand.brandDelete",brand_NO);
+	}
+
+	/** 작성자 : 신은지
+	 *  17. 브랜드 입점문의 list
+	 * @return
+	 */
+	public ArrayList<Entering_Question> brandApplyList() {
+		return (ArrayList)sqlSession.selectList("AdminBrand.brandApplyList");
 	}
 
 

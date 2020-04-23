@@ -164,4 +164,9 @@
 		SET B_STATUS='N'
 		WHERE BRAND_NO=#{brand_NO}
 	</update>
+	
+	<!-- <select id="brandApplyList" parameterType="" resultMap="">
+		SELECT *
+		FROM ENTERING_QUESTION
+	</select> -->
 </mapper>
