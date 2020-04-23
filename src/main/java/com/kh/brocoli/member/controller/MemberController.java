@@ -258,7 +258,6 @@ public class MemberController {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		System.out.println("pDetail : " + option );
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(option,response.getWriter());
 	}
