@@ -2,6 +2,9 @@ package com.kh.brocoli.magazine.model.vo;
 
 import java.sql.Date;
 
+import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
+
 public class Magazine {
 	 private int m_NO;
 	 private String m_ID;
@@ -14,17 +17,17 @@ public class Magazine {
 	 private int m_Brand_NO;
 	 private int m_Mno;
 	 
-	 private String m_Magazine_File;  // admin 매거진파일
-	 private String m_Brand;		  // admin 매거진브랜드 
-	 private String m_Member;         // admin 매거진멤버
+	 private Magazine_File m_Magazine_File;  // admin 매거진파일
+	 private Brand m_Brand;		  // admin 매거진브랜드 
+	 private Member m_Member;         // admin 매거진멤버
 	
 	 public Magazine() {
 		super();
-	 }
+	}
 
 	public Magazine(int m_NO, String m_ID, String m_Title, String m_Comment, Date m_Date, String m_Status,
-			String m_Category, String m_Count, int m_Brand_NO, int m_Mno, String m_Magazine_File, String m_Brand,
-			String m_Member) {
+			String m_Category, String m_Count, int m_Brand_NO, int m_Mno, Magazine_File m_Magazine_File, Brand m_Brand,
+			Member m_Member) {
 		super();
 		this.m_NO = m_NO;
 		this.m_ID = m_ID;
@@ -121,27 +124,27 @@ public class Magazine {
 		this.m_Mno = m_Mno;
 	}
 
-	public String getM_Magazine_File() {
+	public Magazine_File getM_Magazine_File() {
 		return m_Magazine_File;
 	}
 
-	public void setM_Magazine_File(String m_Magazine_File) {
+	public void setM_Magazine_File(Magazine_File m_Magazine_File) {
 		this.m_Magazine_File = m_Magazine_File;
 	}
 
-	public String getM_Brand() {
+	public Brand getM_Brand() {
 		return m_Brand;
 	}
 
-	public void setM_Brand(String m_Brand) {
+	public void setM_Brand(Brand m_Brand) {
 		this.m_Brand = m_Brand;
 	}
 
-	public String getM_Member() {
+	public Member getM_Member() {
 		return m_Member;
 	}
 
-	public void setM_Member(String m_Member) {
+	public void setM_Member(Member m_Member) {
 		this.m_Member = m_Member;
 	}
 
@@ -152,5 +155,7 @@ public class Magazine {
 				+ m_Count + ", m_Brand_NO=" + m_Brand_NO + ", m_Mno=" + m_Mno + ", m_Magazine_File=" + m_Magazine_File
 				+ ", m_Brand=" + m_Brand + ", m_Member=" + m_Member + "]";
 	}
+	
+	 
 	  
 }

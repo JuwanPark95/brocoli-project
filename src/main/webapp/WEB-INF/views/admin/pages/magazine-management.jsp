@@ -88,10 +88,10 @@
 	                                                <c:set var="b_Status" value="${m.m_Status}" />
 	                                            	<c:choose>
 	                                            		<c:when test="${m_Status eq 'Y'}">
-	                                            			<strong><span style="color:#60DA8D;"></span></strong>
+	                                            			<strong><span style="color:#60DA8D;">승락</span></strong>
 	                                            		</c:when>
 	                                            		<c:when test="${m_Status eq 'N'}">
-	                                            			<strong><span style="color:tomato;">폐점</span></strong>
+	                                            			<strong><span style="color:tomato;">신청</span></strong>
 	                                            		</c:when>
 	                                            	</c:choose>
                                             	</td>
