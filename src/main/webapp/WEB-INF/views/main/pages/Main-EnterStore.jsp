@@ -60,37 +60,39 @@
 			<hr>
 		
   		<div class="form-group">
-      		<label>사업자 명 : </label>
-    		<input type="text" class="form-control" id="b_Owner_Name" name="b_Owner_Name" style="width:90%;">
+      		<label>사업자 번호 : </label>
+    		<input type="text" class="form-control" id="ent_Business_NO" name="ent_Business_NO" style="width:90%;" required>
+    		<input type="hidden" name="enoDuplicateCheck2" id="enoDuplicateCheck2" value="0" />
+    		
    		</div>
    		 		
    		<div class="form-group">
       		<label>취급 브랜드 명: </label>
-    		<input type="text" class="form-control" id="b_Name" name="b_Name" style="width:90%;">
+    		<input type="text" class="form-control" id="ent_Bname" name="ent_Bname" style="width:90%;" >
     				<span class="guide error2">중복되는 브랜드가 이미 존재합니다.</span>
     		<input type="hidden" name="bnameDuplicateCheck2" id="bnameDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
       		<label>사이트 URL(http://포함) : </label>
-    		<input type="url" class="form-control" id="b_Address" name="b_Address" style="width:90%;">
+    		<input type="url" class="form-control" id="ent_Url" name="ent_Url" style="width:90%;">
    		</div>
    		
    		<div class="form-group">
       		<label>담당자 ID : </label>
-    		<input type="text" class="form-control" id="b_Owner1_ID" name="b_Owner1_ID" style="width:90%;">
+    		<input type="text" class="form-control" id="ent_ID" name="ent_ID" style="width:90%;" >
     		<span class="guide error">ID를 다시 확인해주세요.</span>
     		<input type="hidden" name="bidDuplicateCheck2" id="bidDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
       		<label for="year">핸드폰 번호 : </label>
-    		<input type="tel" class="form-control" id="b_Phone" name="b_Phone" style="width:90%;">
+    		<input type="tel" class="form-control" id="ent_Phone" name="ent_Phone" style="width:90%;" required>
    		</div>
    		
    		<div class="form-group">
       		<label for="gender">담당자 이메일 : </label>
-    		<input type="email" class="form-control" id="b_Email1" name="b_Email1" style="width:90%;">
+    		<input type="email" class="form-control" id="ent_Mail" name="ent_Mail" style="width:90%;">
    		</div>
    		<!-- <div id="cate" class="form-group">
    			<label for="sad">카테고리 분류 : </label>
@@ -120,7 +122,7 @@
    		
    		<div class="form-group">
       		<label for="year">브랜드 소개 : </label>
-    		<textarea class="form-control" id="b_Comment" name="b_Comment" style="width:90%; resize:none; " rows="10" ></textarea>
+    		<textarea class="form-control" id="ent_Comment" name="ent_Comment" style="width:90%; resize:none; " rows="10" ></textarea>
    		</div>
    		<br><br>
    		<div style="margin-left: 30%">
@@ -147,27 +149,65 @@
     function validate(){
     	var bId = $("#bidDuplicateCheck2");
     	var bName = $("#bnameDuplicateCheck2");
-		
-    	if($("#b_name") == null){
-    		
+    	var ent_no = $("#ent_Business_NO").val();
+    	if(ent_no == null || ent_no ==""){
+    		$("#ent_Business_NO").focus();
+    		alert("사업자 번호를 입력해주세요.");
+    		return false;
+    	}else if($("#ent_Bname").val() == null ||$("#ent_Bname").val() =="" ){
+    		$("#ent_Bname").focus();
+    		alert("브랜드명을 입력해주세요.");
+    		return false;
     	}
+    	/* var value = ent_no;
+    	 var valueMap = value.replace(/-/gi, '').split('').map(function(item) {
+    	        return parseInt(item, 10);
+    	    });
+
+    	    if (valueMap.length == 10) {
+    	        var multiply = new Array(1, 3, 7, 1, 3, 7, 1, 3, 5);
+    	        var checkSum = 0;
+
+    	        for (var i = 0; i < multiply.length; ++i) {
+    	            checkSum += multiply[i] * valueMap[i];
+    	        }
+
+    	        checkSum += parseInt((multiply[8] * valueMap[8]) / 10, 10);
+    	        if( Math.floor(valueMap[9]) == ( (10 - (checkSum % 10)) % 10)){
+    	        	$("#enoDuplicateCheck2").val(1);
+    	        }else{
+    	        	$("#enoDuplicateCheck2").val(0);
+    	        };
+    	    }else{
+    	    	$("#ent_Business_NO").focus();
+    	    alert("사업자번호를 확인해주세요.");	
+    	    return false;
+    	    } */
+
     	
-    	if(bId.val() == 1 && bName.val() ==1){
+    	
+    	if(bId.val() == 1 && bName.val() ==1 ){
     		return true;
     	}else{
-    		if(bName.val() !=1){
-    			$("#b_Name").focus();
+    		/* if($("#enoDuplicateCheck2").val() != 1){
+    			alert("사업자 번호를 확인해주세요.");
+    			return false;
+    		}else */ if(bName.val() !=1){
+    			$("#ent_Bname").focus();
     			alert("브랜드명을 다시 한 번 확인해주세요!");
+    			return false;
     		}else if(bId.val() !=1){
-    			$("#b_Owner1_ID").focus();
+    			$("#ent_ID").focus();
     			alert("ID를 다시 한 번 확인해주세요!");
+    			return false;
     		}
-    		return false;
+    		
+    		
     	}
     }
     
     $(function(){
-		$("#b_Owner1_ID").on("keyup",function(){
+		$("#ent_ID").on("keyup",function(){
 			
 			var bId= $(this).val();
 		
@@ -209,10 +249,11 @@
 	});
     
     $(function(){
-		$("#b_Name").on("keyup",function(){
+		$("#ent_Bname").on("keyup",function(){
 			
 			var bName= $(this).val();
 		
+			
 			
 			
 			

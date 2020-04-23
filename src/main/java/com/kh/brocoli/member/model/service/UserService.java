@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
 
 public interface UserService {
@@ -75,7 +76,7 @@ public interface UserService {
 	 * @param b
 	 * @return
 	 */
-	public int sEnter(Brand b);
+	public int sEnter(Entering_Question b);
 
 	/**
 	 * 작성자 임현섭

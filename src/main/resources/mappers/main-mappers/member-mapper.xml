@@ -324,17 +324,15 @@
 
 	</update>
 	
-	<select id="sEnter" parameterType="Brand">
-	INSERT INTO BRAND 
-	VALUES(SEQ_BRAND_NO.NEXTVAL,#{b_Name},NULL,NULL,NULL,DEFAULT,NULL,NULL,NULL,NULL,NULL,
-	#{b_Owner1_ID},NULL,NULL,#{b_Phone},#{b_Address},#{b_Owner_Name},#{b_Comment},#{b_Email1},NULL,NULL
-	)
+	<select id="sEnter" parameterType="Entering_Question">
+	INSERT INTO ENTERING_QUESTION 
+	VALUES(SEQ_ENT.NEXTVAL,#{ent_Business_NO},#{ent_Bname},#{ent_Url},#{ent_ID},#{ent_Phone},#{ent_Mail},#{ent_Comment},DEFAULT)
 	</select>
 	
 	<select id="bNameCheck" parameterType="string" resultType="_int">
 	SELECT COUNT(*)
 	FROM BRAND
-	WHERE B_NAME = #{b_Name}
+	WHERE B_NAME = #{name}
 	</select>
 	
 	<select id="getListCount3" resultType="_int">

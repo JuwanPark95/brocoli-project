@@ -30,6 +30,7 @@
         <typeAlias type="com.kh.brocoli.product.model.vo.Review_Reply" alias="Review_Reply"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Review" alias="Review"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Statistics" alias="Statistics"/>
+         <typeAlias type="com.kh.brocoli.product.model.vo.Entering_Question" alias="Entering_Question"/>
 		<!-- 매거진 -->
 		<typeAlias type="com.kh.brocoli.magazine.model.vo.Magazine_File" alias="Magazine_File"/>
 		<typeAlias type="com.kh.brocoli.magazine.model.vo.Magazine" alias="Magazine"/>
