@@ -407,7 +407,7 @@ public class UserController {
 //			m = (Member) session.getAttribute("m");
 //			String str = (String)session.getAttribute("pass");
 		email.setContent(
-				"임시 비밀번호는 " + m.getPwd() + " 입니다.  \n 혹시라도 비밀번호 변경 요청을 하신적이 없다면, " + "즉시 비밀번호 변경을 권장드립니다. \n 감사합니다.");
+				"안녕하세요 BROCOLI입니다. \n 임시 비밀번호는 " + m.getPwd() + " 입니다.  \n 혹시라도 비밀번호 변경 요청을 하신적이 없다면, " + "즉시 비밀번호 변경을 권장드립니다. \n 감사합니다.");
 
 		email.setReceiver(m.getEmail());
 
@@ -482,11 +482,11 @@ public class UserController {
 
 	public void sendMail(Member m) throws Exception {
 
-		email.setContent("인증번호는 " + m.getPwd() + " 입니다.");
+		email.setContent(m.getEmail() + "님  인증번호를 확인해주세요. \n" + "인증번호는 " + m.getPwd() + " 입니다. \n 감사합니다.");
 
 		email.setReceiver(m.getEmail());
 
-		email.setSubject("안녕하세요 " + m.getEmail() + "님  인증번호를 확인해주세요.");
+		email.setSubject("안녕하세요 BROCOLI입니다.");
 
 		emailSender.SendEmail(email);
 
