@@ -27,21 +27,17 @@
 	</resultMap>
 	
 	<resultMap type="Review_Reply" id="reviewReplyResultSet">
-		<id property="" column=""/>
+		<id property="vr_NO" column="VR_NO"/>
 		
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		
+		<result property="vr_Parentno" column="VR_PARENTNO"/>
+		<result property="vr_Writer" column="VR_WRITER"/>
+		<result property="vr_Content" column="VR_CONTENT"/>
+		<result property="vr_Date" column="VR_DATE"/>
+		<result property="vr_Modify_Date" column="VR_MODIFY_DATE"/>
+		<result property="vr_Count" column="VR_COUNT"/>
+		<result property="vr_Check" column="VR_STATUS"/>
+		<result property="vr_Status" column="VR_CHECK"/>
+		<result property="vr_Mno" column="VR_MNO"/>
 	
 	</resultMap>
 	
@@ -145,7 +141,7 @@
 		AND V_B_NO = #{bNO}
 	</select>
 	
-	<select id="selectNoReadReviewReplyList" resultMap="">
+	<select id="selectNoReadReviewReplyList" resultMap="reviewReplyResultSet">
 	
 	
 	</select>
