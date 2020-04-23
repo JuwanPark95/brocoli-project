@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 
 public interface AdminBrandService {
 
@@ -125,6 +126,13 @@ public interface AdminBrandService {
 	 * @return
 	 */
 	int brandDelete(int brand_NO);
+
+	/**
+	 * 작성자 : 신은지
+	 * 17. 브랜드 입점문의 list
+	 * @return
+	 */
+	ArrayList<Entering_Question> brandApplyList();
 
 	
 }

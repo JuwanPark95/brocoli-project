@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.brocoli.admin.model.service.AdminBrandService;
 import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 
 /**
  * @author Eunji
@@ -417,16 +418,19 @@ public class AdminBrandController {
 		}
 	}
 	
-//	/**
-//	 *  작성자 : 신은지
-//	 *  17. 브랜드 입점 문의 list
-//	 * @param mv
-//	 * @return
-//	 */
-//	@RequestMapping("brand-apply.ad")
-//	public ModelAndView brandApply(ModelAndView mv) {
-//		
-//		ArrayList<>
-//	}
+	/**
+	 *  작성자 : 신은지
+	 *  17. 브랜드 입점 문의 list
+	 * @param mv
+	 * @return
+	 */
+	@RequestMapping("brand-apply.ad")
+	public ModelAndView brandApply(ModelAndView mv) {
+		
+		ArrayList<Entering_Question> brandApplyList = ABService.brandApplyList();
+		
+		
+		return mv;
+	}
 }
 

@@ -9,6 +9,7 @@ import com.kh.brocoli.admin.model.dao.AdminBrandDao;
 import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 
 @Service("ABService")
 public class AdminBrandServiceImpl implements AdminBrandService{
@@ -161,6 +162,15 @@ public class AdminBrandServiceImpl implements AdminBrandService{
 	@Override
 	public int brandDelete(int brand_NO) {
 		return ABDao.brandDelete(brand_NO);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 17. 브랜드 입점문의 list
+	 */
+	@Override
+	public ArrayList<Entering_Question> brandApplyList() {
+		return ABDao.brandApplyList();
 	}
 
 
