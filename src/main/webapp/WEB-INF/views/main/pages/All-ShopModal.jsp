@@ -124,7 +124,7 @@
 
 								<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" id="opshow" style="margin-left: -100px; display:none;">
-											<select class="js-select2" id="select2" name="time" ;">
+											<select class="js-select2" id="select2" name="time">
 													
 											
 											</select>
