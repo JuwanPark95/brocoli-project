@@ -712,7 +712,7 @@
 				$('#productPrice').val(data[0].p_Price);
 				$('#lastPrice').val(data[0].p_Last_Price);
 				$('#productComment').val(data[0].p_Comment);
-
+				$('#stockCount').val(data[0].op_Stock);
 
 				img += "<div class='item-slick3' data-thumb='-'>"
 				img +=	"<div class='wrap-pic-w pos-relative'>"
