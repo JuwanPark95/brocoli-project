@@ -73,6 +73,10 @@ public class MypageDao {
 		return sqlSession.insert("memberMapper.R_complete",re);
 	}
 
+	public ArrayList<Orders> trackprocess(String or_NO) {
+		return (ArrayList)sqlSession.selectList("memberMapper.trackprocess",or_NO);
+	}
+
 
 
 	

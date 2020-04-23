@@ -52,9 +52,42 @@
 		FROM ORDERS
 		JOIN BRAND ON OR_BRAND_NO = BRAND_NO
 		WHERE OR_STATUS = '5'
+		ORDER BY OR_NO DESC
 	</select>
 	
+	<!-- 날짜, 브랜드명, 브랜드번호, 상품명, 상품번호 별 검색 후 select -->
 	<select id="searchList" resultMap="salesResultSet" parameterType="map">
+		SELECT *
+		FROM ORDERS
+		JOIN BRAND ON OR_BRAND_NO = BRAND_NO
+		WHERE  OR_STATUS = '5'
+      	       <if test=' !"".equals(date1) and !"".equals(date2) '>
+		       			<![CDATA[
+			      	   AND OR_DATE>#{date1} AND OR_DATE<#{date2} 
+				       ]]>
+		       </if>
+		       
+		       <if test='!"".equals(content)'>
+				       <choose>
+      	       	    	<when test='"brand_NO".equals(dropSearch)'>
+      	       	 		AND BRAND_NO LIKE #{content}
+      	       	    	</when>
+      	       	    	<when test='"b_Name".equals(dropSearch)'>
+      	       	 		AND B_NAME LIKE '%'||#{content}||'%'
+      	       	    	</when>
+      	       	    	<when test='"p_NO".equals(dropSearch)'>
+      	       	 		AND OR_P_NO LIKE #{content}
+      	       	    	</when>
+      	       	    	<when test='"p_Name".equals(dropSearch)'>
+      	       	 		AND OR_PNAME LIKE '%'||#{content}||'%'
+      	       	    	</when>
+      	       	    	</choose>
+		       </if>
+	</select>
+	
+	
+	
+	<!-- <select id="searchList" resultMap="salesResultSet" parameterType="map">
 		SELECT *
 		FROM ORDERS
 		JOIN BRAND ON OR_BRAND_NO = BRAND_NO
@@ -86,7 +119,7 @@
 		       		</if> 
 		       </if>
 		       
-		       <if test='date1.equals("") and date2.equals("") and !"".equals(dropSearch) '>
+		       <if test='date1.equals("") and date2.equals("") and !"".equals(dropSearch) and !"".equals(content)'>
 		       		<choose>
    	       	    	<when test="brand_NO = #{dropSearch}">
    	       	 		AND BRAND_NO LIKE #{content}
@@ -102,5 +135,6 @@
    	       	    	</when>
    	       	    	</choose>
 		       </if>
-	</select>
+	</select> -->
 </mapper>
+

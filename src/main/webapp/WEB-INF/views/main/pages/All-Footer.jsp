@@ -81,9 +81,9 @@ font-size: 15px;
 						</li>
 						<li class="p-b-10">
 						<c:if test="${!empty sessionScope.loginUser }">
-						<c:url var="pChange" value="pChangeView.mn" />
-							<a href="${pChange }" class="stext-107 cl7 hov-cl1 trans-04">
-								교환 환불 
+						<c:url var="mOrderlist" value="myOrderList.mn" />
+							<a href="${mOrderlist }" class="stext-107 cl7 hov-cl1 trans-04">
+								주문현황 
 							</a>
 						</c:if>
 						<c:if test="${empty sessionScope.loginUser }">

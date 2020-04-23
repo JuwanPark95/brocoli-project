@@ -48,7 +48,7 @@ public class AdminSalesController {
 	 */
     @RequestMapping("totalSalesSearch.ad")
     @ResponseBody
-    public Map<String,Object> totalSalesSearch(@RequestParam(value="date1", required=false) String date1,
+    public ArrayList<Orders> totalSalesSearch(@RequestParam(value="date1", required=false) String date1,
     											@RequestParam(value="date2", required=false) String date2,
     											@RequestParam(value="dropSearch", required=false) String dropSearch,
     											@RequestParam(value="content", required=false) String content) throws Exception{
@@ -67,11 +67,7 @@ public class AdminSalesController {
     	
     	System.out.println("searchList" + searchList);
     	
-    	Map<String,Object> result = new HashMap<String,Object>();
-    	
-    	result.put("searchList", searchList);
-    	
-    	return result;
+    	return searchList;
     	
     }
 	 	 

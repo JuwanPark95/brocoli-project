@@ -276,6 +276,7 @@
 	        ,PF_DIMG3_RENAME
 	        ,B_NAME
 	        ,B_LOGO_RENAME
+	        ,OP_STOCK
 	        FROM PRODUCT P
 	JOIN PRODUCT_OPTION PO
 	ON P.P_NO = PO.OP_P_NO

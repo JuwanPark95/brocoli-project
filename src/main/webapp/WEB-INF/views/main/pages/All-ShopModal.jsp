@@ -74,7 +74,8 @@
 							<br>
 							<p class="stext-102 cl3 p-t-23"
 								style="display: inline-block; padding: 5px;">
-								<strong>구매후기 </strong>&nbsp;&nbsp;&nbsp; 20개
+								<strong>재고 </strong>&nbsp;&nbsp;&nbsp;
+								<input type="text" id="stockCount" style="display: inline-block; text-align:right; width: 60px;" readonly="readonly">개
 							</p>
 							<br>
 							<hr>

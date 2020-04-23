@@ -29,8 +29,9 @@ public class AdminSalesServiceImpl implements AdminSalesService{
 	 * 2. 매출 검색(날짜,브랜드) list
 	 */
 	@Override
-	public ArrayList<Orders> searchList(HashMap<String,String> map) {
+	public ArrayList<Orders> searchList(HashMap<String, String> map) {
 		return ASDao.searchList(map);
 	}
 
 }
+

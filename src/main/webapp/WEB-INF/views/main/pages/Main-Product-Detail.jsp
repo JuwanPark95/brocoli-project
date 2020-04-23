@@ -115,21 +115,21 @@
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
-								<strong>조회 수 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3,000
+								<strong>주문 횟수  :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${aProductList[0].p_Order_Count }
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
-								<strong>구매후기  </strong>&nbsp;&nbsp;&nbsp; 20개
+								<strong>재고 :  </strong>&nbsp;&nbsp;&nbsp; ${aProductList[0].op_Stock }개
 							</p>
 							<br>
 							<hr>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
-								<strong>판매가  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<strong>기본가격  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<span style="font-size:18px;"><strong><strike>${aProductList[0].p_Price}원</strike></strong></span>
 							</p>
 							<br>
 							<p class="stext-102 cl3 p-t-23" style="display:inline-block; padding:5px;">
-								<strong>할인가  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<strong>판매가격 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<span style="font-size:18px;"><strong>${aProductList[0].p_Last_Price}원</strong></span>
 							</p>		
 							<br>					
@@ -294,7 +294,7 @@
 										
 										<!-- Add review -->
 										<c:if test="${!empty sessionScope.loginUser }">
-										<form class="w-full">
+										<div class="w-full">
 	
 											<br>
 							<!-- 				<p class="stext-102 cl6">
@@ -326,7 +326,7 @@
 											<a id="qnacomment" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
 											</a>
-										</form>
+										</div>
 										</c:if>
 									</div>
 								</div>
@@ -376,7 +376,7 @@
 										</div>
 										
 										<!-- Add review -->
-										<form class="w-full">
+										<div class="w-full">
 											<h5 class="mtext-108 cl2 p-b-7">
 												리뷰
 											</h5>
@@ -427,7 +427,7 @@
 											<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10" style="color:white;">
 												Submit
 											</button>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div>
