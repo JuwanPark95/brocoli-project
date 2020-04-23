@@ -28,6 +28,36 @@ public class ownerReviewServiceimpl implements ownerReviewService{
 	public ArrayList<Review_Reply> noReadReviewReplySelect(int bNO) {
 		return oDao.SelectNoReadReviewReply(bNO);
 	}
+
+	@Override
+	public int replyInsert(Review_Reply rr) {
+		return oDao.insertReply(rr);
+	}
+
+	@Override
+	public int ReviewCheckUpdate(String r) {
+		return oDao.updateReViewCheck(r);
+	}
+
+	@Override
+	public int ReplyCheckUpdate(int r) {
+		return oDao.updateReplyCheck(r);
+	}
+
+	@Override
+	public int replyDelete(int rrNO) {
+		return oDao.deleteReply(rrNO);
+	}
+
+	@Override
+	public ArrayList<Review> readReviewSelect(int bNO) {
+		return oDao.SelectReadReview(bNO);
+	}
+
+	@Override
+	public ArrayList<Review_Reply> readReviewReplySelect(int bNO) {
+		return oDao.SelectReadReviewReply(bNO);
+	}
 	
 	
 	
