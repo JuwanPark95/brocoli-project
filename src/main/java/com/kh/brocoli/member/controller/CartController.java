@@ -64,4 +64,16 @@ public class CartController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("cDelete.mn")
+	public String cartDelete(@RequestParam(value="p_NO") int p_NO, int ct_Mno) {
+		System.out.println("삭제 버튼 눌렸? " + p_NO); 
+		int result = cService.deleteCart(p_NO);
+		if(result > 0) {
+			System.out.println("삭제버튼 눌른 후? " + p_NO);
+			return "redirect:cList.mn?w_Mno="+ct_Mno;
+		}else {
+			return"common/errorPage";
+		}
+	}
 }

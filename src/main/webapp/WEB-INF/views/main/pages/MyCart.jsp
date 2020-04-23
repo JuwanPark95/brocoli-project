@@ -66,26 +66,18 @@
 									<td class="column-3">${c.ct_Option_1 }</td>
 									<td class="column-4">${c.ct_Option_2 }</td>
 									<td class="column-7">${c.productList.p_Last_Price}</td>
-									<c:set var="sum" value="${sum + c.productList.p_Last_Price }"/>
 									
-									<td class="column-6">										
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-	
-												<input class="mtext-104 cl3 txt-center num-product" type="number" name="n_product" value="1">
-												<input type="hidden" name="n_product" value="${c.ct_Amount }">
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
+									<td class="column-6">${ c.ct_Amount }</td>
+									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+									
+									<td class="column-7">
+										<c:out value="${ hap }"/>
+										<c:set var="sum" value="${sum + hap}"/>
 									</td>
-									
-									<td class="column-7">36,000원</td>
 										<td style="text-align: center;">
 									<c:url var="cDelete" value="cDelete.mn">
 										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
 										<c:param name="Mno" value="${loginUser.mNO }"/>
 									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
