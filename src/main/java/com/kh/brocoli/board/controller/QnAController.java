@@ -37,7 +37,7 @@ public class QnAController {
 
 	@RequestMapping("QnAlist.mn")
 	public ModelAndView boardlist(ModelAndView mv,
-			@RequestParam(value = "currentPage", required = false) int currentPage) {
+			@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
 		
 		System.out.println("커런트 페이지유 : " + currentPage);
 
