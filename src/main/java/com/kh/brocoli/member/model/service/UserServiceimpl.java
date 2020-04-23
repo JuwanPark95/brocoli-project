@@ -10,6 +10,7 @@ import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.dao.UserDao;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -74,7 +75,7 @@ public class UserServiceimpl implements UserService {
 	}
 
 	@Override
-	public int sEnter(Brand b) {
+	public int sEnter(Entering_Question b) {
 		int result = uDao.sEnter(b);
 		return result;
 	}

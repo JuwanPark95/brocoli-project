@@ -1,5 +1,7 @@
 package com.kh.brocoli.member.model.dao;
 
+import java.util.ArrayList;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,14 @@ public class CartDao {
 	public int cInsert(Cart c) {
 		System.out.println("DAO 찍히나유 ? :"+c.getCt_Mno());
 		return sqlSession.insert("Cart-mapper.cInsert", c);
+	}
+
+	public ArrayList<Cart> cartList(int ct_Mno) {
+		return (ArrayList)sqlSession.selectList("Cart-mapper.cartList",ct_Mno);
+	}
+
+	public int deleteCart(int p_NO) {
+		return sqlSession.delete("Cart-mapper.deleteWish",p_NO);
 	}
 
 }

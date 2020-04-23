@@ -38,10 +38,36 @@
 		<result property="vr_Check" column="VR_STATUS"/>
 		<result property="vr_Status" column="VR_CHECK"/>
 		<result property="vr_Mno" column="VR_MNO"/>
-	
+		
+		<collection property="mlist" resultMap="memberResultSet"/>
+		<collection property="blist" resultMap="brandResultSet"/>
 	</resultMap>
 	
-	<resultMap  type="Product" id="productResultSet">
+	<resultMap type="Member" id="memberResultSet">
+		<id property="mNO" column="MNO"/>
+		<result property="mId" column="MID"/>
+		<result property="pwd" column="PWD"/>
+		<result property="mName" column="MNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="gender" column="GENDER"/>
+		<result property="birthDay" column="BIRTHDAY"/>
+		<result property="mGrant" column="MGRANT"/>
+		<result property="mPoint" column="MPOINT"/>
+		<result property="order_Count" column="ORDER_COUNT"/>
+		<result property="order_Price" column="ORDER_PRICE"/>
+		<result property="report_YN" column="REPORT_YN"/>
+		<result property="block_YN" column="BLOCK_YN"/>
+		<result property="block_Content" column="BLOCK_CONTENT"/>
+		<result property="del_Flag_YN" column="DEL_FLAG_YN"/>
+		<result property="del_Date" column="DEL_DATE"/>
+		<result property="enrollDate" column="ENROLLDATE"/>
+		<result property="brand" column="BRAND"/>
+		<result property="brand_NO" column="BRAND_NO"/>
+	</resultMap>
+	
+	<resultMap id="productResultSet" type="Product" >
 		<id property="p_NO" column="P_NO"/>
 		
 		<result property="p_Name" column="P_NAME"/>
@@ -138,26 +164,65 @@
         JOIN PRODUCT_FILE PF
         ON RE.V_P_NO = PF.PF_P_NO
 		WHERE V_STATUS = 'Y'
+		AND V_CHECK = 'N'
 		AND V_B_NO = #{bNO}
 	</select>
 	
 	<select id="selectNoReadReviewReplyList" resultMap="reviewReplyResultSet">
-	
-	
+		SELECT *
+		FROM REVIEW_REPLY REP
+		JOIN MEMBER M
+		ON REP.VR_MNO = M.MNO
+        LEFT JOIN BRAND B
+        ON M.BRAND_NO = B.BRAND_NO
+        WHERE REP.VR_STATUS = 'Y'
 	</select>
 
+	<update id="updateReViewCheck" parameterType="String">
+		UPDATE REVIEW
+		SET V_CHECK = 'Y'
+		WHERE V_NO = #{r}
+	</update>
 
-
-
-
-
-
-
-
-
-
-
-
+	<update id="updateReplyCheck" parameterType="_int">
+		UPDATE REVIEW_REPLY
+		SET VR_CHECK = 'Y'
+		WHERE VR_NO = #{r}
+	</update>
+	
+	<insert id="insertReply" parameterType="Review_Reply">
+		INSERT INTO REVIEW_REPLY 
+		VALUES (SEQ_VR_NO.NEXTVAL,  #{vr_NO}, #{vr_Writer}, #{vr_Content}
+			, DEFAULT , DEFAULT , DEFAULT , DEFAULT , DEFAULT,#{vr_Mno})
+	</insert>
+	
+	<update id="deleteReply" parameterType="_int">
+		UPDATE REVIEW_REPLY
+		SET VR_STATUS = 'N'
+		WHERE VR_NO = #{rrNO}
+	</update>
+	
+	<select id="selectReadReviewList" resultMap="reviewResultSet">
+		SELECT *
+		FROM REVIEW RE
+        JOIN PRODUCT P
+        ON RE.V_P_NO = P.P_NO
+        JOIN PRODUCT_FILE PF
+        ON RE.V_P_NO = PF.PF_P_NO
+		WHERE V_STATUS = 'Y'
+		AND V_CHECK = 'Y'
+		AND V_B_NO = #{bNO}
+	</select>
+	
+	<select id="selectReadReviewReplyList" resultMap="reviewReplyResultSet">
+		SELECT *
+		FROM REVIEW_REPLY REP
+		JOIN MEMBER M
+		ON REP.VR_MNO = M.MNO
+        LEFT JOIN BRAND B
+        ON M.BRAND_NO = B.BRAND_NO
+        WHERE REP.VR_STATUS = 'Y'
+	</select>
 
 
 
