@@ -12,10 +12,11 @@ public class CartServiceimpl implements CartService {
 
 	@Autowired
 	private CartDao cDao;
-	
+
 	@Override
-	public int cInsert(ProductDetail pc) {
-		return cDao.cInsert(pc);
+	public int cInsert(Cart c) {
+		return cDao.cInsert(c);
 	}
+	
 
 }

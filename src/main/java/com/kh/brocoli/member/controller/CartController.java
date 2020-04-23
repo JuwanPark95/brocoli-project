@@ -1,5 +1,6 @@
 package com.kh.brocoli.member.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,7 @@ import com.kh.brocoli.member.model.service.CartService;
 import com.kh.brocoli.member.model.vo.Cart;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 
+
 @Controller
 public class CartController {
 	
@@ -15,30 +17,32 @@ public class CartController {
 	private CartService cService;
 	
 	@RequestMapping("cInsert.mn")
-	public String cInsert(ProductDetail pc) {
+	public String cInsert(Cart c, ProductDetail pc, int ct_Mno, int p_NO) {
 		
+		System.out.println("ProductDetail : " + pc);
 		
+		System.out.println("회원 Mno : " + ct_Mno);
 		System.out.println("장바구니 인설트 상품 : " + pc.getP_NO());
+		System.out.println("장바구니  상품 : " + pc.getP_NO());		
+		
 		System.out.println("장바구니 인설트 옵션1 : " + pc.getOption_1());
 		System.out.println("장바구니 인설트 옵션2 : " + pc.getOption_2());
+		System.out.println("장바구니 개수 : " + pc.getN_product());
+		
+		c.setCt_P_NO(pc.getP_NO());
+		c.setCt_Option_1(pc.getOption_1());
+		c.setCt_Option_2(pc.getOption_2());
+		c.setCt_Amount(pc.getN_product());
+		c.setCt_Mno(ct_Mno);
+			  
+		 int result = cService.cInsert(c); 
+		  
+		 if(result > 0) {
+			 System.out.println("장바구니 컨트롤 리절트 : " + result); 
+			 	return "redirect:productDetail.mn?p_NO=" + p_NO;
+		  
+		  }else { 
+			  return "common/errorPage"; }
 
-		
-		
-		pc.setP_NO(pc.getP_NO());
-		pc.setOption_1(pc.getOption_1());
-		pc.setOption_2(pc.getOption_2());
-
-		
-		int result = cService.cInsert(pc);
-		
-		if(result > 0) {
-			System.out.println("장바구니 리절트 : " + result);
-			return "";
-		}else {
-			return "common/errorPage";
-		}
-		
-	}
-	
-
+	}	
 }
