@@ -2,6 +2,8 @@ package com.kh.brocoli.product.model.vo;
 
 import java.sql.Date;
 
+import com.kh.brocoli.member.model.vo.Member;
+
 public class QNAProduct_Reply {
 	
 	private int pqr_No;
@@ -13,9 +15,13 @@ public class QNAProduct_Reply {
 	private Date pqr_Modify_Date;
 	private String pqr_Count;
 	private String pqr_Check;
+	private String pqr_Status;
 	private int pqr_Mno;
 	private int pqr_bNo;
-
+	
+	private Brand blist;
+	private Member mlist;
+	
 //  작성자 : 박주완
 //  내용 : resultMap 작성해놓았으니 가져다 쓰세욥!! ㅎ (주석제거:알트+쉬프트+A)
 //	<resultMap type="QNAProduct_Reply" id="QnAResultSet">
@@ -29,6 +35,7 @@ public class QNAProduct_Reply {
 //		<result property="pqr_Modify_Date" column="PQR_MODIFY_DATE"/>
 //		<result property="pqr_Count" column="PQR_COUNT"/>
 //		<result property="pqr_Check" column="PQR_CHECK"/>
+//		<result property="pqr_Status" column="PQR_STATUS"/>
 //		<result property="pqr_Mno" column="PQR_MNO"/>
 //		<result property="pqr_bNo" column="PQR_BNO"/>
 //		
@@ -39,7 +46,8 @@ public class QNAProduct_Reply {
 	}
 
 	public QNAProduct_Reply(int pqr_No, String pqr_ParentNo, String pqr_Writer, String pqr_Id, String pqr_Content,
-			Date pqr_Date, Date pqr_Modify_Date, String pqr_Count, String pqr_Check, int pqr_Mno, int pqr_bNo) {
+			Date pqr_Date, Date pqr_Modify_Date, String pqr_Count, String pqr_Check, String pqr_Status, int pqr_Mno,
+			int pqr_bNo, Brand blist, Member mlist) {
 		super();
 		this.pqr_No = pqr_No;
 		this.pqr_ParentNo = pqr_ParentNo;
@@ -50,8 +58,11 @@ public class QNAProduct_Reply {
 		this.pqr_Modify_Date = pqr_Modify_Date;
 		this.pqr_Count = pqr_Count;
 		this.pqr_Check = pqr_Check;
+		this.pqr_Status = pqr_Status;
 		this.pqr_Mno = pqr_Mno;
 		this.pqr_bNo = pqr_bNo;
+		this.blist = blist;
+		this.mlist = mlist;
 	}
 
 	public int getPqr_No() {
@@ -126,6 +137,14 @@ public class QNAProduct_Reply {
 		this.pqr_Check = pqr_Check;
 	}
 
+	public String getPqr_Status() {
+		return pqr_Status;
+	}
+
+	public void setPqr_Status(String pqr_Status) {
+		this.pqr_Status = pqr_Status;
+	}
+
 	public int getPqr_Mno() {
 		return pqr_Mno;
 	}
@@ -142,13 +161,50 @@ public class QNAProduct_Reply {
 		this.pqr_bNo = pqr_bNo;
 	}
 
+	public Brand getBlist() {
+		return blist;
+	}
+
+	public void setBlist(Brand blist) {
+		this.blist = blist;
+	}
+
+	public Member getMlist() {
+		return mlist;
+	}
+
+	public void setMlist(Member mlist) {
+		this.mlist = mlist;
+	}
+
 	@Override
 	public String toString() {
 		return "QNAProduct_Reply [pqr_No=" + pqr_No + ", pqr_ParentNo=" + pqr_ParentNo + ", pqr_Writer=" + pqr_Writer
 				+ ", pqr_Id=" + pqr_Id + ", pqr_Content=" + pqr_Content + ", pqr_Date=" + pqr_Date
 				+ ", pqr_Modify_Date=" + pqr_Modify_Date + ", pqr_Count=" + pqr_Count + ", pqr_Check=" + pqr_Check
-				+ ", pqr_Mno=" + pqr_Mno + ", pqr_bNo=" + pqr_bNo + "]";
+				+ ", pqr_Status=" + pqr_Status + ", pqr_Mno=" + pqr_Mno + ", pqr_bNo=" + pqr_bNo + ", blist=" + blist
+				+ ", mlist=" + mlist + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

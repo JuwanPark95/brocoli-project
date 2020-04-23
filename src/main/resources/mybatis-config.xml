@@ -63,7 +63,7 @@
  		<mapper resource="mappers/owner-mappers/ownerProduct-mapper.xml"/>
  		<mapper resource="mappers/owner-mappers/ownerOrder-mapper.xml"/>
   		<mapper resource="mappers/owner-mappers/ownerReView-mapper.xml"/>
-<!--   		<mapper resource="mappers/owner-mappers/ownerQnA-mapper.xml"/>  -->
+   		<mapper resource="mappers/owner-mappers/ownerQnA-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminBrand-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminOrders-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminProduct-mapper.xml"/>

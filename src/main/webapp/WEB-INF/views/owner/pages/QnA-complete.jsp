@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/brocoli/resources/ownerResources/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <%@ include file="header.jsp" %>
         
-    <title>오너 : 후기관리</title>
+    <title>오너 : 상품문의</title>
     
     <style type="text/css">
        .dataTables_length{
@@ -69,15 +69,14 @@
                <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                      <div class="page-header">
-                        <h3 class="mb-2">읽지않은 후기</h3>
+                        <h3 class="mb-2">완료된 상품문의</h3>
                         <div class="page-breadcrumb">
                            <nav aria-label="breadcrumb">
                               <ol class="breadcrumb">
                                  <li class="breadcrumb-item"><a href="#"
                                     class="breadcrumb-link">메뉴</a></li>
-                                 <li class="breadcrumb-item active" aria-current="page">후기관리</li>
-                                 <li class="breadcrumb-item active" aria-current="page">읽지않은
-                                    후기</li>
+                                 <li class="breadcrumb-item active" aria-current="page">상품문의</li>
+                                 <li class="breadcrumb-item active" aria-current="page">완료된 상품문의</li>
                               </ol>
                            </nav>
                         </div>
@@ -101,13 +100,13 @@
                                	<c:choose>
                                		<c:when test="${empty list}">
                                			<tr>
-                               				<td><div><strong>새로운 문의글이 없습니다.</strong></div></td>
+                               				<td><div><strong>답변한 상품문의가 없습니다.</strong></div></td>
                                			</tr>
                                		</c:when>
                                	</c:choose>
                                  <c:forEach var="i" items="${ list}">
                                     <tr>
-                                       <td style="display: none; width: 0px;">${i.v_NO *-1}</td>
+                                       <td style="display: none; width: 0px;">${i.pq_No *-1}</td>
                                        <td style="width: 100%;">
                                           <div class="card-body">
                                              <div style="width:100%; border-bottom: 1px solid #e6e6f2; height: 40px;">
@@ -115,64 +114,28 @@
 	                                                <span class="text-dark font-weight-bold">
 	                                                   상품명 - ${i.plist.p_Name }
 	                                                </span>
-	                                                <c:choose >
-	                                                	<c:when test="${i.v_Score eq 5 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i>
-			                                                </div>
-			                                            </c:when>
-			                                            <c:when test="${i.v_Score eq 4 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                </div>
-			                                            </c:when>
-			                                            <c:when test="${i.v_Score eq 3 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                </div>
-			                                            </c:when>
-			                                            <c:when test="${i.v_Score eq 2 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                </div>
-			                                            </c:when>
-			                                            <c:when test="${i.v_Score eq 1 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                   <i class="fa fa-fw fa-star"></i> 
-			                                                </div>
-			                                            </c:when>
-			                                            <c:when test="${i.v_Score eq 0 }">
-			                                                <div class="rating-star" style="display: inline-block; margin-left: 5px; padding: 0px;">
-			                                                </div>
-			                                            </c:when>
-	                                                </c:choose>
+	                                                
 	                                                <!-- <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; margin-left: 5px;">삭제</a>
 	                                                <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; ">수정</a> -->
 	                                                <span class="text-mute" style="margin-left: 13px; margin-right:15px; float: right; margin-top: 5px;" >
 	                                                   <span class="badge-dot badge-light"></span>
-	                                                   ${i.v_Date }
+	                                                   ${i.pq_Modify_Date }
 	                                                </span>
-	                                                <span class="text-dark font-weight-bold" style="margin-left: 15px; float: right;  margin-top: 5px;">${i.v_Writer }</span>
+	                                                <span class="text-dark font-weight-bold" style="margin-left: 15px; float: right;  margin-top: 5px;">${i.pq_Writer }</span>
                                              </div>
                                              <div class="review-block" style="padding: 8px;">
 	                                                <div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
-		                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
-		                                                      alt="user" class="rounded" width="100"> 
-		                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
-		                                                      alt="user" class="rounded" width="100">
+		                                               		<c:if test="${!empty i.pq_Img1_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.pq_Img1_ReName}"
+			                                                      alt="user" class="rounded" width="100"> 
+		                                                   	</c:if>
+		                                                   	<c:if test="${!empty i.pq_Img2_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.pq_Img2_ReName}"
+			                                                      alt="user2" class="rounded" width="100">
+		                                                   	</c:if>
 	                                                </div>
 	                                                <div style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-	                                                padding: 8px; resize: none; " class="review-text font-italic m-0">${i.v_Content }</div>
+	                                                padding: 8px; resize: none; " class="review-text font-italic m-0">${i.pq_Content}</div>
 	                                                
 	                                                <hr style=" border-top: 1px solid #e6e6f2;">
 	                                                
@@ -180,28 +143,28 @@
 	                                               
 	                                               			<c:forEach var="j" items="${rlist}">
 	                                               				<c:choose>
-	                                               					<c:when test="${i.v_NO eq j.vr_Parentno }">
+	                                               					<c:when test="${i.pq_No eq j.pqr_ParentNo}">
 					                                                   <div style="display: inline-block; padding: 5px; vertical-align: middle; width: 100%; height: auto; border: 1px solid #e6e6f2; border-radius: 5px; margin-bottom: 4px;">
 						                                                   <div style=" float: left;">
-						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="user" style="width: 40px; height: 40px; border-radius: 50%;"> 
+						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="error" style="width: 40px; height: 40px; border-radius: 50%;"> 
 						                                                   </div>
 						                                                   <div style="display: table; float: left; vertical-align: middle; text-align: center; margin-right: 3px; min-height: 40px; margin-left: 8px;">
 						                                                   		<span style="display: table-cell; vertical-align: middle; font-size: 15px;">
-						                                                   			<strong>${j.vr_Writer}</strong>
+						                                                   			<strong>${j.pqr_Writer}</strong>
 						                                                   		</span>
 						                                                   </div>
 						                                                   <div style="display: table; float: left; height: auto; background: none; resize: none; border: 0; vertical-align: middle; min-height: 40px; margin-left: 5px;">
-						                                                   		<span style="display: table-cell; vertical-align: middle;">${j.vr_Content }</span>
+						                                                   		<span style="display: table-cell; vertical-align: middle;">${j.pqr_Content}</span>
 						                                                   </div>
 						                                                   <div style=" display: inline-block; float: right;">
 						                                                   		<!-- <a style="color: #fff;" class="badge badge-light">수정</a> -->
-							                                                   	<c:url var="deleteReply" value="ReplyDelete.ow" >
-							                                                   		<c:param name="rrNO" value="${j.vr_NO}"/>
+							                                                   	<c:url var="deleteReply" value="QnAReplyDelete.ow" >
+							                                                   		<c:param name="rrNO" value="${j.pqr_No}"/>
 							                                                   		<c:param name="bNO" value="${loginUser.brand_NO}"/>
 							                                                   	</c:url>
 						                                                   		<a style="color: #fff;" class="badge badge-light" href="${deleteReply}">삭제</a>
 						                                                   		<br>
-						                                                   		<span style="margin-left: 5px;">${j.vr_Modify_Date }</span>
+						                                                   		<span style="margin-left: 5px;">${j.pqr_Modify_Date}</span>
 						                                                   </div>
 					                                                   </div>
 			                                                   		</c:when>
@@ -209,13 +172,13 @@
 			                                                 </c:forEach>
 			                                                 
 	                                                </div>
-	                                                <form action="Reply-Insert.ow" method="post" enctype="multipart/form-data" onsubmit="return checks(this)">
+	                                                <form action="QnAReply-Insert.ow" method="post" enctype="multipart/form-data" onsubmit="return checks(this)">
 	                                                <div style="width: 100%; display: flex;">
-		                                                <input name="vr_NO" type="text" style="display: none;" value="${i.v_NO}" readonly="readonly">
+		                                                <input name="pqr_No" type="text" style="display: none;" value="${i.pq_No}" readonly="readonly">
 		                                                <input name="bNO" type="text" style="display: none;" value="${loginUser.brand_NO}" readonly="readonly">
-		                                                <input name="vr_Writer" type="text" style="display: none;" value="${loginUser.mName}" readonly="readonly">
-		                                                <input name="vr_Mno" type="text" style="display: none;" value="${loginUser.mNO}" readonly="readonly">
-	                                                   <textarea name="vr_Content" id="ReplyComent"
+		                                                <input name="pqr_Writer" type="text" style="display: none;" value="${loginUser.mName}" readonly="readonly">
+		                                                <input name="pqr_Mno" type="text" style="display: none;" value="${loginUser.mNO}" readonly="readonly">
+	                                                   <textarea name="pqr_Content" id="ReplyComent"
 	                                                      style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; display: inline-block;"></textarea>
 	                                                   <button class="btn btn-primary active"
 	                                                      style="height: 41px; margin-top: 13px; margin-left: 5px; display: inline-block; background-color: #1e1e21">답글등록</button>
@@ -242,30 +205,7 @@
       </div>
    </div>
    
-<!--  <script type="text/javascript">
-		$.ajax({
-			type:"POST",
-			url:"totalSalesSearch.ad",
-			dataType:"json",
-			  data:{bNO:loginUser.Brand_NO},
-			success:function(data){
-			   $.each(data, function(index,searchList){
-			      $('#salesList').append("<tr><td>"+ (count++) +"</td><td>"
-			                               +searchList.or_NO+"</td><td>"
-			                                     +searchList.or_Date+"</td><td>"
-			                                     +searchList.or_Brand_NO+"</td><td>"   
-			                                     +searchList.or_Brand.b_Name+"</td><td>"
-			                                     +searchList.or_P_NO+"</td><td>"
-			                                     +searchList.or_Pname+"</td><td>"
-			                                     +searchList.or_Price+"</td><td>"
-			                                     +searchList.or_Amount+"</td></tr>"
-			      );
-			   });
-			},error:function(){
-			}
-		});
 
-   </script>  -->
 
 	<script>
 	    function checks(this){

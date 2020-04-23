@@ -12,6 +12,7 @@ public class QNAProduct {
 	private Date pq_Modify_Date;
 	private String pq_Count;
 	private String pq_Check;
+	private String pq_Status;
 	private String pq_Img1;
 	private String pq_Img1_ReName;
 	private String pq_Img2;
@@ -19,6 +20,8 @@ public class QNAProduct {
 	private int pq_mNo;
 	private int pq_P_No;
 	private int pq_B_No;
+	
+	private Product plist;
 	
 //  작성자 : 박주완
 //  내용 : resultMap 작성해놓았으니 가져다 쓰세욥!! ㅎ (주석제거:알트+쉬프트+A)
@@ -32,6 +35,7 @@ public class QNAProduct {
 //		<result property="pq_Modify_Date" column="PQ_MODIFY_DATE"/>
 //		<result property="pq_Count" column="PQ_COUNT"/>
 //		<result property="pq_Check" column="PQ_CHECK"/>
+//		<result property="pq_Status" column="PQ_STAUTS"/>
 //		<result property="pq_Img1" column="PQ_IMG1"/>
 //		<result property="pq_Img1_ReName" column="PQ_IMG1_RENAME"/>
 //		<result property="pq_Img2" column="PQ_IMG2"/>
@@ -47,8 +51,8 @@ public class QNAProduct {
 	}
 
 	public QNAProduct(int pq_No, String pq_Writer, String pq_Id, String pq_Content, Date pq_Date, Date pq_Modify_Date,
-			String pq_Count, String pq_Check, String pq_Img1, String pq_Img1_ReName, String pq_Img2,
-			String pq_Img2_ReName, int pq_mNo, int pq_P_No, int pq_B_No) {
+			String pq_Count, String pq_Check, String pq_Status, String pq_Img1, String pq_Img1_ReName, String pq_Img2,
+			String pq_Img2_ReName, int pq_mNo, int pq_P_No, int pq_B_No, Product plist) {
 		super();
 		this.pq_No = pq_No;
 		this.pq_Writer = pq_Writer;
@@ -58,6 +62,7 @@ public class QNAProduct {
 		this.pq_Modify_Date = pq_Modify_Date;
 		this.pq_Count = pq_Count;
 		this.pq_Check = pq_Check;
+		this.pq_Status = pq_Status;
 		this.pq_Img1 = pq_Img1;
 		this.pq_Img1_ReName = pq_Img1_ReName;
 		this.pq_Img2 = pq_Img2;
@@ -65,6 +70,7 @@ public class QNAProduct {
 		this.pq_mNo = pq_mNo;
 		this.pq_P_No = pq_P_No;
 		this.pq_B_No = pq_B_No;
+		this.plist = plist;
 	}
 
 	public int getPq_No() {
@@ -131,6 +137,14 @@ public class QNAProduct {
 		this.pq_Check = pq_Check;
 	}
 
+	public String getPq_Status() {
+		return pq_Status;
+	}
+
+	public void setPq_Status(String pq_Status) {
+		this.pq_Status = pq_Status;
+	}
+
 	public String getPq_Img1() {
 		return pq_Img1;
 	}
@@ -187,15 +201,30 @@ public class QNAProduct {
 		this.pq_B_No = pq_B_No;
 	}
 
+	public Product getPlist() {
+		return plist;
+	}
+
+	public void setPlist(Product plist) {
+		this.plist = plist;
+	}
+
 	@Override
 	public String toString() {
 		return "QNAProduct [pq_No=" + pq_No + ", pq_Writer=" + pq_Writer + ", pq_Id=" + pq_Id + ", pq_Content="
 				+ pq_Content + ", pq_Date=" + pq_Date + ", pq_Modify_Date=" + pq_Modify_Date + ", pq_Count=" + pq_Count
-				+ ", pq_Check=" + pq_Check + ", pq_Img1=" + pq_Img1 + ", pq_Img1_ReName=" + pq_Img1_ReName
-				+ ", pq_Img2=" + pq_Img2 + ", pq_Img2_ReName=" + pq_Img2_ReName + ", pq_mNo=" + pq_mNo + ", pq_P_No="
-				+ pq_P_No + ", pq_B_No=" + pq_B_No + "]";
+				+ ", pq_Check=" + pq_Check + ", pq_Status=" + pq_Status + ", pq_Img1=" + pq_Img1 + ", pq_Img1_ReName="
+				+ pq_Img1_ReName + ", pq_Img2=" + pq_Img2 + ", pq_Img2_ReName=" + pq_Img2_ReName + ", pq_mNo=" + pq_mNo
+				+ ", pq_P_No=" + pq_P_No + ", pq_B_No=" + pq_B_No + ", plist=" + plist + "]";
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
