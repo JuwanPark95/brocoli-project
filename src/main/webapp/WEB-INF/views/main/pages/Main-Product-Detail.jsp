@@ -331,17 +331,32 @@
 
 
 												<div class="row p-b-25">
-													<div class="col-12 p-b-5">
 														<label class="stext-102 cl3" for="review"
-															style="display: inline-block">작성 <input
-															type="file"
-															style="display: inline-block; margin-left: 400px;">
+															style="display: inline-block">작성 
 
 														</label>
-														<textarea
+													<div class="col-12 p-b-5">
+												<div class="productImgArea" id="productImgArea">
+                   									<input type="file" id="pf_Img1" name="uploadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+								                 
+								                 <div class="productImgArea" id="productImgArea2">
+                   									<input type="file" id="pf_Img2" name="uploadFile2" accept="resources/buploadFiles/" onchange="loadImg2(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea2" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg2" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+													<textarea
 															class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
 															id="review" name="review" style="resize: none;"></textarea>
 													</div>
+																									<!-- 파일업로드 -->
+
 
 													<!-- 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="name">Name</label>
@@ -353,6 +368,7 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 												</div>
+
 												<input type="hidden" id="productNo1"
 													value="${aProducDetailtList[0].p_NO }"> <a
 													id="qnacomment"
@@ -1036,6 +1052,59 @@
 				}
 			});
 		})
+	</script>
+	<script>
+	$(function(){
+	     $('#productImgArea').hide();
+	     
+	        
+	     $('#titleImgArea').click(() => {
+	        $('#pf_Img1').click();
+	     });
+	   });
+
+	   function loadImg(value, num){
+	     
+	     if(value.files/*  && value.files[0] */)  {
+	        
+	        var reader = new FileReader();
+	        
+	        reader.onload = function(e){
+	           
+	           switch(num) {
+	           case 1 : $('#titleImg').attr('src', e.target.result);
+	              break;
+	           }
+	        }
+	        reader.readAsDataURL(value.files[0]);
+	     }
+	   } 
+	   
+		$(function(){
+		     $('#productImgArea2').hide();
+		     
+		        
+		     $('#titleImgArea2').click(() => {
+		        $('#pf_Img2').click();
+		     });
+		   });
+
+		   function loadImg2(value, num){
+		     
+		     if(value.files/*  && value.files[0] */)  {
+		        
+		        var reader = new FileReader();
+		        
+		        reader.onload = function(e){
+		           
+		           switch(num) {
+		           case 1 : $('#titleImg2').attr('src', e.target.result);
+		              break;
+		           }
+		        }
+		        reader.readAsDataURL(value.files[0]);
+		     }
+		   } 
 	</script>
 </body>
 </html>
