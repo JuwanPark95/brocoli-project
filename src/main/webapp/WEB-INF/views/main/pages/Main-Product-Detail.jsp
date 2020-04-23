@@ -8,6 +8,7 @@
 <%@ include file="All-Cart.jsp"%>
 
 
+
 <style>
 .img_color {
 	width: 290px;
@@ -827,6 +828,7 @@
 		</div>
 	</div>
 	<script>
+
 	$(function(){
 	    $("#test1").change(function() {
 	    	var test = "";
