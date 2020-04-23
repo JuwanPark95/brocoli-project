@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% String keyword = request.getParameter("keyword"); %>
 <!DOCTYPE html>
 <html lang="ko">
 	<%@ include file="All-Header.jsp" %>
@@ -18,7 +20,7 @@
    <!-- Product -->
    <div class="bg0 m-t-23 p-b-140">
       <div class="container">
-      <h2 style="margin-top: 50px;">Search의 검색 결과 : Number건의 상품이 검색되었습니다.</h2>
+      <h2 style="margin-top: 50px;"><%=keyword %> 의 검색 결과 : ${plus } 건이 검색되었습니다.</h2>
          <div class="flex-w flex-sb-m p-b-52" >
          <div class="flex-w flex-l-m filter-tope-group m-tb-10" >
                	<label style="font-size:20px;">결과 내 재검색</label>&nbsp;&nbsp;&nbsp;
@@ -36,16 +38,17 @@
             </div>
             
             <!-- Search product -->
-            <div class="dis-none panel-search w-full p-t-10 p-b-15">
-               <div class="bor8 dis-flex p-l-15">
+            <div class="dis-none panel-search w-full p-t-10 p-b-15" >
+            <form action="searchPage2.mn" method="get">
+               <div class="bor8 dis-flex p-l-15" >
                   <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                      <i class="zmdi zmdi-search"></i>
                   </button>
-
-                  <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+					<input type="hidden" name="keyword" value="<%=keyword %>" />
+                  <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" id="keyword2" name="keyword2" placeholder="Search" required>
                </div>   
+			</form>
             </div>
-
             
             
          </div>
@@ -53,26 +56,29 @@
   <!-- 브랜드 시작 -->
   <section class="brlist wrap-filter flex-w ">
                   <div class="filter-col1  " style="width:100%;">
+                
          <div>
 			 	<label style="font-size:30px;">브랜드</label>
 			</div>
          <hr style="border: 1px solid grey;">
          <div class="brandSR">
          <ol class="olf">
-         	<li><button><img src="/brocoli/resources/mainResources/images/nike.png" /><br><p>Nike</p></button></li>
-         	<li><button><img src="/brocoli/resources/mainResources/images/adidas.jpg" /><br><p>adidas</p></button></li>
-         	<li><button><img src="/brocoli/resources/mainResources/images/puma.png" /><br><p>PUMA</p></button></li>
-         	<li><button><img src="/brocoli/resources/mainResources/images/lecoq.png" /><br><p>le coq</p></button></li>
-         	<li><button><img src="/brocoli/resources/mainResources/images/dynafit.png" /><br><p>DYNAFIT</p></button></li>
-         	</ol>
-         	
-         	<ol class="ols">
-         	<li><button><img src="/brocoli/resources/mainResources/images/nike.png" /><br><p>Nike</p></button></li>
-         	<li><button><img src="/brocoli/resources/mainResources/images/adidas.jpg" /><br><p>adidas</p></button></li>
+         <c:forEach var="b" items="${bList }">
+           <c:url var="bproduct" value="bproduct.mn">
+  				<c:param name="b_Name" value="${ b.b_Name }"/>
+       		</c:url>
+         	<li class="hover"><button onclick="location.href='${bproduct }'"><img class="img3" src="/brocoli/resources/product-Img/${b.b_Logo_ReName}" /><br><p >${b.b_Name }</p></button></li>
+         	<!-- <li><button><img src="/brocoli/resources/mainResources/images/adidas.jpg" /><br><p>adidas</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/puma.png" /><br><p>PUMA</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/lecoq.png" /><br><p>le coq</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/dynafit.png" /><br><p>DYNAFIT</p></button></li>
          	
+         	<li><button><img src="/brocoli/resources/mainResources/images/nike.png" /><br><p>Nike</p></button></li>
+         	<li><button><img src="/brocoli/resources/mainResources/images/adidas.jpg" /><br><p>adidas</p></button></li>
+         	<li><button><img src="/brocoli/resources/mainResources/images/puma.png" /><br><p>PUMA</p></button></li>
+         	<li><button><img src="/brocoli/resources/mainResources/images/lecoq.png" /><br><p>le coq</p></button></li>
+         	<li><button><img src="/brocoli/resources/mainResources/images/dynafit.png" /><br><p>DYNAFIT</p></button></li> -->
+         </c:forEach>
          	</ol>
          </div>
        </div>
@@ -83,202 +89,69 @@
 <div>
 <label style="font-size:30px;">상품</label>
 </div>
-         <div class="row isotope-grid">
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-               <!-- Block2 -->
+          <div class="row isotope-grid">
+         <c:forEach var="ap" items="${ pList }">
+         
+         	<c:url var="productDetail" value="productDetail.mn">
+           		<c:param name="p_NO" value="${ ap.p_NO }"/>
+   	        </c:url>
+   	        <button onclick="location.href='${productDetail}'">
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${ap.p_Bcategory} ${ap.p_Scategory}">
                <div class="block2">
-                  <div class="block2-pic hov-img0">
-                     <img src="/brocoli/resources/mainResources/images/product-01.jpg" alt="IMG-PRODUCT">
-
-                     <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick View
-                     </a>
+                  <div class="block2-pic hov-img0" id="productModal">
+                     <img src="/brocoli/resources/product-Img/${ap.pfList.pf_Img1_ReName }" alt="IMG-PRODUCT" style="height:378px;">
+				<input type="hidden" id="productNo" value="${ap.p_NO }">
+                    <!--  <a href="#" id="ModalView" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                     	미리보기
+                     </a> -->
                   </div>
 
                   <div class="block2-txt flex-w flex-t p-t-14">
                      <div class="block2-txt-child1 flex-col-l ">
-                        <a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                           Esprit Ruffle Shirt
+                        <a href="${productDetail }" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                           ${ap.p_Name }
                         </a>
 
                         <span class="stext-105 cl3">
-                           $16.64
+                           ${ap.p_Last_Price }원
                         </span>
                      </div>
-
+						
+						
+					<%--  <c:url var="wInsert" value="wInsert.mn">
+					 <c:param name="w_P_NO" value="${ ap.p_NO }"/>
+					 	<c:param name="w_Mno" value="${ loginUser.mNO }"/>
+					 </c:url>	
                      <div class="block2-txt-child2 flex-r p-t-3">
                         <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
+                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON" onclick="location.href='${wInsert}'">
+                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON" onclick="location.href='${wInsert}'">
                         </a>
-                     </div>
+                     </div> --%>
                   </div>
                </div>
             </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-               <!-- Block2 -->
-               <div class="block2">
-                  <div class="block2-pic hov-img0">
-                     <img src="/brocoli/resources/mainResources/images/product-02.jpg" alt="IMG-PRODUCT">
-
-                     <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick View
-                     </a>
-                  </div>
-
-                  <div class="block2-txt flex-w flex-t p-t-14">
-                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                           Herschel supply
-                        </a>
-
-                        <span class="stext-105 cl3">
-                           $35.31
-                        </span>
-                     </div>
-
-                     <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item men">
-               <!-- Block2 -->
-               <div class="block2">
-                  <div class="block2-pic hov-img0">
-                     <img src="/brocoli/resources/mainResources/images/product-03.jpg" alt="IMG-PRODUCT">
-
-                     <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick View
-                     </a>
-                  </div>
-
-                  <div class="block2-txt flex-w flex-t p-t-14">
-                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                           Only Check Trouser
-                        </a>
-
-                        <span class="stext-105 cl3">
-                           $25.50
-                        </span>
-                     </div>
-
-                     <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-               <!-- Block2 -->
-               <div class="block2">
-                  <div class="block2-pic hov-img0">
-                     <img src="/brocoli/resources/mainResources/images/product-04.jpg" alt="IMG-PRODUCT">
-
-                     <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick View
-                     </a>
-                  </div>
-
-                  <div class="block2-txt flex-w flex-t p-t-14">
-                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                           Classic Trench Coat
-                        </a>
-
-                        <span class="stext-105 cl3">
-                           $75.00
-                        </span>
-                     </div>
-
-                     <div class="block2-txt-child2 flex-r p-t-3">
-                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                           <img class="icon-heart1 dis-block trans-04" src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png" alt="ICON">
-                           <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png" alt="ICON">
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            
+            </button>
+		</c:forEach>
          </div>
+
+         <!-- Load more -->
+         <div class="flex-c-m flex-w w-full p-t-45">
+            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+               Load More
+            </a>
+         </div>
+      </div>
+   </div>
 
         
-      </div>
-   </div>
+   
       
 
-   <!-- Modal1 -->
-   <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-      <div class="overlay-modal1 js-hide-modal1"></div>
-
-      <div class="container">
-         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-               <img src="/brocoli/resources/mainResources/images/icons/icon-close.png" alt="CLOSE">
-            </button>
-
-            <div class="row">
-               <div class="col-md-6 col-lg-7 p-b-30">
-                  <div class="p-l-25 p-r-30 p-lr-0-lg">
-                     <div class="wrap-slick3 flex-sb flex-w">
-                        <div class="wrap-slick3-dots"></div>
-                        <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-                        <div class="slick3 gallery-lb">
-                           <div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-                              <div class="wrap-pic-w pos-relative">
-                                 <img src="/brocoli/resources/mainResources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
-
-                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-                                    <i class="fa fa-expand"></i>
-                                 </a>
-                              </div>
-                           </div>
-
-                           <div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-                              <div class="wrap-pic-w pos-relative">
-                                 <img src="/brocoli/resources/mainResources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
-
-                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-                                    <i class="fa fa-expand"></i>
-                                 </a>
-                              </div>
-                           </div>
-
-                           <div class="item-slick3" data-thumb="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-                              <div class="wrap-pic-w pos-relative">
-                                 <img src="/brocoli/resources/mainResources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
-
-                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-                                    <i class="fa fa-expand"></i>
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <%@ include file="All-ShopModal.jsp" %>
-            </div>
-         </div>
-      </div>
-   </div>
+  
 <%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
-	
+
 <!--===============================================================================================-->   
    <script src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -381,12 +254,6 @@
 <!--===============================================================================================-->
    <script src="/brocoli/resources/mainResources/js/main.js"></script>
    
-   
-   
-   
-   
-
-
 
 </body>
 </html>

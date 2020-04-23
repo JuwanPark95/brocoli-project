@@ -187,14 +187,6 @@ public class MemberController {
 		return  mv;
 	}
 	
-	/**
-	 * 메거진 페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("magazineView.mn")
-	public String MagazineView() {
-		return "Main-Magazine";
-	}
 	
 	/**
 	 * 찜목록 페이지로 이동
@@ -203,15 +195,6 @@ public class MemberController {
 	@RequestMapping("wishlistView.mn")
 	public String WishlistView() {
 		return "MyWishlist";
-	}
-	
-	/**
-	 * 검색결과창으로 이동
-	 * @return
-	 */
-	@RequestMapping("searchPage.mn")
-	public String SearchPage() {
-		return "Main-Search"; 
 	}
 	
 	@RequestMapping("adminPage")
