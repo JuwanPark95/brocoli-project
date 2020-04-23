@@ -67,7 +67,6 @@ public class ownerOrderController {
 
 	@RequestMapping("order_progress.ow")
 	public ModelAndView order_progress(ModelAndView mv, int Brand_NO) {
-		
 		ArrayList<Orders> list = oService.orderProgress(Brand_NO);
 		
 		if(list != null) {
@@ -135,7 +134,7 @@ public class ownerOrderController {
 		Orders od = oService.orderDetail(oNO);
 		
 		if(od != null) {
-			mv.addObject("order",od);
+			mv.addObject("o",od);
 			mv.setViewName("order-detail");
 		}else {
 			mv.setViewName("404-Page");
