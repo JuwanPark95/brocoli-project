@@ -187,14 +187,6 @@ public class MemberController {
 		return  mv;
 	}
 	
-	/**
-	 * 메거진 페이지로 이동
-	 * @return
-	 */
-	@RequestMapping("magazineView.mn")
-	public String MagazineView() {
-		return "Main-Magazine";
-	}
 	
 	/**
 	 * 찜목록 페이지로 이동
@@ -203,15 +195,6 @@ public class MemberController {
 	@RequestMapping("wishlistView.mn")
 	public String WishlistView() {
 		return "MyWishlist";
-	}
-	
-	/**
-	 * 검색결과창으로 이동
-	 * @return
-	 */
-	@RequestMapping("searchPage.mn")
-	public String SearchPage() {
-		return "Main-Search"; 
 	}
 	
 	@RequestMapping("adminPage")
@@ -227,7 +210,7 @@ public class MemberController {
 	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
 		
 		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
-		mv.addObject("aProductList",pDetail);
+		mv.addObject("aProducDetailtList",pDetail);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
 	}
@@ -246,6 +229,21 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping("optionDetail")
+	public void optionDetail(HttpServletResponse response,String p_NO,String option_1) throws JsonIOException, IOException{
+		HashMap<String,String> hmap = new HashMap<>();
+		hmap.put("p_NO", p_NO);
+		hmap.put("option_1", option_1);
+		
+		
+		ArrayList<ProductDetail> option = mService.selectOption(hmap);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(option,response.getWriter());
+	}
 	@RequestMapping("qnacomment")
 	public void qnacomment(HttpServletResponse response,String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
 		System.out.println("@@"+pq_P_NO);

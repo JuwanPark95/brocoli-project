@@ -13,8 +13,9 @@ public class CartDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public int cInsert(ProductDetail pc) {
-		return sqlSession.insert("Cart-mapper.cInsert", pc);
+	public int cInsert(Cart c) {
+		System.out.println("DAO 찍히나유 ? :"+c.getCt_Mno());
+		return sqlSession.insert("Cart-mapper.cInsert", c);
 	}
 
 }

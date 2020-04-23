@@ -5,6 +5,6 @@ import com.kh.brocoli.product.model.vo.ProductDetail;
 
 public interface CartService {
 
-	public int cInsert(ProductDetail pc);
+	public int cInsert(Cart c);
 
 }

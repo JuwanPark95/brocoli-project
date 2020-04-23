@@ -248,8 +248,7 @@
 					</span> --></li>
 
 			<li><a href="${Rank }">Rank</a></li>
-			<li><a href="${Brand }" class="label1 rs1"
-				data-label1="hot">Brand</a></li>
+			<li><a href="${Brand }" class="label1 rs1"	data-label1="hot">Brand</a></li>
 
 			<li><a href="${Product }">Shop</a></li>
 
@@ -259,6 +258,7 @@
 		</ul>
 	</div>
 	<!-- Modal Search -->
+	<!-- <form action="searchPage.mn" method="get"> -->
 	<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
 		<div class="container-search-header">
 			<button
@@ -272,27 +272,34 @@
 				<button class="flex-c-m trans-04">
 					<i class="zmdi zmdi-search"></i>
 				</button>
-				<input class="plh3" type="text" placeholder="Search...">
+				<input class="plh3" type="text" placeholder="Search..." id="keyword" name="keyword">
 			</div>
 			<!-- <input class="plh3" id="searchbar" type="text" name="search" placeholder="Search..."> -->
-			</form>
 		</div>
 	</div>
+	<!-- </form> -->
 </header>
-				<c:url var="SearchPage" value="searchPage.mn"/>
+				
 				<script>
-					$('#searchbar').keyup(function(e) {
+					/* $('#searchbar').keyup(function(e) {
 						if (e.keyCode == 13) {
 								location.href = "${SearchPage}";
 						}
-					});
+					}); */
 				</script>
 				<body>
 					<script>
 						$(document).ready(function() {
 								$("#alpreah_input").keydown(function(key) {
+									
 												if (key.keyCode == 13) {
-													location.href = "${SearchPage}";
+										var keyword = $("#keyword").val();
+										console.log(keyword);
+										if(keyword == null || keyword == ""){
+											alert("검색어를 입력해주세요.")
+										}else{
+													location.href = "searchPage.mn?keyword="+keyword;
+										}
 								}
 							});
 						});
