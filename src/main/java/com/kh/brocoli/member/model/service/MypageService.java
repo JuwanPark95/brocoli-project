@@ -108,6 +108,14 @@ public interface MypageService {
 	int R_complete(Reject re);
 
 
+	/**
+	 * 상세보기
+	 * @param or_NO
+	 * @return
+	 */
+	ArrayList<Orders> trackprocess(String or_NO);
+
+
 
 
 

@@ -86,6 +86,11 @@ public class MypageServiceimpl implements MypageService {
 		return myDao.R_complete(re);
 	}
 
+	@Override
+	public ArrayList<Orders> trackprocess(String or_NO) {
+		return myDao.trackprocess(or_NO);
+	}
+
 	
 
 

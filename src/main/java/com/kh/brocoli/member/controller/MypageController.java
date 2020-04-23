@@ -206,231 +206,240 @@ public class MypageController {
 //************************************************주문상세 이동경로********************************************************//	
 	
 	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-03
-	 *  내용 : 주문현황에서 상세페이지
-	 * @return
-	 */
-	@RequestMapping("trackprocess.mn")
-	public String T_process() {
-		return "My-Track-Process";
-	}
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-03
-	 *  내용 : 주문현황에서 교환 
-	 * @return
-	 */
-	@RequestMapping("my_p_change.mn")
-	public ModelAndView P_change(ModelAndView mv, HttpSession session,
-		                     	@RequestParam("or_No") String or_No) {
-		Member m = (Member)session.getAttribute("loginUser");
-		
-		ArrayList<Orders> list = myService.P_change(or_No);
-		System.out.println("list : " + list);
-
-		mv.addObject("list", list);
-		mv.setViewName("My-Product-Change");
-		
-		
-		return mv;
-	}
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-03
-	 *  내용 : 교환 신청완료
-	 */
-	
-	  @RequestMapping("C_complete.mn") 
-	  public ModelAndView C_complete(ModelAndView mv,Change ch,HttpSession session) {
-	 
-		  Member m = (Member)session.getAttribute("loginUser");
-		  System.out.println(ch);
-		  int result = myService.C_complete(ch);	
-		  System.out.println(result);
-		  
-		  if(result > 0) {
-           
-			   mv.addObject("Change",ch);
-		 
-	           mv.setViewName("redirect:myOrderList.mn");
-			 
-		 }
-	
-		  return mv;
-   }
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 교환->반품  
-	 * @return
-	 */
-	@RequestMapping("my_p_reject.mn")
-	public ModelAndView P_reject(ModelAndView mv, HttpSession session,
-             	@RequestParam("or_No") String or_No) {
-		Member m = (Member)session.getAttribute("loginUser");
-		
-		ArrayList<Orders> list = myService.P_reject(or_No);
-		System.out.println("list : " + list);
-		
-		mv.addObject("list", list);
-		mv.setViewName("My-Product-Reject");
-
-
-	    return mv;
-	}
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-03
-	 *  내용 : 반품 신청완료
-	 */
-	
-	  @RequestMapping("R_complete.mn") 
-	  public ModelAndView R_complete(ModelAndView mv,Reject re,HttpSession session) {
-	 
-		  Member m = (Member)session.getAttribute("loginUser");
-		  System.out.println(re);
-		  int result = myService.R_complete(re);	
-		  System.out.println(result);
-		  
-		  if(result > 0) {
-           
-			   mv.addObject("Reject",re);
-		 
-	           mv.setViewName("redirect:myOrderList.mn");
-			 
-		 }
-	
-		  return mv;
-   }
-	
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 주문현황으로 이동
-	 * @return
-	 */
-	@RequestMapping("myOrderList.mn")
-	public ModelAndView myorderlist(ModelAndView mv, HttpSession session){
-		
-		Member m = (Member)session.getAttribute("loginUser");
-		ArrayList<Orders> list = myService.myorderList(m);
-		System.out.println("list : " + list);
-
-		mv.addObject("list", list);
-		mv.setViewName("MyOrderList");
-		
-		return mv;
-	}
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 관심상품으로 이동
-	 * @return
-	 */
-	@RequestMapping("myWishList.mn")
-	public String mywishlist() {
-		return "MyWishlist";
-	}
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 장바구니로 이동
-	 * @return
-	 */
-	@RequestMapping("myCart.mn")
-	public String myCart() {
-		return "MyCart";
-	}
-	
-	
-	
-	/** 작성자 : 김주희
-	 *  작성일 : 2020-04-02
-	 *  내용 : 마이페이지에서 내가쓴글로 이동
-	 * @return
-	 */
-	@RequestMapping("B_Alllist.mn")
-	public ModelAndView alllist(ModelAndView mv, HttpSession session,
-			@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage) {
-		
-        System.out.println(currentPage);
-        
-        Member m = (Member)session.getAttribute("loginUser");
-		
-		int listCount = myService.getmyListCount();
-		
-		System.out.println("listCount : " + listCount);
-		
-		PageInfo pi = Pagination.getPageInfo(currentPage,listCount);
-		
-		ArrayList<QnA> list = myService.myselectList(pi,m);
-		
-		
-		mv.addObject("list", list);
-		mv.addObject("pi",pi);
-		mv.setViewName("Board-All-List");
-		
-		return mv;
-		
-	}
-	
-
-	@RequestMapping("mySearch.mn")
-	public ModelAndView searchBoard(ModelAndView mv, HttpSession session,
-									@RequestParam(value = "search", required = false) String search,
-									@RequestParam(value = "condition", required = false) String condition,
-									@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
-		
-		System.out.println("bnSearch.mn" + search);
-		System.out.println("bnSearch.mn" + condition);
-		
-		SearchCondition sc = new SearchCondition();
-		sc.setSearch(search);
-		sc.setCondition(condition);
-		
-		if(condition.equals("writer")) {
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 상세페이지
+		 * @return
+		 */
+		@RequestMapping("trackprocess.mn")
+		public ModelAndView trackprocess(ModelAndView mv, HttpSession session,
+				                         @RequestParam("or_NO") String or_NO){
 			
-			sc.setWriter(search);
-		}else if(condition.equals("title")) {
-			sc.setTitle(search);
-		}else if(condition.equals("content")) {
-			sc.setContent(search);
+			Member m = (Member)session.getAttribute("loginUser");
+			ArrayList<Orders> list = myService.trackprocess(or_NO);
+			System.out.println("list : " + list);
+
+			mv.addObject("list", list);
+			mv.setViewName("redirect:myOrderList.mn");
+			
+			return mv;
+		}
+	
+	
+	
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 주문현황에서 교환 
+		 * @return
+		 */
+		@RequestMapping("my_p_change.mn")
+		public ModelAndView P_change(ModelAndView mv, HttpSession session,
+			                     	@RequestParam("or_No") String or_No) {
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			ArrayList<Orders> list = myService.P_change(or_No);
+			System.out.println("list : " + list);
+	
+			mv.addObject("list", list);
+			mv.setViewName("My-Product-Change");
+			
+			
+			return mv;
+		}
+	
+	
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 교환 신청완료
+		 */
+		
+		  @RequestMapping("C_complete.mn") 
+		  public ModelAndView C_complete(ModelAndView mv,Change ch,HttpSession session) {
+		 
+			  Member m = (Member)session.getAttribute("loginUser");
+			  System.out.println(ch);
+			  int result = myService.C_complete(ch);	
+			  System.out.println(result);
+			  
+			  if(result > 0) {
+	           
+				   mv.addObject("Change",ch);
+			 
+		           mv.setViewName("redirect:myOrderList.mn");
+				 
+			 }
+		
+			  return mv;
+	   }
+		
+	
+	
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 교환->반품  
+		 * @return
+		 */
+		@RequestMapping("my_p_reject.mn")
+		public ModelAndView P_reject(ModelAndView mv, HttpSession session,
+	             	@RequestParam("or_No") String or_No) {
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			ArrayList<Orders> list = myService.P_reject(or_No);
+			System.out.println("list : " + list);
+			
+			mv.addObject("list", list);
+			mv.setViewName("My-Product-Reject");
+	
+	
+		    return mv;
+		}
+	
+	
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-03
+		 *  내용 : 반품 신청완료
+		 */
+		
+		  @RequestMapping("R_complete.mn") 
+		  public ModelAndView R_complete(ModelAndView mv,Reject re,HttpSession session) {
+		 
+			  Member m = (Member)session.getAttribute("loginUser");
+			  System.out.println(re);
+			  int result = myService.R_complete(re);	
+			  System.out.println(result);
+			  
+			  if(result > 0) {
+	           
+				   mv.addObject("Reject",re);
+			 
+		           mv.setViewName("redirect:myOrderList.mn");
+				 
+			 }
+		
+			  return mv;
+	   }
+		
+	
+	
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 주문현황으로 이동
+		 * @return
+		 */
+		@RequestMapping("myOrderList.mn")
+		public ModelAndView myorderlist(ModelAndView mv, HttpSession session){
+			
+			Member m = (Member)session.getAttribute("loginUser");
+			ArrayList<Orders> list = myService.myorderList(m);
+			System.out.println("list : " + list);
+	
+			mv.addObject("list", list);
+			mv.setViewName("MyOrderList");
+			
+			return mv;
 		}
 		
-		// 검색 결과에 해당되는 게시물 갯수 조회
-		int listCount = myService.getSearchResultListCount(sc);
 		
-		// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 		
-		// 검색결과에 해당되는 게시물 목록 조회
-		ArrayList<QnA> list = myService.selectSearchResultList(session, sc, pi);
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 관심상품으로 이동
+		 * @return
+		 */
+		@RequestMapping("myWishList.mn")
+		public String mywishlist() {
+			return "MyWishlist";
+		}
 		
-		mv.addObject("list", list);
-		mv.addObject("pi", pi);
 		
-		mv.addObject("sc", sc);
-		mv.addObject("contdition", condition);
-		mv.addObject("search", search);
 		
-		mv.setViewName("Board-All-List");
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 장바구니로 이동
+		 * @return
+		 */
+		@RequestMapping("myCart.mn")
+		public String myCart() {
+			return "MyCart";
+		}
 		
-		return mv;
-	}
+		
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 마이페이지에서 내가쓴글로 이동
+		 * @return
+		 */
+		@RequestMapping("B_Alllist.mn")
+		public ModelAndView alllist(ModelAndView mv, HttpSession session,
+				@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage) {
+			
+	        System.out.println(currentPage);
+	        
+	        Member m = (Member)session.getAttribute("loginUser");
+			
+			int listCount = myService.getmyListCount();
+			
+			System.out.println("listCount : " + listCount);
+			
+			PageInfo pi = Pagination.getPageInfo(currentPage,listCount);
+			
+			ArrayList<QnA> list = myService.myselectList(pi,m);
+			
+			
+			mv.addObject("list", list);
+			mv.addObject("pi",pi);
+			mv.setViewName("Board-All-List");
+			
+			return mv;
+			
+		}
+		
 	
-	
+		@RequestMapping("mySearch.mn")
+		public ModelAndView searchBoard(ModelAndView mv, HttpSession session,
+										@RequestParam(value = "search", required = false) String search,
+										@RequestParam(value = "condition", required = false) String condition,
+										@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage) {
+			
+			System.out.println("bnSearch.mn" + search);
+			System.out.println("bnSearch.mn" + condition);
+			
+			SearchCondition sc = new SearchCondition();
+			sc.setSearch(search);
+			sc.setCondition(condition);
+			
+			if(condition.equals("writer")) {
+				
+				sc.setWriter(search);
+			}else if(condition.equals("title")) {
+				sc.setTitle(search);
+			}else if(condition.equals("content")) {
+				sc.setContent(search);
+			}
+			
+			// 검색 결과에 해당되는 게시물 갯수 조회
+			int listCount = myService.getSearchResultListCount(sc);
+			
+			// 페이지 정보가 담겨있는 PageInfo 받기 위해서 Pagination static 호출
+			PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+			
+			// 검색결과에 해당되는 게시물 목록 조회
+			ArrayList<QnA> list = myService.selectSearchResultList(session, sc, pi);
+			
+			mv.addObject("list", list);
+			mv.addObject("pi", pi);
+			
+			mv.addObject("sc", sc);
+			mv.addObject("contdition", condition);
+			mv.addObject("search", search);
+			
+			mv.setViewName("Board-All-List");
+			
+			return mv;
+		}
+		
+		
 
 }
