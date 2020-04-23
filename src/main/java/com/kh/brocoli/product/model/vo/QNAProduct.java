@@ -20,6 +20,28 @@ public class QNAProduct {
 	private int pq_P_No;
 	private int pq_B_No;
 	
+//  작성자 : 박주완
+//  내용 : resultMap 작성해놓았으니 가져다 쓰세욥!! ㅎ (주석제거:알트+쉬프트+A)
+//	<resultMap type="QNAProduct" id="QnAResultSet">
+//		<id property="pq_No" column="PQ_NO"/>
+//	
+//		<result property="pq_Writer" column="PQ_WRITER"/>
+//		<result property="pq_Id" column="PQ_ID"/>
+//		<result property="pq_Content" column="PQ_CONTENT"/>
+//		<result property="pq_Date" column="PQ_DATE"/>
+//		<result property="pq_Modify_Date" column="PQ_MODIFY_DATE"/>
+//		<result property="pq_Count" column="PQ_COUNT"/>
+//		<result property="pq_Check" column="PQ_CHECK"/>
+//		<result property="pq_Img1" column="PQ_IMG1"/>
+//		<result property="pq_Img1_ReName" column="PQ_IMG1_RENAME"/>
+//		<result property="pq_Img2" column="PQ_IMG2"/>
+//		<result property="pq_Img2_ReName" column="PQ_IMG2_RENAME"/>
+//		<result property="pq_mNo" column="PQ_MNO"/>
+//		<result property="pq_P_No" column="PQ_P_NO"/>
+//		<result property="pq_B_No" column="PQ_B_NO"/>
+//	
+//	</resultMap>
+	
 	public QNAProduct() {
 		super();
 	}

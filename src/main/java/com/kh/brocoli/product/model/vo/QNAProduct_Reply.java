@@ -15,6 +15,24 @@ public class QNAProduct_Reply {
 	private String pqr_Check;
 	private int pqr_Mno;
 	private int pqr_bNo;
+
+//  작성자 : 박주완
+//  내용 : resultMap 작성해놓았으니 가져다 쓰세욥!! ㅎ (주석제거:알트+쉬프트+A)
+//	<resultMap type="QNAProduct_Reply" id="QnAResultSet">
+//		<id property="pqr_No" column="PQR_NO"/>
+//		
+//		<result property="pqr_ParentNo" column="PQR_PARENTNO"/>
+//		<result property="pqr_Writer" column="PQR_WRITER"/>
+//		<result property="pqr_Id" column="PQR_ID"/>
+//		<result property="pqr_Content" column="PQR_CONTENT"/>
+//		<result property="pqr_Date" column="PQR_DATE"/>
+//		<result property="pqr_Modify_Date" column="PQR_MODIFY_DATE"/>
+//		<result property="pqr_Count" column="PQR_COUNT"/>
+//		<result property="pqr_Check" column="PQR_CHECK"/>
+//		<result property="pqr_Mno" column="PQR_MNO"/>
+//		<result property="pqr_bNo" column="PQR_BNO"/>
+//		
+//	</resultMap>
 	
 	public QNAProduct_Reply() {
 		super();

@@ -3,8 +3,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ownerQnA-mapper">
+	
+	<resultMap type="QNAProduct" id="QnAResultSet">
+		<id property="pq_No" column="PQ_NO"/>
 
-
+		<result property="pq_Writer" column="PQ_WRITER"/>
+		<result property="pq_Id" column="PQ_ID"/>
+		<result property="pq_Content" column="PQ_CONTENT"/>
+		<result property="pq_Date" column="PQ_DATE"/>
+		<result property="pq_Modify_Date" column="PQ_MODIFY_DATE"/>
+		<result property="pq_Count" column="PQ_COUNT"/>
+		<result property="pq_Check" column="PQ_CHECK"/>
+		<result property="pq_Img1" column="PQ_IMG1"/>
+		<result property="pq_Img1_ReName" column="PQ_IMG1_RENAME"/>
+		<result property="pq_Img2" column="PQ_IMG2"/>
+		<result property="pq_Img2_ReName" column="PQ_IMG2_RENAME"/>
+		<result property="pq_mNo" column="PQ_MNO"/>
+		<result property="pq_P_No" column="PQ_P_NO"/>
+		<result property="pq_B_No" column="PQ_B_NO"/>
+		
+	</resultMap>
+	
+	<resultMap type="QNAProduct_Reply" id="QnAResultSet">
+		<id property="pqr_No" column="PQR_NO"/>
+		
+		<result property="pqr_ParentNo" column="PQR_PARENTNO"/>
+		<result property="pqr_Writer" column="PQR_WRITER"/>
+		<result property="pqr_Id" column="PQR_ID"/>
+		<result property="pqr_Content" column="PQR_CONTENT"/>
+		<result property="pqr_Date" column="PQR_DATE"/>
+		<result property="pqr_Modify_Date" column="PQR_MODIFY_DATE"/>
+		<result property="pqr_Count" column="PQR_COUNT"/>
+		<result property="pqr_Check" column="PQR_CHECK"/>
+		<result property="pqr_Mno" column="PQR_MNO"/>
+		<result property="pqr_bNo" column="PQR_BNO"/>
+		
+	</resultMap>
 
 
 
