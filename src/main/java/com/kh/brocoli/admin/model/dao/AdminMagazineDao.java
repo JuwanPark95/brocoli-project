@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.magazine.model.vo.Magazine;
 
-@Repository
+@Repository("AMGDao")
 public class AdminMagazineDao {
 
 	@Autowired

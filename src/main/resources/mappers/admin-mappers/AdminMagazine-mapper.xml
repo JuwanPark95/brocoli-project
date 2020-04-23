@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="AdminMagazine">
 	<resultMap id="magazineResultSet" type="magazine">
 		<id property="m_NO" column="M_NO"/>
@@ -82,10 +83,10 @@
 		<result property="brand_NO" column="BRAND_NO"/>
 	</resultMap>
 	
-	
 	<select id="magazineList" >
-	
-	
-	
+		SELECT * 
+		FROM MAGAZINE 
+		JOIN BRAND ON M_BRAND_NO = BRAND_NO
+		JOIN MEMBER ON M_MNO = MNO
 	</select>
 </mapper>

@@ -55,7 +55,6 @@
 		ORDER BY OR_NO DESC
 	</select>
 	
-	<!-- 날짜, 브랜드명, 브랜드번호, 상품명, 상품번호 별 검색 후 select -->
 	<select id="searchList" resultMap="salesResultSet" parameterType="map">
 		SELECT *
 		FROM ORDERS
@@ -137,4 +136,3 @@
 		       </if>
 	</select> -->
 </mapper>
-

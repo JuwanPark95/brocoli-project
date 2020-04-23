@@ -16,7 +16,7 @@ import com.kh.brocoli.magazine.model.vo.Magazine;
 public class AdminMagazineController {
 	
 	   @Autowired
-	   private AdminMagazineService AMService;
+	   private AdminMagazineService AMGService;
 
    /** 작성자 : 신은지
     * 	1. 메거진 신청 list
@@ -26,7 +26,9 @@ public class AdminMagazineController {
 	@RequestMapping("magazine-management.ad")
 	   public ModelAndView magazineList(ModelAndView mv) {
 		   
-		   ArrayList<Magazine> magazineList = AMService.magazineList();
+		   ArrayList<Magazine> magazineList = AMGService.magazineList();
+		   
+		   mv.addObject("magazineList", magazineList).setViewName("magazine-management");
 		   
 		   return mv;
 	   }

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.admin.model.dao.AdminMagazineDao;
 import com.kh.brocoli.magazine.model.vo.Magazine;
 
-@Service("AMService")
+@Service("AMGService")
 public class AdminMagazineServiceImpl implements AdminMagazineService {
 	
 	
 	@Autowired
-	private AdminMagazineDao AMDao;
+	private AdminMagazineDao AMGDao;
 
 	/**
 	 * 작성자 신은지 
@@ -21,7 +21,7 @@ public class AdminMagazineServiceImpl implements AdminMagazineService {
 	 */
 	@Override
 	public ArrayList<Magazine> magazineList() {
-		return AMDao.magazineList();
+		return AMGDao.magazineList();
 	}
 
 }

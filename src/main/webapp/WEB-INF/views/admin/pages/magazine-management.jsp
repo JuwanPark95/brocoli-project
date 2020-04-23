@@ -66,24 +66,35 @@
                                     <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">매거진번호</th>
-                                                <th style="width:5%">작성자</th>
-                                                <th style="width:8%">제목</th>
-                                                <th style="width:8%">브랜드</th>
-                                                <th style="width:8%">카테고리</th>
-                                                <th style="width:8%">카테고리</th>
-                                                
+                                            	<th>매거진번호</th>
+                                                <th>매거진번호</th>
+                                                <th>작성자</th>
+                                                <th>제목</th>
+                                                <th>브랜드</th>
+                                                <th>카테고리</th>
+                                                <th>상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
+                                        <c:forEach var="m" items="${magazineList}" varStatus="ml">
                                             <tr>
-                                            	<td>1</td>
-                                                <td>1</td>
-                                                <td>나이키</td>
-                                                <td>올해의 나이키 </td>
-                                                <td>나길동</td>
-                                                <td>2020-03-03</td>
+                                            	<td>${ml.count}</td>
+                                                <td>${m.m_NO}</td>
+                                                <td>${m.m_ID}</td>
+                                                <td>${m.m_Title}</td>
+                                                <td>${m.m_Brand.b_Name}</td>
+                                                <td>${m.m_Category}</td>
+                                                <td>
+	                                                <c:set var="b_Status" value="${m.m_Status}" />
+	                                            	<c:choose>
+	                                            		<c:when test="${m_Status eq 'Y'}">
+	                                            			<strong><span style="color:#60DA8D;"></span></strong>
+	                                            		</c:when>
+	                                            		<c:when test="${m_Status eq 'N'}">
+	                                            			<strong><span style="color:tomato;">폐점</span></strong>
+	                                            		</c:when>
+	                                            	</c:choose>
+                                            	</td>
 											</tr>
                                         </c:forEach>
                                       </tbody>
