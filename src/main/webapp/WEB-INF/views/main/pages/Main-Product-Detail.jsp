@@ -155,10 +155,11 @@
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 
-
+								<input type="hidden" value="${aProducDetailtList[0].p_NO}" id="pNo"/>
 									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
+										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px; ">
 											<select class="js-select2" id="test1" name="option_1">
+													<option value="선택하세요">선택하세요</option>
 												<c:forEach var="ap" items="${ aProducDetailtList }">
 													<c:if test="${ap.option_1 != NULL }">
 														<option value="${ap.option_1 }">${ap.option_1 }</option>
@@ -174,13 +175,9 @@
 
 
 									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
+										<div class="rs1-select2 bor8 bg0" id="opshow" style="margin-left: -100px; display:none;">
 											<select class="js-select2" id="test2" name="option_2">
-												<c:forEach var="ap" items="${ aProducDetailtList }">
-													<c:if test="${ap.option_2 != NULL }">
-														<option value="${ap.option_2 }">${ap.option_2 }</option>
-													</c:if>
-												</c:forEach>
+									
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -829,6 +826,63 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+	    $("#test1").change(function() {
+	    	var test = "";
+	    	var option2 = "";
+			var option_1 = $("#test1").val();
+			var p_NO = $("#pNo").val();
+			$.ajax({
+				url:"optionDetail",
+				data:{p_NO:p_NO,
+					  option_1:option_1},
+				dataType:"json",
+				success:function(data){
+					 var tempArr1 = [];
+				        for (var i = 0; i < data.length; i++) {
+				            if (tempArr1.length == 0) {
+				                tempArr1.push(data[i].option_2);
+				            } else {
+				                var duplicatesFlag1 = true;
+				                for (var j = 0; j < tempArr1.length; j++) {
+				                    if (tempArr1[j] == data[i].option_2) {
+				                        duplicatesFlag1 = false;
+				                        break;
+				                    }
+				                }
+				                if (duplicatesFlag1) {
+				                    tempArr1.push(data[i].option_2);
+				                }
+				            }
+				        }
+	
+				        for(var i=0; i<tempArr1.length; i++){
+				        	if(tempArr1[i] != null){
+				        		option2 += "<option>"+tempArr1[i]+"</option>";
+				        	}
+				        }
+				        
+						if(option_1 == "선택하세요"){
+							$('#test2').html(test);
+							$('#opshow').css("display","none");
+						}else{
+							$('#test2').html(option2);
+							$('#opshow').css("display","block");
+						}
+				},error:function(jqxhr,textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+	    });
+	});
+	
+	</script>
 
 	<%@ include file="All-Footer.jsp"%>
 	<%@ include file="All-BacktoTop.jsp"%>
