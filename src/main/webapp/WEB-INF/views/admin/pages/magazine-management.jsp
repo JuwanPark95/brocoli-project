@@ -66,16 +66,19 @@
                                     <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:5%">번호</th>
-                                                <th style="width:5%">브랜드명</th>
+                                                <th style="width:5%">매거진번호</th>
+                                                <th style="width:5%">작성자</th>
                                                 <th style="width:8%">제목</th>
-                                                <th style="width:8%">작성자</th>
-                                                <th style="width:8%">날짜</th>
+                                                <th style="width:8%">브랜드</th>
+                                                <th style="width:8%">카테고리</th>
+                                                <th style="width:8%">카테고리</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach var="i" begin="0" end="10"> <!-- for -->
                                             <tr>
+                                            	<td>1</td>
                                                 <td>1</td>
                                                 <td>나이키</td>
                                                 <td>올해의 나이키 </td>

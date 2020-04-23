@@ -244,12 +244,9 @@
 										<li class="nav-item"><a class="nav-link"
 											href="<c:url value='brandManagement.ad'/>">가맹브랜드</a></li>
 									</ul>
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='brandOwnerContact.ad'/>">오너콘택트</a></li>
-									</ul>
 								</div>
 							</li>
+							
 							
 							<li class="nav-item"><a class="nav-link" href="#"
 								data-toggle="collapse" aria-expanded="false"
@@ -294,14 +291,23 @@
 								<div id="submenu-6" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='sales-date.ad'/>">년,월,일 매출</a></li>
-									</ul>
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
 											href="<c:url value='sales-management.ad'/>">매출조회</a></li>
 									</ul>
 								</div>
 							</li>
+							
+							<li class="nav-item"><a class="nav-link" href="#"
+								data-toggle="collapse" aria-expanded="false"
+								data-target="#submenu-11" aria-controls="submenu-1"><i
+									class="fa fa-fw fa-envelope-open"></i>오너콘택트</a>
+								<div id="submenu-11" class="collapse submenu" style="">
+									<ul class="nav flex-column">
+										<li class="nav-item"><a class="nav-link"
+											href="<c:url value='brandOwnerContact.ad'/>">오너콘택트</a></li>
+									</ul>
+								</div>
+							</li>
+							
 							<li class="nav-item"><a class="nav-link" href="#"
 								data-toggle="collapse" aria-expanded="false"
 								data-target="#submenu-7" aria-controls="submenu-7"><i
