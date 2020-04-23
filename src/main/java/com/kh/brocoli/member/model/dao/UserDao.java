@@ -2,9 +2,7 @@ package com.kh.brocoli.member.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
 
 
@@ -55,7 +54,7 @@ public class UserDao {
 			
 		}
 
-		public int sEnter(Brand b) {
+		public int sEnter(Entering_Question b) {
 			return sqlSession.insert("memberMapper.sEnter",b);
 		}
 

@@ -40,11 +40,15 @@
     	height: 26px;
     	width: 17px;
     }
+    span.guide{display:none; font-size: 12px; top: 12px; right: 10px;}
+	span.ok{color:green;}
+	span.error{color:red;}
+	span.error2{color:red;}
 </style>
 </head>
 <body>
 
-<form>
+<form action="sEnter.mn">
 	<div id="all">
 			<h2 style="background: #222; color: white; padding:4%; text-align: center" >BROCOLI 입점 문의</h2><Br>
 			<hr>
@@ -56,35 +60,41 @@
 			<hr>
 		
   		<div class="form-group">
-      		<label for="userId">사업자 명 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:90%;">
+      		<label>사업자 번호 : </label>
+    		<input type="text" class="form-control" id="ent_Business_NO" name="ent_Business_NO" style="width:90%;" required>
+    		<input type="hidden" name="enoDuplicateCheck2" id="enoDuplicateCheck2" value="0" />
+    		
    		</div>
    		 		
    		<div class="form-group">
-      		<label for="userPwd2">취급 브랜드 명: </label>
-    		<input type="password" class="form-control" id="userPwd2" name="userPwd2" style="width:90%;">
+      		<label>취급 브랜드 명: </label>
+    		<input type="text" class="form-control" id="ent_Bname" name="ent_Bname" style="width:90%;" >
+    				<span class="guide error2">중복되는 브랜드가 이미 존재합니다.</span>
+    		<input type="hidden" name="bnameDuplicateCheck2" id="bnameDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
-      		<label for="email">사이트 URL(http://포함) : </label>
-    		<input type="email" class="form-control" id="email" name="email" style="width:90%;">
+      		<label>사이트 URL(http://포함) : </label>
+    		<input type="url" class="form-control" id="ent_Url" name="ent_Url" style="width:90%;">
    		</div>
    		
    		<div class="form-group">
-      		<label for="phone">담당자 명 : </label>
-    		<input type="text" class="form-control" id="phone" name="phone" style="width:90%;">
+      		<label>담당자 ID : </label>
+    		<input type="text" class="form-control" id="ent_ID" name="ent_ID" style="width:90%;" >
+    		<span class="guide error">ID를 다시 확인해주세요.</span>
+    		<input type="hidden" name="bidDuplicateCheck2" id="bidDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
       		<label for="year">핸드폰 번호 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<input type="tel" class="form-control" id="ent_Phone" name="ent_Phone" style="width:90%;" required>
    		</div>
    		
    		<div class="form-group">
       		<label for="gender">담당자 이메일 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<input type="email" class="form-control" id="ent_Mail" name="ent_Mail" style="width:90%;">
    		</div>
-   		<div id="cate" class="form-group">
+   		<!-- <div id="cate" class="form-group">
    			<label for="sad">카테고리 분류 : </label>
    			
    			
@@ -108,15 +118,15 @@
    			<input type="checkBox" name="cate" id="ck" value="">&nbsp; Select Shop (해외 정식수입 브랜드/캐쥬얼, 명품병행 수입 의류) (http://www.BROCOLI.com/selectshop)
    			</div>   			
    			
-   		</div>
+   		</div> -->
    		
    		<div class="form-group">
       		<label for="year">브랜드 소개 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<textarea class="form-control" id="ent_Comment" name="ent_Comment" style="width:90%; resize:none; " rows="10" ></textarea>
    		</div>
    		<br><br>
    		<div style="margin-left: 30%">
-   		<button type="submit" class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;">가   입</button>
+   		<button type="submit" onclick="return validate();" class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;">가   입</button>
    		</div>
    		
 	</div>
@@ -135,6 +145,147 @@
    <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
    <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
+    <script>
+    function validate(){
+    	var bId = $("#bidDuplicateCheck2");
+    	var bName = $("#bnameDuplicateCheck2");
+    	var ent_no = $("#ent_Business_NO").val();
+    	if(ent_no == null || ent_no ==""){
+    		$("#ent_Business_NO").focus();
+    		alert("사업자 번호를 입력해주세요.");
+    		return false;
+    	}else if($("#ent_Bname").val() == null ||$("#ent_Bname").val() =="" ){
+    		$("#ent_Bname").focus();
+    		alert("브랜드명을 입력해주세요.");
+    		return false;
+    	}
+    	/* var value = ent_no;
+    	 var valueMap = value.replace(/-/gi, '').split('').map(function(item) {
+    	        return parseInt(item, 10);
+    	    });
+
+    	    if (valueMap.length == 10) {
+    	        var multiply = new Array(1, 3, 7, 1, 3, 7, 1, 3, 5);
+    	        var checkSum = 0;
+
+    	        for (var i = 0; i < multiply.length; ++i) {
+    	            checkSum += multiply[i] * valueMap[i];
+    	        }
+
+    	        checkSum += parseInt((multiply[8] * valueMap[8]) / 10, 10);
+    	        if( Math.floor(valueMap[9]) == ( (10 - (checkSum % 10)) % 10)){
+    	        	$("#enoDuplicateCheck2").val(1);
+    	        }else{
+    	        	$("#enoDuplicateCheck2").val(0);
+    	        };
+    	    }else{
+    	    	$("#ent_Business_NO").focus();
+    	    alert("사업자번호를 확인해주세요.");	
+    	    return false;
+    	    } */
+
+    	
+    	
+    	if(bId.val() == 1 && bName.val() ==1 ){
+    		return true;
+    	}else{
+    		/* if($("#enoDuplicateCheck2").val() != 1){
+    			alert("사업자 번호를 확인해주세요.");
+    			return false;
+    		}else */ if(bName.val() !=1){
+    			$("#ent_Bname").focus();
+    			alert("브랜드명을 다시 한 번 확인해주세요!");
+    			return false;
+    		}else if(bId.val() !=1){
+    			$("#ent_ID").focus();
+    			alert("ID를 다시 한 번 확인해주세요!");
+    			return false;
+    		}
+    		
+    		
+    	}
+    }
+    
+    $(function(){
+		$("#ent_ID").on("keyup",function(){
+			
+			var bId= $(this).val();
+		
+			
+			if(bId.length < 4){
+				$(".mGuide").hide();
+				$("#bIdDuplicateCheck2").val(0);
+				
+				return;
+			}
+			
+			$.ajax({
+		 		url:"idCheck.do",
+		 		data:{id:bId},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			
+		 			if(data =="fail"){
+		 				$(".error").hide();
+						$("#bidDuplicateCheck2").val(1);
+		 				
+		 			}else{	
+						$(".error").show();
+						$("#bidDuplicateCheck2").val(0);
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+			
+			
+		});
+	});
+    
+    $(function(){
+		$("#ent_Bname").on("keyup",function(){
+			
+			var bName= $(this).val();
+		
+			
+			
+			
+			
+			$.ajax({
+		 		url:"bNameCheck.do",
+		 		data:{name:bName},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			
+		 			if(data =="ok"){
+		 				$(".error2").hide();
+						$("#bnameDuplicateCheck2").val(1);
+		 				
+		 			}else{	
+						$(".error2").show();
+						$("#bnameDuplicateCheck2").val(0);
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+			
+			
+		});
+	});
+ </script>
    <script>
       $(".js-select2").each(function(){
          $(this).select2({
