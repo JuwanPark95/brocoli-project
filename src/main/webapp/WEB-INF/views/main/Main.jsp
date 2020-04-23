@@ -307,7 +307,7 @@
 		                }
 		            }
 		        }
-				
+		        option += "<option>선택하세요</option>";
 		        for(var i=0; i<tempArr.length; i++){
 		        	if(tempArr[i] != null){
 		        		option += "<option>"+tempArr[i]+"</option>"
@@ -424,16 +424,17 @@
 		            }
 		        }
 				
+		        option += "<option>선택하세요</option>";
 		        for(var i=0; i<tempArr.length; i++){
 		        	if(tempArr[i] != null){
-		        		option += "<option>"+tempArr[i]+"</option>"
+		        		option += "<option>"+tempArr[i]+"</option>";
 		        	}
 		        }
 		  
 		       
 		        for(var i=0; i<tempArr1.length; i++){
 		        	if(tempArr1[i] != null){
-		        		option2 += "<option>"+tempArr1[i]+"</option>"
+		        		option2 += "<option>"+tempArr1[i]+"</option>";
 		        	}
 		        }
 				
@@ -452,8 +453,11 @@
 			}
 		});
 		
-	})
+	});
 	
+
+
+	 
 	
 	</script>		
 

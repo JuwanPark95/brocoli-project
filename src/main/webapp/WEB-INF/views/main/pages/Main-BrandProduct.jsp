@@ -779,7 +779,7 @@
 		                }
 		            }
 		        }
-				
+		        option += "<option>선택하세요</option>";
 		        for(var i=0; i<tempArr.length; i++){
 		        	if(tempArr[i] != null){
 		        		option += "<option>"+tempArr[i]+"</option>"
