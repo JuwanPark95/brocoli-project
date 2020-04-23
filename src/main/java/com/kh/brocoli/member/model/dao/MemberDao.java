@@ -1,6 +1,7 @@
 package com.kh.brocoli.member.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,10 @@ public class MemberDao {
 
 	public ArrayList<Product> selectyearList() {
 		return (ArrayList)sqlSession.selectList("mainMapper.yearlist");
+	}
+
+	public ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap) {
+		return (ArrayList)sqlSession.selectList("mainMapper.optionlist",hmap);
 	}
 
 

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.owner.model.service.ownerReviewService;
 import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -22,12 +23,11 @@ public class ownerReviewController {
 	public ModelAndView noReadReview(ModelAndView mv,int bNO) {
 		
 		ArrayList<Review> list = oService.noReadReviewSelect(bNO);
-		for (Review review : list) {
-			System.out.println("컨트롤러 : " + review);
-		}
+		ArrayList<Review_Reply> rlist = oService.noReadReviewReplySelect(bNO);
 		
 		if(list != null) {
 			mv.addObject("list",list);
+			mv.addObject("rlist",rlist);
 			mv.setViewName("review-management");
 		}else {
 			mv.setViewName("404-Page");

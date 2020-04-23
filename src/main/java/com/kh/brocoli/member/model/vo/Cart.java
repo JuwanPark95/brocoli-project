@@ -7,7 +7,7 @@ import com.kh.brocoli.product.model.vo.Product_File;
 public class Cart {
 	private String ct_Option_1;
 	private String ct_Option_2;
-	private String ct_Amount;
+	private int ct_Amount;
 	private int ct_Mno;
 	private int ct_P_NO;
 	
@@ -19,7 +19,7 @@ public class Cart {
 		super();
 	}
 
-	public Cart(String ct_Option_1, String ct_Option_2, String ct_Amount, int ct_Mno, int ct_P_NO, Product productList,
+	public Cart(String ct_Option_1, String ct_Option_2, int ct_Amount, int ct_Mno, int ct_P_NO, Product productList,
 			Product_File p_File, ProductDetail pd) {
 		super();
 		this.ct_Option_1 = ct_Option_1;
@@ -48,11 +48,11 @@ public class Cart {
 		this.ct_Option_2 = ct_Option_2;
 	}
 
-	public String getCt_Amount() {
+	public int getCt_Amount() {
 		return ct_Amount;
 	}
 
-	public void setCt_Amount(String ct_Amount) {
+	public void setCt_Amount(int ct_Amount) {
 		this.ct_Amount = ct_Amount;
 	}
 
