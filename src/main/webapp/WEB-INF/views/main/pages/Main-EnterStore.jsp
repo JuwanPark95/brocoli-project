@@ -40,11 +40,15 @@
     	height: 26px;
     	width: 17px;
     }
+    span.guide{display:none; font-size: 12px; top: 12px; right: 10px;}
+	span.ok{color:green;}
+	span.error{color:red;}
+	span.error2{color:red;}
 </style>
 </head>
 <body>
 
-<form>
+<form action="sEnter.mn">
 	<div id="all">
 			<h2 style="background: #222; color: white; padding:4%; text-align: center" >BROCOLI 입점 문의</h2><Br>
 			<hr>
@@ -56,35 +60,39 @@
 			<hr>
 		
   		<div class="form-group">
-      		<label for="userId">사업자 명 : </label>
-    		<input type="text" class="form-control" id="userId" name="userId" style="width:90%;">
+      		<label>사업자 명 : </label>
+    		<input type="text" class="form-control" id="b_Owner_Name" name="b_Owner_Name" style="width:90%;">
    		</div>
    		 		
    		<div class="form-group">
-      		<label for="userPwd2">취급 브랜드 명: </label>
-    		<input type="password" class="form-control" id="userPwd2" name="userPwd2" style="width:90%;">
+      		<label>취급 브랜드 명: </label>
+    		<input type="text" class="form-control" id="b_Name" name="b_Name" style="width:90%;">
+    				<span class="guide error2">중복되는 브랜드가 이미 존재합니다.</span>
+    		<input type="hidden" name="bnameDuplicateCheck2" id="bnameDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
-      		<label for="email">사이트 URL(http://포함) : </label>
-    		<input type="email" class="form-control" id="email" name="email" style="width:90%;">
+      		<label>사이트 URL(http://포함) : </label>
+    		<input type="url" class="form-control" id="b_Address" name="b_Address" style="width:90%;">
    		</div>
    		
    		<div class="form-group">
-      		<label for="phone">담당자 명 : </label>
-    		<input type="text" class="form-control" id="phone" name="phone" style="width:90%;">
+      		<label>담당자 ID : </label>
+    		<input type="text" class="form-control" id="b_Owner1_ID" name="b_Owner1_ID" style="width:90%;">
+    		<span class="guide error">ID를 다시 확인해주세요.</span>
+    		<input type="hidden" name="bidDuplicateCheck2" id="bidDuplicateCheck2" value="0" />
    		</div>
    		
    		<div class="form-group">
       		<label for="year">핸드폰 번호 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<input type="tel" class="form-control" id="b_Phone" name="b_Phone" style="width:90%;">
    		</div>
    		
    		<div class="form-group">
       		<label for="gender">담당자 이메일 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<input type="email" class="form-control" id="b_Email1" name="b_Email1" style="width:90%;">
    		</div>
-   		<div id="cate" class="form-group">
+   		<!-- <div id="cate" class="form-group">
    			<label for="sad">카테고리 분류 : </label>
    			
    			
@@ -108,15 +116,15 @@
    			<input type="checkBox" name="cate" id="ck" value="">&nbsp; Select Shop (해외 정식수입 브랜드/캐쥬얼, 명품병행 수입 의류) (http://www.BROCOLI.com/selectshop)
    			</div>   			
    			
-   		</div>
+   		</div> -->
    		
    		<div class="form-group">
       		<label for="year">브랜드 소개 : </label>
-    		<input type="text" class="form-control" id="year" name="year" style="width:90%;">
+    		<textarea class="form-control" id="b_Comment" name="b_Comment" style="width:90%; resize:none; " rows="10" ></textarea>
    		</div>
    		<br><br>
    		<div style="margin-left: 30%">
-   		<button type="submit" class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;">가   입</button>
+   		<button type="submit" onclick="return validate();" class="btn btn-primary" style="background: #222; width: 300px; border: 1px solid #222;">가   입</button>
    		</div>
    		
 	</div>
@@ -135,6 +143,108 @@
    <script src="/brocoli/resources/mainResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
    <script src="/brocoli/resources/mainResources/vendor/select2/select2.min.js"></script>
+    <script>
+    function validate(){
+    	var bId = $("#bidDuplicateCheck2");
+    	var bName = $("#bnameDuplicateCheck2");
+		
+    	if($("#b_name") == null){
+    		
+    	}
+    	
+    	if(bId.val() == 1 && bName.val() ==1){
+    		return true;
+    	}else{
+    		if(bName.val() !=1){
+    			$("#b_Name").focus();
+    			alert("브랜드명을 다시 한 번 확인해주세요!");
+    		}else if(bId.val() !=1){
+    			$("#b_Owner1_ID").focus();
+    			alert("ID를 다시 한 번 확인해주세요!");
+    		}
+    		return false;
+    	}
+    }
+    
+    $(function(){
+		$("#b_Owner1_ID").on("keyup",function(){
+			
+			var bId= $(this).val();
+		
+			
+			if(bId.length < 4){
+				$(".mGuide").hide();
+				$("#bIdDuplicateCheck2").val(0);
+				
+				return;
+			}
+			
+			$.ajax({
+		 		url:"idCheck.do",
+		 		data:{id:bId},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			
+		 			if(data =="fail"){
+		 				$(".error").hide();
+						$("#bidDuplicateCheck2").val(1);
+		 				
+		 			}else{	
+						$(".error").show();
+						$("#bidDuplicateCheck2").val(0);
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+			
+			
+		});
+	});
+    
+    $(function(){
+		$("#b_Name").on("keyup",function(){
+			
+			var bName= $(this).val();
+		
+			
+			
+			
+			$.ajax({
+		 		url:"bNameCheck.do",
+		 		data:{name:bName},
+		 		type:"post",
+		 		success:function(data){
+		 			console.log(data);
+		 			
+		 			if(data =="ok"){
+		 				$(".error2").hide();
+						$("#bnameDuplicateCheck2").val(1);
+		 				
+		 			}else{	
+						$(".error2").show();
+						$("#bnameDuplicateCheck2").val(0);
+		 			}
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+			
+			
+		});
+	});
+ </script>
    <script>
       $(".js-select2").each(function(){
          $(this).select2({
