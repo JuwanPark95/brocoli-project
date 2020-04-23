@@ -226,6 +226,7 @@
 		var p_NO = $(this).parent().find('input[id=productNo0]').val();
 		var option = "";
 		var img="";
+		$('#opshow').css("display","none");
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
@@ -315,6 +316,7 @@
 	})
 	 
 	$('#productModal a[id=ModalView]').click(function(obj){
+		$('#opshow').css("display","none");
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
 		var option = "";
 		var img="";
