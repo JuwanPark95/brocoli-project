@@ -109,7 +109,11 @@
                                     <table id="brand-management" class="table table-striped table-bordered" style="text-align:center;">
                                         <thead>
                                             <tr>
+<<<<<<< HEAD
                                                 <th style="width:5%;">번호</th>
+=======
+                                                <!-- <th style="width:5%;">매출번호</th> -->
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
                                                 <th style="width:5%;">주문번호</th>
                                                 <th style="width:10%">판매일</th>
                                                 <th style="width:10%">브랜드번호</th>
@@ -120,6 +124,7 @@
                                                 <th style="width:3%">수량</th>
                                             </tr>
                                         </thead>
+<<<<<<< HEAD
                                       	<tr style="font-size: 22px; height:70px; background-color:#fdf1da;">
                                       		<th colspan="4" style="font-weight: 1000;">총매출</th>
                                       		<th id="searchTotal" colspan="5" style="font-weight: 1000;">
@@ -131,9 +136,12 @@
                                       		</th>
                                       	</tr>
                                         <tbody id="salesList">
+=======
+                                        <tbody id="searchList">
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
                                         <c:forEach var="s" items="${salesList}" varStatus="sl"> 
                                             <tr>
-                                                <td>${sl.count}</td>
+                                                <%-- <td>${sl.count}</td> --%>
                                                 <td>${s.or_NO}</td>
                                                 <td>${s.or_Date}</td>
                                                 <td>${s.or_Brand_NO}</td>
@@ -145,6 +153,22 @@
                                             </tr>
                                         </c:forEach>
                                       </tbody>
+<<<<<<< HEAD
+=======
+                                      <tfoot style="background-color:#fdf1da;">
+                                      	<tr style="font-weight: 1000;">
+                                      		<th style="font-weight: 1000;">합계</th>
+                                      		<th style="font-weight: 1000;">전체매출</th>
+                                      		<th style="font-weight: 1000;"></th>
+                                      		<th style="font-weight: 1000;">검색매출</th>
+                                      		<th style="font-weight: 1000;"></th>
+                                      		<th style="font-weight: 1000;">총 주문수</th>
+                                      		<th style="font-weight: 1000;"></th>
+                                      		<th style="font-weight: 1000;"></th>
+                                      	</tr>
+                                      
+                                      </tfoot>
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
                                     </table>
                             </div>
                         </div>
@@ -191,6 +215,7 @@
          			dataType:"json",
                     data:{date1:date1 , date2:date2, dropSearch:dropSearch, content:content},
          			success:function(data){
+<<<<<<< HEAD
          				//기존 테이블 없애주기
          				$('#salesList').empty();
          				//결과값에서 매출 총액 더해주기 위해서 변수 sum=0
@@ -211,6 +236,20 @@
          					sum = sum + parseInt(searchList.or_Price);
          					//기존 테이블 매출총액 텍스트 변경
          					$('#searchTotal').text(sum).append("원");
+=======
+         				alert(data);
+         				console.log(data);
+         				$.each(data, function(index,searchList){
+         					$('searchList').append("<tr><td>"+searchList.or_NO+"</td><td>"
+         							                         +searchList.or_Date+"</td><td>"
+         							                         +searchList.or_Brand_NO+"</td><td>"	
+         							                         +searchList.or_Brand.b_Name+"</td><td>"
+         							                         +searchList.or_P_NO+"</td><td>"
+         							                         +searchList.or_Pname+"</td><td>"
+         							                         +searchList.or_Price+"</td><td>"
+         							                         +searchList.or_Amount+"</td></tr>"
+         					);
+>>>>>>> branch 'master' of https://github.com/JuwanPark95/Brocoli_Project.git
          				});
          			},error:function(){
          				
