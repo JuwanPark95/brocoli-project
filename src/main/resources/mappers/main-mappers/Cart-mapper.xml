@@ -62,7 +62,8 @@
 		<collection property="p_File" resultMap="ProductFileResultSet"/>
 	</resultMap>
 	
-	<insert id="cInsert" parameterType="Cart">
+	
+	<insert id="cInsert" parameterType="ProductDetail">
 		INSERT INTO CART
 		VALUES(SEQ_CT_NO.NEXTVAL,#{ct_Option_1},#{ct_Option_2},#{ct_Amount},#{ct_Mno},#{ct_P_NO})	
 	</insert>

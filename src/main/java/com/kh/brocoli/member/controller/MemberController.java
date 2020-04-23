@@ -227,7 +227,7 @@ public class MemberController {
 	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
 		
 		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
-		mv.addObject("aProductList",pDetail);
+		mv.addObject("aProducDetailtList",pDetail);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
 	}
