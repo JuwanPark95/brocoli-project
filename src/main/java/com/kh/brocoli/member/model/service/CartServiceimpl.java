@@ -1,5 +1,7 @@
 package com.kh.brocoli.member.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class CartServiceimpl implements CartService {
 	@Override
 	public int cInsert(Cart c) {
 		return cDao.cInsert(c);
+	}
+
+	@Override
+	public ArrayList<Cart> cartList(int ct_Mno) {
+		return cDao.cartList(ct_Mno);
 	}
 	
 

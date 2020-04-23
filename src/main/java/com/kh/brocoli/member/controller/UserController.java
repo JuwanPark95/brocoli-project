@@ -27,6 +27,7 @@ import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
 
 @SessionAttributes("loginUser")
@@ -432,9 +433,9 @@ public class UserController {
 	 * @throws Exception
 	 */
 	@RequestMapping("sEnter.mn")
-	public String sEnter(Brand b, Model model) throws Exception {
+	public String sEnter(Entering_Question b, Model model) throws Exception {
 		System.out.println(b);
-		b.setB_Comment(b.getB_Comment());
+		b.setEnt_Comment(b.getEnt_Comment());
 		int result = uService.sEnter(b);
 		System.out.println("2" + b);
 		if (result > 0) {
@@ -447,7 +448,8 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping("bNameCheck.do")
-	public String bNameCheck(String name) {
+	public String bNameCheck( String name) {
+		System.out.println("name "+name);
 		int result = uService.bNameCheck(name);
 
 		if (result > 0) {

@@ -44,11 +44,17 @@
 					</li>
 					
 					<c:url var="Mypage" value="mypage.mn"/>
-					<c:url var="Mycart" value="myCart.mn"/>
-					<c:url var="MyOrderlist" value="myOrderList.mn"/>
-					<c:url var="Wishlist" value="wishList.mn">
-						<c:param name="w_Mno" value="${loginUser.mNO}"></c:param>
+					
+					<c:url var="Mycart" value="cList.mn">
+						<c:param name="ct_Mno" value="${loginUser.mNO}"/>
 					</c:url>
+					
+					<c:url var="MyOrderlist" value="myOrderList.mn"/>
+					
+					<c:url var="Wishlist" value="wishList.mn">
+						<c:param name="w_Mno" value="${loginUser.mNO}"/>
+					</c:url>
+					
 					<li class="p-b-13">
 						<c:if test="${!empty sessionScope.loginUser }">
 						<a href="${Mypage }" class="stext-102 cl2 hov-cl1 trans-04">
