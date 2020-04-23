@@ -338,4 +338,10 @@
     ORDER BY DAY ASC,COUNT DESC
 	</select>
 	
+	<select id="optionlist" resultMap="productDetailResultSet">
+	select * from product_option
+	where op_p_NO=#{p_NO}
+	and option_1=#{option_1}
+	
+	</select>
 </mapper>

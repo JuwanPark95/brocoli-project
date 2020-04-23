@@ -145,7 +145,7 @@
                                         </div>
                                         <div class="form-group row text-right">
                                             <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                                <button type="submit" id="enrollButton" class="btn btn-dark">등록</button>
+                                                <button type="submit" id="enrollButton" class="btn btn-dark btn-xs">등록</button>
                                             </div>
                                         </div>
                                     </form>

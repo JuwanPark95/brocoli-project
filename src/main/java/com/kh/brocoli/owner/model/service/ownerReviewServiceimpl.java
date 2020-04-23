@@ -10,6 +10,7 @@ import com.kh.brocoli.owner.model.dao.ownerOrderDao;
 import com.kh.brocoli.owner.model.dao.ownerProductDao;
 import com.kh.brocoli.owner.model.dao.ownerReviewDao;
 import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 import com.kh.brocoli.product.model.vo.Statistics;
 
 @Service("ownerReViewService")
@@ -21,6 +22,11 @@ public class ownerReviewServiceimpl implements ownerReviewService{
 	@Override
 	public ArrayList<Review> noReadReviewSelect(int bNO) {
 		return oDao.SelectNoReadReview(bNO);
+	}
+
+	@Override
+	public ArrayList<Review_Reply> noReadReviewReplySelect(int bNO) {
+		return oDao.SelectNoReadReviewReply(bNO);
 	}
 	
 	

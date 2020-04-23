@@ -297,9 +297,9 @@
 	});
    
    $('#productModal a[id=ModalView]').click(function(obj){
+	   $('#opshow').css("display","none");
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
 		var option = "";
-		var option2 = "";
 		var img="";
 		$.ajax({
 			url:"productModal",
@@ -364,23 +364,7 @@
 		            }
 		        }
 
-		        var tempArr1 = [];
-		        for (var i = 0; i < data.length; i++) {
-		            if (tempArr1.length == 0) {
-		                tempArr1.push(data[i].option_2);
-		            } else {
-		                var duplicatesFlag1 = true;
-		                for (var j = 0; j < tempArr1.length; j++) {
-		                    if (tempArr1[j] == data[i].option_2) {
-		                        duplicatesFlag1 = false;
-		                        break;
-		                    }
-		                }
-		                if (duplicatesFlag1) {
-		                    tempArr1.push(data[i].option_2);
-		                }
-		            }
-		        }
+
 		        option += "<option>선택하세요</option>";
 		        for(var i=0; i<tempArr.length; i++){
 		        	if(tempArr[i] != null){
@@ -389,13 +373,8 @@
 		        }
 		  
 		       
-		        for(var i=0; i<tempArr1.length; i++){
-		        	if(tempArr1[i] != null){
-		        		option2 += "<option>"+tempArr1[i]+"</option>"
-		        	}
-		        }
+
 				$('#select1').html(option);
-				$('#select2').html(option2);
 				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){

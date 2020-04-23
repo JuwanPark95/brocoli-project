@@ -88,5 +88,35 @@
 		FROM MAGAZINE 
 		JOIN BRAND ON M_BRAND_NO = BRAND_NO
 		JOIN MEMBER ON M_MNO = MNO
+		WHERE M_STATUS = 'N'
 	</select>
+	
+	<select id="magazineManagementDetail" parameterType="Magazine" resultMap="magazineResultSet">
+		SELECT * 
+		FROM MAGAZINE 
+		JOIN BRAND ON M_BRAND_NO = BRAND_NO
+		JOIN MEMBER ON M_MNO = MNO
+		AND M_NO= #{m_NO}
+	</select>
+	
+	<update id="magazineEnroll" >
+		UPDATE MAGAZINE
+		SET M_STATUS = 'Y'
+		WHERE M_NO= #{m_NO}
+	</update>
+	
+	<select id="magazineUploadList" parameterType="Magazine" resultMap="magazineResultSet">
+		SELECT * 
+		FROM MAGAZINE 
+		JOIN BRAND ON M_BRAND_NO = BRAND_NO
+		JOIN MEMBER ON M_MNO = MNO
+		WHERE M_STATUS = 'Y' OR M_STATUS = 'D'
+		ORDER BY M_NO DESC
+	</select>
+	
+	<update id="magazineDelete" parameterType="Magazine" >
+		UPDATE MAGAZINE
+		SET M_STATUS = 'D'
+		WHERE M_NO= #{m_NO}
+	</update>
 </mapper>

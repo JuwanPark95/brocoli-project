@@ -122,10 +122,11 @@
 								<div class="flex-w flex-r-m p-b-10">
 
 
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
+								<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0" id="opshow" style="margin-left: -100px; display:none;">
 											<select class="js-select2" id="select2" name="time">
-	
+													
+											
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -199,17 +200,47 @@
 	<script>
 	$(function(){
 	    $("#select1").change(function() {
-	    	
+	    	var test = "";
+	    	var option2 = "";
 			var option_1 = $("#select1").val();
 			var p_NO = $("#pNo").val();
-			alert(pNo)
 			$.ajax({
 				url:"optionDetail",
 				data:{p_NO:p_NO,
 					  option_1:option_1},
 				dataType:"json",
 				success:function(data){
-					alert("123");
+					 var tempArr1 = [];
+				        for (var i = 0; i < data.length; i++) {
+				            if (tempArr1.length == 0) {
+				                tempArr1.push(data[i].option_2);
+				            } else {
+				                var duplicatesFlag1 = true;
+				                for (var j = 0; j < tempArr1.length; j++) {
+				                    if (tempArr1[j] == data[i].option_2) {
+				                        duplicatesFlag1 = false;
+				                        break;
+				                    }
+				                }
+				                if (duplicatesFlag1) {
+				                    tempArr1.push(data[i].option_2);
+				                }
+				            }
+				        }
+						   
+				        for(var i=0; i<tempArr1.length; i++){
+				        	if(tempArr1[i] != null){
+				        		option2 += "<option>"+tempArr1[i]+"</option>";
+				        	}
+				        }
+				        
+						if(option_1 == "선택하세요"){
+							$('#select2').html(test);
+							$('#opshow').css("display","none");
+						}else{
+							$('#select2').html(option2);
+							$('#opshow').css("display","block");
+						}
 				},error:function(jqxhr,textStatus, errorThrown){
 					console.log("ajax 처리실패");
 					

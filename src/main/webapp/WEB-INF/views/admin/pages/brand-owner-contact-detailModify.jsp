@@ -87,20 +87,12 @@
 											<br>
 											<hr>
 											<span style="padding-left: 5%; font-size: 85%;"> 
-												<%-- <div class="col-12 col-sm-8 col-lg-6">
-		                                           <div class="form-group row">
-		                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-		                                                 <img id="titleImg" src="http://via.placeholder.com/"  alt="${c.con_Img}" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                              </div>
-		                                           </div>
-                                       			</div>
-		                                        <div class="ownerContactImgArea" id="ownerContactImgArea">
-		                                           <input type="file" id="pf_Img1" name="file1" accept="resources/ownerContact/*" onchange="loadImg(this, 1);" />
-		                                        </div> --%>
-												<input type="file" name="reloadFile">
-												<c:if test="${ !empty b.originalFileName }">
-													<br>현재 업로드한 파일 : 
-													<a href="${ contextPath }/resources/ownerContact/${ c.con_Img_ReName}" download="${ c.con_Img }">${ c.con_Img }</a>
+												<div>
+												<input type="file" name="reloadFile" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" style="height:2.4vw;"/>
+												</div>
+												<c:if test="${ !empty c.con_Img }">
+													<br>현재 업로드 파일 : 
+													<img src="/brocoli/resources/ownerContact/${c.con_Img_ReName}" alt="user" class="rounded" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 												</c:if>
 											</span>
 										</h2>
@@ -113,7 +105,7 @@
 										</div>
 									</div>
 									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
-										<button type="submit" class="btn btn-light">저장</button>
+										<button type="submit" class="btn btn-light btn-xs">저장</button>
 									</div>
 								</div>
 								<div class="card-footer bg-white"></div>

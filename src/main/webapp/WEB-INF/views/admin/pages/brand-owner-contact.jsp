@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="form-group row text-right" style="width:136%">
                                      <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                     	<button class="btn btn-dark" onclick="location.href='contactWrite.ad'">글작성</button>
+                                     	<button class="btn btn-dark btn-xs" onclick="location.href='contactWrite.ad'">글작성</button>
                                      </div>
                                 </div>
                             </div>

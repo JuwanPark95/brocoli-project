@@ -1,13 +1,15 @@
 package com.kh.brocoli.member.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.kh.brocoli.general.model.vo.Auction;
+import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
@@ -47,12 +49,161 @@ public class UserDao {
 	}
 	
 		public int newPassword(Member m) {
-//			String password = AuthenticationKey;
-//
-			
+				
 			
 			return sqlSession.update("memberMapper.newPassword", m);
 			
+		}
+
+		public int sEnter(Brand b) {
+			return sqlSession.insert("memberMapper.sEnter",b);
+		}
+
+		public int bNameCheck(String name) {
+			
+			return sqlSession.selectOne("memberMapper.bNameCheck",name);
+		}
+
+		public int getListCount3() {
+			return sqlSession.selectOne("memberMapper.getListCount3");
+		}
+
+		public ArrayList<Magazine2> selectmList() {
+		
+			return (ArrayList)sqlSession.selectList("memberMapper.selectmList");
+		}
+
+		public Magazine2 selectMagazine(int m_NO) {
+			return sqlSession.selectOne("memberMapper.selectMagazine",m_NO);
+		}
+
+		public int updateCount(int m_NO) {
+			return sqlSession.update("memberMapper.updateCount",m_NO);
+		}
+
+		
+		public int selectM1() {
+			return sqlSession.selectOne("memberMapper.selectM1");
+		}
+
+		public int selectM2() {
+			return sqlSession.selectOne("memberMapper.selectM2");
+		}
+
+		public int selectM3() {
+			return sqlSession.selectOne("memberMapper.selectM3");
+		}
+
+		public int selectM4() {
+			return sqlSession.selectOne("memberMapper.selectM4");
+		}
+
+		public int selectM5() {
+			return sqlSession.selectOne("memberMapper.selectM5");
+		}
+
+		public int selectM6() {
+			return sqlSession.selectOne("memberMapper.selectM6");
+		}
+
+		public int selectM7() {
+			return sqlSession.selectOne("memberMapper.selectM7");
+		}
+
+		public int selectM8() {
+			return sqlSession.selectOne("memberMapper.selectM8");
+		}
+
+		public int selectM9() {
+			return sqlSession.selectOne("memberMapper.selectM9");
+		}
+
+		public int selectM10() {
+			return sqlSession.selectOne("memberMapper.selectM10");
+		}
+
+		public int selectM11() {
+			return sqlSession.selectOne("memberMapper.selectM11");
+		}
+
+		public int selectM12() {
+			return sqlSession.selectOne("memberMapper.selectM12");
+		}
+
+		public ArrayList<Magazine2> selectm1List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm1List");
+		}
+
+		public ArrayList<Magazine2> selectm2List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm2List");
+		}
+
+		public ArrayList<Magazine2> selectm3List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm3List");
+		}
+
+		public ArrayList<Magazine2> selectm4List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm4List");
+		}
+
+		public ArrayList<Magazine2> selectm5List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm5List");
+		}
+
+		public ArrayList<Magazine2> selectm6List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm6List");
+		}
+
+		public ArrayList<Magazine2> selectm7List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm7List");
+		}
+
+		public ArrayList<Magazine2> selectm8List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm8List");
+		}
+
+		public ArrayList<Magazine2> selectm9List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm9List");
+		}
+
+		public ArrayList<Magazine2> selectm10List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm10List");
+		}
+
+		public ArrayList<Magazine2> selectm11List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm11List");
+		}
+
+		public ArrayList<Magazine2> selectm12List() {
+			return (ArrayList)sqlSession.selectList("memberMapper.selectm12List");
+		}
+
+		public ArrayList<Product> selectpList(int mno) {
+			return (ArrayList)sqlSession.selectList("memberMapper.pDetail",mno);
+		}
+
+		public ArrayList<Brand> searchBrand(String keyword) {
+			return (ArrayList)sqlSession.selectList("memberMapper.searchBrand",keyword);
+		}
+
+		public ArrayList<Product> searchProduct(String keyword) {
+			return (ArrayList)sqlSession.selectList("memberMapper.searchProduct",keyword);
+		}
+
+		public ArrayList<Brand> searchBrand2( String keyword, String keyword2) {
+			
+			HashMap<String,String> KeyCode = new HashMap();
+			KeyCode.put("keyword",keyword);
+			KeyCode.put("keyword2",keyword2);
+				
+			return (ArrayList)sqlSession.selectList("memberMapper.searchBrand2",KeyCode);
+		}
+
+		public ArrayList<Product> searchProduct2(String keyword, String keyword2) {
+			HashMap<String,String> KeyCode = new HashMap();
+			KeyCode.put("keyword",keyword);
+			KeyCode.put("keyword2",keyword2);
+			return (ArrayList)sqlSession.selectList("memberMapper.searchProduct2",KeyCode);
 		}
 
 
