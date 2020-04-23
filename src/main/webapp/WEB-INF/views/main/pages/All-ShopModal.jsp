@@ -111,7 +111,8 @@
 									<div class="size-204 respon6-next">
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
 											<select class="js-select2" id="select1" name="time">
-									
+													
+											
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -195,5 +196,32 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(function(){
+	    $("#select1").change(function() {
+	    	
+			var option_1 = $("#select1").val();
+			var p_NO = $("#pNo").val();
+			alert(pNo)
+			$.ajax({
+				url:"optionDetail",
+				data:{p_NO:p_NO,
+					  option_1:option_1},
+				dataType:"json",
+				success:function(data){
+					alert("123");
+				},error:function(jqxhr,textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+	    });
+	});
+	
+	</script>
 </body>
 </html>

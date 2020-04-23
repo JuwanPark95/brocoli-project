@@ -1,6 +1,7 @@
 package com.kh.brocoli.member.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -79,6 +80,12 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Product> selectyearList() {
 		return mDao.selectyearList();
+	}
+
+
+	@Override
+	public ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap) {
+		return mDao.selectOption(hmap);
 	}
 
 

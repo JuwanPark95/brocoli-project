@@ -246,6 +246,22 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping("optionDetail")
+	public void optionDetail(HttpServletResponse response,String p_NO,String option_1) throws JsonIOException, IOException{
+		HashMap<String,String> hmap = new HashMap<>();
+		hmap.put("p_NO", p_NO);
+		hmap.put("option_1", option_1);
+		
+		
+		ArrayList<ProductDetail> option = mService.selectOption(hmap);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("pDetail : " + option );
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(option,response.getWriter());
+	}
 	@RequestMapping("qnacomment")
 	public void qnacomment(HttpServletResponse response,String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
 		System.out.println("@@"+pq_P_NO);

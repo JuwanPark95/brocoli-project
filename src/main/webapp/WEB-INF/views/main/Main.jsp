@@ -272,17 +272,55 @@
 				
 				$('#imgcheck').html(img);
 				
-				for(var i=0; i<data.length; i++){
-					if(data[i] != ""){
-						option += "<option>"+data[i].option_1+"</option>"
-					}
-				}
-				
-				for(var i=0; i<data.length; i++){
-					if(data[i] != ""){
-						option2 += "<option>"+data[i].option_2+"</option>"
-					}
-				}
+		        var tempArr = [];
+		        for (var i = 0; i < data.length; i++) {
+		            if (tempArr.length == 0) {
+		                tempArr.push(data[i].option_1);
+		            } else {
+		                var duplicatesFlag = true;
+		                for (var j = 0; j < tempArr.length; j++) {
+		                    if (tempArr[j] == data[i].option_1) {
+		                        duplicatesFlag = false;
+		                        break;
+		                    }
+		                }
+		                if (duplicatesFlag) {
+		                    tempArr.push(data[i].option_1);
+		                }
+		            }
+		        }
+
+		        var tempArr1 = [];
+		        for (var i = 0; i < data.length; i++) {
+		            if (tempArr1.length == 0) {
+		                tempArr1.push(data[i].option_2);
+		            } else {
+		                var duplicatesFlag1 = true;
+		                for (var j = 0; j < tempArr1.length; j++) {
+		                    if (tempArr1[j] == data[i].option_2) {
+		                        duplicatesFlag1 = false;
+		                        break;
+		                    }
+		                }
+		                if (duplicatesFlag1) {
+		                    tempArr1.push(data[i].option_2);
+		                }
+		            }
+		        }
+		        option += "<option>선택하세요</option>";
+		        for(var i=0; i<tempArr.length; i++){
+		        	if(tempArr[i] != null){
+		        		option += "<option>"+tempArr[i]+"</option>"
+		        	}
+		        }
+		  
+		       
+		        for(var i=0; i<tempArr1.length; i++){
+		        	if(tempArr1[i] != null){
+		        		option2 += "<option>"+tempArr1[i]+"</option>"
+		        	}
+		        }
+
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
@@ -350,17 +388,55 @@
 				
 				$('#imgcheck').html(img);
 				
-				for(var i=0; i<data.length; i++){
-					if(data[i] != ""){
-						option += "<option>"+data[i].option_1+"</option>"
-					}
-				}
+				var tempArr = [];
+		        for (var i = 0; i < data.length; i++) {
+		            if (tempArr.length == 0) {
+		                tempArr.push(data[i].option_1);
+		            } else {
+		                var duplicatesFlag = true;
+		                for (var j = 0; j < tempArr.length; j++) {
+		                    if (tempArr[j] == data[i].option_1) {
+		                        duplicatesFlag = false;
+		                        break;
+		                    }
+		                }
+		                if (duplicatesFlag) {
+		                    tempArr.push(data[i].option_1);
+		                }
+		            }
+		        }
+
+		        var tempArr1 = [];
+		        for (var i = 0; i < data.length; i++) {
+		            if (tempArr1.length == 0) {
+		                tempArr1.push(data[i].option_2);
+		            } else {
+		                var duplicatesFlag1 = true;
+		                for (var j = 0; j < tempArr1.length; j++) {
+		                    if (tempArr1[j] == data[i].option_2) {
+		                        duplicatesFlag1 = false;
+		                        break;
+		                    }
+		                }
+		                if (duplicatesFlag1) {
+		                    tempArr1.push(data[i].option_2);
+		                }
+		            }
+		        }
 				
-				for(var i=0; i<data.length; i++){
-					if(data[i] != ""){
-						option2 += "<option>"+data[i].option_2+"</option>"
-					}
-				}
+		        option += "<option>선택하세요</option>";
+		        for(var i=0; i<tempArr.length; i++){
+		        	if(tempArr[i] != null){
+		        		option += "<option>"+tempArr[i]+"</option>";
+		        	}
+		        }
+		  
+		       
+		        for(var i=0; i<tempArr1.length; i++){
+		        	if(tempArr1[i] != null){
+		        		option2 += "<option>"+tempArr1[i]+"</option>";
+		        	}
+		        }
 				
 				$('#select1').html(option);
 				$('#select2').html(option2);
@@ -377,8 +453,11 @@
 			}
 		});
 		
-	})
+	});
 	
+
+
+	 
 	
 	</script>		
 
