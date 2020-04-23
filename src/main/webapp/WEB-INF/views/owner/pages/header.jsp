@@ -281,7 +281,16 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/QnA-management.jsp">QnA</a>
+                                        	<c:url var="noReadQNA" value="noReadQNA.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${noReadQNA}">읽지않은 QnA</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        	<c:url var="readQNA" value="readQNA.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a class="nav-link" href="${readQNA}">완료된 QnA</a>
                                         </li>
                                     </ul>
                                 </div>

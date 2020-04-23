@@ -98,6 +98,13 @@
                                  </tr>
                               </thead>
                               <tbody id="list">
+                               	<c:choose>
+                               		<c:when test="${empty list}">
+                               			<tr>
+                               				<td><div><strong>새로운 리뷰가 없습니다.</strong></div></td>
+                               			</tr>
+                               		</c:when>
+                               	</c:choose>
                                  <c:forEach var="i" items="${ list}">
                                     <tr>
                                        <td style="display: none; width: 0px;">${i.v_NO *-1}</td>
