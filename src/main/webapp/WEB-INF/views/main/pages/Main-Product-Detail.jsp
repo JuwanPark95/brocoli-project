@@ -8,6 +8,7 @@
 <%@ include file="All-Cart.jsp"%>
 
 
+
 <style>
 .img_color {
 	width: 290px;
@@ -155,10 +156,11 @@
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 
-
+								<input type="hidden" value="${aProducDetailtList[0].p_NO}" id="pNo"/>
 									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
+										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px; ">
 											<select class="js-select2" id="test1" name="option_1">
+													<option value="선택하세요">선택하세요</option>
 												<c:forEach var="ap" items="${ aProducDetailtList }">
 													<c:if test="${ap.option_1 != NULL }">
 														<option value="${ap.option_1 }">${ap.option_1 }</option>
@@ -174,13 +176,9 @@
 
 
 									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px;">
+										<div class="rs1-select2 bor8 bg0" id="opshow" style="margin-left: -100px; display:none;">
 											<select class="js-select2" id="test2" name="option_2">
-												<c:forEach var="ap" items="${ aProducDetailtList }">
-													<c:if test="${ap.option_2 != NULL }">
-														<option value="${ap.option_2 }">${ap.option_2 }</option>
-													</c:if>
-												</c:forEach>
+									
 											</select>
 											<div class="dropDownSelect2"></div>
 										</div>
@@ -333,17 +331,32 @@
 
 
 												<div class="row p-b-25">
-													<div class="col-12 p-b-5">
 														<label class="stext-102 cl3" for="review"
-															style="display: inline-block">작성 <input
-															type="file"
-															style="display: inline-block; margin-left: 400px;">
+															style="display: inline-block">작성 
 
 														</label>
-														<textarea
+													<div class="col-12 p-b-5">
+												<div class="productImgArea" id="productImgArea">
+                   									<input type="file" id="pf_Img1" name="uploadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+								                 
+								                 <div class="productImgArea" id="productImgArea2">
+                   									<input type="file" id="pf_Img2" name="uploadFile2" accept="resources/buploadFiles/" onchange="loadImg2(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea2" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg2" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+													<textarea
 															class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
 															id="review" name="review" style="resize: none;"></textarea>
 													</div>
+																									<!-- 파일업로드 -->
+
 
 													<!-- 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="name">Name</label>
@@ -355,6 +368,7 @@
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
 												</div> -->
 												</div>
+
 												<input type="hidden" id="productNo1"
 													value="${aProducDetailtList[0].p_NO }"> <a
 													id="qnacomment"
@@ -829,6 +843,64 @@
 			</div>
 		</div>
 	</div>
+	<script>
+
+	$(function(){
+	    $("#test1").change(function() {
+	    	var test = "";
+	    	var option2 = "";
+			var option_1 = $("#test1").val();
+			var p_NO = $("#pNo").val();
+			$.ajax({
+				url:"optionDetail",
+				data:{p_NO:p_NO,
+					  option_1:option_1},
+				dataType:"json",
+				success:function(data){
+					 var tempArr1 = [];
+				        for (var i = 0; i < data.length; i++) {
+				            if (tempArr1.length == 0) {
+				                tempArr1.push(data[i].option_2);
+				            } else {
+				                var duplicatesFlag1 = true;
+				                for (var j = 0; j < tempArr1.length; j++) {
+				                    if (tempArr1[j] == data[i].option_2) {
+				                        duplicatesFlag1 = false;
+				                        break;
+				                    }
+				                }
+				                if (duplicatesFlag1) {
+				                    tempArr1.push(data[i].option_2);
+				                }
+				            }
+				        }
+	
+				        for(var i=0; i<tempArr1.length; i++){
+				        	if(tempArr1[i] != null){
+				        		option2 += "<option>"+tempArr1[i]+"</option>";
+				        	}
+				        }
+				        
+						if(option_1 == "선택하세요"){
+							$('#test2').html(test);
+							$('#opshow').css("display","none");
+						}else{
+							$('#test2').html(option2);
+							$('#opshow').css("display","block");
+						}
+				},error:function(jqxhr,textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+	    });
+	});
+	
+	</script>
 
 	<%@ include file="All-Footer.jsp"%>
 	<%@ include file="All-BacktoTop.jsp"%>
@@ -980,6 +1052,59 @@
 				}
 			});
 		})
+	</script>
+	<script>
+	$(function(){
+	     $('#productImgArea').hide();
+	     
+	        
+	     $('#titleImgArea').click(() => {
+	        $('#pf_Img1').click();
+	     });
+	   });
+
+	   function loadImg(value, num){
+	     
+	     if(value.files/*  && value.files[0] */)  {
+	        
+	        var reader = new FileReader();
+	        
+	        reader.onload = function(e){
+	           
+	           switch(num) {
+	           case 1 : $('#titleImg').attr('src', e.target.result);
+	              break;
+	           }
+	        }
+	        reader.readAsDataURL(value.files[0]);
+	     }
+	   } 
+	   
+		$(function(){
+		     $('#productImgArea2').hide();
+		     
+		        
+		     $('#titleImgArea2').click(() => {
+		        $('#pf_Img2').click();
+		     });
+		   });
+
+		   function loadImg2(value, num){
+		     
+		     if(value.files/*  && value.files[0] */)  {
+		        
+		        var reader = new FileReader();
+		        
+		        reader.onload = function(e){
+		           
+		           switch(num) {
+		           case 1 : $('#titleImg2').attr('src', e.target.result);
+		              break;
+		           }
+		        }
+		        reader.readAsDataURL(value.files[0]);
+		     }
+		   } 
 	</script>
 </body>
 </html>

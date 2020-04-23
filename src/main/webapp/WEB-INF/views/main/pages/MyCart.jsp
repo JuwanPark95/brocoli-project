@@ -54,38 +54,30 @@
 									<th class="column-7">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
-							<c:forEach var="w" items="${ wList }">
+							<c:forEach var="c" items="${ cList }">
 	
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
-											<img src="/brocoli/resources/product-Img/${w.p_File.pf_Img1_ReName}" alt="IMG">
+											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
 										</div>
 									</td>
-									<td class="column-2">${w.productList.p_Name}</td>
-									<td class="column-3">Red</td>
-									<td class="column-4">XL</td>
-									<td class="column-7">${w.productList.p_Last_Price}</td>
-									<c:set var="sum" value="${sum + w.productList.p_Last_Price }"/>
+									<td class="column-2">${c.productList.p_Name}</td>
+									<td class="column-3">${c.ct_Option_1 }</td>
+									<td class="column-4">${c.ct_Option_2 }</td>
+									<td class="column-7">${c.productList.p_Last_Price}</td>
 									
-									<td class="column-6">										
-										<div class="wrap-num-product flex-w m-l-auto m-r-0">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-	
-												<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
-	
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
+									<td class="column-6">${ c.ct_Amount }</td>
+									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+									
+									<td class="column-7">
+										<c:out value="${ hap }"/>
+										<c:set var="sum" value="${sum + hap}"/>
 									</td>
-									
-									<td class="column-7">36,000원</td>
 										<td style="text-align: center;">
 									<c:url var="cDelete" value="cDelete.mn">
-										<c:param name="p_NO" value="${ w.productList.p_NO }"/>
+										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
 										<c:param name="Mno" value="${loginUser.mNO }"/>
 									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"

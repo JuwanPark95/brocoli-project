@@ -193,7 +193,7 @@
                                         </div>
                                         <div class="form-group row text-right">
                                             <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                                <button type="submit" class="btn btn-dark">저장</button>
+                                                <button type="submit" class="btn btn-dark btn-xs">저장</button>
                                             </div>
                                         </div>
                                     </form>
@@ -201,7 +201,7 @@
                                     	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
                                     		<form action="brandDelete.ad" method="post" >
                                         		<input type="hidden" name="brand_NO" value="${b.brand_NO}"/>	
-                                            	<button type="submit" class="btn btn-dark">브랜드삭제</button>
+                                            	<button type="submit" class="btn btn-dark btn-xs">브랜드삭제</button>
                                     		</form>
                                     	</div>
                                     </div>

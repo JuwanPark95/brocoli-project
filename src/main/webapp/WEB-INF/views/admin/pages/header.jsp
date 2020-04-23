@@ -234,7 +234,7 @@
 								<div id="submenu-3" class="collapse submenu" style="">
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value=''/>">입점문의</a></li>
+											href="<c:url value='brand-apply.ad'/>">입점문의</a></li>
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"

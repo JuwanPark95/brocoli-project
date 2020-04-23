@@ -62,58 +62,77 @@
 							class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="card">
 								<div class="card-header p-4">
-									<div class="card-header"
-										style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none; font-family: 'Do Hyeon', sans-serif;">
-										<h3 class="card-title"
-											style="margin-bottom: 0px; font-size: 17px">
-											<span style="float: left;">작성자 </span> <span
-												style="float: right; padding-right: 80px;">조회수 </span><br>
-											<hr>
-											<span
-												style="float: left; margin-top: 10px; margin-bottom: 10px;">제목
-											</span> <span
-												style="float: right; padding-top: 10px; padding-right: 80px;">작성일
-											</span><br> <br>
-											<hr>
-											<span
-												style="float: left; width: 1000px; margin-right: 810px;">첨부파일
-												미리보기 </span>
-										</h3>
+									<div class="card-header" style="border-bottom: none; padding-top: 22px; padding-bottom: 22px; background-color: none; font-family: 'Do Hyeon', sans-serif;">
+										<h2 class="card-title" style="margin-bottom: 0px; font-size: 17px">
+											<span style="font-size:85%;">작성자</span>
+											<span style="padding-left:6%; font-size:85%;">${mg.m_ID}</span>
+											<br><hr>
+											<div style="float:left; width:50%">
+											<span style="font-size:85%;">제  목</span>
+											<span style="padding-left:15%; font-size:85%;">${mg.m_Title}</span> 
+											</div> 
+											<div style="float:left;width:50%">
+											<span style="padding-left:160px; font-size:85%;">작성일</span>
+											<span style="padding-left:5%; font-size:85%;">${mg.m_Date}</span>
+											</div>
+											<br><hr>
+											<span style="font-size:85%;">이미지</span>
+											<span style="padding-left:5%; font-size:85%;">
+											  <div class="col-12 col-sm-8 col-lg-6">
+	                                            <div class="form-group row">
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img1_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img2_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img3_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img4_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img5_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img6	_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                              </div>
+	                                            </div>
+	                                       	  </div>
+											</span>
+										</h2>
 									</div>
 
 								</div>
 
 								<div class="card-body">
 									<div class="row mb-4">
-										<div class="col-sm-6">
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Gerald A. Garcia</h3>
-
-											<div>2546 Penn Street</div>
-											<div>Sikeston, MO 63801</div>
-											<div>Email: info@gerald.com.pl</div>
-											<div>Phone: +573-282-9117</div>
-										</div>
-										<div class="col-sm-6">
-											<h5 class="mb-3"></h5>
-											<h3 class="text-dark mb-1">Anthony K. Friel</h3>
-											<div>478 Collins Avenue</div>
-											<div>Canal Winchester, OH 43110</div>
-											<div>Email: info@anthonyk.com</div>
-											<div>Phone: +614-837-8483</div>
+										<div class="col-sm-6" style="padding-left:6%;">
+											${mg.m_Comment}
 										</div>
 									</div>
 
-								</div>
-								<div class="card-footer bg-white">
-								</div>
-									<div class="card-footer float-right"
-										style="background-color: transparent !important; border-top: white;">
-										<form action="/brocoli/admin/pages/magazine-management.jsp"
-											method="post" style="padding-left:92%;">
-											<button type="submit" class="btn btn-dark ">등록</button>
-										</form>
+									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white;">
+										<c:url var="magazineEnroll" value="magazineEnroll.ad">
+											<c:param name="m_NO" value="${mg.m_NO}"/>
+										</c:url>
+										<a href="${magazineEnroll}">
+											<button  class="btn btn-dark btn-xs">등록</button>
+										</a>
 									</div>
+									<c:set var="m_Status" value="${mg.m_Status }"/>
+									<c:if test="${m_Status eq 'Y' }">
+									<div class="card-footer float-right" style="background-color: transparent !important; border-top: white; padding-right:0px;">
+										<c:url var="magazineDelete" value="magazineDelete.ad">
+											<c:param name="m_NO" value="${mg.m_NO}"/>
+										</c:url>
+										<a href="${magazineDelete}">
+											<button  class="btn btn-dark btn-xs">삭제</button>
+										</a>
+									</div>
+									</c:if>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -127,10 +146,6 @@
 	<!-- ============================================================== -->
 	<!-- end main wrapper  -->
 	<!-- ============================================================== -->
-
-
-
-
 
 
 	<!-- Optional JavaScript -->

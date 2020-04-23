@@ -3,6 +3,7 @@ package com.kh.brocoli.member.model.vo;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.Product_File;
+import com.kh.brocoli.product.model.vo.Product_Option;
 
 public class Cart {
 	private String ct_Option_1;
@@ -14,13 +15,14 @@ public class Cart {
 	private Product productList;
 	private Product_File p_File;
 	private ProductDetail Pd;
+	private Product_Option poList;
 		
 	public Cart() {
 		super();
 	}
 
 	public Cart(String ct_Option_1, String ct_Option_2, int ct_Amount, int ct_Mno, int ct_P_NO, Product productList,
-			Product_File p_File, ProductDetail pd) {
+			Product_File p_File, ProductDetail pd, Product_Option poList) {
 		super();
 		this.ct_Option_1 = ct_Option_1;
 		this.ct_Option_2 = ct_Option_2;
@@ -30,6 +32,7 @@ public class Cart {
 		this.productList = productList;
 		this.p_File = p_File;
 		Pd = pd;
+		this.poList = poList;
 	}
 
 	public String getCt_Option_1() {
@@ -96,10 +99,18 @@ public class Cart {
 		Pd = pd;
 	}
 
+	public Product_Option getPoList() {
+		return poList;
+	}
+
+	public void setPoList(Product_Option poList) {
+		this.poList = poList;
+	}
+
 	@Override
 	public String toString() {
 		return "Cart [ct_Option_1=" + ct_Option_1 + ", ct_Option_2=" + ct_Option_2 + ", ct_Amount=" + ct_Amount
 				+ ", ct_Mno=" + ct_Mno + ", ct_P_NO=" + ct_P_NO + ", productList=" + productList + ", p_File=" + p_File
-				+ ", Pd=" + Pd + "]";
+				+ ", Pd=" + Pd + ", poList=" + poList + "]";
 	}
 }
