@@ -416,5 +416,17 @@ public class AdminBrandController {
 			return "common/errorPage";
 		}
 	}
+	
+//	/**
+//	 *  작성자 : 신은지
+//	 *  17. 브랜드 입점 문의 list
+//	 * @param mv
+//	 * @return
+//	 */
+//	@RequestMapping("brand-apply.ad")
+//	public ModelAndView brandApply(ModelAndView mv) {
+//		
+//		ArrayList<>
+//	}
 }
 
