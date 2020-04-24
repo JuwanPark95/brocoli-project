@@ -14,6 +14,7 @@ import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
+import com.kh.brocoli.product.model.vo.QnAComment;
 
 
 @Repository("mDao")
@@ -69,6 +70,10 @@ public class MemberDao {
 
 	public int insertQnaCommant(QNAProduct pq) {
 		return sqlSession.insert("mainMapper.qnacommant",pq);
+	}
+
+	public ArrayList<QnAComment> selectQnaCommant(String pq_P_No) {
+		return (ArrayList)sqlSession.selectList("mainMapper.selectQnaCommant",pq_P_No);
 	}
 
 

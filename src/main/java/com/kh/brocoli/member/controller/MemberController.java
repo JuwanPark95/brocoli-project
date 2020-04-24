@@ -39,6 +39,7 @@ import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
+import com.kh.brocoli.product.model.vo.QnAComment;
 
 @Controller
 public class MemberController {
@@ -250,11 +251,19 @@ public class MemberController {
 		gson.toJson(option,response.getWriter());
 	}
 	@RequestMapping("qnacomment")
-	public String qnacomment(QNAProduct pq,HttpServletResponse response,HttpServletRequest request,
+	@ResponseBody
+	public String qnacomment(QNAProduct pq,HttpServletRequest request,
 			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
 			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2,String pq_Writer) throws JsonIOException, IOException{
 		
-
+			pq.setPq_B_No(pq.getPq_B_No());
+			pq.setPq_Content(pq.getPq_Content());
+			pq.setPq_Id(pq.getPq_Id());
+			pq.setPq_P_No(pq.getPq_P_No());
+			pq.setPq_Writer(pq.getPq_Writer());
+			pq.setPq_mNo(pq.getPq_mNo());
+			
+			
 			System.out.println("파일1이유 : " + file1);
 			System.out.println("파일2이유 : " + file2);
 			
@@ -280,13 +289,6 @@ public class MemberController {
 			}
 			
 			int result = mService.insertQnaCommant(pq);
-			
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			
-			Gson gson = new GsonBuilder().create();
-			gson.toJson(result,response.getWriter());
-			
 			if(result > 0) {
 				return "ok";
 			}else {
@@ -332,6 +334,21 @@ public class MemberController {
 		return ReName;
 	}
 	
+	@RequestMapping("qnacommentlist")
+	@ResponseBody
+	private void qnacommentlist(HttpServletResponse response,String pq_P_No) throws JsonIOException, IOException{
+
+		System.out.println(pq_P_No);
+		ArrayList<QnAComment> qna = mService.selectQnaCommant(pq_P_No);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("qna : " + qna );
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(qna,response.getWriter());
+		
+	}
 	
 
 

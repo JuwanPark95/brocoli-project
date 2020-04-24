@@ -299,26 +299,34 @@
 						</div>
 
 						<!-- - -->
-						<div class="tab-pane fade" id="information" role="tabpanel">
+						<div class="tab-pane fade" id="information" role="tabpanel" >
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
 										<!-- Review -->
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img
-													src="/brocoli/resources/mainResources/images/avatar-01.jpg"
-													alt="AVATAR">
-											</div>
-
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> 홍길동 </span>
+							<!-- 				<div class="flex-w flex-sb-m p-b-17">
+													<span class="mtext-107 cl2 p-r-20"> 작성자 </span>
+													<span class="mtext-107 cl2 p-r-20"> 작성일  </span>
+													
 												</div>
-
-												<p class="stext-102 cl6">맘에 드네여</p>
+										<div class="flex-w flex-t p-b-68">
+										
+											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6" style="width:160px; height:200px; border-radius: 0px;">
+												<img src="/brocoli/resources/mainResources/images/avatar-01.jpg">
 											</div>
-										</div>
+											
+											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6" style="width:160px; height:200px;  border-radius: 0px;">
+												<img src="/brocoli/resources/mainResources/images/avatar-01.jpg">
+											</div>
+											
+	
+											<div class="size-207"   style= "margin-top: 20px;">
+											
+												<p class="stext-102 cl6">맘에 드네여</p>
+												
+											</div>
+											
+										</div> -->
 
 										<!-- Add review -->
 										<c:if test="${!empty sessionScope.loginUser }">
@@ -359,7 +367,7 @@
 
 												</div>
 												<input type="hidden" name="pq_Id" value="${loginUser.mId }">
-												<input type="hidden" name="pq_P_No" value="${loginUser.b_NO }">
+												<input type="hidden" name="pq_B_No" value="${aProducDetailtList[0].p_Brand_NO }">
 												<input type="hidden" name="pq_Writer" value="${loginUser.mName}">
 												<input type="hidden" name="pq_mNo" value="${loginUser.mNO}">
 												<input type="hidden" id="productNo1" name="pq_P_No"
@@ -954,21 +962,47 @@
 	<!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/js/main.js"></script>
 
-	<!-- 댓글 추가 -->
+	<!-- 댓글 추가 및 조회 -->
 	<script>
+	$( document ).ready(function() {
+		var pq_P_No = "${aProducDetailtList[0].p_NO }";
+		alert(pq_P_No);
+		
+		$.ajax({
+			url : "qnacommentlist",
+			data  : {
+					pq_P_No:pq_P_No
+					},
+			dataType:"json",
+			success : function(data){
+				alert(data);
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("ajax 처리실패");
+
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		})
+	});
+	
+	
 		$("form#qnacomment").submit(function(e) {
 			e.preventDefault();
 			var formData = new FormData(this);
-			var pq_Writer = "${loginUser.mName}";
-			var pq_mNo = "${loginUser.mNO}"; 
+
 			$.ajax({
 				url : "qnacomment",
 				type : "POST",
 				data : formData,
-				dataType : "json",
 				async: false,
 				success : function(data) {
-
+					if(data = "ok"){
+						$('#review').val(" ");
+						$('#titleImg').attr('src', "http://via.placeholder.com/160x200");
+						$('#titleImg2').attr('src', "http://via.placeholder.com/160x200");
+					}
 				},
 		        cache: false,
 		        contentType: false,
