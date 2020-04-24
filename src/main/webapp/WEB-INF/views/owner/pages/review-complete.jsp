@@ -158,10 +158,14 @@
                                              </div>
                                              <div class="review-block" style="padding: 8px;">
 	                                                <div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
-		                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
-		                                                      alt="user" class="rounded" width="100"> 
-		                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
-		                                                      alt="user" class="rounded" width="100">
+		                                                   	<c:if test="${!empty i.v_Img1_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
+			                                                      alt="user" class="rounded" width="100"> 
+		                                                   	</c:if>
+		                                                   	<c:if test="${!empty i.v_Img2_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
+			                                                      alt="user2" class="rounded" width="100">
+		                                                   	</c:if>
 	                                                </div>
 	                                                <div style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
 	                                                padding: 8px; resize: none; " class="review-text font-italic m-0">${i.v_Content }</div>
@@ -175,7 +179,7 @@
 	                                               					<c:when test="${i.v_NO eq j.vr_Parentno }">
 					                                                   <div style="display: inline-block; padding: 5px; vertical-align: middle; width: 100%; height: auto; border: 1px solid #e6e6f2; border-radius: 5px; margin-bottom: 4px;">
 						                                                   <div style=" float: left;">
-						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="user" style="width: 40px; height: 40px; border-radius: 50%;"> 
+						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="error" style="width: 40px; height: 40px; border-radius: 50%;"> 
 						                                                   </div>
 						                                                   <div style="display: table; float: left; vertical-align: middle; text-align: center; margin-right: 3px; min-height: 40px; margin-left: 8px;">
 						                                                   		<span style="display: table-cell; vertical-align: middle; font-size: 15px;">

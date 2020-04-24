@@ -69,14 +69,14 @@
                <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                      <div class="page-header">
-                        <h3 class="mb-2">읽지않은 상품문의</h3>
+                        <h3 class="mb-2">완료된 상품문의</h3>
                         <div class="page-breadcrumb">
                            <nav aria-label="breadcrumb">
                               <ol class="breadcrumb">
                                  <li class="breadcrumb-item"><a href="#"
                                     class="breadcrumb-link">메뉴</a></li>
                                  <li class="breadcrumb-item active" aria-current="page">상품문의</li>
-                                 <li class="breadcrumb-item active" aria-current="page">읽지않은 상품문의</li>
+                                 <li class="breadcrumb-item active" aria-current="page">완료된 상품문의</li>
                               </ol>
                            </nav>
                         </div>
@@ -100,7 +100,7 @@
                                	<c:choose>
                                		<c:when test="${empty list}">
                                			<tr>
-                               				<td><div><strong>새로운 상품문의가 없습니다.</strong></div></td>
+                               				<td><div><strong>답변한 상품문의가 없습니다.</strong></div></td>
                                			</tr>
                                		</c:when>
                                	</c:choose>
@@ -143,7 +143,7 @@
 	                                               
 	                                               			<c:forEach var="j" items="${rlist}">
 	                                               				<c:choose>
-	                                               					<c:when test="${i.pq_No eq pqr_ParentNo}">
+	                                               					<c:when test="${i.pq_No eq j.pqr_ParentNo}">
 					                                                   <div style="display: inline-block; padding: 5px; vertical-align: middle; width: 100%; height: auto; border: 1px solid #e6e6f2; border-radius: 5px; margin-bottom: 4px;">
 						                                                   <div style=" float: left;">
 						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="error" style="width: 40px; height: 40px; border-radius: 50%;"> 
@@ -175,10 +175,9 @@
 	                                                <form action="QnAReply-Insert.ow" method="post" enctype="multipart/form-data" onsubmit="return checks(this)">
 	                                                <div style="width: 100%; display: flex;">
 		                                                <input name="pqr_No" type="text" style="display: none;" value="${i.pq_No}" readonly="readonly">
+		                                                <input name="bNO" type="text" style="display: none;" value="${loginUser.brand_NO}" readonly="readonly">
 		                                                <input name="pqr_Writer" type="text" style="display: none;" value="${loginUser.mName}" readonly="readonly">
-		                                                <input name="pqr_Id" type="text" style="display: none;" value="${loginUser.mId}" readonly="readonly">
 		                                                <input name="pqr_Mno" type="text" style="display: none;" value="${loginUser.mNO}" readonly="readonly">
-		                                                <input name="pqr_bNo" type="text" style="display: none;" value="${loginUser.brand_NO}" readonly="readonly">
 	                                                   <textarea name="pqr_Content" id="ReplyComent"
 	                                                      style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; display: inline-block;"></textarea>
 	                                                   <button class="btn btn-primary active"
