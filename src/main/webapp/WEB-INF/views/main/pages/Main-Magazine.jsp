@@ -45,8 +45,6 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-		
-
 					<c:forEach var="m" items="${ mList }" begin="0" end="2">
 					Home > Magazine
 						<!-- item blog -->
