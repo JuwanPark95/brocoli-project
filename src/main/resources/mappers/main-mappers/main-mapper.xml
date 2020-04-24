@@ -395,4 +395,10 @@
 	and pq_status='Y'
 
 	</select>
+	
+	<select id="selectQnaCommant2" resultMap="QnAResultSet">
+	 select * from QNAPRODUCT
+	where pq_P_no = #{pq_P_No}
+	and pq_status='Y'
+	</select>
 </mapper>

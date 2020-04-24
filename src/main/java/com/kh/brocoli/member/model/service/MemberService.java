@@ -104,7 +104,7 @@ public interface MemberService {
 	 * @param pq_P_No
 	 * @return
 	 */
-	ArrayList<QnAComment> selectQnaCommant(String pq_P_No);
+	ArrayList<QNAProduct> selectQnaCommant(String pq_P_No);
 
 
 

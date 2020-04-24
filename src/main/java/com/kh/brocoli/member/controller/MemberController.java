@@ -308,7 +308,7 @@ public class MemberController {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\review-Img";
+		String savePath = root + "\\QnA-Img";
 
 		File folder = new File(savePath);
 
@@ -339,7 +339,7 @@ public class MemberController {
 	private void qnacommentlist(HttpServletResponse response,String pq_P_No) throws JsonIOException, IOException{
 
 		System.out.println(pq_P_No);
-		ArrayList<QnAComment> qna = mService.selectQnaCommant(pq_P_No);
+		ArrayList<QNAProduct> qna = mService.selectQnaCommant(pq_P_No);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

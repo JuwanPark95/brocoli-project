@@ -302,7 +302,8 @@
 						<div class="tab-pane fade" id="information" role="tabpanel" >
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-									<div class="p-b-30 m-lr-15-sm">
+									<div class="p-b-30 m-lr-15-sm" >
+										<div id="commentQnA">
 										<!-- Review -->
 							<!-- 				<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20"> 작성자 </span>
@@ -327,7 +328,7 @@
 											</div>
 											
 										</div> -->
-
+										</div>
 										<!-- Add review -->
 										<c:if test="${!empty sessionScope.loginUser }">
 											<form id="qnacomment" method="post" enctype="multipart/form-data"> 
@@ -371,7 +372,7 @@
 												<input type="hidden" name="pq_Writer" value="${loginUser.mName}">
 												<input type="hidden" name="pq_mNo" value="${loginUser.mNO}">
 												<input type="hidden" id="productNo1" name="pq_P_No"
-													value="${aProducDetailtList[0].p_NO }"> <button
+													value="${aProducDetailtList[0].p_NO }"> <button id="commentbtn"
 													
 													class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
 													style="color: white;"> Submit </button>
@@ -966,7 +967,7 @@
 	<script>
 	$( document ).ready(function() {
 		var pq_P_No = "${aProducDetailtList[0].p_NO }";
-		alert(pq_P_No);
+		var comment = "";
 		
 		$.ajax({
 			url : "qnacommentlist",
@@ -975,7 +976,31 @@
 					},
 			dataType:"json",
 			success : function(data){
-				alert(data);
+				
+			for(var i=0; i<data.length; i++){
+				
+				comment +=	"<div class='flex-w flex-sb-m p-b-17'>"
+				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Writer +"</span>"
+				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Date + "</span>"
+				comment +=	"</div>"
+				comment +=	"<div class='flex-w flex-t p-b-68'>"
+				
+				if(data[i].pq_Img1_ReName != null ){
+					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img1_ReName+"'>"
+					comment +=	"</div>"
+				}
+				if(data[i].pq_Img2_ReName != null){
+					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img2_ReName +"'>"
+					comment +=	"</div>"
+				}
+				comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+				comment +=	"<p class='stext-102 cl6'>"+data[i].pq_Content+"</p>"
+				comment +=	"</div>"
+				comment +=	"</div>"
+			}
+				$('#commentQnA').html(comment);
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("ajax 처리실패");
 
@@ -987,6 +1012,56 @@
 		})
 	});
 	
+	function commentlist()
+	{
+		var pq_P_No = "${aProducDetailtList[0].p_NO }";
+		var comment = "";
+		
+		$.ajax({
+			url : "qnacommentlist",
+			data  : {
+					pq_P_No:pq_P_No
+					},
+			dataType:"json",
+			success : function(data){
+				
+			for(var i=0; i<data.length; i++){
+				
+				comment +=	"<div class='flex-w flex-sb-m p-b-17 id=su"+i+"'>"
+				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Writer +"</span>"
+				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Date + "</span>"
+				comment +=	"</div>"
+				comment +=	"<div class='flex-w flex-t p-b-68'>"
+				
+				if(data[i].pq_Img1_ReName != null ){
+					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img1_ReName+"'>"
+					comment +=	"</div>"
+				}
+				if(data[i].pq_Img2_ReName != null){
+					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img2_ReName +"'>"
+					comment +=	"</div>"
+				}
+				comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+				comment +=	"<p class='stext-102 cl6'>"+data[i].pq_Content+"</p>"
+				comment +=	"</div>"
+				comment +=	"</div>"
+			}
+				$('#commentQnA').html(comment);
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("ajax 처리실패");
+
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		})
+	};
+	
+	$(function(){
+		commentlist();
 	
 		$("form#qnacomment").submit(function(e) {
 			e.preventDefault();
@@ -1002,6 +1077,7 @@
 						$('#review').val(" ");
 						$('#titleImg').attr('src', "http://via.placeholder.com/160x200");
 						$('#titleImg2').attr('src', "http://via.placeholder.com/160x200");
+						commentlist();
 					}
 				},
 		        cache: false,
@@ -1018,6 +1094,8 @@
 			});
 			return false;
 		});
+		
+	});
 	</script>
 	<script>
 	$(function(){

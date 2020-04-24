@@ -98,7 +98,7 @@ public class MemberServiceimpl implements MemberService {
 
 
 	@Override
-	public ArrayList<QnAComment> selectQnaCommant(String pq_P_No) {
+	public ArrayList<QNAProduct> selectQnaCommant(String pq_P_No) {
 		return mDao.selectQnaCommant(pq_P_No);
 	}
 
