@@ -106,6 +106,7 @@ i.fa{
 </head>
 <body class="animsition">
  <form action="trackprocess.mn">
+ <c:forEach var="Orders" items="${list }">
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			주문정보
@@ -123,25 +124,52 @@ i.fa{
 							<strong>주문 상세보기</strong>
 						</h4>
 					</div>
+					
+					<c:if test="${Orders.or_Status eq 1}">
 					<ul class="contStep goodsStep" style="margin-top: 30px;">
-						<li class="item01"><img class="ticon"
-							src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png" /><span>주문 접수</span></li>
-
-						<li class="item02"><img class="ticon"
-							src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" /><span>상품 준비중</span></li>
-
-						<li class="item03"><img class="ticon"
-							src="/brocoli/resources/mainResources/images/icons/Truck-icon2.png" /><span>배송 시작</span></li>
-
-						<li class="item04"><img class="ticon"
-							src="/brocoli/resources/mainResources/images/icons/hand.png" /><span>배송 완료</span></li>
+						<li class="item01" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png"  /><span>주문 완료</span></li>
+                        <li class="item02" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" style="opacity: 0.3;" /><span>상품 준비중</span></li>
+                        <li class="item03" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon2.png" style="opacity: 0.3;" /><span>배송 시작</span></li>
+                        <li class="item04" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/hand.png" style="opacity: 0.3;"/><span>배송 완료</span></li>
 					</ul>
+					</c:if> 
+					
+					<c:if test="${Orders.or_Status eq 2}">
+					<ul class="contStep goodsStep" style="margin-top: 30px;">
+						<li class="item01" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png" style="opacity: 0.3;" /><span>주문 완료</span></li>
+                        <li class="item02" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" /><span>상품 준비중</span></li>
+                        <li class="item03" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon2.png" style="opacity: 0.3;" /><span>배송 시작</span></li>
+                        <li class="item04" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/hand.png" style="opacity: 0.3;"/><span>배송 완료</span></li>
+					</ul>
+					</c:if>
+					
+					<c:if test="${Orders.or_Status eq 3}">
+					<ul class="contStep goodsStep" style="margin-top: 30px;">
+						<li class="item01" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png" style="opacity: 0.3;" /><span>주문 완료</span></li>
+                        <li class="item02" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" style="opacity: 0.3;" /><span>상품 준비중</span></li>
+                        <li class="item03" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon2.png" /><span>배송 시작</span></li>
+                        <li class="item04" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/hand.png" style="opacity: 0.3;"/><span>배송 완료</span></li>
+					</ul>
+					</c:if>
+					
+					
+					<c:if test="${Orders.or_Status eq 4}">
+					<ul class="contStep goodsStep" style="margin-top: 30px;">
+						<li class="item01" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png" style="opacity: 0.3;" /><span>주문 완료</span></li>
+                        <li class="item02" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" style="opacity: 0.3;" /><span>상품 준비중</span></li>
+                        <li class="item03" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon2.png" style="opacity: 0.3;" /><span>배송 시작</span></li>
+                        <li class="item04" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/hand.png" /><span>배송 완료</span></li>
+					</ul>
+					</c:if>
+					
+					
 				</div>
 			</div>
 		</div>
 		<!-- 끝 -->
 
 
+		
 		<div class="row" style="    width: 100%; margin-top: 50px;">
 			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50"
 				style="margin-left: -1%;">
@@ -162,22 +190,23 @@ i.fa{
 								<th style="width: 8%; text-align: center;">확인</th>
 							</tr>
 							<tr>
-								<td style="text-align: center;">1</td>
-								<td style="text-align: center;">2020-03-30</td>
-								<td style="text-align: center;"><img
-									src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
-								<td style="text-align: left;">
-									<ul>
-										<li>상품명 : 패딩</li>
-										<li>옵션 1 : 레드</li>
-										<li>옵션 2 : XL</li>
-									</ul>
-								</td>
-								<td style="text-align: center;"><strike>36,000원</strike> <br>34,000원</td>
-								<td style="text-align: center;">-2000원</td>
-								<td style="text-align: center;">360원</td>
-								<td style="text-align: center;">2</td>
-								<td style="text-align: center;">68,000원</td>
+								<td style="text-align:center;">${ Orders.or_NO }</td>
+								<input type="hidden" name="or_No" value="${ Orders.or_NO }">
+									<td style="text-align:center;">${ Orders.or_Date }</td>
+									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:left;">
+										<ul>
+											<li>${ Orders.or_Pname }</li>
+											<li>${ Orders.or_Option1 }</li>
+											<li>${ Orders.or_Option2 }</li>
+										</ul>
+									</td>
+								<td style="text-align:center;"><strike>${ Orders.pOptionlist.pList.p_Price }</strike>
+																   <br>${ Orders.pOptionlist.pList.p_Last_Price }</td>
+									<td style="text-align:center;">- ${ Orders.pOptionlist.pList.p_Sail_Price }</td>
+									<td style="text-align:center;">${ Orders.or_Price/100 }</td>
+									<td style="text-align:center;">${ Orders.or_Amount }</td>
+									<td style="text-align:center;">${ Orders.or_Price }</td>
 								<td style="text-align: center; font-size: 13px; color: #555;"><strong>주문완료</strong><br>
 								<td style="text-align: center;">
 									<button class="ord-btn">
@@ -230,16 +259,16 @@ i.fa{
 							</span>
 
 							<p class="stext-115 cl6 size-213 p-t-18">
-								<strong>주문합계 :</strong> 15,920 원
+								<strong>주문합계 :</strong> ${ Orders.pOptionlist.pList.p_Price } 원
 							</p>
 							<p class="stext-115 cl6 size-213 p-t-18" style="color: #717fe0;">
-								<strong style="color: #888888;">할인합계 :</strong> -2,000원
+								<strong style="color: #888888;">할인합계 :</strong>  ${ Orders.pOptionlist.pList.p_Sail_Price }원
 							</p>
 							<p class="stext-115 cl6 size-213 p-t-18">
 								<strong>결제 수수료:</strong> 0원
 							</p>
 							<p class="stext-115 cl6 size-213 p-t-18">
-								<strong>최종 결제금액 :</strong> 13,920원
+								<strong>최종 결제금액 :</strong>${ Orders.or_Price }원
 							</p>
 
 						</div>
@@ -259,31 +288,40 @@ i.fa{
 						</span>
 
 						<p class="stext-115 cl6 size-213 p-t-18">
-							<strong>이름 :</strong> 박주완
+							<strong>이름 :</strong> ${loginUser.mName }
 						</p>
 						<p class="stext-115 cl6 size-213 p-t-18">
-							<strong>연락처 :</strong> 010-0000-0000
+							<strong>연락처 :</strong> ${loginUser.phone }
 						</p>
 						<p class="stext-115 cl6 size-213 p-t-18">
 							<strong>배송지 주소 :</strong>
 						</p>
 						<p class="stext-115 cl6 size-213 p-t-18"
 							style="margin-left: 10px; padding-top: 5px;">
-							841-115 <br> 서울특별시 서초구 서초동 1304-3 <br>Brocoil 스토어 스파크타워
-							B1,1,2,3층
+							${loginUser.address }
 						</p>
 						<p class="stext-115 cl6 size-213 p-t-18">
-							<strong>배송 메시지 :</strong> 문앞에 두고 문자주세요.
+							<strong>배송 메시지 :</strong> ${Orders.or_Address }
 						</p>
 					</div>
 				</div>
 			</div>
 
 		</div>
-		
+		<button onclick="history.go(-1); return false;"><strong>< 돌아가기</strong></button>
 </div>
+</c:forEach>
+
+<script>
+
+
+</script>
+
+
 
 </form>
+
+
 
 <%@ include file="All-Footer.jsp" %>
 <!--===============================================================================================-->	

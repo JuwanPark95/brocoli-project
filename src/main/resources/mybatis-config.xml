@@ -71,7 +71,7 @@
  		<mapper resource="mappers/main-mappers/Wish-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/Cart-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminMagazine-mapper.xml"/>
- 		
+ 		<mapper resource="mappers/main-mappers/mypage-mapper.xml"/>
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
  	<!--  -->
