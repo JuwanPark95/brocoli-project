@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% String keyword = request.getParameter("keyword"); %>
+<% String keyword2 = request.getParameter("keyword2"); %>
 <!DOCTYPE html>
 <html lang="ko">
 	<%@ include file="All-Header.jsp" %>
@@ -62,6 +63,13 @@
 			</div>
          <hr style="border: 1px solid grey;">
          <div class="brandSR">
+         <c:choose>
+					<c:when test="${fn:length(bList) == 0}">
+					<div style="margin-left: 250px; margin-top: 150px;" class="p-b-63">
+						<h1>조회결과가 없습니다.</h1>
+						</div>
+					</c:when>
+					<c:otherwise>
          <ol class="olf">
          <c:forEach var="b" items="${bList }">
            <c:url var="bproduct" value="bproduct.mn">
@@ -79,6 +87,8 @@
          	<li><button><img src="/brocoli/resources/mainResources/images/lecoq.png" /><br><p>le coq</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/dynafit.png" /><br><p>DYNAFIT</p></button></li> -->
          </c:forEach>
+         	</c:otherwise>
+         	</c:choose>
          	</ol>
          </div>
        </div>
@@ -89,6 +99,15 @@
 <div>
 <label style="font-size:30px;">상품</label>
 </div>
+
+
+					<c:choose>
+					<c:when test="${fn:length(pList) == 0}">
+					<div style="margin-left: 250px; margin-top: 100px;" class="p-b-63">
+						<h1>조회결과가 없습니다.</h1>
+						</div>
+					</c:when>
+					<c:otherwise>
           <div class="row isotope-grid">
          <c:forEach var="ap" items="${ pList }">
          
@@ -133,6 +152,7 @@
             </div>
             </button>
 		</c:forEach>
+		
          </div>
 
          <!-- Load more -->
@@ -141,6 +161,8 @@
                Load More
             </a>
          </div>
+         </c:otherwise>
+		</c:choose>
       </div>
    </div>
 
