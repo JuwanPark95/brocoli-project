@@ -58,16 +58,7 @@ input {
 							</label> <label class="box_choice"> <input type="radio"
 									id="address_dongil" name="adress_chk"
 									onClick="Order.sameOrder(this);" /> 기본 배송지(구매자 정보)
-							</label> <label class="box_choice"> <input type="radio"
-									id="address_list" name="adress_chk"
-									onClick="ChoiceDeliveryAddress(document.f1.delivery_list);" />
-									주소록 선택
-							</label> <select name="delivery_list"
-								onChange="ChoiceDeliveryAddress(this);" disabled>
-									<option value="">선택하세요</option>
-									<option value="">홍길동님 배송지</option>
-							</select> <a class="box_choice" href="/app/mypage/delivery"
-								target="_blank">[주소록 편집↗]</a></li>
+							</label> 
 						</ul>
 						<ul class="box_receiver_info">
 							<li class="cell_discount_tit">수령인 / 배송지명</li>
@@ -149,40 +140,28 @@ input {
 							<li class="cell_discount_tit">배송 메모<br />
 
 							</li>
-							<li class="cell_discount_detail box_memo"><textarea
-									name="dlv_msg"></textarea>
+							<li class="cell_discount_detail box_memo">
+							<textarea name="dlv_msg" style="resize: none;"></textarea>
 								<p>※ 택배기사님께 전할 말씀을 남겨주세요.</p></li>
 						</ul>
 						<!--수령자 정보-->
 					</div>
 					<div class="cell_order_form2 box_buyer_cell">
 
-						<ul class="box_buyer_info">
-							<li class="order_address_form box_name"><input type="text"
-								name="ordr_nm" value=""
-								onblur="$('#virtual_bank_inpnm').val(this.value);" /></li>
+						<ul class="box_buyer_info">	
+							<li class="order_address_form box_name">
+							<input type="text" placeholder="성명" id="mName" name="mName" value="${loginUser.mName }" ></li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_email">
-								<!--이메일--> <input type="text" name="email1" value="" class="id" />@
-								<input type="text" name="email_etc" value="naver.com"
-								class="pwd" style="display: none;" /> <select name="email2"
-								onChange="inputDomain('email2','email_etc');">
-									<option value="etc">직접 입력</option>
-									<option value="naver.com" selected>naver.com</option>
-									<option value="paran.com">paran.com</option>
-									<option value="hanmail.net">hanmail.net</option>
-									<option value="hotmail.com">hotmail.com</option>
-									<option value="nate.com">nate.com</option>
-							</select> 
-							<script type="text/javascript">
-								inputDomain('email2', 'email_etc', true);
-							</script>
+								<!--이메일--> 
+								<input type="email" name="eMail" id="eMail" value="" class="id" style="width: 150px;" placeholder="email" value="${loginUser.email}" />
 							</li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_phone">
-								<!--휴대전화--> <input type="text" name="omobile1" value="" size="3"
+								<!--휴대전화--> 
+								<input type="text" name="omobile1" value="" size="3"
 								maxlength="3" /> - <input type="text" name="omobile2" value=""
 								size="3" maxlength="4" /> - <input type="text" name="omobile3"
 								value="" size="3" maxlength="4" />
@@ -211,11 +190,10 @@ input {
 
 			</div>
 
-			<input type="submit"
-				class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
+			<input type="submit" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
-				value="결제하기"> <input type="reset"
-				class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
+				value="결제하기"> 
+				<input type="reset" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
 				value="취소">
 
@@ -227,13 +205,13 @@ input {
 		</div>
 
 	</form>
-
+	
 
 
 
 	<%@ include file="All-Footer.jsp"%>
 
-
+	
 	<!--===============================================================================================-->
 	<script
 		src="/brocoli/resources/mainResources/vendor/jquery/jquery-3.2.1.min.js"></script>
