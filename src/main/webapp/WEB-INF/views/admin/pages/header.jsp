@@ -324,7 +324,7 @@
 								</div>
 							</li>
 							
-							<li class="nav-item"><a class="nav-link" href="#"
+							<%-- <li class="nav-item"><a class="nav-link" href="#"
 								data-toggle="collapse" aria-expanded="false"
 								data-target="#submenu-8" aria-controls="submenu-8"><i
 									class="fa fa-fw fa-tasks"></i>게시판</a>
@@ -338,7 +338,8 @@
 											href="<c:url value='board-questions.ad'/>">Q&A</a></li>
 									</ul>
 								</div>
-							</li>
+							</li> --%>
+							
 							<li class="nav-item"><a class="nav-link" href="#"
 								data-toggle="collapse" aria-expanded="false"
 								data-target="#submenu-9" aria-controls="submenu-9"><i

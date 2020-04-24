@@ -82,6 +82,10 @@
 		WHERE CT_MNO=#{ct_Mno}
 	</select>
 	
+	<delete id="deleteWish" parameterType="_int">
+		DELETE FROM CART
+		WHERE CT_PNO = #{p_NO}
+	</delete>
 	
 	
 	

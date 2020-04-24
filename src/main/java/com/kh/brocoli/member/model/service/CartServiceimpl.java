@@ -24,6 +24,11 @@ public class CartServiceimpl implements CartService {
 	public ArrayList<Cart> cartList(int ct_Mno) {
 		return cDao.cartList(ct_Mno);
 	}
+
+	@Override
+	public int deleteCart(int p_NO) {
+		return cDao.deleteCart(p_NO);
+	}
 	
 
 }
