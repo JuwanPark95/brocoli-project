@@ -266,13 +266,21 @@
 	    $(document).ready(function(){
 	    	$("button[name=orderChangeBtn]").click(function(){
 	    		$("#orderChangeModal").modal();
-	    		/* var chNO = $(this).parents("td[name=chNO]").text();
+	    		var chNO = $(this).parents("td[name=chNO]").text();
 	    		var option1 = $(this).parents("td[name=option1]").test();
 	    		var option2 = $(this).parents("td[name=option2]").text();
-    			alert("dgd");
+    			/* alert("dgd");
 	    		alert(this().parents("td[name=option1]"));
 	    		alert(option1);
-	    		$("#modalOption1").text(option1); */
+	    		$("#modalOption1").text(option1); */ 
+	    			$.ajax({
+	    				url:'orderChange.ad',
+	    				data:{chNO:chNO, option1:option1, option2:option2},
+	    				type:'post',
+	    				success:function(data){
+	    					
+	    				}
+	    			});
 	    	});
 	    });
     </script>

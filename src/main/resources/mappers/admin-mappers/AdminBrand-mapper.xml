@@ -64,6 +64,18 @@
 		<result property="brandName" column="BRAND"/>
 	</resultMap>
 	
+	<resultMap id="EnteringQuestionResultSet" type="Entering_Question">
+		<id property="ent_NO" column="ENT_NO"/>
+		<result property="ent_Business_NO" column="ENT_BUSINESS_NO"/>
+		<result property="ent_Bname" column="ENT_BNAME"/>
+		<result property="ent_Url" column="ENT_URL"/>
+		<result property="ent_ID" column="ENT_ID"/>
+		<result property="ent_Phone" column="ENT_PHONE"/>
+		<result property="ent_Mail" column="ENT_MAIL"/>
+		<result property="ent_Comment" column="ENT_COMMENT"/>
+		<result property="ent_Status" column="ENT_STATUS"/>
+	</resultMap>
+	
 	
 	<select id="selectBrandList" parameterType="Brand" resultMap="brandResultSet">
 		SELECT * 
@@ -165,8 +177,8 @@
 		WHERE BRAND_NO=#{brand_NO}
 	</update>
 	
-	<!-- <select id="brandApplyList" parameterType="" resultMap="">
+	<select id="brandApplyList" parameterType="Entering_Question" resultMap="EnteringQuestionResultSet">
 		SELECT *
 		FROM ENTERING_QUESTION
-	</select> -->
+	</select>
 </mapper>

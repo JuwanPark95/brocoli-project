@@ -429,6 +429,7 @@ public class AdminBrandController {
 		
 		ArrayList<Entering_Question> brandApplyList = ABService.brandApplyList();
 		
+		mv.addObject("brandApplyList",brandApplyList).setViewName("brand-entering-question");
 		
 		return mv;
 	}
