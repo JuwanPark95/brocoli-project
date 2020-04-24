@@ -14,6 +14,7 @@ import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
+import com.kh.brocoli.product.model.vo.QNAProduct;
 
 
 @Service("mService")
@@ -86,6 +87,12 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap) {
 		return mDao.selectOption(hmap);
+	}
+
+
+	@Override
+	public int insertQnaCommant(QNAProduct pq) {
+		return mDao.insertQnaCommant(pq);
 	}
 
 

@@ -8,6 +8,7 @@ import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
+import com.kh.brocoli.product.model.vo.QNAProduct;
 
 public interface MemberService {
 
@@ -89,6 +90,13 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap);
+
+	/**
+	 * 상품qna
+	 * @param pq
+	 * @return
+	 */
+	int insertQnaCommant(QNAProduct pq);
 
 
 

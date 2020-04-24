@@ -13,6 +13,7 @@ import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
+import com.kh.brocoli.product.model.vo.QNAProduct;
 
 
 @Repository("mDao")
@@ -64,6 +65,10 @@ public class MemberDao {
 
 	public ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap) {
 		return (ArrayList)sqlSession.selectList("mainMapper.optionlist",hmap);
+	}
+
+	public int insertQnaCommant(QNAProduct pq) {
+		return sqlSession.insert("mainMapper.qnacommant",pq);
 	}
 
 

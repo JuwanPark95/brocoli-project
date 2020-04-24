@@ -250,20 +250,18 @@ public class MemberController {
 		gson.toJson(option,response.getWriter());
 	}
 	@RequestMapping("qnacomment")
-	public void qnacomment(QNAProduct pq,HttpServletResponse response,HttpServletRequest request,
+	public String qnacomment(QNAProduct pq,HttpServletResponse response,HttpServletRequest request,
 			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
-			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2,
-			String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
+			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2,String pq_Writer) throws JsonIOException, IOException{
 		
-			System.out.println("@@"+pq_P_NO);
-			System.out.println("##"+pq_Content);
-			System.out.println("$$"+pq_Writer);
+
 			System.out.println("파일1이유 : " + file1);
 			System.out.println("파일2이유 : " + file2);
 			
+			int count=1;
 			if(!file1.getOriginalFilename().equals("")) {
 				
-				String q_Img1_Rename = saveFile(file1, request,"f1");
+				String q_Img1_Rename = saveFile(file1, request,pq_Writer,count);
 				
 				if(q_Img1_Rename != null) {
 					pq.setPq_Img1(file1.getOriginalFilename());
@@ -273,16 +271,21 @@ public class MemberController {
 			
 			if(!file2.getOriginalFilename().equals("")) {
 				
-				String q_Img2_Rename = saveFile(file2, request,"f2");
+				String q_Img2_Rename = saveFile(file2, request,pq_Writer,count+1);
 				
 				if(q_Img2_Rename != null) {
 					pq.setPq_Img2(file2.getOriginalFilename());
 					pq.setPq_Img2_ReName(q_Img2_Rename);
 				}
 			}
-			System.out.println("qna 인설트 : " + pq);
 			
-			int result = mService.insertQnA(pq);
+			int result = mService.insertQnaCommant(pq);
+			
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			Gson gson = new GsonBuilder().create();
+			gson.toJson(result,response.getWriter());
 			
 			if(result > 0) {
 				return "ok";
@@ -290,11 +293,6 @@ public class MemberController {
 				return "false";
 			}
 			
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-	
-			Gson gson = new GsonBuilder().create();
-			//gson.toJson(pDetail,response.getWriter());
 		
 	}
 	
@@ -304,11 +302,11 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	private String saveFile(MultipartFile file, HttpServletRequest request,String pre) {
+	private String saveFile(MultipartFile file, HttpServletRequest request,String pq_Writer,int count) {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
-		String savePath = root + "\\QnA-Img";
+		String savePath = root + "\\review-Img";
 
 		File folder = new File(savePath);
 
@@ -319,10 +317,9 @@ public class MemberController {
 		String q_Img1 = file.getOriginalFilename();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String ReName = pre+sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+		String ReName = pq_Writer+"_"+count+ "_" +sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
 
-		System.out.println("q_Img1_ReName : " + ReName);
 
 		String renamePath = folder + "\\" + ReName;
 

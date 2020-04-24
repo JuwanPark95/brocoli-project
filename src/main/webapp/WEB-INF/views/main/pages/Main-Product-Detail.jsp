@@ -322,6 +322,7 @@
 
 										<!-- Add review -->
 										<c:if test="${!empty sessionScope.loginUser }">
+											<form id="qnacomment" method="post" enctype="multipart/form-data"> 
 											<div class="w-full">
 
 												<br>
@@ -329,7 +330,7 @@
 												Your email address will not be published. Required fields are marked *
 											</p> -->
 
-
+												
 												<div class="row p-b-25">
 														<label class="stext-102 cl3" for="review"
 															style="display: inline-block">작성 
@@ -337,7 +338,7 @@
 														</label>
 													<div class="col-12 p-b-5">
 												<div class="productImgArea" id="productImgArea">
-                   									<input type="file" id="pf_Img1" name="uploadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" style="display:inline-block;"/>
+                   									<input type="file" id="uploadFile1" name="uploadFile1" accept="resources/buploadFiles/" onchange="loadImg(this, 1);" style="display:inline-block;"/>
                									 </div>
                 
                									 <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
@@ -345,7 +346,7 @@
 								                 </div>
 								                 
 								                 <div class="productImgArea" id="productImgArea2">
-                   									<input type="file" id="pf_Img2" name="uploadFile2" accept="resources/buploadFiles/" onchange="loadImg2(this, 1);" style="display:inline-block;"/>
+                   									<input type="file" id="uploadFile2" name="uploadFile2" accept="resources/buploadFiles/" onchange="loadImg2(this, 1);" style="display:inline-block;"/>
                									 </div>
                 
                									 <div id="titleImgArea2" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
@@ -353,28 +354,21 @@
 								                 </div>
 													<textarea
 															class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-															id="review" name="review" style="resize: none;"></textarea>
+															id="review" name="pq_Content" style="resize: none;"></textarea>
 													</div>
-																									<!-- 파일업로드 -->
 
-
-													<!-- 												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
 												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
-												</div> -->
-												</div>
-
-												<input type="hidden" id="productNo1"
-													value="${aProducDetailtList[0].p_NO }"> <a
-													id="qnacomment"
+												<input type="hidden" name="pq_Id" value="${loginUser.mId }">
+												<input type="hidden" name="pq_P_No" value="${loginUser.b_NO }">
+												<input type="hidden" name="pq_Writer" value="${loginUser.mName}">
+												<input type="hidden" name="pq_mNo" value="${loginUser.mNO}">
+												<input type="hidden" id="productNo1" name="pq_P_No"
+													value="${aProducDetailtList[0].p_NO }"> <button
+													
 													class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
-													style="color: white;"> Submit </a>
+													style="color: white;"> Submit </button>
 											</div>
+											</form>
 										</c:if>
 									</div>
 								</div>
@@ -776,73 +770,9 @@
 	</section>
 
 
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		<div class="overlay-modal1 js-hide-modal1"></div>
 
-		<div class="container">
-			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img
-						src="/brocoli/resources/mainResources/images/icons/icon-close.png"
-						alt="CLOSE">
-				</button>
+	<%@ include file="All-ShopModal.jsp"%>
 
-				<div class="row">
-					<div class="col-md-6 col-lg-7 p-b-30">
-						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
-								<div class="wrap-slick3-dots"></div>
-								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-01.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-01.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-02.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3"
-										data-thumb="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-										<div class="wrap-pic-w pos-relative">
-											<img
-												src="/brocoli/resources/mainResources/images/product-detail-03.jpg"
-												alt="IMG-PRODUCT"> <a
-												class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="/brocoli/resources/mainResources/images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<%@ include file="All-ShopModal.jsp"%>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script>
 
 	$(function(){
@@ -1026,22 +956,23 @@
 
 	<!-- 댓글 추가 -->
 	<script>
-		$('#qnacomment').click(function() {
-			var pq_P_NO = $('#productNo1').val();
-			var pq_Content = $('#review').val();
+		$("form#qnacomment").submit(function(e) {
+			e.preventDefault();
+			var formData = new FormData(this);
 			var pq_Writer = "${loginUser.mName}";
-			alert(pq_Writer);
+			var pq_mNo = "${loginUser.mNO}"; 
 			$.ajax({
 				url : "qnacomment",
-				data : {
-					pq_P_NO : pq_P_NO,
-					pq_Content : pq_Content,
-					pq_Writer : pq_Writer
-				},
+				type : "POST",
+				data : formData,
 				dataType : "json",
+				async: false,
 				success : function(data) {
 
 				},
+		        cache: false,
+		        contentType: false,
+		        processData: false,
 				error : function(jqxhr, textStatus, errorThrown) {
 					console.log("ajax 처리실패");
 
@@ -1051,7 +982,8 @@
 					console.log(errorThrown);
 				}
 			});
-		})
+			return false;
+		});
 	</script>
 	<script>
 	$(function(){
@@ -1059,7 +991,7 @@
 	     
 	        
 	     $('#titleImgArea').click(() => {
-	        $('#pf_Img1').click();
+	        $('#uploadFile1').click();
 	     });
 	   });
 
@@ -1085,7 +1017,7 @@
 		     
 		        
 		     $('#titleImgArea2').click(() => {
-		        $('#pf_Img2').click();
+		        $('#uploadFile2').click();
 		     });
 		   });
 

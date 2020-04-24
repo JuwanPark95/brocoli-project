@@ -184,6 +184,29 @@
 		<collection property="brList" resultMap="brandResultSet"/>
 	</resultMap>
 	
+	
+	<resultMap type="QNAProduct" id="QnAResultSet">
+		<id property="pq_No" column="PQ_NO"/>
+
+		<result property="pq_Writer" column="PQ_WRITER"/>
+		<result property="pq_Id" column="PQ_ID"/>
+		<result property="pq_Content" column="PQ_CONTENT"/>
+		<result property="pq_Date" column="PQ_DATE"/>
+		<result property="pq_Modify_Date" column="PQ_MODIFY_DATE"/>
+		<result property="pq_Count" column="PQ_COUNT"/>
+		<result property="pq_Check" column="PQ_CHECK"/>
+		<result property="pq_Status" column="PQ_STAUTS"/>
+		<result property="pq_Img1" column="PQ_IMG1"/>
+		<result property="pq_Img1_ReName" column="PQ_IMG1_RENAME"/>
+		<result property="pq_Img2" column="PQ_IMG2"/>
+		<result property="pq_Img2_ReName" column="PQ_IMG2_RENAME"/>
+		<result property="pq_mNo" column="PQ_MNO"/>
+		<result property="pq_P_No" column="PQ_P_NO"/>
+		<result property="pq_B_No" column="PQ_B_NO"/>
+		
+		<collection property="plist" resultMap="productResultSet"></collection>
+	</resultMap>
+	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
 	FROM AUCTION
@@ -344,4 +367,11 @@
 	and option_1=#{option_1}
 	
 	</select>
+	
+	<insert id="qnacommant" parameterType="QnAResultSet">
+	INSERT INTO QNAPRODUCT 
+	VALUES(SEQ_PQ_NO.NEXTVAL,#{pq.Writer},#{pq.Id},#{pq.Content}
+			,SYSDATE,SYSDATE,DEFAULT,DEFAULT,DEFAULT,#{pq_Img1},#{pq_Img1_ReName}
+			,#{pq_Img2},#{pq_Img2_ReName},#{pq_mNo},#{pq_P_No},#{pq_B_No})
+	</insert>
 </mapper>
