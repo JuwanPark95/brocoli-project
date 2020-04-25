@@ -104,10 +104,6 @@
 		
 	<div style=" margin:15px auto; border-bottom:1px solid #666">
 	<label style=" display:inline-block; font-size:20px;"><b>주문 정보</b></label>
-<!-- 	<button style="display:inline-block; float:right; margin-left: 10%; color: #555; margin-right: 30%;">환불</button>&nbsp;
-	<button style="display:inline-block; float:right; margin-left: 10%; color: #555;">교환</button>&nbsp;
-	<button style="display:inline-block; float:right; margin-left: 10%; color: #555;">배송상태</button>&nbsp;
-	<button style="display:inline-block; float:right; margin-left: 10%; color: #555;">전체</button>&nbsp; -->
 	</div>
 	
 
@@ -118,13 +114,13 @@
 	<span style="float:left; width: 150px; margin-left:-40px;">&nbsp;&nbsp;기간별 조회</span>
 	
 	<div style="float:left; margin-top: -0.5%; display: inline-block;">
-	<button class="btn-term"><strong>&nbsp;1주일&nbsp;</strong></button>
-	<button class="btn-term"><strong>&nbsp;1개월&nbsp;</strong></button>
-	<button class="btn-term"><strong>&nbsp;3개월&nbsp;</strong></button>
-	<button class="btn-term"><strong>&nbsp;6개월&nbsp;</strong></button>
-	<button class="btn-term"><strong>&nbsp;9개월&nbsp;</strong></button>
-	<button class="btn-term"><strong>&nbsp;1년 이상&nbsp;</strong></button>
-	
+	<button class="btn-term" onclick="location.href='selectDetail.mn?type=day"><strong>&nbsp;1주일&nbsp;</strong></button>
+	<button class="btn-term" onclick="location.href='selectDetail.mn?type=month"><strong>&nbsp;1개월&nbsp;</strong></button>
+	<button class="btn-term" onclick="location.href='selectDetail.mn?type=t_month"><strong>&nbsp;3개월&nbsp;</strong></button>
+	<button class="btn-term" onclick="location.href='selectDetail.mn?type=s_month"><strong>&nbsp;6개월&nbsp;</strong></button>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 	
 	</div>
 	
@@ -175,7 +171,7 @@
 									<td style="text-align:center;">${ Orders.or_Price }</td>
 									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
 									<td style="text-align:center;">
-									<button class="ord-btn" onclick="location.href='trackprocess.mn'"><strong>상세 보기</strong></button>
+									<button class="ord-btn" onclick="location.href='trackprocess.mn?or_No=${ Orders.or_NO }'"><strong>상세 보기</strong></button>
 									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>교환</strong></button>
 									<button class="ord-btn" onclick="location.href='my_p_reject.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>반품</strong></button>
 									<button class="ord-btn"><strong>리뷰 작성</strong></button>

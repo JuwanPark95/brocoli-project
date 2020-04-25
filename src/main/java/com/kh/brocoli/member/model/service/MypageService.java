@@ -113,7 +113,15 @@ public interface MypageService {
 	 * @param or_NO
 	 * @return
 	 */
-	ArrayList<Orders> trackprocess(String or_NO);
+	ArrayList<Orders> trackprocess(String or_No);
+
+
+	/**
+	 * 기간별 조회
+	 * @param type
+	 * @return
+	 */
+	ArrayList<Orders> selectDetail(String type);
 
 
 

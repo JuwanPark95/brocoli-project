@@ -87,8 +87,13 @@ public class MypageServiceimpl implements MypageService {
 	}
 
 	@Override
-	public ArrayList<Orders> trackprocess(String or_NO) {
-		return myDao.trackprocess(or_NO);
+	public ArrayList<Orders> trackprocess(String or_No) {
+		return myDao.trackprocess(or_No);
+	}
+
+	@Override
+	public ArrayList<Orders> selectDetail(String type) {
+		return myDao.selectDetail(type);
 	}
 
 	

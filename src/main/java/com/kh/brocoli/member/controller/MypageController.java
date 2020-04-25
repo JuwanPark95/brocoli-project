@@ -213,14 +213,14 @@ public class MypageController {
 		 */
 		@RequestMapping("trackprocess.mn")
 		public ModelAndView trackprocess(ModelAndView mv, HttpSession session,
-				                         @RequestParam("or_NO") String or_NO){
+				                         @RequestParam("or_No") String or_No){
 			
 			Member m = (Member)session.getAttribute("loginUser");
-			ArrayList<Orders> list = myService.trackprocess(or_NO);
+			ArrayList<Orders> list = myService.trackprocess(or_No);
 			System.out.println("list : " + list);
 
 			mv.addObject("list", list);
-			mv.setViewName("redirect:myOrderList.mn");
+			mv.setViewName("My-Track-Process");
 			
 			return mv;
 		}
@@ -335,6 +335,22 @@ public class MypageController {
 			System.out.println("list : " + list);
 	
 			mv.addObject("list", list);
+			mv.setViewName("MyOrderList");
+			
+			return mv;
+		}
+		
+		@RequestMapping("selectDetail.mn")
+		public ModelAndView selectDetail(ModelAndView mv, HttpSession session,
+				                      @RequestParam("type") String type){
+			System.out.println("type : " + type);
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			ArrayList<Orders> list = myService.selectDetail(type);
+			System.out.println("olist : " + list);
+			
+			mv.addObject("type", type);
+			mv.addObject("list",list);
 			mv.setViewName("MyOrderList");
 			
 			return mv;
