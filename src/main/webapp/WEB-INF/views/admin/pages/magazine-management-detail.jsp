@@ -96,7 +96,7 @@
 	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img5_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img6	_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+	                                                 <img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img6_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                              </div>
 	                                            </div>
 	                                       	  </div>
