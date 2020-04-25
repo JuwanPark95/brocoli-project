@@ -104,7 +104,20 @@ public interface MemberService {
 	 * @param pq_P_No
 	 * @return
 	 */
-	ArrayList<QNAProduct> selectQnaCommant(String pq_P_No);
+	ArrayList<QnAComment> selectQnaCommant(String pq_P_No);
+
+	/**
+	 * 상품 qna 관리자 출력
+	 * @return
+	 */
+	ArrayList<QnAComment> selectQnaReCommant();
+
+	/**
+	 * 상품 qna 댓글 삭제
+	 * @param pq_No
+	 * @return
+	 */
+	int deleteqna(String pq_No);
 
 
 

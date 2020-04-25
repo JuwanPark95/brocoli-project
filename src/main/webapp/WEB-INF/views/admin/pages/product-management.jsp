@@ -79,7 +79,8 @@
                                                 <th>상품상태</th> 
                                                 <th>총 주문수</th>
                                                 <th>상품입고일</th>
-                                                <th>상태</th>
+                                                <th>상품현황</th>
+                                                <th>입점상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -99,10 +100,23 @@
                                                 <td>${p.p_Order_Count }</td>
                                                 <td>${p.p_Insert_Date }</td>
                                                 <td>
-	                                                <c:set var="p_Show_YN" value="${p.p_Show_YN }" />
-	                                            		<c:if test="${p_Show_YN eq 'Y'}">
-	                                            			<strong><span style="color:#60DA8D;">판매중</span></strong>
-	                                            		</c:if>
+                                               		<c:set var="p_Status" value="${p.p_Status }" />
+                                            		<c:if test="${p_Status eq '1'}">
+                                            			<strong><span style="color:#4865CD;">판매중</span></strong>
+                                            		</c:if>
+                                            		<c:if test="${p_Status eq '2'}">
+                                            			<strong><span style="color:#F38714;">할인중</span></strong>
+                                            		</c:if>
+                                            		<c:if test="${p_Status eq '3'}">
+                                            			<strong><span style="color:#60DA8D;">품절</span></strong>
+                                            		</c:if>
+                                                
+                                                </td>
+                                                <td>
+                                                	<c:set var="p_Show_YN" value="${p.p_Show_YN }" />
+                                            		<c:if test="${p_Show_YN eq 'Y'}">
+                                            			<strong><span style="color:#44CC9F;">입고</span></strong>
+                                            		</c:if>
                                             	</td>
                                             </tr>
                                         </c:forEach>

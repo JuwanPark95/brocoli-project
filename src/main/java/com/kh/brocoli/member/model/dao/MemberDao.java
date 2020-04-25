@@ -72,7 +72,7 @@ public class MemberDao {
 		return sqlSession.insert("mainMapper.qnacommant",pq);
 	}
 
-	public ArrayList<QNAProduct> selectQnaCommant(String pq_P_No) {
+	public ArrayList<QnAComment> selectQnaCommant(String pq_P_No) {
 		/*
 		 * ArrayList<QnAComment> qList =
 		 * (ArrayList)sqlSession.selectList("mainMapper.selectQnaCommant",pq_P_No);
@@ -80,7 +80,15 @@ public class MemberDao {
 		 * (ArrayList)sqlSession.selectList("mainMapper.selectQnaCommant2",pq_P_No);
 		 * }else{ return qList; }
 		 */
-		return (ArrayList)sqlSession.selectList("mainMapper.selectQnaCommant2",pq_P_No);
+		return (ArrayList)sqlSession.selectList("mainMapper.selectQnaCommant",pq_P_No);
+	}
+
+	public ArrayList<QnAComment> selectQnaRecommant() {
+		return (ArrayList)sqlSession.selectList("mainMapper.selectQnaReCommant");
+	}
+
+	public int deleteqna(String pq_No) {
+		return sqlSession.update("mainMapper.deleteqna",pq_No);
 	}
 
 

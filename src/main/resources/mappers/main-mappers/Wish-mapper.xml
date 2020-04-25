@@ -84,7 +84,7 @@
 
 <delete id="deleteWish" parameterType="_int">
 	DELETE FROM WISH
-	WHERE W_P_NO=#{p_NO}
+	WHERE w_No=#{w_No}
 </delete>
 
 </mapper>
