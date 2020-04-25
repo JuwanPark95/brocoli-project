@@ -130,7 +130,7 @@
 	
 	<update id="brandOwnerUpdate" parameterType="Brand">
 		UPDATE MEMBER
-		SET MGRANT='2'
+		SET MGRANT='2',BRAND=#{b_Name},BRAND_NO=#{brand_NO}
 		WHERE MID = #{b_Owner1_ID} OR MID = #{b_Owner2_ID} OR MID = #{b_Owner3_ID} 
 	</update> 
 	
@@ -150,7 +150,7 @@
 	<insert id="ownerContactWrite" parameterType="Contact">
 		INSERT INTO CONTACT
 		VALUES(SEQ_CONTACT.NEXTVAL,SYSDATE,#{con_Writer},#{con_Content},#{con_Title},DEFAULT,
-				#{con_Img},#{con_Img_ReName},DEFAULT,#{con_Mno})
+				#{con_Img},#{con_Img_ReName},DEFAULT,#{con_Mno},#{con_Bno})
 	</insert>
 	
 	<update id="ownerCheckView">

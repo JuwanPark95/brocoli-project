@@ -65,6 +65,7 @@
 											<label>작성자</label><br><br>
 											<input type="text" name="con_Writer" value="${loginUser.mName}" readonly="readonly" style="height:35px; width:100%; border: solid 1.3px lightgrey;">
 											<input type="hidden" name="con_Mno" value="${loginUser.mNO}" />
+											<input type="hidden" name="con_Bno" value="${loginUser.brand_NO}" />
 										</h3><br><br>
 										<h3 class="card-title" style="margin-bottom: 0px; font-size: 16px">	
 											<label>제목</label> <br><br>
