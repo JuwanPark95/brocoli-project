@@ -66,6 +66,7 @@
          <c:forEach var="year" items="${ yearList }">
          	<c:url var="productDetail" value="productDetail.mn">
            		<c:param name="p_NO" value="${year.p_NO }"/>
+           		<c:param name="or_Mno" value="${loginUser.mNO }"/>
    	        </c:url>
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${year.p_Bcategory} ${year.p_Scategory}">
                <div class="block2">
@@ -301,6 +302,7 @@
 		var p_NO = $(this).parent().find('input[id=productNo]').val();
 		var option = "";
 		var img="";
+		var id="${loginUser.mNO}";
 		$.ajax({
 			url:"productModal",
 			data:{p_NO:p_NO},
@@ -376,7 +378,7 @@
 
 		        
 				$('#select1').html(option);
-				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO);
+				$('#detailCheck').attr('href','productDetail.mn?p_NO='+data[0].p_NO+"&&or_Mno="+id);
 				 
 			},error:function(jqxhr,textStatus, errorThrown){
 				console.log("ajax 처리실패");

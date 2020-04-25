@@ -35,6 +35,7 @@ import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
@@ -70,27 +71,7 @@ public class MemberController {
 
 	
 	
-	/**
-	 * 로그인 기능
-	 * @param m
-	 * @param model
-	 * @return
-	 */
-//	@RequestMapping(value = "login", method = RequestMethod.POST)
-//	public String memberLogin( Member m, Model model) {
-//
-//		Member loginUser = mService.loginMember(m);  
-//		System.out.println("loginuser : " + loginUser );
-//		if (loginUser != null) {
-//			model.addAttribute("loginUser",loginUser);
-//			return "main/Main";
-//
-//		} else {
-//			model.addAttribute("msg","로그인 실패!!");
-//			return "common/errorPage";
-//		}
-//
-//	}
+
 	
 	/*************************Header 페이지 이동 (못찾을시 Footer 참조)********************************/
 	/**
@@ -214,10 +195,20 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("productDetail.mn")
-	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
+	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,String or_Mno,ModelAndView mv) {
+		HashMap<String,String> hmap = new HashMap<>();
+		hmap.put("or_P_NO",p_NO);
+		hmap.put("or_Mno", or_Mno);
 		
 		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pOption = mService.selectOption1(p_NO);
+		
+		ArrayList<Orders> order = mService.selectorder(hmap);
+		
+		System.out.println(order);
 		mv.addObject("aProducDetailtList",pDetail);
+		mv.addObject("option",pOption);
+		mv.addObject("order",order);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
 	}
@@ -237,7 +228,6 @@ public class MemberController {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		System.out.println("pDetail : " + pDetail );
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(pDetail,response.getWriter());
 		
@@ -292,8 +282,6 @@ public class MemberController {
 			pq.setPq_mNo(pq.getPq_mNo());
 			
 			
-			System.out.println("파일1이유 : " + file1);
-			System.out.println("파일2이유 : " + file2);
 			
 			int count=1;
 			if(!file1.getOriginalFilename().equals("")) {
@@ -400,7 +388,6 @@ public class MemberController {
 	@ResponseBody
 	private String delteqna(HttpServletResponse response,String pq_No) throws JsonIOException, IOException{
 
-		System.out.println("pq_No" + pq_No);
 		
 		int result = mService.deleteqna(pq_No);
 		

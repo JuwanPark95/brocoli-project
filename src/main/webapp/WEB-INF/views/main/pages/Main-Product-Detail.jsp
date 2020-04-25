@@ -161,9 +161,9 @@
 										<div class="rs1-select2 bor8 bg0" style="margin-left: -100px; ">
 											<select class="js-select2" id="test1" name="option_1">
 													<option value="선택하세요">선택하세요</option>
-												<c:forEach var="ap" items="${ aProducDetailtList }">
-													<c:if test="${ap.option_1 != NULL }">
-														<option value="${ap.option_1 }">${ap.option_1 }</option>
+												<c:forEach var="op" items="${ option }">
+													<c:if test="${op.option_1 != NULL }">
+														<option value="${op.option_1 }">${op.option_1 }</option>
 													</c:if>
 												</c:forEach>
 											</select>
@@ -325,7 +325,9 @@
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm" >
+										<div id="noComment" style="text-align: center;">등록된  상품QnA 가 없습니다.</div>
 										<div id="commentQnA">
+										
 										<!-- Review -->
 							<!-- 				<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20"> 작성자 </span>
@@ -389,6 +391,7 @@
 													</div>
 
 												</div>
+											
 												<input type="hidden" name="pq_Id" value="${loginUser.mId }">
 												<input type="hidden" name="pq_B_No" value="${aProducDetailtList[0].p_Brand_NO }">
 												<input type="hidden" name="pq_Writer" value="${loginUser.mName}">
@@ -405,7 +408,16 @@
 								</div>
 							</div>
 						</div>
+						<c:choose>
+						    <c:when test="${order[0].or_Mno != NULL}">
+						        <input type="hidden" id="orderYN" value="1">
+						    </c:when>
+						     <c:otherwise>
+						  	   <input type="hidden" id="orderYN" value="2">
+						    </c:otherwise>
 
+						</c:choose>
+			
 						<!-- - -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
 							<span class="wrap-rating fs-18 cl11 pointer"
@@ -746,6 +758,7 @@
 	<!-- 댓글 추가 및 조회 -->
 	<script>
 	$( document ).ready(function() {
+		$('#noComment').css('display','block');
 		var pq_P_No = "${aProducDetailtList[0].p_NO }";
 		var comment = "";
 		var id="${loginUser.mId}";
@@ -756,7 +769,7 @@
 					},
 			dataType:"json",
 			success : function(data){
-				
+				$('#noComment').css('display','block');
 				for(var i=0; i<data.list.length; i++){
 					
 					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
@@ -797,7 +810,7 @@
 					comment +=	"</div>"
 						}
 					}
-					
+					$('#noComment').css('display','none');
 				}
 					$('#commentQnA').html(comment);
 		
@@ -814,6 +827,7 @@
 	
 	 function commentlist()
 	{
+		$('#noComment').css('display','block');
 		var pq_P_No = "${aProducDetailtList[0].p_NO }";
 		var comment = "";
 		var id="${loginUser.mId}";
@@ -824,7 +838,7 @@
 					},
 			dataType:"json",
 			success : function(data){
-				
+				$('#noComment').css('display','block');
 				for(var i=0; i<data.list.length; i++){
 					
 					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
@@ -865,7 +879,7 @@
 					comment +=	"</div>"
 						}
 					}
-					
+					$('#noComment').css('display','none');
 				}
 					$('#commentQnA').html(comment);
 			},error : function(jqxhr, textStatus, errorThrown) {
@@ -917,25 +931,6 @@
 	});
 	
 	<!--댓글 삭제 -->
-/* 	$('#check1 button[id=check2]').click(function(obj){
-		var pq_No= $(this).parent().find('input[id=check3]').val()
-		alert(pq_No);
-		$.ajax({
-			url:"tt",
-			data:{pq_NO:pq_NO},
-			dataType:"json",
-			success:function(data){
-				
-			},error:function(jqxhr,textStatus, errorThrown){
-				console.log("ajax 처리실패");
-				
-				//에러로그
-				console.log(jqxhr);
-				console.log(textStatus);
-				console.log(errorThrown);
-			}
-		});
-	}); */
 
 	$(document).on('click','#check2', function () {
 		var pq_No=$(this).attr("value");

@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
@@ -118,6 +119,20 @@ public interface MemberService {
 	 * @return
 	 */
 	int deleteqna(String pq_No);
+
+	/**
+	 * 옵션 중복제거
+	 * @param p_NO
+	 * @return
+	 */
+	ArrayList<ProductDetail> selectOption1(String p_NO);
+
+	/**
+	 * 주문내역확인
+	 * @param hmap
+	 * @return
+	 */
+	ArrayList<Orders> selectorder(HashMap<String, String> hmap);
 
 
 
