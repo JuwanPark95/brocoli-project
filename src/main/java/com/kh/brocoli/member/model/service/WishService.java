@@ -10,6 +10,6 @@ public interface WishService {
 
 	public ArrayList<Wish> wishList(int w_Mno);
 
-	public int deleteWish(int p_NO);
+	public int deleteWish(int w_No);
 
 }

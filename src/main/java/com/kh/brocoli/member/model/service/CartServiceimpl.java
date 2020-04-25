@@ -26,8 +26,8 @@ public class CartServiceimpl implements CartService {
 	}
 
 	@Override
-	public int deleteCart(int p_NO) {
-		return cDao.deleteCart(p_NO);
+	public int deleteCart(int ct_NO) {
+		return cDao.deleteCart(ct_NO);
 	}
 	
 

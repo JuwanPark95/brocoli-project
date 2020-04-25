@@ -11,27 +11,29 @@ public class Cart {
 	private int ct_Amount;
 	private int ct_Mno;
 	private int ct_P_NO;
+	private int ct_NO;
 	
 	private Product productList;
 	private Product_File p_File;
 	private ProductDetail Pd;
 	private Product_Option poList;
-		
+	
 	public Cart() {
 		super();
 	}
 
-	public Cart(String ct_Option_1, String ct_Option_2, int ct_Amount, int ct_Mno, int ct_P_NO, Product productList,
-			Product_File p_File, ProductDetail pd, Product_Option poList) {
+	public Cart(String ct_Option_1, String ct_Option_2, int ct_Amount, int ct_Mno, int ct_P_NO, int ct_NO,
+			Product productList, Product_File p_File, ProductDetail pd, Product_Option poList) {
 		super();
 		this.ct_Option_1 = ct_Option_1;
 		this.ct_Option_2 = ct_Option_2;
 		this.ct_Amount = ct_Amount;
 		this.ct_Mno = ct_Mno;
 		this.ct_P_NO = ct_P_NO;
+		this.ct_NO = ct_NO;
 		this.productList = productList;
 		this.p_File = p_File;
-		Pd = pd;
+		this.Pd = pd;
 		this.poList = poList;
 	}
 
@@ -75,6 +77,14 @@ public class Cart {
 		this.ct_P_NO = ct_P_NO;
 	}
 
+	public int getCt_NO() {
+		return ct_NO;
+	}
+
+	public void setCt_NO(int ct_NO) {
+		this.ct_NO = ct_NO;
+	}
+
 	public Product getProductList() {
 		return productList;
 	}
@@ -96,7 +106,7 @@ public class Cart {
 	}
 
 	public void setPd(ProductDetail pd) {
-		Pd = pd;
+		this.Pd = pd;
 	}
 
 	public Product_Option getPoList() {
@@ -106,11 +116,7 @@ public class Cart {
 	public void setPoList(Product_Option poList) {
 		this.poList = poList;
 	}
-
-	@Override
-	public String toString() {
-		return "Cart [ct_Option_1=" + ct_Option_1 + ", ct_Option_2=" + ct_Option_2 + ", ct_Amount=" + ct_Amount
-				+ ", ct_Mno=" + ct_Mno + ", ct_P_NO=" + ct_P_NO + ", productList=" + productList + ", p_File=" + p_File
-				+ ", Pd=" + Pd + ", poList=" + poList + "]";
-	}
+	
+	
+	
 }

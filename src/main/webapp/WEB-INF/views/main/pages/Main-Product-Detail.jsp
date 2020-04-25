@@ -171,7 +171,7 @@
 										</div>
 									</div>
 								</div>
-
+								
 								<div class="flex-w flex-r-m p-b-10">
 
 
@@ -211,23 +211,45 @@
 
 										<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
 									 	<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
-										<input type="hidden" name="p_NO" value="${aProducDetailtList[0].p_NO}"/>
+										<input type="text" name="ct_NO" value="${c.ct_NO}"/>
 
 									<button type="submit" id="btnCart"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
-										style="color: white; background-color: #333; border-radius: 5px;">장바구니</button>
+										style="color: white; background-color: #333; border-radius: 5px;" onclick="return addCart();">장바구니</button>
 
 								</div>
 							</div>
 
 							<script>
 								// 장바구니 담기 버튼
-								$("#btnCart").on(
-										"click",
-										function() {
-											$("#frm1").attr("action",
-													"cInsert.mn").submit();
-										});
+								
+								function addCart(){
+									var chk = $("#test1").val();
+									if(chk == "선택하세요"){
+										alert("옵션 선택해주세요");
+										return false;
+									}else{
+										$("#frm1").attr("action",
+										"cInsert.mn").submit();
+									}
+								}
+								
+							</script>
+							
+							<script>
+									// 옵션 유효성 검사
+							/* 	$(function(){
+									$("#btnCart").on("click",function(){
+										alert('test');
+										/* var chk = $("#test1").val();
+										if(chk.equals("선택하세요")){
+											alert("옵션 선택해주세요");
+											return false;
+										}else{
+											$("#frm1").attr("action","cInsert.mn").submit();
+										} */
+									});
+								}); */
 							</script>
 
 						</form>

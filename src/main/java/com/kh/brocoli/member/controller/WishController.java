@@ -52,11 +52,11 @@ public class WishController {
 	   }
 	
 	@RequestMapping("wDelete.mn")
-	public String wishDelete(@RequestParam(value = "p_NO") int p_NO,int Mno) {
-		System.out.println("삭제 버튼 눌렸나유? " + p_NO);
-		int result = wService.deleteWish(p_NO);
+	public String wishDelete(@RequestParam(value = "w_No") int w_No, int Mno) {
+		System.out.println("삭제 버튼 눌렸나유? " + w_No);
+		int result = wService.deleteWish(w_No);
 		if(result > 0) {
-			System.out.println("삭제 버튼 눌른 훈가유? " + p_NO);
+			System.out.println("삭제 버튼 눌른 훈가유? " + w_No);
 			return "redirect:wishList.mn?w_Mno="+Mno;
 		}else {
 			return "common/errorPage";
