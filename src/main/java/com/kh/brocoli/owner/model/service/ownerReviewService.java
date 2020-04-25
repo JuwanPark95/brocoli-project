@@ -15,6 +15,18 @@ public interface ownerReviewService {
 
 	ArrayList<Review_Reply> noReadReviewReplySelect(int bNO);
 
+	int replyInsert(Review_Reply rr);
+
+	int ReviewCheckUpdate(String rNo);
+
+	int ReplyCheckUpdate(int rNO);
+
+	int replyDelete(int rrNO);
+
+	ArrayList<Review> readReviewSelect(int bNO);
+
+	ArrayList<Review_Reply> readReviewReplySelect(int bNO);
+
 	
 	
 	

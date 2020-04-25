@@ -39,6 +39,7 @@ import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
+import com.kh.brocoli.product.model.vo.QnAComment;
 
 @Controller
 public class MemberController {
@@ -250,20 +251,26 @@ public class MemberController {
 		gson.toJson(option,response.getWriter());
 	}
 	@RequestMapping("qnacomment")
-	public void qnacomment(QNAProduct pq,HttpServletResponse response,HttpServletRequest request,
+	@ResponseBody
+	public String qnacomment(QNAProduct pq,HttpServletRequest request,
 			@RequestParam(name = "uploadFile1", required = false) MultipartFile file1 ,
-			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2,
-			String pq_P_NO,String pq_Content,String pq_Writer) throws JsonIOException, IOException{
+			@RequestParam(name = "uploadFile2", required = false) MultipartFile file2,String pq_Writer) throws JsonIOException, IOException{
 		
-			System.out.println("@@"+pq_P_NO);
-			System.out.println("##"+pq_Content);
-			System.out.println("$$"+pq_Writer);
+			pq.setPq_B_No(pq.getPq_B_No());
+			pq.setPq_Content(pq.getPq_Content());
+			pq.setPq_Id(pq.getPq_Id());
+			pq.setPq_P_No(pq.getPq_P_No());
+			pq.setPq_Writer(pq.getPq_Writer());
+			pq.setPq_mNo(pq.getPq_mNo());
+			
+			
 			System.out.println("파일1이유 : " + file1);
 			System.out.println("파일2이유 : " + file2);
 			
+			int count=1;
 			if(!file1.getOriginalFilename().equals("")) {
 				
-				String q_Img1_Rename = saveFile(file1, request,"f1");
+				String q_Img1_Rename = saveFile(file1, request,pq_Writer,count);
 				
 				if(q_Img1_Rename != null) {
 					pq.setPq_Img1(file1.getOriginalFilename());
@@ -273,28 +280,21 @@ public class MemberController {
 			
 			if(!file2.getOriginalFilename().equals("")) {
 				
-				String q_Img2_Rename = saveFile(file2, request,"f2");
+				String q_Img2_Rename = saveFile(file2, request,pq_Writer,count+1);
 				
 				if(q_Img2_Rename != null) {
 					pq.setPq_Img2(file2.getOriginalFilename());
 					pq.setPq_Img2_ReName(q_Img2_Rename);
 				}
 			}
-			System.out.println("qna 인설트 : " + pq);
 			
-			int result = mService.insertQnA(pq);
-			
+			int result = mService.insertQnaCommant(pq);
 			if(result > 0) {
 				return "ok";
 			}else {
 				return "false";
 			}
 			
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-	
-			Gson gson = new GsonBuilder().create();
-			//gson.toJson(pDetail,response.getWriter());
 		
 	}
 	
@@ -304,7 +304,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	private String saveFile(MultipartFile file, HttpServletRequest request,String pre) {
+	private String saveFile(MultipartFile file, HttpServletRequest request,String pq_Writer,int count) {
 
 		String root = request.getSession().getServletContext().getRealPath("resources");
 
@@ -319,10 +319,9 @@ public class MemberController {
 		String q_Img1 = file.getOriginalFilename();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String ReName = pre+sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+		String ReName = pq_Writer+"_"+count+ "_" +sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
 
-		System.out.println("q_Img1_ReName : " + ReName);
 
 		String renamePath = folder + "\\" + ReName;
 
@@ -335,6 +334,21 @@ public class MemberController {
 		return ReName;
 	}
 	
+	@RequestMapping("qnacommentlist")
+	@ResponseBody
+	private void qnacommentlist(HttpServletResponse response,String pq_P_No) throws JsonIOException, IOException{
+
+		System.out.println(pq_P_No);
+		ArrayList<QNAProduct> qna = mService.selectQnaCommant(pq_P_No);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		System.out.println("qna : " + qna );
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(qna,response.getWriter());
+		
+	}
 	
 
 

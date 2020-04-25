@@ -71,6 +71,7 @@
 	                                            <th style="width:8%">주문자</th>
 	                                            <th style="width:8%">아이디</th> 
 	                                            <th style="width:10%">상품명</th>
+	                                            <th style="width:10%">상품번호</th>
 	                                            <th style="width:8%">옵션1</th>
 	                                            <th style="width:8%">옵션2</th>
 	                                            <th style="width:8%">가격</th>
@@ -84,12 +85,13 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach var="c" items="${changeList}" varStatus="cl"> 
-                                            <tr>
+                                            <tr id="changeTable">
                                                 <td>${cl.count}</td>
 	                                            <td name="chNO">${c.ch_No}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mId}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mName}</td>
-	                                            <td>${c.ch_Pname}</td>
+	                                            <td name="chPname">${c.ch_Pname}</td>
+	                                            <td name="chPNO">${c.ch_ordersMember.pList.p_NO}</td>
 	                                            <td name="option1">${c.ch_ordersMember.or_Option1}</td>
 	                                            <td name="option2">${c.ch_ordersMember.or_Option2}</td>
 	                                            <td>${c.ch_Price}</td>
@@ -124,7 +126,7 @@
 				      <div class="modal-content">
 					  <form>
 				        <div class="modal-header">
-				        
+				          <h4>교환 옵션 선택</h4>
 				          <button type="button" class="close" data-dismiss="modal">×</button>
 				
 				        </div>
@@ -141,8 +143,7 @@
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1 변경</label>
                             <div class="btn-group">
                                 <select id="or_Option1Select" name="or_Option1Select" style="margin-left:15px; margin-top:3px;">
-                                	<option value="">정지X</option>
-                                	<option value="">정지O</option>
+                                
                                 </select>
                             </div>		
                         </div>
@@ -151,25 +152,15 @@
 				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2</label>
-                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
                             	
-                                <c:set var="or_Option2" value="" />
-                            	<%-- <c:choose>
-                            		<c:when test="${or_Option2 eq 'Y'}">
-                            			<h4 id="or_Option2">정지O</h4>
-                            		</c:when>
-                            		<c:when test="${or_Option2 eq 'N'}">
-                            			<h4 id="or_Option2">정지X</h4>
-                            		</c:when>
-                            	</c:choose> --%>
                             </div>
                         </div>
                         <div class="form-group row" style="padding-bottom:3px;">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2 변경</label>
                             <div class="btn-group">
                                 <select id="or_Option2Select" name="or_Option2Select" style="margin-left:15px; margin-top:3px;">
-                                	<option value="">정지X</option>
-                                	<option value="">정지O</option>
+                                	
                                 </select>
                             </div>		
                         </div>
@@ -212,7 +203,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="r" items="${rejectList}" varStatus="rl"> <!-- for -->
+                                    <c:forEach var="r" items="${rejectList}" varStatus="rl"> 
                                         <tr>
                                         	<td>${rl.count}</td>
                                             <td>${r.re_No}</td>
@@ -247,16 +238,6 @@
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     
-    <!-- ============================================================== -->
-    <!--반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
-    
-    
-    <!-- ============================================================== -->
-    <!--/ 반품시 alert창으로 한번 확인 -->  
-    <!-- ============================================================== -->
-    
     
     <!-- ============================================================== -->
     <!--교환시 모달창 띄우기-->  
@@ -266,19 +247,44 @@
 	    $(document).ready(function(){
 	    	$("button[name=orderChangeBtn]").click(function(){
 	    		$("#orderChangeModal").modal();
-	    		/* var chNO = $(this).parents("td[name=chNO]").text();
-	    		var option1 = $(this).parents("td[name=option1]").test();
-	    		var option2 = $(this).parents("td[name=option2]").text();
-    			alert("dgd");
-	    		alert(this().parents("td[name=option1]"));
-	    		alert(option1);
-	    		$("#modalOption1").text(option1); */
+	    		var chPNO = $(this).parents("#changeTable").children('td[name=chPNO]').text();
+	    		var option1 = $(this).parents("#changeTable").children('td[name=option1]').text();
+	    		var option2 = $(this).parents("#changeTable").children('td[name=option2]').text();
+	    		var chPname = $(this).parents("#changeTable").children('td[name=chPname]').text();
+	    		
+	    			$.ajax({
+	    				url:'orderChangeModal.ad',
+	    				data:{chPNO:chPNO, option1:option1, option2:option2, chPname:chPname},
+	    				type:'post',
+	    				success:function(data){
+	    					var modalOption1 =$("#modalOption1").text(option1);
+	    					var modalOption2 =$("#modalOption2").text(option2);
+	    					$.each(data, function(index,po){
+	         					$('#or_Option1Select').append("<option>"+ po.option_1 +"</option>"
+	         					);
+	         					$('#or_Option2Select').append("<option>"+ po.option_2 +"</option>"
+	    				   		);
+	    					});
+	    				},error:function(){
+	         				
+	         			}
+	    			});
 	    	});
 	    });
     </script>
     
     <!-- ============================================================== -->
     <!--교환시 팝업창  -->  
+    <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!--반품시 alert창으로 한번 확인 -->  
+    <!-- ============================================================== -->
+    
+    
+    
+    <!-- ============================================================== -->
+    <!--/ 반품시 alert창으로 한번 확인 -->  
     <!-- ============================================================== -->
     
   

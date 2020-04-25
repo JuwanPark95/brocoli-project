@@ -20,6 +20,7 @@
 		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
 		
 		<collection property="or_Member" resultMap="memberResultSet"/>
+		<collection property="pList" resultMap="productResultSet"/>
 	</resultMap>
 	
 	<resultMap id="memberResultSet" type="Member">
@@ -76,11 +77,43 @@
 		<collection property="re_ordersMember" resultMap="ordersResultSet"/>
 	</resultMap>
 	
+	<resultMap  type="Product" id="productResultSet">
+		<id property="p_NO" column="P_NO"/>
+		<result property="p_Name" column="P_NAME"/>
+		<result property="p_Price" column="P_PRICE"/>
+		<result property="p_Sail_Price" column="P_SAIL_PRICE"/>
+		<result property="p_Last_Price" column="P_LAST_PRICE"/>
+		<result property="p_Bcategory" column="P_BCATEGORY"/>
+		<result property="p_Scategory" column="P_SCATEGORY"/>
+		<result property="p_Comment" column="P_COMMENT"/>
+		<result property="p_Order_Count" column="P_ORDER_COUNT"/>
+		<result property="p_Status" column="P_STATUS"/>
+		<result property="p_Writer" column="P_WRITER"/>
+		<result property="p_Insert_Date" column="P_INSERT_DATE"/>
+		<result property="p_Modify_Id" column="P_MODIFY_ID"/>
+		<result property="p_Modify_Date" column="P_MODIFY_DATE"/>
+		<result property="p_Show_YN" column="P_SHOW_YN"/>
+		<result property="p_Brand_NO" column="P_BRAND_NO"/>
+		
+		<collection property="poList" resultMap="productOptionResultSet"/>
+	</resultMap>
+	
+	<resultMap id="productOptionResultSet" type="Product_Option">
+		<id property="op_NO" column="OP_NO"/>
+		<result property="option_1" column="OPTION_1"/>
+		<result property="option_2" column="OPTION_2"/>
+		<result property="op_Stock" column="OP_STOCK"/>
+		<result property="op_Rec_Date" column="OP_REC_DATE"/>
+		<result property="op_Status_YN" column="OP_STATUS_YN"/>
+		<result property="op_P_NO" column="OP_P_NO"/>
+	</resultMap>
+	
 
 	<select id="selectOrdersList" resultMap="ordersResultSet" parameterType="Orders">
 		SELECT *
 		FROM ORDERS O
      	JOIN MEMBER M ON OR_MNO = MNO 
+     	ORDER BY OR_NO DESC
 	</select>
 	
 	<update id="orderStatusChange" parameterType="Orders">
@@ -94,15 +127,18 @@
 		FROM CHANGE C
      	JOIN ORDERS O ON CH_OR_NO = OR_NO
     	JOIN MEMBER M ON CH_MNO = MNO
+    	JOIN PRODUCT P ON OR_P_NO = P_NO 
 	</select>
 	
 	<select id="selectRejectList" resultMap="RejectResultSet" parameterType="Reject">
 		SELECT *
 		FROM REJECT R
-		JOIN ORDERS O ON RE_NO = OR_NO
-		JOIN MEMBER M ON RE_MNO = MNO 
 	</select>
-
-
-
+	
+	<select id="orderChangeModal" resultMap="productOptionResultSet" parameterType="Product_Option">
+		SELECT *
+		FROM PRODUCT_OPTION
+		WHERE OP_P_NO = #{chPNO}
+	</select>
+	
 </mapper>

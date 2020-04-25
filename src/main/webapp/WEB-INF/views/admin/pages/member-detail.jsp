@@ -149,13 +149,13 @@
 	                                        	<c:set var="mgrant" value="${m.mGrant }"/>
 	                                        	<c:choose>
 	                                       			<c:when test="${mgrant eq '1'}">
-	                                       				<input type="text" class="form-control" name="mBrand" value="${m.brand}"  readonly="readonly">
+	                                       				<input type="text" class="form-control" name="brand" value="${m.brand}">
 	                                           		</c:when>
 	                                           		<c:when test="${mgrant eq '2'}">
-	                                           			<input type="text" class="form-control" name="mBrand" value="${m.brand}">
+	                                           			<input type="text" class="form-control" name="brand" value="${m.brand}">
 	                                           		</c:when>
 	                                           		<c:when test="${mgrant eq '3'}">
-	                                           			<input type="text" class="form-control" name="mBrand" value="${m.brand}"  readonly="readonly">
+	                                           			<input type="text" class="form-control" name="brand" value="${m.brand}"  readonly="readonly">
 	                                           		</c:when>
 	                                            </c:choose>
                                         	</div>
@@ -166,13 +166,13 @@
 	                                        	<c:set var="mgrant" value="${m.mGrant }"/>
 	                                        	<c:choose>
 	                                       			<c:when test="${mgrant eq '1'}">
-	                                       				<input type="text" class="form-control" name="mBrandNO" value="${m.brand_NO}"  readonly="readonly">
+	                                       				<input type="text" class="form-control" name="brand_NO" value="${m.brand_NO}" >
 	                                           		</c:when>
 	                                           		<c:when test="${mgrant eq '2'}">
-	                                           			<input type="text" class="form-control" name="mBrandNO" value="${m.brand_NO}">
+	                                           			<input type="text" class="form-control" name="brand_NO" value="${m.brand_NO}">
 	                                           		</c:when>
 	                                           		<c:when test="${mgrant eq '3'}">
-	                                           			<input type="text" class="form-control" name="mBrandNO" value="${m.brand_NO}"  readonly="readonly">
+	                                           			<input type="text" class="form-control" name="brand_NO" value="${m.brand_NO}"  readonly="readonly">
 	                                           		</c:when>
 	                                            </c:choose>
                                         	</div>

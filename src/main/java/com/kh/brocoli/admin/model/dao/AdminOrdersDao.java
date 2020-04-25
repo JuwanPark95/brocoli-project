@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Product_Option;
 
 @Repository("AODao")
 public class AdminOrdersDao {
@@ -46,11 +47,21 @@ public class AdminOrdersDao {
 
 	/**
 	 * 작성자 : 신은지
-	 * 4. 환불 list
+	 * 3-2. 환불 list
 	 * @return
 	 */
 	public ArrayList<Reject> selectRejectList() {
 		return (ArrayList)sqlSession.selectList("AdminOrders.selectRejectList");
+	}
+
+	/**
+	 * 작성자 :신은지
+	 * 4.교환 modal
+	 * @param chNO
+	 * @return
+	 */
+	public ArrayList<Product_Option> orderChangeModal(int chPNO) {
+		return (ArrayList)sqlSession.selectList("AdminOrders.orderChangeModal",chPNO);
 	}
 	
 }

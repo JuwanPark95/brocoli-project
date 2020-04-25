@@ -98,6 +98,13 @@
                                  </tr>
                               </thead>
                               <tbody id="list">
+                               	<c:choose>
+                               		<c:when test="${empty list}">
+                               			<tr>
+                               				<td><div><strong>새로운 리뷰가 없습니다.</strong></div></td>
+                               			</tr>
+                               		</c:when>
+                               	</c:choose>
                                  <c:forEach var="i" items="${ list}">
                                     <tr>
                                        <td style="display: none; width: 0px;">${i.v_NO *-1}</td>
@@ -149,8 +156,8 @@
 			                                                </div>
 			                                            </c:when>
 	                                                </c:choose>
-	                                                <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; margin-left: 5px;">삭제</a>
-	                                                <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; ">수정</a>
+	                                                <!-- <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; margin-left: 5px;">삭제</a>
+	                                                <a class="btn btn-dark" style="float: right; color: #fff; padding: 5px 9px; ">수정</a> -->
 	                                                <span class="text-mute" style="margin-left: 13px; margin-right:15px; float: right; margin-top: 5px;" >
 	                                                   <span class="badge-dot badge-light"></span>
 	                                                   ${i.v_Date }
@@ -158,47 +165,66 @@
 	                                                <span class="text-dark font-weight-bold" style="margin-left: 15px; float: right;  margin-top: 5px;">${i.v_Writer }</span>
                                              </div>
                                              <div class="review-block" style="padding: 8px;">
-                                                <div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
-                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
-                                                      alt="user" class="rounded" width="100"> 
-                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
-                                                      alt="user" class="rounded" width="100">
-                                                </div>
-                                                <div style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-                                                padding: 8px; resize: none; " class="review-text font-italic m-0"
-                                                >${i.v_Content }</div>
-                                                <hr style=" border-top: 1px solid #e6e6f2;">
-                                                
-                                                <div style=" width: 100%; height: auto; float: right; display: inline-block; padding: 5px;">
-                                               
-                                                   <div style="display: inline-block; padding: 5px; vertical-align: middle; width: 100%; height: auto; border: 1px solid #e6e6f2; border-radius: 5px; margin-bottom: 4px;">
-	                                                   <div style=" float: left;">
-	                                                   		<img src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"alt="user" style="width: 40px; height: 40px; border-radius: 50%;"> 
-	                                                   </div>
-	                                                   <div style="display: table; float: left; vertical-align: middle; text-align: center; margin-right: 3px; min-height: 40px; margin-left: 8px;">
-	                                                   		<span style="display: table-cell; vertical-align: middle; font-size: 15px;">
-	                                                   			<strong>박주완</strong>
-	                                                   		</span>
-	                                                   </div>
-	                                                   <div style="display: table; float: left; height: auto; background: none; resize: none; border: 0; vertical-align: middle; min-height: 40px; margin-left: 5px;">
-	                                                   		<span style="display: table-cell; vertical-align: middle;">주문해 주셔서 감사합니다 고객님!!</span>
-	                                                   </div>
-	                                                   <div style=" display: inline-block; float: right;">
-	                                                   		<a style="margin-left: 5px; color: #fff;" class="badge badge-light">수정</a>
-	                                                   		<a style="color: #fff;" class="badge badge-light">삭제</a>
-	                                                   		<br>
-	                                                   		<span style="margin-left: 5px;">2020-04-23</span>
-	                                                   </div>
-                                                   </div>
-                                                                                          
-                                                </div>
-                                                
-                                                <div style="width: 100%; display: flex;">
-                                                   <textarea
-                                                      style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; display: inline-block;"></textarea>
-                                                   <a href="#" class="btn btn-primary active"
-                                                      style="height: 41px; margin-top: 13px; margin-left: 5px; display: inline-block; background-color: #1e1e21">답글등록</a>
-                                                </div>
+	                                                <div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
+		                                               		<c:if test="${!empty i.v_Img1_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img1_ReName }"
+			                                                      alt="user" class="rounded" width="100"> 
+		                                                   	</c:if>
+		                                                   	<c:if test="${!empty i.v_Img2_ReName}">
+			                                                   <img  src="/brocoli/resources/review-Img/${i.v_Img2_ReName }"
+			                                                      alt="user2" class="rounded" width="100">
+		                                                   	</c:if>
+	                                                </div>
+	                                                <div style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
+	                                                padding: 8px; resize: none; " class="review-text font-italic m-0">${i.v_Content }</div>
+	                                                
+	                                                <hr style=" border-top: 1px solid #e6e6f2;">
+	                                                
+	                                                <div style=" width: 100%; height: auto; float: right; display: inline-block; padding: 5px;">
+	                                               
+	                                               			<c:forEach var="j" items="${rlist}">
+	                                               				<c:choose>
+	                                               					<c:when test="${i.v_NO eq j.vr_Parentno }">
+					                                                   <div style="display: inline-block; padding: 5px; vertical-align: middle; width: 100%; height: auto; border: 1px solid #e6e6f2; border-radius: 5px; margin-bottom: 4px;">
+						                                                   <div style=" float: left;">
+						                                                   		<img src="/brocoli/resources/brandLogo/${j.blist.b_Logo_ReName}"alt="error" style="width: 40px; height: 40px; border-radius: 50%;"> 
+						                                                   </div>
+						                                                   <div style="display: table; float: left; vertical-align: middle; text-align: center; margin-right: 3px; min-height: 40px; margin-left: 8px;">
+						                                                   		<span style="display: table-cell; vertical-align: middle; font-size: 15px;">
+						                                                   			<strong>${j.vr_Writer}</strong>
+						                                                   		</span>
+						                                                   </div>
+						                                                   <div style="display: table; float: left; height: auto; background: none; resize: none; border: 0; vertical-align: middle; min-height: 40px; margin-left: 5px;">
+						                                                   		<span style="display: table-cell; vertical-align: middle;">${j.vr_Content }</span>
+						                                                   </div>
+						                                                   <div style=" display: inline-block; float: right;">
+						                                                   		<!-- <a style="color: #fff;" class="badge badge-light">수정</a> -->
+							                                                   	<c:url var="deleteReply" value="ReplyDelete.ow" >
+							                                                   		<c:param name="rrNO" value="${j.vr_NO}"/>
+							                                                   		<c:param name="bNO" value="${loginUser.brand_NO}"/>
+							                                                   	</c:url>
+						                                                   		<a style="color: #fff;" class="badge badge-light" href="${deleteReply}">삭제</a>
+						                                                   		<br>
+						                                                   		<span style="margin-left: 5px;">${j.vr_Modify_Date }</span>
+						                                                   </div>
+					                                                   </div>
+			                                                   		</c:when>
+			                                                   	</c:choose>
+			                                                 </c:forEach>
+			                                                 
+	                                                </div>
+	                                                <form action="Reply-Insert.ow" method="post" enctype="multipart/form-data" onsubmit="return checks(this)">
+	                                                <div style="width: 100%; display: flex;">
+		                                                <input name="vr_NO" type="text" style="display: none;" value="${i.v_NO}" readonly="readonly">
+		                                                <input name="bNO" type="text" style="display: none;" value="${loginUser.brand_NO}" readonly="readonly">
+		                                                <input name="vr_Writer" type="text" style="display: none;" value="${loginUser.mName}" readonly="readonly">
+		                                                <input name="vr_Mno" type="text" style="display: none;" value="${loginUser.mNO}" readonly="readonly">
+	                                                   <textarea name="vr_Content" id="ReplyComent"
+	                                                      style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; display: inline-block;"></textarea>
+	                                                   <button class="btn btn-primary active"
+	                                                      style="height: 41px; margin-top: 13px; margin-left: 5px; display: inline-block; background-color: #1e1e21">답글등록</button>
+	                                                </div>
+	                                                </form>
                                              </div>
                                           </div>
                                        </td>
@@ -220,50 +246,43 @@
       </div>
    </div>
    
-   <!-- <script type="text/javascript">
-   window.onload =$(function(){
-         $.ajax({
-            url: "reviewList.ow",
-            dataType: "json",
-            success:function(list){
-               $("#list").append(
-                     <td>
-                     <div class="card-body">
-                        <div class="review-block" style="padding: 8px;">
-                           <div class="m-r-10" style="margin-bottom: 10px; width: 205px;">
-                              <img style="float: left;" src="/brocoli/resources/product-Img/HOOD_BLACK_10_20200410151010.jpg"
-                                 alt="user" class="rounded" width="100"> 
-                              <img style="float: left;" src="/brocoli/resources/product-Img/HOOD_GREY_11_20200410151011.jpg"
-                                 alt="user" class="rounded" width="100">
-                           </div>
-                              <textarea style=" width: 90%; height: auto; background-color: none; border: none; text-align: left;
-                              padding: 8px; resize: none; " class="review-text font-italic m-0" rows="" cols=""
-                              >배고파여 ㅎㅎ 떡볶이 먹고싶당 </textarea>
-                           <div class="rating-star">
-                              <i class="fa fa-fw fa-star"></i> 
-                              <i class="fa fa-fw fa-star"></i> 
-                              <i class="fa fa-fw fa-star"></i> 
-                              <i class="fa fa-fw fa-star"></i> 
-                              <i class="fa fa-fw fa-star"></i>
-                           </div>
-                           <span class="text-dark font-weight-bold">홍길동이</span><small class="text-mute"> 2020-04-02 15:12</small>
-                           <div style="display: flex;">
-                              <textarea
-                                 style="width: 100%; margin-top: 10px; border-radius: 5px; resize: none; "></textarea>
-                              <a href="#" class="btn btn-primary active"
-                                 style="height: 41px; margin-top: 13px; margin-left: 5px;">등록</a>
-                           </div>
-                        </div>
-                     </div>
-                  </td>
-                  );
-            }
-         });
-      });
-   </script> -->
+<!--  <script type="text/javascript">
+		$.ajax({
+			type:"POST",
+			url:"totalSalesSearch.ad",
+			dataType:"json",
+			  data:{bNO:loginUser.Brand_NO},
+			success:function(data){
+			   $.each(data, function(index,searchList){
+			      $('#salesList').append("<tr><td>"+ (count++) +"</td><td>"
+			                               +searchList.or_NO+"</td><td>"
+			                                     +searchList.or_Date+"</td><td>"
+			                                     +searchList.or_Brand_NO+"</td><td>"   
+			                                     +searchList.or_Brand.b_Name+"</td><td>"
+			                                     +searchList.or_P_NO+"</td><td>"
+			                                     +searchList.or_Pname+"</td><td>"
+			                                     +searchList.or_Price+"</td><td>"
+			                                     +searchList.or_Amount+"</td></tr>"
+			      );
+			   });
+			},error:function(){
+			}
+		});
 
+   </script>  -->
 
-
+	<script>
+	    function checks(this){
+		    //상품명 공백 확인 
+		    
+		  	if(this.val() == ""){
+			  alert("답글내용을 입력해 주세요."); 
+			  this.focus(); 
+			  return false; 
+			}
+	    };
+	</script>
+	
    <script
          src="/brocoli/resources/ownerResources/vendor/slimscroll/jquery.slimscroll.js"></script>
       <script

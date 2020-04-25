@@ -17,6 +17,7 @@ public class Contact {
 	private String con_Img_ReName;
 	private String con_Status;
 	private int con_Mno;
+	private int con_Bno;
 	
 	private String brandName; // Contact + Member에 있는 brand 추가
 
@@ -26,7 +27,7 @@ public class Contact {
 
 	public Contact(int con_NO, Date con_Date, String con_Writer, String con_Content, String con_Title,
 			String con_View_Check, String con_Img, String con_Img_ReName, String con_Status, int con_Mno,
-			String brandName) {
+			String brandName , int con_Bno) {
 		super();
 		this.con_NO = con_NO;
 		this.con_Date = con_Date;
@@ -39,6 +40,7 @@ public class Contact {
 		this.con_Status = con_Status;
 		this.con_Mno = con_Mno;
 		this.brandName = brandName;
+		this.con_Bno = con_Bno;
 	}
 
 	public int getCon_NO() {
@@ -129,20 +131,20 @@ public class Contact {
 		this.brandName = brandName;
 	}
 
+	public int getCon_Bno() {
+		return con_Bno;
+	}
+
+	public void setCon_Bno(int con_Bno) {
+		this.con_Bno = con_Bno;
+	}
+
 	@Override
 	public String toString() {
 		return "Contact [con_NO=" + con_NO + ", con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
 				+ con_Content + ", con_Title=" + con_Title + ", con_View_Check=" + con_View_Check + ", con_Img="
 				+ con_Img + ", con_Img_ReName=" + con_Img_ReName + ", con_Status=" + con_Status + ", con_Mno=" + con_Mno
-				+ ", brandName=" + brandName + "]";
+				+ ", con_Bno=" + con_Bno + ", brandName=" + brandName + "]";
 	}
-	
-	
-	
-	
-	
-	
-
-	
 	
 }

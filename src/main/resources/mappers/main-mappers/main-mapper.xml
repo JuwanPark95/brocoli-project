@@ -184,6 +184,40 @@
 		<collection property="brList" resultMap="brandResultSet"/>
 	</resultMap>
 	
+	
+	<resultMap type="QNAProduct" id="QnAResultSet">
+		<id property="pq_No" column="PQ_NO"/>
+
+		<result property="pq_Writer" column="PQ_WRITER"/>
+		<result property="pq_Id" column="PQ_ID"/>
+		<result property="pq_Content" column="PQ_CONTENT"/>
+		<result property="pq_Date" column="PQ_DATE"/>
+		<result property="pq_Modify_Date" column="PQ_MODIFY_DATE"/>
+		<result property="pq_Count" column="PQ_COUNT"/>
+		<result property="pq_Check" column="PQ_CHECK"/>
+		<result property="pq_Status" column="PQ_STAUTS"/>
+		<result property="pq_Img1" column="PQ_IMG1"/>
+		<result property="pq_Img1_ReName" column="PQ_IMG1_RENAME"/>
+		<result property="pq_Img2" column="PQ_IMG2"/>
+		<result property="pq_Img2_ReName" column="PQ_IMG2_RENAME"/>
+		<result property="pq_mNo" column="PQ_MNO"/>
+		<result property="pq_P_No" column="PQ_P_NO"/>
+		<result property="pq_B_No" column="PQ_B_NO"/>
+		<result property="pqr_No" column="PQR_NO"/>
+		<result property="pqr_ParentNo" column="PQR_PARENTNO"/>
+		<result property="pqr_Writer" column="PQR_WRITER"/>
+		<result property="pqr_Id" column="PQR_ID"/>
+		<result property="pqr_Content" column="PQR_CONTENT"/>
+		<result property="pqr_Date" column="PQR_DATE"/>
+		<result property="pqr_Modify_Date" column="PQR_MODIFY_DATE"/>
+		<result property="pqr_Count" column="PQR_COUNT"/>
+		<result property="pqr_Check" column="PQR_CHECK"/>
+		<result property="pqr_Status" column="PQR_STATUS"/>
+		<result property="pqr_Mno" column="PQR_MNO"/>
+		<result property="pqr_bNo" column="PQR_BNO"/>
+		
+	</resultMap>
+	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
 	FROM AUCTION
@@ -254,6 +288,7 @@
 	
 	<select id="pDetail" resultMap="productDetailResultSet">
 	SELECT P_NO,P_NAME
+			,P_BRAND_NO
 	        ,TO_CHAR( P_PRICE , '999,999,999,999,999') AS P_PRICE
 	        ,TO_CHAR( P_SAIL_PRICE , '999,999,999,999,999') AS P_SAIL_PRICE 
 	        ,TO_CHAR( P_LAST_PRICE , '999,999,999,999,999') AS P_LAST_PRICE
@@ -343,5 +378,27 @@
 	where op_p_NO=#{p_NO}
 	and option_1=#{option_1}
 	
+	</select>
+	
+	<insert id="qnacommant" parameterType="QNAProduct" >
+	INSERT INTO QNAPRODUCT 
+	VALUES(SEQ_PQ_NO.NEXTVAL,#{pq_Writer},#{pq_Id},#{pq_Content}
+			,SYSDATE,SYSDATE,DEFAULT,DEFAULT,DEFAULT,#{pq_Img1},#{pq_Img1_ReName}
+			,#{pq_Img2},#{pq_Img2_ReName},#{pq_mNo},#{pq_P_No},#{pq_B_No})
+	</insert>
+	
+	<select id="selectQnaCommant" resultMap="QnAResultSet">
+	select * from QNAPRODUCT QR
+    LEFT JOIN qnaproduct_reply QRP
+    ON PQ_NO = PQR_PARENTNO
+	where pq_P_no = #{pq_P_No}
+	and pq_status='Y'
+
+	</select>
+	
+	<select id="selectQnaCommant2" resultMap="QnAResultSet">
+	 select * from QNAPRODUCT
+	where pq_P_no = #{pq_P_No}
+	and pq_status='Y'
 	</select>
 </mapper>
