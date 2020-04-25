@@ -71,144 +71,76 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-striped table-bordered second" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>배너번호</th>
-                                                <th>사이즈</th>
-                                                <th>전월 낙찰가</th>
-                                                <th>입찰금액</th>
-                                                <th style="width: 121px;">배너이미지</th>
-                                                <th>입찰신청</th>
-                                                <th>상태</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>NO.1</td>
-                                                <td>550*420</td>
-                                                <td>4,120,000원</td>
-                                                <td>
-                                                	<input type="number">
-                                                </td>
-                                                <td>
-	                                                <div id="contentImgArea1"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
-	                                                	<img id="contentImg1" src="http://via.placeholder.com/550x420"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                            </div>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">입찰</button>
-			                                        </div>
-                                                </td>
-                                                <td>
-                                                	<span class="badge-dot badge-brand"></span>미입찰
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>NO.2</td>
-                                                <td>550*420</td>
-                                                <td>4,620,000원</td>
-                                                <td>
-                                                	<input type="number">
-                                                </td>
-                                                <td>
-                                                	<div id="contentImgArea2"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
-                                                		<img id="contentImg2" src="http://via.placeholder.com/550x420"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-                                                	</div>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">입찰</button>
-			                                        </div>
-                                                </td>
-                                                <td>
-                                                	<span class="badge-dot badge-brand"></span>미입찰
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>NO.3</td>
-                                                <td>330*250</td>
-                                                <td>2,310,000원</td>
-                                                <td>
-                                                	<input type="number">
-                                                </td>
-                                                <td>
-                                                	<div id="contentImgArea3"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
-                                                		<img id="contentImg3" src="http://via.placeholder.com/330x250"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-                                                	</div>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">입찰</button>
-			                                        </div>
-                                                </td>
-                                                <td>
-                                                	<span class="badge-dot badge-brand"></span>미입찰
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>NO.4</td>
-                                                <td>330*250</td>
-                                                <td>2,690,000원</td>
-                                                <td>
-                                                	<span>2,599,000 원</span>
-                                                </td>
-                                                <td>
-                                                	<div id="contentImgArea4"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
-                                                		<img id="contentImg4" src="http://via.placeholder.com/330x250"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-                                                	</div>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">수정</button>
-			                                        </div>
-                                                </td>
-                                                <td>
-                                                	<span class="badge-dot badge-success mr-1"></span>입찰완료
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>NO.5</td>
-                                                <td>330*250</td>
-                                                <td>2,990,000원</td>
-                                                <td>
-                                                	<input type="number">
-                                                </td>
-                                                <td>
-	                                                <div id="contentImgArea5"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
-	                                                	<img id="contentImg5" src="http://via.placeholder.com/330x250"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-	                                                </div>
-                                                </td>
-                                                <td>
-                                                	<div class="btn-group ml-auto">
-			                                            <button class="btn btn-sm btn-outline-light">입찰</button>
-			                                        </div>
-                                                </td>
-                                                <td>
-                                                	<span class="badge-dot badge-brand"></span>미입찰
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>배너번호</th>
-                                                <th>사이즈</th>
-                                                <th>전월 낙찰가</th>
-                                                <th>배너이미지</th>
-                                                <th>입찰금액</th>
-                                                <th>입찰신청</th>
-                                                <th>상태</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                        <div class="productImgArea" id="productImgArea" style="display: none;">
-                                        	<input type="file" id="banner_Img1" name="file1" accept="resources/product-Img/*" onchange="loadImg(this, 1);" />
-                                        	<input type="file" id="banner_Img2" name="file2" accept="resources/product-Img/*" onchange="loadImg(this, 2);" />
-                                        	<input type="file" id="banner_Img3" name="file3" accept="resources/product-Img/*" onchange="loadImg(this, 3);" />
-                                        	<input type="file" id="banner_Img4" name="file4" accept="resources/product-Img/*" onchange="loadImg(this, 4);" />
-                                        	<input type="file" id="banner_Img5" name="file5" accept="resources/product-Img/*" onchange="loadImg(this, 5);" />
-                                        </div>
+                                <c:choose>
+                                	<c:when test="${empty list }">
+                                		<div><span><strong>이번달 광고 경매 일정이 없습니다.</strong></span></div>
+                                	</c:when>
+                                	<c:when test="${not empty list }">
+                                		<table id="example" class="table table-striped table-bordered second" style="width:100%">
+	                                        <thead>
+	                                            <tr>
+	                                                <th>배너번호</th>
+	                                                <th>사이즈</th>
+	                                                <th>전월 낙찰가</th>
+	                                                <th>입찰금액</th>
+	                                                <th>광고멘트</th>
+	                                                <th style="width: 121px;">배너이미지</th>
+	                                                <th>입찰신청</th>
+	                                                <th>상태</th>
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                        	<c:set var="count" value="0"/>
+	                                        	<c:forEach var="i" items="${list }">
+		                                            <tr>
+		                                                <td id="bannerNo${count}">NO.${i.get }</td>
+		                                                <td id="bannerSize${count}"></td>
+		                                                <td id="beforPrice${count}"></td>
+		                                                <td>
+		                                                	<input id="bannerPrice${count}" type="number">
+		                                                </td>
+		                                                <td>
+		                                                	<input id="bannerComment${count}" type="text">
+		                                                </td>
+		                                                <td>
+			                                                <div id="contentImgArea1"  style="float: left; width: 171px; height: auto; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+			                                                	<img id="contentImg1" src="http://via.placeholder.com/550x420"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+				                                            </div>
+		                                                </td>
+		                                                <td>
+		                                                	<div class="btn-group ml-auto">
+					                                            <a id="submitBtn${count }" href="#" class="btn btn-sm btn-outline-light">입찰</a>
+					                                        </div>
+		                                                </td>
+		                                                <td>
+		                                                	<span class="badge-dot badge-brand"></span>미입찰
+		                                                </td>
+		                                            </tr>
+		                                            <c:set var="count" value="${count + 1 }"/>
+	                                			</c:forEach>                                        	
+	                                        </tbody>
+	                                        <tfoot>
+	                                            <tr>
+	                                                <th>배너번호</th>
+	                                                <th>사이즈</th>
+	                                                <th>전월 낙찰가</th>
+	                                                <th>입찰금액</th>
+	                                                <th>광고멘트</th>
+	                                                <th style="width: 121px;">배너이미지</th>
+	                                                <th>입찰신청</th>
+	                                                <th>상태</th>
+	                                            </tr>
+	                                        </tfoot>
+	                                    </table>
+	                                </c:when>
+                                </c:choose>  
+                                    <div class="productImgArea" id="productImgArea" style="display: none;">
+                                    	<input type="file" id="banner_Img1" name="file1" accept="resources/product-Img/*" onchange="loadImg(this, 1);" />
+                                    	<input type="file" id="banner_Img2" name="file2" accept="resources/product-Img/*" onchange="loadImg(this, 2);" />
+                                    	<input type="file" id="banner_Img3" name="file3" accept="resources/product-Img/*" onchange="loadImg(this, 3);" />
+                                    	<input type="file" id="banner_Img4" name="file4" accept="resources/product-Img/*" onchange="loadImg(this, 4);" />
+                                    	<input type="file" id="banner_Img5" name="file5" accept="resources/product-Img/*" onchange="loadImg(this, 5);" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

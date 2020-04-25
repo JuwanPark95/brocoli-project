@@ -4,18 +4,18 @@
 
 <mapper namespace="mainMapper">
 	<resultMap type="Auction" id="auctionResultSet">
+		<id property="ac_No" column="AC_NO"/>
+	
 		<result property="ac_Banner_NO" column="AC_BANNER_NO"/>
 		<result property="ac_ID" column="AC_ID"/>
 		<result property="ac_Price" column="AC_PRICE"/>
 		<result property="ac_Date" column="AC_DATE"/>
 		<result property="ac_Status" column="AC_STATUS"/>
 		<result property="ac_Brand" column="AC_BRAND"/>
-		<result property="ac_Winner" column="AC_WINNER"/>
 		<result property="ac_Comment" column="AC_COMMENT"/>
 		<result property="ac_Img" column="AC_IMG"/>
 		<result property="ac_Img_Rename" column="AC_IMG_RENAME"/>
 		<result property="ac_Brand_NO" column="AC_BRAND_NO"/>
-	
 	
 	</resultMap>
 	
