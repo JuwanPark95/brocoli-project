@@ -43,6 +43,7 @@
 		<typeAlias type="com.kh.brocoli.board.model.vo.Notice" alias="Notice"/>
 		<typeAlias type="com.kh.brocoli.board.model.vo.QnA_Reply" alias="QnA_Reply"/>
 		<typeAlias type="com.kh.brocoli.board.model.vo.QnA" alias="QnA"/>
+		<typeAlias type="com.kh.brocoli.product.model.vo.QnAComment" alias="QnAComment"/>
 
  	</typeAliases>
  	

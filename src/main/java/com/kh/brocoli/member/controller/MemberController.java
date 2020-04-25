@@ -39,6 +39,7 @@ import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
+import com.kh.brocoli.product.model.vo.QNAProduct_Reply;
 import com.kh.brocoli.product.model.vo.QnAComment;
 
 @Controller
@@ -221,6 +222,13 @@ public class MemberController {
 		return mv;
 	}
 	
+	/**
+	 * 상품 모달
+	 * @param response
+	 * @param p_NO
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("productModal")
 	public void productModal(HttpServletResponse response,String p_NO) throws JsonIOException, IOException{
 		
@@ -235,6 +243,14 @@ public class MemberController {
 		
 	}
 	
+	/**
+	 * 두번째 옵션 리스트
+	 * @param response
+	 * @param p_NO
+	 * @param option_1
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("optionDetail")
 	public void optionDetail(HttpServletResponse response,String p_NO,String option_1) throws JsonIOException, IOException{
 		HashMap<String,String> hmap = new HashMap<>();
@@ -250,6 +266,18 @@ public class MemberController {
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(option,response.getWriter());
 	}
+	
+	/**
+	 * 상품 qna insert
+	 * @param pq
+	 * @param request
+	 * @param file1
+	 * @param file2
+	 * @param pq_Writer
+	 * @return
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("qnacomment")
 	@ResponseBody
 	public String qnacomment(QNAProduct pq,HttpServletRequest request,
@@ -334,19 +362,53 @@ public class MemberController {
 		return ReName;
 	}
 	
+	/**
+	 * 상품 qna 리스트
+	 * @param response
+	 * @param pq_P_No
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("qnacommentlist")
 	@ResponseBody
 	private void qnacommentlist(HttpServletResponse response,String pq_P_No) throws JsonIOException, IOException{
 
-		System.out.println(pq_P_No);
-		ArrayList<QNAProduct> qna = mService.selectQnaCommant(pq_P_No);
+		HashMap< String,ArrayList<QnAComment> > hmap = new HashMap<>();
+		ArrayList<QnAComment> qna = mService.selectQnaCommant(pq_P_No);
+		ArrayList<QnAComment> qna_reply = mService.selectQnaReCommant();
+		
+		hmap.put("list",qna);
+		hmap.put("list2", qna_reply);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		System.out.println("qna : " + qna );
+
 		Gson gson = new GsonBuilder().create();
-		gson.toJson(qna,response.getWriter());
+		gson.toJson(hmap,response.getWriter());
+		
+	}
+	
+	/**
+	 * 상품 댓글 삭제
+	 * @param response
+	 * @param pq_P_No
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
+	@RequestMapping("deleteqna")
+	@ResponseBody
+	private String delteqna(HttpServletResponse response,String pq_No) throws JsonIOException, IOException{
+
+		System.out.println("pq_No" + pq_No);
+		
+		int result = mService.deleteqna(pq_No);
+		
+		if(result > 0) {
+			return "ok";
+		}else {
+			return "false";
+		}
 		
 	}
 	

@@ -247,7 +247,7 @@
 											return false;
 										}else{
 											$("#frm1").attr("action","cInsert.mn").submit();
-										} */
+										}
 									});
 								}); */
 							</script>
@@ -553,248 +553,6 @@
 						</div>
 					</div>
 
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-02.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Herschel supply </a> <span class="stext-105 cl3"> $35.31 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-03.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Only Check Trouser </a> <span class="stext-105 cl3"> $25.50
-									</span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-04.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Classic Trench Coat </a> <span class="stext-105 cl3">
-										$75.00 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-05.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Front Pocket Jumper </a> <span class="stext-105 cl3">
-										$34.75 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-06.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Vintage Inspired Classic </a> <span class="stext-105 cl3">
-										$93.20 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-07.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a
-										href="/brocoli/WEB-INF/views/main/pages/Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Shirt in Stretch Cotton </a> <span class="stext-105 cl3">
-										$52.66 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-						<!-- Block2 -->
-						<div class="block2">
-							<div class="block2-pic hov-img0">
-								<img
-									src="/brocoli/resources/mainResources/images/product-08.jpg"
-									alt="IMG-PRODUCT"> <a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-									Quick View </a>
-							</div>
-
-							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
-									<a href="Main-Product-Detail.jsp"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-										Pieces Metallic Printed </a> <span class="stext-105 cl3">
-										$18.96 </span>
-								</div>
-
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#"
-										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart1 dis-block trans-04"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-01.png"
-										alt="ICON"> <img
-										class="icon-heart2 dis-block trans-04 ab-t-l"
-										src="/brocoli/resources/mainResources/images/icons/icon-heart-02.png"
-										alt="ICON">
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -910,7 +668,7 @@
 			$(this).magnificPopup({
 				delegate : 'a', // the selector for gallery item
 				type : 'image',
-				gallery : {
+				gallery : { 
 					enabled : true
 				},
 				mainClass : 'mfp-fade'
@@ -990,7 +748,7 @@
 	$( document ).ready(function() {
 		var pq_P_No = "${aProducDetailtList[0].p_NO }";
 		var comment = "";
-		
+		var id="${loginUser.mId}";
 		$.ajax({
 			url : "qnacommentlist",
 			data  : {
@@ -999,30 +757,50 @@
 			dataType:"json",
 			success : function(data){
 				
-			for(var i=0; i<data.length; i++){
-				
-				comment +=	"<div class='flex-w flex-sb-m p-b-17'>"
-				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Writer +"</span>"
-				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Date + "</span>"
-				comment +=	"</div>"
-				comment +=	"<div class='flex-w flex-t p-b-68'>"
-				
-				if(data[i].pq_Img1_ReName != null ){
-					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
-					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img1_ReName+"'>"
+				for(var i=0; i<data.list.length; i++){
+					
+					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list[i].pq_Writer +"</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].pq_Date + "</span>"
+					if(id == data.list[i].pq_Id ){
+						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].pq_No+"'>삭제</button>"
+					}
 					comment +=	"</div>"
-				}
-				if(data[i].pq_Img2_ReName != null){
-					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
-					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img2_ReName +"'>"
+					comment +=	"<div class='flex-w flex-t p-b-68'>"
+					
+					if(data.list[i].pq_Img1_ReName != null ){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+						comment +=	"<img src='/brocoli/resources/QnA-Img/"+data.list[i].pq_Img1_ReName+"'>"
+						comment +=	"</div>"
+					}
+					if(data.list[i].pq_Img2_ReName != null){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+						comment +=	"<img src='/brocoli/resources/QnA-Img/"+data.list[i].pq_Img2_ReName +"'>"
+						comment +=	"</div>"
+					}
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list[i].pq_Content+"</p>"
 					comment +=	"</div>"
+					comment +=	"</div>"
+					
+					
+						
+					for(var j=0; j<data.list2.length; j++){
+					if(data.list[i].pq_No == data.list2[j].pqr_ParentNo){
+
+					comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].pqr_Writer +"</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].pqr_Date + "</span>"
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list2[j].pqr_Content+"</p>"
+					comment +=	"</div>"
+					comment +=	"</div>"
+						}
+					}
+					
 				}
-				comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
-				comment +=	"<p class='stext-102 cl6'>"+data[i].pq_Content+"</p>"
-				comment +=	"</div>"
-				comment +=	"</div>"
-			}
-				$('#commentQnA').html(comment);
+					$('#commentQnA').html(comment);
+		
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("ajax 처리실패");
 
@@ -1034,11 +812,11 @@
 		})
 	});
 	
-	function commentlist()
+	 function commentlist()
 	{
 		var pq_P_No = "${aProducDetailtList[0].p_NO }";
 		var comment = "";
-		
+		var id="${loginUser.mId}";
 		$.ajax({
 			url : "qnacommentlist",
 			data  : {
@@ -1047,30 +825,49 @@
 			dataType:"json",
 			success : function(data){
 				
-			for(var i=0; i<data.length; i++){
-				
-				comment +=	"<div class='flex-w flex-sb-m p-b-17 id=su"+i+"'>"
-				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Writer +"</span>"
-				comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data[i].pq_Date + "</span>"
-				comment +=	"</div>"
-				comment +=	"<div class='flex-w flex-t p-b-68'>"
-				
-				if(data[i].pq_Img1_ReName != null ){
-					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
-					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img1_ReName+"'>"
+				for(var i=0; i<data.list.length; i++){
+					
+					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list[i].pq_Writer +"</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].pq_Date + "</span>"
+					if(id == data.list[i].pq_Id ){
+						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].pq_No+"'>삭제</button>"
+					}
 					comment +=	"</div>"
-				}
-				if(data[i].pq_Img2_ReName != null){
-					comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
-					comment +=	"<img src='/brocoli/resources/QnA-Img/"+data[i].pq_Img2_ReName +"'>"
+					comment +=	"<div class='flex-w flex-t p-b-68'>"
+					
+					if(data.list[i].pq_Img1_ReName != null ){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+						comment +=	"<img src='/brocoli/resources/QnA-Img/"+data.list[i].pq_Img1_ReName+"'>"
+						comment +=	"</div>"
+					}
+					if(data.list[i].pq_Img2_ReName != null){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+						comment +=	"<img src='/brocoli/resources/QnA-Img/"+data.list[i].pq_Img2_ReName +"'>"
+						comment +=	"</div>"
+					}
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list[i].pq_Content+"</p>"
 					comment +=	"</div>"
+					comment +=	"</div>"
+					
+					
+						
+					for(var j=0; j<data.list2.length; j++){
+					if(data.list[i].pq_No == data.list2[j].pqr_ParentNo){
+
+					comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].pqr_Writer +"</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].pqr_Date + "</span>"
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list2[j].pqr_Content+"</p>"
+					comment +=	"</div>"
+					comment +=	"</div>"
+						}
+					}
+					
 				}
-				comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
-				comment +=	"<p class='stext-102 cl6'>"+data[i].pq_Content+"</p>"
-				comment +=	"</div>"
-				comment +=	"</div>"
-			}
-				$('#commentQnA').html(comment);
+					$('#commentQnA').html(comment);
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("ajax 처리실패");
 
@@ -1080,8 +877,8 @@
 				console.log(errorThrown);
 			}
 		})
-	};
-	
+	}; 
+	<!--댓글 인서트 -->
 	$(function(){
 		commentlist();
 	
@@ -1118,6 +915,53 @@
 		});
 		
 	});
+	
+	<!--댓글 삭제 -->
+/* 	$('#check1 button[id=check2]').click(function(obj){
+		var pq_No= $(this).parent().find('input[id=check3]').val()
+		alert(pq_No);
+		$.ajax({
+			url:"tt",
+			data:{pq_NO:pq_NO},
+			dataType:"json",
+			success:function(data){
+				
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+	}); */
+
+	$(document).on('click','#check2', function () {
+		var pq_No=$(this).attr("value");
+		
+		$.ajax({
+			url:"deleteqna",
+			data:{pq_No:pq_No},
+			type : "POST",
+			success:function(data){
+				
+				if(data = "ok"){
+					alert("댓글이 삭제되었습니다.");
+					commentlist();
+					
+				}
+			},error:function(jqxhr,textStatus, errorThrown){
+				console.log("ajax 처리실패");
+				
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+	});
+
 	</script>
 	<script>
 	$(function(){

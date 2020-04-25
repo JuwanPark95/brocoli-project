@@ -185,7 +185,7 @@
 	</resultMap>
 	
 	
-	<resultMap type="QNAProduct" id="QnAResultSet">
+	<resultMap type="QnAComment" id="QnAResultSet">
 		<id property="pq_No" column="PQ_NO"/>
 
 		<result property="pq_Writer" column="PQ_WRITER"/>
@@ -387,18 +387,26 @@
 			,#{pq_Img2},#{pq_Img2_ReName},#{pq_mNo},#{pq_P_No},#{pq_B_No})
 	</insert>
 	
-	<select id="selectQnaCommant" resultMap="QnAResultSet">
-	select * from QNAPRODUCT QR
-    LEFT JOIN qnaproduct_reply QRP
-    ON PQ_NO = PQR_PARENTNO
-	where pq_P_no = #{pq_P_No}
-	and pq_status='Y'
-
-	</select>
 	
-	<select id="selectQnaCommant2" resultMap="QnAResultSet">
+	<select id="selectQnaCommant" resultMap="QnAResultSet">
 	 select * from QNAPRODUCT
 	where pq_P_no = #{pq_P_No}
 	and pq_status='Y'
 	</select>
+	
+	<select id="selectQnaReCommant" resultMap="QnAResultSet">
+	select * from qnaProduct_reply
+	where pqr_status = 'Y'
+
+	</select>
+	
+	<update id="deleteqna">
+		
+		UPDATE QNAPRODUCT
+		SET PQ_STATUS = 'N'
+		WHERE PQ_NO = #{pq_No}
+	
+	</update>
+	
+
 </mapper>
