@@ -42,6 +42,7 @@ import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QNAProduct_Reply;
 import com.kh.brocoli.product.model.vo.QnAComment;
+import com.kh.brocoli.product.model.vo.Review;
 
 @Controller
 public class MemberController {
@@ -398,8 +399,87 @@ public class MemberController {
 		}
 		
 	}
-	
+	@RequestMapping("reviewcomment")
+	@ResponseBody
+	public String reviewcomment(Review re,HttpServletRequest request,
+			@RequestParam(name = "uploadFile3", required = false) MultipartFile file1 ,
+			@RequestParam(name = "uploadFile4", required = false) MultipartFile file2,String v_Writer) throws JsonIOException, IOException{
+		
+			re.setV_B_NO(re.getV_B_NO());
+			re.setV_Content(re.getV_Content());
+			re.setV_P_NO(re.getV_P_NO());
+			re.setV_Writer(re.getV_Writer());
+			re.setV_Mno(re.getV_Mno());
+			
+			
 
+			int count=1;
+			
+			if(!file1.getOriginalFilename().equals("")) {
+				
+				String q_Img1_Rename = saveFile2(file1, request,v_Writer,count);
+				
+				if(q_Img1_Rename != null) {
+					re.setV_Img1(file1.getOriginalFilename());
+					re.setV_Img2_ReName(q_Img1_Rename);
+				}
+			}
+			
+			if(!file2.getOriginalFilename().equals("")) {
+				
+				String q_Img2_Rename = saveFile2(file2, request,v_Writer,count+1);
+				
+				if(q_Img2_Rename != null) {
+					re.setV_Img2(file2.getOriginalFilename());
+					re.setV_Img2_ReName(q_Img2_Rename);
+				}
+			}
+			
+			int result = '1';/*mService.insertreviewCommant(re);*/
+			if(result > 0) {
+				return "ok";
+			}else {
+				return "false";
+			}
+	
+		
+	}
+	
+	/**
+	 * 파일 업로드
+	 * @param file
+	 * @param request
+	 * @return
+	 */
+	private String saveFile2(MultipartFile file, HttpServletRequest request,String pq_Writer,int count) {
+
+		String root = request.getSession().getServletContext().getRealPath("resources");
+
+		String savePath = root + "\\review-Img";
+
+		File folder = new File(savePath);
+
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+
+		String q_Img1 = file.getOriginalFilename();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String ReName = pq_Writer+"_"+count+ "_" +sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
+
+
+		String renamePath = folder + "\\" + ReName;
+
+		try {
+			file.transferTo(new File(renamePath)); // 이때 전달받은 file이 rename명으로 저장이된다.
+		} catch (Exception e) {
+			System.out.println("파일 전송 에러 : " + e.getMessage());
+		}
+
+		return ReName;
+	}
 
 
 }

@@ -454,56 +454,69 @@
 										</div>
 
 										<!-- Add review -->
-										<div class="w-full">
-											<h5 class="mtext-108 cl2 p-b-7">리뷰</h5>
+										<c:if test="${!empty sessionScope.loginUser }">
+											<form id="reviewcomment" method="post" enctype="multipart/form-data"> 
+											<div class="w-full">
 
-											<!-- 				<p class="stext-102 cl6">
+												<br>
+												<!-- 				<p class="stext-102 cl6">
 												Your email address will not be published. Required fields are marked *
 											</p> -->
 
-											<div class="flex-w flex-m p-t-50 p-b-23">
-												<span class="stext-102 cl3 m-r-16"> 별점 </span> <span
-													class="wrap-rating fs-18 cl11 pointer"> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-													class="item-rating pointer zmdi zmdi-star-outline"></i> <input
-													class="dis-none" type="number" name="rating">
+												
+												<div class="row p-b-25">
+														<label class="stext-102 cl3" for="review"
+															style="display: inline-block">작성 
+
+														</label>
+												<div style="margin-top: 30px;" id="star">
+												<span class="stext-102 cl3 m-r-16"> 별점 </span> 
+												<span class="wrap-rating fs-18 cl11 pointer"> 
+													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
+													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
+													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
+													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
+													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
+												<input class="dis-none" type="number" name="rating">
+												
 												</span>
-											</div>
-
-											<div class="row p-b-25">
+												</div>
 												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review"
-														style="display: inline-block">작성 <input
-														type="file"
-														style="display: inline-block; margin-left: 400px;">
-
-													</label>
-
-
-
+												<div class="productImgArea3" id="productImgArea3">
+                   									<input type="file" id="uploadFile3" name="uploadFile3" accept="resources/buploadFiles/" onchange="loadImg3(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea3" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg3" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+								                 
+								                 <div class="productImgArea4" id="productImgArea4">
+                   									<input type="file" id="uploadFile4" name="uploadFile4" accept="resources/buploadFiles/" onchange="loadImg4(this, 1);" style="display:inline-block;"/>
+               									 </div>
+                
+               									 <div id="titleImgArea4" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; " class="img-thumbnail mr-3" >
+								                    <img id="titleImg4" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
+								                 </div>
+								                
+												
 													<textarea
-														class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-														id="review" name="review"></textarea>
-												</div>
+															class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
+															id="review2" name="v_Content" style="resize: none;"></textarea>
+													</div>
 
-												<!-- 												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="name">Name</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
 												</div>
-
-												<div class="col-sm-6 p-b-5">
-													<label class="stext-102 cl3" for="email">Email</label>
-													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
-												</div> -->
+											
+												<input type="hidden" name="v_B_NO" value="${aProducDetailtList[0].p_Brand_NO }">
+												<input type="hidden" name="v_Writer" value="${loginUser.mName}">
+												<input type="hidden" name="v_Mno" value="${loginUser.mNO}">
+												<input type="hidden" id="productNo2" name="v_P_NO"
+													value="${aProducDetailtList[0].p_NO }"> <button id="commentbtn2"
+													
+													class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
+													style="color: white;"> Submit </button>
 											</div>
-
-											<button
-												class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"
-												style="color: white;">Submit</button>
-										</div>
+											</form>
+										</c:if>
 									</div>
 								</div>
 							</div>
@@ -1010,6 +1023,127 @@
 		        reader.readAsDataURL(value.files[0]);
 		     }
 		   } 
+		   
+		   
+		   
+		   $(function(){
+			     $('#productImgArea3').hide();
+			     
+			        
+			     $('#titleImgArea3').click(() => {
+			        $('#uploadFile3').click();
+			     });
+			   });
+
+			   function loadImg3(value, num){
+			     
+			     if(value.files/*  && value.files[0] */)  {
+			        
+			        var reader = new FileReader();
+			        
+			        reader.onload = function(e){
+			           
+			           switch(num) {
+			           case 1 : $('#titleImg3').attr('src', e.target.result);
+			              break;
+			           }
+			        }
+			        reader.readAsDataURL(value.files[0]);
+			     }
+			   } 
+			   
+				$(function(){
+				     $('#productImgArea4').hide();
+				     
+				        
+				     $('#titleImgArea4').click(() => {
+				        $('#uploadFile4').click();
+				     });
+				   });
+
+				   function loadImg4(value, num){
+				     
+				     if(value.files/*  && value.files[0] */)  {
+				        
+				        var reader = new FileReader();
+				        
+				        reader.onload = function(e){
+				           
+				           switch(num) {
+				           case 1 : $('#titleImg4').attr('src', e.target.result);
+				              break;
+				           }
+				        }
+				        reader.readAsDataURL(value.files[0]);
+				     }
+				   } 
+	</script>
+	<script>
+	$(function(){
+		commentlist();
+		$("form#reviewcomment").submit(function(e) {
+			if($('#orderYN').val() == '1'){
+			e.preventDefault();
+			var formData = new FormData(this);
+			$.ajax({
+				url : "reviewcomment",
+				type : "POST",
+				data : formData,
+				async: false,
+				success : function(data) {
+					if(data = "ok"){
+						$('#review2').val(" ");
+						$('#titleImg3').attr('src', "http://via.placeholder.com/160x200");
+						$('#titleImg4').attr('src', "http://via.placeholder.com/160x200");
+						commentlist();
+					}
+				},
+		        cache: false,
+		        contentType: false,
+		        processData: false,
+				error : function(jqxhr, textStatus, errorThrown) {
+					console.log("ajax 처리실패");
+
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+			return false;
+			}else{
+				alert("상품을 주문해야 리뷰를 작성할 수 있습니다.");				
+			}
+		});
+
+	});
+	</script>
+	<script>
+
+		
+	var $starEls = $('#star span i .item-rating pointer zmdi zmdi-star-outline');
+	var rate = 0;
+
+	$starEls.each(function (index, $el) {
+	    $el.on('click', function () {
+	        rating(index);
+	    });
+		});
+
+	function rating(score) {
+		alert("123");
+	    $starEls.each(function (i, $el) {
+	        if (i < score) {
+	            $el.addClass('on');
+	        } else {
+	            $el.removeClass('on');
+	        }
+	    });
+
+	    rate = score + 1;
+	   
+	}
+	
 	</script>
 </body>
 </html>
