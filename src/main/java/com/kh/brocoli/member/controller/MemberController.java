@@ -35,12 +35,14 @@ import com.kh.brocoli.member.model.service.MemberService;
 import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QNAProduct_Reply;
 import com.kh.brocoli.product.model.vo.QnAComment;
+import com.kh.brocoli.product.model.vo.Review;
 
 @Controller
 public class MemberController {
@@ -70,27 +72,7 @@ public class MemberController {
 
 	
 	
-	/**
-	 * 로그인 기능
-	 * @param m
-	 * @param model
-	 * @return
-	 */
-//	@RequestMapping(value = "login", method = RequestMethod.POST)
-//	public String memberLogin( Member m, Model model) {
-//
-//		Member loginUser = mService.loginMember(m);  
-//		System.out.println("loginuser : " + loginUser );
-//		if (loginUser != null) {
-//			model.addAttribute("loginUser",loginUser);
-//			return "main/Main";
-//
-//		} else {
-//			model.addAttribute("msg","로그인 실패!!");
-//			return "common/errorPage";
-//		}
-//
-//	}
+
 	
 	/*************************Header 페이지 이동 (못찾을시 Footer 참조)********************************/
 	/**
@@ -214,10 +196,20 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("productDetail.mn")
-	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,ModelAndView mv) {
+	public ModelAndView ProductDetail(ProductDetail pd,String p_NO,String or_Mno,ModelAndView mv) {
+		HashMap<String,String> hmap = new HashMap<>();
+		hmap.put("or_P_NO",p_NO);
+		hmap.put("or_Mno", or_Mno);
 		
 		ArrayList<ProductDetail> pDetail = mService.selectpDetail(p_NO);
+		ArrayList<ProductDetail> pOption = mService.selectOption1(p_NO);
+		
+		ArrayList<Orders> order = mService.selectorder(hmap);
+		
+		System.out.println(order);
 		mv.addObject("aProducDetailtList",pDetail);
+		mv.addObject("option",pOption);
+		mv.addObject("order",order);
 		mv.setViewName("Main-Product-Detail");
 		return mv;
 	}
@@ -237,7 +229,6 @@ public class MemberController {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		System.out.println("pDetail : " + pDetail );
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(pDetail,response.getWriter());
 		
@@ -292,8 +283,6 @@ public class MemberController {
 			pq.setPq_mNo(pq.getPq_mNo());
 			
 			
-			System.out.println("파일1이유 : " + file1);
-			System.out.println("파일2이유 : " + file2);
 			
 			int count=1;
 			if(!file1.getOriginalFilename().equals("")) {
@@ -400,7 +389,6 @@ public class MemberController {
 	@ResponseBody
 	private String delteqna(HttpServletResponse response,String pq_No) throws JsonIOException, IOException{
 
-		System.out.println("pq_No" + pq_No);
 		
 		int result = mService.deleteqna(pq_No);
 		
@@ -411,8 +399,87 @@ public class MemberController {
 		}
 		
 	}
-	
+	@RequestMapping("reviewcomment")
+	@ResponseBody
+	public String reviewcomment(Review re,HttpServletRequest request,
+			@RequestParam(name = "uploadFile3", required = false) MultipartFile file1 ,
+			@RequestParam(name = "uploadFile4", required = false) MultipartFile file2,String v_Writer) throws JsonIOException, IOException{
+		
+			re.setV_B_NO(re.getV_B_NO());
+			re.setV_Content(re.getV_Content());
+			re.setV_P_NO(re.getV_P_NO());
+			re.setV_Writer(re.getV_Writer());
+			re.setV_Mno(re.getV_Mno());
+			
+			
 
+			int count=1;
+			
+			if(!file1.getOriginalFilename().equals("")) {
+				
+				String q_Img1_Rename = saveFile2(file1, request,v_Writer,count);
+				
+				if(q_Img1_Rename != null) {
+					re.setV_Img1(file1.getOriginalFilename());
+					re.setV_Img2_ReName(q_Img1_Rename);
+				}
+			}
+			
+			if(!file2.getOriginalFilename().equals("")) {
+				
+				String q_Img2_Rename = saveFile2(file2, request,v_Writer,count+1);
+				
+				if(q_Img2_Rename != null) {
+					re.setV_Img2(file2.getOriginalFilename());
+					re.setV_Img2_ReName(q_Img2_Rename);
+				}
+			}
+			
+			int result = '1';/*mService.insertreviewCommant(re);*/
+			if(result > 0) {
+				return "ok";
+			}else {
+				return "false";
+			}
+	
+		
+	}
+	
+	/**
+	 * 파일 업로드
+	 * @param file
+	 * @param request
+	 * @return
+	 */
+	private String saveFile2(MultipartFile file, HttpServletRequest request,String pq_Writer,int count) {
+
+		String root = request.getSession().getServletContext().getRealPath("resources");
+
+		String savePath = root + "\\review-Img";
+
+		File folder = new File(savePath);
+
+		if (!folder.exists()) {
+			folder.mkdir();
+		}
+
+		String q_Img1 = file.getOriginalFilename();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String ReName = pq_Writer+"_"+count+ "_" +sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+				+ q_Img1.substring(q_Img1.lastIndexOf(".") + 1);
+
+
+		String renamePath = folder + "\\" + ReName;
+
+		try {
+			file.transferTo(new File(renamePath)); // 이때 전달받은 file이 rename명으로 저장이된다.
+		} catch (Exception e) {
+			System.out.println("파일 전송 에러 : " + e.getMessage());
+		}
+
+		return ReName;
+	}
 
 
 }

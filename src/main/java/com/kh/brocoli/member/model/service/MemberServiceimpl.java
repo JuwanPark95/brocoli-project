@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.dao.MemberDao;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
@@ -112,6 +113,18 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public int deleteqna(String pq_No) {
 		return mDao.deleteqna(pq_No);
+	}
+
+
+	@Override
+	public ArrayList<ProductDetail> selectOption1(String p_NO) {
+		return mDao.selectOption(p_NO);
+	}
+
+
+	@Override
+	public ArrayList<Orders> selectorder(HashMap<String, String> hmap) {
+		return mDao.selectorder(hmap);
 	}
 
 
