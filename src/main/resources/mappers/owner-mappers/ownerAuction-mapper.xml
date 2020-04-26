@@ -20,16 +20,45 @@
 	
 	</resultMap>
 
-	<select id="auctionBiddingSelect" resultMap="auctionResultSet">
+	<select id="selectAuctionList" resultMap="auctionResultSet">
 		SELECT * 
 		FROM AUCTION A
-		WHERE AC_BANNER_NO = #{Banner_No}
-        AND TO_CHAR(AC_DATE,'MM') = TO_CHAR(SYSDATE,'MM')
-        AND AC_BRAND_NO = #{Brand_No}
+        WHERE TO_CHAR(AC_DATE,'MM') = TO_CHAR(SYSDATE,'MM')
+        AND AC_BRAND_NO = #{bNO}
 	</select>
 
-
-
+	<select id="selectbeforAuctionList" resultMap="auctionResultSet">
+		SELECT * 
+		FROM AUCTION A
+        WHERE TO_CHAR(AC_DATE,'MM') = TO_CHAR(SYSDATE,'MM')-1
+        AND AC_BRAND_NO = #{bNO}
+	</select>
+	
+	<insert id="insertAcutionBanner" parameterType="Auction">
+	  	<selectKey keyProperty="ac_No" resultType="int" order="BEFORE">
+		    SELECT SEQ_A_CNO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO AUCTION VALUES (#{ac_No}, #{ac_Banner_NO}, #{ac_ID}, #{ac_Price},DEFAULT 
+			,DEFAULT , #{ac_Brand} ,#{ac_Comment} , #{ac_Img}, #{ac_Img_Rename} , #{ac_Brand_NO} )
+	</insert>
+	
+	<update id="updateAcutionBanner" parameterType="Auction">
+		UPDATE AUCTION 
+		SET AC_ID = #{ac_No},
+			AC_PRICE = #{ac_Price},
+			AC_DATE = SYSDATE,
+			AC_COMMENT = #{ac_Comment},
+			AC_IMG_RENAME = #{ac_Img_Rename}
+		WHERE AC_NO = #{ac_No}
+	</update>
+	
+	<select id="selectAcutionOne" resultMap="auctionResultSet">
+		SELECT * 
+		FROM AUCTION A
+        WHERE TO_CHAR(AC_DATE,'MM') = TO_CHAR(SYSDATE,'MM')
+        AND AC_NO = #{ac_No}
+	</select>
+	
 
 
 </mapper>
