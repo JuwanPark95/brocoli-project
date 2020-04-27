@@ -1094,7 +1094,7 @@
 		$('#noReviewComment').css('display','block');
 		var v_P_NO = "${aProducDetailtList[0].p_NO }";
 		var comment = "";
-		var id="${loginUser.mId}";
+		var id="${loginUser.mNO}";
 		$.ajax({
 			url : "reviewcommentlist",
 			data  : {
@@ -1168,8 +1168,8 @@
 					
 					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
 					
-					if(id == data.list[i].Mno ){
-						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_P_NO+"'>삭제</button>"
+					if(id == data.list[i].v_Mno ){
+						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 					}
 					comment +=	"</div>"
 					comment +=	"<div class='flex-w flex-t p-b-68'>"
@@ -1192,7 +1192,7 @@
 					
 						
 					for(var j=0; j<data.list2.length; j++){
-					if(data.list[i].v_P_NO == data.list2[j].vr_Parentno){
+					if(data.list[i].v_NO == data.list2[j].vr_Parentno){
 
 					comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
 					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Writer +"</span>"
@@ -1223,7 +1223,7 @@
 			$('#noReviewComment').css('display','block');
 			var v_P_NO = "${aProducDetailtList[0].p_NO }";
 			var comment = "";
-			var id="${loginUser.mId}";
+			var id="${loginUser.mNO}";
 			$.ajax({
 				url : "reviewcommentlist",
 				data  : {
@@ -1294,8 +1294,8 @@
 						} 
 						
 						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
-						if(id == data.list[i].Mno ){
-							comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_P_NO+"'>삭제</button>"
+						if(id == data.list[i].v_Mno ){
+							comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 						}
 						comment +=	"</div>"
 						comment +=	"<div class='flex-w flex-t p-b-68'>"
@@ -1318,7 +1318,7 @@
 						
 							
 						for(var j=0; j<data.list2.length; j++){
-						if(data.list[i].v_P_NO == data.list2[j].vr_Parentno){
+						if(data.list[i].v_NO == data.list2[j].vr_Parentno){
 
 						comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
 						comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Writer +"</span>"

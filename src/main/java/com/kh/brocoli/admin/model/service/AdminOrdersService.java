@@ -1,6 +1,7 @@
 package com.kh.brocoli.admin.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Orders;
@@ -45,6 +46,14 @@ public interface AdminOrdersService {
 	 * @return
 	 */
 	ArrayList<Product_Option> orderChangeModal(int chPNO);
+
+	/**
+	 *  작성자 : 신은지
+	 *  5. 교환 모달창 저장
+	 * @param hmap
+	 * @return
+	 */
+	int changeOption(HashMap<String, String> hmap);
 
 
 }

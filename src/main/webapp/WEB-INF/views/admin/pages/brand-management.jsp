@@ -75,7 +75,7 @@
                                                 <th style="width:10%">주소</th>
                                                 <th style="width:8%">전화번호</th>
                                                 <th style="width:8%">입점일</th>
-                                                <th style="width:3%">입점상태(Y/N)</th>
+                                                <th style="width:3%">입점상태</th>
                                             </tr>
                                         </thead>
                                         <tbody>
