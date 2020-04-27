@@ -151,7 +151,20 @@ public class ownerAuctionController {
 		return renameImageName;
 	}
 	
-	
+	@RequestMapping("auctionDelete.ow")
+	@ResponseBody
+	public void auctionDelete(HttpServletResponse response,Auction ac) throws JsonIOException, IOException {
+		System.out.println("제거할 옥션 넘버 : " + ac.getAc_No());
+		
+		Auction result = oService.auctionDelete(ac);
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(ac,response.getWriter());
+	}
 	
 	
 	
