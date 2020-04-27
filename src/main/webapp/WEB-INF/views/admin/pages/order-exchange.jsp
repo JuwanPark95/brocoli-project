@@ -79,7 +79,6 @@
 	                                            <th style="width:8%">교환사유</th>
 	                                            <th style="width:8%">교환내용</th>
 	                                            <th style="width:8%">교환요청일</th>
-	                                            <th style="width:8%">교환완료일</th>
 	                                            <th style="width:12%">교환상태</th>
 	                                            <th style="width:12%">교환</th>
 	                                        </tr>
@@ -100,8 +99,23 @@
 	                                            <td>${c.ch_Reason}</td>
 	                                            <td>${c.ch_Comment}</td>
 	                                            <td>${c.ch_Date}</td>
-	                                            <td>${c.ch_EnDate}</td>
-	                                            <td id="ch_Status" name="ch_Status">${c.ch_Status}</td>
+	                                            <td id="ch_Status" name="ch_Status">
+	                                            <c:set var="ch_Status" value="${c.ch_Status}" />
+                                            	<c:choose>
+                                            		<c:when test="${ch_Status eq '1'}">
+                                            			<strong style="color:blue;">교환접수</strong>
+                                            		</c:when>
+                                            		<c:when test="${ch_Status eq '2'}">
+                                            			<strong style="color:blue;">교환진행중</strong>
+                                            		</c:when>
+                                            		<c:when test="${ch_Status eq '3'}">
+                                            			<strong style="color:blue;">재발송</strong>
+                                            		</c:when>
+                                            		<c:when test="${ch_Status eq '4'}">
+                                            			<strong style="color:blue;">교환완료</strong>
+                                            		</c:when>
+                                            	</c:choose>
+	                                            </td>
 	                                            <td>
 									                <button name="orderChangeBtn" type="button" class="btn btn-outline-dark"
 									                        style="width:60px; height:40px; ">
@@ -138,10 +152,6 @@
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1</label>
                             <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12 col-sm-3 col-form-label text-sm-right">변경 후 옵션1</label>
-                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
-                        </div>
                         <div class="form-group row" style="padding-bottom:3px;">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1 변경</label>
                             <div class="btn-group">
@@ -153,10 +163,6 @@
 				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2</label>
-                            <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-12 col-sm-3 col-form-label text-sm-right">변경 후 옵션2</label>
                             <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
                         </div>
                         <div class="form-group row" style="padding-bottom:3px;">
@@ -221,7 +227,6 @@
                                             <th style="width:8%">환불사유</th>
                                             <th style="width:8%">환불내용</th>
                                             <th style="width:8%">환불요청일</th>
-                                            <th style="width:8%">환불완료일</th>
                                             <th style="width:12%">환불상태</th>
                                             <th style="width:12%">환불</th>
                                         </tr>
@@ -240,12 +245,24 @@
                                             <td>${r.re_Reason}</td>
                                             <td>${r.re_Comment}</td>
                                             <td>${r.re_Date}</td>
-                                            <td>${r.re_Enddate}</td>
-                                            <td name="re_Status">${r.re_Status}</td>
+                                            <td name="re_Status">
+                                            	<c:set var="re_Status" value="${r.re_Status}" />
+                                            	<c:choose>
+                                            		<c:when test="${re_Status eq '1'}">
+                                            			<strong>환불접수</strong>
+                                            		</c:when>
+                                            		<c:when test="${re_Status eq '2'}">
+                                            			<strong>환불진행중</strong>
+                                            		</c:when>
+                                            		<c:when test="${re_Status eq '3'}">
+                                            			<strong style="color:tomato;">환불완료</strong>
+                                            		</c:when>
+                                            	</c:choose>
+                                            </td>
                                             <td>
 								               <button type="submit" class="btn btn-outline-danger "
 								                       name="orderRejectBtn" style="width:60px; height:40px; ">
-								                      	반품
+								                      	환불
 								               </button>
                                             </td>
                                         </tr>
@@ -306,7 +323,9 @@
 	    });
     </script>
     
+    <!-- ============================================================== -->
     <!-- 교환 모달 저장 클릭시 ajax -->
+    <!-- ============================================================== -->
     <script>
     	/* $(document).ready(function(){
     		$("submitOk()").click(function(){ */
@@ -317,14 +336,11 @@
 	   			var modalChangeSelect =$('#modalChangeSelect option:selected').val();
 	   			var chNO =$('#chNO').text();
 	   			var chORNO = $('#chORNO').text();
-	   			var option1 = $(this).parents('#changeTable').children('td[name=option1]').text();
-	    		var option2 = $('#option2').text();
-	    		var ch_Status =  $('#ch_Status').text();
-
-				console.log("option1"+option1);
-	    		console.log("option2"+option2);
-	    		console.log("ch_Status"+ch_Status);
-	    		
+	   			var option1 = $(this).parents('#changeTable').children('td[name=option1]');
+	    		var option2 = $(this).parents('#changeTable').children('td[name=option2]');
+	    		var ch_Status =  $('#ch_Status');
+	    		ch_Status.css("color","blue");
+	    		ch_Status.css("font-weight","bold");
 	    		
 	   			$.ajax({
 	   				url:'changeOption.ad',
@@ -332,37 +348,30 @@
 	   					  modalChangeSelect:modalChangeSelect , chNO:chNO ,chORNO:chORNO},
 	   				type:'post',
 	   				success:function(data){
-	   					alert("?");
 	   					option1.text(or_Option1Select);
 	   					option2.text(or_Option2Select);
+	   					
+	   					switch(modalChangeSelect){
+	   	    			case '1': modalChangeSelect="교환접수"; break;
+	   	    			case '2': modalChangeSelect="교환진행중"; break;
+	   	    			case '3': modalChangeSelect="재발송"; break;
+	   	    			case '4': modalChangeSelect="교환완료"; break;
+	   	    			}
+	   					
+	   					ch_Status.text(modalChangeSelect);
+	   					
 	   				},error:function(){
 	        				
 	        		  }
 	   			});
     		}
     </script>
-    
-    <!--  dropdown 저장값 불러오기  -->
-    <script>
-     	var m_Grant = $("#m_Grant").text();
-     	var admin = "admin";
-     	var owner = "owner";
-     	var members = "일반회원";
-     	if(m_Grant == admin ){
-     		$("#mGrant_Class option[value='1']").attr("selected","selected"); 
-     	}else if(m_Grant == owner){
-     		$("#mGrant_Class option[value='2']").attr("selected","selected"); 	
-     	}else if(m_Grant == members){
-     		$("#mGrant_Class option[value='3']").attr("selected","selected");
-     	}
-    </script>
-    <!-- //신은지 -->
     <!-- ============================================================== -->
-    <!--교환시 팝업창  -->  
+    <!-- //교환 모달 저장 클릭시 ajax -->
     <!-- ============================================================== -->
     
     <!-- ============================================================== -->
-    <!--반품시 alert창으로 한번 확인 -->  
+    <!--반품시 alert창으로 확인 후 주문페이지 상태 변경+해당상품재고+1 -->  
     <!-- ============================================================== -->
     
     <script>
@@ -373,6 +382,9 @@
 	    			var reORNO = $(this).parents("#rejectTable").children('td[name=reORNO]').text();
 	    			var re_Op_NO = $(this).parents("#rejectTable").children('td[name=re_Op_NO]').text();
 	    			var re_Status = $(this).parents("#rejectTable").children('td[name=re_Status]');
+	    			re_Status.css("color","tomato");
+	    			re_Status.css("font-weight","bold");
+	    			
 	    			$.ajax({
 	    				url:'orderReject.ad',
 		   				data:{reNO:reNO, reORNO:reORNO,re_Op_NO:re_Op_NO},
@@ -384,19 +396,15 @@
 		   					}
 		   				},error:function(){
 		        				
-		        		  }
-	    				
+		        		}
 	    			});
-
 	    		}
-            	else {
-            	}	
 	    	});
 	    });
     </script>
     
     <!-- ============================================================== -->
-    <!--/ 반품시 alert창으로 한번 확인 -->  
+    <!--/ <!--반품시 alert창으로 확인 후 주문페이지 상태 변경+해당상품재고+1 -->  
     <!-- ============================================================== -->
     
   

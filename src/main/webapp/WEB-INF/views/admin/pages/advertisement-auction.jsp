@@ -66,34 +66,53 @@
                                     <table id="brand-owner-contact" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
-                                                <th style="width:3%">번호</th>
-                                                <th style="width:5%">배너번호</th>
-                                                <th style="width:5%">브랜드</th>
-                                                <th style="width:5%">입찰가</th>
-                                                <th style="width:5%">신청일</th>
-                                                <th style="width:5%">신청자ID</th>
-                                                <th style="width:8%">낙찰/반려 사유</th>
-                                                <th style="width:8%">낙찰/반려</th>
+                                                <th>경매번호</th>
+                                                <th>배너번호</th>
+                                                <th>브랜드</th>
+                                                <th>이미지</th>
+                                                <th>신청ID</th>
+                                                <th>입찰가</th>
+                                                <th>신청일</th>
+                                                <th>낙찰/패찰 사유</th>
+                                                <th>낙찰/패찰 사유</th>
+                                                <th>낙찰/패찰</th>
+                                                <th>낙찰/패찰</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="i" begin="0" end="10"> <!-- for -->
-                                            <tr>
-                                                <td>1</td>
-                                                <td>No.1</td>
-                                                <td>나이키</td>
-                                                <td>100,000</td>
-                                                <td>2020-03-03</td>
-                                                <td>nikemen</td>
-                                                <td><input/></td>
+                                        <c:forEach var="a" items="${auctionList}">
+                                            <tr id=auctionTable>
+                                                <td name="ac_No">${a.ac_No}</td>
+                                                <td>${a.ac_Banner_NO}</td>
+                                                <td>${a.ac_Brand}</td>
+                                                <td><img src="/brocoli/resources/Auction-Img/${a.ac_Img_Rename}" width="100" height="100"></td>                                              
+                                                <td>${a.ac_ID}</td>
+                                                <td>${a.ac_Price}</td>
+                                                <td>${a.ac_Date}</td>
+                                                <td name="ac_Comment">${a.ac_Comment}</td>
+                                                <td name="ac_CommentBox"><input type="text" name="ac_CommentText"></td>
+                                                <td name="ac_Status">
+                                                <c:set var="ac_Status" value="${a.ac_Status}" />
+                                            	<c:choose>
+                                            		<c:when test="${ac_Status eq '1'}">
+                                            			<strong><span style="color:#4865CD;">입찰</span></strong>
+                                            		</c:when>
+                                            		<c:when test="${ac_Status eq '2'}">
+                                            			<strong><span style="color:tomato;">패찰</span></strong>
+                                            		</c:when>
+                                            		<c:when test="${ac_Status eq '3'}">
+                                            			<strong><span style="color:#4865CD;">낙찰</span></strong>
+                                            		</c:when>
+                                            	</c:choose>
+                                                </td>
                                                 <td>
 									              <button type="submit" class="btn btn-outline-dark"
-									                      style="width:60px; height:40px; ">
+									                      name="okBtn" style="width:60px; height:40px; ">
 									                      	낙찰
 									               </button>
 									               <button type="submit" class="btn btn-outline-danger "
-									                      style="width:60px; height:40px; ">
-									                      	반려
+									                      name="failBtn"style="width:60px; height:40px; ">
+									                      	패찰
 									               </button>
                                                 </td>
 											</tr>
@@ -117,6 +136,65 @@
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->  
+    
+    <!-- 낙찰 버튼 클릭 시 ajax -->
+    <script>
+    	$(function(){
+    		$("button[name=okBtn]").on("click",function(){
+    			var ac_CommentText =$(this).parents('#auctionTable').children('td[name=ac_CommentBox]').children('input[name=ac_CommentText]').val();
+    			var ac_No = $(this).parents('#auctionTable').children('td[name=ac_No]').text();
+    			var ac_Comment = $(this).parents('#auctionTable').children('td[name=ac_Comment]');
+    			var ac_Status = $(this).parents('#auctionTable').children('td[name=ac_Status]');
+    			ac_Status.css("color","#4865CD");
+    			ac_Status.css("font-weight","bold");
+    			
+    			$.ajax({
+    				url:'auctionWin.ad',
+    				data:{ac_CommentText:ac_CommentText, ac_No:ac_No},
+    				type:'post',
+    				success:function(data){
+    					if(data == 'Sucess'){
+    						ac_Comment.text(ac_CommentText);
+    						ac_Status.text('낙찰');
+    					}
+    				},error:function(){
+    					console.log("전송실패")
+    				}
+    			});
+    		});
+    	});
+    </script>
+     <!-- //낙찰 버튼 클릭 시 ajax -->
+     
+     <!-- 폐찰 버튼 클릭 시 ajax -->
+    <script>
+    	$(function(){
+    		$("button[name=failBtn]").on("click",function(){
+    			var ac_CommentText =$(this).parents('#auctionTable').children('td[name=ac_CommentBox]').children('input[name=ac_CommentText]').val();
+    			var ac_No = $(this).parents('#auctionTable').children('td[name=ac_No]').text();
+    			var ac_Comment = $(this).parents('#auctionTable').children('td[name=ac_Comment]');
+    			var ac_Status = $(this).parents('#auctionTable').children('td[name=ac_Status]');    			
+    			ac_Status.css("color","tomato");
+    			ac_Status.css("font-weight","bold");
+    			
+    			$.ajax({
+    				url:'auctionFail.ad',
+    				data:{ac_CommentText:ac_CommentText, ac_No:ac_No},
+    				type:'post',
+    				success:function(data){
+    					if(data == 'Sucess'){
+    						ac_Comment.text(ac_CommentText);
+    						ac_Status.text('패찰');
+    					}
+    				},error:function(){
+    					console.log("전송실패")
+    				}
+    			});
+    		});
+    	});
+    </script>
+     <!-- //폐찰 버튼 클릭 시 ajax -->
+    
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <script src="/brocoli/resources/adminResources/vendor/slimscroll/jquery.slimscroll.js"></script>

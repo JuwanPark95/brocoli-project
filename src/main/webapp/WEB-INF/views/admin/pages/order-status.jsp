@@ -148,7 +148,6 @@
     
     <!-- 작성자 : 신은지  / 주문상태 변경 ajax -->
     <script>
-    
     	$(function(){
     		$("button[name=orderStatusBtn]").on("click",function(){
     			//var jsonData = new Object();
