@@ -33,5 +33,9 @@ public class ownerAuctionDao {
 		return sqlSession.selectOne("ownerAuction-mapper.selectAcutionOne",acNo);
 	}
 
+	public int DeleteAuctionBanner(int acNo) {
+		return sqlSession.delete("ownerAuction-mapper.deleteAcutionBanner",acNo);
+	}
+
 	
 }

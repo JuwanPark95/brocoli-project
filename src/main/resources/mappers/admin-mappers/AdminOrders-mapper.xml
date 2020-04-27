@@ -16,6 +16,8 @@
 		<result property="or_Deliver_Num" column="OR_DELIVER_NUM"/>
 		<result property="or_Deliver_Vender" column="OR_DELIVER_VENDER"/>
 		<result property="or_Mno" column="OR_MNO"/>
+		<result property="or_Recip_Name" column="OR_RECIP_NAME"/>
+		<result property="or_Phone" column="OR_PHONE"/>
 		<result property="or_P_NO" column="OR_P_NO"/>
 		<result property="or_Brand_NO" column="OR_BRAND_NO"/>
 		
@@ -140,5 +142,19 @@
 		FROM PRODUCT_OPTION
 		WHERE OP_P_NO = #{chPNO}
 	</select>
+	
+	<update id="changeOption" parameterType="Change">
+		UPDATE CHANGE
+		SET CH_STATUS=#{modalChangeSelect}
+		WHERE CH_NO=#{chNO}
+	</update>
+	
+	<update id="changeOption2" parameterType="Orders">
+		UPDATE ORDERS
+		SET OR_OPTION1=#{or_Option1Select} , OR_OPTION2=#{or_Option2Select}
+		WHERE OR_NO=#{chORNO}
+	</update>
+	
+	
 	
 </mapper>

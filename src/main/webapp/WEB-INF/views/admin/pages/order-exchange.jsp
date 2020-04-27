@@ -68,6 +68,7 @@
                                             <tr>
 	                                        	<th style="width:3%">번호</th>
 	                                            <th style="width:3%">교환번호</th>
+	                                            <th style="width:3%">주문번호</th>
 	                                            <th style="width:8%">주문자</th>
 	                                            <th style="width:8%">아이디</th> 
 	                                            <th style="width:10%">상품명</th>
@@ -88,18 +89,19 @@
                                             <tr id="changeTable">
                                                 <td>${cl.count}</td>
 	                                            <td name="chNO">${c.ch_No}</td>
+	                                            <td name="chORNO">${c.ch_ordersMember.or_NO}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mId}</td>
 	                                            <td>${c.ch_ordersMember.or_Member.mName}</td>
 	                                            <td name="chPname">${c.ch_Pname}</td>
 	                                            <td name="chPNO">${c.ch_ordersMember.pList.p_NO}</td>
-	                                            <td name="option1">${c.ch_ordersMember.or_Option1}</td>
-	                                            <td name="option2">${c.ch_ordersMember.or_Option2}</td>
+	                                            <td id="option1" name="option1">${c.ch_ordersMember.or_Option1}</td>
+	                                            <td id="option2" name="option2">${c.ch_ordersMember.or_Option2}</td>
 	                                            <td>${c.ch_Price}</td>
 	                                            <td>${c.ch_Reason}</td>
 	                                            <td>${c.ch_Comment}</td>
 	                                            <td>${c.ch_Date}</td>
 	                                            <td>${c.ch_EnDate}</td>
-	                                            <td>${c.ch_Status}</td>
+	                                            <td id="ch_Status" name="ch_Status">${c.ch_Status}</td>
 	                                            <td>
 									                <button name="orderChangeBtn" type="button" class="btn btn-outline-dark"
 									                        style="width:60px; height:40px; ">
@@ -117,34 +119,33 @@
                      
                     <!-- 교환 Modal -->
 
+					<!-- <form action="changeOption.ad" method="post"> -->
 				  	<div class="modal fade" id="orderChangeModal" role="dialog"> 
 				
 				    <div class="modal-dialog">
 				
 				     <!-- Modal content-->
-				
 				      <div class="modal-content">
-					  <form>
 				        <div class="modal-header">
-				          <h4>교환 옵션 선택</h4>
+						          교환번호 <div id="chNO"></div>
+						     / 주문번호<span id="chORNO"></span>
 				          <button type="button" class="close" data-dismiss="modal">×</button>
 				
 				        </div>
 				
 				        <div class="modal-body">
-				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1</label>
-                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
-                            	 
-                            </div>
+                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">변경 후 옵션1</label>
+                            <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
                         </div>
                         <div class="form-group row" style="padding-bottom:3px;">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1 변경</label>
                             <div class="btn-group">
-                                <select id="or_Option1Select" name="or_Option1Select" style="margin-left:15px; margin-top:3px;">
-                                
-                                </select>
+                                <select id="or_Option1Select" name="or_Option1Select" style="margin-left:15px; margin-top:3px;"></select>
                             </div>		
                         </div>
 				        
@@ -152,30 +153,51 @@
 				        
 				        <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2</label>
-                            <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
-                            	
-                            </div>
+                            <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">변경 후 옵션2</label>
+                            <div id="modalOption2" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
                         </div>
                         <div class="form-group row" style="padding-bottom:3px;">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션2 변경</label>
                             <div class="btn-group">
-                                <select id="or_Option2Select" name="or_Option2Select" style="margin-left:15px; margin-top:3px;">
-                                	
+                                <select id="or_Option2Select" name="or_Option2Select" style="margin-left:15px; margin-top:3px;"></select>
+                            </div>		
+                        </div>
+                        
+                        <br><hr>
+				        
+				        <div class="form-group row">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">교환상태</label>
+                            <div id="modalChange" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;">
+                            	
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-bottom:3px;">
+                            <label class="col-12 col-sm-3 col-form-label text-sm-right">교환상태 변경</label>
+                            <div class="btn-group">
+                                <select id="modalChangeSelect" name="modalChangeSelect" style="margin-left:15px; margin-top:3px;">
+                                	<option value="1">교환접수</option>
+					                <option value="2">교환진행중</option>
+					                <option value="3">재발송</option>
+					                <option value="4">교환완료</option>
                                 </select>
                             </div>		
                         </div>
 				        </div>
-				
+				        
 				        <div class="modal-footer">
-						  <button type="submit" class="btn btn-default" data-dismiss="modal">등록</button>	
+						  <button id="changeBtn" type="submit" class="btn btn-default" data-dismiss="modal" onclick="submitOk();">등록</button>	
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
-					  </form>
 				      </div>
+				      
 				
 				    </div>
 				
 				  	</div>
+					<!-- </form> -->
                      
                      <!-- // 교환 Modal -->
                      
@@ -242,29 +264,36 @@
     <!-- ============================================================== -->
     <!--교환시 모달창 띄우기-->  
     <!-- ============================================================== -->
-    
     <script>
 	    $(document).ready(function(){
 	    	$("button[name=orderChangeBtn]").click(function(){
 	    		$("#orderChangeModal").modal();
+	    		var chNO = $(this).parents("#changeTable").children('td[name=chNO]').text();
+	    		var chORNO = $(this).parents("#changeTable").children('td[name=chORNO]').text();
 	    		var chPNO = $(this).parents("#changeTable").children('td[name=chPNO]').text();
 	    		var option1 = $(this).parents("#changeTable").children('td[name=option1]').text();
 	    		var option2 = $(this).parents("#changeTable").children('td[name=option2]').text();
 	    		var chPname = $(this).parents("#changeTable").children('td[name=chPname]').text();
+	    		var ch_Status =  $(this).parents("#changeTable").children('td[name=ch_Status]').text();
 	    		
 	    			$.ajax({
 	    				url:'orderChangeModal.ad',
-	    				data:{chPNO:chPNO, option1:option1, option2:option2, chPname:chPname},
+	    				data:{chPNO:chPNO, chPname:chPname},
 	    				type:'post',
 	    				success:function(data){
-	    					var modalOption1 =$("#modalOption1").text(option1);
-	    					var modalOption2 =$("#modalOption2").text(option2);
+	    					$("#chNO").text(chNO);
+	    					$("#chORNO").text(chORNO);
+	    					$("#modalOption1").text(option1);
+	    					$("#modalOption2").text(option2);
+	    					$("#modalChange").text(ch_Status);
+	    					$("#chORNO").text
 	    					$.each(data, function(index,po){
-	         					$('#or_Option1Select').append("<option>"+ po.option_1 +"</option>"
+	    						//ajax로 주문번호 보낸뒤 해당 상품의 option 가져와서 option select 붙여주기
+	         					$('#or_Option1Select').append("<option value="+(index++)+">"+ po.option_1 +"</option>"
 	         					);
-	         					$('#or_Option2Select').append("<option>"+ po.option_2 +"</option>"
+	         					$('#or_Option2Select').append("<option value="+(index++)+">"+ po.option_2 +"</option>"
 	    				   		);
-	    					});
+	    					}); 
 	    				},error:function(){
 	         				
 	         			}
@@ -273,6 +302,62 @@
 	    });
     </script>
     
+    <!-- 교환 모달 저장 클릭시 ajax -->
+    <script>
+    	/* $(document).ready(function(){
+    		$("submitOk()").click(function(){ */
+   			function submitOk(){
+	   			/* var or_Option1Select = $(this).parents('#or_Option1Select option:selected').text(); */
+	   			var or_Option1Select =$('#or_Option1Select option:selected').text();
+	   			var or_Option2Select =$('#or_Option2Select option:selected').text();
+	   			var modalChangeSelect =$('#modalChangeSelect option:selected').val();
+	   			var chNO =$('#chNO').text();
+	   			var chORNO = $('#chORNO').text();
+	   			var option1 = $(this).parents('#changeTable').children('td[name=option1]').text();
+	    		var option2 = $('#option2').text();
+	    		var ch_Status =  $('#ch_Status').text();
+
+				console.log("option1"+option1);
+	    		console.log("option2"+option2);
+	    		console.log("ch_Status"+ch_Status);
+	    		
+	    		
+	   			$.ajax({
+	   				url:'changeOption.ad',
+	   				data:{or_Option1Select:or_Option1Select, or_Option2Select:or_Option2Select, 
+	   					  modalChangeSelect:modalChangeSelect , chNO:chNO ,chORNO:chORNO},
+	   				type:'post',
+	   				success:function(data){
+	   					alert("?");
+	   					option1.html(or_Option1Select);
+	   					option2.html(or_Option2Select);
+	   				},error:function(){
+	        				
+	        		  }
+	   			});
+    		}
+    </script>
+    
+    <!--  dropdown 저장값 불러오기  -->
+    <script>
+     	var m_Grant = $("#m_Grant").text();
+     	var admin = "admin";
+     	var owner = "owner";
+     	var members = "일반회원";
+     	if(m_Grant == admin ){
+     		$("#mGrant_Class option[value='1']").attr("selected","selected"); 
+     	}else if(m_Grant == owner){
+     		$("#mGrant_Class option[value='2']").attr("selected","selected"); 	
+     	}else if(m_Grant == members){
+     		$("#mGrant_Class option[value='3']").attr("selected","selected");
+     	}
+     	
+     	for(int i =0 ; i<po.length ; i++){
+     			
+     	}
+     	}
+    </script>
+    <!-- //신은지 -->
     <!-- ============================================================== -->
     <!--교환시 팝업창  -->  
     <!-- ============================================================== -->

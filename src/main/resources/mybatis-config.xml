@@ -17,6 +17,7 @@
         <typeAlias type="com.kh.brocoli.member.model.vo.Cart" alias="Cart"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Change" alias="Change"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Orders" alias="Orders"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.trackOrders" alias="trackOrders"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Reject" alias="Reject"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Wish" alias="Wish"/>
         <!--  상품   -->

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
@@ -209,6 +210,14 @@ public interface UserService {
 	 * @return
 	 */
 	ArrayList<Product> searchProduct2(String keyword, String keyword2);
+
+	/**
+	 * 작성자 임현섭
+	 * 최근 배송 조회용
+	 * @param m
+	 * @return
+	 */
+	ArrayList<trackOrders> recentCheck(int mno);
 
 	
  
