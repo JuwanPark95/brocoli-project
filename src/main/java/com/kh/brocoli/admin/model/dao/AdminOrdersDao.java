@@ -84,5 +84,35 @@ public class AdminOrdersDao {
 	public int changeOption2(HashMap<String, String> hmap) {
 		return sqlSession.update("AdminOrders.changeOption2",hmap);
 	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 6. 반품시 수량 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectAmount(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectAmount",hmap);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  6-1. 반품시 상태 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectStatus(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectStatus",hmap);
+	}
+
+	/**
+	 * 작성자 : 신은지 
+	 * 6-2. 반품시 주문 페이지 상태 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectOrderStatus(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectOrderStatus",hmap);
+	}
 	
 }

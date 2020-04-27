@@ -77,8 +77,8 @@ public class AdminOrdersController {
 		
 		ArrayList<Change> changeList = AOService.selectChangeList(); 
 		ArrayList<Reject> rejectList = AOService.selectRejectList(); 
-		System.out.println("changeList"+changeList);
-		System.out.println("rejectList"+rejectList);
+		System.out.println("changeList11"+changeList);
+		System.out.println("rejectList11"+rejectList);
 		mv.addObject(changeList);
 		mv.addObject(rejectList);
 		mv.setViewName("order-exchange");
@@ -114,6 +114,7 @@ public class AdminOrdersController {
 	 * @return
 	 */
 	@RequestMapping("changeOption.ad")
+	@ResponseBody
 	public String changeOption(@RequestParam(value="or_Option1Select",required=false)String or_Option1Select,
 							   @RequestParam(value="or_Option2Select",required=false)String or_Option2Select,
 							   @RequestParam(value="modalChangeSelect",required=false)String modalChangeSelect,
@@ -132,10 +133,37 @@ public class AdminOrdersController {
 		int result = AOService.changeOption(hmap);
 		
 		if(result>0) {
-			return "redirect:orderStatus.ad";
+			return "Sucess";
 		}else {
-			return "";
-		}
+			return "Fail";
+		}	
+	}
+	
+	/**
+	 * 작성자 : 신은지
+	 * 6. 반품 
+	 * @param reORNO
+	 * @param re_Pname
+	 * @return
+	 */
+	@RequestMapping("orderReject.ad")
+	@ResponseBody
+	public String orderReject(@RequestParam(value="reNO",required=false)String reNO,
+							  @RequestParam(value="re_Op_NO",required=false)String re_Op_NO,
+							  @RequestParam(value="reORNO",required=false)String reORNO) {
+		
+		HashMap<String,String> hmap = new HashMap<>();		
+		hmap.put("reNO",reNO);
+		hmap.put("re_Op_NO",re_Op_NO);
+		hmap.put("reORNO",reORNO);
+		
+		int result = AOService.orderReject(hmap);
+		
+		if(result>0) {
+			return "Sucess";
+		}else {
+			return "Fail";
+		}	
 	}
 	
 }

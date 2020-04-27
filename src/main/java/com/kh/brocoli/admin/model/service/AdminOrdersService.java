@@ -55,5 +55,13 @@ public interface AdminOrdersService {
 	 */
 	int changeOption(HashMap<String, String> hmap);
 
+	/**
+	 * 	작성자 : 신은지
+	 *  6. 반품
+	 * @param hmap
+	 * @return
+	 */
+	int orderReject(HashMap<String, String> hmap);
+
 
 }

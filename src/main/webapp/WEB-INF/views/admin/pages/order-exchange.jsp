@@ -212,9 +212,11 @@
                                         <tr>
                                         	<th style="width:3%">번호</th>
                                             <th style="width:3%">환불번호</th>
+                                            <th style="width:3%">주문번호</th>
                                             <th style="width:8%">주문자</th>
                                             <th style="width:8%">아이디</th> 
                                             <th style="width:10%">상품명</th>
+                                            <th style="width:10%">상품옵션번호</th>
                                             <th style="width:8%">가격</th>
                                             <th style="width:8%">환불사유</th>
                                             <th style="width:8%">환불내용</th>
@@ -226,21 +228,23 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="r" items="${rejectList}" varStatus="rl"> 
-                                        <tr>
+                                        <tr id="rejectTable" >
                                         	<td>${rl.count}</td>
-                                            <td>${r.re_No}</td>
+                                            <td name="reNO">${r.re_No}</td>
+                                            <td name="reORNO">${r.re_ordersMember.or_NO}</td>
                                             <td>${r.re_ordersMember.or_Member.mId}</td>
                                             <td>${r.re_ordersMember.or_Member.mName}</td>
-                                            <td>${r.re_Pname}</td>
+                                            <td name="re_Pname">${r.re_Pname}</td>
+                                            <td name="re_Op_NO">${r.re_ordersMember.pList.poList.op_NO}</td>
                                             <td>${r.re_Price}</td>
                                             <td>${r.re_Reason}</td>
                                             <td>${r.re_Comment}</td>
                                             <td>${r.re_Date}</td>
                                             <td>${r.re_Enddate}</td>
-                                            <td>${r.re_Status}</td>
+                                            <td name="re_Status">${r.re_Status}</td>
                                             <td>
 								               <button type="submit" class="btn btn-outline-danger "
-								                      style="width:60px; height:40px; ">
+								                       name="orderRejectBtn" style="width:60px; height:40px; ">
 								                      	반품
 								               </button>
                                             </td>
@@ -329,8 +333,8 @@
 	   				type:'post',
 	   				success:function(data){
 	   					alert("?");
-	   					option1.html(or_Option1Select);
-	   					option2.html(or_Option2Select);
+	   					option1.text(or_Option1Select);
+	   					option2.text(or_Option2Select);
 	   				},error:function(){
 	        				
 	        		  }
@@ -351,11 +355,6 @@
      	}else if(m_Grant == members){
      		$("#mGrant_Class option[value='3']").attr("selected","selected");
      	}
-     	
-     	for(int i =0 ; i<po.length ; i++){
-     			
-     	}
-     	}
     </script>
     <!-- //신은지 -->
     <!-- ============================================================== -->
@@ -366,7 +365,35 @@
     <!--반품시 alert창으로 한번 확인 -->  
     <!-- ============================================================== -->
     
-    
+    <script>
+	    $(document).ready(function(){
+	    	$("button[name=orderRejectBtn]").click(function(){
+	    		if (confirm("반품하시겠습니까?")) {
+	    			var reNO = $(this).parents("#rejectTable").children('td[name=reNO]').text();
+	    			var reORNO = $(this).parents("#rejectTable").children('td[name=reORNO]').text();
+	    			var re_Op_NO = $(this).parents("#rejectTable").children('td[name=re_Op_NO]').text();
+	    			var re_Status = $(this).parents("#rejectTable").children('td[name=re_Status]');
+	    			$.ajax({
+	    				url:'orderReject.ad',
+		   				data:{reNO:reNO, reORNO:reORNO,re_Op_NO:re_Op_NO},
+		   				type:'post',
+		   				success:function(data){
+		   					if(data=='Sucess'){
+		   					alert('반품완료.');
+			    			re_Status.text('환불완료');
+		   					}
+		   				},error:function(){
+		        				
+		        		  }
+	    				
+	    			});
+
+	    		}
+            	else {
+            	}	
+	    	});
+	    });
+    </script>
     
     <!-- ============================================================== -->
     <!--/ 반품시 alert창으로 한번 확인 -->  

@@ -81,6 +81,8 @@
                                                 <th style="width:10%">배송지</th>
                                                 <th style="width:5%">택배사</th>
                                                 <th style="width:5%">송장번호</th>
+                                                <th style="width:5%">수령인</th>
+                                                <th style="width:5%">수령인번호</th>
                                                 <th style="width:8%">주문상태</th>
                                                 <th style="width:8%">상태변경</th>
                                                 
@@ -103,6 +105,8 @@
                                                 <td>${o.or_Address}</td>
                                                 <td>${o.or_Deliver_Vender}</td>
                                                 <td>${o.or_Deliver_Num}</td>
+                                                <td>${o.or_Recip_Name}</td>
+                                                <td>${o.or_Phone}</td>
                                                 <td name="orderStatus">${o.or_Status_Str}</td>
                                                 <td>
                                                  <select name="orderStatusSelect" style="height: 30px; background-color: white;">
