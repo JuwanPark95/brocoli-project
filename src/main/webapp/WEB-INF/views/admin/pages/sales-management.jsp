@@ -202,11 +202,15 @@
          							                         +searchList.or_Price+"</td><td>"
          							                         +searchList.or_Amount+"</td></tr>"
          					);
-         					//검색 결과 매출총액 계산 (String으로 들어오므로 parseInt로 형변환 후 계산)
-         					sum = sum + parseInt(searchList.or_Price);
-         					//기존 테이블 매출총액 텍스트 변경
-         					$('#searchTotal').text(sum).append("원");
+         						//검색 결과 매출총액 계산 (String으로 들어오므로 parseInt로 형변환 후 계산)
+         						sum = sum + parseInt(searchList.or_Price);
+         						//기존 테이블 매출총액 텍스트 변경
+         						$('#searchTotal').text(sum).append("원");
          				});
+   						//검색결과 없을때 0원
+   						if(!data.length) {
+   						$('#searchTotal').text('0').append("원");
+   						}
          			},error:function(){
          				
          			}

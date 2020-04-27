@@ -504,4 +504,17 @@
 	
 	</select>
 	
+	<update id="deletereview">
+	UPDATE REVIEW
+	SET V_STATUS = 'N'
+	WHERE V_NO = #{V_NO}
+	
+	</update>
+	
+	
+	<select id="selectAvgReview" resultMap="reviewResultSet">
+	SELECT ROUND(AVG(V_SCORE),2) AS V_SCORE FROM REVIEW
+	WHERE v_P_NO = #{v_P_NO}
+	ANd V_STATUS = 'Y'
+	</select>
 </mapper>

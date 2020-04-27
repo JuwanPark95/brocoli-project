@@ -259,7 +259,7 @@
 									</ul>
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='orderChangeReject.ad'/>">교환/반품</a></li>
+											href="<c:url value='orderChangeReject.ad'/>">교환/환불</a></li>
 									</ul>
 								</div>
 							</li>
@@ -348,10 +348,6 @@
 									<ul class="nav flex-column">
 										<li class="nav-item"><a class="nav-link"
 											href="<c:url value='advertisement-auction.ad'/>">경매신청현황</a></li>
-									</ul>
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='advertisement-apply.ad'/>">광고 적용 ,경매 결과</a></li>
 									</ul>
 								</div>
 							</li>

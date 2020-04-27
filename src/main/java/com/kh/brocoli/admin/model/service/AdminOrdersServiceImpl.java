@@ -80,4 +80,23 @@ public class AdminOrdersServiceImpl implements AdminOrdersService{
 		return 0;
 		}
 	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 6. 반품
+	 */
+	@Override
+	public int orderReject(HashMap<String, String> hmap) {
+		int rejectAmount = AODao.rejectAmount(hmap);
+		int rejectStatus = AODao.rejectStatus(hmap);
+		int rejectOrderStatus = AODao.rejectOrderStatus(hmap);
+		
+		int result=rejectAmount+rejectStatus+rejectOrderStatus;
+				
+		if(result>0) {
+			return result;
+		}else {
+		return 0;
+		}
+	}
 }

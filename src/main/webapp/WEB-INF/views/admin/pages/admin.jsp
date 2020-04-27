@@ -10,7 +10,6 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>어드민 메인 페이지</title>
-
 </head>
 
 <body>
@@ -32,18 +31,13 @@
 					<div class="row">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="page-header">
-								<h2 class="pageheader-title">E-commerce Dashboard Template
-								</h2>
-								<p class="pageheader-text">Nulla euismod urna eros, sit amet
-									scelerisque torton lectus vel mauris facilisis faucibus at enim
-									quis massa lobortis rutrum.</p>
+								<h2 class="pageheader-title">BROCOLI 관리자 홈</h2>
 								<div class="page-breadcrumb">
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#"
-												class="breadcrumb-link">Dashboard</a></li>
-											<li class="breadcrumb-item active" aria-current="page">E-Commerce
-												Dashboard Template</li>
+												class="breadcrumb-link">BROCOLI</a></li>
+											<li class="breadcrumb-item active" aria-current="page">홈</li>
 										</ol>
 									</nav>
 								</div>
@@ -59,13 +53,13 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Total Revenue</h5>
+										<h4 class="text-muted"><strong>총 회원수</strong></h4>
 										<div class="metric-value d-inline-block">
-											<h1 class="mb-1">$12099</h1>
+											<h1 class="mb-1">${memberCount} 명</h1>
 										</div>
 										<div
 											class="metric-label d-inline-block float-right text-success font-weight-bold">
-											<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+											<span><i class="fa fa-fw fa-arrow-up"></i></span><span></span>
 										</div>
 									</div>
 									<div id="sparkline-revenue"></div>
@@ -74,13 +68,13 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Affiliate Revenue</h5>
+										<h4 class="text-muted"><strong>총 브랜드수</strong></h4>
 										<div class="metric-value d-inline-block">
-											<h1 class="mb-1">$12099</h1>
+											<h1 class="mb-1">${brandCount } 개</h1>
 										</div>
 										<div
 											class="metric-label d-inline-block float-right text-success font-weight-bold">
-											<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+											<span><i class="fa fa-fw fa-arrow-up"></i></span><span></span>
 										</div>
 									</div>
 									<div id="sparkline-revenue2"></div>
@@ -89,9 +83,9 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Refunds</h5>
+										<h4 class="text-muted"><strong>총 주문수</strong></h4>
 										<div class="metric-value d-inline-block">
-											<h1 class="mb-1">0.00</h1>
+											<h1 class="mb-1">${orderCount } 건</h1>
 										</div>
 										<div
 											class="metric-label d-inline-block float-right text-primary font-weight-bold">
@@ -104,13 +98,13 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Avg. Revenue Per User</h5>
+										<h4 class="text-muted"><strong>총 매출</strong></h4>
 										<div class="metric-value d-inline-block">
-											<h1 class="mb-1">$28000</h1>
+											<h1 class="mb-1">${sales } 원</h1>
 										</div>
 										<div
 											class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-											<span>-2.00%</span>
+											<span></span>
 										</div>
 									</div>
 									<div id="sparkline-revenue4"></div>
