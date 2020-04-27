@@ -16,6 +16,8 @@ import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QnAComment;
+import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 
 
 @Repository("mDao")
@@ -98,6 +100,18 @@ public class MemberDao {
 
 	public ArrayList<Orders> selectorder(HashMap<String, String> hmap) {
 		return (ArrayList)sqlSession.selectList("mainMapper.selectorder",hmap);
+	}
+
+	public int insertrevieCommant(Review re) {
+		return sqlSession.insert("mainMapper.insertReview",re);
+	}
+
+	public ArrayList<Review> selectReviewCommant(String v_P_NO) {
+		return (ArrayList)sqlSession.selectList("mainMapper.selectReview",v_P_NO);
+	}
+
+	public ArrayList<Review_Reply> selectReviewReCommant() {
+		return (ArrayList)sqlSession.selectList("mainMapper.selectReviewRe");
 	}
 
 

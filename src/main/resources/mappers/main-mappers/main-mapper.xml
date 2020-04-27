@@ -237,6 +237,45 @@
       <result property="or_Brand_NO" column="OR_BRAND_NO"/>
       
    </resultMap>
+   
+   <resultMap type="Review" id="reviewResultSet">
+		<id property="v_NO" column="V_NO"/>
+		
+		<result property="v_Writer" column="V_WRITER"/>
+		<result property="v_Content" column="V_CONTENT"/>
+		<result property="v_Date" column="V_DATE"/>
+		<result property="v_Modify_Date" column="V_MODIFY_DATE"/>
+		<result property="v_Count" column="V_COUNT"/>
+		<result property="v_Score" column="V_SCORE"/>
+		<result property="v_Check" column="V_CHECK"/>
+		<result property="v_Status" column="V_STATUS"/>
+		<result property="v_Img1" column="V_IMG1"/>
+		<result property="v_Img1_ReName" column="V_IMG1_RENAME"/>
+		<result property="v_Img2" column="V_IMG2"/>
+		<result property="v_Img2_ReName" column="V_IMG2_RENAME"/>		
+		<result property="v_Mno" column="V_MNO"/>
+		<result property="v_P_NO" column="V_P_NO"/>
+		<result property="v_B_NO" column="V_B_NO"/>
+	
+		<collection property="plist" resultMap="productResultSet"/>
+	</resultMap>
+	
+	<resultMap type="Review_Reply" id="reviewReplyResultSet">
+		<id property="vr_NO" column="VR_NO"/>
+		
+		<result property="vr_Parentno" column="VR_PARENTNO"/>
+		<result property="vr_Writer" column="VR_WRITER"/>
+		<result property="vr_Content" column="VR_CONTENT"/>
+		<result property="vr_Date" column="VR_DATE"/>
+		<result property="vr_Modify_Date" column="VR_MODIFY_DATE"/>
+		<result property="vr_Count" column="VR_COUNT"/>
+		<result property="vr_Check" column="VR_STATUS"/>
+		<result property="vr_Status" column="VR_CHECK"/>
+		<result property="vr_Mno" column="VR_MNO"/>
+		
+		<collection property="mlist" resultMap="memberResultSet"/>
+		<collection property="blist" resultMap="brandResultSet"/>
+	</resultMap>
 	
 	<select id="auctionlist" resultMap="auctionResultSet">
 	SELECT *
@@ -412,11 +451,13 @@
 	 select * from QNAPRODUCT
 	where pq_P_no = #{pq_P_No}
 	and pq_status='Y'
+	ORDER BY PQ_NO
 	</select>
 	
 	<select id="selectQnaReCommant" resultMap="QnAResultSet">
 	select * from qnaProduct_reply
 	where pqr_status = 'Y'
+	ORDER BY PQR_NO
 
 	</select>
 	
@@ -439,6 +480,29 @@
 	select * from orders
 	where or_p_no = #{or_P_NO}
 	AND or_MNO = #{or_Mno}
+	</select>
+	
+	<insert id="insertReview" parameterType="Review">
+	INSERT INTO REVIEW
+	VALUES(SEQ_V_NO.NEXTVAL,#{v_Writer},#{v_Content},SYSDATE,SYSDATE,DEFAULT,#{v_Score}
+			,DEFAULT,DEFAULT,#{v_Img1},#{v_Img1_ReName},#{v_Img2},#{v_Img2_ReName},#{v_Mno}
+			,#{v_P_NO},#{v_B_NO})
+	
+	</insert>
+	
+	<select id="selectReview" resultMap="reviewResultSet">
+	select * from REVIEW
+	where V_P_NO = #{v_P_NO}
+	and V_status='Y'
+	ORDER BY V_NO
+	
+	</select>
+	
+	<select id="selectReviewRe" resultMap="reviewReplyResultSet">
+	SELECT * FROM REVIEW_REPLY
+	WHERE VR_STATUS = 'Y'
+	ORDER BY VR_NO
+	
 	</select>
 	
 </mapper>

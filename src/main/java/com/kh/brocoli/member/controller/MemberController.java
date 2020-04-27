@@ -43,6 +43,7 @@ import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QNAProduct_Reply;
 import com.kh.brocoli.product.model.vo.QnAComment;
 import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 
 @Controller
 public class MemberController {
@@ -206,7 +207,6 @@ public class MemberController {
 		
 		ArrayList<Orders> order = mService.selectorder(hmap);
 		
-		System.out.println(order);
 		mv.addObject("aProducDetailtList",pDetail);
 		mv.addObject("option",pOption);
 		mv.addObject("order",order);
@@ -403,7 +403,7 @@ public class MemberController {
 	@ResponseBody
 	public String reviewcomment(Review re,HttpServletRequest request,
 			@RequestParam(name = "uploadFile3", required = false) MultipartFile file1 ,
-			@RequestParam(name = "uploadFile4", required = false) MultipartFile file2,String v_Writer) throws JsonIOException, IOException{
+			@RequestParam(name = "uploadFile4", required = false) MultipartFile file2,String v_Writer,int v_Score) throws JsonIOException, IOException{
 		
 			re.setV_B_NO(re.getV_B_NO());
 			re.setV_Content(re.getV_Content());
@@ -411,7 +411,14 @@ public class MemberController {
 			re.setV_Writer(re.getV_Writer());
 			re.setV_Mno(re.getV_Mno());
 			
+			System.out.println(re.getV_Score());
 			
+			if(re.getV_Score() != null) {
+				re.setV_Score(re.getV_Score());
+			}else {
+				re.setV_Score("0");
+			}
+			System.out.println("re" + re);
 
 			int count=1;
 			
@@ -421,7 +428,7 @@ public class MemberController {
 				
 				if(q_Img1_Rename != null) {
 					re.setV_Img1(file1.getOriginalFilename());
-					re.setV_Img2_ReName(q_Img1_Rename);
+					re.setV_Img1_ReName(q_Img1_Rename);
 				}
 			}
 			
@@ -435,7 +442,7 @@ public class MemberController {
 				}
 			}
 			
-			int result = '1';/*mService.insertreviewCommant(re);*/
+			int result = mService.insertreviewCommant(re);
 			if(result > 0) {
 				return "ok";
 			}else {
@@ -480,6 +487,25 @@ public class MemberController {
 
 		return ReName;
 	}
+	@RequestMapping("reviewcommentlist")
+	@ResponseBody
+	private void reviewcommentlist(HttpServletResponse response,String v_P_NO) throws JsonIOException, IOException{
 
+		HashMap< String,Object > hmap = new HashMap<>();
+
+		ArrayList<Review> re = mService.selectReviewCommant(v_P_NO);
+		ArrayList<Review_Reply> rep = mService.selectReviewReCommant();
+		
+		hmap.put("list",re);
+		hmap.put("list2", rep);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(hmap,response.getWriter());
+		
+	}
 
 }

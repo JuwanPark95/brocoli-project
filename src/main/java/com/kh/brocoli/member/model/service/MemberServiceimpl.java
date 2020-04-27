@@ -17,6 +17,8 @@ import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QnAComment;
+import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 
 
 @Service("mService")
@@ -125,6 +127,24 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Orders> selectorder(HashMap<String, String> hmap) {
 		return mDao.selectorder(hmap);
+	}
+
+
+	@Override
+	public int insertreviewCommant(Review re) {
+		return mDao.insertrevieCommant(re);
+	}
+
+
+	@Override
+	public ArrayList<Review> selectReviewCommant(String v_P_NO) {
+		return mDao.selectReviewCommant(v_P_NO);
+	}
+
+
+	@Override
+	public ArrayList<Review_Reply> selectReviewReCommant() {
+		return mDao.selectReviewReCommant();
 	}
 
 

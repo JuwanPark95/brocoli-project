@@ -11,6 +11,8 @@ import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
 import com.kh.brocoli.product.model.vo.QnAComment;
+import com.kh.brocoli.product.model.vo.Review;
+import com.kh.brocoli.product.model.vo.Review_Reply;
 
 public interface MemberService {
 
@@ -133,6 +135,26 @@ public interface MemberService {
 	 * @return
 	 */
 	ArrayList<Orders> selectorder(HashMap<String, String> hmap);
+
+	/**
+	 * 리뷰 작성
+	 * @param re
+	 * @return
+	 */
+	int insertreviewCommant(Review re);
+
+	/**
+	 * 리뷰 리스트 출력
+	 * @param v_P_NO
+	 * @return
+	 */
+	ArrayList<Review> selectReviewCommant(String v_P_NO);
+
+	/**
+	 * 리뷰 관리자 리스트 출력
+	 * @return
+	 */
+	ArrayList<Review_Reply> selectReviewReCommant();
 
 
 

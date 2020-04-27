@@ -294,12 +294,12 @@
 							data-toggle="tab" href="#information" role="tab">상품 QnA</a></li>
 
 						<li class="nav-item p-b-10"><a class="nav-link"
-							data-toggle="tab" href="#reviews" role="tab">후기 (1)</a></li>
+							data-toggle="tab" href="#reviews" role="tab">후기</a></li>
 					</ul>
 
 					<!-- Tab panes -->
 					<div class="tab-content p-t-43">
-						<!-- - -->
+						<!-- - --> 
 
 						<div class="tab-pane fade show active" id="description"
 							role="tabpanel">
@@ -327,31 +327,7 @@
 									<div class="p-b-30 m-lr-15-sm" >
 										<div id="noComment" style="text-align: center;">등록된  상품QnA 가 없습니다.</div>
 										<div id="commentQnA">
-										
-										<!-- Review -->
-							<!-- 				<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> 작성자 </span>
-													<span class="mtext-107 cl2 p-r-20"> 작성일  </span>
-													
-												</div>
-										<div class="flex-w flex-t p-b-68">
-										
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6" style="width:160px; height:200px; border-radius: 0px;">
-												<img src="/brocoli/resources/mainResources/images/avatar-01.jpg">
-											</div>
-											
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6" style="width:160px; height:200px;  border-radius: 0px;">
-												<img src="/brocoli/resources/mainResources/images/avatar-01.jpg">
-											</div>
-											
-	
-											<div class="size-207"   style= "margin-top: 20px;">
-											
-												<p class="stext-102 cl6">맘에 드네여</p>
-												
-											</div>
-											
-										</div> -->
+
 										</div>
 										<!-- Add review -->
 										<c:if test="${!empty sessionScope.loginUser }">
@@ -420,37 +396,19 @@
 			
 						<!-- - -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
-							<span class="wrap-rating fs-18 cl11 pointer"
-								style="margin-left: 25%;"> <label
-								style="color: black; display: inline-block">평점 : </label> <i
-								class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i
-								class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> <i
-								class="zmdi zmdi-star-half"></i> <br>
+							<span class="wrap-rating fs-18 cl11 pointer" style="margin-left: 25%;"> 
+								<label style="color: black; display: inline-block">평점 : </label> 
+								<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> 
+								<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> 
+								<i class="zmdi zmdi-star-half"></i> <br>
 							<br> <input class="dis-none" type="number" name="rating">
 							</span>
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
-										<!-- Review -->
-										<div class="flex-w flex-t p-b-68">
-											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-												<img
-													src="/brocoli/resources/mainResources/images/avatar-01.jpg"
-													alt="AVATAR">
-											</div>
+										<div id="noReviewComment" style="text-align: center;">등록된  후기가 없습니다.</div>
+										<div id="commentReview">
 
-											<div class="size-207">
-												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20"> 홍길동 </span> <span
-														class="fs-18 cl11"> <i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i> <i
-														class="zmdi zmdi-star-half"></i>
-													</span>
-												</div>
-
-												<p class="stext-102 cl6">맘에 드네여</p>
-											</div>
 										</div>
 
 										<!-- Add review -->
@@ -471,7 +429,7 @@
 														</label>
 												<div style="margin-top: 30px;" id="star">
 												<span class="stext-102 cl3 m-r-16"> 별점 </span> 
-												<span class="wrap-rating fs-18 cl11 pointer"> 
+												<span  id="star" class="wrap-rating fs-18 cl11 pointer"> 
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i> 
@@ -505,7 +463,7 @@
 													</div>
 
 												</div>
-											
+												<input type="hidden" name="v_Score" id="v_Score" value="0">
 												<input type="hidden" name="v_B_NO" value="${aProducDetailtList[0].p_Brand_NO }">
 												<input type="hidden" name="v_Writer" value="${loginUser.mName}">
 												<input type="hidden" name="v_Mno" value="${loginUser.mNO}">
@@ -923,6 +881,9 @@
 						$('#review').val(" ");
 						$('#titleImg').attr('src', "http://via.placeholder.com/160x200");
 						$('#titleImg2').attr('src', "http://via.placeholder.com/160x200");
+						$('#uploadFile1').val("");
+						$('#uploadFile2').val("");
+						
 						commentlist();
 					}
 				},
@@ -1079,12 +1040,18 @@
 				   } 
 	</script>
 	<script>
+	$('#star').click(function(){
+		var star = $("#star i.item-rating.pointer.zmdi.zmdi-star").length;
+		$('#v_Score').val(star);
+	})
+	
 	$(function(){
-		commentlist();
+		Reviewcommentlist();
 		$("form#reviewcomment").submit(function(e) {
 			if($('#orderYN').val() == '1'){
 			e.preventDefault();
 			var formData = new FormData(this);
+			
 			$.ajax({
 				url : "reviewcomment",
 				type : "POST",
@@ -1095,7 +1062,12 @@
 						$('#review2').val(" ");
 						$('#titleImg3').attr('src', "http://via.placeholder.com/160x200");
 						$('#titleImg4').attr('src', "http://via.placeholder.com/160x200");
-						commentlist();
+						$("#star i.item-rating.pointer.zmdi").removeClass('zmdi-star');
+						$("#star i.item-rating.pointer.zmdi").addClass('zmdi-star-outline');
+						$('#uploadFile3').val("");
+						$('#uploadFile4').val("");
+
+						Reviewcommentlist();
 					}
 				},
 		        cache: false,
@@ -1117,33 +1089,261 @@
 		});
 
 	});
-	</script>
-	<script>
-
-		
-	var $starEls = $('#star span i .item-rating pointer zmdi zmdi-star-outline');
-	var rate = 0;
-
-	$starEls.each(function (index, $el) {
-	    $el.on('click', function () {
-	        rating(index);
-	    });
-		});
-
-	function rating(score) {
-		alert("123");
-	    $starEls.each(function (i, $el) {
-	        if (i < score) {
-	            $el.addClass('on');
-	        } else {
-	            $el.removeClass('on');
-	        }
-	    });
-
-	    rate = score + 1;
-	   
-	}
 	
+	$( document ).ready(function() {
+		$('#noReviewComment').css('display','block');
+		var v_P_NO = "${aProducDetailtList[0].p_NO }";
+		var comment = "";
+		var id="${loginUser.mId}";
+		$.ajax({
+			url : "reviewcommentlist",
+			data  : {
+						v_P_NO:v_P_NO
+					},
+			dataType:"json",
+			success : function(data){
+				$('#noReviewComment').css('display','block');
+				for(var i=0; i<data.list.length; i++){
+					
+					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list[i].v_Writer +"</span>"
+					
+					if(data.list[i].v_Score == '0'){
+						
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "</span>"
+						
+					} else if(data.list[i].v_Score == '1'){
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "</span>"
+		
+					}else if(data.list[i].v_Score == '2'){
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "</span>"
+						
+					}else if(data.list[i].v_Score == '3'){
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "</span>"
+						
+					}else if(data.list[i].v_Score == '4'){
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "</span>"
+						
+					}else if(data.list[i].v_Score == '5'){
+						comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "</span>"
+					}
+					 
+
+					
+					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
+					
+					if(id == data.list[i].Mno ){
+						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_P_NO+"'>삭제</button>"
+					}
+					comment +=	"</div>"
+					comment +=	"<div class='flex-w flex-t p-b-68'>"
+					
+					if(data.list[i].v_Img1_ReName != null ){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+						comment +=	"<img src='/brocoli/resources/review-Img/"+data.list[i].v_Img1_ReName+"'>"
+						comment +=	"</div>"
+					}
+					if(data.list[i].v_Img2_ReName != null){
+						comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+						comment +=	"<img src='/brocoli/resources/review-Img/"+data.list[i].v_Img2_ReName +"'>"
+						comment +=	"</div>"
+					}
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list[i].v_Content+"</p>"
+					comment +=	"</div>"
+					comment +=	"</div>"
+					
+					
+						
+					for(var j=0; j<data.list2.length; j++){
+					if(data.list[i].v_P_NO == data.list2[j].vr_Parentno){
+
+					comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Writer +"</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Date + "</span>"
+					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+					comment +=	"<p class='stext-102 cl6'>"+data.list2[j].vr_Content+"</p>"
+					comment +=	"</div>"
+					comment +=	"</div>"
+						}
+					}
+					$('#noReviewComment').css('display','none');
+				}
+					$('#commentReview').html(comment);
+		
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("ajax 처리실패");
+
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		})
+	});
+	
+	 function Reviewcommentlist()
+		{
+			$('#noReviewComment').css('display','block');
+			var v_P_NO = "${aProducDetailtList[0].p_NO }";
+			var comment = "";
+			var id="${loginUser.mId}";
+			$.ajax({
+				url : "reviewcommentlist",
+				data  : {
+							v_P_NO:v_P_NO
+						},
+				dataType:"json",
+				success : function(data){
+					$('#noReviewComment').css('display','block');
+					for(var i=0; i<data.list.length; i++){
+						
+						comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
+						comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list[i].v_Writer +"</span>"
+						
+						if(data.list[i].v_Score == '0'){
+							
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "</span>"
+							
+						} else if(data.list[i].v_Score == '1'){
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "</span>"
+			
+						}else if(data.list[i].v_Score == '2'){
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "</span>"
+							
+						}else if(data.list[i].v_Score == '3'){
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "</span>";
+							
+						}else if(data.list[i].v_Score == '4'){
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "</span>"
+							
+						}else if(data.list[i].v_Score == '5'){
+							comment += "<span class='wrap-rating fs-18 cl11 pointer' style='margin-left: 25%;'>" 
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "</span>"
+						} 
+						
+						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
+						if(id == data.list[i].Mno ){
+							comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_P_NO+"'>삭제</button>"
+						}
+						comment +=	"</div>"
+						comment +=	"<div class='flex-w flex-t p-b-68'>"
+						
+						if(data.list[i].v_Img1_ReName != null ){
+							comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px; border-radius: 0px;'>"
+							comment +=	"<img src='/brocoli/resources/review-Img/"+data.list[i].v_Img1_ReName+"'>"
+							comment +=	"</div>"
+						}
+						if(data.list[i].v_Img2_ReName != null){
+							comment +=	"<div class='wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6' style='width:160px; height:200px;  border-radius: 0px;''>"
+							comment +=	"<img src='/brocoli/resources/review-Img/"+data.list[i].v_Img2_ReName +"'>"
+							comment +=	"</div>"
+						}
+						comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+						comment +=	"<p class='stext-102 cl6'>"+data.list[i].v_Content+"</p>"
+						comment +=	"</div>"
+						comment +=	"</div>"
+						
+						
+							
+						for(var j=0; j<data.list2.length; j++){
+						if(data.list[i].v_P_NO == data.list2[j].vr_Parentno){
+
+						comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
+						comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Writer +"</span>"
+						comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Date + "</span>"
+						comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
+						comment +=	"<p class='stext-102 cl6'>"+data.list2[j].vr_Content+"</p>"
+						comment +=	"</div>"
+						comment +=	"</div>"
+							}
+						}
+						$('#noReviewComment').css('display','none');
+					}
+						$('#commentReview').html(comment);
+
+				},error : function(jqxhr, textStatus, errorThrown) {
+					console.log("ajax 처리실패");
+
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			})
+		}; 
 	</script>
+
 </body>
 </html>
