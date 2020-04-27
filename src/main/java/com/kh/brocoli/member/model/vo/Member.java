@@ -5,6 +5,7 @@ import java.sql.Date;
 import org.springframework.stereotype.Component;
 
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Product_Option;
 
@@ -35,7 +36,7 @@ public class Member {
 	
 	private Product pList;
 	private Product_Option pOptionlist;
-	
+	private Brand blist;
 	
 	
 	public Member() {
@@ -43,11 +44,10 @@ public class Member {
 	}
 
 
-
 	public Member(int mNO, String mId, String pwd, String mName, String email, String phone, String address,
 			String gender, String birthDay, String mGrant, String mPoint, int order_Count, String order_Price,
 			String report_YN, String block_YN, String block_Content, String del_Flag_YN, Date del_Date, Date enrollDate,
-			String brand, String brand_NO, Product pList, Product_Option pOptionlist) {
+			String brand, String brand_NO, Product pList, Product_Option pOptionlist, Brand blist) {
 		super();
 		this.mNO = mNO;
 		this.mId = mId;
@@ -72,8 +72,8 @@ public class Member {
 		this.brand_NO = brand_NO;
 		this.pList = pList;
 		this.pOptionlist = pOptionlist;
+		this.blist = blist;
 	}
-
 
 
 	public int getmNO() {
@@ -81,11 +81,9 @@ public class Member {
 	}
 
 
-
 	public void setmNO(int mNO) {
 		this.mNO = mNO;
 	}
-
 
 
 	public String getmId() {
@@ -93,11 +91,9 @@ public class Member {
 	}
 
 
-
 	public void setmId(String mId) {
 		this.mId = mId;
 	}
-
 
 
 	public String getPwd() {
@@ -105,11 +101,9 @@ public class Member {
 	}
 
 
-
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-
 
 
 	public String getmName() {
@@ -117,11 +111,9 @@ public class Member {
 	}
 
 
-
 	public void setmName(String mName) {
 		this.mName = mName;
 	}
-
 
 
 	public String getEmail() {
@@ -129,11 +121,9 @@ public class Member {
 	}
 
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 
 	public String getPhone() {
@@ -141,11 +131,9 @@ public class Member {
 	}
 
 
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
 
 
 	public String getAddress() {
@@ -153,11 +141,9 @@ public class Member {
 	}
 
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 
 
 	public String getGender() {
@@ -165,11 +151,9 @@ public class Member {
 	}
 
 
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 
 
 	public String getBirthDay() {
@@ -177,11 +161,9 @@ public class Member {
 	}
 
 
-
 	public void setBirthDay(String birthDay) {
 		this.birthDay = birthDay;
 	}
-
 
 
 	public String getmGrant() {
@@ -189,11 +171,9 @@ public class Member {
 	}
 
 
-
 	public void setmGrant(String mGrant) {
 		this.mGrant = mGrant;
 	}
-
 
 
 	public String getmPoint() {
@@ -201,11 +181,9 @@ public class Member {
 	}
 
 
-
 	public void setmPoint(String mPoint) {
 		this.mPoint = mPoint;
 	}
-
 
 
 	public int getOrder_Count() {
@@ -213,11 +191,9 @@ public class Member {
 	}
 
 
-
 	public void setOrder_Count(int order_Count) {
 		this.order_Count = order_Count;
 	}
-
 
 
 	public String getOrder_Price() {
@@ -225,11 +201,9 @@ public class Member {
 	}
 
 
-
 	public void setOrder_Price(String order_Price) {
 		this.order_Price = order_Price;
 	}
-
 
 
 	public String getReport_YN() {
@@ -237,11 +211,9 @@ public class Member {
 	}
 
 
-
 	public void setReport_YN(String report_YN) {
 		this.report_YN = report_YN;
 	}
-
 
 
 	public String getBlock_YN() {
@@ -249,11 +221,9 @@ public class Member {
 	}
 
 
-
 	public void setBlock_YN(String block_YN) {
 		this.block_YN = block_YN;
 	}
-
 
 
 	public String getBlock_Content() {
@@ -261,11 +231,9 @@ public class Member {
 	}
 
 
-
 	public void setBlock_Content(String block_Content) {
 		this.block_Content = block_Content;
 	}
-
 
 
 	public String getDel_Flag_YN() {
@@ -273,11 +241,9 @@ public class Member {
 	}
 
 
-
 	public void setDel_Flag_YN(String del_Flag_YN) {
 		this.del_Flag_YN = del_Flag_YN;
 	}
-
 
 
 	public Date getDel_Date() {
@@ -285,11 +251,9 @@ public class Member {
 	}
 
 
-
 	public void setDel_Date(Date del_Date) {
 		this.del_Date = del_Date;
 	}
-
 
 
 	public Date getEnrollDate() {
@@ -297,11 +261,9 @@ public class Member {
 	}
 
 
-
 	public void setEnrollDate(Date enrollDate) {
 		this.enrollDate = enrollDate;
 	}
-
 
 
 	public String getBrand() {
@@ -309,11 +271,9 @@ public class Member {
 	}
 
 
-
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-
 
 
 	public String getBrand_NO() {
@@ -321,11 +281,9 @@ public class Member {
 	}
 
 
-
 	public void setBrand_NO(String brand_NO) {
 		this.brand_NO = brand_NO;
 	}
-
 
 
 	public Product getpList() {
@@ -333,11 +291,9 @@ public class Member {
 	}
 
 
-
 	public void setpList(Product pList) {
 		this.pList = pList;
 	}
-
 
 
 	public Product_Option getpOptionlist() {
@@ -345,11 +301,19 @@ public class Member {
 	}
 
 
-
 	public void setpOptionlist(Product_Option pOptionlist) {
 		this.pOptionlist = pOptionlist;
 	}
 
+
+	public Brand getBlist() {
+		return blist;
+	}
+
+
+	public void setBlist(Brand blist) {
+		this.blist = blist;
+	}
 
 
 	@Override
@@ -359,11 +323,12 @@ public class Member {
 				+ ", mGrant=" + mGrant + ", mPoint=" + mPoint + ", order_Count=" + order_Count + ", order_Price="
 				+ order_Price + ", report_YN=" + report_YN + ", block_YN=" + block_YN + ", block_Content="
 				+ block_Content + ", del_Flag_YN=" + del_Flag_YN + ", del_Date=" + del_Date + ", enrollDate="
-				+ enrollDate + ", brand=" + brand + ", brand_NO=" + brand_NO + ", pList=" + pList
-				+ ", pOptionlist=" + pOptionlist + "]";
+				+ enrollDate + ", brand=" + brand + ", brand_NO=" + brand_NO + ", pList=" + pList + ", pOptionlist="
+				+ pOptionlist + ", blist=" + blist + "]";
 	}
-	
 
+	
+	
 	
 	
 	

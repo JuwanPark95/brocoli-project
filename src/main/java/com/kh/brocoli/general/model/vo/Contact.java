@@ -20,14 +20,16 @@ public class Contact {
 	private int con_Bno;
 	
 	private String brandName; // Contact + Member에 있는 brand 추가
-
+	
+	private Brand blist;
+	
 	public Contact() {
 		super();
 	}
 
 	public Contact(int con_NO, Date con_Date, String con_Writer, String con_Content, String con_Title,
-			String con_View_Check, String con_Img, String con_Img_ReName, String con_Status, int con_Mno,
-			String brandName , int con_Bno) {
+			String con_View_Check, String con_Img, String con_Img_ReName, String con_Status, int con_Mno, int con_Bno,
+			String brandName, Brand blist) {
 		super();
 		this.con_NO = con_NO;
 		this.con_Date = con_Date;
@@ -39,8 +41,9 @@ public class Contact {
 		this.con_Img_ReName = con_Img_ReName;
 		this.con_Status = con_Status;
 		this.con_Mno = con_Mno;
-		this.brandName = brandName;
 		this.con_Bno = con_Bno;
+		this.brandName = brandName;
+		this.blist = blist;
 	}
 
 	public int getCon_NO() {
@@ -123,14 +126,6 @@ public class Contact {
 		this.con_Mno = con_Mno;
 	}
 
-	public String getBrandName() {
-		return brandName;
-	}
-
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
-	}
-
 	public int getCon_Bno() {
 		return con_Bno;
 	}
@@ -139,12 +134,30 @@ public class Contact {
 		this.con_Bno = con_Bno;
 	}
 
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public Brand getBlist() {
+		return blist;
+	}
+
+	public void setBlist(Brand blist) {
+		this.blist = blist;
+	}
+
 	@Override
 	public String toString() {
 		return "Contact [con_NO=" + con_NO + ", con_Date=" + con_Date + ", con_Writer=" + con_Writer + ", con_Content="
 				+ con_Content + ", con_Title=" + con_Title + ", con_View_Check=" + con_View_Check + ", con_Img="
 				+ con_Img + ", con_Img_ReName=" + con_Img_ReName + ", con_Status=" + con_Status + ", con_Mno=" + con_Mno
-				+ ", con_Bno=" + con_Bno + ", brandName=" + brandName + "]";
+				+ ", con_Bno=" + con_Bno + ", brandName=" + brandName + ", blist=" + blist + "]";
 	}
+
+	
 	
 }
