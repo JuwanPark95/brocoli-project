@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
@@ -203,6 +204,10 @@ public class UserDao {
 			KeyCode.put("keyword",keyword);
 			KeyCode.put("keyword2",keyword2);
 			return (ArrayList)sqlSession.selectList("memberMapper.searchProduct2",KeyCode);
+		}
+
+		public ArrayList<trackOrders> recentCheck(int mno) {
+			return (ArrayList)sqlSession.selectList("memberMapper.recentCheck",mno);
 		}
 
 

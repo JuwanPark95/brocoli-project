@@ -17,6 +17,7 @@
         <typeAlias type="com.kh.brocoli.member.model.vo.Cart" alias="Cart"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Change" alias="Change"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Orders" alias="Orders"/>
+        <typeAlias type="com.kh.brocoli.member.model.vo.trackOrders" alias="trackOrders"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Reject" alias="Reject"/>
         <typeAlias type="com.kh.brocoli.member.model.vo.Wish" alias="Wish"/>
         <!--  상품   -->
@@ -43,6 +44,7 @@
 		<typeAlias type="com.kh.brocoli.board.model.vo.Notice" alias="Notice"/>
 		<typeAlias type="com.kh.brocoli.board.model.vo.QnA_Reply" alias="QnA_Reply"/>
 		<typeAlias type="com.kh.brocoli.board.model.vo.QnA" alias="QnA"/>
+		<typeAlias type="com.kh.brocoli.product.model.vo.QnAComment" alias="QnAComment"/>
 
  	</typeAliases>
  	
@@ -64,6 +66,7 @@
  		<mapper resource="mappers/owner-mappers/ownerOrder-mapper.xml"/>
   		<mapper resource="mappers/owner-mappers/ownerReView-mapper.xml"/>
    		<mapper resource="mappers/owner-mappers/ownerQnA-mapper.xml"/>
+   		<mapper resource="mappers/owner-mappers/ownerAuction-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminBrand-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminOrders-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminProduct-mapper.xml"/>

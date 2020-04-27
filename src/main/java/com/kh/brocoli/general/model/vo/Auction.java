@@ -3,13 +3,14 @@ package com.kh.brocoli.general.model.vo;
 import java.sql.Date;
 
 public class Auction {
+		
+		private int ac_No;
 		private String ac_Banner_NO;
 		private String ac_ID;
 		private String ac_Price;
 		private Date ac_Date;
 		private String ac_Status;
 		private String ac_Brand;
-		private String ac_Winner;
 		private String ac_Comment;
 		private String ac_Img;
 		private String ac_Img_Rename;
@@ -19,21 +20,28 @@ public class Auction {
 			super();
 		}
 
-		public Auction(String ac_Banner_NO, String ac_ID, String ac_Price, Date ac_Date, String ac_Status,
-				String ac_Brand, String ac_Winner, String ac_Comment, String ac_Img, String ac_Img_Rename,
-				int ac_Brand_NO) {
+		public Auction(int ac_No, String ac_Banner_NO, String ac_ID, String ac_Price, Date ac_Date, String ac_Status,
+				String ac_Brand, String ac_Comment, String ac_Img, String ac_Img_Rename, int ac_Brand_NO) {
 			super();
+			this.ac_No = ac_No;
 			this.ac_Banner_NO = ac_Banner_NO;
 			this.ac_ID = ac_ID;
 			this.ac_Price = ac_Price;
 			this.ac_Date = ac_Date;
 			this.ac_Status = ac_Status;
 			this.ac_Brand = ac_Brand;
-			this.ac_Winner = ac_Winner;
 			this.ac_Comment = ac_Comment;
 			this.ac_Img = ac_Img;
 			this.ac_Img_Rename = ac_Img_Rename;
 			this.ac_Brand_NO = ac_Brand_NO;
+		}
+
+		public int getAc_No() {
+			return ac_No;
+		}
+
+		public void setAc_No(int ac_No) {
+			this.ac_No = ac_No;
 		}
 
 		public String getAc_Banner_NO() {
@@ -84,14 +92,6 @@ public class Auction {
 			this.ac_Brand = ac_Brand;
 		}
 
-		public String getAc_Winner() {
-			return ac_Winner;
-		}
-
-		public void setAc_Winner(String ac_Winner) {
-			this.ac_Winner = ac_Winner;
-		}
-
 		public String getAc_Comment() {
 			return ac_Comment;
 		}
@@ -126,13 +126,11 @@ public class Auction {
 
 		@Override
 		public String toString() {
-			return "Auction [ac_Banner_NO=" + ac_Banner_NO + ", ac_ID=" + ac_ID + ", ac_Price=" + ac_Price
-					+ ", ac_Date=" + ac_Date + ", ac_Status=" + ac_Status + ", ac_Brand=" + ac_Brand + ", ac_Winner="
-					+ ac_Winner + ", ac_Comment=" + ac_Comment + ", ac_Img=" + ac_Img + ", ac_Img_Rename="
-					+ ac_Img_Rename + ", ac_Brand_NO=" + ac_Brand_NO + "]";
+			return "Auction [ac_No=" + ac_No + ", ac_Banner_NO=" + ac_Banner_NO + ", ac_ID=" + ac_ID + ", ac_Price="
+					+ ac_Price + ", ac_Date=" + ac_Date + ", ac_Status=" + ac_Status + ", ac_Brand=" + ac_Brand
+					+ ", ac_Comment=" + ac_Comment + ", ac_Img=" + ac_Img + ", ac_Img_Rename=" + ac_Img_Rename
+					+ ", ac_Brand_NO=" + ac_Brand_NO + "]";
 		}
-		
-		
-		
+
 		
 }

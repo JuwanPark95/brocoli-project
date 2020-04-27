@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,11 +21,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
 import com.kh.brocoli.product.model.vo.Product;
@@ -129,10 +131,14 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("mTrackListView.mn")
-	public String mTrackListView() {
-		
-		
-		return "My-Track-List";
+	public ModelAndView mTrackListView(ModelAndView mv,HttpSession session) {
+		Member m = (Member)session.getAttribute("loginUser");
+		String[] arr = m.getAddress().split(",");
+		mv.addObject("post",arr[0].toString())
+		.addObject("add1", arr[1].toString())
+		.addObject("add2",arr[2].toString());
+		mv.setViewName("My-Track-List");
+		return mv;
 	}
 
 	/**
@@ -1039,4 +1045,22 @@ public class UserController {
 		return mv;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="recently.do",produces="text/plain;charset=UTF-8")
+	public String recentCheck(HttpSession session,HttpServletResponse response) {
+		Member m = (Member)session.getAttribute("loginUser");
+		int mno = m.getmNO(); 
+		ArrayList<trackOrders> order = uService.recentCheck(mno);
+		/*
+		 * String[] str = order.get(0).getOr_Address().split(","); if(str[0] !=null &&
+		 * str[1] !=null && str[2] !=null) { model.addAttribute("post",str[0]);
+		 * model.addAttribute("add1",str[1]); model.addAttribute("add2",str[2]); }
+		 * if(str[2] == null) { model.addAttribute("post",str[0]);
+		 * model.addAttribute("add1",str[1]); } if(str[1] == null && str[2] == null) {
+		 * model.addAttribute("post",str[0]); }
+		 */
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		return gson.toJson(order);
+	
+	}
 }
