@@ -76,6 +76,8 @@
  		<mapper resource="mappers/admin-mappers/AdminMagazine-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/mypage-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminAuction-mapper.xml"/>
+ 		<mapper resource="mappers/admin-mappers/Admin-mapper.xml"/>
+ 		
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
  	<!--  -->
