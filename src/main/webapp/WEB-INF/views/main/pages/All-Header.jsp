@@ -157,10 +157,25 @@
 						<i class="zmdi zmdi-search"></i>
 					</div>
 
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+
+					<c:url var="headerCartList" value="cList.mn">
+							<c:param name="ct_Mno" value="${loginUser.mNO}"></c:param>
+					</c:url>
+					
+					<c:if test="${!empty sessionScope.loginUser }">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 						data-notify="2">
-						<i class="zmdi zmdi-shopping-cart"></i>
+						<i class="zmdi zmdi-shopping-cart" onclick="location.href='${headerCartList}'"></i>
 					</div>
+					</c:if>
+					<c:if test="${empty sessionScope.loginUser }">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+						data-notify="2">
+						<i class="zmdi zmdi-shopping-cart" onclick="location.href='${loginPage}'"></i>
+					</div>
+					</c:if>
+					
+					
 					<c:if test="${!empty sessionScope.loginUser }">
 						<c:url var="wishList" value="wishList.mn">
 							<c:param name="w_Mno" value="${loginUser.mNO}"></c:param>

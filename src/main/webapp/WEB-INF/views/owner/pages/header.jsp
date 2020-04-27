@@ -29,7 +29,8 @@
         <!-- ============================================================== -->
         <div class="dashboard-header" style="z-index: 20;">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="/brocoli/owner/owner.jsp"><strong> BROCOLI</strong>  PARTNER</a>
+            	<c:url var="MainPage" value="MainPage" />
+                <a class="navbar-brand" href="${MainPage }"><strong> BROCOLI</strong>  PARTNER</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,6 +38,9 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
+                          	<c:url var="bproduct" value="bproduct.mn">
+	                 			<c:param name="b_Name" value="${ brand.b_Name }"/>
+	                 		</c:url>
                             <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #1c1d1f;" href="#"><strong>스토어</strong></a>
                             <a class="navbar-brand" style="font-size: 18px; padding-top: 5px; color: #1c1d1f;"><c:out value="${loginUser.brand }"/></a>
                             </div>
@@ -129,9 +133,12 @@
                                     <h5 class="mb-0 text-white nav-user-name"><c:out value="${ loginUser.mName }"/>  </h5>
                                     <span class="status"></span><span class="ml-2">${ loginUser.brand }</span>
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                    <c:url var="alarmSetting" value="alarmSetting.ow"/>
+                                    <c:url var="brandSetting" value="brandSetting.ow"/>
+                                    <c:url var="logoutPage" value="logoutPage" />
+                                <a class="dropdown-item" href="${brandSetting}"><i class="fas fa-user mr-2"></i>브랜드관리</a>
+                                <a class="dropdown-item" href="${alarmSetting}"><i class="fas fa-cog mr-2"></i>알림설정</a>
+                                <a class="dropdown-item" href="${logoutPage}"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -346,14 +353,14 @@
                                 <div id="submenu-8" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/alarm-setting.jsp">알림설정</a>
+                                            <a class="nav-link" href="${alarmSetting }">알림설정</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/brand_setting.jsp">브랜드관리</a>
+                                            <a class="nav-link" href="${brandSetting }">브랜드관리</a>
                                         </li>
-                                        <li class="nav-item">
+                                    <!--     <li class="nav-item">
                                             <a class="nav-link" href="/brocoli/owner/pages/404-Page.jsp">계정관리</a>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
                                 </div>

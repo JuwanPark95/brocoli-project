@@ -5,10 +5,12 @@ import java.util.HashMap;
 
 import com.kh.brocoli.general.model.vo.Auction;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.ProductDetail;
 import com.kh.brocoli.product.model.vo.QNAProduct;
+import com.kh.brocoli.product.model.vo.QnAComment;
 
 public interface MemberService {
 
@@ -92,11 +94,45 @@ public interface MemberService {
 	ArrayList<ProductDetail> selectOption(HashMap<String,String> hmap);
 
 	/**
-	 * 상품qna
+	 * 상품qna 입력
 	 * @param pq
 	 * @return
 	 */
 	int insertQnaCommant(QNAProduct pq);
+
+	/**
+	 * 상품 qna 출력
+	 * @param pq_P_No
+	 * @return
+	 */
+	ArrayList<QnAComment> selectQnaCommant(String pq_P_No);
+
+	/**
+	 * 상품 qna 관리자 출력
+	 * @return
+	 */
+	ArrayList<QnAComment> selectQnaReCommant();
+
+	/**
+	 * 상품 qna 댓글 삭제
+	 * @param pq_No
+	 * @return
+	 */
+	int deleteqna(String pq_No);
+
+	/**
+	 * 옵션 중복제거
+	 * @param p_NO
+	 * @return
+	 */
+	ArrayList<ProductDetail> selectOption1(String p_NO);
+
+	/**
+	 * 주문내역확인
+	 * @param hmap
+	 * @return
+	 */
+	ArrayList<Orders> selectorder(HashMap<String, String> hmap);
 
 
 

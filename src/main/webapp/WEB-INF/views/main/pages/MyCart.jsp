@@ -36,7 +36,7 @@
 		
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<!-- <form class="bg0 p-t-75 p-b-85"> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" style="margin-left: -1%;">
@@ -79,6 +79,7 @@
 										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
 										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
 										<c:param name="Mno" value="${loginUser.mNO }"/>
+										<c:param name="ct_NO" value="${c.ct_NO}"/>
 									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
 							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
@@ -195,7 +196,7 @@
 				</div> -->
 			</div>
 		</div>
-	</form>
+	<!-- </form> -->
 		
 	
 		

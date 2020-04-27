@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Product_Option;
 
 public interface AdminOrdersService {
 
@@ -32,10 +33,18 @@ public interface AdminOrdersService {
 
 	/**
 	 * 작성자 : 신은지
-	 * 4. 환불 list
+	 * 3-2. 환불 list
 	 * @return
 	 */
 	ArrayList<Reject> selectRejectList();
+
+	/**
+	 * 작성자 : 신은지
+	 * 4.교환 modal
+	 * @param chNO
+	 * @return
+	 */
+	ArrayList<Product_Option> orderChangeModal(int chPNO);
 
 
 }

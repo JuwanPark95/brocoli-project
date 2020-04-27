@@ -9,6 +9,7 @@ import com.kh.brocoli.admin.model.dao.AdminOrdersDao;
 import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Product_Option;
 
 @Service("AOSerivce")
 public class AdminOrdersServiceImpl implements AdminOrdersService{
@@ -45,10 +46,19 @@ public class AdminOrdersServiceImpl implements AdminOrdersService{
 
 	/**
 	 *	작성자: 신은지
-	 *  4. 환불 list
+	 *  3-2. 환불 list
 	 */
 	@Override
 	public ArrayList<Reject> selectRejectList() {
 		return AODao.selectRejectList();
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 4. 교환 modal
+	 */
+	@Override
+	public ArrayList<Product_Option> orderChangeModal(int chPNO) {
+		return AODao.orderChangeModal(chPNO);
 	}
 }

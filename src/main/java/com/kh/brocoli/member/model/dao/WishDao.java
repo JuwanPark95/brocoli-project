@@ -23,8 +23,8 @@ public class WishDao {
 		return (ArrayList)sqlSession.selectList("Wish-mapper.wishList", w_Mno);
 	}
 
-	public int deleteWish(int p_NO) {
-		return sqlSession.delete("Wish-mapper.deleteWish",p_NO);
+	public int deleteWish(int w_No) {
+		return sqlSession.delete("Wish-mapper.deleteWish",w_No);
 	}
 
 }
