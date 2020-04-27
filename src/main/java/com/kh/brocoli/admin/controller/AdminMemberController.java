@@ -68,7 +68,7 @@ public class AdminMemberController {
 	@RequestMapping("memberUpdate.ad")
 	public ModelAndView memberUpdate (ModelAndView mv, Member m) {
 		int result = AMService.memberUpdate(m);
-		
+		System.out.println("m"+m);
 		if(result>0) {
 			mv.setViewName("redirect:memberManagement.ad");
 		}

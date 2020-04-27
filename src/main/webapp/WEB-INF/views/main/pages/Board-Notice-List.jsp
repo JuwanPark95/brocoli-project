@@ -55,8 +55,9 @@
 				</tr>
 			</thead>
 			<tbody>
-
+			
 				<c:forEach var="b" items="${ list }">
+		
 					<tr>
 						<td align="center">${ b.n_No }</td>
 

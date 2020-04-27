@@ -24,15 +24,15 @@ public class MypageDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public int deleteMember(Member m) {
-		return sqlSession.delete("memberMapper.deleteMember",m);
+		return sqlSession.delete("mypageMapper.deleteMember",m);
 	}
 
 	public int updateMember(Member m) {
-		return sqlSession.update("memberMapper.updateMember",m);
+		return sqlSession.update("mypageMapper.updateMember",m);
 	}
 	
 	public int pwdCheck(String password) {
-		return sqlSession.selectOne("memberMapper.pwdCheck",password);
+		return sqlSession.selectOne("mypageMapper.pwdCheck",password);
 	}
 
 	public int getSearchResultListCount(SearchCondition sc) {
@@ -52,29 +52,33 @@ public class MypageDao {
 	}
 
 	public ArrayList<Orders> myorderList(Member m) {
-		 return (ArrayList)sqlSession.selectList("memberMapper.myorderList",m);
+		 return (ArrayList)sqlSession.selectList("mypageMapper.myorderList",m);
 		
 		
 	}
 
 	public ArrayList<Orders> P_change(String or_No) {
-		return (ArrayList)sqlSession.selectList("memberMapper.P_change",or_No);
+		return (ArrayList)sqlSession.selectList("mypageMapper.P_change",or_No);
 	}
 
 	public ArrayList<Orders> P_reject(String or_No) {
-		return (ArrayList)sqlSession.selectList("memberMapper.P_reject",or_No);
+		return (ArrayList)sqlSession.selectList("mypageMapper.P_reject",or_No);
 	}
 
 	public int C_complete(Change ch) {
-		return sqlSession.insert("memberMapper.C_complete",ch);
+		return sqlSession.insert("mypageMapper.C_complete",ch);
 	}
 
 	public int R_complete(Reject re) {
-		return sqlSession.insert("memberMapper.R_complete",re);
+		return sqlSession.insert("mypageMapper.R_complete",re);
 	}
 
-	public ArrayList<Orders> trackprocess(String or_NO) {
-		return (ArrayList)sqlSession.selectList("memberMapper.trackprocess",or_NO);
+	public ArrayList<Orders> trackprocess(String or_No) {
+		return (ArrayList)sqlSession.selectList("mypageMapper.trackprocess",or_No);
+	}
+
+	public ArrayList<Orders> selectDetail(String type) {
+		return (ArrayList)sqlSession.selectList("mypageMapper.selectDetail",type);
 	}
 
 

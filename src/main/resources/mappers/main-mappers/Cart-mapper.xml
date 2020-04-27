@@ -50,7 +50,7 @@
 	
 	<resultMap type="Cart" id="CartResultSet">
 	
-		<id property="ct_P_NO" column="CT_NO"/>
+		<id property="ct_NO" column="CT_NO"/>
 		
 		<result property="ct_Option_1" column="CT_OPTION_1"/>
 		<result property="ct_Option_2" column="CT_OPTION_2"/>
@@ -84,7 +84,7 @@
 	
 	<delete id="deleteWish" parameterType="_int">
 		DELETE FROM CART
-		WHERE CT_PNO = #{p_NO}
+		WHERE CT_NO = #{ct_NO}
 	</delete>
 	
 	
