@@ -1,6 +1,7 @@
 package com.kh.brocoli.admin.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,23 @@ public class AdminOrdersServiceImpl implements AdminOrdersService{
 	@Override
 	public ArrayList<Product_Option> orderChangeModal(int chPNO) {
 		return AODao.orderChangeModal(chPNO);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 5. 교환 모달창 저장
+	 */
+	@Override
+	public int changeOption(HashMap<String, String> hmap) {
+		int changeOption = AODao.changeOption(hmap);
+		int changeOption2 = AODao.changeOption2(hmap);
+		
+		int result= changeOption+changeOption2;
+		
+		if(result>0) {
+			return result;
+		}else {
+		return 0;
+		}
 	}
 }

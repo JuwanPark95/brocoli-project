@@ -94,19 +94,48 @@ public class AdminOrdersController {
 	@RequestMapping("orderChangeModal.ad")
 	@ResponseBody
 	public ArrayList<Product_Option> orderChangeModal(@RequestParam(value="chPNO",required=false) int chPNO,
-			                       @RequestParam(value="option1",required=false) String option1,
-			                       @RequestParam(value="option2",required=false) String option2,
 			                       @RequestParam(value="chPname",required=false) String chPname) throws Exception {
 		
 		System.out.println("chPNO"+chPNO);
-    	System.out.println("option1"+option1);
-    	System.out.println("option2"+option2);
     	System.out.println("chPname"+chPname);
     	
     	ArrayList<Product_Option> po = AOService.orderChangeModal(chPNO);
     	
     	System.out.println("PO"+po);
 		return po;
+	}
+	
+	/**
+	 * 작성자 : 신은지
+	 * 5. 교환 모달창 저장
+	 * @param or_Option1Select
+	 * @param or_Option2Select
+	 * @param modalChangeSelect
+	 * @return
+	 */
+	@RequestMapping("changeOption.ad")
+	public String changeOption(@RequestParam(value="or_Option1Select",required=false)String or_Option1Select,
+							   @RequestParam(value="or_Option2Select",required=false)String or_Option2Select,
+							   @RequestParam(value="modalChangeSelect",required=false)String modalChangeSelect,
+							   @RequestParam(value="chNO",required=false)String chNO,
+							   @RequestParam(value="chORNO", required=false)String chORNO) {
+		
+		HashMap<String,String> hmap = new HashMap<>();		
+		hmap.put("or_Option1Select",or_Option1Select);
+		hmap.put("or_Option2Select",or_Option2Select);
+		hmap.put("modalChangeSelect",modalChangeSelect);
+		hmap.put("chNO",chNO);
+		hmap.put("chORNO",chORNO);
+		
+		System.out.println("hmap"+hmap);
+		
+		int result = AOService.changeOption(hmap);
+		
+		if(result>0) {
+			return "redirect:orderStatus.ad";
+		}else {
+			return "";
+		}
 	}
 	
 }

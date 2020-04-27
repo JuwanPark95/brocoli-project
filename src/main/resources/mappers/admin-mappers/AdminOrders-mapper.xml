@@ -141,4 +141,18 @@
 		WHERE OP_P_NO = #{chPNO}
 	</select>
 	
+	<update id="changeOption" parameterType="Change">
+		UPDATE CHANGE
+		SET CH_STATUS=#{modalChangeSelect}
+		WHERE CH_NO=#{chNO}
+	</update>
+	
+	<update id="changeOption2" parameterType="Orders">
+		UPDATE ORDERS
+		SET OR_OPTION1=#{or_Option1Select} , OR_OPTION2=#{or_Option2Select}
+		WHERE OR_NO=#{chORNO}
+	</update>
+	
+	
+	
 </mapper>
