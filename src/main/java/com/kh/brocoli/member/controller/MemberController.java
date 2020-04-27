@@ -399,6 +399,18 @@ public class MemberController {
 		}
 		
 	}
+	/**
+	 * 상품 리뷰 인서트
+	 * @param re
+	 * @param request
+	 * @param file1
+	 * @param file2
+	 * @param v_Writer
+	 * @param v_Score
+	 * @return
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("reviewcomment")
 	@ResponseBody
 	public String reviewcomment(Review re,HttpServletRequest request,
@@ -487,17 +499,27 @@ public class MemberController {
 
 		return ReName;
 	}
+	/**
+	 * 상품 리뷰 조회
+	 * @param response
+	 * @param v_P_NO
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
 	@RequestMapping("reviewcommentlist")
 	@ResponseBody
-	private void reviewcommentlist(HttpServletResponse response,String v_P_NO) throws JsonIOException, IOException{
+	private void reviewcommentlist(HttpServletResponse response,int v_P_NO) throws JsonIOException, IOException{
 
 		HashMap< String,Object > hmap = new HashMap<>();
 
 		ArrayList<Review> re = mService.selectReviewCommant(v_P_NO);
 		ArrayList<Review_Reply> rep = mService.selectReviewReCommant();
+		ArrayList<Review> avg = mService.selectAvgReview(v_P_NO);
 		
 		hmap.put("list",re);
 		hmap.put("list2", rep);
+		hmap.put("avg",avg);
+			
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -507,5 +529,30 @@ public class MemberController {
 		gson.toJson(hmap,response.getWriter());
 		
 	}
+	
+	
+	/**
+	 * 상품 리뷰 삭제
+	 * @param response
+	 * @param v_NO
+	 * @return
+	 * @throws JsonIOException
+	 * @throws IOException
+	 */
+	@RequestMapping("deletereview")
+	@ResponseBody
+	private String deletereview(HttpServletResponse response,String v_NO) throws JsonIOException, IOException{
+
+		
+		int result = mService.deletereview(v_NO);
+		
+		if(result > 0) {
+			return "ok";
+		}else {
+			return "false";
+		}
+		
+	}
+	
 
 }
