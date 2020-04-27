@@ -1168,7 +1168,7 @@
 					
 					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
 					
-					if(id == data.list[i].V_Mno ){
+					if(id == data.list[i].v_Mno ){
 						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 					}
 					comment +=	"</div>"
@@ -1294,7 +1294,7 @@
 						} 
 						
 						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
-						if(id == data.list[i].V_Mno ){
+						if(id == data.list[i].v_Mno ){
 							comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 						}
 						comment +=	"</div>"
