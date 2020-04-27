@@ -257,7 +257,7 @@
 		<result property="v_P_NO" column="V_P_NO"/>
 		<result property="v_B_NO" column="V_B_NO"/>
 	
-		<collection property="plist" resultMap="productResultSet"/>
+
 	</resultMap>
 	
 	<resultMap type="Review_Reply" id="reviewReplyResultSet">
@@ -273,8 +273,7 @@
 		<result property="vr_Status" column="VR_CHECK"/>
 		<result property="vr_Mno" column="VR_MNO"/>
 		
-		<collection property="mlist" resultMap="memberResultSet"/>
-		<collection property="blist" resultMap="brandResultSet"/>
+
 	</resultMap>
 	
 	<select id="auctionlist" resultMap="auctionResultSet">
