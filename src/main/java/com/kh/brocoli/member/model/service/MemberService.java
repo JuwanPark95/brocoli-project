@@ -148,13 +148,28 @@ public interface MemberService {
 	 * @param v_P_NO
 	 * @return
 	 */
-	ArrayList<Review> selectReviewCommant(String v_P_NO);
+	ArrayList<Review> selectReviewCommant(int v_P_NO);
 
 	/**
 	 * 리뷰 관리자 리스트 출력
 	 * @return
 	 */
 	ArrayList<Review_Reply> selectReviewReCommant();
+
+	/**
+	 * 리뷰 댓글 삭제
+	 * @param v_NO
+	 * @return
+	 */
+	int deletereview(String v_NO);
+
+
+	/**
+	 * 리뷰 평점
+	 * @param v_P_NO 
+	 * @return
+	 */
+	ArrayList<Review> selectAvgReview(int v_P_NO);
 
 
 

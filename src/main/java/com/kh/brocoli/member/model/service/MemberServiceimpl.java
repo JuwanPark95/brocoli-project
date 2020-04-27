@@ -137,7 +137,7 @@ public class MemberServiceimpl implements MemberService {
 
 
 	@Override
-	public ArrayList<Review> selectReviewCommant(String v_P_NO) {
+	public ArrayList<Review> selectReviewCommant(int v_P_NO) {
 		return mDao.selectReviewCommant(v_P_NO);
 	}
 
@@ -145,6 +145,18 @@ public class MemberServiceimpl implements MemberService {
 	@Override
 	public ArrayList<Review_Reply> selectReviewReCommant() {
 		return mDao.selectReviewReCommant();
+	}
+
+
+	@Override
+	public int deletereview(String v_NO) {
+		return mDao.deletereview(v_NO);
+	}
+
+
+	@Override
+	public ArrayList<Review> selectAvgReview(int v_P_NO) {
+		return mDao.selectAvgReview(v_P_NO);
 	}
 
 

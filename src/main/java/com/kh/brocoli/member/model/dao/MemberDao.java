@@ -106,13 +106,23 @@ public class MemberDao {
 		return sqlSession.insert("mainMapper.insertReview",re);
 	}
 
-	public ArrayList<Review> selectReviewCommant(String v_P_NO) {
+	public ArrayList<Review> selectReviewCommant(int v_P_NO) {
 		return (ArrayList)sqlSession.selectList("mainMapper.selectReview",v_P_NO);
 	}
 
 	public ArrayList<Review_Reply> selectReviewReCommant() {
 		return (ArrayList)sqlSession.selectList("mainMapper.selectReviewRe");
 	}
+
+	public int deletereview(String v_NO) {
+		return sqlSession.update("mainMapper.deletereview",v_NO);
+	}
+
+	public ArrayList<Review> selectAvgReview(int v_P_NO) {
+		return (ArrayList)sqlSession.selectList("mainMapper.selectAvgReview",v_P_NO);
+	}
+
+
 
 
 }
