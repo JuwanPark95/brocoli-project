@@ -27,10 +27,71 @@ input {
 
 
 
-
 	<form class="bg0 p-t-75 p-b-85" id="mtlForm">
 		<div class="container">
 			<div class="row">
+			<!------------------------------------쇼핑카트----------------------------------------------- -->
+			<div class="wrap-table-shopping-cart" style="margin-bottom: 30px; width : 1380px;">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<!-- <th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th> -->
+									<th class="column-1">이미지</th>
+									<th class="column-2">상품명</th>
+									<th class="column-3">옵션1</th>
+									<th class="column-4">옵션2</th>
+									<th class="column-5">판매금액</th>
+									<th class="column-6">수량</th>
+									<th class="column-7">총 금액</th>
+									<th colspan="2" class="column-7">삭제</th>
+								</tr>
+							<c:set var="sum" value="0"/>
+							<c:forEach var="c" items="${ cList }" >
+	
+								<tr class="table_row">
+								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">${c.productList.p_Name}</td>
+									<td class="column-3">${c.ct_Option_1 }</td>
+									<td class="column-4">${c.ct_Option_2 }</td>
+									<td class="column-7">${c.productList.p_Last_Price}</td>
+									
+									<td class="column-6">${ c.ct_Amount }</td>
+									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+									
+									<td class="column-7">
+										<c:out value="${ hap }"/>
+									</td>
+										<td style="text-align: center;">
+									<c:url var="cDelete" value="cDelete.mn">
+										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+										<c:param name="Mno" value="${loginUser.mNO }"/>
+										<c:param name="ct_NO" value="${c.ct_NO}"/>
+									</c:url> 
+									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+										
+									</td>
+								</tr>
+								</c:forEach>
+													
+								<tr style="height:100px;">
+									<td colspan="6"></td>
+									<td >총 금액 : </td>
+									<td>
+										<input type="text" id="totalCash" name="totalCash">
+									</td>
+									<td>
+									원
+									</td>
+								</tr>
+							</table>
+						</div>
+			<!------------------------------------쇼핑카트----------------------------------------------- -->
 				<div class="cell_order_form article_tit">
 					<div class="cell_order_form1">
 						<h3 class="title-box font-mss">
@@ -83,7 +144,7 @@ input {
 							<input type="text" name="rmobile1" /> - 
 							<input type="text" name="rmobile2" value="" /> -
 							 <input type="text" name="rmobile3" value="" /> -->
-							 <input type="tel" name="phone1" id="phone1" value="" placeholder="연락처"  />
+							 <input type="tel" name="phone1" id="phone1" value="" placeholder="-를 포함하여 입력"  />
 							</li>
 						</ul>
 						<!-- <ul class="box_receiver_info">
@@ -157,18 +218,18 @@ input {
 
 						<ul class="box_buyer_info">	
 							<li class="order_address_form box_name">
-							<input type="text" placeholder="성명" id="mName" name="mName" value="${loginUser.mName }" ></li>
+							<input type="text" placeholder="성명" id="mName" name="mName" value="${loginUser.mName }" required ></li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_email">
 								<!--이메일--> 
-								<input type="email" name="eMail" id="eMail"  class="id" style="width: 150px;" placeholder="email" value="${loginUser.email }" />
+								<input type="email" name="eMail" id="eMail"  class="id" style="width: 150px;" placeholder="email" value="${loginUser.email }" required/>
 							</li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_phone">
 								<!--휴대전화--> 
-								<input type="tel" name="phone" id="phone" value="${loginUser.phone }" placeholder="연락처"   />
+								<input type="tel" name="phone" id="phone" value="${loginUser.phone }" placeholder="연락처" required  />
 							</li>
 						</ul>
 						<ul class="box_buyer_info">
@@ -193,7 +254,7 @@ input {
 
 			<input type="submit" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
-				value="결제하기"> 
+				value="결제하기" onclick="return validate2();"> 
 				<input type="reset" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
 				value="취소">
@@ -269,6 +330,36 @@ input {
 					}
 			 	});
 			}
+		}
+		
+		function validate2(){
+			var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+		      var phone = document.getElementById("phone1");
+		      var rcvr_nm = $("#rcvr_nm").val();
+		      var post = $("post").val();
+		      
+		    
+		      
+		     
+		      
+		      if(rcvr_nm == null || rcvr_nm == ""){
+		    	  alert("수령인 / 배송지명을 입력해주세요.");
+		    	  return false;
+		      }else if(phone.val() == null || phone.val() == ""){
+		    	  alert("휴대전화를 입력해주세요.");
+		    	  return false;
+		      }else if(rgEx.test(phone.value) != true){
+		      		alert("휴대전화를 알맞게 입력해주세요.");
+		      		return false;
+		      }else if(post == null || post == ""){
+		    	  alert("배송지를 입력해주세요.");
+		    	  return false;
+		      }else{
+		    	  return true;
+		      }
+		      
+		     
+		      
 		}
 	</script>
 	<!--===============================================================================================-->

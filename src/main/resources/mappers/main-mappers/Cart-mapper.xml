@@ -86,8 +86,4 @@
 		DELETE FROM CART
 		WHERE CT_NO = #{ct_NO}
 	</delete>
-	
-	
-	
-	
 </mapper>

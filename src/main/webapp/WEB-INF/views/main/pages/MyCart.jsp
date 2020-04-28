@@ -44,6 +44,7 @@
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
+									<th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th>
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">옵션1</th>
@@ -54,9 +55,10 @@
 									<th class="column-7">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
-							<c:forEach var="c" items="${ cList }">
+							<c:forEach var="c" items="${ cList }" >
 	
 								<tr class="table_row">
+								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
@@ -72,7 +74,6 @@
 									
 									<td class="column-7">
 										<c:out value="${ hap }"/>
-										<c:set var="sum" value="${sum + hap}"/>
 									</td>
 										<td style="text-align: center;">
 									<c:url var="cDelete" value="cDelete.mn">
@@ -86,17 +87,109 @@
 										
 									</td>
 								</tr>
-								</c:forEach>					
+								</c:forEach>
+													
 								<tr style="height:100px;">
 									<td colspan="6"></td>
 									<td >총 금액 : </td>
 									<td>
-										<c:out value="${ sum }"/> 원
+										<input type="text" id="totalCash" name="totalCash" readonly>
+									</td>
+									<td>
+									원
 									</td>
 								</tr>
 							</table>
 						</div>
+						
+						<script>
+							
+							var inter = setInterval(function(){
+								var lists = [];
+								$("input[name='che']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+								   lists.push($(this).val());
+								
+								});
+								
+								function sum(array) {
+									var result = 0.0;
+									
+									for (var i = 0; i < array.length; i ++) {
+										result += Number(array[i]);
+										
+									}
+									
+									return result;
+								}
+								
+								$("#totalCash").val(sum(lists));
+							},1000)
+							
+						function checkAll(){
+								
+					      if( $("#cheAll").is(':checked') ){
+					        $("input[name=che]").prop("checked", true);
+					      }else{
+					        $("input[name=che]").prop("checked", false);
+					      }
+					}
+						//----------------------------------------------배열로 값담기--------
+							$("input[name=che]").click(function(){ 
+								
+								var rowData = new Array();
+								var tdArr = new Array(); 
+								var checkbox = $("input[name=che]:checked");
+						
+								// 체크된 체크박스 값을 가져온다
+								checkbox.each(function(i) {
+						
+									// checkbox.parent() : checkbox의 부모는 <td>이다.
+									// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+									var tr = checkbox.parent().parent().eq(i);
+									var td = tr.children();
+									
+									// 체크된 row의 모든 값을 배열에 담는다.
+									rowData.push(tr.text().trim());
+									
+									// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+									var name = td.eq(2).text().trim()+", "
+									var op1 = td.eq(3).text().trim()+", ";
+									var op2 = td.eq(4).text().trim()+", ";
+									var don = td.eq(5).text().trim()+", ";
+									var pcount = td.eq(6).text().trim()+", ";
+									var sum = td.eq(7).text().trim()+", ";
+									
+									/* var sum1 = sum;
+									//var test = sum1.replace(/ /gi,"");
+									var test = sum1.replace(/ /gi,"");
+									var test1 = test.split(" ");
+									alert(test1);
+									console.log(test1) */
+									
+									// 가져온 값을 배열에 담는다.
+									tdArr.push(name);
+									tdArr.push(op1);
+									tdArr.push(op2);
+									tdArr.push(don);
+									tdArr.push(pcount);
+									tdArr.push(sum);
+									
+									console.log("name : " + name);
+									console.log("op1 : " + op1);
+									console.log("op2 : " + op2);
+									console.log("don : " + don);
+									console.log("pcount : " + pcount);
+									console.log("sum : " + sum);
+									console.log("rowData 총배열 : " + rowData);
+								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
+								});
+								
+								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
+								$("#orderadd").html(tdArr);	
+							});
 
+				</script>
+				
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 <!-- 							<div class="flex-w flex-m m-r-20 m-tb-5">
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="쿠폰 번호">
@@ -104,10 +197,18 @@
 
 							</div> -->
 						</div>
-						<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; border-radius:5px;"	>
-							주문 하기
-						</div>
+						<c:url var="cOrderAdd" value="cOrderAdd.mn">
+							<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+							<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+							<c:param name="Mno" value="${loginUser.mNO }"/>
+							<c:param name="ct_NO" value="${c.ct_NO}"/>
+						</c:url> 
+						
+						<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
+						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
+						
+						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
+   						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="location.href='<c:url value='${ cOrderAdd }'/>';">주문하기</button> 
 					</div>
 				</div>
 
