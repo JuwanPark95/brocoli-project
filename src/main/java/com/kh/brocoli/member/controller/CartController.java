@@ -21,19 +21,19 @@ public class CartController {
 	private CartService cService;
 	
 	@RequestMapping("cInsert.mn")
-	public String cInsert(Cart c, ProductDetail pc, int ct_Mno, int p_NO) {
+	public String cInsert(Cart c, ProductDetail pc, int ct_Mno, int ct_P_NO) {
 		
 		System.out.println("ProductDetail : " + pc);
 		
 		System.out.println("회원 Mno : " + ct_Mno);
-		System.out.println("장바구니 인설트 상품 : " + pc.getP_NO());
-		System.out.println("장바구니  상품 : " + pc.getP_NO());		
+		System.out.println("장바구니 인설트 상품 : " + ct_P_NO);
+		System.out.println("장바구니  상품 : " + ct_P_NO);		
 		
 		System.out.println("장바구니 인설트 옵션1 : " + pc.getOption_1());
 		System.out.println("장바구니 인설트 옵션2 : " + pc.getOption_2());
 		System.out.println("장바구니 개수 : " + pc.getN_product());
 		
-		c.setCt_P_NO(pc.getP_NO());
+		c.setCt_P_NO(ct_P_NO);
 		c.setCt_Option_1(pc.getOption_1());
 		c.setCt_Option_2(pc.getOption_2());
 		c.setCt_Amount(pc.getN_product());
@@ -43,7 +43,7 @@ public class CartController {
 		  
 		 if(result > 0) {
 			 System.out.println("장바구니 컨트롤 리절트 : " + result); 
-			 	return "redirect:productDetail.mn?p_NO=" + p_NO;
+			 	return "redirect:productDetail.mn?p_NO=" + ct_P_NO;
 		  
 		  }else { 
 			  return "common/errorPage"; }
@@ -76,5 +76,20 @@ public class CartController {
 		}else {
 			return"common/errorPage";
 		}
+	}
+	
+	@RequestMapping("cOrderAdd.mn")
+	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno) {
+		
+		System.out.println("주문을 해봅시다." + ct_Mno);
+		
+		ArrayList<Cart> cOrderAdd = cService.cartOrderList(ct_Mno);
+		
+		System.out.println("주문에 들어감? " + cOrderAdd);
+		
+		mv.addObject("cOrderAdd" + cOrderAdd);
+		mv.setViewName("");
+		
+		return mv;
 	}
 }

@@ -13,4 +13,6 @@ public interface CartService {
 
 	public int deleteCart(int ct_NO);
 
+	public ArrayList<Cart> cartOrderList(int ct_Mno);
+
 }

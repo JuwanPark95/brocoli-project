@@ -211,7 +211,7 @@
 
 										<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
 									 	<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
-										<input type="text" name="ct_NO" value="${c.ct_NO}"/>
+										<%-- <input type="text" name="ct_NO" value="${aProducDetailtList[0].p_NO}"/> --%>
 
 									<button type="submit" id="btnCart"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
