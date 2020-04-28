@@ -185,7 +185,7 @@
 								</a> <a href="#"
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
 									data-tooltip="Twitter"> <i class="fa fa-twitter"></i>
-								</a> <a href="#"
+								</a> <a 
 									class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
 									data-tooltip="Google Plus"> <i class="fa fa-google-plus"></i>
 								</a>
@@ -272,7 +272,8 @@
 					ct_P_NO : ct_P_NO,
 					ct_Mno : ct_Mno,
 					ct_Option_1 : ct_Option_1,
-					ct_Option_2 : ct_Option_2
+					ct_Option_2 : ct_Option_2,
+					ct_Amount : ct_Amount
 				},
 				type:"POST",
 				success:function(data){
