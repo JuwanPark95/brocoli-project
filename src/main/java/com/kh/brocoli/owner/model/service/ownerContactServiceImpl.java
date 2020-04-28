@@ -28,6 +28,17 @@ public class ownerContactServiceImpl implements ownerContactService{
 	public int contactViewCheckUpdate(int con_NO) {
 		return oDao.updateContactViewCheck(con_NO);
 	}
+
+	@Override
+	public int contactInsert(Contact ct) {
+		return oDao.insertContact(ct);
+	}
+	
+	@Override
+	public int contactInsertImg(Contact ct) {
+		return oDao.insertContactImg(ct);
+	}
+
 	
 	
 	

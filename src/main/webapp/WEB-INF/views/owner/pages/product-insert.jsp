@@ -627,7 +627,6 @@
 	            break;
 	         case 9 : $('#contentImg8').attr('src', e.target.result);
 	            break;   
-	            
 	         }
 	      }
 	      reader.readAsDataURL(value.files[0]);
