@@ -134,15 +134,20 @@
 					      }
 					}
 						//----------------------------------------------배열로 값담기--------
+						
+
+ 							var test1;
+							var test2; 
+							var checkbox = $("input[name=che]:checked"); 
+						
 							$("input[name=che]").click(function(){ 
-								
 								var rowData = [];
 								var tdArr = []; 
 								var checkbox = $("input[name=che]:checked");
-						
+
 								// 체크된 체크박스 값을 가져온다
 								checkbox.each(function(i) {
-						
+								
 									// checkbox.parent() : checkbox의 부모는 <td>이다.
 									// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
 									var tr = checkbox.parent().parent().eq(i);
@@ -183,19 +188,38 @@
 									console.log("don : " + don);
 									console.log("pcount : " + pcount);
 									console.log("sum : " + sum);
-									console.log("rowData 총배열 : " + tdArr.length);
+									console.log("tdArr 총배열 : " + tdArr.length);
 									console.log("rowData 총배열 : " + rowData.length);
-									console.log("rowData 총배열 : " + tdArr[0]);
-									console.log("rowData 총배열 : " + rowData[0]);
-									console.log("rowData 총배열 : " + tdArr[0][0]);
-									console.log("rowData 총배열 : " + i);
+									console.log("tdArr영번째 : " + tdArr[0]);
+									console.log("로우데이터 영ㄴ번쨰 : " + rowData[0]);
+									console.log("rowData 0.0 : " + tdArr[0][0]);
+									console.log("ㅑ : " + i);
 								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
 								});
 								
+								test1 = rowData;
+								test2 = tdArr;
 								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
 								$("#test").val(tdArr);
 							});
-
+							
+							function orderadd(){
+/* 								console.log(test1);
+								console.log(test2); */
+								
+								  jQuery.ajaxSettings.traditional = true;
+								 $.ajax({
+									url:'cOrderAddInsert.mn',
+									type:"post",
+									dataType:"json",
+									data:{
+										tdArr : JSON.stringify(test2),
+										rowData : JSON.stringify(test1)
+									}
+									
+								})  
+							}
+							
 				</script>
 				
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
@@ -215,7 +239,7 @@
 						<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
 						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
 						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="location.href='<c:url value='${ cOrderAdd }'/>';">주문하기</button> 
+   						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="orderadd();">주문하기</button> 
 						<input type="text" name="test" id="test" value="00" style="width:1000px;">
 					</div>
 				</div>
