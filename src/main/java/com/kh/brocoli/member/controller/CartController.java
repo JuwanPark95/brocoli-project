@@ -100,15 +100,4 @@ public class CartController {
 			return"common/errorPage";
 		}
 	}
-	
-	@RequestMapping("cOrderAdd.mn")
-	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno,
-												   @RequestParam("op_NO") int op_NO) {
-		
-		System.out.println("주문을 해봅시다." + ct_Mno);
-
-		mv.setViewName("My-Track-List");
-		
-		return mv;
-	}
 }
