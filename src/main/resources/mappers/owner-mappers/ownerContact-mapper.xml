@@ -15,6 +15,7 @@
 		<result property="con_Img_ReName" column="CON_IMG_RENAME"/>
 		<result property="con_Status" column="CON_STATUS"/>
 		<result property="con_Mno" column="CON_MNO"/>
+		<result property="con_Bno" column="CON_BNO"/>
 		
 		<collection property="blist" resultMap="brandResultSet" ></collection>
 	</resultMap>
@@ -78,6 +79,7 @@
 		WHERE CT.CON_STATUS = 'Y'
 		AND CT.CON_BNO = #{con_Bno}
         AND CT.CON_DATE between TO_DATE(TO_CHAR(SYSDATE-60,'YYYYMMDD'), 'YYYYMMDD') and SYSDATE 
+        ORDER BY CT.CON_DATE ASC
 	</select>
 	
 	<select id="selectContactUser" resultMap="memberResultSet">
@@ -94,6 +96,16 @@
 		WHERE CON_NO = #{con_NO}
 	</update>
 
-
+	<insert id="insertContact" parameterType="Contact">
+		INSERT INTO CONTACT
+		VALUES (SEQ_CONTACT.NEXTVAL,SYSDATE,#{con_Writer},#{con_Content},#{con_Title},DEFAULT,NULL,NULL,'Y',#{con_Mno},#{con_Bno})
+	</insert>
+	
+	<insert id="insertContactImg" parameterType="Contact">
+		INSERT INTO CONTACT
+		VALUES (SEQ_CONTACT.NEXTVAL,SYSDATE,#{con_Writer},#{con_Content},#{con_Title},DEFAULT,#{con_Img},#{con_Img_ReName},'Y',#{con_Mno},#{con_Bno})
+	</insert>
+	
+	
 
 </mapper>
