@@ -136,8 +136,8 @@
 						//----------------------------------------------배열로 값담기--------
 							$("input[name=che]").click(function(){ 
 								
-								var rowData = new Array();
-								var tdArr = new Array(); 
+								var rowData = [];
+								var tdArr = []; 
 								var checkbox = $("input[name=che]:checked");
 						
 								// 체크된 체크박스 값을 가져온다
@@ -149,15 +149,15 @@
 									var td = tr.children();
 									
 									// 체크된 row의 모든 값을 배열에 담는다.
-									rowData.push(tr.text().trim());
+									/* rowData.push(tr.text().trim()); */
 									
 									// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
-									var name = td.eq(2).text().trim()+", "
-									var op1 = td.eq(3).text().trim()+", ";
-									var op2 = td.eq(4).text().trim()+", ";
-									var don = td.eq(5).text().trim()+", ";
-									var pcount = td.eq(6).text().trim()+", ";
-									var sum = td.eq(7).text().trim()+", ";
+									var name = td.eq(2).text().trim();
+									var op1 = td.eq(3).text().trim();
+									var op2 = td.eq(4).text().trim();
+									var don = td.eq(5).text().trim();
+									var pcount = td.eq(6).text().trim();
+									var sum = td.eq(7).text().trim();
 									
 									/* var sum1 = sum;
 									//var test = sum1.replace(/ /gi,"");
@@ -167,12 +167,15 @@
 									console.log(test1) */
 									
 									// 가져온 값을 배열에 담는다.
-									tdArr.push(name);
-									tdArr.push(op1);
-									tdArr.push(op2);
-									tdArr.push(don);
-									tdArr.push(pcount);
-									tdArr.push(sum);
+									
+									rowData.push(name);
+									rowData.push(op1);
+									rowData.push(op2);
+									rowData.push(don);
+									rowData.push(pcount);
+									rowData.push(sum);
+									
+									tdArr.push(rowData);
 									
 									console.log("name : " + name);
 									console.log("op1 : " + op1);
@@ -180,12 +183,17 @@
 									console.log("don : " + don);
 									console.log("pcount : " + pcount);
 									console.log("sum : " + sum);
-									console.log("rowData 총배열 : " + rowData);
+									console.log("rowData 총배열 : " + tdArr.length);
+									console.log("rowData 총배열 : " + rowData.length);
+									console.log("rowData 총배열 : " + tdArr[0]);
+									console.log("rowData 총배열 : " + rowData[0]);
+									console.log("rowData 총배열 : " + tdArr[0][0]);
+									console.log("rowData 총배열 : " + i);
 								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
 								});
 								
 								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
-								$("#orderadd").html(tdArr);	
+								$("#test").val(tdArr);
 							});
 
 				</script>
@@ -206,9 +214,9 @@
 						
 						<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
 						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
-						
 						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
    						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="location.href='<c:url value='${ cOrderAdd }'/>';">주문하기</button> 
+						<input type="text" name="test" id="test" value="00" style="width:1000px;">
 					</div>
 				</div>
 
