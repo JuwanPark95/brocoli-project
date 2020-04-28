@@ -88,7 +88,7 @@ public class CartController {
 		System.out.println("주문에 들어감? " + cOrderAdd);
 		
 		mv.addObject("cOrderAdd" + cOrderAdd);
-		mv.setViewName("");
+		mv.setViewName("My-Track-List");
 		
 		return mv;
 	}
