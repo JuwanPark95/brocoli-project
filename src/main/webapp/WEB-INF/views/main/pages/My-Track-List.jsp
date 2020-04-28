@@ -83,7 +83,7 @@ input {
 							<input type="text" name="rmobile1" /> - 
 							<input type="text" name="rmobile2" value="" /> -
 							 <input type="text" name="rmobile3" value="" /> -->
-							 <input type="tel" name="phone1" id="phone1" value="" placeholder="연락처"  />
+							 <input type="tel" name="phone1" id="phone1" value="" placeholder="-를 포함하여 입력"  />
 							</li>
 						</ul>
 						<!-- <ul class="box_receiver_info">
@@ -157,18 +157,18 @@ input {
 
 						<ul class="box_buyer_info">	
 							<li class="order_address_form box_name">
-							<input type="text" placeholder="성명" id="mName" name="mName" value="${loginUser.mName }" ></li>
+							<input type="text" placeholder="성명" id="mName" name="mName" value="${loginUser.mName }" required ></li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_email">
 								<!--이메일--> 
-								<input type="email" name="eMail" id="eMail"  class="id" style="width: 150px;" placeholder="email" value="${loginUser.email }" />
+								<input type="email" name="eMail" id="eMail"  class="id" style="width: 150px;" placeholder="email" value="${loginUser.email }" required/>
 							</li>
 						</ul>
 						<ul class="box_buyer_info">
 							<li class="order_address_form box_phone">
 								<!--휴대전화--> 
-								<input type="tel" name="phone" id="phone" value="${loginUser.phone }" placeholder="연락처"   />
+								<input type="tel" name="phone" id="phone" value="${loginUser.phone }" placeholder="연락처" required  />
 							</li>
 						</ul>
 						<ul class="box_buyer_info">
@@ -193,7 +193,7 @@ input {
 
 			<input type="submit" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
-				value="결제하기"> 
+				value="결제하기" onclick="return validate2();"> 
 				<input type="reset" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
 				value="취소">
@@ -269,6 +269,36 @@ input {
 					}
 			 	});
 			}
+		}
+		
+		function validate2(){
+			var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+		      var phone = document.getElementById("phone1");
+		      var rcvr_nm = $("#rcvr_nm").val();
+		      var post = $("post").val();
+		      
+		    
+		      
+		     
+		      
+		      if(rcvr_nm == null || rcvr_nm == ""){
+		    	  alert("수령인 / 배송지명을 입력해주세요.");
+		    	  return false;
+		      }else if(phone.val() == null || phone.val() == ""){
+		    	  alert("휴대전화를 입력해주세요.");
+		    	  return false;
+		      }else if(rgEx.test(phone.value) != true){
+		      		alert("휴대전화를 알맞게 입력해주세요.");
+		      		return false;
+		      }else if(post == null || post == ""){
+		    	  alert("배송지를 입력해주세요.");
+		    	  return false;
+		      }else{
+		    	  return true;
+		      }
+		      
+		     
+		      
 		}
 	</script>
 	<!--===============================================================================================-->
