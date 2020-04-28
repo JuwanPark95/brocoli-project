@@ -29,11 +29,4 @@ public class CartServiceimpl implements CartService {
 	public int deleteCart(int ct_NO) {
 		return cDao.deleteCart(ct_NO);
 	}
-
-	@Override
-	public ArrayList<Cart> cartOrderList(int ct_Mno) {
-		return cDao.cartOrderList(ct_Mno);
-	}
-	
-
 }

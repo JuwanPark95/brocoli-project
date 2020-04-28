@@ -93,7 +93,7 @@
 									<td colspan="6"></td>
 									<td >총 금액 : </td>
 									<td>
-										<input type="text" id="totalCash" name="totalCash">
+										<input type="text" id="totalCash" name="totalCash" readonly>
 									</td>
 									<td>
 									원
@@ -133,35 +133,63 @@
 					        $("input[name=che]").prop("checked", false);
 					      }
 					}
-
-
-											
-							/* function array_che(){
+						//----------------------------------------------배열로 값담기--------
+							$("input[name=che]").click(function(){ 
 								
-								var che1 =[];
-								$("input[name='che']:checked").each(function(i){
-									che1.push($(this).val());
+								var rowData = new Array();
+								var tdArr = new Array(); 
+								var checkbox = $("input[name=che]:checked");
+						
+								// 체크된 체크박스 값을 가져온다
+								checkbox.each(function(i) {
+						
+									// checkbox.parent() : checkbox의 부모는 <td>이다.
+									// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
+									var tr = checkbox.parent().parent().eq(i);
+									var td = tr.children();
+									
+									// 체크된 row의 모든 값을 배열에 담는다.
+									rowData.push(tr.text().trim());
+									
+									// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
+									var name = td.eq(2).text().trim()+", "
+									var op1 = td.eq(3).text().trim()+", ";
+									var op2 = td.eq(4).text().trim()+", ";
+									var don = td.eq(5).text().trim()+", ";
+									var pcount = td.eq(6).text().trim()+", ";
+									var sum = td.eq(7).text().trim()+", ";
+									
+									/* var sum1 = sum;
+									//var test = sum1.replace(/ /gi,"");
+									var test = sum1.replace(/ /gi,"");
+									var test1 = test.split(" ");
+									alert(test1);
+									console.log(test1) */
+									
+									// 가져온 값을 배열에 담는다.
+									tdArr.push(name);
+									tdArr.push(op1);
+									tdArr.push(op2);
+									tdArr.push(don);
+									tdArr.push(pcount);
+									tdArr.push(sum);
+									
+									console.log("name : " + name);
+									console.log("op1 : " + op1);
+									console.log("op2 : " + op2);
+									console.log("don : " + don);
+									console.log("pcount : " + pcount);
+									console.log("sum : " + sum);
+									console.log("rowData 총배열 : " + rowData);
+								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
 								});
 								
-								var postDate = {"che" : che1};
-								
-								$.ajax({
-									url:'MyCart.',
-									type:'post',
-									timeout:1000,
-									data:postData,
-									traditional:true,
-									error:function(){
-										console.log("ㄴㄴ");
-									},
-									success:function(dbj){
-										console.log("ㅇㅇ");
-									}
-								});
-							}
-							
-							 */
-						</script>
+								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
+								$("#orderadd").html(tdArr);	
+							});
+
+				</script>
+				
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 <!-- 							<div class="flex-w flex-m m-r-20 m-tb-5">
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="쿠폰 번호">
@@ -176,8 +204,11 @@
 							<c:param name="ct_NO" value="${c.ct_NO}"/>
 						</c:url> 
 						
+						<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
+						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
+						
 						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
-   						 color: white; border-radius:5px; width: 100%;" onclick="location.href='<c:url value='${ cOrderAdd }'/>';">주문하기</button> 
+   						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="location.href='<c:url value='${ cOrderAdd }'/>';">주문하기</button> 
 					</div>
 				</div>
 

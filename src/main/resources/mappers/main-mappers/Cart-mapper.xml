@@ -86,22 +86,4 @@
 		DELETE FROM CART
 		WHERE CT_NO = #{ct_NO}
 	</delete>
-	
-	<!-- 주문하기 -->
-	<select id="cartOrderList" resultMap="CartResultSet" parameterType="Cart">
-		SELECT * 
-		FROM CART C
-			JOIN PRODUCT P
-			ON(P.P_NO = C.CT_P_NO)
-			JOIN PRODUCT_FILE F
-			ON(F.PF_P_NO = C.CT_P_NO)
-			JOIN PRODUCT_OPTION O
-			ON(O.OP_P_NO = C.CT_P_NO)
-			JOIN MEMBER M
-			ON(M.MNO = C.CT_MNO)
-		WHERE CT_MNO=#{ct_Mno}
-	</select>
-	
-	
-	
 </mapper>

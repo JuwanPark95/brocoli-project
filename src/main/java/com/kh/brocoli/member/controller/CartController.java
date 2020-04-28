@@ -79,15 +79,11 @@ public class CartController {
 	}
 	
 	@RequestMapping("cOrderAdd.mn")
-	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno) {
+	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno,
+												   @RequestParam("op_NO") int op_NO) {
 		
 		System.out.println("주문을 해봅시다." + ct_Mno);
-		
-		ArrayList<Cart> cOrderAdd = cService.cartOrderList(ct_Mno);
-		
-		System.out.println("주문에 들어감? " + cOrderAdd);
-		
-		mv.addObject("cOrderAdd" + cOrderAdd);
+
 		mv.setViewName("My-Track-List");
 		
 		return mv;
