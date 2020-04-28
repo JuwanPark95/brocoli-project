@@ -211,7 +211,7 @@
 
 										<input type="hidden" name="ct_P_NO" value="${ aProducDetailtList[0].p_NO }"/>
 									 	<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
-										<input type="text" name="ct_NO" value="${c.ct_NO}"/>
+										<%-- <input type="text" name="ct_NO" value="${aProducDetailtList[0].p_NO}"/> --%>
 
 									<button type="submit" id="btnCart"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
@@ -396,13 +396,13 @@
 			
 						<!-- - -->
 						<div class="tab-pane fade" id="reviews" role="tabpanel">
-							<span class="wrap-rating fs-18 cl11 pointer" style="margin-left: 25%;"> 
+						<!-- 	<span class="wrap-rating fs-18 cl11 pointer" style="margin-left: 25%;"> 
 								<label style="color: black; display: inline-block">평점 : </label> 
 								<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> 
 								<i class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i> 
 								<i class="zmdi zmdi-star-half"></i> <br>
 							<br> <input class="dis-none" type="number" name="rating">
-							</span>
+							</span> -->
 							<div class="row">
 								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
@@ -1103,6 +1103,53 @@
 			dataType:"json",
 			success : function(data){
 				$('#noReviewComment').css('display','block');
+				if(data.avg[0] != null){
+					comment += 	"<span class='wrap-rating fs-18 cl11 pointer'>" 
+					comment +=  "<label style='color: black; display: inline-block'>평점 :</label>" 
+					if('0' == Math.floor(data.avg[0].v_Score) ){
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						
+					}else if('1' == Math.floor(data.avg[0].v_Score)){
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						
+						
+					}else if('2' == Math.floor(data.avg[0].v_Score)){
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						
+					}else if('3' == Math.floor(data.avg[0].v_Score) ){
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+					}else if('4' == Math.floor(data.avg[0].v_Score) ){
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star-outline'></i>"
+					}else if('5' == Math.floor(data.avg[0].v_Score) ){
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+						comment += "<i class='zmdi zmdi-star'></i>"
+					}
+					comment += data.avg[0].v_Score 
+					comment +=   "</span>"
+				}
 				for(var i=0; i<data.list.length; i++){
 					
 					comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
@@ -1169,7 +1216,7 @@
 					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
 					
 					if(id == data.list[i].v_Mno ){
-						comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
+						comment +=	"<button id='check3' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 					}
 					comment +=	"</div>"
 					comment +=	"<div class='flex-w flex-t p-b-68'>"
@@ -1232,6 +1279,53 @@
 				dataType:"json",
 				success : function(data){
 					$('#noReviewComment').css('display','block');
+					if(data.avg[0] != null){
+						comment += 	"<span class='wrap-rating fs-18 cl11 pointer'>" 
+						comment +=  "<label style='color: black; display: inline-block'>평점 :</label>" 
+						if('0' == Math.floor(data.avg[0].v_Score) ){
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							
+						}else if('1' == Math.floor(data.avg[0].v_Score) ){
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							
+							
+						}else if('2' == Math.floor(data.avg[0].v_Score) ){
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							
+						}else if('3' == Math.floor(data.avg[0].v_Score) ){
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+						}else if('4' == Math.floor(data.avg[0].v_Score)){
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star-outline'></i>"
+						}else if('5' == Math.floor(data.avg[0].v_Score) ){
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+							comment += "<i class='zmdi zmdi-star'></i>"
+						}
+						comment += data.avg[0].v_Score 
+						comment +=   "</span>"
+					}
 					for(var i=0; i<data.list.length; i++){
 						
 						comment +=	"<div id='check1' class='flex-w flex-sb-m p-b-17'>"
@@ -1295,7 +1389,7 @@
 						
 						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
 						if(id == data.list[i].v_Mno ){
-							comment +=	"<button id='check2' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
+							comment +=	"<button id='check3' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 						}
 						comment +=	"</div>"
 						comment +=	"<div class='flex-w flex-t p-b-68'>"
@@ -1343,6 +1437,33 @@
 				}
 			})
 		}; 
+	</script>
+	<script>
+		
+		$(document).on('click','#check3', function () {
+			var v_NO=$(this).attr("value");
+			
+			$.ajax({
+				url:"deletereview",
+				data:{v_NO:v_NO},
+				type : "POST",
+				success:function(data){
+					if(data = "ok"){
+						alert("후기가 삭제되었습니다.");
+						Reviewcommentlist();
+						
+					}
+				},error:function(jqxhr,textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			});
+		});
+
 	</script>
 
 </body>

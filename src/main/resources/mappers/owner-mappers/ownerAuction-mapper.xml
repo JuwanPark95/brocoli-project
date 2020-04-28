@@ -59,6 +59,12 @@
         AND AC_NO = #{ac_No}
 	</select>
 	
+	<delete id="deleteAcutionBanner" parameterType="_int">
+		DELETE FROM AUCTION
+		WHERE AC_NO = #{ac_No}
+	</delete>
+
+	
 
 
 </mapper>

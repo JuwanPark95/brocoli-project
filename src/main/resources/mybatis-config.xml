@@ -67,6 +67,7 @@
   		<mapper resource="mappers/owner-mappers/ownerReView-mapper.xml"/>
    		<mapper resource="mappers/owner-mappers/ownerQnA-mapper.xml"/>
    		<mapper resource="mappers/owner-mappers/ownerAuction-mapper.xml"/>
+   		<mapper resource="mappers/owner-mappers/ownerContact-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminBrand-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminOrders-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminProduct-mapper.xml"/>
@@ -75,6 +76,9 @@
  		<mapper resource="mappers/main-mappers/Cart-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminMagazine-mapper.xml"/>
  		<mapper resource="mappers/main-mappers/mypage-mapper.xml"/>
+ 		<mapper resource="mappers/admin-mappers/AdminAuction-mapper.xml"/>
+ 		<mapper resource="mappers/admin-mappers/Admin-mapper.xml"/>
+ 		
 <!--  		<mapper resource="mappers/board-mapper.xml"/> -->
  	</mappers>
  	<!--  -->

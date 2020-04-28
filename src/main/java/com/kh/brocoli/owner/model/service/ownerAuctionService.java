@@ -14,4 +14,6 @@ public interface ownerAuctionService {
 
 	Auction auctionBannerUpdate(Auction ac);
 
+	Auction auctionDelete(Auction ac);
+
 }

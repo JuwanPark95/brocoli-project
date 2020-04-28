@@ -50,6 +50,20 @@ public class ownerAuctionServiceImpl implements ownerAuctionService{
 		}
 		return result;
 	}
+
+	@Override
+	public Auction auctionDelete(Auction ac) {
+		int acNo = ac.getAc_No();
+		int deleteResult = oDao.DeleteAuctionBanner(acNo);
+		Auction result = new Auction();
+		if(deleteResult > 0 ) {
+			result = oDao.SelectAuctionOne(acNo);
+		}else {
+			System.out.println("옥션 ServiceImpl Delete 실패");
+		}
+		
+		return result;
+	}
 	
 	
 	

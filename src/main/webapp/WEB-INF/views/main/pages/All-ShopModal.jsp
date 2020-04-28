@@ -163,7 +163,7 @@
 									</c:url>
 									<a href="${ cInsert }"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
-										style="color: white; background-color: #333; border-radius: 5px;" >
+										style="color: white; background-color: #333; border-radius: 5px;" id="cart">
 										장바구니</a>
 								</div>
 							</div>
@@ -197,6 +197,18 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		$("#cart").click(function(){
+			$.ajax({
+				type:"post",
+				url:"MyCart.jsp",
+				data:,
+				dataType:,
+				success:
+				error:
+			})
+		})
+	</script>
 	<script>
 	$(function(){
 	    $("#select1").change(function() {

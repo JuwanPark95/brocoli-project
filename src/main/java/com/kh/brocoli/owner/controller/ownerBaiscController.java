@@ -44,6 +44,11 @@ public class ownerBaiscController {
 		return "brand_setting";
 	}
 	
+	@RequestMapping("managerContact.ow")
+	public String managerContact() {
+		return "manager-contact";
+	}
+	
 	/*
 	 * @RequestMapping("bproduct.mn") public ModelAndView BrandProductView(Brand
 	 * br,ModelAndView mv,String b_Name) {
