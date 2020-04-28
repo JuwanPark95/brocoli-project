@@ -161,7 +161,7 @@
 	<script src="/brocoli/resources/mainResources/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/vendor/sweetalert/sweetalert.min.js"></script>
-	<script>
+<!-- 	<script>
 		$('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
 			e.preventDefault();
 		});
@@ -196,9 +196,10 @@
 			});
 		});
 	
-	</script>
+	</script> -->
 <!--===============================================================================================-->
 	<script src="/brocoli/resources/mainResources/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
 	<script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');

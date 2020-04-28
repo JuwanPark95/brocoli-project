@@ -277,9 +277,10 @@
 				},
 				type:"POST",
 				success:function(data){
-						if(data = "ok"){
-							alert("장바구니에 성공적으로 등록되었습니다.");
-						}
+					if(data=="ok"){
+						alert("장바구니에 추가되었습니다.");
+					}
+
 					
 				},error:function(jqxhr,textStatus, errorThrown){
 					console.log("ajax 처리실패");
@@ -291,6 +292,7 @@
 				}
 			
 			});
+			
 					}else{
 						alert("수량을 선택해주세요");
 					}
