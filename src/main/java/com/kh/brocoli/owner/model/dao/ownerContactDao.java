@@ -25,6 +25,14 @@ public class ownerContactDao {
 	public int updateContactViewCheck(int con_NO) {
 		return sqlSession.update("ownerContact-mapper.updateContactViewCheck",con_NO);
 	}
+
+	public int insertContact(Contact ct) {
+		return sqlSession.insert("ownerContact-mapper.insertContact",ct);
+	}
+
+	public int insertContactImg(Contact ct) {
+		return sqlSession.insert("ownerContact-mapper.insertContactImg",ct);
+	}
 	
 	
 	

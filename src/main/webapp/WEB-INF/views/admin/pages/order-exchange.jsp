@@ -62,7 +62,7 @@
                         <div class="card">
                             <h5 class="card-header">교환 테이블</h5>
                             <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table-responsive" name="changeDiv">
                                     <table id="change" class="table table-striped table-bordered first" style="text-align:center;">
                                         <thead>
                                             <tr>
@@ -85,7 +85,7 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach var="c" items="${changeList}" varStatus="cl"> 
-                                            <tr id="changeTable">
+                                            <tr id="changeTable" name="changeTable">
                                                 <td>${cl.count}</td>
 	                                            <td name="chNO">${c.ch_No}</td>
 	                                            <td name="chORNO">${c.ch_ordersMember.or_NO}</td>
@@ -93,8 +93,9 @@
 	                                            <td>${c.ch_ordersMember.or_Member.mName}</td>
 	                                            <td name="chPname">${c.ch_Pname}</td>
 	                                            <td name="chPNO">${c.ch_ordersMember.pList.p_NO}</td>
-	                                            <td id="option1" name="option1">${c.ch_ordersMember.or_Option1}</td>
-	                                            <td id="option2" name="option2">${c.ch_ordersMember.or_Option2}</td>
+	                                            
+	                                            <td id="option1" class="option1">${c.ch_ordersMember.or_Option1}</td>
+	                                            <td id="option2" class="option2">${c.ch_ordersMember.or_Option2}</td>
 	                                            <td>${c.ch_Price}</td>
 	                                            <td>${c.ch_Reason}</td>
 	                                            <td>${c.ch_Comment}</td>
@@ -152,9 +153,9 @@
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1</label>
                             <div id="modalOption1" class="col-12 col-sm-8 col-lg-6"  style="margin-top:3px;"></div>
                         </div>
-                        <div class="form-group row" style="padding-bottom:3px;">
+                        <div class="form-group row" style="padding-bottom:3px;" name="Option1SelectDiv">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">옵션1 변경</label>
-                            <div class="btn-group">
+                            <div class="btn-group" name="selectBtnDiv">
                                 <select id="or_Option1Select" name="or_Option1Select" style="margin-left:15px; margin-top:3px;"></select>
                             </div>		
                         </div>
@@ -194,7 +195,9 @@
 				        </div>
 				        
 				        <div class="modal-footer">
-						  <button id="changeBtn" type="submit" class="btn btn-default" data-dismiss="modal" onclick="submitOk();">등록</button>	
+						  <!-- <button id="changeBtn" name="changeBtn" type="submit" class="btn btn-default" data-dismiss="modal" onclick="submitOk();">등록</button> -->	
+				          <button id="changeBtn" name="changeBtn" type="submit" class="btn btn-default" data-dismiss="modal">등록</button>	
+				         
 				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				        </div>
 				      </div>
@@ -292,8 +295,8 @@
 	    		var chNO = $(this).parents("#changeTable").children('td[name=chNO]').text();
 	    		var chORNO = $(this).parents("#changeTable").children('td[name=chORNO]').text();
 	    		var chPNO = $(this).parents("#changeTable").children('td[name=chPNO]').text();
-	    		var option1 = $(this).parents("#changeTable").children('td[name=option1]').text();
-	    		var option2 = $(this).parents("#changeTable").children('td[name=option2]').text();
+	    		var option1 = $(this).parents("#changeTable").children('td[class=option1]').text();
+	    		var option2 = $(this).parents("#changeTable").children('td[class=option2]').text();
 	    		var chPname = $(this).parents("#changeTable").children('td[name=chPname]').text();
 	    		var ch_Status =  $(this).parents("#changeTable").children('td[name=ch_Status]').text();
 	    		
@@ -329,9 +332,59 @@
     <script>
     	/* $(document).ready(function(){
     		$("submitOk()").click(function(){ */
-   			function submitOk(){
-	   			/* var or_Option1Select = $(this).parents('#or_Option1Select option:selected').text(); */
+    			$(document).on("click", "button[name=changeBtn]", function(event){
+    				alert("??");
 	   			var or_Option1Select =$('#or_Option1Select option:selected').text();
+	   			var or_Option2Select =$('#or_Option2Select option:selected').text();
+	   			var modalChangeSelect =$('#modalChangeSelect option:selected').val();
+	   			
+	   			var chNO =$('#chNO').text();
+	   			var chORNO = $('#chORNO').text();
+	   			
+	   			var option1 =$(this).parents("#changeTable").children('td[class=option1]').text();
+	    		var option2 =$(this).parents("#changeTable").children('td[class=option2]').text();
+	    		var ch_Status = $(this).parents('tr[name=changeTable]').children('td[name=ch_Status]');
+	    		/* var ch_Status =  $('#ch_Status'); */
+	    		
+	    		ch_Status.css("color","blue");
+	    		ch_Status.css("font-weight","bold");
+	    		
+	    		console.log("option1"+option1);
+	    		console.log("option2"+option2);
+	    		console.log("ch_Status" +ch_Status);
+	    		
+	   			$.ajax({
+	   				url:'changeOption.ad',
+	   				data:{or_Option1Select:or_Option1Select, or_Option2Select:or_Option2Select, 
+	   					  modalChangeSelect:modalChangeSelect , chNO:chNO ,chORNO:chORNO},
+	   				type:'post',
+	   				success:function(data){
+	   					/* option1.text(or_Option1Select);
+	   					option2.text(or_Option2Select);
+	   					location.href="orderChangeReject.ad";
+	   					switch(modalChangeSelect){
+	   	    			case '1': modalChangeSelect="교환접수"; break;
+	   	    			case '2': modalChangeSelect="교환진행중"; break;
+	   	    			case '3': modalChangeSelect="재발송"; break;
+	   	    			case '4': modalChangeSelect="교환완료"; break;
+	   	    			}
+	   					
+	   					ch_Status.text(modalChangeSelect); */
+	   					location.reload();
+	   					
+	   				},error:function(){
+	        				
+	        		  }
+	   			});
+    		});
+    </script> 
+    
+    <!-- <script>
+    	/* $(document).ready(function(){
+    		$("submitOk()").click(function(){ */
+    		$(document).on("click", "button[name=changeBtn]", function(event){
+    			alert("??");
+	   			/* var or_Option1Select =$('#or_Option1Select option:selected').text();
 	   			var or_Option2Select =$('#or_Option2Select option:selected').text();
 	   			var modalChangeSelect =$('#modalChangeSelect option:selected').val();
 	   			var chNO =$('#chNO').text();
@@ -340,7 +393,11 @@
 	    		var option2 = $(this).parents('#changeTable').children('td[name=option2]');
 	    		var ch_Status =  $('#ch_Status');
 	    		ch_Status.css("color","blue");
-	    		ch_Status.css("font-weight","bold");
+	    		ch_Status.css("font-weight","bold"); */
+	    		
+	    		var or_Option1Select =$(this).parents('div.Option1SelectDiv').children('div.selectBtnDiv').children("select[name=or_Option1Select]").text();
+	    		console.log(or_Option1Select);
+	    		
 	    		
 	   			$.ajax({
 	   				url:'changeOption.ad',
@@ -364,8 +421,9 @@
 	        				
 	        		  }
 	   			});
-    		}
-    </script>
+    		});
+    </script>  -->
+   
     <!-- ============================================================== -->
     <!-- //교환 모달 저장 클릭시 ajax -->
     <!-- ============================================================== -->
@@ -377,7 +435,7 @@
     <script>
 	    $(document).ready(function(){
 	    	$("button[name=orderRejectBtn]").click(function(){
-	    		if (confirm("반품하시겠습니까?")) {
+	    		if (confirm("환불하시겠습니까?")) {
 	    			var reNO = $(this).parents("#rejectTable").children('td[name=reNO]').text();
 	    			var reORNO = $(this).parents("#rejectTable").children('td[name=reORNO]').text();
 	    			var re_Op_NO = $(this).parents("#rejectTable").children('td[name=re_Op_NO]').text();
@@ -391,7 +449,7 @@
 		   				type:'post',
 		   				success:function(data){
 		   					if(data=='Sucess'){
-		   					alert('반품완료.');
+		   					alert('환불완료.');
 			    			re_Status.text('환불완료');
 		   					}
 		   				},error:function(){

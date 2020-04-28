@@ -12,6 +12,11 @@ public interface ownerContactService {
 	ArrayList<Member> contactUserSelect(Member m);
 
 	int contactViewCheckUpdate(int con_NO);
+	
+	int contactInsert(Contact ct);
+
+	int contactInsertImg(Contact ct);
+
 
 
 }
