@@ -157,11 +157,11 @@
 										즉시 결제</button>
 									&nbsp;&nbsp;&nbsp;
 									
-									<c:url var="cInsert" value="cInsert.mn">
+		<%-- 							<c:url var="cInsert" value="cInsert.mn">
 									 <c:param name="ct_P_NO" value="${ ap.p_NO }"/>
 									 	<c:param name="ct_Mno" value="${ loginUser.mNO }"/>
-									</c:url>
-									<a href="${ cInsert }"
+									</c:url> --%>
+									<a href="#"
 										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"
 										style="color: white; background-color: #333; border-radius: 5px;" id="cart">
 										장바구니</a>
@@ -197,18 +197,7 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$("#cart").click(function(){
-			$.ajax({
-				type:"post",
-				url:"MyCart.jsp",
-				data:,
-				dataType:,
-				success:
-				error:
-			})
-		})
-	</script>
+
 	<script>
 	$(function(){
 	    $("#select1").change(function() {
@@ -264,7 +253,57 @@
 			});
 	    });
 	});
-	
+	/* 장바구니 담기 */ 
+	$("#cart").click(function(){
+			var ct_P_NO=$("#pNo").val();
+			var ct_Mno="${loginUser.mNO}";
+			var Amount = $("input[name=num-product]").val();
+			var ct_Amount = Amount.replace(/ /gi, "");
+			var ct_Option_1 = $('#select2-select1-container').text();
+			var ct_Option_2 = $('#select2-select2-container').text();
+		if(ct_Mno != ""){
+			if(ct_Option_1 != "선택하세요"){
+				if(ct_Option_2 != ""){
+					if(ct_Amount != "0" ){
+				
+			$.ajax({
+				url:"cInsert",
+				data:{
+					ct_P_NO : ct_P_NO,
+					ct_Mno : ct_Mno,
+					ct_Option_1 : ct_Option_1,
+					ct_Option_2 : ct_Option_2
+				},
+				type:"POST",
+				success:function(data){
+						if(data = "ok"){
+							alert("장바구니에 성공적으로 등록되었습니다.");
+						}
+					
+				},error:function(jqxhr,textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			
+			});
+					}else{
+						alert("수량을 선택해주세요");
+					}
+			
+				}else{
+				alert("옵션2를 선택해주세요.");
+			}
+			}else{
+				alert("옵션1을 선택해주세요.");
+			}
+		}else{
+			alert("로그인후 이용 가능합니다.");
+		}
+	})
 	</script>
 </body>
 </html>

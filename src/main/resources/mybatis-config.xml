@@ -26,6 +26,7 @@
         <typeAlias type="com.kh.brocoli.product.model.vo.Product_File" alias="Product_File"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Product_Option" alias="Product_Option"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Product" alias="Product"/>
+        <typeAlias type="com.kh.brocoli.product.model.vo.totalProduct" alias="totalProduct"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.QNAProduct_Reply" alias="QNAProduct_Reply"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.QNAProduct" alias="QNAProduct"/>
         <typeAlias type="com.kh.brocoli.product.model.vo.Review_Reply" alias="Review_Reply"/>

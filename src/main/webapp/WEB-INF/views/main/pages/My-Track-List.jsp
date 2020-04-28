@@ -27,10 +27,71 @@ input {
 
 
 
-
 	<form class="bg0 p-t-75 p-b-85" id="mtlForm">
 		<div class="container">
 			<div class="row">
+			<!------------------------------------쇼핑카트----------------------------------------------- -->
+			<div class="wrap-table-shopping-cart" style="margin-bottom: 30px; width : 1380px;">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<!-- <th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th> -->
+									<th class="column-1">이미지</th>
+									<th class="column-2">상품명</th>
+									<th class="column-3">옵션1</th>
+									<th class="column-4">옵션2</th>
+									<th class="column-5">판매금액</th>
+									<th class="column-6">수량</th>
+									<th class="column-7">총 금액</th>
+									<th colspan="2" class="column-7">삭제</th>
+								</tr>
+							<c:set var="sum" value="0"/>
+							<c:forEach var="c" items="${ cList }" >
+	
+								<tr class="table_row">
+								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">${c.productList.p_Name}</td>
+									<td class="column-3">${c.ct_Option_1 }</td>
+									<td class="column-4">${c.ct_Option_2 }</td>
+									<td class="column-7">${c.productList.p_Last_Price}</td>
+									
+									<td class="column-6">${ c.ct_Amount }</td>
+									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+									
+									<td class="column-7">
+										<c:out value="${ hap }"/>
+									</td>
+										<td style="text-align: center;">
+									<c:url var="cDelete" value="cDelete.mn">
+										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+										<c:param name="Mno" value="${loginUser.mNO }"/>
+										<c:param name="ct_NO" value="${c.ct_NO}"/>
+									</c:url> 
+									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+										
+									</td>
+								</tr>
+								</c:forEach>
+													
+								<tr style="height:100px;">
+									<td colspan="6"></td>
+									<td >총 금액 : </td>
+									<td>
+										<input type="text" id="totalCash" name="totalCash">
+									</td>
+									<td>
+									원
+									</td>
+								</tr>
+							</table>
+						</div>
+			<!------------------------------------쇼핑카트----------------------------------------------- -->
 				<div class="cell_order_form article_tit">
 					<div class="cell_order_form1">
 						<h3 class="title-box font-mss">
