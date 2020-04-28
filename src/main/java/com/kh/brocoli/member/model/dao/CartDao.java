@@ -28,8 +28,4 @@ public class CartDao {
 		return sqlSession.delete("Cart-mapper.deleteWish",ct_NO);
 	}
 
-	public ArrayList<Cart> cartOrderList(int ct_Mno) {
-		return (ArrayList)sqlSession.selectList("Cart-mapper.cartOrderList",ct_Mno);
-	}
-
 }

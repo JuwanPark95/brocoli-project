@@ -1,14 +1,19 @@
 package com.kh.brocoli.member.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonIOException;
 import com.kh.brocoli.member.model.service.CartService;
 import com.kh.brocoli.member.model.vo.Cart;
 import com.kh.brocoli.product.model.vo.ProductDetail;
@@ -49,7 +54,25 @@ public class CartController {
 			  return "common/errorPage"; }
 
 	}
-	
+	@RequestMapping("cInsert")
+	@ResponseBody
+	private String cInsert2(HttpServletResponse response,Cart c,int ct_Mno,int ct_P_NO) throws JsonIOException, IOException{
+
+		c.setCt_P_NO(ct_P_NO);
+		c.setCt_Option_1(c.getCt_Option_1());
+		c.setCt_Option_2(c.getCt_Option_2());
+		c.setCt_Amount(c.getCt_Amount());
+		c.setCt_Mno(ct_Mno);
+		
+		int result = cService.cInsert(c);
+		
+		if(result > 0) {
+			return "ok";
+		}else {
+			return "false";
+		}
+		
+	}
 	@RequestMapping("cList.mn")
 	public ModelAndView cartList(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno) {
 		
@@ -79,15 +102,11 @@ public class CartController {
 	}
 	
 	@RequestMapping("cOrderAdd.mn")
-	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno) {
+	public ModelAndView cOrderAdd(ModelAndView mv, @RequestParam("ct_Mno") int ct_Mno,
+												   @RequestParam("op_NO") int op_NO) {
 		
 		System.out.println("주문을 해봅시다." + ct_Mno);
-		
-		ArrayList<Cart> cOrderAdd = cService.cartOrderList(ct_Mno);
-		
-		System.out.println("주문에 들어감? " + cOrderAdd);
-		
-		mv.addObject("cOrderAdd" + cOrderAdd);
+
 		mv.setViewName("My-Track-List");
 		
 		return mv;

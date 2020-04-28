@@ -28,7 +28,7 @@
 	
 	</resultMap>
 	
-	<resultMap type="Product" id="productResultSet2">
+ 	<resultMap type="Product" id="productResultSet2">
 		<id property="p_NO" column="P_NO"/>
 		<result property="p_Name" column="P_NAME"/>
 		<result property="p_Price" column="P_PRICE"/>
@@ -46,11 +46,12 @@
 		<result property="p_Show_YN" column="P_SHOW_YN"/>
 		<result property="p_Brand_NO" column="P_BRAND_NO"/>
 		
+
 		<collection property="pfList" resultMap="productFileResultSet"/>
 		 <collection property="poList" resultMap="productOptionResultSet"/>
 		<collection property="brList" resultMap="brandResultSet2"/>
 	</resultMap>
-	
+
 	
 	
 	<resultMap type="Brand" id="brandResultSet">
