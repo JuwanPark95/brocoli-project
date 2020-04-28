@@ -6,6 +6,7 @@ import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.product.model.vo.Brand;
 
 public class Magazine {
+	
 	 private int m_NO;
 	 private String m_ID;
 	 private String m_Title;

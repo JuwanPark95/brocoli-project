@@ -89,6 +89,7 @@
                                         
                                          <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                                 <th>날짜</th>
                                                 <th>주문건수</th>
                                                 <th>매출 (원)</th>
@@ -100,6 +101,7 @@
                                         <tbody>
                                         	<c:forEach var="r" items="${olist}">
 	                                            <tr>
+	                                            	<td style="display: none;">${r.or_NO * -1}</td>
 	                                                <td>${r.day}</td>
 	                                                <td>${r.orderCount}</td>
 	                                                <td>${r.orderPrice}</td>
@@ -111,6 +113,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                                 <th>날짜</th>
                                                 <th>주문건수</th>
                                                 <th>매출 (원)</th>

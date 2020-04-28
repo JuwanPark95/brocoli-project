@@ -340,12 +340,16 @@
                                             <a class="nav-link" href="${gotoMagazineInsert }">매거진등록</a>
                                         </li>
                                         <li class="nav-item">
-                                        <c:url var="gotoMagazineResult" value="manazineResultPage.ow"/>
-                                            <a class="nav-link" href="${gotoMagazineResult }">진행현황</a>
+                                        <c:url var="gotoMagazineResult" value="manazineResultPage.ow">
+                                        	<c:param name="bNO" value="${loginUser.brand_NO }"></c:param>
+                                        </c:url>
+                                            <a class="nav-link" href="${gotoMagazineResult }">이번달 진행현황</a>
                                         </li>
                                         <li class="nav-item">
-                                        <c:url var="gotoMagazineSelect" value="manazineSelectPage.ow"/>
-                                            <a class="nav-link" href="${gotoMagazineSelect }">등록된매거진</a>
+                                        <c:url var="gotoMagazineSelect" value="manazineSelectPage.ow">
+                                        	<c:param name="bNO" value="${loginUser.brand_NO }"></c:param>
+                                        </c:url>
+                                            <a class="nav-link" href="${gotoMagazineSelect }">지난매거진</a>
                                         </li>
 
                                     </ul>

@@ -20,7 +20,7 @@
     
     <%@ include file="header.jsp" %>
     
-    <title>오너 : 등록된 매거진</title>
+    <title>오너 : 지난 매거진</title>
 </head>
 
 <body>
@@ -40,14 +40,14 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">등록된 매거진</h2>
+                            <h2 class="pageheader-title">지난 매거진</h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">메뉴</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">매거진</a></li>
-                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">등록된 매거진</a></li>
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">지난 매거진</a></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -65,8 +65,8 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="mb-0">등록된 매거진</h5>
-                                <p> - 등록하셨던 매거진 리스트입니다.<br>
+                                <h5 class="mb-0">지난 매거진</h5>
+                                <p> - 이전에 등록하셨던 매거진 리스트입니다.<br>
                                 - Print, Excel, CSV, PDF 버튼 클릭시 저장됩니다.</p>
                             </div>
                             <div class="card-body">
@@ -74,8 +74,8 @@
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>번호</th>
-                                                <th>신청일</th>
                                                 <th>등록일</th>
                                                 <th>분류</th>
                                                 <th>대표이미지</th>
@@ -87,61 +87,39 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                            	<td>1</td>
-                                                <td>2020-03-27</td>
-                                                <td>-</td>
-                                                <td>룩북</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/magazine-Img/M0001.jfif" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>썬배더</td>
-                                                <td>마크 곤잘레스 20 서머 컬렉션...</td>
-                                                <td>216</td>
-                                                <td>Juwan_P</td>
-                                                <td>
-                                                	<span class="badge-dot badge-warning"></span>승인대기중
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                            	<td>2</td>
-                                                <td>2020-02-14</td>
-                                                <td>2020-02-15</td>
-                                                <td>룩북</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/magazine-Img/M0002.jfif" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>확립.</td>
-                                                <td>프리즘웍스의 2020 S/S 컬렉션 ...</td>
-                                                <td>3,452</td>
-                                                <td>Juwan_P</td>
-                                                <td>
-                                                	<span class="badge-dot badge-success mr-1"></span>게재중
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                            	<td>3</td>
-                                                <td>2020-01-27</td>
-                                                <td>2020-01-28</td>
-                                                <td>룩북</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/magazine-Img/M0003.jfif" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>유스탈지아</td>
-                                                <td>Youyh (젊음) + Nostalgi ...</td>
-                                                <td>19,001</td>
-                                                <td>Juwan_P</td>
-                                                <td>
-                                                	<span class="badge-dot badge-danger"></span>비공개
-                                                </td>
-                                            </tr>
-                
-                                            
+                                        	<c:forEach var="i" items="${list }">
+	                                            <tr>
+	                                            	<td style="display: none;">${i.m_NO*-1 }</td>
+	                                            	<td>${i.m_NO}</td>
+	                                                <td>${i.m_Date}</td>
+	                                                <td>${i.m_Category}</td>
+	                                                <td align="center" >
+	                                                	<div class="m-r-10"><img src="/brocoli/resources/magazine-Img/${i.m_Magazine_File.mf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                </td>
+	                                                <td>${i.m_Title}</td>
+	                                                <td>${i.m_Comment}</td>
+	                                                <td>${i.m_Count}</td>
+	                                                <td>${i.m_ID}</td>
+	                                                <td>
+	                                                	<c:choose>
+	                                                	<c:when test="${i.m_Status eq 'N' }">
+		                                                	<span class="badge-dot badge-brand"></span>승인대기중
+	                                                	</c:when>
+	                                                	<c:when test="${i.m_Status eq 'Y' }">
+		                                                	<span class="badge-dot badge-primary"></span>승인됨
+	                                                	</c:when>
+	                                                	<c:when test="${i.m_Status eq 'D' }">
+		                                                	<span class="badge-dot badge-danger"></span>반려됨
+	                                                	</c:when>
+	                                                </c:choose>
+	                                                </td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>번호</th>
-                                                <th>신청일</th>
                                                 <th>등록일</th>
                                                 <th>분류</th>
                                                 <th>대표이미지</th>
