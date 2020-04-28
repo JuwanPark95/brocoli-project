@@ -9,8 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>어드민 메인 페이지</title>
-
+<title>어드민 메인 페이지</title>	
 </head>
 
 <body>
@@ -32,18 +31,13 @@
 					<div class="row">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="page-header">
-								<h2 class="pageheader-title">E-commerce Dashboard Template
-								</h2>
-								<p class="pageheader-text">Nulla euismod urna eros, sit amet
-									scelerisque torton lectus vel mauris facilisis faucibus at enim
-									quis massa lobortis rutrum.</p>
+								<h2 class="pageheader-title">BROCOLI 관리자 홈</h2>
 								<div class="page-breadcrumb">
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#"
-												class="breadcrumb-link">Dashboard</a></li>
-											<li class="breadcrumb-item active" aria-current="page">E-Commerce
-												Dashboard Template</li>
+												class="breadcrumb-link">BROCOLI</a></li>
+											<li class="breadcrumb-item active" aria-current="page">홈</li>
 										</ol>
 									</nav>
 								</div>
@@ -59,9 +53,9 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Total Revenue</h5>
+										<h5 class="text-muted">총 회원수</h5>
 										<div class="metric-value d-inline-block">
-											<h1 class="mb-1">$12099</h1>
+											<h1 class="mb-1">${result}</h1>
 										</div>
 										<div
 											class="metric-label d-inline-block float-right text-success font-weight-bold">
@@ -74,7 +68,7 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Affiliate Revenue</h5>
+										<h5 class="text-muted">총 브랜드수</h5>
 										<div class="metric-value d-inline-block">
 											<h1 class="mb-1">$12099</h1>
 										</div>
@@ -89,7 +83,7 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Refunds</h5>
+										<h5 class="text-muted">총 매출</h5>
 										<div class="metric-value d-inline-block">
 											<h1 class="mb-1">0.00</h1>
 										</div>
@@ -104,7 +98,7 @@
 							<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 								<div class="card">
 									<div class="card-body">
-										<h5 class="text-muted">Avg. Revenue Per User</h5>
+										<h5 class="text-muted">총 주문수</h5>
 										<div class="metric-value d-inline-block">
 											<h1 class="mb-1">$28000</h1>
 										</div>
@@ -144,7 +138,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
+													<!-- <tr>
 														<td>1</td>
 														<td>
 															<div class="m-r-10">
@@ -216,7 +210,7 @@
 														<td colspan="9"><a href="#"
 															class="btn btn-outline-light float-right">View
 																Details</a></td>
-													</tr>
+													</tr> -->
 												</tbody>
 											</table>
 										</div>

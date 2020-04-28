@@ -546,6 +546,8 @@
 	    }
 
     </script>
+
+    </script>
     
     <script>
     $('#form').parsley();

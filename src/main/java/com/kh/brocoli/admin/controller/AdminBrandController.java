@@ -21,10 +21,7 @@ import com.kh.brocoli.general.model.vo.Contact;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
 
-/**
- * @author Eunji
- *
- */
+
 @Controller
 @SessionAttributes("loginUser")
 public class AdminBrandController {

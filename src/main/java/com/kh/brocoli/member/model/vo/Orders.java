@@ -20,6 +20,8 @@ public class Orders {
 	 private String or_Deliver_Num;
 	 private String or_Deliver_Vender;
 	 private int or_Mno;
+	 private String or_Recip_Name;
+	 private String or_Phone;
 	 private int or_P_NO;
 	 private int or_Brand_NO;
 	
@@ -40,13 +42,11 @@ public class Orders {
 		super();
 	 }
 
-
-
 	public Orders(int or_NO, Date or_Date, String or_Pname, String or_Option1, String or_Option2, String or_Amount,
 			String or_Address, String or_Message, String or_Price, String or_Status, String or_Deliver_Num,
-			String or_Deliver_Vender, int or_Mno, int or_P_NO, int or_Brand_NO, Member mem, Product pList,
-			Product_Option pOptionlist, Member or_Member, Brand or_Brand, String or_Status_Str, Reject ordersReject,
-			Change ordersChange) {
+			String or_Deliver_Vender, int or_Mno, String or_Recip_Name, String or_Phone, int or_P_NO, int or_Brand_NO,
+			Product pList, Product_Option pOptionlist, Member mem, Member or_Member, Brand or_Brand,
+			String or_Status_Str, Reject ordersReject, Change ordersChange) {
 		super();
 		this.or_NO = or_NO;
 		this.or_Date = or_Date;
@@ -61,11 +61,13 @@ public class Orders {
 		this.or_Deliver_Num = or_Deliver_Num;
 		this.or_Deliver_Vender = or_Deliver_Vender;
 		this.or_Mno = or_Mno;
+		this.or_Recip_Name = or_Recip_Name;
+		this.or_Phone = or_Phone;
 		this.or_P_NO = or_P_NO;
 		this.or_Brand_NO = or_Brand_NO;
-		this.mem = mem;
 		this.pList = pList;
 		this.pOptionlist = pOptionlist;
+		this.mem = mem;
 		this.or_Member = or_Member;
 		this.or_Brand = or_Brand;
 		this.or_Status_Str = or_Status_Str;
@@ -73,8 +75,7 @@ public class Orders {
 		this.ordersChange = ordersChange;
 	}
 
-
-
+	
 	public int getOr_NO() {
 		return or_NO;
 	}
@@ -372,7 +373,21 @@ public class Orders {
 		this.ordersChange = ordersChange;
 	}
 
+	public String getOr_Recip_Name() {
+		return or_Recip_Name;
+	}
 
+	public void setOr_Recip_Name(String or_Recip_Name) {
+		this.or_Recip_Name = or_Recip_Name;
+	}
+
+	public String getOr_Phone() {
+		return or_Phone;
+	}
+
+	public void setOr_Phone(String or_Phone) {
+		this.or_Phone = or_Phone;
+	}
 
 	@Override
 	public String toString() {
@@ -380,16 +395,11 @@ public class Orders {
 				+ or_Option1 + ", or_Option2=" + or_Option2 + ", or_Amount=" + or_Amount + ", or_Address=" + or_Address
 				+ ", or_Message=" + or_Message + ", or_Price=" + or_Price + ", or_Status=" + or_Status
 				+ ", or_Deliver_Num=" + or_Deliver_Num + ", or_Deliver_Vender=" + or_Deliver_Vender + ", or_Mno="
-				+ or_Mno + ", or_P_NO=" + or_P_NO + ", or_Brand_NO=" + or_Brand_NO + ", mem=" + mem + ", pList=" + pList
-				+ ", pOptionlist=" + pOptionlist + ", or_Member=" + or_Member + ", or_Brand=" + or_Brand
-				+ ", or_Status_Str=" + or_Status_Str + ", ordersReject=" + ordersReject + ", ordersChange="
-				+ ordersChange + "]";
+				+ or_Mno + ", or_Recip_Name=" + or_Recip_Name + ", or_Phone=" + or_Phone + ", or_P_NO=" + or_P_NO
+				+ ", or_Brand_NO=" + or_Brand_NO + ", pList=" + pList + ", pOptionlist=" + pOptionlist + ", mem=" + mem
+				+ ", or_Member=" + or_Member + ", or_Brand=" + or_Brand + ", or_Status_Str=" + or_Status_Str
+				+ ", ordersReject=" + ordersReject + ", ordersChange=" + ordersChange + "]";
 	}
 
-
-	 
-	 
-
-	
 	
 }

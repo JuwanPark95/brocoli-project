@@ -1,104 +1,47 @@
 package com.kh.brocoli.admin.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.brocoli.member.model.service.MemberService;
+import com.kh.brocoli.admin.model.service.AdminBrandService;
+import com.kh.brocoli.admin.model.service.AdminService;
+import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 
 @SessionAttributes("loginUser")
 @Controller
 public class AdminController {
 	
-//	@RequestMapping("admin.ad")
-//	public String AdminMain() {
-//		return "admin";
-//	}
-//	
-//	@RequestMapping("memberManagement.ad")
-//	public String memberManagement() {
-//		return "member-management";
-//	}
-//	
-//	@RequestMapping("brand-enroll.ad")
-//	public String brandEnroll() {
-//		return "brand-enroll";
-//	}
-//	
-//	@RequestMapping("brandManagement.ad")
-//	public String brandManagement() {
-//		return "brand-management";
-//	}
-//	
-//	@RequestMapping("brand-owner-contact.ad")
-//	public String brandOwnerContact() {
-//		return "brand-owner-contact";
-//	}
-//	
-	@RequestMapping("order-status.ad")
-	public String orderStatus() {
-		return "order-status";
+	@Autowired
+	private AdminService AService;
+	   
+	
+	/**
+	 * 작성자 : 신은지
+	 * 1. ADMIN 홈  회원수
+	 * @return
+	 */
+	@RequestMapping("admin.ad")
+	public ModelAndView member(ModelAndView mv) {
+		
+		int memberCount = AService.memberCount();
+		int brandCount = AService.brandCount();
+		int orderCount = AService.orderCount();
+		String sales = AService.sales();
+		
+		mv.addObject("memberCount",memberCount);
+		mv.addObject("brandCount",brandCount);
+		mv.addObject("orderCount",orderCount);
+		mv.addObject("sales",sales);
+		mv.setViewName("admin");
+		return mv;
 	}
-//	
-//	@RequestMapping("order-exchange.ad")
-//	public String orderExchange() {
-//		return "order-exchange";
-//	}
-//	
-//	@RequestMapping("product-management.ad")
-//	public String productManagement() {
-//		return "product-management";
-//	}
-//	
-//	@RequestMapping("product-stop.ad")
-//	public String productStop() {
-//		return "product-stop";
-//	}
-//	
-//	@RequestMapping("sales-date.ad")
-//	public String salesDate() {
-//		return "sales-date";
-//	}
-//	
-//	@RequestMapping("sales-management.ad")
-//	public String salesManagement() {
-//		return "sales-management";
-//	}
-//	
-//	@RequestMapping("magazine-management.ad")
-//	public String magazineManagement() {
-//		return "magazine-management";
-//	}
-//
-//	@RequestMapping("magazine-upload.ad")
-//	public String magazineUpload() {
-//		return "magazine-upload";
-//	}
-//	
-//	
-//	@RequestMapping("board-notice.ad")
-//	public String boardNotice() {
-//		return "board-notice";
-//	}
-//	
-//	@RequestMapping("board-questions.ad")
-//	public String boardQuestions() {
-//		return "board-questions";
-//	}
-//	
-//	@RequestMapping("advertisement-auction.ad")
-//	public String advertisementAuction() {
-//		return "advertisement-auction";
-//	}
-//	
-//	@RequestMapping("advertisement-apply.ad")
-//	public String advertisementApply() {
-//		return "advertisement-apply";
-//	}
-//	
-//	@RequestMapping("setting.ad")
-//	public String setting() {
-//		return "setting";
-//	}
+	
+	
+	
 }

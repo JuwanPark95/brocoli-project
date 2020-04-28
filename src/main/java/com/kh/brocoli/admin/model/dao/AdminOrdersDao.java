@@ -1,6 +1,7 @@
 package com.kh.brocoli.admin.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,56 @@ public class AdminOrdersDao {
 	 */
 	public ArrayList<Product_Option> orderChangeModal(int chPNO) {
 		return (ArrayList)sqlSession.selectList("AdminOrders.orderChangeModal",chPNO);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  5. 교환 모달창 교환상태 저장
+	 * @param hmap
+	 * @return
+	 */
+	public int changeOption(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.changeOption",hmap);
+	}
+
+	/**
+	 * 작성자 : 신은지 
+	 * 5_1. 교환 모달창 주문 옵션 update
+	 * @param hmap
+	 * @return
+	 */
+	public int changeOption2(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.changeOption2",hmap);
+	}
+
+	/**
+	 * 작성자 : 신은지
+	 * 6. 반품시 수량 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectAmount(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectAmount",hmap);
+	}
+
+	/**
+	 *  작성자 : 신은지
+	 *  6-1. 반품시 상태 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectStatus(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectStatus",hmap);
+	}
+
+	/**
+	 * 작성자 : 신은지 
+	 * 6-2. 반품시 주문 페이지 상태 update
+	 * @param hmap
+	 * @return
+	 */
+	public int rejectOrderStatus(HashMap<String, String> hmap) {
+		return sqlSession.update("AdminOrders.rejectOrderStatus",hmap);
 	}
 	
 }

@@ -304,7 +304,8 @@
                             </li>
                             
                              <li class="nav-item ">
-                                <a class="nav-link" href="/brocoli/owner/pages/manager-contact.jsp" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-hands-helping"></i>매니저컨택트</a>
+                             	<c:url var="managerContact" value="managerContact.ow"/>
+                                <a class="nav-link" href="${managerContact }" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-hands-helping"></i>매니저컨택트</a>
                             </li>
                             
                             <li class="nav-item ">
