@@ -336,13 +336,16 @@
                                 <div id="submenu-7" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/magazine-insert.jsp">매거진등록</a>
+                                        <c:url var="gotoMagazineInsert" value="manazineInsertPage.ow"/>
+                                            <a class="nav-link" href="${gotoMagazineInsert }">매거진등록</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/magazine-result.jsp">진행현황</a>
+                                        <c:url var="gotoMagazineResult" value="manazineResultPage.ow"/>
+                                            <a class="nav-link" href="${gotoMagazineResult }">진행현황</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/brocoli/owner/pages/magazine-old.jsp">등록된매거진</a>
+                                        <c:url var="gotoMagazineSelect" value="manazineSelectPage.ow"/>
+                                            <a class="nav-link" href="${gotoMagazineSelect }">등록된매거진</a>
                                         </li>
 
                                     </ul>

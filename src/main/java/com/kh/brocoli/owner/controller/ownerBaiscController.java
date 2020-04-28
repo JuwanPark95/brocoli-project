@@ -49,6 +49,23 @@ public class ownerBaiscController {
 		return "manager-contact";
 	}
 	
+	@RequestMapping("manazineInsertPage.ow")
+	public String manazineInsertPage() {
+		return "magazine-insert";
+	}
+	
+	@RequestMapping("manazineResultPage.ow")
+	public String manazineResultPage() {
+		return "magazine-result";
+	}
+	
+	@RequestMapping("manazineSelectPage.ow")
+	public String manazineSelectPage() {
+		return "magazine-old";
+	}
+	
+	
+	
 	/*
 	 * @RequestMapping("bproduct.mn") public ModelAndView BrandProductView(Brand
 	 * br,ModelAndView mv,String b_Name) {
