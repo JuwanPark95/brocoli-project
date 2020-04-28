@@ -29,6 +29,4 @@ public class CartServiceimpl implements CartService {
 	public int deleteCart(int ct_NO) {
 		return cDao.deleteCart(ct_NO);
 	}
-	
-
 }

@@ -55,11 +55,11 @@
                                 </div>
 	                            <div class="card" style="height: 85px; float: bottom; margin: 0px;">
 	                                <div class="card-body" style="padding: 10px; width: 100%;">
-	                                	<textarea rows="" cols="" style="resize: none; width:calc( 100% - 140px ); height: 100%; border-radius: 4px; float: left;"></textarea>
+	                                	<textarea id="textArea" rows="" cols="" style="resize: none; width:calc( 100% - 140px ); height: 100%; border-radius: 4px; float: left;"></textarea>
 	                                	<div style="width: 140px; float: right; padding: 10px;">
-			                                <a href="#" class="btn btn-dark" style="width: auto; height: auto; float: right;"><strong>전송</strong></a>
-                                			<img src="/brocoli/resources/ownerResources/images/ImgUpload_Icon.png" style="height: 41px; width: auto; float: left;">
-		                                	<input type="file" style="width:auto; height: auto; float: right; display: none;">
+			                                <button onclick="sendMassege();" class="btn btn-dark" style="width: auto; height: auto; float: right;"><strong>전송</strong></button>
+                                			<img id="contentImg" src="/brocoli/resources/ownerResources/images/ImgUpload_Icon.png"  style="height: 41px; width: 41px; float: left;">
+		                                	<input id="ImgFile" name="file" type="file" onchange="loadImg(this, 1);" style="width:auto; height: auto; float: right; display: none;">
 	                                	</div>
 	                                </div>
 	                            </div>
@@ -109,27 +109,172 @@
             </div>
 		</div>
 <!--    작성자 : 박주완
-    작성일 : 2020-04-28
-    내용: 컨택트 데이터 select -->	
+        작성일 : 2020-04-28
+        내용: 전송버튼 클릭시 Contact 테이블 insert -->	
 	<script>
+	function sendMassege(){
+		var imgfile0 = $('#ImgFile').prop('files')[0];
+		console.log("imgfile : "  + imgfile0);
+		if(imgfile0 == null){
+			sendMassegeNoImg();
+		}
+		if(imgfile0 != null){
+			sendMassegeImg();
+		}
+	}
+	
+	function sendMassegeImg(){
+		var contentText = $('#textArea').val();
+		var mNo = ${loginUser.mNO};
+		var bNO = ${loginUser.brand_NO};
+		var mName = '${loginUser.mName}';
+		var imgfile =  $('#ImgFile').prop('files')[0];
+		console.log("가져온 메시지 : " + contentText);
+		
+		var contactData = new FormData();
+		contactData.append('con_Content',contentText);
+		contactData.append('con_Mno',mNo);
+		contactData.append('con_Bno',bNO);
+		contactData.append('con_Writer',mName);
+		contactData.append('file',imgfile);
+		
+		$.ajax({
+			url : "contactInsertImg.ow",
+			type : 'post',
+			dataType : "json",
+			data : contactData,
+			processData : false,
+			contentType : false,
+			success : function(data){
+				$("#chatingArea").scrollTop($(document).height());	//로드후 스크롤 제일 아래로
+				console.log("메시지 insert 성공.");
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("옥션 insert ajax 처리실패");
+
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		})
+	}
+	
+	function sendMassegeNoImg(){
+		var contentText = $('#textArea').val();
+		var mNo = ${loginUser.mNO};
+		var bNO = ${loginUser.brand_NO};
+		var mName = '${loginUser.mName}';
+		console.log("가져온 메시지 : " + contentText);
+		var contactData = new FormData();
+		contactData.append('con_Content',contentText);
+		contactData.append('con_Mno',mNo);
+		contactData.append('con_Bno',bNO);
+		contactData.append('con_Writer',mName);
+		
+		$.ajax({
+			url : "contactInsert.ow",
+			type : 'post',
+			dataType : "json",
+			data : contactData,
+			processData : false,
+			contentType : false,
+			success : function(data){
+				$("#chatingArea").scrollTop($(document).height());	//로드후 스크롤 제일 아래로
+				console.log("메시지 insert 성공.");
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("옥션 insert ajax 처리실패");
+
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		})
+	}
+	</script>
+	
+<!--    작성자 : 박주완
+        작성일 : 2020-04-28
+        내용: 이미지 클릭시 이미지 파일 업로드 스크립트 -->
+	<script>
+	//사진 게시판 미리보기 기능 지원 스크립트
+	$(function(){
+	      
+	   $('#contentImg').click(() => {
+	      $('#ImgFile').click();
+	   });
+	      
+	   
+	});
+
+	function loadImg(value, num){
+	   
+	   if(value.files && value.files[0])  {
+	      
+	      var reader = new FileReader();
+	      
+	      reader.onload = function(e){
+	         
+	         switch(num) {
+	         case 1 : $('#contentImg').attr('src', e.target.result);
+	            break;
+	         }
+	      }
+	      reader.readAsDataURL(value.files[0]);
+	   }
+	}
+	</script>
+		
+<!--    작성자 : 박주완
+    작성일 : 2020-04-28
+    내용: 컨택트 데이터 select 인터벌 -->	
+	<script>
+	
 	var scrollValue = "";
-	$(window).scroll(function () {
-		scrollValue = $("#chatingArea").$(document).scrollTop();
+	var count = 0;
+	$('#chatingArea').scroll(function () {
+		scrollValue = $("#chatingArea").scrollTop();
+		console.log("스크롤위치값 : " + scrollValue);
 	});
 	$( document ).ready(function() {
 		console.log("Interval 실행..");
 		
-		setInterval(function(){
+		var Interval =  setInterval(function(){
 				var bNO = "${loginUser.brand_NO}";
 				var mNO = "${loginUser.mNO}"; 
 				var chating = "";
 				var chatImg = "";
+				
+				count++;
+				if(count == 350){
+					console.log("채팅 reload 종료.");
+					alert('채팅 시간이 초과되었습니다 채팅을 계속하시려면 새로고침 해주세요.');
+					clearInterval(Interval);
+				}
 				$.ajax({
 					url : "contactListSelect.ow",
 					data : {con_Bno:bNO,con_Mno:mNO},
 					dataType:"json",
 					success : function(data){
 						for(var i = 0; i < data.length; i++) {
+							var title = data[i].con_Title;
+							if(title == null){
+								title = "";
+							}
+							var content = data[i].con_Content;
+							if(content.length < 5){
+								if(content == title){
+									title = "";
+								}
+							}
+							if(content.length > 5){
+								subContent = content.substr(0,4);
+								if(subContent == title){
+									title = "";
+								}
+							}
+							
+							
 							if(data[i].con_Mno == mNO){
 								if(data[i].con_Img_ReName != null){
 									chating += "<div style='width: 100%; height: auto; min-height: 80px; margin-bottom: 15px; overflow: hidden;'>"
@@ -143,7 +288,7 @@
 									chating += "</div>"
 									chating += "<div style='width: 100%; height:auto; padding: 0;'>"						
 									chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: right;'>"						
-									chating += ""+data[i].con_Title+""+data[i].con_Content+""						
+									chating += ""+title+""+content+""							
 									chating += "</div>"						
 									chating += "</div>"
 									if(data[i].con_View_Check == 'Y'){
@@ -163,7 +308,7 @@
 										chating += "</div>"	
 										chating += "<div style='width: 100%; height:auto; padding: 0;'>"						
 										chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: right;'>"						
-										chating += ""+data[i].con_Title+""+data[i].con_Content+""						
+										chating += ""+title+""+content+""							
 										chating += "</div>"						
 										chating += "</div>"
 										if(data[i].con_View_Check == 'Y'){
@@ -188,7 +333,7 @@
 									chating += "</div>"
 									chating += "<div style='width: 100%; height:auto; padding: 0;'>"						                                                                                                                                                                         
 									chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: left;'>"						 
-									chating += ""+data[i].con_Title+""+data[i].con_Content+""						                                                                                                                                                                                                                             
+									chating += ""+title+""+content+""							                                                                                                                                                                                                                             
 									chating += "</div>"						                                                                                                                                                                                                                         
 									chating += "</div>"						                                                                                                                                                                                                                         
 									if(data[i].con_View_Check == 'Y'){
@@ -209,7 +354,7 @@
 										chating += "</div>"	
 										chating += "<div style='width: 100%; height:auto; padding: 0;'>"						                                                                                                                                                                         
 										chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: left;'>"						 
-										chating += ""+data[i].con_Title+""+data[i].con_Content+""						                                                                                                                                                                                                                             
+										chating += ""+title+""+content+""						                                                                                                                                                                                                                             
 										chating += "</div>"						                                                                                                                                                                                                                         
 										chating += "</div>"						                                                                                                                                                                                                                         
 										if(data[i].con_View_Check == 'Y'){
@@ -229,7 +374,7 @@
 						
 						$('#chatingArea').html(chating);
 						$('#chatImgArea').html(chatImg);
-						$("#chatingArea").scrollTop($(document).scrollValue);	//로드후 스크롤 제일 아래로
+						$("#chatingArea").scrollTop($(document).scrollValue);	//로드후 스크롤 기존위치로
 					},error : function(jqxhr, textStatus, errorThrown) {
 						console.log("매니저컨택트 list Select ajax 처리실패");
 	
@@ -254,6 +399,23 @@
 			dataType:"json",
 			success : function(data){
 				for(var i = 0; i < data.length; i++) {
+					var title = data[i].con_Title;
+					var content = data[i].con_Content;
+					if(title == null){
+						title = "";
+					}
+					if(content.length < 5){
+						if(content == title){
+							title = "";
+						}
+					}
+					if(content.length > 5){
+						subContent = content.substr(0,4);
+						if(subContent == title){
+							title = "";
+						}
+					}
+					
 					if(data[i].con_Mno == mNO){
 						if(data[i].con_Img_ReName != null){
 							chating += "<div style='width: 100%; height: auto; min-height: 80px; margin-bottom: 15px; overflow: hidden;'>"
@@ -267,7 +429,7 @@
 							chating += "</div>"
 							chating += "<div style='width: 100%; height:auto; padding: 0;'>"						
 							chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: right;'>"						
-							chating += ""+data[i].con_Title+""+data[i].con_Content+""						
+							chating += ""+title+""+content+""						
 							chating += "</div>"						
 							chating += "</div>"
 							if(data[i].con_View_Check == 'Y'){
@@ -287,7 +449,7 @@
 								chating += "</div>"	
 								chating += "<div style='width: 100%; height:auto; padding: 0;'>"						
 								chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: right;'>"						
-								chating += ""+data[i].con_Title+""+data[i].con_Content+""						
+								chating += ""+title+""+content+""							
 								chating += "</div>"						
 								chating += "</div>"
 								if(data[i].con_View_Check == 'Y'){
@@ -312,7 +474,7 @@
 							chating += "</div>"
 							chating += "<div style='width: 100%; height:auto; padding: 0;'>"						                                                                                                                                                                         
 							chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: left;'>"						 
-							chating += ""+data[i].con_Title+""+data[i].con_Content+""						                                                                                                                                                                                                                             
+							chating += ""+title+""+content+""							                                                                                                                                                                                                                             
 							chating += "</div>"						                                                                                                                                                                                                                         
 							chating += "</div>"						                                                                                                                                                                                                                         
 							if(data[i].con_View_Check == 'Y'){
@@ -332,7 +494,7 @@
 								chating += "</div>"	
 								chating += "<div style='width: 100%; height:auto; padding: 0;'>"						                                                                                                                                                                         
 								chating += "<div style='background-color: #fff; border-radius: 5px; padding: 8px; box-shadow: 5px 5px 10px -5px black; height: auto; width: auto; max-width: 80%; min-height: 15px; margin-left: 5px; margin-right: 5px; float: left;'>"						 
-								chating += ""+data[i].con_Title+""+data[i].con_Content+""						                                                                                                                                                                                                                             
+								chating += ""+title+""+content+""						                                                                                                                                                                                                                             
 								chating += "</div>"						                                                                                                                                                                                                                         
 								chating += "</div>"						                                                                                                                                                                                                                         
 								if(data[i].con_View_Check == 'Y'){
@@ -351,7 +513,7 @@
 				
 				$('#chatingArea').html(chating);
 				$('#chatImgArea').html(chatImg);
-				$("#chatingArea").scrollTop($(document).height());	//로드후 스크롤 제일 아래로
+				$("#chatingArea").scrollTop($('#chatingArea').height());	//로드후 스크롤 제일 아래로
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("매니저컨택트 list Select ajax 처리실패");
 
