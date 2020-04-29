@@ -91,6 +91,16 @@
                                                         <input value="${o.or_Member.mName }"  type="text" readonly="readonly" class="form-control" id="username" placeholder="Username"required="">
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="firstName">수령인</label>
+                                                        <input  value="${o.or_Recip_Name}" type="text" readonly="readonly" class="form-control" id="firstName" placeholder=""required="">
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="lastName">수령인 연락처</label>
+                                                        <input  value="${o.or_Phone }"  type="text" readonly="readonly" class="form-control" id="lastName" placeholder=""required="">
+                                                    </div>
+                                                </div>
                                              <!--    <div class="mb-3">
                                                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
                                                     <input type="email" class="form-control" id="email" placeholder="you@example.com">

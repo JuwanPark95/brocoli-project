@@ -72,6 +72,7 @@
                                     <table id="example" class="table table-striped table-bordered second" >
                                         <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>상품번호</th>
                                                 <th>이미지</th>
                                                 <th>제품명</th>
@@ -87,6 +88,7 @@
                                         <% int count = 0; %>
                                         	<c:forEach var="r" items="${ list }">
 	                                            <tr>
+	                                            	<td style="display: none;">${r.pList.p_NO * -1}</td>
 	                                                <td>${r.pList.p_NO }</td><!-- 상품번호 P상품 0 대분류 0소분류 000상품번호-->
 	                                                <td align="center" >
 	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${r.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
@@ -116,6 +118,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>상품번호</th>
                                                 <th>이미지</th>
                                                 <th>제품명</th>
