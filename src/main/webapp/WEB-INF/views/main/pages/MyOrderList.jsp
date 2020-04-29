@@ -175,7 +175,7 @@
 									<button class="ord-btn" onclick="location.href='trackprocess.mn?or_No=${ Orders.or_NO }'"><strong>상세 보기</strong></button>
 									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>교환</strong></button>
 									<button class="ord-btn" onclick="location.href='my_p_reject.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>반품</strong></button>
-									<button class="ord-btn" onclick="location.href='reviewView.mn?v_P_NO=${ aProducDetailtList[0].p_NO }'"><strong>리뷰 작성</strong></button>
+									<button class="ord-btn" onclick="location.href='productDetail.mn?p_NO=${ Orders.pOptionlist.pList.p_NO} &or_Mno=${ Orders.or_Mno}&type=1'"><strong>리뷰 작성</strong></button>
 									</td>
 								</tr>
 								

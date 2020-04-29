@@ -135,11 +135,6 @@ public interface MypageService {
 	ArrayList<Orders> searchDetail(HashMap<String, Date> hmap);
 
 
-	/**
-	 * @param v_P_NO
-	 * @return
-	 */
-	ArrayList<Review> reviewView(String v_P_NO);
 
 
 	

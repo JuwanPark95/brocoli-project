@@ -385,20 +385,6 @@ public class MypageController {
 			return mv;
 		}
 		
-		@RequestMapping("reviewView.mn")
-		public ModelAndView reviewView(ModelAndView mv, HttpSession session,
-				                       @RequestParam("v_P_NO") String v_P_NO){
-			
-			Member m = (Member)session.getAttribute("loginUser");
-			
-			ArrayList<Review> list = myService.reviewView(v_P_NO);
-			
-			mv.addObject("list", list);
-			mv.addObject("v_P_NO",v_P_NO);
-			mv.setViewName("Main-Product-Detail");
-			
-			return mv;
-		}
 		
 		
 		

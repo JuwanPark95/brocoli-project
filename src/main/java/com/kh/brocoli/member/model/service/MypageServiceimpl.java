@@ -104,10 +104,7 @@ public class MypageServiceimpl implements MypageService {
 		return myDao.searchDetail(hmap);
 	}
 
-	@Override
-	public ArrayList<Review> reviewView(String v_P_NO) {
-		return myDao.reviewView(v_P_NO);
-	}
+	
 
 	
 

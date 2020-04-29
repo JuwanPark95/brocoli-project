@@ -305,17 +305,7 @@
             WHERE OR_DATE BETWEEN #{one} AND #{two}
 	        ORDER BY OR_NO ASC  
 		</select>
-		
-		<select id="reviewView" resultMap="orderResultSet">
-		    SELELCT *
-		    FROM MEMBER
-		    JOIN ORDERS
-		    ON MNO = OR_MNO
-	        JOIN REIVIEW
-	        ON OR_P_NO = V_P_NO
-	        WHERE V_P_NO = #{V_P_NO} AND MNO=#{mNO}
-		</select>
-		
+	
 	    
 </mapper>	    
 	    

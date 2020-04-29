@@ -88,9 +88,6 @@ public class MypageDao {
 		return (ArrayList)sqlSession.selectList("mypageMapper.searchDetail",hmap);
 	}
 
-	public ArrayList<Review> reviewView(String v_P_NO) {
-		return (ArrayList)sqlSession.selectList("mypageMapper.reviewView",v_P_NO);
-	}
 
 	
 
