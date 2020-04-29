@@ -1,6 +1,8 @@
 package com.kh.brocoli.member.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,6 +30,7 @@ import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Review;
 
 @SessionAttributes("loginUser")
 @Controller
@@ -341,12 +344,15 @@ public class MypageController {
 		}
 		
 		@RequestMapping("selectDetail.mn")
-		public ModelAndView selectDetail(ModelAndView mv, HttpSession session,
+		public ModelAndView selectDetail(ModelAndView mv, HttpSession session, 
 				                      @RequestParam("type") String type){
 			System.out.println("type : " + type);
 			Member m = (Member)session.getAttribute("loginUser");
+			Orders od = new Orders();
+			od.setOr_Status(type);
+			od.setOr_Mno(m.getmNO());
 			
-			ArrayList<Orders> list = myService.selectDetail(type);
+			ArrayList<Orders> list = myService.selectDetail(od);
 			System.out.println("olist : " + list);
 			
 			mv.addObject("type", type);
@@ -355,6 +361,31 @@ public class MypageController {
 			
 			return mv;
 		}
+		
+		@RequestMapping("searchDetail.mn")
+		public ModelAndView searchDetail(ModelAndView mv, HttpSession session, 
+				                      @RequestParam("start") String start,
+				                      @RequestParam("end") String end){
+			Date one = Date.valueOf(start);
+			Date two = Date.valueOf(end);
+			System.out.println(one);
+			System.out.println("start : " + start);
+			System.out.println("end : " + end);
+			Member m = (Member)session.getAttribute("loginUser");
+			
+			HashMap<String,Date> hmap = new HashMap<>();
+			hmap.put("one", one);
+			hmap.put("two", two);
+			
+			ArrayList<Orders> list = myService.searchDetail(hmap);
+			System.out.println(list);
+			mv.addObject("list",list);
+			mv.setViewName("MyOrderList");
+			
+			return mv;
+		}
+		
+		
 		
 		
 		

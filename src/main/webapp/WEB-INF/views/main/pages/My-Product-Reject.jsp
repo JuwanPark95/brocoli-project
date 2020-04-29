@@ -271,7 +271,7 @@
                        신청완료
         </button>
         &nbsp;&nbsp;
-        <button style="height: 35px; width: 97px; border-radius: 3px;" onclick="location.href='myOrderList.mn'" >
+        <button style="height: 35px; width: 97px; border-radius: 3px;" onclick="history.go(-1); return false;" >
                         돌아가기
         </button>
     </div>

@@ -1,6 +1,8 @@
 package com.kh.brocoli.member.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Review;
 
 
 public interface MypageService {
@@ -118,10 +121,26 @@ public interface MypageService {
 
 	/**
 	 * 기간별 조회
-	 * @param type
+	 * @param od
 	 * @return
 	 */
-	ArrayList<Orders> selectDetail(String type);
+	ArrayList<Orders> selectDetail(Orders od);
+
+
+	/**
+	 * 날짜 지정 조회
+	 * @param hmap
+	 * @return
+	 */
+	ArrayList<Orders> searchDetail(HashMap<String, Date> hmap);
+
+
+
+
+	
+
+
+
 
 
 

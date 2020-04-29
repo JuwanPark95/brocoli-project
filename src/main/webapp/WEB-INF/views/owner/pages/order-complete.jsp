@@ -75,6 +75,7 @@
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                                 <th>주문시간</th>
                                                 <th>주문번호</th>
                                                 <th>주문자</th>
@@ -88,6 +89,7 @@
                                        		<% int count = 0; %>
 												<c:forEach var="r" items="${list }">
 		                                            <tr>
+		                                            	<td style="display: none;">${r.or_NO * -1}</td>
 		                                                <td>${r.or_Date }</td>
 		                                                <td>${r.or_NO }</td>
 		                                                <td>${r.or_Member.mName }</td>
@@ -113,6 +115,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                                 <th>주문시간</th>
                                                 <th>주문번호</th>
                                                 <th>주문자</th>
