@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.brocoli.member.model.service.OrderAddService;
+import com.kh.brocoli.member.model.vo.Cart;
+import com.kh.brocoli.member.model.vo.OrderAdd;
 
 @Controller
 public class OrderAddController {
@@ -23,14 +25,38 @@ public class OrderAddController {
 
 	@RequestMapping(value="cOrderAddInsert.mn", method=RequestMethod.POST)
 	@ResponseBody
-	public String cOrderAdd(@RequestParam(value="rowData") ArrayList<String> rowData,
-							@RequestParam(value="tdArr") ArrayList<String> tdArr) {
+	public String cOrderAdd(@RequestParam(value="ct_NO") ArrayList<String> ct_NO
+							/*@RequestParam(value="tdArr") ArrayList<String> tdArr*/) {
 		
-		System.out.println(rowData);
-		System.out.println(tdArr);
-	
-		List<Map<String,Object>> resultMap = new ArrayList<Map<String,Object>>();
-		//resultMap = JSONArray.fromObject(tdArr);
+		System.out.println(ct_NO);
+		
+		ArrayList<Cart> result = new ArrayList<>();  
+		
+		for(int i=0; i<ct_NO.size(); i++) {
+			
+			
+			Cart ct = OaService.selectCart(Integer.parseInt(ct_NO.get(i)));
+			
+			result.add(ct);
+		}
+		
+		
+		
+		
+		for (Cart cart : result) {
+			
+			
+			OrderAdd add = new OrderAdd();
+			add.setOa_Option_1(cart.getCt_Option_1());
+			add.setOa_Option_2(cart.getCt_Option_2());
+			add.setOa_Amount(Integer.toString(cart.getCt_Amount()));
+			add.setOa_Mno(cart.getCt_Mno());
+			add.setOa_P_NO(cart.getCt_P_NO());
+			
+			int result2 = OaService.insertCartAdd(add);
+		}
+		
+
 		
 		return "";
 	}

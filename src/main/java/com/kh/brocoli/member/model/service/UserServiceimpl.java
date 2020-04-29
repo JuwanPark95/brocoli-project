@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.dao.UserDao;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.OrderAdd;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -254,6 +255,11 @@ public class UserServiceimpl implements UserService {
 	@Override
 	public ArrayList<trackOrders> recentCheck(int mno) {
 		return uDao.recentCheck(mno);
+	}
+
+	@Override
+	public ArrayList<OrderAdd> cartCheck(int mno) {
+		return uDao.cartCheck(mno);
 	}
 
 	

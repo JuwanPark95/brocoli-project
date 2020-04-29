@@ -29,15 +29,23 @@ public class AdminController {
 	@RequestMapping("admin.ad")
 	public ModelAndView member(ModelAndView mv) {
 		
-		int memberCount = AService.memberCount();
+		int memberCount = AService.memberCount();		
 		int brandCount = AService.brandCount();
 		int orderCount = AService.orderCount();
 		String sales = AService.sales();
+		
+		ArrayList<Brand> BrandList = AService.BrandList();
+		
+		int memberWCount = AService.memberWCount();
+		int memberMCount = AService.memberMCount();
 		
 		mv.addObject("memberCount",memberCount);
 		mv.addObject("brandCount",brandCount);
 		mv.addObject("orderCount",orderCount);
 		mv.addObject("sales",sales);
+		mv.addObject("BrandList",BrandList);
+		mv.addObject("memberWCount",memberWCount);
+		mv.addObject("memberMCount",memberMCount);
 		mv.setViewName("admin");
 		return mv;
 	}

@@ -35,4 +35,24 @@ public interface AdminService {
 	 */
 	String sales();
 
+	/**
+	 *  작성자 : 신으닞
+	 *  1-5.최근 등록 브랜드 5개 
+	 * @return
+	 */
+	ArrayList<Brand> BrandList();
+
+	/**
+	 * 작성자 : 신은지
+	 *  1-6.chart 여성
+	 * @return
+	 */
+	int memberWCount();
+
+	/**
+	 * 작성자 : 신은지
+	 *  1-7.chart 남성
+	 * @return
+	 */
+	int memberMCount();
 }

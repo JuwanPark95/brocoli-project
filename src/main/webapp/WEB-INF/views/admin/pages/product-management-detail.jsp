@@ -68,12 +68,54 @@
                                     	<div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품이미지</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
+                                            	<c:set var="img" value="${po.pfList.pf_Img1_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
                                             	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img1_ReName}" width="120" height="120">
+                                                </c:if>   
+                                                
+                                                <c:set var="img" value="${po.pfList.pf_Img2_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
                                             	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img2_ReName}" width="120" height="120">
+                                                </c:if>    
+                                                
+                                                <c:set var="img" value="${po.pfList.pf_Img3_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
                                             	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img3_ReName}" width="120" height="120">
+                                                </c:if>  
+                                                
+                                                <c:set var="img" value="${po.pfList.pf_Img4_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
                                             	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img4_ReName}" width="120" height="120">
+                                                </c:if>  
+                                                
+                                                <c:set var="img" value="${po.pfList.pf_Img5_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
                                             	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img5_ReName}" width="120" height="120">
-                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img6_ReName}" width="120" height="120">                                           
+                                                </c:if>  
+                                                
+                                                <c:set var="img" value="${po.pfList.pf_Img6_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="120" height="120">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
+                                            	<img src="/brocoli/resources/product-Img/${po.pfList.pf_Img6_ReName}" width="120" height="120">
+                                                </c:if>  
+                                                                                    
                                             </div>
                                         </div>
                                         <div class="form-group row">

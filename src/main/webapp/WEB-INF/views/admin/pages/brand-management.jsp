@@ -83,7 +83,15 @@
                                             <tr>
                                                 <td>${bl.count }</td>
                                                 <td>${b.brand_NO}</td>
-                                                <td><img src="/brocoli/resources/brandLogo/${b.b_Logo_ReName}" width="50" height="50"></td>                                              	
+                                                <td>
+                                                <c:set var="img" value="${b.b_Logo_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="50" height="50">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
+                                                <img src="/brocoli/resources/brandLogo/${b.b_Logo_ReName}" width="50" height="50">
+                                                </c:if>
+                                                </td>                                              	
                                                 <td>${b.b_Name}</td>
                                                 <td>${b.b_Business_NO}</td>
                                                 <td>${b.b_Owner_Name }</td>

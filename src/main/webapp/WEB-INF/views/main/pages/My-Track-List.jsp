@@ -34,46 +34,46 @@ input {
 			<div class="wrap-table-shopping-cart" style="margin-bottom: 30px; width : 1380px;">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<!-- <th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th> -->
+									<th class="column-0"><!-- <input type="checkBox" id="cheAll" onclick="checkAll();"> --></th> 
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">옵션1</th>
 									<th class="column-4">옵션2</th>
 									<th class="column-5">판매금액</th>
 									<th class="column-6">수량</th>
-									<th class="column-7">총 금액</th>
-									<th colspan="2" class="column-7">삭제</th>
+									<th  class="column-7" colspan="3">총 금액</th>
+									<!-- <th colspan="2" class="column-7">삭제</th> -->
 								</tr>
 							<c:set var="sum" value="0"/>
 							<c:forEach var="c" items="${ cList }" >
 	
 								<tr class="table_row">
-								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
+								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.oa_Amount }"></th>
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
 										</div>
 									</td>
 									<td class="column-2">${c.productList.p_Name}</td>
-									<td class="column-3">${c.ct_Option_1 }</td>
-									<td class="column-4">${c.ct_Option_2 }</td>
+									<td class="column-3">${c.oa_Option_1 }</td>
+									<td class="column-4">${c.oa_Option_2 }</td>
 									<td class="column-7">${c.productList.p_Last_Price}</td>
 									
-									<td class="column-6">${ c.ct_Amount }</td>
-									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+									<td class="column-6">${ c.oa_Amount }</td>
+									<c:set var="hap" value="${c.productList.p_Last_Price * c.oa_Amount }"/>
 									
 									<td class="column-7">
 										<c:out value="${ hap }"/>
 									</td>
 										<td style="text-align: center;">
-									<c:url var="cDelete" value="cDelete.mn">
+									<%-- <c:url var="cDelete" value="cDelete.mn">
 										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
-										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+										<c:param name="ct_Mno" value="${ c.oa_Mno }"/>
 										<c:param name="Mno" value="${loginUser.mNO }"/>
-										<c:param name="ct_NO" value="${c.ct_NO}"/>
+										<c:param name="ct_NO" value="${c.oa_NO}"/>
 									</c:url> 
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button>  --%>
 										
 									</td>
 								</tr>
@@ -83,7 +83,7 @@ input {
 									<td colspan="6"></td>
 									<td >총 금액 : </td>
 									<td>
-										<input type="text" id="totalCash" name="totalCash">
+										<input type="text" id="totalCash" name="totalCash" readonly>
 									</td>
 									<td>
 									원
@@ -274,6 +274,27 @@ input {
 	<%@ include file="All-Footer.jsp"%>
 
 	<script>
+	var inter = setInterval(function(){
+		var lists = [];
+		$("input[name='che']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+		   lists.push($(this).val());
+		
+		});
+		
+		function sum(array) {
+			var result = 0.0;
+			
+			for (var i = 0; i < array.length; i ++) {
+				result += Number(array[i]);
+				
+			}
+			
+			return result;
+		}
+		
+		$("#totalCash").val(sum(lists));
+	},1000)
+	
 		function buyerInfo(day){
 			var post;
 			var add1;

@@ -55,10 +55,10 @@
 									<th class="column-7">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
-							<c:forEach var="c" items="${ cList }" >
+							<c:forEach var="c" items="${ cList }" varStatus="status" >
 	
 								<tr class="table_row">
-								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
+								<th class="column-0"><input type="checkBox" name="che" id="${status.index}" value="${ c.productList.p_Last_Price * c.ct_Amount }" ></th>
 									<td class="column-1">
 										<div class="how-itemcart1">
 											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
@@ -70,6 +70,7 @@
 									<td class="column-7">${c.productList.p_Last_Price}</td>
 									
 									<td class="column-6">${ c.ct_Amount }</td>
+							
 									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
 									
 									<td class="column-7">
@@ -82,6 +83,9 @@
 										<c:param name="Mno" value="${loginUser.mNO }"/>
 										<c:param name="ct_NO" value="${c.ct_NO}"/>
 									</c:url> 
+									
+									<input type="hidden" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO }"/>
+									
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
 							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
 										
@@ -141,13 +145,17 @@
 							var checkbox = $("input[name=che]:checked"); 
 						
 							$("input[name=che]").click(function(){ 
+								
 								var rowData = [];
 								var tdArr = []; 
 								var checkbox = $("input[name=che]:checked");
 
 								// 체크된 체크박스 값을 가져온다
+								var count = 0;
 								checkbox.each(function(i) {
-								
+									var index = $(this).attr("id");
+									$("#ct_NO"+index+"").attr("name","ct_NO["+count+"]");
+									count++;
 									// checkbox.parent() : checkbox의 부모는 <td>이다.
 									// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
 									var tr = checkbox.parent().parent().eq(i);
@@ -203,22 +211,29 @@
 								$("#test").val(tdArr);
 							});
 							
-							function orderadd(){
-/* 								console.log(test1);
-								console.log(test2); */
+ 							function orderadd(){
+								var checked = $("input[name=che]:checked").length;
 								
+								var ct_NO = new Array();
+								
+								for(var i=0; i<checked; i++){
+									ct_NO[i] = $("#ct_NO"+i).val();
+									
+								}
 								  jQuery.ajaxSettings.traditional = true;
 								 $.ajax({
 									url:'cOrderAddInsert.mn',
-									type:"post",
 									dataType:"json",
+									type: "POST",
+									traditional:true,
 									data:{
-										tdArr : JSON.stringify(test2),
-										rowData : JSON.stringify(test1)
+										ct_NO : ct_NO
 									}
 									
 								})  
-							}
+							} 
+							
+
 							
 				</script>
 				

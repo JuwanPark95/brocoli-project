@@ -87,7 +87,15 @@
                                             <tr>
                                                 <td>${pl.count }</td>
                                                 <td>${p.p_NO}</td>
-                                            	<td><img src="/brocoli/resources/product-Img/${p.pfList.pf_Img1_ReName}" width="50" height="50"></td>
+                                            	<td>
+                                            	<c:set var="img" value="${p.pfList.pf_Img1_ReName}"/>
+                                                <c:if test="${empty img}">
+                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" width="50" height="50">                                                
+                                                </c:if>
+                                                <c:if test="${not empty img }">
+                                            	<img src="/brocoli/resources/product-Img/${p.pfList.pf_Img1_ReName}" width="50" height="50">
+                                                </c:if>  
+                                            	</td>
                                                 <td>${p.p_Name }</td>
                                                 <td>${p.brList.b_Name }</td>
                                                 <td>${p.p_Price }</td>
