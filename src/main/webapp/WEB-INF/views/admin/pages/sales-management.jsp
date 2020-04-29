@@ -67,17 +67,17 @@
                            		<!-- <form action="totalSalesSearch.ad" method="post"> -->
                             	<table id="sales-search" class="table table-basic" style="text-align:center;" border="1" >
                             		<thead>
-                            			<tr style="border:1px solid lightgray;" >
-                            				<th style="width:10%; padding-bottom: 16px;">날짜</th>
-                            				<th style="width:25%;  padding-bottom: 16px;">
+                            			<tr style="border:1px solid lightgray; height: 100px;" >
+                            				<th style="width:10%; padding-bottom: 35px; font-size: 16px;">날짜</th>
+                            				<th style="width:25%;  padding-bottom: 35px;">
 											<p>
 										      <input type="date" id="date1" name="or_Date" />
 										      ~
 										      <input type="date" id="date2" name="or_Date" />
 										    </p>
 										    </th>
-                            				<th style="width:10%; padding-bottom: 16px;">
-                            				<div class="btn-group" style="height: 30px;">
+                            				<th style="width:10%; padding-bottom: 35px;">
+                            				<div class="btn-group" style="height: 35px;">
                                                 <select  id="dropSearch" name="b_Status" style="margin-left:15px">
                                                 	<option value="brand_NO" >브랜드번호</option>
                                                 	<option value="b_Name" >브랜드</option>
@@ -86,11 +86,11 @@
                                                 </select>
                                             </div>
                             				</th>
-                            				<th style="width:25%; padding-bottom: 16px;">
+                            				<th style="width:25%; padding-bottom: 35px;">
                             				  <input type="text" class="form-control" id="content" name="content" >
                                             </th>
-                            				<th style="width:8%">
-                            				  <button id="searchBtn" type="submit" class="btn btn-light "  style="width:50px; height:40px;">
+                            				<th style="width:8% ;padding-bottom: 33px;">
+                            				  <button id="searchBtn" type="submit" class="btn btn-light "  style="width:50px; height:40px; ">
 									            <i class="fas fa-search"></i>
 									          </button>
                             				</th>

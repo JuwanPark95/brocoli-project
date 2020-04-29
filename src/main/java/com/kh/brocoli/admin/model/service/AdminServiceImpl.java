@@ -65,5 +65,24 @@ public class AdminServiceImpl implements AdminService{
 		return  ADao.BrandList();
 	}
 
+	/**
+	 * 작성자 : 신은지
+	 *  1-6.chart 여성
+	 * @return
+	 */
+	@Override
+	public int memberWCount() {
+		return ADao.memberWCount();
+	}
+	
+	/**
+	 * 작성자 : 신은지
+	 *  1-7.chart 남성
+	 * @return
+	 */
+	@Override
+	public int memberMCount() {
+		return ADao.memberMCount();
+	}
 	
 }

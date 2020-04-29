@@ -60,4 +60,22 @@ public class AdminDao {
 		return (ArrayList) sqlSession.selectList("Admin.brandList");
 	}
 
+	/**
+	 * 작성자 : 신은지
+	 *  1-6.chart 여성
+	 * @return
+	 */
+	public int memberWCount() {
+		return sqlSession.selectOne("Admin.memberWCount");
+	}
+	
+	/**
+	 * 작성자 : 신은지
+	 *  1-7.chart 남성
+	 * @return
+	 */
+	public int memberMCount() {
+		return sqlSession.selectOne("Admin.memberMCount");
+	}
+
 }

@@ -101,4 +101,16 @@
 		WHERE  <![CDATA[ ROWNUM <= 5 ]]>
 		ORDER BY BRAND_NO DESC
 	</select>
+	
+	<select id="memberWCount" parameterType="Member" resultType="_int">
+	 	SELECT COUNT(*)
+		FROM MEMBER
+		WHERE GENDER = 'F'
+	</select>
+	
+	<select id="memberMCount" parameterType="Member" resultType="_int">
+	 	SELECT COUNT(*)
+		FROM MEMBER
+		WHERE GENDER = 'M'
+	</select>
 </mapper>
