@@ -28,6 +28,7 @@ import com.kh.brocoli.member.model.service.UserService;
 import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.OrderAdd;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -134,12 +135,14 @@ public class UserController {
 	public ModelAndView mTrackListView(ModelAndView mv,HttpSession session) {
 		Member m = (Member)session.getAttribute("loginUser");
 		String[] arr = m.getAddress().split(",");
-		
+		int mno = m.getmNO();
+		ArrayList<OrderAdd> oa = uService.cartCheck(mno);
 		
 		
 		mv.addObject("post",arr[0].toString())
 		.addObject("add1", arr[1].toString())
-		.addObject("add2",arr[2].toString());
+		.addObject("add2",arr[2].toString())
+		.addObject("cList",oa);
 		mv.setViewName("My-Track-List");
 		return mv;
 	}
