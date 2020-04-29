@@ -153,6 +153,29 @@
    </resultMap>
    
    
+   <resultMap type="Review" id="reviewResultSet">
+		<id property="v_NO" column="V_NO"/>
+		
+		<result property="v_Writer" column="V_WRITER"/>
+		<result property="v_Content" column="V_CONTENT"/>
+		<result property="v_Date" column="V_DATE"/>
+		<result property="v_Modify_Date" column="V_MODIFY_DATE"/>
+		<result property="v_Count" column="V_COUNT"/>
+		<result property="v_Score" column="V_SCORE"/>
+		<result property="v_Check" column="V_CHECK"/>
+		<result property="v_Status" column="V_STATUS"/>
+		<result property="v_Img1" column="V_IMG1"/>
+		<result property="v_Img1_ReName" column="V_IMG1_RENAME"/>
+		<result property="v_Img2" column="V_IMG2"/>
+		<result property="v_Img2_ReName" column="V_IMG2_RENAME"/>		
+		<result property="v_Mno" column="V_MNO"/>
+		<result property="v_P_NO" column="V_P_NO"/>
+		<result property="v_B_NO" column="V_B_NO"/>
+	
+		<collection property="plist" resultMap="productResultSet"/>
+	</resultMap>
+   
+   
    
    
    
@@ -244,7 +267,7 @@
 		</select>
 	    
 	    
-	     <select id="selectDetail" parameterType="String" resultMap="orderResultSet">
+	     <select id="selectDetail" resultMap="orderResultSet">
 			SELECT *
 	        FROM ORDERS
 	        JOIN PRODUCT_OPTION
@@ -253,21 +276,36 @@
 	        ON OP_P_NO = P_NO
 	        JOIN PRODUCT_FILE
 	        ON P_NO = PF_P_NO
-	        <!-- <if test='value == "day"'>
-	        WHERE OR_DATE BETWEEN SY#SDATE-7 AND SYSDATE
-	        </if> -->
-	         <!-- <if test='value == "month"'> -->
-	        <if test='value == "month"'>
+	        <if test="'day' == or_Status">
+	        WHERE OR_DATE BETWEEN SYSDATE-7 AND SYSDATE
+	        </if> 
+	        <if test="'month' == or_Status">
 	        WHERE OR_DATE BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYY-MM-DD') AND SYSDATE
-	        </if>
-	        <!--  <if test='value == "3"'>
+	        </if> 
+	        <if test="'t_month' == or_Status">
 	        WHERE OR_DATE BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYY-MM-DD') AND SYSDATE 
 	        </if>
-	         <if test='value == "4"'>
+	         <if test="'s_month' == or_Status">
 	        WHERE OR_DATE BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-6),'YYYY-MM-DD') AND SYSDATE
-	        </if> -->
+	        </if>
+	        AND OR_MNO = #{or_Mno}
 	        ORDER BY OR_NO ASC
 		</select>
+		
+		
+		<select id="searchDetail" parameterType="date" resultMap="orderResultSet">
+		    SELECT *
+		    FROM ORDERS
+	        JOIN PRODUCT_OPTION
+	        ON OR_P_NO = OP_P_NO
+	        JOIN PRODUCT
+	        ON OP_P_NO = P_NO
+	        JOIN PRODUCT_FILE
+	        ON P_NO = PF_P_NO
+            WHERE OR_DATE BETWEEN #{one} AND #{two}
+	        ORDER BY OR_NO ASC  
+		</select>
+	
 	    
 </mapper>	    
 	    

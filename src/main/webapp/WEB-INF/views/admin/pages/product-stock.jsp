@@ -43,7 +43,7 @@
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a class="breadcrumb-link">상품관라</a></li>
+                                        <li class="breadcrumb-item"><a class="breadcrumb-link">상품관리</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">판매상품</li>
                                     </ol>
                                 </nav>
@@ -84,7 +84,15 @@
 	                                                <td>${o.pList.p_NO}</td>
 	                                                <td>${o.pList.brList.b_Name }</td>
 	                                                <td align="center" >
-	                                                	<div class="m-r-10"><img src="/brocoli/resources/product-Img/${o.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45"></div>
+	                                                	<div class="m-r-10">
+	                                                	<c:set var="img" value="${o.pList.pfList.pf_Img1_ReName}"/>
+		                                                <c:if test="${empty img}">
+		                                                <img src="/brocoli/resources/adminResources/images/noImage.PNG" alt="user" class="rounded" width="45">                                                
+		                                                </c:if>
+		                                                <c:if test="${not empty img }">
+		                                            	<img src="/brocoli/resources/product-Img/${o.pList.pfList.pf_Img1_ReName}" alt="user" class="rounded" width="45">
+	                                                	</c:if> 
+	                                                	</div>
 	                                                </td>
 	                                                <td>${o.pList.p_Name }</td>
 	                                                <td>${o.op_NO }</td>

@@ -34,10 +34,13 @@ public class AdminController {
 		int orderCount = AService.orderCount();
 		String sales = AService.sales();
 		
+		ArrayList<Brand> BrandList = AService.BrandList();
+		
 		mv.addObject("memberCount",memberCount);
 		mv.addObject("brandCount",brandCount);
 		mv.addObject("orderCount",orderCount);
 		mv.addObject("sales",sales);
+		mv.addObject("BrandList",BrandList);
 		mv.setViewName("admin");
 		return mv;
 	}

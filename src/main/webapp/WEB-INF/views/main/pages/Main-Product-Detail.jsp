@@ -17,6 +17,27 @@
 	border: 1px solid black;
 }
 </style>
+<script>
+	
+	
+	$(function(){
+		$.urlParam = function(name){
+			
+		    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		
+		    if(results==null) {
+		       return null;
+		    }else {
+		       return results[1] || 0;
+		    }
+		}
+		
+		var type = $.urlParam('type');
+		if(type == 1){
+			$("#reviews1").trigger("click");
+		}
+	})
+</script>
 </head>
 
 <body class="animsition">
@@ -293,7 +314,7 @@
 						<li class="nav-item p-b-10"><a class="nav-link"
 							data-toggle="tab" href="#information" role="tab">상품 QnA</a></li>
 
-						<li class="nav-item p-b-10"><a class="nav-link"
+						<li class="nav-item p-b-10"><a class="nav-link" id="reviews1"
 							data-toggle="tab" href="#reviews" role="tab">후기</a></li>
 					</ul>
 

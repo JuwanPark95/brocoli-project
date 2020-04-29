@@ -1,6 +1,8 @@
 package com.kh.brocoli.member.model.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Review;
 
 @Repository("myDao")
 public class MypageDao {
@@ -77,9 +80,16 @@ public class MypageDao {
 		return (ArrayList)sqlSession.selectList("mypageMapper.trackprocess",or_No);
 	}
 
-	public ArrayList<Orders> selectDetail(String type) {
-		return (ArrayList)sqlSession.selectList("mypageMapper.selectDetail",type);
+	public ArrayList<Orders> selectDetail(Orders od) {
+		return (ArrayList)sqlSession.selectList("mypageMapper.selectDetail",od);
 	}
+
+	public ArrayList<Orders> searchDetail(HashMap<String, Date> hmap) {
+		return (ArrayList)sqlSession.selectList("mypageMapper.searchDetail",hmap);
+	}
+
+
+	
 
 
 

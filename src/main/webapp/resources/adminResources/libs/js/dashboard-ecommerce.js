@@ -230,10 +230,7 @@
         data: {
             columns: [
                 ['Men', 100],
-                ['Women', 80],
-                ['Accessories', 50],
-                ['Children', 40],
-                ['Apperal', 20],
+                ['Women', 80]
 
             ],
             type: 'donut',
@@ -244,20 +241,14 @@
 
             colors: {
                 Men: '#5969ff',
-                Women: '#ff407b',
-                Accessories: '#25d5f2',
-                Children: '#ffc750',
-                Apperal: '#2ec551',
-
-
-
+                Women: '#ff407b'
             }
         },
         donut: {
             label: {
                 show: false
             }
-        },
+        }
 
 
 
