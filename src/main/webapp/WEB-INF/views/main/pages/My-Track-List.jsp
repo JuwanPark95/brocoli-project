@@ -34,7 +34,7 @@ input {
 			<div class="wrap-table-shopping-cart" style="margin-bottom: 30px; width : 1380px;">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-0"><!-- <input type="checkBox" id="cheAll" onclick="checkAll();"> --></th> 
+									<th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th> 
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">옵션1</th>
@@ -57,9 +57,9 @@ input {
 									<td class="column-2">${c.productList.p_Name}</td>
 									<td class="column-3">${c.oa_Option_1 }</td>
 									<td class="column-4">${c.oa_Option_2 }</td>
+									<td class="column-6">${ c.oa_Amount }</td>
 									<td class="column-7">${c.productList.p_Last_Price}</td>
 									
-									<td class="column-6">${ c.oa_Amount }</td>
 									<c:set var="hap" value="${c.productList.p_Last_Price * c.oa_Amount }"/>
 									
 									<td class="column-7">
