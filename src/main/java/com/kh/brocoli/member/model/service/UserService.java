@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.member.model.vo.OrderAdd;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -218,6 +219,14 @@ public interface UserService {
 	 * @return
 	 */
 	ArrayList<trackOrders> recentCheck(int mno);
+
+	/**
+	 * 작성자 임현섭
+	 * 배송지 선택창 상품조회용
+	 * @param mno
+	 * @return
+	 */
+	ArrayList<OrderAdd> cartCheck(int mno);
 
 	
  
