@@ -74,6 +74,7 @@
                                     <table id="example" class="table table-striped table-bordered second" style="width:100%">
                                         <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>번호</th>
                                                 <th>신청일</th>
                                                 <th>분류</th>
@@ -85,25 +86,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                            	<td>1</td>
-                                                <td>2020-03-27</td>
-                                                <td>룩북</td>
-                                                <td align="center" >
-                                                	<div class="m-r-10"><img src="/brocoli/resources/magazine-Img/M0001.jfif" alt="user" class="rounded" width="45"></div>
-                                                </td>
-                                                <td>썬배더</td>
-                                                <td>마크 곤잘레스 20 서머 컬렉션...</td>
-                                                <th>Juwan_P</th>
-                                                <td>
-                                                	<span class="badge-dot badge-danger"></span>승인대기중
-                                                </td>
-                                            </tr>
-                                           
-                                            
+                                        	<c:forEach var="i" items="${list }">
+	                                            <tr>
+	                                            	<td style="display: none;">${i.m_NO*-1 }</td>
+	                                            	<td id="m_NO">${i.m_NO }</td>
+	                                                <td id="m_Date">${i.m_Date }</td>
+	                                                <td id="m_Category">${i.m_Category }</td>
+	                                                <td align="center" >
+	                                                	<div class="m-r-1"><img id="mf_Img1" src="/brocoli/resources/magazine-Img/${i.m_Magazine_File.mf_Img1_ReName}" alt="user" class="rounded" style="height: 100px; width: auto; max-width: 200px; max-height: 100px;"></div>
+	                                                </td>
+	                                                <td id="m_Title">${i.m_Title }</td>
+	                                                <td id="m_Comment">${i.m_Comment }</td>
+	                                                <th id="m_ID">${i.m_ID }</th>
+	                                                <td>
+	                                                <c:choose>
+	                                                	<c:when test="${i.m_Status eq 'N' }">
+		                                                	<span class="badge-dot badge-brand"></span>승인대기중
+	                                                	</c:when>
+	                                                	<c:when test="${i.m_Status eq 'Y' }">
+		                                                	<span class="badge-dot badge-primary"></span>승인됨
+	                                                	</c:when>
+	                                                	<c:when test="${i.m_Status eq 'D' }">
+		                                                	<span class="badge-dot badge-danger"></span>반려됨
+	                                                	</c:when>
+	                                                </c:choose>
+	                                                </td>
+	                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>번호</th>
                                                 <th>신청일</th>
                                                 <th>분류</th>

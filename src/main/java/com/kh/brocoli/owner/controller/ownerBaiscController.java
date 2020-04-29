@@ -54,27 +54,5 @@ public class ownerBaiscController {
 		return "magazine-insert";
 	}
 	
-	@RequestMapping("manazineResultPage.ow")
-	public String manazineResultPage() {
-		return "magazine-result";
-	}
-	
-	@RequestMapping("manazineSelectPage.ow")
-	public String manazineSelectPage() {
-		return "magazine-old";
-	}
-	
-	
-	
-	/*
-	 * @RequestMapping("bproduct.mn") public ModelAndView BrandProductView(Brand
-	 * br,ModelAndView mv,String b_Name) {
-	 * 
-	 * ArrayList<Brand> bplist = oService.selectbpList(b_Name);
-	 * mv.addObject("bProductList",bplist); mv.setViewName("Main-BrandProduct");
-	 * return mv; }
-	 */
-	
-	
 	
 }

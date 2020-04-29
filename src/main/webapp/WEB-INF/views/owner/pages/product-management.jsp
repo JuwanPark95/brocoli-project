@@ -86,6 +86,7 @@
                                     <table id="example" class="table table-striped table-bordered second" >
                                         <thead>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>상품번호</th>
                                                 <th>카테고리</th>
                                                 <th>이미지</th>
@@ -102,6 +103,7 @@
                                         <tbody>
 	                       					<c:forEach var="r" items="${ list }">                     
 	                                            <tr>
+	                                            	<td style="display: none;">${r.p_NO * -1}</td>
 	                                                <td>${r.p_NO}</td>
 	                                                <td>${r.p_Bcategory }-${r.p_Scategory}</td>
 	                                                <td align="center" >
@@ -135,6 +137,7 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            	<th style="display: none;">정렬</th>
                                             	<th>상품번호</th>
                                                 <th>카테고리</th>
                                                 <th>이미지</th>
