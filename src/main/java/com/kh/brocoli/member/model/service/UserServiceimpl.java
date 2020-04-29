@@ -262,5 +262,26 @@ public class UserServiceimpl implements UserService {
 		return uDao.cartCheck(mno);
 	}
 
+	@Override
+	public int deleteOrder(int ct_NO) {
+		return uDao.deleteOrder(ct_NO);
+	}
+
+	@Override
+	public int updatePay(int mno, int total) {
+		System.out.println("주문횟수 들어가겠습니다.");
+		// 총 주문횟수 
+		int result2 = uDao.pupdateMemberCount(mno);
+		System.out.println("주문횟수 에러");
+		 // 적립금
+		int result = uDao.pupdateMember(total,mno);
+		System.out.println("적립금 에러");
+		// 총 주문금액
+		int result3 = uDao.pupdateMemberPrice(total,mno);
+		System.out.println("주문금액 에러");
+		
+		return uDao.deleteOa(mno);
+	}
+
 	
 }

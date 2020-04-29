@@ -215,6 +215,40 @@ public class UserDao {
 			return (ArrayList)sqlSession.selectList("memberMapper.cartCheck",mno);
 		}
 
+		public int deleteOrder(int ct_NO) {
+			return sqlSession.delete("memberMapper.deleteOrder",ct_NO);
+		}
+
+		public int deleteOa(int mno) {
+			return sqlSession.delete("memberMapper.deleteOa",mno);
+		}
+
+		public int pupdateMember(int total, int mno) {
+			int total2 = (int) (total * 0.01);
+			System.out.println("DAO MNO   "+ mno);
+			System.out.println("DAO total    "+ total);
+			System.out.println("DAO total2   "+total2);
+			HashMap<String,Integer> KeyCode = new HashMap();
+			KeyCode.put("total2",total2);
+			KeyCode.put("mno",mno);
+			
+			
+			return sqlSession.update("memberMapper.pupdateMember",KeyCode);
+		}
+
+		public int pupdateMemberCount(int mno) {
+
+			return sqlSession.update("memberMapper.pupdateMemberCount",mno);
+		}
+
+		public int pupdateMemberPrice(int total, int mno) {
+			HashMap<String,Integer> KeyCode = new HashMap();
+			KeyCode.put("mno",mno);
+			KeyCode.put("total",total);
+			
+			return sqlSession.update("memberMapper.pupdateMemberPrice",KeyCode);
+		}
+
 
 }
 

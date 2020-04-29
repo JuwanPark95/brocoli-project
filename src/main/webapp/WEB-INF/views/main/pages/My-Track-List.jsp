@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +31,28 @@ input {
 	<form class="bg0 p-t-75 p-b-85" id="mtlForm">
 		<div class="container">
 			<div class="row">
+			<input type="hidden" id="hidLeng" value="${fn:length(cList)}" />
+			<input type="hidden" id="payName" value="${cList[0].productList.p_Name}" />
+			<input type="hidden" id="hidAdd1" value="${add1 }" />
+			<input type="hidden" id="hidAdd0" value="${post }" />
+			<input type="hidden" id="hidName" value="${loginUser.mName }" />
+			<input type="hidden" id="hidEmail" value="${loginUser.email }" />
+			<input type="hidden" id="hidPhone" value="${loginUser.phone }" />
+			<input type="hidden" id="hidMno" value="${loginUser.mNO }" />
+			<input type="hidden" id="hidOamno" value="${cList[0].oa_Mno }" />
+			
+			 <c:choose>
+					<c:when test="${fn:length(cList) == 0}">
+					<div style="margin-left: 250px; margin-top: 20px;" class="p-b-63">
+						<h1>조회결과가 없습니다.</h1>
+						</div>
+					</c:when>
+					<c:otherwise>
 			<!------------------------------------쇼핑카트----------------------------------------------- -->
 			<div class="wrap-table-shopping-cart" style="margin-bottom: 30px; width : 1380px;">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
-									<th class="column-0"><input type="checkBox" id="cheAll" onclick="checkAll();"></th> 
+									<th class="column-0"><!-- <input type="checkBox" name="che" id="cheAll" onclick="checkAll();"> --></th> 
 									<th class="column-1">이미지</th>
 									<th class="column-2">상품명</th>
 									<th class="column-3">옵션1</th>
@@ -66,14 +84,14 @@ input {
 										<c:out value="${ hap }"/>
 									</td>
 										<td style="text-align: center;">
-									<%-- <c:url var="cDelete" value="cDelete.mn">
+									 <c:url var="oDelete" value="oDelete.mn">
 										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
 										<c:param name="ct_Mno" value="${ c.oa_Mno }"/>
 										<c:param name="Mno" value="${loginUser.mNO }"/>
 										<c:param name="ct_NO" value="${c.oa_NO}"/>
 									</c:url> 
-									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button>  --%>
+									<button type="button" class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+							      	onclick="location.href='<c:url value='${ oDelete }'/>';">삭제</button> 
 										
 									</td>
 								</tr>
@@ -91,6 +109,8 @@ input {
 								</tr>
 							</table>
 						</div>
+						</c:otherwise>
+						</c:choose>
 			<!------------------------------------쇼핑카트----------------------------------------------- -->
 				<div class="cell_order_form article_tit">
 					<div class="cell_order_form1">
@@ -252,9 +272,9 @@ input {
 
 			</div>
 
-			<input type="submit" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
+			<input type="button" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
-				value="결제하기" onclick="return validate2();"> 
+				value="결제하기" id="finalPay" onclick="return validate2();"> 
 				<input type="reset" class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"
 				style="background: #666666; color: white; width: 200px; float: right;"
 				value="취소">
@@ -272,8 +292,10 @@ input {
 
 
 	<%@ include file="All-Footer.jsp"%>
-
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script>
+	 
+	
 	var inter = setInterval(function(){
 		var lists = [];
 		$("input[name='che']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
@@ -357,16 +379,16 @@ input {
 			var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 		      var phone = document.getElementById("phone1");
 		      var rcvr_nm = $("#rcvr_nm").val();
-		      var post = $("post").val();
-		      
-		    
-		      
+		      var post = $("#post").val();
 		     
-		      
-		      if(rcvr_nm == null || rcvr_nm == ""){
+		    var hid = $("#hidLeng").val();
+		      if(hid==0){
+		    	  alert("상품이 없습니다.");
+		    	  return false;
+		      }else if(rcvr_nm == null || rcvr_nm == ""){
 		    	  alert("수령인 / 배송지명을 입력해주세요.");
 		    	  return false;
-		      }else if(phone.val() == null || phone.val() == ""){
+		      }else if(phone.value == null || phone.value == ""){
 		    	  alert("휴대전화를 입력해주세요.");
 		    	  return false;
 		      }else if(rgEx.test(phone.value) != true){
@@ -490,6 +512,95 @@ input {
             }
         }).open();
     };
+</script>
+
+<script>
+
+ IMP.init('imp34566065'); 
+
+
+$('#finalPay').click(function(){
+   var total = $("#totalCash").val();
+   var payName = $("#payName").val();
+   var leng = $("input[name=che]:checked").length-1;
+   var hidAdd1 = $("#hidAdd1").val();
+   var hidName = $("#hidName").val();
+   var hidEmail = $("#hidEmail").val();
+   var hidPhone = $("#hidPhone").val();
+   var hidMno = $("#hidMno").val();
+   
+   IMP.request_pay({
+       pg : 'inicis',
+       pay_method : 'card',
+       merchant_uid : 'BROCOLI_' + new Date().getTime(),
+       name : payName+'외 '+leng+'건',
+       amount : '100',
+       buyer_email : hidEmail,
+       buyer_name : hidName,
+       buyer_tel : hidPhone,
+       buyer_addr : hidAdd1,
+       buyer_postcode : hidAdd0
+   }, function(rsp) {
+       if ( rsp.success ) {
+          //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+          jQuery.ajax({
+             url: "/payments/complete", //cross-domain error가 발생하지 않도록 동일한 도메인으로 전송
+             type: 'POST',
+             dataType: 'json',
+             data: {
+                imp_uid : rsp.imp_uid
+                //기타 필요한 데이터가 있으면 추가 전달
+             }
+          }).done(function(data) {
+             //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+             if ( everythings_fine ) {
+                var msg = '결제가 완료되었습니다.';
+                msg += '\n고유ID : ' + rsp.imp_uid;
+                msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                msg += '\결제 금액 : ' + rsp.paid_amount;
+                msg += '카드 승인번호 : ' + rsp.apply_num;
+
+                    alert(msg);
+                    alert("ajax 시작");
+             } else {
+                //[3] 아직 제대로 결제가 되지 않았습니다.
+                //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+                	alert("ajax전단계");
+             }
+            });
+            
+           alert("ajax 시작하세요");
+          $.ajax({
+		 		url:"payScreen",
+		 		type:"post",
+		 		data:{mno : hidMno,
+		 			total : total},
+		 		success:function(data){
+				if(data =="ok"){	 		
+			 			location.href="myOrderList.mn";
+				}else{
+					alert("실패");
+				}
+		 			
+		 		},error:function(jqxhr, textStatus, errorThrown){
+					console.log("ajax 처리실패");
+					
+					// 에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+		 	});
+           
+       } else {
+           var msg = '결제에 실패하였습니다.';
+           msg += '에러내용 : ' + rsp.error_msg;
+
+           alert(msg);
+       }
+   });
+   
+})
 </script>
 </body>
 </html>
