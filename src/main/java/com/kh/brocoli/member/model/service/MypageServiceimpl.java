@@ -1,6 +1,8 @@
 package com.kh.brocoli.member.model.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import com.kh.brocoli.member.model.vo.Change;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.Reject;
+import com.kh.brocoli.product.model.vo.Review;
 
 @Service("myService")
 public class MypageServiceimpl implements MypageService {
@@ -92,9 +95,21 @@ public class MypageServiceimpl implements MypageService {
 	}
 
 	@Override
-	public ArrayList<Orders> selectDetail(String type) {
-		return myDao.selectDetail(type);
+	public ArrayList<Orders> selectDetail(Orders od) {
+		return myDao.selectDetail(od);
 	}
+
+	@Override
+	public ArrayList<Orders> searchDetail(HashMap<String, Date> hmap) {
+		return myDao.searchDetail(hmap);
+	}
+
+	@Override
+	public ArrayList<Review> reviewView(String v_P_NO) {
+		return myDao.reviewView(v_P_NO);
+	}
+
+	
 
 	
 
