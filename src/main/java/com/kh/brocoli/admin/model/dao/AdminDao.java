@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 
 @Repository("ADao")
 public class AdminDao {
@@ -48,6 +49,15 @@ public class AdminDao {
 	 */
 	public String sales() {
 		return sqlSession.selectOne("Admin.sales");
+	}
+
+	/**
+	 *  작성자 : 신으닞
+	 *  1-5.최근 등록 브랜드 5개 
+	 * @return
+	 */
+	public ArrayList<Brand> BrandList() {
+		return (ArrayList) sqlSession.selectList("Admin.brandList");
 	}
 
 }

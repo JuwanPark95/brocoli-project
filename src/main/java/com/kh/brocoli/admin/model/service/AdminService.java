@@ -35,4 +35,11 @@ public interface AdminService {
 	 */
 	String sales();
 
+	/**
+	 *  작성자 : 신으닞
+	 *  1-5.최근 등록 브랜드 5개 
+	 * @return
+	 */
+	ArrayList<Brand> BrandList();
+
 }

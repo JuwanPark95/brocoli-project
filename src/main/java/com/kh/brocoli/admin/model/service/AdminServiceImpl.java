@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.kh.brocoli.admin.model.dao.AdminDao;
 import com.kh.brocoli.admin.model.dao.AdminSalesDao;
 import com.kh.brocoli.member.model.vo.Member;
+import com.kh.brocoli.product.model.vo.Brand;
 
 @Service("AService")
 public class AdminServiceImpl implements AdminService{
@@ -52,6 +53,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public String sales() {
 		return ADao.sales();
+	}
+
+	/**
+	 *  작성자 : 신으닞
+	 *  1-5.최근 등록 브랜드 5개 
+	 * @return
+	 */
+	@Override
+	public ArrayList<Brand> BrandList() {
+		return  ADao.BrandList();
 	}
 
 	

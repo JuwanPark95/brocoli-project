@@ -94,5 +94,11 @@
 		SELECT  TO_CHAR(SUM(OR_PRICE), '999,999,999,999,999')
 		FROM ORDERS
 	</select>
-
+	
+	<select id="brandList" parameterType="Brand" resultMap="brandResultSet">
+		SELECT * 
+		FROM BRAND
+		WHERE  <![CDATA[ ROWNUM <= 5 ]]>
+		ORDER BY BRAND_NO DESC
+	</select>
 </mapper>

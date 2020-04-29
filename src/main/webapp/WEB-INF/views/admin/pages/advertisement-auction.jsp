@@ -85,7 +85,15 @@
                                                 <td name="ac_No">${a.ac_No}</td>
                                                 <td>${a.ac_Banner_NO}</td>
                                                 <td>${a.ac_Brand}</td>
-                                                <td><img src="/brocoli/resources/Auction-Img/${a.ac_Img_Rename}" width="100" height="100"></td>                                              
+                                                <td>
+                                                	<c:set var="img" value="${ a.ac_Img_Rename }"/>
+	                                                <c:if test="${empty img}">
+	                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  width="100" height="100">
+	                                              	</c:if>    
+	                                                <c:if test="${not empty img }">
+	                                            	 	<img src="/brocoli/resources/Auction-Img/${a.ac_Img_Rename}" width="100" height="100">
+                                               		</c:if>
+                                                </td>                                              
                                                 <td>${a.ac_ID}</td>
                                                 <td>${a.ac_Price}</td>
                                                 <td>${a.ac_Date}</td>
