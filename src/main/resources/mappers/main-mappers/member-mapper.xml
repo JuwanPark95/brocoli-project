@@ -562,4 +562,27 @@
 		<collection property="pfList" resultMap="productFileResultSet"/>
 	</resultMap>
 	
+	<resultMap type="Cart" id="CartResultSet">
+	
+		<id property="ct_NO" column="CT_NO"/>
+		
+		<result property="ct_Option_1" column="CT_OPTION_1"/>
+		<result property="ct_Option_2" column="CT_OPTION_2"/>
+		<result property="ct_Amount" column="CT_AMOUNT"/>
+		<result property="ct_Mno" column="CT_MNO"/>
+		<result property="ct_P_NO" column="CT_P_NO"/>
+	
+		<collection property="productList" resultMap="productResultSet"/>
+		<collection property="p_File" resultMap="ProductFileResultSet"/>
+	</resultMap>
+	
+	<select id="vCart" resultMap="CartResultSet">
+		SELECT * 
+        FROM ORDERADD O
+        JOIN PRODUCT_FILE PF ON O.OA_P_NO = PF.PF_P_NO
+        JOIN PRODUCT_OPTION PO ON PF.PF_P_NO = PO.OP_P_NO
+        JOIN PRODUCT P ON PO.OP_P_NO= P.P_NO
+        WHERE O.OA_MNO = #{mno}
+	</select>
+	
 </mapper>

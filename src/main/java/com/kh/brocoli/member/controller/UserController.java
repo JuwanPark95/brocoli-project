@@ -134,6 +134,9 @@ public class UserController {
 	public ModelAndView mTrackListView(ModelAndView mv,HttpSession session) {
 		Member m = (Member)session.getAttribute("loginUser");
 		String[] arr = m.getAddress().split(",");
+		
+		
+		
 		mv.addObject("post",arr[0].toString())
 		.addObject("add1", arr[1].toString())
 		.addObject("add2",arr[2].toString());
