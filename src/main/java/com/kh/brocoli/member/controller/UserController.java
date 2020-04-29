@@ -558,13 +558,16 @@ public class UserController {
 		mv.addObject("m10",m10);
 		mv.addObject("m11",m11);
 		mv.addObject("m12",m12);
-		ArrayList<Magazine2> mList = null; 
+		ArrayList<Magazine2> mList = new ArrayList<Magazine2>(); 
+		ArrayList<Magazine2> mmList = new ArrayList<Magazine2>(); 
+		mList = uService.selectmList();
+		mmList.add(mList.get(0));
+		mmList.add(mList.get(1));
+		mmList.add(mList.get(2));
 		
-			
-		 mList = uService.selectmList();
-			
 		
-		mv.addObject("mList", mList);
+		
+		mv.addObject("mList", mmList);
 		mv.setViewName("Main-Magazine");
 		return mv;
 	}
