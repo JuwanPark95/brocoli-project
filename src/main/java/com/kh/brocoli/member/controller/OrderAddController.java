@@ -41,7 +41,7 @@ public class OrderAddController {
 		}
 		
 		
-		
+			int result2 = -1;
 		
 		for (Cart cart : result) {
 			
@@ -53,12 +53,19 @@ public class OrderAddController {
 			add.setOa_Mno(cart.getCt_Mno());
 			add.setOa_P_NO(cart.getCt_P_NO());
 			
-			int result2 = OaService.insertCartAdd(add);
+			result2 = OaService.insertCartAdd(add);
 		}
+		System.out.println(result2 + "22");
 		
+		if(result2 > 0) {
+			return "ok";
+		}else if(result2 == 0) {
+			return "ok";
+		}else {
+			return "false";
+		}
 
 		
-		return "";
 	}
 	
 }

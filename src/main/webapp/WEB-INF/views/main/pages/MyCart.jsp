@@ -91,7 +91,7 @@
 										<c:param name="ct_NO" value="${c.ct_NO}"/>
 									</c:url> 
 									
-									<input type="hidden" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO }"/>
+									<input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
 									
 									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
 							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
@@ -220,23 +220,61 @@
 								$("#test").val(tdArr);
 							});
 							
+							
+							
+							var ct_ID = new Array();
+							
+							
+							$("input[name=che]").click(function(){ 
+								
+								var id = $(this).attr("id");
+								
+							
+								
+								
+								if($(this).prop("checked")){
+									
+									ct_ID.push(id);
+								}else {
+									if(id == 0){
+										ct_ID.shift()
+									}else{
+										
+									ct_ID.splice(ct_ID.indexOf(id),1);	
+									}
+										
+								}
+								ct_ID.sort();
+							});
+							
+							
  							function orderadd(){
 								var checked = $("input[name=che]:checked").length;
 								
-								var ct_NO = new Array();
+						 		var ct_NO = new Array(); 
 								
-								for(var i=0; i<checked; i++){
-									ct_NO[i] = $("#ct_NO"+i).val();
+						 		for(var i=0; i<checked; i++){
 									
-								}
+									ct_NO[i] = $("#ct_NO"+ct_ID[i]).val();
+									
+								} 
+								
 								  jQuery.ajaxSettings.traditional = true;
 								 $.ajax({
 									url:'cOrderAddInsert.mn',
-									dataType:"json",
 									type: "POST",
+									async:false,
 									traditional:true,
 									data:{
 										ct_NO : ct_NO
+									},
+									success:function(data){
+										if(data = "ok"){
+											
+										location.href= "mTrackListView.mn";
+										}else if(data = "false"){
+											alert("목록을 선택해주세요.");
+										}
 									}
 									
 								})  

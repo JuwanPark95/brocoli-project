@@ -143,6 +143,7 @@ public class UserController {
 		.addObject("add1", arr[1].toString())
 		.addObject("add2",arr[2].toString())
 		.addObject("cList",oa);
+		System.out.println("LLL"+oa);
 		mv.setViewName("My-Track-List");
 		return mv;
 	}
@@ -1072,4 +1073,40 @@ public class UserController {
 		return gson.toJson(order);
 	
 	}
+	
+	/**
+	 * 배송지 선택창 물품삭제
+	 * @param ct_NO
+	 * @param ct_Mno
+	 * @return
+	 */
+	@RequestMapping("oDelete.mn")
+	public String cartDelete(@RequestParam(value="ct_NO") int ct_NO, int ct_Mno) {
+		
+		int result = uService.deleteOrder(ct_NO);
+		if(result > 0) {
+			return "redirect:mTrackListView.mn?ct_Mno="+ct_Mno;
+		}else {
+			return"common/errorPage";
+		}
+	}
+	
+	
+	
+	  @ResponseBody
+	  @RequestMapping("payScreen")
+	  public String payScreen(@RequestParam("mno") int mno,@RequestParam("total") int total) { 
+		  System.out.println("컨트롤러 mno total"+ mno+"!! "+total);
+		  System.out.println("컨트롤러 들어왔습니다.");
+		  int result = uService.updatePay(mno,total);
+	  System.out.println("@@"+ result);
+	  
+	  if(result > 0) {
+	  return "ok";
+	  }else {
+		  return "fail";
+	  }
+	  }
+	 
+	 
 }

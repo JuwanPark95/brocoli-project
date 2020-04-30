@@ -277,10 +277,11 @@
 	</resultMap>
 	
 	<select id="auctionlist" resultMap="auctionResultSet">
-	SELECT *
-	FROM AUCTION
-	ORDER BY AC_BANNER_NO ASC
-	
+		SELECT * 
+		FROM AUCTION 
+        WHERE  AC_DATE BETWEEN TRUNC(ADD_MONTHS(SYSDATE, -1) + 1) - TO_CHAR(SYSDATE,'DD') AND TRUNC(LAST_DAY(ADD_MONTHS(SYSDATE, -1))) + 0.99999421
+        AND AC_STATUS  = '3'
+        ORDER BY AC_BANNER_NO ASC
 	</select>
 	
 	<select id="ranklist" resultMap="productResultSet">
