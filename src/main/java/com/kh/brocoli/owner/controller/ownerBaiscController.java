@@ -21,6 +21,7 @@ import com.kh.brocoli.owner.model.service.ownerOrderService;
 import com.kh.brocoli.owner.vo.ownerAge;
 import com.kh.brocoli.owner.vo.ownerCategore;
 import com.kh.brocoli.product.model.vo.Brand;
+import com.kh.brocoli.product.model.vo.Product;
 import com.kh.brocoli.product.model.vo.Statistics;
 
 @SessionAttributes("loginUser")
@@ -93,11 +94,6 @@ public class ownerBaiscController {
 	public void ownerHome(HttpServletResponse response,int bNO) throws JsonIOException, IOException {
 		
 		Brand bInfo = oService.selectBrandInfo(bNO);
-		/*
-		 * ownerAge oa = oService.selectAge(bNO); ownerCategore oc =
-		 * oService.selectCategore(bNO); Orders opc = oService.selectProductCount(bNO);
-		 */
-		
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
@@ -105,6 +101,62 @@ public class ownerBaiscController {
 		Gson gson = new GsonBuilder().create();
 		gson.toJson(bInfo,response.getWriter());
 	}
+	
+	@RequestMapping("ownerResultPrice.ow")
+	public void ownerResultPrice(HttpServletResponse response,int bNO) throws JsonIOException, IOException {
+		HashMap<String, Object> data = new HashMap<>();
+		
+		int totalPrice = oService.selectTotalPrice(bNO);
+		int resultPrice = oService.selectResultPrice(bNO);
+		int countOrder = oService.selectCountOrder(bNO);
+		int countReject = oService.selectCountReject(bNO);
+		int countChange = oService.selectCountChange(bNO);
+		
+		data.put("totalPrice", totalPrice);
+		data.put("resultPrice", resultPrice);
+		data.put("countOrder", countOrder);
+		data.put("countReject", countReject);
+		data.put("countChange", countChange);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(data,response.getWriter());
+		
+		
+	}
+	
+	@RequestMapping("ownerResultProduct.ow")
+	public void ownerResultProduct(HttpServletResponse response,int bNO) throws JsonIOException, IOException {
+		ArrayList<Product> data = oService.ownerResultProduct(bNO);
+
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(data,response.getWriter());
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

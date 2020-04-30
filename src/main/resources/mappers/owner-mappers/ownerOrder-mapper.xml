@@ -263,8 +263,8 @@
 		LEFT JOIN CHANGE CG
 		ON OD.OR_NO = CG.CH_OR_NO
 		WHERE OD.OR_NO = #{oNO}
-	
 	</select>
+
 
 
 
