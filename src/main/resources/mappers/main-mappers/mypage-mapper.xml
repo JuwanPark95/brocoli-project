@@ -207,7 +207,7 @@
 	        JOIN PRODUCT_FILE
 	        ON P_NO = PF_P_NO
 	        WHERE OR_MNO = ${mNO}
-	        ORDER BY OR_NO ASC
+	        ORDER BY OR_NO DESC
 		</select>
 		
 		<select id="P_change" resultMap="orderResultSet">

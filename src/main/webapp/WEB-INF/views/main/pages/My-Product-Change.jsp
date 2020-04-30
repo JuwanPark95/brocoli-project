@@ -204,7 +204,7 @@ padding : 5px;
                   </td>
 					<td colspan="2">
 						<div style="float: left;">
-							<img src="/brocoli/resources/product-Img/P11001.jpg" style="width: 58px; height: 78px;">
+							<img src="/brocoli/resources/product-Img/${Orders.pOptionlist.pList.pfList.pf_Img1_ReName}" style="width: 58px; height: 78px;">
 						</div>
 						<div style="float: left;">
 							<a href="">${Orders.or_Pname }  <br> </a> 
@@ -229,7 +229,31 @@ padding : 5px;
                           <span class="style4"> ${Orders.or_Price/100} </span>
                       </div>
                   </td>
-                  <td>
+                  <td name="or_Status" value="${Orders.or_Status}">
+	                  
+                       <c:if test="${Orders.or_Status eq 1}">
+                          <span style="color:blue;">주문완료</span>
+                       </c:if>
+                       <c:if test="${Orders.or_Status eq 2}">
+                          <span style="color:blue;">상품준비중</span>
+                       </c:if>
+                       <c:if test="${Orders.or_Status eq 3}">
+                          <span style="color:blue;">상품배송중</span>
+                       </c:if>
+                       <c:if test="${Orders.or_Status eq 4}">
+                          <span style="color:blue;">배송완료</span>
+                       </c:if>
+                        <c:if test="${Orders.or_Status eq 5}">
+                          <span style="color:blue;">구매확정</span>
+                       </c:if>
+                        <c:if test="${Orders.or_Status eq 6}">
+                          <span style="color:blue;">환불 진행 중</span>
+                       </c:if>
+                        <c:if test="${Orders.or_Status eq 7}">
+                          <span style="color:blue;">교환 진행 중</span>
+                       </c:if>
+                       
+	              </td>
                       <div class="tb-center">${Orders.or_Status }</div>
                   </td>
                   <td>

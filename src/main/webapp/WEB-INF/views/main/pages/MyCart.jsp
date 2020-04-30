@@ -33,7 +33,6 @@
 			</span>
 		</div>
 	</div>
-		
 
 	<!-- Shoping Cart -->
 	<!-- <form class="bg0 p-t-75 p-b-85"> -->
@@ -52,46 +51,56 @@
 									<th class="column-5">판매금액</th>
 									<th class="column-6">수량</th>
 									<th class="column-7">총 금액</th>
-									<th class="column-7">삭제</th>
+									<th class="column-8">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
-							<c:forEach var="c" items="${ cList }" varStatus="status" >
-	
-								<tr class="table_row">
-								<th class="column-0"><input type="checkBox" name="che" id="${status.index}" value="${ c.productList.p_Last_Price * c.ct_Amount }" ></th>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">${c.productList.p_Name}</td>
-									<td class="column-3">${c.ct_Option_1 }</td>
-									<td class="column-4">${c.ct_Option_2 }</td>
-									<td class="column-7">${c.productList.p_Last_Price}</td>
+							<c:choose>
+	    						<c:when test="${empty cList }">
+	    							<tr>
+	    								<td colspan="8" style="height: 100px; font-size: 17px; text-align: center;"><strong>장바구니가 비어있습니다.</strong></td>
+	    							</tr>
+	    						</c:when>
+						        <c:when test="${!empty cList}">
+									<c:forEach var="c" items="${ cList }" varStatus="status" >
 									
-									<td class="column-6">${ c.ct_Amount }</td>
-							
-									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+										<tr class="table_row">
+								
+										<th class="column-0"><input type="checkBox" name="che" id="${status.index}" value="${ c.productList.p_Last_Price * c.ct_Amount }" ></th>
+											<td class="column-1">
+												<div class="how-itemcart1">
+													<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
+												</div>
+											</td>
+											<td class="column-2">${c.productList.p_Name}</td>
+											<td class="column-3">${c.ct_Option_1 }</td>
+											<td class="column-4">${c.ct_Option_2 }</td>
+											<td class="column-7">${c.productList.p_Last_Price}</td>
+											
+											<td class="column-6">${ c.ct_Amount }</td>
 									
-									<td class="column-7">
-										<c:out value="${ hap }"/>
-									</td>
-										<td style="text-align: center;">
-									<c:url var="cDelete" value="cDelete.mn">
-										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
-										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
-										<c:param name="Mno" value="${loginUser.mNO }"/>
-										<c:param name="ct_NO" value="${c.ct_NO}"/>
-									</c:url> 
-									
-									<input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
-									
-									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
-										
-									</td>
-								</tr>
-								</c:forEach>
+											<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+											
+											<td class="column-7">
+												<c:out value="${ hap }"/>
+											</td>
+												<td style="text-align: center;">
+											<c:url var="cDelete" value="cDelete.mn">
+												<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+												<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+												<c:param name="Mno" value="${loginUser.mNO }"/>
+												<c:param name="ct_NO" value="${c.ct_NO}"/>
+											</c:url> 
+											
+											<input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
+											
+											<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+									      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+												
+											</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+						    </c:choose>
 													
 								<tr style="height:100px;">
 									<td colspan="6"></td>

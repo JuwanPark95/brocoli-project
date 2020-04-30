@@ -39,12 +39,13 @@
          <!-- 끝 -->
          <div>
 
-		 <label style="font-size:30px;">
-			 <img src="/brocoli/resources/product-Img/${bProductList[0].b_Logo_ReName}" style="width: 130px; border: 1px solid black;">
-			 ${bProductList[0].b_Name} 
+		 <label style="font-size:30px; color:black; margin-bottom: 10px; ">
+			 <img src="/brocoli/resources/brandLogo/${bProductList[0].b_Logo_ReName}" style="margin-right:5px; border-radius: 50%; border: 1px solid #e8e8e8; width: 85px; height:83px;">
+			 <strong>${bProductList[0].b_Name}</strong>  
 		 </label>
+		 <hr>
 
-                     <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" id="category-ALL" data-filter="*">
                   전체보기
                </button>
@@ -89,7 +90,7 @@
                
             </div>
 <!--  ======== 서브카테고리 영역 시작 ================== -->         
-         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-A" style="display: none; margin-top: 0px; border-top: 1px solid #666666;" >
+         <div class="flex-w flex-sb-m p-b-52 sub-category" id="sub-category-A" style="display: none; margin-top: 0px; border-top: 1px solid #e8e8e8;" >
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter="*"></button>
                

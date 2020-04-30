@@ -33,7 +33,7 @@
             <div style="display:flex; margin:0px auto;">
 
            
-           <h3>브랜드명</h3>
+           <h3 style="color: black;"> - <strong> 입점 브랜드</strong></h3>
                
                
                
@@ -43,14 +43,14 @@
 	
 	                 	<tr style="width:100%">
 	                 		<td style="width:10%;"></td>
-	                 		<td style="width:90%;" >
+	                 		<td style="width:90%; line-height: 4.6em;" >
 		                 		<c:forEach var="brand" items="${ BrandList }"> 
 			                 		<c:url var="bproduct" value="bproduct.mn">
 			                 			<c:param name="b_Name" value="${ brand.b_Name }"/>
 			                 		</c:url>
 			                 		
 	                 					<a href="${bproduct}" id="Allbrand" style="width: 33%; float: left; margin-bottom: 12px; color:black;">
-	                 					<img src="/brocoli/resources/product-Img/${brand.b_Logo_ReName}" style="width: 80px;">
+	                 					<img src="/brocoli/resources/brandLogo/${brand.b_Logo_ReName}" style="margin-right:5px; border-radius: 50%; width: 55px; height:55px; border: 1px solid #e8e8e8;">
 	                 					<strong>${brand.b_Name }</strong></a>
 	                			</c:forEach>                 		
 	                 		</td>
