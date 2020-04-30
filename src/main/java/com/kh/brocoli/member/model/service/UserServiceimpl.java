@@ -10,6 +10,7 @@ import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.dao.UserDao;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -268,17 +269,16 @@ public class UserServiceimpl implements UserService {
 	}
 
 	@Override
-	public int updatePay(int mno, int total) {
-		System.out.println("주문횟수 들어가겠습니다.");
+	public int updatePay(int mno, int total, Orders order) {
 		// 총 주문횟수 
 		int result2 = uDao.pupdateMemberCount(mno);
-		System.out.println("주문횟수 에러");
 		 // 적립금
 		int result = uDao.pupdateMember(total,mno);
-		System.out.println("적립금 에러");
 		// 총 주문금액
 		int result3 = uDao.pupdateMemberPrice(total,mno);
-		System.out.println("주문금액 에러");
+		System.out.println("주문금액까진 들어갔다.");
+		// Order Insert
+		int result4 = uDao.insertOrder(order);
 		
 		return uDao.deleteOa(mno);
 	}

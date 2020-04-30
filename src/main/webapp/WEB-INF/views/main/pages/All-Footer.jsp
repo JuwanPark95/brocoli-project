@@ -67,16 +67,16 @@ font-size: 15px;
 					<ul>
 						<li class="p-b-10">
 					<c:if test="${empty sessionScope.loginUser }">
-							<a href="${loginPage }" class="stext-107 cl7 hov-cl1 trans-04">
+							<%-- <a href="${loginPage }" class="stext-107 cl7 hov-cl1 trans-04">
 								배송 조회
-							</a>
+							</a> --%>
 						</c:if>
 						
 					<c:if test="${!empty sessionScope.loginUser }">
 						<c:url var="mTrackList" value="mTrackListView.mn" />
-							<a href="${mTrackList }" class="stext-107 cl7 hov-cl1 trans-04">
+							<%-- <a href="${mTrackList }" class="stext-107 cl7 hov-cl1 trans-04">
 							배송 조회
-							</a>
+							</a> --%>
 					</c:if>
 						</li>
 						<li class="p-b-10">

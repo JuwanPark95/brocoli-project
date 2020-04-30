@@ -611,4 +611,8 @@
 			SET ORDER_PRICE = ORDER_PRICE + #{total}
 			WHERE MNO = #{mno}
 	</update>
+	<insert id ="insertOrder" parameterType="Orders">
+	INSERT INTO ORDERS VALUES(SEQ_OR_NO.NEXTVAL,SYSDATE,#{or_Pname},#{or_Option1},#{or_Option2},#{or_Amount},#{or_Address},#{or_Message},#{or_Price},
+	1,1,'한진택배',#{or_Mno},#{or_Recip_Name},#{or_Phone},#{or_P_NO},#{or_Brand_NO})
+	</insert>
 </mapper>

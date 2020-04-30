@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -247,6 +248,10 @@ public class UserDao {
 			KeyCode.put("total",total);
 			
 			return sqlSession.update("memberMapper.pupdateMemberPrice",KeyCode);
+		}
+
+		public int insertOrder(Orders order) {
+			return sqlSession.insert("memberMapper.insertOrder",order);
 		}
 
 
