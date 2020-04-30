@@ -16,8 +16,8 @@
    	내용 : 찜목록 추가
     -->
 
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg');">
-		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/wish.jpg');">
+		<h2 class="ltext-105 cl0 txt-center" style="color:black;">
 			관심 상품 관리
 		</h2>
 	</section>	
