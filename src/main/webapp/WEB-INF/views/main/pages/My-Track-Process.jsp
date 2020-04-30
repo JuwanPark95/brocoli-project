@@ -105,7 +105,7 @@ i.fa{
 
 </head>
 <body class="animsition">
- <form action="trackprocess.mn">
+ <form action="trackprocess.mn" id="frm1">
  <c:forEach var="Orders" items="${list }">
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
@@ -124,8 +124,8 @@ i.fa{
 							<strong>주문 상세보기</strong>
 						</h4>
 					</div>
-					
-					<c:if test="${Orders.or_Status eq 1}">
+					<div>
+					<c:if test="${Orders.or_Status eq '1'}">
 					<ul class="contStep goodsStep" style="margin-top: 30px;">
 						<li class="item01" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Monitor-icon.png"  /><span>주문 완료</span></li>
                         <li class="item02" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/Truck-icon1.png" style="opacity: 0.3;" /><span>상품 준비중</span></li>
@@ -161,7 +161,7 @@ i.fa{
                         <li class="item04" id="item1"><img class="ticon" src="/brocoli/resources/mainResources/images/icons/hand.png" /><span>배송 완료</span></li>
 					</ul>
 					</c:if>
-					
+					</div>
 					
 				</div>
 			</div>
@@ -193,7 +193,7 @@ i.fa{
 								<td style="text-align:center;">${ Orders.or_NO }</td>
 								<input type="hidden" name="or_No" value="${ Orders.or_NO }">
 									<td style="text-align:center;">${ Orders.or_Date }</td>
-									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:center;"><img src="/brocoli/resources/product-Img/${Orders.pOptionlist.pList.pfList.pf_Img1_ReName}" alt="IMG" style="padding: 7px; width: 100px; height: 120px;"></td>
 									<td style="text-align:left;">
 										<ul>
 											<li>${ Orders.or_Pname }</li>
@@ -207,9 +207,33 @@ i.fa{
 									<td style="text-align:center;">${ Orders.or_Price/100 }</td>
 									<td style="text-align:center;">${ Orders.or_Amount }</td>
 									<td style="text-align:center;">${ Orders.or_Price }</td>
-								<td style="text-align: center; font-size: 13px; color: #555;"><strong>주문완료</strong><br>
+									<td style="text-align: center; font-size: 13px; color: #555;">
+						                   <strong>
+					                       <c:if test="${Orders.or_Status eq 1}">
+					                          <span style="color:black;">주문완료</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 2}">
+					                          <span style="color:black;">상품준비중</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 3}">
+					                          <span style="color:black;">상품배송중</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 4}">
+					                          <span style="color:black;">배송완료</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 5}">
+					                          <span style="color:black;">구매확정</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 6}">
+					                          <span style="color:black;">환불 진행 중</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 7}">
+					                          <span style="color:black;">교환 진행 중</span>
+					                       </c:if>
+					                       </strong>
+						              </td>
 								<td style="text-align: center;">
-									<button class="ord-btn">
+									<button class="ord-btn" onclick="test1();">
 										<strong>배송 추적</strong>
 									</button>
 
@@ -313,6 +337,10 @@ i.fa{
 </c:forEach>
 
 <script>
+
+function test1(){
+	$("#frm1").attr("action","mytrackDetail.mn").submit();
+}
 
 
 </script>

@@ -204,7 +204,7 @@
 		<insert id="insertMember" parameterType="Member">
 		 INSERT INTO MEMBER
     	 VALUES(SEQ_MNO.NEXTVAL,#{mId},#{pwd},#{mName},#{email},#{phone},#{address},#{gender},#{birthDay},DEFAULT,
-    	10000,NULL,NULL,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
+    	10000,0,0,DEFAULT,DEFAULT,NULL,DEFAULT,NULL,SYSDATE,DEFAULT,DEFAULT)
 	</insert>
 	
 	<select  id="idCheck" parameterType="String" resultType="_int">
@@ -585,4 +585,34 @@
         WHERE O.OA_MNO = #{mno}
 	</select>
 	
+	<delete id="deleteOrder" parameterType="_int">
+		DELETE FROM ORDERADD
+		WHERE OA_NO = #{ct_NO}
+	</delete>
+	
+	<delete id="deleteOa" parameterType="_int">
+		DELETE FROM ORDERADD
+		WHERE OA_MNO = #{mno}
+	</delete>
+	<update id="pupdateMember" parameterType="hashmap">
+		UPDATE MEMBER
+		SET MPOINT = MPOINT + #{total2}
+		WHERE MNO = #{mno}
+	</update>
+	
+	<update id="pupdateMemberCount" parameterType="_int">
+			UPDATE MEMBER
+			SET ORDER_COUNT = ORDER_COUNT +1
+			WHERE MNO=#{mno}
+	</update>
+	
+	<update id="pupdateMemberPrice" parameterType="hashmap">
+			UPDATE MEMBER
+			SET ORDER_PRICE = ORDER_PRICE + #{total}
+			WHERE MNO = #{mno}
+	</update>
+	<insert id ="insertOrder" parameterType="Orders">
+	INSERT INTO ORDERS VALUES(SEQ_OR_NO.NEXTVAL,SYSDATE,#{or_Pname},#{or_Option1},#{or_Option2},#{or_Amount},#{or_Address},#{or_Message},#{or_Price},
+	1,1,'한진택배',#{or_Mno},#{or_Recip_Name},#{or_Phone},#{or_P_NO},#{or_Brand_NO})
+	</insert>
 </mapper>

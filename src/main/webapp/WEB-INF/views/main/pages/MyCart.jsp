@@ -33,7 +33,6 @@
 			</span>
 		</div>
 	</div>
-		
 
 	<!-- Shoping Cart -->
 	<!-- <form class="bg0 p-t-75 p-b-85"> -->
@@ -52,42 +51,56 @@
 									<th class="column-5">판매금액</th>
 									<th class="column-6">수량</th>
 									<th class="column-7">총 금액</th>
-									<th class="column-7">삭제</th>
+									<th class="column-8" style="text-align: center; width: 5%;">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
-							<c:forEach var="c" items="${ cList }" >
-	
-								<tr class="table_row">
-								<th class="column-0"><input type="checkBox" name="che" id="che" value="${ c.productList.p_Last_Price * c.ct_Amount }"></th>
-									<td class="column-1">
-										<div class="how-itemcart1">
-											<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
-										</div>
-									</td>
-									<td class="column-2">${c.productList.p_Name}</td>
-									<td class="column-3">${c.ct_Option_1 }</td>
-									<td class="column-4">${c.ct_Option_2 }</td>
-									<td class="column-7">${c.productList.p_Last_Price}</td>
+							<c:choose>
+	    						<c:when test="${empty cList }">
+	    							<tr>
+	    								<td colspan="8" style="height: 110px; font-size: 17px; text-align: center;"><strong>장바구니가 비어있습니다.</strong></td>
+	    							</tr>
+	    						</c:when>
+						        <c:when test="${!empty cList}">
+									<c:forEach var="c" items="${ cList }" varStatus="status" >
 									
-									<td class="column-6">${ c.ct_Amount }</td>
-									<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+										<tr class="table_row">
+								
+										<th class="column-0"><input type="checkBox" name="che" id="${status.index}" value="${ c.productList.p_Last_Price * c.ct_Amount }" ></th>
+											<td class="column-1">
+												<div class="how-itemcart1">
+													<img src="/brocoli/resources/product-Img/${c.p_File.pf_Img1_ReName}" alt="IMG">
+												</div>
+											</td>
+											<td class="column-2">${c.productList.p_Name}</td>
+											<td class="column-3">${c.ct_Option_1 }</td>
+											<td class="column-4">${c.ct_Option_2 }</td>
+											<td class="column-7">${c.productList.p_Last_Price}</td>
+											
+											<td class="column-6">${ c.ct_Amount }</td>
 									
-									<td class="column-7">
-										<c:out value="${ hap }"/>
-									</td>
-										<td style="text-align: center;">
-									<c:url var="cDelete" value="cDelete.mn">
-										<c:param name="p_NO" value="${ c.productList.p_NO }"/>
-										<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
-										<c:param name="Mno" value="${loginUser.mNO }"/>
-										<c:param name="ct_NO" value="${c.ct_NO}"/>
-									</c:url> 
-									<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
-							      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
-										
-									</td>
-								</tr>
-								</c:forEach>
+											<c:set var="hap" value="${c.productList.p_Last_Price * c.ct_Amount }"/>
+											
+											<td class="column-7">
+												<c:out value="${ hap }"/>
+											</td>
+												<td style="text-align: center;">
+											<c:url var="cDelete" value="cDelete.mn">
+												<c:param name="p_NO" value="${ c.productList.p_NO }"/>
+												<c:param name="ct_Mno" value="${ c.ct_Mno }"/>
+												<c:param name="Mno" value="${loginUser.mNO }"/>
+												<c:param name="ct_NO" value="${c.ct_NO}"/>
+											</c:url> 
+											
+											<input type="hidden" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
+											
+											<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
+									      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
+												
+											</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+						    </c:choose>
 													
 								<tr style="height:100px;">
 									<td colspan="6"></td>
@@ -140,21 +153,25 @@
 							var test2; 
 							var checkbox = $("input[name=che]:checked"); 
 						
-							$("input[name=che]").click(function(){ 
+/* 							$("input[name=che]").click(function(){ 
+								
 								var rowData = [];
 								var tdArr = []; 
 								var checkbox = $("input[name=che]:checked");
 
 								// 체크된 체크박스 값을 가져온다
+								var count = 0;
 								checkbox.each(function(i) {
-								
+									var index = $(this).attr("id");
+									$("#ct_NO"+index+"").attr("name","ct_NO["+count+"]");
+									count++;
 									// checkbox.parent() : checkbox의 부모는 <td>이다.
 									// checkbox.parent().parent() : <td>의 부모이므로 <tr>이다.
 									var tr = checkbox.parent().parent().eq(i);
 									var td = tr.children();
 									
 									// 체크된 row의 모든 값을 배열에 담는다.
-									/* rowData.push(tr.text().trim()); */
+									/* rowData.push(tr.text().trim()); 
 									
 									// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
 									var name = td.eq(2).text().trim();
@@ -169,7 +186,7 @@
 									var test = sum1.replace(/ /gi,"");
 									var test1 = test.split(" ");
 									alert(test1);
-									console.log(test1) */
+									console.log(test1) 
 									
 									// 가져온 값을 배열에 담는다.
 									
@@ -194,31 +211,76 @@
 									console.log("로우데이터 영ㄴ번쨰 : " + rowData[0]);
 									console.log("rowData 0.0 : " + tdArr[0][0]);
 									console.log("ㅑ : " + i);
-								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
+								 	console.log(rowData.replace(/(/s*)/g,"")); 
 								});
 								
 								test1 = rowData;
 								test2 = tdArr;
 								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
 								$("#test").val(tdArr);
+							}); */
+							
+							
+							
+							var ct_ID = new Array();
+							
+							
+							$("input[name=che]").click(function(){ 
+								
+								var id = $(this).attr("id");
+								
+							
+								
+								
+								if($(this).prop("checked")){
+									
+									ct_ID.push(id);
+								}else {
+									if(id == 0){
+										ct_ID.shift()
+									}else{
+										
+									ct_ID.splice(ct_ID.indexOf(id),1);	
+									}
+										
+								}
+								ct_ID.sort();
 							});
 							
-							function orderadd(){
-/* 								console.log(test1);
-								console.log(test2); */
+							
+ 							function orderadd(){
+								var checked = $("input[name=che]:checked").length;
 								
+						 		var ct_NO = new Array(); 
+								
+						 		for(var i=0; i<checked; i++){
+									
+									ct_NO[i] = $("#ct_NO"+ct_ID[i]).val();
+									
+								} 
+								alert(ct_NO);
 								  jQuery.ajaxSettings.traditional = true;
 								 $.ajax({
 									url:'cOrderAddInsert.mn',
-									type:"post",
-									dataType:"json",
+									type: "POST",
+									async:false,
+									traditional:true,
 									data:{
-										tdArr : JSON.stringify(test2),
-										rowData : JSON.stringify(test1)
+										ct_NO : ct_NO
+									},
+									success:function(data){
+										if(data = "ok"){
+											
+										location.href= "mTrackListView.mn";
+										}else if(data = "false"){
+											alert("목록을 선택해주세요.");
+										}
 									}
 									
 								})  
-							}
+							} 
+							
+
 							
 				</script>
 				
@@ -240,7 +302,7 @@
 						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
 						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
    						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="orderadd();">주문하기</button> 
-						<input type="text" name="test" id="test" value="00" style="width:1000px;">
+						<!-- <input type="text" name="test" id="test" value="00" style="width:1000px;"> -->
 					</div>
 				</div>
 

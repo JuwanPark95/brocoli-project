@@ -227,6 +227,16 @@ public class MypageController {
 			
 			return mv;
 		}
+		
+		/** 작성자 : 김주희
+		 *  작성일 : 2020-04-02
+		 *  내용 : 배송추적
+		 * @return
+		 */
+		@RequestMapping("mytrackDetail.mn")
+		public String mytrackDetail() {
+			return "My-Track-Detail";
+		}
 	
 	
 	

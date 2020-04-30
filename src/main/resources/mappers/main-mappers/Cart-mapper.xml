@@ -62,6 +62,20 @@
 		<collection property="p_File" resultMap="ProductFileResultSet"/>
 	</resultMap>
 	
+	<resultMap type="OrderAdd" id="OrderAddResultSet">
+	
+		<id property="oa_no" column="OA_NO"/>
+		
+		<result property="oa_Option_1" column="OA_OPTION_1"/>
+		<result property="oa_Option_2" column="OA_OPTION_2"/>
+		<result property="oa_Amount" column="OA_AMOUNT"/>
+		<result property="oa_Mno" column="OA_MNO"/>
+		<result property="oa_P_NO" column="OA_P_NO"/>
+	
+		<collection property="productList" resultMap="productResultSet"/>
+		<collection property="p_File" resultMap="ProductFileResultSet"/>
+	</resultMap>
+	
 	
 	<insert id="cInsert" parameterType="ProductDetail">
 		INSERT INTO CART
@@ -86,4 +100,23 @@
 		DELETE FROM CART
 		WHERE CT_NO = #{ct_NO}
 	</delete>
+	
+	<select id="selectCart" resultMap="CartResultSet">
+	SELECT *
+	FROM CART
+	WHERE CT_NO=#{ct_NO}
+	
+	</select>
+	
+	<insert id="insertCartAdd" parameterType="OrderAdd">
+	MERGE INTO ORDERADD O
+    USING DUAL
+       ON (O.OA_MNO = #{oa_Mno} AND O.OA_OPTION_1 = #{oa_Option_1} 
+       		AND O.OA_OPTION_2 = #{oa_Option_2} AND O.OA_AMOUNT = #{oa_Amount}
+       		AND O.OA_P_NO = #{oa_P_NO})
+    WHEN NOT MATCHED THEN
+        INSERT (O.OA_NO, O.OA_OPTION_1,O.OA_OPTION_2,O.OA_AMOUNT,O.OA_MNO,O.OA_P_NO)
+        VALUES(SEQ_OA_NO.NEXTVAL,#{oa_Option_1},#{oa_Option_2},#{oa_Amount},#{oa_Mno},#{oa_P_NO})
+
+	</insert>
 </mapper>

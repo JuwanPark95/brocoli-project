@@ -156,7 +156,7 @@
 								<tr>
 									<td style="text-align:center;">${ Orders.or_NO }</td>
 									<td style="text-align:center;">${ Orders.or_Date }</td>
-									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:center;"><img src="/brocoli/resources/product-Img/${Orders.pOptionlist.pList.pfList.pf_Img1_ReName}" alt="IMG" style="width: 120px; padding: 11px; height: 140px;"></td>
 									<td style="text-align:left;">
 										<ul>
 											<li>${ Orders.or_Pname }</li>

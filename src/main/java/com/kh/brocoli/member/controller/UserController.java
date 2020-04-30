@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -143,6 +145,7 @@ public class UserController {
 		.addObject("add1", arr[1].toString())
 		.addObject("add2",arr[2].toString())
 		.addObject("cList",oa);
+		System.out.println("LLL"+oa);
 		mv.setViewName("My-Track-List");
 		return mv;
 	}
@@ -558,13 +561,16 @@ public class UserController {
 		mv.addObject("m10",m10);
 		mv.addObject("m11",m11);
 		mv.addObject("m12",m12);
-		ArrayList<Magazine2> mList = null; 
+		ArrayList<Magazine2> mList = new ArrayList<Magazine2>(); 
+		ArrayList<Magazine2> mmList = new ArrayList<Magazine2>(); 
+		mList = uService.selectmList();
+		mmList.add(mList.get(0));
+		mmList.add(mList.get(1));
+		mmList.add(mList.get(2));
 		
-			
-		 mList = uService.selectmList();
-			
 		
-		mv.addObject("mList", mList);
+		
+		mv.addObject("mList", mmList);
 		mv.setViewName("Main-Magazine");
 		return mv;
 	}
@@ -1069,4 +1075,45 @@ public class UserController {
 		return gson.toJson(order);
 	
 	}
+	
+	/**
+	 * 배송지 선택창 물품삭제
+	 * @param ct_NO
+	 * @param ct_Mno
+	 * @return
+	 */
+	@RequestMapping("oDelete.mn")
+	public String cartDelete(@RequestParam(value="ct_NO") int ct_NO, int ct_Mno) {
+		
+		int result = uService.deleteOrder(ct_NO);
+		if(result > 0) {
+			return "redirect:mTrackListView.mn?ct_Mno="+ct_Mno;
+		}else {
+			return"common/errorPage";
+		}
+	}
+	
+	
+	
+	  @ResponseBody
+	  @RequestMapping("payScreen")
+	  public String payScreen(@RequestParam("mno") int mno,@RequestParam("total") int total, Orders order) { 
+		System.out.println("mno::"+ mno);
+		  System.out.println("total:::" + total);
+		 System.out.println("order::" + order);
+		 String total1 = Integer.toString(total) ;
+		 System.out.println("total1::" + total1);
+		 order.setOr_Price(total1);
+		 order.setOr_Mno(mno);
+		  int result = uService.updatePay(mno,total,order);
+	  System.out.println("@@"+ result);
+	  
+	  if(result > 0) {
+	  return "ok";
+	  }else {
+		  return "fail";
+	  }
+	  }
+	 
+	 
 }

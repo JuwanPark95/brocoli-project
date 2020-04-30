@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -213,6 +214,44 @@ public class UserDao {
 
 		public ArrayList<OrderAdd> cartCheck(int mno) {
 			return (ArrayList)sqlSession.selectList("memberMapper.cartCheck",mno);
+		}
+
+		public int deleteOrder(int ct_NO) {
+			return sqlSession.delete("memberMapper.deleteOrder",ct_NO);
+		}
+
+		public int deleteOa(int mno) {
+			return sqlSession.delete("memberMapper.deleteOa",mno);
+		}
+
+		public int pupdateMember(int total, int mno) {
+			int total2 = (int) (total * 0.01);
+			System.out.println("DAO MNO   "+ mno);
+			System.out.println("DAO total    "+ total);
+			System.out.println("DAO total2   "+total2);
+			HashMap<String,Integer> KeyCode = new HashMap();
+			KeyCode.put("total2",total2);
+			KeyCode.put("mno",mno);
+			
+			
+			return sqlSession.update("memberMapper.pupdateMember",KeyCode);
+		}
+
+		public int pupdateMemberCount(int mno) {
+
+			return sqlSession.update("memberMapper.pupdateMemberCount",mno);
+		}
+
+		public int pupdateMemberPrice(int total, int mno) {
+			HashMap<String,Integer> KeyCode = new HashMap();
+			KeyCode.put("mno",mno);
+			KeyCode.put("total",total);
+			
+			return sqlSession.update("memberMapper.pupdateMemberPrice",KeyCode);
+		}
+
+		public int insertOrder(Orders order) {
+			return sqlSession.insert("memberMapper.insertOrder",order);
 		}
 
 
