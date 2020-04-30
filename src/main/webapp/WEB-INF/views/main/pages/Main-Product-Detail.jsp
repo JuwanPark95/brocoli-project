@@ -252,7 +252,7 @@
 									}else{
 										$("#frm1").attr("action",
 										"cInsert.mn").submit();
-										alert("장바구니에 추가 되었습니다.");
+										alert()
 									}
 								}
 								
@@ -1235,7 +1235,7 @@
 					 
 
 					
-					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list[i].v_Date + "</span>"
 					
 					if(id == data.list[i].v_Mno ){
 						comment +=	"<button id='check3' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
@@ -1265,7 +1265,7 @@
 
 					comment += "<div class='flex-w flex-sb-m p-b-17' style='background: #999;'>"
 					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Writer +"</span>"
-					comment +=	"<span class='mtext-107 cl2 p-r-20'>"+data.list2[j].vr_Date + "</span>"
+					comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-right: -120px;'>"+data.list2[j].vr_Date + "</span>"
 					comment +=	"<div class='size-207'   style= 'margin-top: 20px;'>"
 					comment +=	"<p class='stext-102 cl6'>"+data.list2[j].vr_Content+"</p>"
 					comment +=	"</div>"
@@ -1409,7 +1409,7 @@
 							comment += "</span>"
 						} 
 						
-						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-left: 400px;'>"+data.list[i].v_Date + "</span>"
+						comment +=	"<span class='mtext-107 cl2 p-r-20' style='margin-right: -120px;'>"+data.list[i].v_Date + "</span>"
 						if(id == data.list[i].v_Mno ){
 							comment +=	"<button id='check3' style='background-color: #d7d7df; color: #fff;' value='"+data.list[i].v_NO+"'>삭제</button>"
 						}

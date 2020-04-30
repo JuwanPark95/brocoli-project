@@ -75,7 +75,7 @@
            <c:url var="bproduct" value="bproduct.mn">
   				<c:param name="b_Name" value="${ b.b_Name }"/>
        		</c:url>
-         	<li class="hover"><button onclick="location.href='${bproduct }'"><img class="img3" src="/brocoli/resources/product-Img/${b.b_Logo_ReName}" /><br><p >${b.b_Name }</p></button></li>
+         	<li class="hover"><button onclick="location.href='${bproduct }'"><img class="img3" src="/brocoli/resources/brandLogo/${b.b_Logo_ReName}" /><br><p >${b.b_Name }</p></button></li>
          	<!-- <li><button><img src="/brocoli/resources/mainResources/images/adidas.jpg" /><br><p>adidas</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/puma.png" /><br><p>PUMA</p></button></li>
          	<li><button><img src="/brocoli/resources/mainResources/images/lecoq.png" /><br><p>le coq</p></button></li>
