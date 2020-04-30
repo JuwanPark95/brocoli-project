@@ -228,6 +228,21 @@ public interface UserService {
 	 */
 	ArrayList<OrderAdd> cartCheck(int mno);
 
+	/**
+	 * 배송지 선택창 상품 삭제
+	 * @param ct_NO
+	 * @return
+	 */
+	int deleteOrder(int ct_NO);
+
+	/**
+	 * 결제 후 DB 업데이트
+	 * @param mno
+	 * @param oa_Mno
+	 * @return
+	 */
+	int updatePay(int mno, int total);
+
 	
  
 }
