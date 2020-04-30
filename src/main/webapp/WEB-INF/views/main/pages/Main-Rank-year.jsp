@@ -90,7 +90,7 @@
                      </div>
 
                      <c:url var="wInsert" value="wInsert.mn">
-					 	<c:param name="w_P_NO" value="${ year.pfList.p_NO }"/>
+					 	<c:param name="w_P_NO" value="${ year.p_NO }"/>
 					 	<c:param name="w_Mno" value="${ loginUser.mNO }"/>
 					 </c:url>	
                      <div class="block2-txt-child2 flex-r p-t-3">

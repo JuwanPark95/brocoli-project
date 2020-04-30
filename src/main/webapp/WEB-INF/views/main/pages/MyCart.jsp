@@ -15,7 +15,7 @@
    	작성일 : 2020-03-20
    	내용 : 장바구니 화면 수정
     -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/cart.jpg');">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			장바구니
 		</h2>

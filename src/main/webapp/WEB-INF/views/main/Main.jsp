@@ -19,64 +19,6 @@
 	display:none;
 }
 
-.container2 {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.neon {
-  font-family: neon;
-  color: #FB4264;
-  font-size: 9vw;
-  line-height: 9vw;
-  text-shadow: 0 0 3vw #F40A35;
-}
-
-.flux {
-  font-family: neon;
-  color: #426DFB;
-  font-size: 9vw;
-  line-height: 9vw;
-  text-shadow: 0 0 3vw #2356FF;
-}
-
-.neon {
-  animation: neon 1s ease infinite;
-  -moz-animation: neon 1s ease infinite;
-  -webkit-animation: neon 1s ease infinite;
-}
-
-@keyframes neon {
-  0%,
-  100% {
-    text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
-    color: #FED128;
-  }
-  50% {
-    text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
-    color: #806914;
-  }
-}
-
-.flux {
-  animation: flux 2s linear infinite;
-  -moz-animation: flux 2s linear infinite;
-  -webkit-animation: flux 2s linear infinite;
-  -o-animation: flux 2s linear infinite;
-}
-
-@keyframes flux {
-  0%,
-  100% {
-    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
-    color: #28D7FE;
-  }
-  50% {
-    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
-    color: #146C80;
-  }
-}
 </style>
 </head>
 <body class="animsition">
@@ -154,9 +96,9 @@
 	<section class="bg0 p-t-23 p-b-130">
 		<div class="container">
 			<div class="p-b-10">
-			<div class="container2">
-				<div class="neon">랭킹 TOP 20 </div>
-			</div>
+				<h3 class="ltext-103 cl5">
+					랭킹TOP 20<br><br>
+				</h3>
 			</div>
 
 			<div class="row isotope-grid">

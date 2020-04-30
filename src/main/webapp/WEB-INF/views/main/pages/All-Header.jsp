@@ -164,14 +164,12 @@
 					
 					<c:if test="${!empty sessionScope.loginUser }">
 					
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 						<i class="zmdi zmdi-shopping-cart" onclick="location.href='${headerCartList}'"></i>
 					</div>
 					</c:if>
 					<c:if test="${empty sessionScope.loginUser }">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 						<i class="zmdi zmdi-shopping-cart" onclick="location.href='${loginPage}'"></i>
 					</div>
 					</c:if>
@@ -182,8 +180,8 @@
 							<c:param name="w_Mno" value="${loginUser.mNO}"></c:param>
 						</c:url>
 					<a href="${wishList}"
-						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
+						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 "> 
+						<i class="zmdi zmdi-favorite-outline"></i>
 					</a>
 					</c:if>
 					<c:if test="${empty sessionScope.loginUser }">
