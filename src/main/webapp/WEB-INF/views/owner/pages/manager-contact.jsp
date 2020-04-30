@@ -146,7 +146,9 @@
 			processData : false,
 			contentType : false,
 			success : function(data){
-				$("#chatingArea").scrollTop($(document).height());	//로드후 스크롤 제일 아래로
+				$("#contentImg").attr("src","/brocoli/resources/ownerResources/images/ImgUpload_Icon.png");
+				$("#textArea").val("");
+				$("#chatingArea").scrollTop($("#chatingArea").height()*2);	//로드후 스크롤 제일 아래로
 				console.log("메시지 insert 성공.");
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("옥션 insert ajax 처리실패");
@@ -179,7 +181,9 @@
 			processData : false,
 			contentType : false,
 			success : function(data){
-				$("#chatingArea").scrollTop($(document).height());	//로드후 스크롤 제일 아래로
+				$("#contentImg").attr("src","/brocoli/resources/ownerResources/images/ImgUpload_Icon.png");
+				$("#textArea").val("");
+				$("#chatingArea").scrollTop($("#chatingArea").height()*2);	//로드후 스크롤 제일 아래로
 				console.log("메시지 insert 성공.");
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("옥션 insert ajax 처리실패");
@@ -374,7 +378,7 @@
 						
 						$('#chatingArea').html(chating);
 						$('#chatImgArea').html(chatImg);
-						$("#chatingArea").scrollTop($(document).scrollValue);	//로드후 스크롤 기존위치로
+						$("#chatingArea").scrollTop($("#chatingArea").scrollValue);	//로드후 스크롤 기존위치로
 					},error : function(jqxhr, textStatus, errorThrown) {
 						console.log("매니저컨택트 list Select ajax 처리실패");
 	
@@ -513,7 +517,8 @@
 				
 				$('#chatingArea').html(chating);
 				$('#chatImgArea').html(chatImg);
-				$("#chatingArea").scrollTop($('#chatingArea').height());	//로드후 스크롤 제일 아래로
+				
+				$("#chatingArea").scrollTop($('#chatingArea').height()*2);	//로드후 스크롤 제일 아래로
 			},error : function(jqxhr, textStatus, errorThrown) {
 				console.log("매니저컨택트 list Select ajax 처리실패");
 
