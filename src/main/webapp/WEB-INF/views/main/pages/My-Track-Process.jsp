@@ -105,7 +105,7 @@ i.fa{
 
 </head>
 <body class="animsition">
- <form action="trackprocess.mn">
+ <form action="trackprocess.mn" id="frm1">
  <c:forEach var="Orders" items="${list }">
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
@@ -193,7 +193,7 @@ i.fa{
 								<td style="text-align:center;">${ Orders.or_NO }</td>
 								<input type="hidden" name="or_No" value="${ Orders.or_NO }">
 									<td style="text-align:center;">${ Orders.or_Date }</td>
-									<td style="text-align:center;"><img src="/brocoli/resources/mainResources/images/item-cart-04.jpg" alt="IMG" style="padding: 15px;"></td>
+									<td style="text-align:center;"><img src="/brocoli/resources/product-Img/${Orders.pOptionlist.pList.pfList.pf_Img1_ReName}" alt="IMG" style="padding: 7px; width: 100px; height: 120px;"></td>
 									<td style="text-align:left;">
 										<ul>
 											<li>${ Orders.or_Pname }</li>
@@ -209,7 +209,7 @@ i.fa{
 									<td style="text-align:center;">${ Orders.or_Price }</td>
 								<td style="text-align: center; font-size: 13px; color: #555;"><strong>주문완료</strong><br>
 								<td style="text-align: center;">
-									<button class="ord-btn">
+									<button class="ord-btn" onclick="test1();">
 										<strong>배송 추적</strong>
 									</button>
 
@@ -313,6 +313,10 @@ i.fa{
 </c:forEach>
 
 <script>
+
+function test1(){
+	$("#frm1").attr("action","mytrackDetail.mn").submit();
+}
 
 
 </script>

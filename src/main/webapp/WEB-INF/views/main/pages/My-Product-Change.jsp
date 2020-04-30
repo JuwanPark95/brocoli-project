@@ -204,7 +204,7 @@ padding : 5px;
                   </td>
 					<td colspan="2">
 						<div style="float: left;">
-							<img src="/brocoli/resources/product-Img/P11001.jpg" style="width: 58px; height: 78px;">
+							<img src="/brocoli/resources/product-Img/${Orders.pOptionlist.pList.pfList.pf_Img1_ReName}" style="width: 58px; height: 78px;">
 						</div>
 						<div style="float: left;">
 							<a href="">${Orders.or_Pname }  <br> </a> 

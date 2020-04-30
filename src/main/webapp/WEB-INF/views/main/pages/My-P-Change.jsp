@@ -23,20 +23,26 @@
 	<!-- 수정자 : 박주완
 		수정일 : 2020-03-30
 		내용 : CSS수정 -->
-	 <form action="password_change.mn" method="post">
+	 <form action="password_change.mn" id="frm1" method="post">
 	  <div id="pwdchange" class="container" style="text-align: center; width: 100%; height: 80%; padding-top: 5%;">
 
 		<div id="logo" class="flex-w flex-tr" style="margin-bottom: 55px;">
 			<p style="font-size: 55px; width: 100%; margin: 0 auto; color: #222; height: 60px;"><strong>비밀번호 변경</strong></p>
 		</div>
+		<div>
 			<input type="password" name="p_change1" id="pwd1"
 				class="form-control form-control "
 				style="border-radius: 5px; width: 320px; margin: 0 auto; margin-bottom: 10px; height: 50px;"
 				placeholder="변경할 비밀번호 " required>
+			<input type="hidden" name="pwdDuplicateCheck3" id="pwdDuplicateCheck3" value="0" />	
+		</div>	
+		<div>
 			<input type="password" name="p_change2" id="pwd2"
 				class="form-control form-control" 
 				style="border-radius: 5px; width: 320px; margin: 0 auto; height: 50px;"
 				placeholder="비밀번호  확인" required>	
+				<input type="hidden" name="pwdDuplicateCheck2" id="pwdDuplicateCheck2" value="0" />
+		</div>
 		</div>
 		
 		<br>
@@ -45,15 +51,106 @@
 		<div class="alert alert-danger" id="alert-danger" style=" width: 280px; position: relative; left: 39.5%;">비밀번호가 일치하지 않습니다.</div>
 
 	
-		<div>
-			<button class="btn btn-primary btn-lg btn-block" 
-				style="background: #222; width: 320px; border: 1px solid #222; margin: 0 auto;">
+		<div style="padding-bottom: 72px; margin-left: 559px;">
+			<button class="btn btn-primary btn-lg " 
+				style="background: #222; width: 150px; border: 1px solid #222; margin: 0 auto;" onclick="return validate2();">
 				변경하기</button>
+				
+			<button class="btn btn-primary btn-lg "
+				style="background: #222; width: 150px; border: 1px solid #222; margin: 0 auto; display:inline;" onclick="test1();">
+				돌아가기</button>	
 			<br>
+			
 		</div>
+	</form>
 
+    <script>
+    
+    function validate2(){
+	 	   
+	 	   var rgEx = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+	       
+	       var pwd1 = $("#pwd1").val();
+	 		
+	 	
+	 		var num = pwd1.search(/[0-9]/g);
+	 		 var eng = pwd1.search(/[a-z]/ig);
+	 		 var spe = pwd1.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	 		 
+	 		 if(pwd1.length < 8 || pwd1.length > 20){
+	 			 $("#pwdDuplicateCheck3").val(0);
+	 			 $("#pwd1").focus();
+	 			  alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
+	 			  return false;
+	 			 }else if(pwd1.search(/\s/) != -1){
+	 				 $("#pwdDuplicateCheck3").val(0);
+	 				 $("#pwd1").focus();
+	 			  alert("비밀번호는 공백 없이 입력해주세요.");
+	 			  return false;
+	 			 }else if(num < 0 || eng < 0 || spe < 0 ){
+	 				 $("#pwdDuplicateCheck3").val(0);
+	 				 $("#pwd1").focus();
+	 			  alert("비밀번호에 영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+	 			  return false;
+	 			 }else {
+	 				 $("#pwdDuplicateCheck3").val(1);
+	 			    
+	 			 } 
+	       
+	 			
+	 			}
+	 		 
+	 		// 가입하기 클릭시 최종 점검
+	 		if($("#pwdDuplicateCheck2").val()==1 && $("#pwdDuplicateCheck3").val()==1){
+	 			return true;
+	 		}else{
+	 			if(($("#pwdDuplicateCheck2").val()!=1 || $("#pwdDuplicateCheck3").val()!=1){
+	 				$("#pwd1").focus();
+	 				alert("비밀번호를 다시 한번 확인해주세요.");
+	 			
+	 		      }
+	 			
+	 			
+	 			return false;
+	 		}
+	 		
+	 		$(function(){
+	 			$("#pwd2").on("keyup",function(){
+	 				var pwd1 = $("#pwd1").val();
+	 				var pwd2 = $(this).val();
+	 				
+	 				
+	 				if(pwd1.length > pwd2.length){
+	 					$(".guide").hide();
+	 					$("#pwdDuplicateCheck2").val(0);
+	 					return;
+	 					
+	 				}
+	 				if(pwd1 != pwd2){
+	 					$(".ok").hide();
+	 					$(".error").show();
+	 					$("#pwdDuplicateCheck2").val(0);
+	 				}else{
+	 				
+	 					$(".error").hide();
+	 					$(".ok").show();
+	 					$("#pwdDuplicateCheck2").val(1);
+	 				}
+	 				
+	 				
+	 				
+	 			});
+	 		});
+	 		});
+    </script>
+
+   
 	
-	<script type="text/javascript"> 
+	<script type="text/javascript">
+	
+	function test1(){
+		$("#frm1").attr("action","myInfo.mn").submit();
+	}
 	
 	$(function(){ 
 		$("#alert-success").hide(); 
@@ -75,9 +172,10 @@
 				} 
 			}); 
 		}); 
+	
+
 	</script>
 
-	</form>
 	<%@ include file="All-Footer.jsp" %>
 	<%@ include file="All-BacktoTop.jsp" %>
 
