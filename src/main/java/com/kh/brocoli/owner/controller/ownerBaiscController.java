@@ -1,6 +1,10 @@
 package com.kh.brocoli.owner.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.kh.brocoli.member.model.vo.Orders;
+import com.kh.brocoli.owner.model.service.ownerBasicService;
 import com.kh.brocoli.owner.model.service.ownerOrderService;
+import com.kh.brocoli.owner.vo.ownerAge;
+import com.kh.brocoli.owner.vo.ownerCategore;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Statistics;
 
@@ -17,6 +27,7 @@ import com.kh.brocoli.product.model.vo.Statistics;
 @Controller
 public class ownerBaiscController {
 	
+	@Autowired ownerBasicService oService;
 	
 	
 	@RequestMapping("goToHome.ow")
@@ -53,6 +64,48 @@ public class ownerBaiscController {
 	public String manazineInsertPage() {
 		return "magazine-insert";
 	}
+	
+	@RequestMapping("ownerHaeder.ow")
+	public void ownerHaeder(HttpServletResponse response,int bNO) throws JsonIOException, IOException {
+		
+		HashMap<String, Object> data = new HashMap<>();
+		
+		int countMassege = oService.selectMassegeCount(bNO);
+		int countReview = oService.selectReviewCount(bNO);
+		int countOrder = oService.selectOrderCount(bNO);
+		int countQnA = oService.selectQnACount(bNO);
+		String brandLogo = oService.selectBrandLogo(bNO);
+		
+		data.put("countMassege",countMassege );
+		data.put("countReview",countReview );
+		data.put("countOrder",countOrder );
+		data.put("countQnA",countQnA );
+		data.put("brandLogo",brandLogo);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(data,response.getWriter());
+	}
+	
+	@RequestMapping("ownerHome.ow")
+	public void ownerHome(HttpServletResponse response,int bNO) throws JsonIOException, IOException {
+		
+		Brand bInfo = oService.selectBrandInfo(bNO);
+		/*
+		 * ownerAge oa = oService.selectAge(bNO); ownerCategore oc =
+		 * oService.selectCategore(bNO); Orders opc = oService.selectProductCount(bNO);
+		 */
+		
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+
+		Gson gson = new GsonBuilder().create();
+		gson.toJson(bInfo,response.getWriter());
+	}
+	
 	
 	
 }

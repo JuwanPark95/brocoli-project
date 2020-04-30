@@ -1,7 +1,8 @@
 package com.kh.brocoli.product.model.vo;
 
 public class Statistics {
-
+	
+	private int NO;
 	private String day;
 	private String orderCount;
 	private String orderPrice;
@@ -14,9 +15,10 @@ public class Statistics {
 		super();
 	}
 
-	public Statistics(String day, String orderCount, String orderPrice, String rejectCount, String rejectPrice,
+	public Statistics(int nO, String day, String orderCount, String orderPrice, String rejectCount, String rejectPrice,
 			String changeCount, String changePrice) {
 		super();
+		NO = nO;
 		this.day = day;
 		this.orderCount = orderCount;
 		this.orderPrice = orderPrice;
@@ -24,6 +26,14 @@ public class Statistics {
 		this.rejectPrice = rejectPrice;
 		this.changeCount = changeCount;
 		this.changePrice = changePrice;
+	}
+
+	public int getNO() {
+		return NO;
+	}
+
+	public void setNO(int nO) {
+		NO = nO;
 	}
 
 	public String getDay() {
@@ -84,10 +94,11 @@ public class Statistics {
 
 	@Override
 	public String toString() {
-		return "Statistics [day=" + day + ", orderCount=" + orderCount + ", orderPrice=" + orderPrice + ", rejectCount="
-				+ rejectCount + ", rejectPrice=" + rejectPrice + ", changeCount=" + changeCount + ", changePrice="
-				+ changePrice + "]";
+		return "Statistics [NO=" + NO + ", day=" + day + ", orderCount=" + orderCount + ", orderPrice=" + orderPrice
+				+ ", rejectCount=" + rejectCount + ", rejectPrice=" + rejectPrice + ", changeCount=" + changeCount
+				+ ", changePrice=" + changePrice + "]";
 	}
+
 	
 	
 	

@@ -102,7 +102,7 @@
                                         <tbody>
                                         	<c:forEach var="r" items="${olist}">
 	                                            <tr>
-	                                            	<td style="display: none;">${r.or_NO * -1}</td>
+	                                            	<td style="display: none;"></td>
 	                                                <td>${r.day}</td>
 	                                                <td>${r.orderCount}</td>
 	                                                <td>${r.orderPrice}</td>

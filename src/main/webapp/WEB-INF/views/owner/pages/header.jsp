@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
  
@@ -52,34 +53,44 @@
                                     <div class="notification-title">알림</div>
                                     <div class="notification-list">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
+                                        <c:url var="managerContact" value="managerContact.ow"/>
+                                            <a href="${managerContact }" class="list-group-item list-group-item-action active">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">메시지</span>6개의 읽지않은 매니저 메시지가 있습니다.
+                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle brandLogo"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">메시지</span><span id="countMassege">0</span>개의 읽지않은 매니저 메시지가 있습니다.
                                                         <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
+                                        <c:url var="noReadReview" value="noReadReview.ow">
+                                       		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                       	</c:url>
+                                            <a href="${noReadReview }" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">리뷰</span>6개의 리뷰가 작성되었습니다.
-                                                        <div class="notification-date">답글달기</div>
+                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle brandLogo"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">리뷰</span><span id="countReview">0</span>개의 리뷰가 작성되었습니다.
+                                                        <div class="notification-date">답변달기</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
+                                            <c:url var="noReadQNA" value="noReadQNA.ow">
+                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a href="${noReadQNA }" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">상품 QnA</span>12개의 읽지않은 상품문의가 있습니다.
+                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle brandLogo"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">상품 QnA</span><span id="countQnA">0</span>개의 읽지않은 상품문의가 있습니다.
                                                         <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
+                                            <c:url var="Brand_NO" value="order_progress.ow">
+                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
+                                        	</c:url>
+                                            <a href="${Brand_NO }" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">주문접수</span>34개의 신규 주문이 접수되었습니다.
+                                                    <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle brandLogo"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">주문접수</span><span id="countOrder">0</span>개의 신규 주문이 접수되었습니다.
                                                         <div class="notification-date">확인하기</div>
                                                     </div>
                                                 </div>
@@ -92,7 +103,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown connection">
+                        <!-- <li class="nav-item dropdown connection">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
                             <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
                                 <li class="connection-list">
@@ -123,10 +134,10 @@
                                     <div class="conntection-footer"><a href="#">More</a></div>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           		<img src="/brocoli/resources/ownerResources/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle">
+                           		<img src="/brocoli/resources/ownerResources/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle brandLogo">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
@@ -230,9 +241,6 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                        	<c:url var="Brand_NO" value="order_progress.ow">
-                                        		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
-                                        	</c:url>
                                             <a class="nav-link" href="${Brand_NO }">진행중인 주문</a>
                                         </li>
                                         <li class="nav-item">
@@ -267,9 +275,6 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                        	<c:url var="noReadReview" value="noReadReview.ow">
-                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
-                                        	</c:url>
                                             <a class="nav-link" href="${noReadReview }">읽지않은 후기</a>
                                         </li>
                                         <li class="nav-item">
@@ -288,9 +293,6 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                        	<c:url var="noReadQNA" value="noReadQNA.ow">
-                                        		<c:param name="bNO" value="${loginUser.brand_NO }"/>
-                                        	</c:url>
                                             <a class="nav-link" href="${noReadQNA}">읽지않은 QnA</a>
                                         </li>
                                         <li class="nav-item">
@@ -304,7 +306,6 @@
                             </li>
                             
                              <li class="nav-item ">
-                             	<c:url var="managerContact" value="managerContact.ow"/>
                                 <a class="nav-link" href="${managerContact }" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fas fa-hands-helping"></i>매니저컨택트</a>
                             </li>
                             
@@ -399,11 +400,59 @@
         <!-- ============================================================== -->
         <!-- end left sidebar -->
         <!-- ============================================================== -->
+        
+        <!-- jquery 3.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/brocoli/resources/ownerResources/vendor/jquery/jquery-3.3.1.min.js"></script>
+    
+	<script>
+		
+	$( document ).ready(function(){
+		
+		var bNO = "${loginUser.brand_NO}";
+		
+		$.ajax({
+			url : "ownerHaeder.ow",
+			type: "POST",
+			dataType:"json",
+			data : {bNO:bNO},
+			success : function(data){
+				console.log("메시지 : "+data.countMassege);
+				console.log("리뷰 : "+data.countReview);
+				console.log("오더 : "+data.countOrder);
+				console.log("QnA : "+data.countQnA);
+				
+				
+				$('#countMassege').text(data.countMassege);
+				$('#countReview').text(data.countReview);
+				$('#countOrder').text(data.countOrder);
+				$('#countQnA').text(data.countQnA);
+				
+				if(data.brandLogo != null){
+					$('.brandLogo').attr("src","/brocoli/resources/brandLogo/"+data.brandLogo+"");
+				}else{
+					$('.brandLogo').attr("src","/brocoli/resources/ownerResources/images/avatar-4.jpg");
+				}
+				
+			},error : function(jqxhr, textStatus, errorThrown) {
+				console.log("오너페이지 ajax 처리실패");
 
+				//에러로그
+				console.log(jqxhr);
+				console.log(textStatus);
+				console.log(errorThrown);
+			}
+		});
+		
+	
+	});
+	
+	</script>
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    <!-- jquery 3.3.1 -->
-    <script src="/brocoli/resources/ownerResources/vendor/jquery/jquery-3.3.1.min.js"></script>
+
+    <script src="/brocoli/resources/ownerResources/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="/brocoli/resources/ownerResources/vendor/multi-select/js/jquery.multi-select.js"></script>
     <!-- bootstap bundle js -->
     <script src="/brocoli/resources/ownerResources/vendor/bootstrap/js/bootstrap.bundle.js"></script> 
 

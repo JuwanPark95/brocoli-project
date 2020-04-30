@@ -42,8 +42,7 @@
 	                <div class="row">
 	                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 	                        <div class="page-header">
-	                            <h3 class="mb-2">홈 화면</h3>
-	                            <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+	                            <h3 class="mb-2"><strong>홈 화면</strong></h3>
 	                            <div class="page-breadcrumb">
 	                                <nav aria-label="breadcrumb">
 	                                    <ol class="breadcrumb">
@@ -71,14 +70,14 @@
 	                                <div class="row">
 	                                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
 	                                        <div class="text-center">
-	                                            <img src="/brocoli/resources/images/DIM_E_CRES_LOGO.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
+	                                            <img id="brandLogo2" src="/brocoli/resources/images/DIM_E_CRES_LOGO.jpg" alt="User Avatar" class="rounded-circle user-avatar-xxl">
 	                                            </div>
 	                                        </div>
 	                                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
 	                                            <div class="user-avatar-info">
 	                                                <div class="m-b-20">
 	                                                    <div class="user-avatar-name">
-	                                                        <h2 class="mb-1">DIM. E CRES</h2>
+	                                                        <h2 class="mb-1"><strong id="brandName2">${loginUser.brand }</strong></h2>
 	                                                    </div>
 	                                                    <div class="rating-star  d-inline-block">
 	                                                      
@@ -87,14 +86,14 @@
 	                                                <!--  <div class="float-right"><a href="#" class="user-avatar-email text-secondary">www.henrybarbara.com</a></div> -->
 	                                                <div class="user-avatar-address">
 	                                                    <p class="border-bottom pb-3">
-	                                                        <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i>서울 강남구 압구정로60길 21 / 청담동 89 (우)06019</span>
-	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-phone-volume" style="color: skyblue; font-size: 17px;"></i> 02-9547-0000</span>
-	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-file-signature"></i> 입점일 : 2020-03-27 </span>
-	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-user-tie"></i>대표 :</span>
+	                                                        <span class="d-xl-inline-block d-block mb-2"><i class="fa fa-map-marker-alt mr-2 text-primary "></i><span id="brandAdress2"></span></span>
+	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-phone-volume" style="color: skyblue; font-size: 17px;"></i><span id="brandphone2"></span></span>
+	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-file-signature"></i> 입점일 : <span id="brandEnrollDate2"></span> </span>
+	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block"><i class="fas fa-user-tie"></i>대표 : <span id="brandBoss2"></span></span>
 	                                                        <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">박주완 </span>
 	                                                    </p>
-	                                                    <div class="mt-3">
-	                                                        <a href="#" class="badge badge-light mr-1">Fitness</a> <a href="#" class="badge badge-light mr-1">Life Style</a> <a href="#" class="badge badge-light">Gym</a>
+	                                                    <div class="mt-3" id="brandComment2">
+	                                                    	브랜드설명
 	                                                    </div>
 	                                                </div>
 	                                            </div>
@@ -102,12 +101,11 @@
 	                                    </div>
 	                                </div>
 	                                <div class="border-top user-social-box">
-	                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2 twitter-color"> <i class="fab fa-twitter-square"></i></span><span>13,291</span></div>
-	                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2  pinterest-color"> <i class="fab fa-pinterest-square"></i></span><span>84,019</span></div>
-	                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2 instagram-color"> <i class="fab fa-instagram"></i></span><span>12,300</span></div>
-	                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2  facebook-color"> <i class="fab fa-facebook-square "></i></span><span>92,920</span></div>
-	                                    <div class="user-social-media d-xl-inline-block "><span class="mr-2 medium-color"> <i class="fab fa-medium"></i></span><span>291</span></div>
-	                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2 youtube-color"> <i class="fab fa-youtube"></i></span><span>1291</span></div>
+	                                    <div class="user-social-media d-xl-inline-block" style="padding:15px 43px; "><span class="mr-2 twitter-color"> <i class="fab fa-twitter-square"></i></span><span>담당 매니저 : 신은지</span></div>
+	                                    <div class="user-social-media d-xl-inline-block" style="padding:15px 43px; "><span class="mr-2  pinterest-color"> <i class="fab fa-pinterest-square"></i></span><span>브랜드 : </span></div>
+	                                    <div class="user-social-media d-xl-inline-block" style="padding:15px 43px; "><span class="mr-2 instagram-color"> <i class="fab fa-instagram"></i></span><span>박주완</span></div>
+	                                    <div class="user-social-media d-xl-inline-block" style="padding:15px 43px; "><span class="mr-2  facebook-color"> <i class="fab fa-facebook-square "></i></span><span>박진아</span></div>
+	                                    <div class="user-social-media d-xl-inline-block" style="padding:15px 43px; "><span class="mr-2 medium-color"> <i class="fab fa-medium"></i></span><span>매거진 : 291 개</span></div>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -129,8 +127,8 @@
 	                            <div class="card">
 	                                <div class="card-body">
 	                                    <div class="d-inline-block">
-	                                        <h5 class="text-muted">Total Views</h5>
-	                                        <h2 class="mb-0"> 10,28,056</h2>
+	                                        <h5 class="text-muted"><strong>5월 정산금액</strong></h5>
+	                                        <h2 class="mb-0"> 10,28,056 원</h2>
 	                                    </div>
 	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
 	                                        <i class="fa fa-eye fa-fw fa-sm text-info"></i>
@@ -148,8 +146,8 @@
 	                            <div class="card">
 	                                <div class="card-body">
 	                                    <div class="d-inline-block">
-	                                        <h5 class="text-muted">Total Followers</h5>
-	                                        <h2 class="mb-0"> 24,763</h2>
+	                                        <h5 class="text-muted"><strong>5월 매출</strong></h5>
+	                                        <h2 class="mb-0"> 11,124,763 원</h2>
 	                                    </div>
 	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
 	                                        <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -167,8 +165,8 @@
 	                            <div class="card">
 	                                <div class="card-body">
 	                                    <div class="d-inline-block">
-	                                        <h5 class="text-muted">Partnerships</h5>
-	                                        <h2 class="mb-0">14</h2>
+	                                        <h5 class="text-muted"><strong>5월 총주문</strong></h5>
+	                                        <h2 class="mb-0">521 건</h2>
 	                                    </div>
 	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
 	                                        <i class="fa fa-handshake fa-fw fa-sm text-secondary"></i>
@@ -186,8 +184,8 @@
 	                            <div class="card">
 	                                <div class="card-body">
 	                                    <div class="d-inline-block">
-	                                        <h5 class="text-muted">Total Earned</h5>
-	                                        <h2 class="mb-0"> $149.00</h2>
+	                                        <h5 class="text-muted"><strong>교환/환불</strong></h5>
+	                                        <h2 class="mb-0">21/12 건</h2>
 	                                    </div>
 	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
 	                                        <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
@@ -208,7 +206,7 @@
 	                        <!-- ============================================================== -->
 	                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 	                            <div class="card">
-	                                <h5 class="card-header">Followers by Gender</h5>
+	                                <h5 class="card-header"><strong>주 고객층 성별통계</strong></h5>
 	                                <div class="card-body">
 	                                    <div id="gender_donut" style="height: 230px;"></div>
 	                                </div>
@@ -232,7 +230,7 @@
 	                        <!-- ============================================================== -->
 	                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
 	                            <div class="card">
-	                                <h5 class="card-header">Followers by Age</h5>
+	                                <h5 class="card-header"><strong>고객 연령별 통계</strong></h5>
 	                                <div class="card-body">
 	                                    <div class="mb-3">
 	                                        <div class="d-inline-block">
@@ -301,7 +299,7 @@
 	                        <!-- ============================================================== -->
 	                        <div class="col-xl-5 col-lg-12 col-md-6 col-sm-12 col-12">
 	                            <div class="card">
-	                                <h5 class="card-header">Top Folllowes by Locations </h5>
+	                                <h5 class="card-header"><strong>카테고리별 판매율</strong></h5>
 	                                <div class="card-body">
 	                                    <canvas id="chartjs_bar_horizontal"></canvas>
 	                                </div>
@@ -314,23 +312,24 @@
 	                    <div class="row">
 	                                      <!-- recent orders  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                           				
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Recent Orders</h5>
+                                    <h5 class="card-header"><strong>이번달 판매제품 순위</strong></h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
-                                                        <th class="border-0">Image</th>
-                                                        <th class="border-0">Product Name</th>
-                                                        <th class="border-0">Product Id</th>
-                                                        <th class="border-0">Quantity</th>
-                                                        <th class="border-0">Price</th>
-                                                        <th class="border-0">Order Time</th>
-                                                        <th class="border-0">Customer</th>
-                                                        <th class="border-0">Status</th>
+                                                        <th class="border-0"><strong>총주문수</strong></th>
+                                                        <th class="border-0"><strong>상품번호</strong></th>
+                                                        <th class="border-0"><strong>기준월</strong></th>
+                                                        <th class="border-0"><strong>이미지</strong></th>
+                                                        <th class="border-0"><strong>상품명</strong></th>
+                                                        <th class="border-0"><strong>가격</strong></th>
+                                                        <th class="border-0"><strong>카테고리 대</strong></th>
+                                                        <th class="border-0"><strong>카테고리 소</strong></th>
+                                                        <th class="border-0"><strong>등록일</strong></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -347,7 +346,7 @@
                                                         <td>Patricia J. King </td>
                                                         <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
                                                     </tr>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td>2</td>
                                                         <td>
                                                             <div class="m-r-10"><img src="/brocoli/resources/ownerResources/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
@@ -388,7 +387,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                    </tr>
+                                                    </tr> -->
                                                 </tbody>
                                             </table>
                                         </div>
@@ -402,13 +401,16 @@
 	                    <!-- ============================================================== -->
 	                    <!-- recommended campaigns   -->
 	                    <!-- ============================================================== -->
+	                    
 	                    <div class="row">
 	                        <div class="col-lg-12">
 	                            <div class="section-block">
-	                                <h3 class="section-title">Recommended Campaigns</h3>
+	                                <h3 class="section-title"><strong>최근리뷰</strong></h3>
 	                            </div>
 	                        </div>
-	                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+	                        	
+	                        	
+	                        	<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
 	                            <div class="card campaign-card text-center">
 	                                <div class="card-body">
 	                                    <div class="campaign-img"><img src="/brocoli/resources/ownerResources/images/dribbble.png" alt="user" class="user-avatar-xl"></div>
@@ -465,7 +467,9 @@
 	                                                </div>
 	                                            </div>
 	                                        </div>
-	                                    </div>
+	                                        
+	                                        
+	                                  </div>
 	                                    <!-- ============================================================== -->
 	                                    <!-- end recommended campaigns   -->
 	                                    <!-- ============================================================== -->
@@ -474,51 +478,62 @@
 	                                    <!-- ============================================================== -->
 	                                </div>
 	                            </div>
-	                            <!-- ============================================================== -->
-	                            <!-- footer -->
-	                            <!-- ============================================================== -->
-	                            <div class="footer">
-	                                <div class="container-fluid">
-	                                    <div class="row">
-	                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-	                                           Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-	                                        </div>
-	                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-	                                            <div class="text-md-right footer-links d-none d-sm-block">
-	                                                <a href="javascript: void(0);">About</a>
-	                                                <a href="javascript: void(0);">Support</a>
-	                                                <a href="javascript: void(0);">Contact Us</a>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <!-- ============================================================== -->
-	                            <!-- end footer -->
-	                            <!-- ============================================================== -->
 	                        </div>
 	                        <!-- ============================================================== -->
 	                        <!-- end wrapper  -->
 	                        <!-- ============================================================== -->
 	                    </div>
-	                    <!-- ============================================================== -->
-	                    <!-- end main wrapper  -->
-	                    <!-- ============================================================== -->
-	                    <!-- Optional JavaScript -->
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
 
-	                    <!-- slimscroll js -->
-	                    <script src="/brocoli/resources/ownerResources/vendor/slimscroll/jquery.slimscroll.js"></script>
-	                    <!-- main js -->
-	                    <script src="/brocoli/resources/ownerResources/libs/js/main-js.js"></script>
-	                    <!-- morris-chart js -->
-	                    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/raphael.min.js"></script>
-	                    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/morris.js"></script>
-	                    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/morrisjs.html"></script>
-	                    <!-- chart js -->
-	                    <script src="/brocoli/resources/ownerResources/vendor/charts/charts-bundle/Chart.bundle.js"></script>
-	                    <script src="/brocoli/resources/ownerResources/vendor/charts/charts-bundle/chartjs.js"></script>
-	                    <!-- dashboard js -->
-	                    <script src="/brocoli/resources/ownerResources/libs/js/dashboard-influencer.js"></script>
+	<script>
+		$( document ).ready(function(){
+			
+			var bNO = "${loginUser.brand_NO}";
+			
+			$.ajax({
+				url : "ownerHome.ow",
+				type: "post",
+				data : {bNO:bNO},
+				dataType : "json",
+				success : function(data){
+					$('').text();
+					
+					
+					
+					
+					
+				},error : function(jqxhr, textStatus, errorThrown) {
+					console.log("매니저컨택트 list Select ajax 처리실패");
+
+					//에러로그
+					console.log(jqxhr);
+					console.log(textStatus);
+					console.log(errorThrown);
+				}
+			})
+			
+		});
+	</script>
+	
+	
+	
+
+    <!-- slimscroll js -->
+    <script src="/brocoli/resources/ownerResources/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="/brocoli/resources/ownerResources/libs/js/main-js.js"></script>
+    <!-- morris-chart js -->
+    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="/brocoli/resources/ownerResources/vendor/charts/morris-bundle/morrisjs.html"></script>
+    <!-- chart js -->
+    <script src="/brocoli/resources/ownerResources/vendor/charts/charts-bundle/Chart.bundle.js"></script>
+    <script src="/brocoli/resources/ownerResources/vendor/charts/charts-bundle/chartjs.js"></script>
+    <!-- dashboard js -->
+    <script src="/brocoli/resources/ownerResources/libs/js/dashboard-influencer.js"></script>
 </body>
  
 </html>
