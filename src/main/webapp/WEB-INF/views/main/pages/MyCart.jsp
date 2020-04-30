@@ -51,13 +51,13 @@
 									<th class="column-5">판매금액</th>
 									<th class="column-6">수량</th>
 									<th class="column-7">총 금액</th>
-									<th class="column-8">삭제</th>
+									<th class="column-8" style="text-align: center; width: 5%;">삭제</th>
 								</tr>
 							<c:set var="sum" value="0"/>
 							<c:choose>
 	    						<c:when test="${empty cList }">
 	    							<tr>
-	    								<td colspan="8" style="height: 100px; font-size: 17px; text-align: center;"><strong>장바구니가 비어있습니다.</strong></td>
+	    								<td colspan="8" style="height: 110px; font-size: 17px; text-align: center;"><strong>장바구니가 비어있습니다.</strong></td>
 	    							</tr>
 	    						</c:when>
 						        <c:when test="${!empty cList}">
@@ -91,7 +91,7 @@
 												<c:param name="ct_NO" value="${c.ct_NO}"/>
 											</c:url> 
 											
-											<input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
+											<%-- <input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/> --%>
 											
 											<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
 									      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
@@ -302,7 +302,7 @@
 						<input type="hidden" name="ct_Mno" value="${ loginUser.mNO }"/>
 						<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" style="background: #333;
    						 color: white; border-radius:5px; width: 100%;" name="orderadd" onclick="orderadd();">주문하기</button> 
-						<input type="text" name="test" id="test" value="00" style="width:1000px;">
+						<!-- <input type="text" name="test" id="test" value="00" style="width:1000px;"> -->
 					</div>
 				</div>
 
