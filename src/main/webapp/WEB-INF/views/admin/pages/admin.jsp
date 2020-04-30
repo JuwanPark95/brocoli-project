@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<!-- ============================================================== -->
-					<!-- end pageheader  -->
+					<!-- 총 회원수, 브랜드수, 주문수, 매출  -->
 					<!-- ============================================================== -->
 					<div class="ecommerce-widget">
 
@@ -118,57 +118,20 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-						<!-- ============================================================== -->
-
-						<!-- ============================================================== -->
-						<!-- ============================================================== -->
-						<!-- 회원 성별 비율  -->
-						<!-- ============================================================== -->
-						<div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
-							<div class="card">
-								<h5 class="card-header"><strong>회원 성별 비율</strong></h5>
-								<div class="card-body">
-									<div id="c3chart_category1"></div>
-									<div id="chartWomen" style="display:none;">${memberWCount}</div>
-									<div id="chartMen" style="display:none;">${memberMCount}</div>
-								</div>
-							</div>
-						</div>
 						
 						<!-- ============================================================== -->
-						<!-- 연도별 매출  -->
+						<!-- 브랜드 NEW 5  -->
 						<!-- ============================================================== -->
-							<div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
-								<div class="card">
-									<h5 class="card-header"><strong>연도별 매출</strong></h5>
-									<div class="card-body">
-										<div id="morris_totalrevenue"></div>
-									</div>
-									<div class="card-footer">
-										<p class="display-7 font-weight-bold">
-											<span class="text-primary d-inline-block">$26,000</span><span
-												class="text-success float-right">+9.45%</span>
-										</p>
-									</div>
-								</div>
-							</div>
-							
-						<!-- ============================================================== -->
-						<!-- recent orders  -->
-						<!-- ============================================================== -->
-						<div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+						<div class="col-md-8 .col-md-push-3" style="float:left;">
 							<div class="card">
 								<h5 class="card-header">브랜드 NEW 5</h5>
 								<div class="card-body p-0">
 									<div class="table-responsive">
-										<table class="table"  style="text-align: center;">
+										<table class="table"  style="text-align: center; ">
 											<thead class="bg-light">
 												<tr class="border-0">
-	                                                <th style="width:5%">번호</th>
 	                                                <th style="width:5%">로고</th>
 	                                                <th>브랜드명</th>
-	                                                <th>사업자번호</th>
 	                                                <th>대표</th>
 	                                                <th>주소</th>
 	                                                <th>전화번호</th>
@@ -179,7 +142,6 @@
 											<tbody>
 											<c:forEach var="b" items="${BrandList}">
 												<tr>
-	                                                <td>${b.brand_NO}</td>
 	                                                <td>
 	                                                <c:set var="img" value="${b.b_Logo_ReName}"/>
 	                                                <c:if test="${empty img}">
@@ -189,7 +151,6 @@
 	                                            	<img src="/brocoli/resources/brandLogo/${b.b_Logo_ReName}" width="50" height="50"></c:if>
 	                                                </td>                                              	
 	                                                <td>${b.b_Name}</td>
-	                                                <td>${b.b_Business_NO}</td>
 	                                                <td>${b.b_Owner_Name }</td>
 	                                                <td>${b.b_Address }</td>
 	                                                <td>${b.b_Phone }</td>
@@ -214,67 +175,21 @@
 							</div>
 						</div>
 						<!-- ============================================================== -->
-						<!-- end recent orders  -->
-						<div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
-							<!-- ============================================================== -->
-							<!-- top perfomimg  -->
-							<!-- ============================================================== -->
-							<div class="card">
-								<h5 class="card-header">회원가입 NEW 6</h5>
-								<div class="card-body p-0">
-									<div class="table-responsive">
-										<table class="table no-wrap p-table">
-											<thead class="bg-light">
-												<tr class="border-0">
-													<th class="border-0">Campaign</th>
-													<th class="border-0">Visits</th>
-													<th class="border-0">Revenue</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Campaign#1</td>
-													<td>98,789</td>
-													<td>$4563</td>
-												</tr>
-												<tr>
-													<td>Campaign#2</td>
-													<td>2,789</td>
-													<td>$325</td>
-												</tr>
-												<tr>
-													<td>Campaign#3</td>
-													<td>1,459</td>
-													<td>$225</td>
-												</tr>
-												<tr>
-													<td>Campaign#4</td>
-													<td>5,035</td>
-													<td>$856</td>
-												</tr>
-												<tr>
-													<td>Campaign#5</td>
-													<td>10,000</td>
-													<td>$1000</td>
-												</tr>
-												<tr>
-													<td>Campaign#5</td>
-													<td>10,000</td>
-													<td>$1000</td>
-												</tr>
-												<tr>
-													<td colspan="3"><a href="#"
-														class="btn btn-outline-light float-right">Details</a></td>
-												</tr>
-											</tbody>
-										</table>
+						<!-- ============================================================== -->
+						<!-- 회원 성별 비율  -->
+						<!-- ============================================================== -->
+							<div class="col-md-4 .col-md-pull-9" style="float:left;">
+								<div class="card">
+									<h5 class="card-header"><strong>회원 성별 비율</strong></h5>
+									<div class="card-body">
+										<div id="c3chart_category1"></div>
+										<div id="chartWomen" style="display:none;">${memberWCount}</div>
+										<div id="chartMen" style="display:none;">${memberMCount}</div>
 									</div>
 								</div>
 							</div>
-							<!-- ============================================================== -->
-							<!-- end top perfomimg  -->
-							<!-- ============================================================== -->
-						</div>
+						
+						
 
 		<!-- ============================================================== -->
 		<!-- end wrapper  -->
@@ -318,37 +233,13 @@
 			});
 			   
 		</script>
-		
-		<!-- ============================================================== -->
-		<!-- 연도별 매출 -->
-		<!-- ============================================================== -->
-		<script>
-			    Morris.Area({
-			        element: 'morris_totalrevenue',
-			        behaveLikeLine: true,
-			        data: [
-			            { x: '2016 Q1', y: 0, },
-			            { x: '2016 Q2', y: 7500, },
-			            { x: '2017 Q3', y: 15000, },
-			            { x: '2017 Q4', y: 22500, },
-			            { x: '2018 Q5', y: 30000, },
-			            { x: '2018 Q6', y: 40000, }
-			        ],
-			        xkey: 'x',
-			        ykeys: ['y'],
-			        labels: ['Y'],
-			        lineColors: ['#5969ff'],
-			        resize: true
-			
-			    });
-		</script>
 		<!-- ============================================================== -->
 		<!-- end main wrapper  -->
 		<!-- ============================================================== -->
 		<!-- Optional JavaScript -->
 		<!-- slimscroll js -->
 		
-		
+			
 		<script src="https://d3js.org/d3.v3.min.js"></script>     
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>

@@ -63,8 +63,8 @@
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">로고</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
                                             <div class="form-group row">
-                                               <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center; border-radius:100% " class="img-thumbnail mr-3" >
-                                                  <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px; border-radius:100%">
+                                               <div id="titleImgArea" style=" float: left; width: 171px; height: 210px; vertical-align: middle; display: flex; align-items: center;" class="img-thumbnail mr-3" >
+                                                  <img id="titleImg" src="http://via.placeholder.com/160x200"  alt="Responsive image" style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
                                                </div>
                                             </div>
                                         	</div>

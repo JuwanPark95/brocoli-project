@@ -83,8 +83,10 @@ public class AdminProductController {
 	 */
 	@RequestMapping("productUpdate.ad")
 	public ModelAndView productUpdate(ModelAndView mv, Product p){
+		System.out.println("p"+p);
 		int result = APService.productUpdate(p);
 		if(result>0) {
+			System.out.println(result+"result");
 			mv.setViewName("redirect:product-management.ad");
 		}
 		return mv;

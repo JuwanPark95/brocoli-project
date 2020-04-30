@@ -113,7 +113,7 @@
                                             			<strong style="color:blue;">재발송</strong>
                                             		</c:when>
                                             		<c:when test="${ch_Status eq '4'}">
-                                            			<strong style="color:blue;">교환완료</strong>
+                                            			<strong style="color:tomato;">교환완료</strong>
                                             		</c:when>
                                             	</c:choose>
 	                                            </td>
@@ -333,7 +333,6 @@
     	/* $(document).ready(function(){
     		$("submitOk()").click(function(){ */
     			$(document).on("click", "button[name=changeBtn]", function(event){
-    				alert("??");
 	   			var or_Option1Select =$('#or_Option1Select option:selected').text();
 	   			var or_Option2Select =$('#or_Option2Select option:selected').text();
 	   			var modalChangeSelect =$('#modalChangeSelect option:selected').val();

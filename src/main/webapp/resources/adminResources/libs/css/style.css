@@ -1717,7 +1717,7 @@ Left Navigation Sidebar
     padding-left: 12px;
     padding-right: 12px;
     /* margin-top: 5px; */
-    background: #24274a;
+    background: #fdf1da;
 }
 
 .nav-left-sidebar .submenu .nav .nav-item .nav-link {
@@ -1829,22 +1829,22 @@ Leftsidebar - dark
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:hover {
-    color: #fff;
-    background-color: #242849;
+    color: #7a80b4;
+    background-color: #fdf1da;
     border-radius: 2px;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-link.active {
-    background-color: #242849;
-    color: #fff;
+    background-color: #fdf1da;
+    color: #7a80b4;
     border-radius: 2px;
 }
 
 .sidebar-dark.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
-    color: #fff;
+    color: #7a80b4;
     border-radius: 2px;
-    background-color: #242849;
+    background-color: #fdf1da;
 }
 
 .sidebar-dark.nav-left-sidebar .navbar-nav .nav-item .badge{
