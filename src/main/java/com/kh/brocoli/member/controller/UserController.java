@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ import com.kh.brocoli.member.model.vo.Email;
 import com.kh.brocoli.member.model.vo.EmailSender;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -1095,10 +1097,15 @@ public class UserController {
 	
 	  @ResponseBody
 	  @RequestMapping("payScreen")
-	  public String payScreen(@RequestParam("mno") int mno,@RequestParam("total") int total) { 
-		  System.out.println("컨트롤러 mno total"+ mno+"!! "+total);
-		  System.out.println("컨트롤러 들어왔습니다.");
-		  int result = uService.updatePay(mno,total);
+	  public String payScreen(@RequestParam("mno") int mno,@RequestParam("total") int total, Orders order) { 
+		System.out.println("mno::"+ mno);
+		  System.out.println("total:::" + total);
+		 System.out.println("order::" + order);
+		 String total1 = Integer.toString(total) ;
+		 System.out.println("total1::" + total1);
+		 order.setOr_Price(total1);
+		 order.setOr_Mno(mno);
+		  int result = uService.updatePay(mno,total,order);
 	  System.out.println("@@"+ result);
 	  
 	  if(result > 0) {
