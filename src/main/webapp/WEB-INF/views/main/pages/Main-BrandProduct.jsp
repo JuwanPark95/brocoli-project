@@ -40,7 +40,7 @@
          <div>
 
 		 <label style="font-size:30px;">
-			 <img src="/brocoli/resources/product-Img/${bProductList[0].b_Logo_ReName}" style="width: 130px; border: 1px solid black;">
+			 <img src="/brocoli/resources/brandLogo/${bProductList[0].b_Logo_ReName}" style="width: 130px; border: 1px solid black;">
 			 ${bProductList[0].b_Name} 
 		 </label>
 
