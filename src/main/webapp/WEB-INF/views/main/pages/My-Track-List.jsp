@@ -40,7 +40,11 @@ input {
 			<input type="hidden" id="hidPhone" value="${loginUser.phone }" />
 			<input type="hidden" id="hidMno" value="${loginUser.mNO }" />
 			<input type="hidden" id="hidOamno" value="${cList[0].oa_Mno }" />
-			
+			<input type="hidden" id ="popt1" value="${cList[0].oa_Option_1 }" />
+			<input type="hidden" id ="popt2" value="${cList[0].oa_Option_2 }" />
+			<input type="hidden" id="pAmount" value="${cList[0].oa_Amount }" />
+			<input type="hidden" id="pno"  value="${cList[0].productList.p_NO }"/>
+			<input type="hidden" id= "p_Brand_NO" value="${cList[0].productList.p_Brand_NO }" />
 			 <c:choose>
 					<c:when test="${fn:length(cList) == 0}">
 					<div style="margin-left: 250px; margin-top: 20px;" class="p-b-63">
@@ -229,7 +233,7 @@ input {
 
 							</li>
 							<li class="cell_discount_detail box_memo">
-							<textarea name="dlv_msg" style="resize: none;"></textarea>
+							<textarea name="dlv_msg" id="or_Message" style="resize: none;"></textarea>
 								<p>※ 택배기사님께 전할 말씀을 남겨주세요.</p></li>
 						</ul>
 						<!--수령자 정보-->
@@ -528,7 +532,18 @@ $('#finalPay').click(function(){
    var hidEmail = $("#hidEmail").val();
    var hidPhone = $("#hidPhone").val();
    var hidMno = $("#hidMno").val();
+   var hidClist = $("#hidClist").val();
    
+   var or_Address =  $("#post").val()+" , "+$("#address1").val()+" , "+$("#address2").val();
+	var or_Phone = $("#phone1").val();
+	var or_Recip_Name = $("#rcvr_nm").val();
+	
+	var or_Option1 = $("#popt1").val();
+	var or_Option2 = $("#popt2").val();
+    var or_Amount = $("#pAmount").val();
+    var or_P_NO = $("#pno").val();
+    var or_Brand_NO = $("#p_Brand_NO").val();
+    var or_Message = $("#or_Message").val();
    IMP.request_pay({
        pg : 'inicis',
        pay_method : 'card',
@@ -569,12 +584,17 @@ $('#finalPay').click(function(){
              }
             });
             
-           alert("ajax 시작하세요");
+           
           $.ajax({
 		 		url:"payScreen",
 		 		type:"post",
 		 		data:{mno : hidMno,
-		 			total : total},
+		 			or_Pname:payName,
+		 			total ,
+		 			or_Address,
+		 			or_Phone ,
+		 			or_Option1,or_Option2,or_Amount,or_P_NO,or_Brand_NO,or_Message,
+		 			or_Recip_Name},
 		 		success:function(data){
 				if(data =="ok"){	 		
 			 			location.href="myOrderList.mn";

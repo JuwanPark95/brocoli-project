@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.kh.brocoli.magazine.model.vo.Magazine2;
 import com.kh.brocoli.member.model.vo.Member;
 import com.kh.brocoli.member.model.vo.OrderAdd;
+import com.kh.brocoli.member.model.vo.Orders;
 import com.kh.brocoli.member.model.vo.trackOrders;
 import com.kh.brocoli.product.model.vo.Brand;
 import com.kh.brocoli.product.model.vo.Entering_Question;
@@ -241,7 +242,7 @@ public interface UserService {
 	 * @param oa_Mno
 	 * @return
 	 */
-	int updatePay(int mno, int total);
+	int updatePay(int mno, int total, Orders order);
 
 	
  
