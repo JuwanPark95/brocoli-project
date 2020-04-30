@@ -70,6 +70,7 @@
    		<mapper resource="mappers/owner-mappers/ownerAuction-mapper.xml"/>
    		<mapper resource="mappers/owner-mappers/ownerMagazine-mapper.xml"/>
    		<mapper resource="mappers/owner-mappers/ownerContact-mapper.xml"/>
+   		<mapper resource="mappers/owner-mappers/ownerBasic-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminBrand-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminOrders-mapper.xml"/>
  		<mapper resource="mappers/admin-mappers/AdminProduct-mapper.xml"/>

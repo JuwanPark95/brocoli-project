@@ -97,7 +97,6 @@
                                                 <th>상태</th>
                                                 <th>등록일</th>
                                                 <th>재고</th>
-                                                <th>상품정보수정</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -124,14 +123,6 @@
 				                                            <a class="btn btn-sm btn-outline-light" href="${stockdetail}">재고확인</a>
 				                                        </div>
 	                                                </td>
-	                                                <td>
-		                                                <div class="btn-group ml-auto">
-				                                            <button class="btn btn-sm btn-outline-light">변경</button>
-				                                            <button class="btn btn-sm btn-outline-light">
-				                                                <i class="far fa-trash-alt"></i>
-				                                            </button>
-				                                        </div>
-	                                                </td>
 	                                            </tr>
 	                                  		</c:forEach>
                                         </tbody>
@@ -148,7 +139,6 @@
                                                 <th>상태</th>
                                                 <th>등록일</th>
                                                 <th>재고</th>
-                                                <th>상품정보수정</th>
                                             </tr>
                                         </tfoot>
                                     </table>

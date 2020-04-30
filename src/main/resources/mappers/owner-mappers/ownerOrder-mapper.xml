@@ -57,8 +57,8 @@
 	</resultMap>
 
 	<resultMap type="Statistics" id="statisticsResultSet">
-		<id property="day" column="DAY"/>
-		
+		<id property="NO" column="NO"/>
+		<result property="day" column="DAY"/>
 		<result property="orderCount" column="ORDERCOUNT"/>
 		<result property="orderPrice" column="ORDERPRICE"/>
 		<result property="rejectCount" column="REJECTCOUNT"/>

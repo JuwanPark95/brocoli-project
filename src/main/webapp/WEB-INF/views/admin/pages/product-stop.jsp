@@ -76,7 +76,6 @@
                                                 <th>판매가</th>
                                                 <th>카테고리(대)</th>
                                                 <th>카테고리(소)</th> 
-                                                <th>상품상태</th> 
                                                 <th>총 주문수</th>
                                                 <th>상품입고일</th>
                                                 <th>상태</th>
@@ -103,11 +102,15 @@
                                                 <td>${p.p_Last_Price }</td>
                                                 <td>${p.p_Bcategory }</td>
                                                 <td>${p.p_Scategory }</td>
-                                                <td>${p.p_Status}</td>
                                                 <td>${p.p_Order_Count }</td>
                                                 <td>${p.p_Insert_Date }</td>
                                                 <td>
-	                                                <c:set var="p_Show_YN" value="${p.p_Show_YN }" />
+	                                                <c:set var="p_Status" value="${p.p_Status }" />
+	                                            	<c:choose>
+	                                            		<c:when test="${p_Status eq '3'}">
+	                                            			<strong><span style="color:tomato;">품절</span></strong>
+	                                            		</c:when>
+	                                            	</c:choose>
 	                                            	<c:choose>
 	                                            		<c:when test="${p_Show_YN eq 'N'}">
 	                                            			<strong><span style="color:tomato;">판매중지</span></strong>

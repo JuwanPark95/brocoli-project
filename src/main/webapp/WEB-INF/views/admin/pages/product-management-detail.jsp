@@ -181,7 +181,13 @@
                                         <div class="form-group row">
                                             <label class="col-12 col-sm-3 col-form-label text-sm-right">상품수정날짜</label>
                                             <div class="col-12 col-sm-8 col-lg-6">
+                                                <c:set var="p_Modify_Date" value="${po.p_Modify_Date}"/>
+                                                <c:if test="${empty p_Modify_Date}">
+                                                <input type="text" class="form-control" name="p_Modify_Date" value="${po.p_Insert_Date}" readonly="readonly">                                        
+                                                </c:if>
+                                                <c:if test="${not empty p_Modify_Date }">
                                                 <input type="text" class="form-control" name="p_Modify_Date" value="${po.p_Modify_Date}" readonly="readonly">
+                                                </c:if> 
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -236,14 +242,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="form-group row text-right">
-                                    	<div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                    		<form action="brandDelete.ad" method="post" >
-                                        		<input type="hidden" name="brand_NO" value=""/>	
-                                            	<button type="submit" class="btn btn-dark btn-xs">상품삭제</button>
-                                    		</form>
-                                    	</div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

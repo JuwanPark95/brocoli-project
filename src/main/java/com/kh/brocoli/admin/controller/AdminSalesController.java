@@ -66,7 +66,6 @@ public class AdminSalesController {
     	ArrayList<Orders> searchList = ASService.searchList(hmap);
     	
     	System.out.println("searchList" + searchList);
-    	
     	return searchList;
     	
     }

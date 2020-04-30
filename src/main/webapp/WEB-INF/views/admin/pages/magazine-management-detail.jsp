@@ -81,55 +81,37 @@
 											  <div class="col-12 col-sm-8 col-lg-6">
 	                                            <div class="form-group row">
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-	                                                <c:set var="img" value="${ mg.m_Magazine_File.mf_Img1_ReName }"/>
-	                                                <c:if test="${empty img}">
-	                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-	                                              	</c:if>    
+	                                                <c:set var="img" value="${ mg.m_Magazine_File.mf_Img1_ReName }"/>	                                               
 	                                                <c:if test="${not empty img }">
 	                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img1_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            	</c:if>
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-	                                             	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img2_ReName }"/>
-	                                                <c:if test="${empty img}">
-	                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-	                                              	</c:if>    
+	                                             	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img2_ReName }"/>   
 	                                                <c:if test="${not empty img }">
 	                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img2_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 	                                            	</c:if>   
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
 	                                            		<c:set var="img" value="${ mg.m_Magazine_File.mf_Img3_ReName }"/>
-		                                                <c:if test="${empty img}">
-		                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                              	</c:if>    
 		                                                <c:if test="${not empty img }">
 		                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img3_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 		                                            	</c:if>    
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-		                                                <c:set var="img" value="${ mg.m_Magazine_File.mf_Img4_ReName }"/>
-		                                                <c:if test="${empty img}">
-		                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                              	</c:if>    
+		                                                <c:set var="img" value="${ mg.m_Magazine_File.mf_Img4_ReName }"/>  
 		                                                <c:if test="${not empty img }">
 		                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img4_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 		                                            	</c:if>
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-	                                                	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img5_ReName }"/>
-		                                                <c:if test="${empty img}">
-		                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                              	</c:if>    
+	                                                	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img5_ReName }"/>  
 		                                                <c:if test="${not empty img }">
 		                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img5_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 		                                            	</c:if>
 	                                              </div>
 	                                              <div id="titleImgArea" style=" float: left; width: 100px; height: 100px; vertical-align: middle; display: flex; align-items: center; class="img-thumbnail mr-3" >
-	                                                 	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img6_ReName }"/>
-		                                                <c:if test="${empty img}">
-		                                                	<img src="/brocoli/resources/adminResources/images/noImage.PNG"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
-		                                              	</c:if>    
+	                                                 	<c:set var="img" value="${ mg.m_Magazine_File.mf_Img6_ReName }"/> 
 		                                                <c:if test="${not empty img }">
 		                                            	 	<img id="titleImg" src="/brocoli/resources/magazine-Img/${ mg.m_Magazine_File.mf_Img6_ReName }"  alt="첨부파일 "  style="width: 161px;height: auto; max-width: 161px; max-height: 200px;">
 		                                            	</c:if>
