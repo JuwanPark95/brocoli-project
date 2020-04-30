@@ -91,7 +91,7 @@
 												<c:param name="ct_NO" value="${c.ct_NO}"/>
 											</c:url> 
 											
-											<%-- <input type="text" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/> --%>
+											<input type="hidden" name="ct_NO" id="ct_NO${status.index}" value="${c.ct_NO}"/>
 											
 											<button class="btn btn-primary" style="background: #222; width: 70px; border: 1px solid #222;"
 									      	onclick="location.href='<c:url value='${ cDelete }'/>';">삭제</button> 
@@ -153,7 +153,7 @@
 							var test2; 
 							var checkbox = $("input[name=che]:checked"); 
 						
-							$("input[name=che]").click(function(){ 
+/* 							$("input[name=che]").click(function(){ 
 								
 								var rowData = [];
 								var tdArr = []; 
@@ -171,7 +171,7 @@
 									var td = tr.children();
 									
 									// 체크된 row의 모든 값을 배열에 담는다.
-									/* rowData.push(tr.text().trim()); */
+									/* rowData.push(tr.text().trim()); 
 									
 									// td.eq(0)은 체크박스 이므로  td.eq(1)의 값부터 가져온다.
 									var name = td.eq(2).text().trim();
@@ -186,7 +186,7 @@
 									var test = sum1.replace(/ /gi,"");
 									var test1 = test.split(" ");
 									alert(test1);
-									console.log(test1) */
+									console.log(test1) 
 									
 									// 가져온 값을 배열에 담는다.
 									
@@ -211,14 +211,14 @@
 									console.log("로우데이터 영ㄴ번쨰 : " + rowData[0]);
 									console.log("rowData 0.0 : " + tdArr[0][0]);
 									console.log("ㅑ : " + i);
-								/* 	console.log(rowData.replace(/(/s*)/g,"")); */
+								 	console.log(rowData.replace(/(/s*)/g,"")); 
 								});
 								
 								test1 = rowData;
 								test2 = tdArr;
 								$("#orderadd").html(" * 체크된 Row의 모든 데이터 = "+rowData);	
 								$("#test").val(tdArr);
-							});
+							}); */
 							
 							
 							
@@ -258,7 +258,7 @@
 									ct_NO[i] = $("#ct_NO"+ct_ID[i]).val();
 									
 								} 
-								
+								alert(ct_NO);
 								  jQuery.ajaxSettings.traditional = true;
 								 $.ajax({
 									url:'cOrderAddInsert.mn',

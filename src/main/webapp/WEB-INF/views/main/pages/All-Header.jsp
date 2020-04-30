@@ -163,8 +163,9 @@
 					</c:url>
 					
 					<c:if test="${!empty sessionScope.loginUser }">
+					
 					<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="2">
+						data-notify="">
 						<i class="zmdi zmdi-shopping-cart" onclick="location.href='${headerCartList}'"></i>
 					</div>
 					</c:if>

@@ -252,6 +252,7 @@
 									}else{
 										$("#frm1").attr("action",
 										"cInsert.mn").submit();
+										alert("장바구니에 추가 되었습니다.");
 									}
 								}
 								
