@@ -33,7 +33,6 @@
 			</span>
 		</div>
 	</div>
-		
 
 	<!-- Shoping Cart -->
 	<!-- <form class="bg0 p-t-75 p-b-85"> -->
@@ -56,8 +55,16 @@
 								</tr>
 							<c:set var="sum" value="0"/>
 							<c:forEach var="c" items="${ cList }" varStatus="status" >
-	
+								<c:choose>
+						     
+    						<c:when test="${cList == 0}">
+    						<td>
+    						장바구니가 비어있습니다.</td></c:when>
+						      
+					        <c:otherwise>
+							
 								<tr class="table_row">
+						
 								<th class="column-0"><input type="checkBox" name="che" id="${status.index}" value="${ c.productList.p_Last_Price * c.ct_Amount }" ></th>
 									<td class="column-1">
 										<div class="how-itemcart1">
@@ -91,6 +98,8 @@
 										
 									</td>
 								</tr>
+								</c:otherwise>
+ 							    </c:choose>
 								</c:forEach>
 													
 								<tr style="height:100px;">
