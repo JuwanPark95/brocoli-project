@@ -33,7 +33,7 @@
             <div style="display:flex; margin:0px auto;">
 
            
-           <h3>브랜드명</h3>
+           <h3 style="color: black;"> - <strong> 입점 브랜드</strong></h3>
                
                
                
@@ -50,7 +50,7 @@
 			                 		</c:url>
 			                 		
 	                 					<a href="${bproduct}" id="Allbrand" style="width: 33%; float: left; margin-bottom: 12px; color:black;">
-	                 					<img src="/brocoli/resources/brandLogo/${brand.b_Logo_ReName}" style="width: 90px; height:40px;">
+	                 					<img src="/brocoli/resources/brandLogo/${brand.b_Logo_ReName}" style="margin-right:5px; border-radius: 50%; width: 55px; height:55px; border: 1px solid #e8e8e8;">
 	                 					<strong>${brand.b_Name }</strong></a>
 	                			</c:forEach>                 		
 	                 		</td>
