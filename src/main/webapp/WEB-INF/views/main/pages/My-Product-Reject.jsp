@@ -216,28 +216,28 @@
                           <span class="style4"> ${Orders.or_Price/100} </span>
                       </div>
                   </td>
-                  <td name="ch_Status">
+                  <td>
 	                  
-                       <c:if test="${ch_Status eq 1}">
+                       <c:if test="${Orders.or_Status eq 1}">
                           <span style="color:blue;">주문완료</span>
                        </c:if>
-                       <c:if test="${ch_Status eq 2}">
+                       <c:if test="${Orders.or_Status eq 2}">
                           <span style="color:blue;">상품준비중</span>
                        </c:if>
-                       <c:if test="${ch_Status eq 3}">
+                       <c:if test="${Orders.or_Status eq 3}">
                           <span style="color:blue;">상품배송중</span>
                        </c:if>
-                       <c:if test="${ch_Status eq 4}">
+                       <c:if test="${Orders.or_Status eq 4}">
                           <span style="color:blue;">배송완료</span>
                        </c:if>
-                        <c:if test="${ch_Status eq 5}">
+                        <c:if test="${Orders.or_Status eq 5}">
                           <span style="color:blue;">구매확정</span>
                        </c:if>
-                        <c:if test="${ch_Status eq 6}">
+                        <c:if test="${Orders.or_Status eq 6}">
                           <span style="color:blue;">환불 진행 중</span>
                        </c:if>
-                        <c:if test="${ch_Status eq 7}">
-                          <span style="color:blue;">교환 진행 중</stspanrong>
+                        <c:if test="${Orders.or_Status eq 7}">
+                          <span style="color:blue;">교환 진행 중</span>
                        </c:if>
                        
 	              </td>
