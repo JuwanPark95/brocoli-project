@@ -92,7 +92,7 @@
      	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
      	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
      	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
-     	WHERE P_SHOW_YN ='Y'  
+     	WHERE  P_STATUS='1' OR P_STATUS='2'
 	</select>
 	
 	<select id="selectproductDetail" resultMap="productResultSet" parameterType="Product">
@@ -126,6 +126,6 @@
      	JOIN PRODUCT_FILE PF ON P_NO = PF_P_NO 
      	JOIN PRODUCT_OPTION PO ON P_NO = OP_P_NO
      	JOIN BRAND B ON P_BRAND_NO = BRAND_NO
-     	WHERE P_SHOW_YN ='N' 
+     	WHERE P_SHOW_YN ='N' OR P_STATUS='3'
 	</select>
 </mapper>

@@ -38,7 +38,7 @@
 		<!-- ============================================================== -->
 		<div class="dashboard-header" style="z-index:10;">
 			<nav class="navbar navbar-expand-lg bg-white fixed-top">
-				<a class="navbar-brand" href="index.html" style="color:#fdf1da;">BROCOLI</a>
+				<a class="navbar-brand" href="<c:url value='admin.ad'/>" style="color:#fdf1da;">BROCOLI</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -324,22 +324,6 @@
 								</div>
 							</li>
 							
-							<%-- <li class="nav-item"><a class="nav-link" href="#"
-								data-toggle="collapse" aria-expanded="false"
-								data-target="#submenu-8" aria-controls="submenu-8"><i
-									class="fa fa-fw fa-tasks"></i>게시판</a>
-								<div id="submenu-8" class="collapse submenu" style="">
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='board-notice.ad'/>">공지사항</a></li>
-									</ul>
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='board-questions.ad'/>">Q&A</a></li>
-									</ul>
-								</div>
-							</li> --%>
-							
 							<li class="nav-item"><a class="nav-link" href="#"
 								data-toggle="collapse" aria-expanded="false"
 								data-target="#submenu-9" aria-controls="submenu-9"><i
@@ -351,25 +335,6 @@
 									</ul>
 								</div>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="#"
-								data-toggle="collapse" aria-expanded="false"
-								data-target="#submenu-10" aria-controls="submenu-9"><i
-									class="fa fa-fw fa-cog"></i>설정</a>
-								<div id="submenu-10" class="collapse submenu" style="">
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value='setting.ad'/>">알림</a></li>
-									</ul>
-									<ul class="nav flex-column">
-										<li class="nav-item"><a class="nav-link"
-											href="<c:url value=''/>">//</a></li>
-									</ul>
-								</div>
-							</li>
-							<!-- fas fa-fw fa-table 테이블 그림 -->
-							<!-- ================================================= -->
-							<!-- =====================/메뉴 넣기===================== -->
-							<!-- ================================================= -->
 				</nav>
 			</div>
 		</div>
