@@ -222,13 +222,13 @@ i.fa{
 					                          <span style="color:black;">배송완료</span>
 					                       </c:if>
 					                        <c:if test="${Orders.or_Status eq 5}">
-					                          <span style="color:black;">구매확정</span>
+					                          <span style="color:blue;">구매확정</span>
 					                       </c:if>
 					                        <c:if test="${Orders.or_Status eq 6}">
-					                          <span style="color:black;">환불 진행 중</span>
+					                          <span style="color:red;">환불 진행 중</span>
 					                       </c:if>
 					                        <c:if test="${Orders.or_Status eq 7}">
-					                          <span style="color:black;">교환 진행 중</span>
+					                          <span style="color:red;">교환 진행 중</span>
 					                       </c:if>
 					                       </strong>
 						              </td>

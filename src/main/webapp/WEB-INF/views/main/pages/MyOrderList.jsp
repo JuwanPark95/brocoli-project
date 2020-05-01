@@ -170,7 +170,32 @@
 									<td style="text-align:center;">${ Orders.or_Price/100 }</td>
 									<td style="text-align:center;">${ Orders.or_Amount }</td>
 									<td style="text-align:center;">${ Orders.or_Price }</td>
-									<td style="text-align:center; font-size:13px; color: #555;"><strong>주문완료</strong><br>
+									<td style="text-align: center; font-size: 13px; color: #555;">
+						                   <strong>
+					                       <c:if test="${Orders.or_Status eq 1}">
+					                          <span style="color:black;">주문완료</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 2}">
+					                          <span style="color:black;">상품준비중</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 3}">
+					                          <span style="color:black;">상품배송중</span>
+					                       </c:if>
+					                       <c:if test="${Orders.or_Status eq 4}">
+					                          <span style="color:black;">배송완료</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 5}">
+					                          <span style="color:blue;">구매확정</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 6}">
+					                          <span style="color:red;">환불 진행 중</span>
+					                       </c:if>
+					                        <c:if test="${Orders.or_Status eq 7}">
+					                          <span style="color:red;">교환 진행 중</span>
+					                       </c:if>
+					                       </strong>
+						              </td>
+						              <br>
 									<td style="text-align:center;">
 									<button class="ord-btn" onclick="location.href='trackprocess.mn?or_No=${ Orders.or_NO }'"><strong>상세 보기</strong></button>
 									<button class="ord-btn" onclick="location.href='my_p_change.mn?or_No=${ Orders.or_NO }'" style="margin-right: 0px; padding: 3.5px;"><strong>교환</strong></button>

@@ -35,7 +35,7 @@
   
 </head>
 <body>
-<div id="all">
+<div id="all" style="height: auto; margin-bottom: 30px;">
 <br>
 <h1 style=" color: #22; padding:4%; text-align: center; font-weight: bold;">고객 문의 사항</h1>
 <br>
@@ -155,8 +155,8 @@
   </div>
   </div>
   <div id="searchArea" align="center" >
-				<form action="qSearch.mn" style="display: inline-flex;" >
-					<select id="searchCondition" name="condition">
+				<form action="qSearch.mn" style="display: inline-flex; margin-bottom: 15px;" >
+					<select id="searchCondition" name="condition" >
 						<option>--------선택--------</option>
 						<option value="writer">작성자</option>
 						<option value="title">제목</option>

@@ -29,7 +29,7 @@
                     <!-- mypage common section -->
                     <div class="mypage-common-container">
                         <!-- mypage link section -->
-                        <div class="mypage-link-container"  style="margin-left: 12px;">
+                        <div class="mypage-link-container"  style="margin-left: 60px;">
                             <c:url var="MainPage" value="MainPage" />
                             <a href="${MainPage}" class="home">home</a>
 							<a href="<c:url value='mypage.mn'/>" class="test">"MY PAGE"</a>
