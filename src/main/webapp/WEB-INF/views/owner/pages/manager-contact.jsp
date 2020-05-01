@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="card" style="height: 90%; margin-bottom: 1px;">
-                                <div id="chatingArea" class="card-body" style="overflow-y: scroll; background-color: #5a5959;">
+                                <div id="chatingArea" class="card-body" style="overflow-y: scroll; background-color: #b5cbe2; ">
                               <!--  	 실제 메시지 영역 시작 -->
                                 	
                                <!--  	메시지 끝 -->
