@@ -186,8 +186,8 @@
 					</c:if>
 					<c:if test="${empty sessionScope.loginUser }">
 					<a href="${loginPage }"
-						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-						data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
+						class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11"> 
+						<i class="zmdi zmdi-favorite-outline"></i>
 					</a>
 					</c:if>
 

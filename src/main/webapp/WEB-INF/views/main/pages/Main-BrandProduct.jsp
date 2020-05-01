@@ -24,7 +24,7 @@
 </head>
 <body class="animsition">
 
-   <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-02.jpg');">
+   <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/brand.jpg');">
       <h2 class="ltext-105 cl0 txt-center" style="color:white">
          BRAND
       </h2>

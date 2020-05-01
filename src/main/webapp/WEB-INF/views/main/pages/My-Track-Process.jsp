@@ -107,7 +107,7 @@ i.fa{
 <body class="animsition">
  <form action="trackprocess.mn" id="frm1">
  <c:forEach var="Orders" items="${list }">
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/tracklist.jpg'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			주문정보
 		</h2>

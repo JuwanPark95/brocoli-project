@@ -90,7 +90,7 @@
 </head>
 
 <body class="animsition">
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/bg-01.jpg'); position:relative;" id="">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/brocoli/resources/mainResources/images/order.png'); position:relative;" id="">
 		<h2 class="ltext-105 cl0 txt-center" style="color:white;">
 			주문현황
 		</h2>
