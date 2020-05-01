@@ -81,6 +81,13 @@ public class ownerContactController {
 		if(content.length() > 5) {
 			ct.setCon_Title(content.substring(0,4));
 		}
+		
+		if(content == null) {
+			ct.setCon_Content("  내용없음      ");
+		}
+		if(ct.getCon_Title() == null) {
+			ct.setCon_Title("   제목없음    ");
+		}
 		System.out.println("잘라낸 타이틀명  : " + ct.getCon_Title());
 		
 		int result = oService.contactInsert(ct);
