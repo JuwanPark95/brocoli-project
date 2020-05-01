@@ -84,10 +84,10 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                            <c:url var="Brand_NO" value="order_progress.ow">
+                                            <c:url var="order_progress" value="order_progress.ow">
                                         		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
                                         	</c:url>
-                                            <a href="${Brand_NO }" class="list-group-item list-group-item-action">
+                                            <a href="${order_progress}" class="list-group-item list-group-item-action">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="/brocoli/resources/ownerResources/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle brandLogo"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">주문접수</span><span id="countOrder">0</span>개의 신규 주문이 접수되었습니다.
@@ -241,13 +241,13 @@
                                 <div id="submenu-3" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="${Brand_NO }">진행중인 주문</a>
+                                            <a class="nav-link" href="${order_progress }">진행중인 주문</a>
                                         </li>
                                         <li class="nav-item">
-                                        	<c:url var="Brand_NO" value="order_complete.ow">
+                                        	<c:url var="order_complete" value="order_complete.ow">
                                         		<c:param name="Brand_NO" value="${ loginUser.brand_NO }"/>
                                         	</c:url>
-                                            <a class="nav-link" href="${Brand_NO }">완료된 주문</a>
+                                            <a class="nav-link" href="${order_complete }">완료된 주문</a>
                                         </li>
                                         <li class="nav-item">
                                         	<c:url var="order_reject" value="order_reject.ow">
