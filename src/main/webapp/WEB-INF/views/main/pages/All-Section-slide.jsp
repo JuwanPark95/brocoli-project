@@ -16,13 +16,13 @@
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-202 txt-center cl0 respon2">
+								<span class="ltext-202 txt-center cl0 respon2" style="color:white">
 									New arrivals
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
+								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1" style="color:white">
 									WelCome Brocoli
 								</h2>
 							</div>
@@ -40,13 +40,13 @@
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-202 txt-center cl0 respon2">
+								<span class="ltext-202 txt-center cl0 respon2" style="color:white">
 								take a look	
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
+								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1" style="color:white">
 									All Brand
 								</h2>
 							</div>
@@ -64,13 +64,13 @@
 					<div class="container h-full">
 						<div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-202 txt-center cl0 respon2">
+								<span class="ltext-202 txt-center cl0 respon2" style="color:white">
 								Check rank
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1">
+								<h2 class="ltext-104 txt-center cl0 p-t-22 p-b-40 respon1" style="color:white">
 								Season Rank
 								</h2>
 							</div>
