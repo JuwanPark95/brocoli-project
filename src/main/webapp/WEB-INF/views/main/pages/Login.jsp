@@ -47,8 +47,8 @@
 			<c:url var="FindId" value="findId.mn"/>
 			<c:url var="FindPwd" value="findPwd.mn"/>
 			<a href="${JoinView }">회원가입</a> &nbsp;&nbsp; 
-			<a href="${FindId }">아이디 찿기</a>&nbsp;&nbsp; 
-			<a href="${FindPwd }">비밀번호 찿기</a>
+			<a href="${FindId }">아이디 찾기</a>&nbsp;&nbsp; 
+			<a href="${FindPwd }">비밀번호 찾기</a>
 		</div>
 
 	<!-- </form> -->

@@ -258,7 +258,6 @@
 									ct_NO[i] = $("#ct_NO"+ct_ID[i]).val();
 									
 								} 
-								alert(ct_NO);
 								  jQuery.ajaxSettings.traditional = true;
 								 $.ajax({
 									url:'cOrderAddInsert.mn',
